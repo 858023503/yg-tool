@@ -3,6 +3,10 @@
 > 这份文档给接手本项目的 AI 或开发者使用。先读完本文，再读同目录的《项目维护指南.md》和《三合一（最后完整版）.md》。
 > 更新日期：2026-09-15
 
+GitHub 私有仓库：<https://github.com/858023503/yuange-toolbox>
+
+当前远端基线提交：`3920c4b`。仓库包含 D 盘运行/发布目录、维护文档、样本、知识库，以及 `源码工作区/snail-reversing/` 下的真正源码工作区。大文件通过 Git LFS 保存。
+
 ## 1. 项目定位
 
 元歌工具箱是传奇私服翎风、GOM 等 Mir200 服务端的维护工具，主要功能包括：
@@ -316,3 +320,22 @@ D:\元歌工具箱\
 ```
 
 不要因为发现一个同名或相似的 exe 就修改它。
+
+## 11. 换电脑后的恢复方法
+
+在新电脑安装 Git 和 Git LFS 后，先登录有权限访问该私有仓库的 GitHub 账号，然后执行：
+
+```text
+git clone https://github.com/858023503/yuange-toolbox.git
+cd yuange-toolbox
+git lfs pull
+```
+
+真正开发时进入：
+
+```text
+源码工作区\snail-reversing\rate-tool\
+源码工作区\snail-reversing\rate-gui\app\
+```
+
+D 盘根目录下的 `GUI\` 是当前运行副本。修改后按第 3 节同步规则更新运行副本，再提交并推送。不要只在 GitHub 网页上编辑运行副本而漏改源码。
