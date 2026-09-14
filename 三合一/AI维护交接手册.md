@@ -5,7 +5,7 @@
 
 GitHub 私有仓库：<https://github.com/858023503/yuange-toolbox>
 
-当前远端基线提交：`3920c4b`。仓库包含 D 盘运行/发布目录、维护文档、样本、知识库，以及 `源码工作区/snail-reversing/` 下的真正源码工作区。大文件通过 Git LFS 保存。
+当前远端基线提交：以 `git rev-parse origin/main` 为准（每次推送后更新本行）。仓库包含 D 盘运行/发布目录、维护文档、样本、知识库，以及 `源码工作区/snail-reversing/` 下的真正源码工作区。大文件通过 Git LFS 保存。
 
 ## 1. 项目定位
 
@@ -28,7 +28,7 @@ GitHub 私有仓库：<https://github.com/858023503/yuange-toolbox>
 ### 2.1 真正的源码工作区
 
 ```text
-C:\Users\Administrator\AppData\Roaming\reasonix\global-workspace\snail-reversing\
+D:\元歌工具箱\源码工作区\snail-reversing\
 ```
 
 主要目录：
@@ -82,12 +82,14 @@ xiami_native_core.exe 或其兼容实现
 
 ## 3. 修改和同步规则
 
+> 仓库已通过 `.gitignore` 排除 `.codex-kb`、`ai-server-data`、历史备份、`.pyc`、`Market_Saved` 和 `rate-tool/node_modules` 等生成物；本地保留不影响运行。GUI 便携版 `resources/app/node_modules` 是运行/打包依赖，保留在仓库中。
+
 ### 3.1 修改业务逻辑
 
 先修改：
 
 ```text
-C:\Users\Administrator\AppData\Roaming\reasonix\global-workspace\snail-reversing\rate-tool\lib.js
+D:\元歌工具箱\源码工作区\snail-reversing\rate-tool\lib.js
 ```
 
 然后同步到以下四份：
@@ -138,7 +140,9 @@ D:\元歌工具箱\GUI\resources\app\store-template.txt
 CLI 重打包流程在《项目维护指南.md》里有完整命令。核心顺序是：
 
 ```text
-rate-tool\gen-bundle.js
+D:\元歌工具箱\源码工作区\snail-reversing\rate-tool\gen-bundle.js
+cd D:\元歌工具箱\源码工作区\snail-reversing\rate-tool
+npm install  # 仅在 rate-tool/node_modules 不存在时；依赖不入库
 node --experimental-sea-config sea-config.json
 生成 SEA
 复制到 D:\元歌工具箱\元歌工具箱-CLI.exe
@@ -315,7 +319,7 @@ D:\元歌工具箱\knowledge_base\
 判断当前任务应以用户给出的路径、工具箱源码和本交接文档为准。找不到源码时先检查：
 
 ```text
-C:\Users\Administrator\AppData\Roaming\reasonix\global-workspace\snail-reversing\
+D:\元歌工具箱\源码工作区\snail-reversing\
 D:\元歌工具箱\
 ```
 

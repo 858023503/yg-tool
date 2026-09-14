@@ -15,7 +15,8 @@ const path = require('path');
 const lib = require('./lib.js');
 // 加载 GBK 编码支持（node 直接跑时 rate-tool 无 node_modules，需显式指定）
 try { lib.setIconv(require('iconv-lite')); } catch (e1) {
-  try { lib.setIconv(require('../extracted/node_modules/iconv-lite')); } catch (e2) { /* bundle/SEA 已用 global.__iconvLite */ }
+try { lib.setIconv(require('../rate-gui/元歌工具箱/resources/app/node_modules/iconv-lite')); }
+catch (e2) { try { lib.setIconv(require('../extracted/node_modules/iconv-lite')); } catch (e3) { /* bundle/SEA 已用 global.__iconvLite */ } }
 }
 
 function usage() {

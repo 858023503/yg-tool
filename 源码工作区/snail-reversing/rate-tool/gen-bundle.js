@@ -17,7 +17,7 @@ const mods = {};
 for (const [pkg, base] of [
   ['iconv-lite', path.join(__dirname, '..', 'rate-gui', '元歌工具箱', 'resources', 'app', 'node_modules', 'iconv-lite')],
   ['safer-buffer', path.join(__dirname, '..', 'rate-gui', '元歌工具箱', 'resources', 'app', 'node_modules', 'safer-buffer')],
-  ['basic-ftp', path.join(__dirname, 'node_modules', 'basic-ftp')],
+  ['basic-ftp', path.join(__dirname, '..', 'rate-gui', '元歌工具箱', 'resources', 'app', 'node_modules', 'basic-ftp')],
 ]) {
   for (const f of walkJs(base)) {
     const rel = pkg + '/' + f.replace(/\\/g, '/').split(pkg + '/')[1];

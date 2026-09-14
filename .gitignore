@@ -1,0 +1,22 @@
+# 本地生成的知识库索引（可由 lf-mir200-knowledge 重新生成）
+.codex-kb/
+
+# 已废弃的自动化回归测试数据
+ai-server-data/
+
+# 历史备份、Python 字节码和运行日志
+**/*.bak*
+**/*.pyc
+**/applog.txt
+
+# Mir200 引擎运行后生成的存档，不属于样本源码
+**/Market_Saved/
+
+# 依赖目录：通过 package-lock.json 恢复
+源码工作区/snail-reversing/rate-tool/node_modules/
+
+# SEA/旧版构建中间产物（发布版 exe 不在这里）
+源码工作区/snail-reversing/rate-tool/bundle.js
+源码工作区/snail-reversing/rate-tool/sea-prep.blob
+源码工作区/snail-reversing/rate-tool/元歌工具箱.exe
+源码工作区/snail-reversing/rate-tool/爆率修改工具.exe
