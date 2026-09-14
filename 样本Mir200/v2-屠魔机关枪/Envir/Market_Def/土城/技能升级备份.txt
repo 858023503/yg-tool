@@ -1,0 +1,739 @@
+; [@main]
+; #if
+; checkjob warrior
+; #act
+; goto @战士技能升级
+
+; #if
+; checkjob wizard
+; #act
+; goto @法师技能升级
+
+; #if
+; checkjob taoist
+; #act
+; goto @道士技能升级
+
+
+; [@道士技能升级]
+; #IF
+; EQUAL U20 0
+; #ACT
+; MOV N$精神力战法需要书页 10
+; #IF
+; LARGE U20 0
+; #ACT
+; FORMULATION <$STR(U20)>*10 N$精神力战法需要书页
+
+; #IF
+; EQUAL U21 0
+; #ACT
+; MOV N$神愈术需要书页 10
+; #IF
+; LARGE U21 0
+; #ACT
+; FORMULATION <$STR(U21)>*10 N$神愈术需要书页
+
+; #IF
+; EQUAL U22 0
+; #ACT
+; MOV N$灵葫需要书页 10
+; #IF
+; LARGE U22 0
+; #ACT
+; FORMULATION <$STR(U22)>*10 N$灵葫需要书页
+
+; #IF
+; EQUAL U23 0
+; #ACT
+; MOV N$蛊毒术需要书页 10
+; #IF
+; LARGE U23 0
+; #ACT
+; FORMULATION <$STR(U23)>*10 N$蛊毒术需要书页
+
+
+; #IF
+; EQUAL U24 0
+; #ACT
+; MOV N$召唤骷髅需要书页 10
+; #IF
+; LARGE U24 0
+; #ACT
+; FORMULATION <$STR(U24)>*10 N$召唤骷髅需要书页
+
+
+; #IF
+; EQUAL U25 0
+; #ACT
+; MOV N$召唤神兽需要书页 10
+; #IF
+; LARGE U25 0
+; #ACT
+; FORMULATION <$STR(U25)>*10 N$召唤神兽需要书页
+
+
+; #IF
+; EQUAL U26 0
+; #ACT
+; MOV N$召唤圣兽需要书页 10
+; #IF
+; LARGE U26 0
+; #ACT
+; FORMULATION <$STR(U26)>*10 N$召唤圣兽需要书页
+
+; #if
+; #act
+; GetBagItemCount 书页 N$背包书页数量
+; OPENMERCHANTBIGDLG 5 171 1 4 0 -80  1 690 14 1
+; #SAY
+; <&Text:当前拥有书页数量：<$STR(N$背包书页数量)>个:200:455{FCOLOR=132}>
+
+; <&Img:86:13:53:81><&Text:精神力战法:150:89{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U20)>／100:300:89{FCOLOR=103}><&TEXT:技能介绍|250#每提升一级增加1%道术攻击:500:89{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$精神力战法需要书页)>个:600:89{FCOLOR=161}/@精神力战法升级>
+; <&Img:52:0:53:135><&Text:神愈术:150:143{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U21)>／100:300:143{FCOLOR=103}><&TEXT:技能介绍|250#每提升十级神愈术治愈次数+1次^治愈量增加1.5‰:500:143{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$神愈术需要书页)>个:600:143{FCOLOR=161}/@神愈术升级>
+; <&Img:50:0:53:189><&Text:灵葫:150:197{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U22)>／100:300:197{FCOLOR=103}><&TEXT:技能介绍|250#每提升一级灵葫攻击总伤害增加1%:500:197{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$灵葫需要书页)>个:600:197{FCOLOR=161}/@灵葫升级>
+; <&Img:60:0:53:242><&Text:蛊毒术:150:251{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U23)>／100:300:251{FCOLOR=103}><&TEXT:技能介绍|250#每提升一级蛊毒术总伤害增加1%:500:251{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$蛊毒术需要书页)>个:600:251{FCOLOR=161}/@蛊毒术升级>
+; <&Img:40:0:53:296><&Text:召唤骷髅:150:305{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U24)>／100:300:305{FCOLOR=103}><&TEXT:技能介绍|250#每提升一级骷髅总伤害增加1%^总伤害可以理解为多倍攻击:500:305{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$召唤骷髅需要书页)>个:600:305{FCOLOR=161}/@召唤骷髅升级>
+; <&Img:81:0:53:350><&Text:召唤神兽:150:359{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U25)>／100:300:359{FCOLOR=103}><&TEXT:技能介绍|250#每提升一级神兽总伤害增加1%^总伤害可以理解为多倍攻击:500:359{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$召唤神兽需要书页)>个:600:359{FCOLOR=161}/@召唤神兽升级>
+; <&Img:83:0:53:403><&Text:召唤圣兽:150:413{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U26)>／100:300:413{FCOLOR=103}><&TEXT:技能介绍|250#每提升一级圣兽总伤害增加1%^总伤害可以理解为多倍攻击:500:413{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$召唤圣兽需要书页)>个:600:413{FCOLOR=161}/@召唤圣兽升级>
+; <&ImgEx:5:175:176:177:420:445/@main>
+; <&ImgEx:5:172:173:174:550:445/@道士下一页>
+; <&Text:升级技能会使你变得更加强大,具体升级顺序请根据智商来确定:200:500{FCOLOR=250}>
+
+; [@道士下一页]
+; #IF
+; EQUAL U27 0
+; #ACT
+; MOV N$八卦锁龙阵需要书页 40
+; #IF
+; LARGE U27 0
+; #ACT
+; FORMULATION <$STR(U27)>*40 N$八卦锁龙阵需要书页
+
+; #if
+; #act
+; GetBagItemCount 书页 N$背包书页数量
+; OPENMERCHANTBIGDLG 5 171 1 4 0 -80  1 690 14 1
+; #SAY
+; <&Text:当前拥有书页数量：<$STR(N$背包书页数量)>个:200:455{FCOLOR=132}>
+
+; <&Img:85:0:53:81><&Text:八卦锁龙阵:150:89{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U27)>／100:300:89{FCOLOR=103}><&TEXT:技能介绍|250#每提升五十级定身效果增加1秒:500:89{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$八卦锁龙阵需要书页)>个:600:89{FCOLOR=161}/@八卦锁龙阵升级>
+; <&ImgEx:5:175:176:177:420:445/@main>
+; <&ImgEx:5:172:173:174:550:445/@道士下一页>
+; <&Text:升级技能会使你变得更加强大,具体升级顺序请根据智商来确定:200:500{FCOLOR=250}>
+
+
+
+
+
+; [@法师技能升级]
+; #IF
+; EQUAL U12 0
+; #ACT
+; MOV N$魔法精通需要书页 10
+; #IF
+; LARGE U12 0
+; #ACT
+; FORMULATION <$STR(U12)>*10 N$魔法精通需要书页
+
+; #IF
+; EQUAL U13 0
+; #ACT
+; MOV N$寂静之雷需要书页 10
+; #IF
+; LARGE U13 0
+; #ACT
+; FORMULATION <$STR(U13)>*10 N$梵天圣火需要书页
+
+; #IF
+; EQUAL U14 0
+; #ACT
+; MOV N$梵天圣火需要书页 10
+; #IF
+; LARGE U14 0
+; #ACT
+; FORMULATION <$STR(U14)>*10 N$魔法盾需要书页
+; #IF
+; EQUAL U15 0
+; #ACT
+; MOV N$魔法盾需要书页 10
+; #IF
+; LARGE U15 0
+; #ACT
+; FORMULATION <$STR(U15)>*10 N$魔法盾需要书页
+
+; #IF
+; EQUAL U16 0
+; #ACT
+; MOV N$冰咆哮需要书页 10
+; #IF
+; LARGE U16 0
+; #ACT
+; FORMULATION <$STR(U16)>*10 N$冰咆哮需要书页
+
+; #IF
+; EQUAL U17 0
+; #ACT
+; MOV N$漫天火雨需要书页 10
+; #IF
+; LARGE U17 0
+; #ACT
+; FORMULATION <$STR(U17)>*10 N$漫天火雨需要书页
+
+; #IF
+; EQUAL U19 0
+; #ACT
+; MOV N$元素混乱需要书页 40
+; #IF
+; LARGE U19 0
+; #ACT
+; FORMULATION <$STR(U19)>*40 N$元素混乱需要书页
+
+
+
+; #if
+; #act
+; GetBagItemCount 书页 N$背包书页数量
+; OPENMERCHANTBIGDLG 5 171 1 4 0 -80  1 690 14 1
+; #SAY
+; <&Text:当前拥有书页数量：<$STR(N$背包书页数量)>个:200:455{FCOLOR=132}>
+
+; <&Img:77:0:53:81><&Text:魔法精通:150:89{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U12)>／100:300:89{FCOLOR=103}><&TEXT:技能介绍|250#每提升一级增加1%魔法攻击:500:89{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$魔法精通需要书页)>个:600:89{FCOLOR=161}/@魔法精通升级>
+; <&Img:36:0:53:135><&Text:寂静之雷:150:143{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U13)>／100:300:143{FCOLOR=103}><&TEXT:技能介绍|250#每提升一级对人物和怪物总伤害增加1%^总伤害可以理解为多倍攻击:500:143{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$寂静之雷需要书页)>个:600:143{FCOLOR=161}/@寂静之雷升级>
+; <&Img:58:0:53:189><&Text:梵天圣火:150:197{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U14)>／100:300:197{FCOLOR=103}><&TEXT:技能介绍|250#每提升一级推开人物几率增加1%^无视对方等级:500:197{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$梵天圣火需要书页)>个:600:197{FCOLOR=161}/@梵天圣火升级>
+; <&Img:32:0:53:242><&Text:魔法盾:150:251{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U15)>／100:300:251{FCOLOR=103}><&TEXT:技能介绍|250#每提升两级增加自身双防增加1%:500:251{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$魔法盾需要书页)>个:600:251{FCOLOR=161}/@魔法盾升级>
+; <&Img:40:0:53:296><&Text:冰咆哮:150:305{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U16)>／100:300:305{FCOLOR=103}><&TEXT:技能介绍|250#每提升一级对人物和怪物总伤害增加1%^总伤害可以理解为多倍攻击:500:305{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$冰咆哮需要书页)>个:600:305{FCOLOR=161}/@冰咆哮升级>
+; <&Img:38:0:53:350><&Text:漫天火雨:150:359{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U17)>／100:300:359{FCOLOR=103}><&TEXT:技能介绍|250#每提升两级火墙存留时间增加1秒:500:359{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$漫天火雨需要书页)>个:600:359{FCOLOR=161}/@漫天火雨升级>
+; <&Img:79:0:53:403><&Text:混乱元素:150:413{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U19)>／100:300:413{FCOLOR=103}><&TEXT:技能介绍|250#每提升二十级增加一个元素球:500:413{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$元素混乱需要书页)>个:600:413{FCOLOR=161}/@元素混乱升级>
+; ; <&ImgEx:5:175:176:177:420:445/@main>
+; ; <&ImgEx:5:172:173:174:550:445/@战士下一页>
+; <&Text:升级技能会使你变得更加强大,具体升级顺序请根据智商来确定:200:500{FCOLOR=250}>
+
+
+
+
+
+
+
+
+
+
+
+
+; [@战士技能升级]
+; #IF
+; EQUAL U3 0
+; #ACT
+; MOV N$基本剑法需要书页 10
+; #IF
+; LARGE U3 0
+; #ACT
+; FORMULATION <$STR(U3)>*10 N$基本剑法需要书页
+
+
+
+; #IF
+; EQUAL U4 0
+; #ACT
+; MOV N$金殇斩需要书页 5
+; #IF
+; LARGE U4 0
+; #ACT
+; FORMULATION <$STR(U4)>*5 N$金殇斩需要书页
+
+; #IF
+; EQUAL U5 0
+; #ACT
+; MOV N$刺杀剑术需要书页 5
+; #IF
+; LARGE U5 0
+; #ACT
+; FORMULATION <$STR(U5)>*5 N$刺杀剑术需要书页
+
+; #IF
+; EQUAL U6 0
+; #ACT
+; MOV N$野蛮冲撞需要书页 5
+; #IF
+; LARGE U6 0
+; #ACT
+; FORMULATION <$STR(U6)>*5 N$野蛮冲撞需要书页
+
+; #IF
+; EQUAL U7 0
+; #ACT
+; MOV N$烈火剑法需要书页 5
+; #IF
+; LARGE U7 0
+; #ACT
+; FORMULATION <$STR(U7)>*5 N$烈火剑法需要书页
+
+
+; #IF
+; EQUAL U8 0
+; #ACT
+; MOV N$十字破军斩需要书页 5
+; #IF
+; LARGE U8 0
+; #ACT
+; FORMULATION <$STR(U8)>*5 N$十字破军斩需要书页
+
+
+; #IF
+; EQUAL U9 0
+; #ACT
+; MOV N$修罗血魂阵需要书页 5
+; #IF
+; LARGE U9 0
+; #ACT
+; FORMULATION <$STR(U9)>*5 N$修罗血魂阵需要书页
+
+
+
+; #if
+; #act
+; GetBagItemCount 书页 N$背包书页数量
+; OPENMERCHANTBIGDLG 5 171 1 4 0 -80  1 690 14 1
+; #SAY
+; <&Text:当前拥有书页数量：<$STR(N$背包书页数量)>个:200:455{FCOLOR=132}>
+
+; <&Img:0:13:54:82><&Text:基本剑法:150:89{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U3)>／100:300:89{FCOLOR=103}><&TEXT:技能介绍|250#每提升一级增加1%物理攻击:500:89{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$基本剑法需要书页)>个:600:89{FCOLOR=161}/@基本剑法升级>
+; <&Img:71:0:55:135><&Text:金殇斩:150:143{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U4)>／100:300:143{FCOLOR=103}><&TEXT:技能介绍|250#每提升一级对人物和怪物总伤害增加1%^总伤害可以理解为多倍攻击:500:143{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$金殇斩需要书页)>个:600:143{FCOLOR=161}/@金殇斩升级>
+; <&Img:72:0:55:189><&Text:刺杀剑术:150:197{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U5)>／100:300:197{FCOLOR=103}><&TEXT:技能介绍|250#每提升一级对人物和怪物总伤害增加1%^总伤害可以理解为多倍攻击:500:197{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$刺杀剑术需要书页)>个:600:197{FCOLOR=161}/@刺杀剑术升级>
+; <&Img:73:0:55:242><&Text:野蛮冲撞:150:251{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U6)>／100:300:251{FCOLOR=103}><&TEXT:技能介绍|250#每提升一级对人物和怪物总伤害增加1%^总伤害可以理解为多倍攻击:500:251{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$野蛮冲撞需要书页)>个:600:251{FCOLOR=161}/@野蛮冲撞升级>
+; <&Img:74:0:55:296><&Text:烈火剑法:150:305{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U7)>／100:300:305{FCOLOR=103}><&TEXT:技能介绍|250#每提升一级对人物和怪物总伤害增加1%^总伤害可以理解为多倍攻击:500:305{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$烈火剑法需要书页)>个:600:305{FCOLOR=161}/@烈火剑法升级>
+; <&Img:75:0:55:350><&Text:十字破军斩:150:359{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U8)>／100:300:359{FCOLOR=103}><&TEXT:技能介绍|250#每提升一级破军斩剑气存留时间增加0.1秒:500:359{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$十字破军斩需要书页)>个:600:359{FCOLOR=161}/@十字破军斩升级>
+; <&Img:76:0:55:403><&Text:修罗血魂阵:150:413{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U9)>／100:300:413{FCOLOR=103}><&TEXT:技能介绍|250#每提升一级血魂阵伤害增加一次:500:413{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$修罗血魂阵需要书页)>个:600:413{FCOLOR=161}/@修罗血魂阵升级>
+; <&ImgEx:5:175:176:177:420:445/@main>
+; <&ImgEx:5:172:173:174:550:445/@战士下一页>
+; <&Text:升级技能会使你变得更加强大,具体升级顺序请根据智商来确定:200:500{FCOLOR=250}>
+; [@战士下一页]
+; #IF
+; EQUAL U10 0
+; #ACT
+; MOV N$熔岩烈剑需要书页 20
+; #IF
+; LARGE U10 0
+; #ACT
+; FORMULATION <$STR(U10)>*20 N$熔岩烈剑需要书页
+
+; #IF
+; EQUAL U11 0
+; #ACT
+; MOV N$极光斩需要书页 40
+; #IF
+; LARGE U11 0
+; #ACT
+; FORMULATION <$STR(U11)>*40 N$极光斩需要书页
+; #if
+; #act
+; GetBagItemCount 书页 N$背包书页数量
+; OPENMERCHANTBIGDLG 5 171 1 4 0 -80  1 690 14 1
+; #SAY
+; <&Text:当前拥有书页数量：<$STR(N$背包书页数量)>个:200:455{FCOLOR=132}>
+
+; <&Img:44:0:53:81><&Text:熔岩烈剑:149:89{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U10)>／100:300:89{FCOLOR=103}><&TEXT:技能介绍|250#每提升一级增加1%蛛网效果:500:89{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$熔岩烈剑需要书页)>个:600:89{FCOLOR=161}/@熔岩烈剑升级>
+; <&Img:48:0:53:135><&Text:极光斩:150:143{FCOLOR=9}><&TEXT:当前技能等级：<$STR(U11)>／100:300:143{FCOLOR=103}><&TEXT:技能介绍|250#每提升二十级攻击频次增加一次:500:143{FCOLOR=158}><&TEXT:点击升级|250#升级技能需要：^253#技能书页*<$STR(N$极光斩需要书页)>个:600:143{FCOLOR=161}/@极光斩升级>
+; <&ImgEx:5:175:176:177:420:445/@main>
+; <&ImgEx:5:172:173:174:550:445/@战士下一页>
+; <&Text:升级技能会使你变得更加强大,具体升级顺序请根据智商来确定:200:500{FCOLOR=250}>
+; [@基本剑法升级]
+; #IF
+; EQUAL U3 100
+; #ACT
+; MESSAGEBOX 基本剑法已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$基本剑法需要书页
+; EQUAL N$背包书页数量 N$基本剑法需要书页
+; #ACT
+; TAKE 书页 N$基本剑法需要书页
+; INC U3 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级基本剑法的书页数量不够.
+; break
+
+; [@金殇斩升级]
+; #IF
+; EQUAL U4 100
+; #ACT
+; MESSAGEBOX 金殇斩已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$金殇斩需要书页
+; EQUAL N$背包书页数量 N$金殇斩需要书页
+; #ACT
+; TAKE 书页 N$金殇斩需要书页
+; INC U4 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级金殇斩的书页数量不够.
+; break
+
+; [@刺杀剑术升级]
+; #IF
+; EQUAL U5 100
+; #ACT
+; MESSAGEBOX 刺杀剑术已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$刺杀剑术需要书页
+; EQUAL N$背包书页数量 N$刺杀剑术需要书页
+; #ACT
+; TAKE 书页 N$刺杀剑术需要书页
+; INC U5 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级刺杀剑术的书页数量不够.
+; break
+
+; [@烈火剑法升级]
+; #IF
+; EQUAL U7 100
+; #ACT
+; MESSAGEBOX 烈火剑法已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$烈火剑法需要书页
+; EQUAL N$背包书页数量 N$烈火剑法需要书页
+; #ACT
+; TAKE 书页 N$烈火剑法需要书页
+; INC U7 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级烈火剑法的书页数量不够.
+; break
+
+
+; [@十字破军斩升级]
+; #IF
+; EQUAL U8 100
+; #ACT
+; MESSAGEBOX 十字破军斩已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$十字破军斩需要书页
+; EQUAL N$背包书页数量 N$十字破军斩需要书页
+; #ACT
+; TAKE 书页 N$十字破军斩需要书页
+; INC U8 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级十字破军斩的书页数量不够.
+; break
+
+
+; [@修罗血魂阵升级]
+; #IF
+; EQUAL U9 100
+; #ACT
+; MESSAGEBOX 修罗血魂阵已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$修罗血魂阵需要书页
+; EQUAL N$背包书页数量 N$修罗血魂阵需要书页
+; #ACT
+; TAKE 书页 N$修罗血魂阵需要书页
+; INC U9 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级修罗血魂阵的书页数量不够.
+; break
+
+; [@熔岩烈剑升级]
+; #IF
+; EQUAL U10 100
+; #ACT
+; MESSAGEBOX 熔岩烈剑已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$熔岩烈剑需要书页
+; EQUAL N$背包书页数量 N$熔岩烈剑需要书页
+; #ACT
+; TAKE 书页 N$熔岩烈剑需要书页
+; INC U10 1
+; GOTO @战士下一页
+; #ELSEACT
+; MESSAGEBOX 升级熔岩烈剑的书页数量不够.
+; break
+
+; [@极光斩升级]
+; #IF
+; EQUAL U11 100
+; #ACT
+; MESSAGEBOX 极光斩已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$极光斩需要书页
+; EQUAL N$背包书页数量 N$极光斩需要书页
+; #ACT
+; TAKE 书页 N$极光斩需要书页
+; INC U11 1
+; GOTO @战士下一页
+; #ELSEACT
+; MESSAGEBOX 升级极光斩的书页数量不够.
+; break
+
+
+; [@魔法精通升级]
+; #IF
+; EQUAL U12 100
+; #ACT
+; MESSAGEBOX 魔法精通已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$魔法精通需要书页
+; EQUAL N$背包书页数量 N$魔法精通需要书页
+; #ACT
+; TAKE 书页 N$金殇斩需要书页
+; INC U12 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级魔法精通的书页数量不够.
+; break
+
+
+; [@寂静之雷升级]
+; #IF
+; EQUAL U13 100
+; #ACT
+; MESSAGEBOX 寂静之雷已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$寂静之雷需要书页
+; EQUAL N$背包书页数量 N$寂静之雷需要书页
+; #ACT
+; TAKE 书页 N$寂静之雷需要书页
+; INC U13 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级寂静之雷的书页数量不够.
+; break
+
+
+
+; [@梵天圣火升级]
+; #IF
+; EQUAL U14 100
+; #ACT
+; MESSAGEBOX 梵天圣火已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$梵天圣火需要书页
+; EQUAL N$背包书页数量 N$梵天圣火需要书页
+; #ACT
+; TAKE 书页 N$梵天圣火需要书页
+; INC U14 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级梵天圣火的书页数量不够.
+; break
+
+; [@魔法盾升级]
+; #IF
+; EQUAL U15 100
+; #ACT
+; MESSAGEBOX 魔法盾已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$魔法盾需要书页
+; EQUAL N$背包书页数量 N$魔法盾需要书页
+; #ACT
+; TAKE 书页 N$魔法盾需要书页
+; INC U15 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级魔法盾的书页数量不够.
+; break
+
+; [@冰咆哮升级]
+; #IF
+; EQUAL U16 100
+; #ACT
+; MESSAGEBOX 冰咆哮已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$冰咆哮需要书页
+; EQUAL N$背包书页数量 N$冰咆哮需要书页
+; #ACT
+; TAKE 书页 N$冰咆哮需要书页
+; INC U16 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级冰咆哮的书页数量不够.
+; break
+
+; [@漫天火雨升级]
+; #IF
+; EQUAL U17 100
+; #ACT
+; MESSAGEBOX 漫天火雨已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$漫天火雨需要书页
+; EQUAL N$背包书页数量 N$漫天火雨需要书页
+; #ACT
+; TAKE 书页 N$漫天火雨需要书页
+; INC U17 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级漫天火雨的书页数量不够.
+; break
+
+; [@元素混乱升级]
+; #IF
+; EQUAL U19 100
+; #ACT
+; MESSAGEBOX 元素混乱已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$元素混乱需要书页
+; EQUAL N$背包书页数量 N$元素混乱需要书页
+; #ACT
+; TAKE 书页 N$元素混乱需要书页
+; INC U19 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级元素混乱的书页数量不够.
+; break
+
+; [@精神力战法升级]
+; #IF
+; EQUAL U20 100
+; #ACT
+; MESSAGEBOX 精神力战法已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$精神力战法需要书页
+; EQUAL N$背包书页数量 N$精神力战法需要书页
+; #ACT
+; TAKE 书页 N$精神力战法需要书页
+; INC U20 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级精神力战法的书页数量不够.
+; break
+
+
+; [@神愈术升级]
+; #IF
+; EQUAL U21 100
+; #ACT
+; MESSAGEBOX 神愈术已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$神愈术需要书页
+; EQUAL N$背包书页数量 N$神愈术需要书页
+; #ACT
+; TAKE 书页 N$神愈术需要书页
+; INC U21 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级神愈术的书页数量不够.
+; break
+
+; [@灵葫升级]
+; #IF
+; EQUAL U22 100
+; #ACT
+; MESSAGEBOX 灵葫已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$灵葫需要书页
+; EQUAL N$背包书页数量 N$灵葫需要书页
+; #ACT
+; TAKE 书页 N$灵葫需要书页
+; INC U22 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级灵葫的书页数量不够.
+; break
+
+; [@蛊毒术升级]
+; #IF
+; EQUAL U23 100
+; #ACT
+; MESSAGEBOX 蛊毒术已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$蛊毒术需要书页
+; EQUAL N$背包书页数量 N$蛊毒术需要书页
+; #ACT
+; TAKE 书页 N$蛊毒术需要书页
+; INC U23 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级蛊毒术的书页数量不够.
+; break
+
+
+; [@召唤骷髅升级]
+; #IF
+; EQUAL U24 100
+; #ACT
+; MESSAGEBOX 召唤骷髅已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$召唤骷髅需要书页
+; EQUAL N$背包书页数量 N$召唤骷髅需要书页
+; #ACT
+; TAKE 书页 N$召唤骷髅需要书页
+; INC U24 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级召唤骷髅的书页数量不够.
+; break
+
+; [@召唤神兽升级]
+; #IF
+; EQUAL U25 100
+; #ACT
+; MESSAGEBOX 召唤神兽已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$召唤神兽需要书页
+; EQUAL N$背包书页数量 N$召唤神兽需要书页
+; #ACT
+; TAKE 书页 N$召唤神兽需要书页
+; INC U25 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级召唤神兽的书页数量不够.
+; break
+
+
+; [@召唤圣兽升级]
+; #IF
+; EQUAL U26 100
+; #ACT
+; MESSAGEBOX 召唤圣兽已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$召唤圣兽需要书页
+; EQUAL N$背包书页数量 N$召唤圣兽需要书页
+; #ACT
+; TAKE 书页 N$召唤圣兽需要书页
+; INC U26 1
+; GOTO @main
+; #ELSEACT
+; MESSAGEBOX 升级召唤圣兽的书页数量不够.
+; break
+
+; [@八卦锁龙阵升级]
+; #IF
+; EQUAL U27 100
+; #ACT
+; MESSAGEBOX 八卦锁龙阵已经升满.
+; break
+; #IF(1)
+; LARGE N$背包书页数量 N$八卦锁龙阵需要书页
+; EQUAL N$背包书页数量 N$八卦锁龙阵需要书页
+; #ACT
+; TAKE 书页 N$八卦锁龙阵需要书页
+; INC U27 1
+; GOTO @道士下一页
+; #ELSEACT
+; MESSAGEBOX 升级八卦锁龙阵的书页数量不够.
+; break
+

@@ -1,0 +1,149 @@
+[@Body]
+{
+[@_@对怪物理技能编号7触发]
+#IF
+EQUAL N$盛宴激活标识 1
+#ACT
+INC N$攻击时总回血值 <$PKPOWER>
+
+#IF
+EQUAL N$雷霆激活标识 1
+#ACT
+releasemagicEX 11 1 1 1 1 1
+
+#IF
+EQUAL N$雷霆激活标识 1
+RANDOMEX 30 100
+#ACT
+M.ChangeState 1 3
+
+#IF
+EQUAL N$粉碎激活标识 1
+#ACT
+RangeHarm <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y> 3 <$PKPOWER> 0 0 0 0 0 0 0 0 0 1
+SendCenterMsg 180 251 粉碎：对3X3范围内敌人造成<$PKPOWER>点伤害！ 0 3 0 1 533
+
+#IF
+EQUAL N$回音激活标识 1
+#ACT
+CalcPercent <$PKPOWER> 1000 N$额外切割值
+INC N$攻击时总切割值 <$STR(N$额外切割值)>
+SendCenterMsg 180 251 回音：敌人额外造成<$STR(N$额外切割值)>点伤害！ 0 3 0 1 533
+[@_@对怪物理技能编号12触发]
+#IF
+CHECKGROUPITEM 129
+#ACT
+CalcPercent <$PKPOWER> 50 N$额外切割值
+INC N$攻击时总切割值 <$STR(N$额外切割值)>
+
+#IF
+EQUAL N$邪光激活标识 1
+RANDOMEX 20 100
+#ACT
+releasemagicEX 1014 0 3 1 1 1
+
+#IF
+EQUAL N$瘫痪激活标识 1
+RANDOMEX 10 100
+#ACT
+M.CHANGESTATE 7 2
+
+#IF
+EQUAL U140 2
+#ACT
+FORMULATION <$ATTACKMONSTER_X>-<$X> N$怒焰X距离
+FORMULATION <$ATTACKMONSTER_Y>-<$Y> N$怒焰Y距离
+
+#if
+RANDOM 2
+CHECKITEMW 力量指环
+#act
+releasemagicEx 56 1 1 1 1 0
+
+[@_@对怪物理技能编号25触发]
+#IF
+EQUAL N$抱月激活标识 1
+RANDOMEX 5 100
+#ACT
+RangeHarm <$X> <$Y> 1 <$PKPOWER> 0 0 0 0 0 0 0 0 0 1
+PLAYEFFECT 71 94 11 1 20
+
+#IF
+EQUAL N$固月激活标识 1
+#ACT
+CalcPercent <$PKPOWER> 20 N$固月伤害
+INC N$攻击时总切割值 <$STR(N$固月伤害)>
+
+#IF
+EQUAL N$血月激活标识 1
+#ACT
+CalcPercent <$PKPOWER> 8 N$血月恢复
+INC N$攻击时总回血值 <$STR(N$血月恢复)>
+M.PLAYEFFECT 33 670 10 1 30
+
+[@_@对怪物理技能编号26触发]
+#IF
+EQUAL N$流星激活标识 1
+#ACT
+CalcPercent <$PKPOWER> 50 N$流星伤害下限
+MOVR N$流星伤害 <$STR(N$流星伤害下限)> <$PKPOWER>
+MAPEFFECT <$MAP> <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y> 72 770 20 1 60 5
+RangeHarm <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y> 2 <$STR(n$流星伤害)> 0 0 0 0 0 0 0 0 0 1
+
+#IF
+EQUAL N$焚烧激活标识 1
+#ACT
+MOV N$焚烧魂环次数 5
+MOV N$记录焚烧烈火伤害 <$PKPOWER>
+SendCenterMsg 180 释放烈火成功，下5次攻击附带20%伤害！ 0 3 0 1 533
+
+[@_@对怪物理技能编号66触发]
+#IF
+EQUAL N$剧毒斩激活标识 1
+#ACT
+CalcPercent <$PKPOWER> 20 N$开天剧毒伤害
+M.CHANGESTATE 13 30 <$STR(N$开天剧毒伤害)> 2
+M.PLAYEFFECT 33 692 10 20 100
+
+#IF
+EQUAL N$舍命激活标识 1
+#ACT
+CalcPercent <$HP> 50 N$舍命当前血量一半
+CalcPercent <$PKPOWER> 30 N$开天30伤害
+HUMANHP - <$STR(N$舍命当前血量一半)>
+INC N$攻击时总切割值 <$STR(N$舍命当前血量一半)>
+INC N$攻击时总切割值 <$STR(N$开天30伤害)>
+
+#IF
+EQUAL N$麻痹斩激活标识 1
+#ACT
+M.CHANGESTATE 1 3
+
+[@_@对怪物理技能编号56触发]
+#IF
+EQUAL N$卸甲激活标识 1
+#ACT
+MOV N$卸甲增加忽视防御 1000
+SetArrBuff 2 73 0 2163 60 0 0 0 卸甲：忽视防御增加：100%
+GOTO @开始计算元素属性
+
+#IF
+EQUAL N$双重打击激活标识 1
+RANDOMEX 50 100
+#ACT
+
+PLAYEFFECT 91 966 8 1 100
+releasemagicEX 1031 0 3 1 1
+
+#IF
+EQUAL N$八重激活标识 1
+#ACT
+
+releasemagic 1031 0 3 1 1
+
+#IF
+EQUAL N$鲜红激活标识 1
+#ACT
+
+M.CHANGESTATE 4 10
+}

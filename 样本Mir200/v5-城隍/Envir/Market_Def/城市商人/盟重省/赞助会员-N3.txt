@@ -1,0 +1,189 @@
+#include 随身工坊参数.txt
+#include BOSS特效参数.txt
+#include 咸鱼淬炼参数.txt
+
+[@MAIN]
+#IF
+#ACT
+CLOSEMERCHANTBIGDLG
+GOTO @_@计算会员奖励展示
+
+#IF
+SMALL U109 6
+#ACT
+MOV S$晋升按钮显示 <点击晋升/@点击晋升会员>
+#ELSEACT
+MOV S$晋升按钮显示 <您的会员等级已经到顶！>
+
+#IF
+#SAY
+<当前会员级别：/SCOLOR=251><[<$STR(U109)>]/SCOLOR=250>   \
+<晋升下级需求：/SCOLOR=251><[<$STR(L$会员升级金刚石需求数组[<$STR(U109)>])>]/SCOLOR=253>\ \
+<晋升奖励:/SCOLOR=70>  \
+<$STR(S$会员奖励展示0)><$STR(S$会员奖励展示1)><$STR(S$会员奖励展示2)> \ \ \
+<$STR(S$晋升按钮显示)>
+<&Text:已拥有会员加成：:220:40{FCOLOR=254;FSIZE=9}>
+<&Text:人物爆率：:240:55{FCOLOR=253;FSIZE=9}><&Text:<$STR(N$会员爆率加成展示)>%:300:55{FCOLOR=249;FSIZE=9}>
+<&Text:伤害加深：:240:70{FCOLOR=253;FSIZE=9}><&Text:<$STR(U109)>%:300:70{FCOLOR=249;FSIZE=9}>
+<&Text:伤害吸收：:240:85{FCOLOR=253;FSIZE=9}><&Text:<$STR(U109)>%:300:85{FCOLOR=249;FSIZE=9}>
+<&Text:　主属性：:240:100{FCOLOR=253;FSIZE=9}><&Text:<$STR(U109)>%:300:100{FCOLOR=249;FSIZE=9}>
+<&Text:　生命值：:240:115{FCOLOR=253;FSIZE=9}><&Text:<$STR(U109)>%:300:115{FCOLOR=249;FSIZE=9}>
+<&Text:　魔法值：:240:130{FCOLOR=253;FSIZE=9}><&Text:<$STR(U109)>%:300:130{FCOLOR=249;FSIZE=9}>
+<&Text:攻击倍率：:240:145{FCOLOR=253;FSIZE=9}><&Text:<$STR(U109)>%:300:145{FCOLOR=249;FSIZE=9}>
+<&Text:暴击伤害：:240:160{FCOLOR=253;FSIZE=9}><&Text:<$STR(U109)>%:300:160{FCOLOR=249;FSIZE=9}>
+<&Text:领取工资|70#会员每日可领取如下奖励：^-^250#1.[会员等级*5]金刚石^250#2.[会员等级*4]装备升级石^250#3.[会员等级*2]装备进阶石^250#4.[会员等级*20]精铁石^250#5.[会员等级*10]进阶石^250#6.[会员等级*10]白玉^250#7.[会员等级*1]彩玉:345:160{FCOLOR=251;FSIZE=9}/@领取会员工资>
+
+
+[@1捐赠]
+#IF
+CheckGAMEGOLD > 99
+#ACT
+GAMEGOLD - 100
+GameDiamond + 1
+messagebox 兑换成功
+#ELSEACT
+MessageBox \　\　\　　　<*>您没有足够的元宝来兑换金刚石!
+BREAK
+[@10捐赠]
+#IF
+CheckGAMEGOLD > 999
+#ACT
+GAMEGOLD - 1000
+GameDiamond + 10
+messagebox 兑换成功
+#ELSEACT
+MessageBox \　\　\　　　<*>您没有足够的元宝来兑换金刚石!
+BREAK
+[@250捐赠]
+#IF
+CheckGOLD  2500000
+#ACT
+take 金币 2500000
+GAMEGOLD + 100
+messagebox 兑换成功
+#ELSEACT
+MessageBox \　\　\　　　<*>您没有足够的金币来兑换元宝!
+BREAK
+[@2500捐赠]
+#IF
+CheckGOLD  25000000
+#ACT
+take 金币  2500000
+GAMEGOLD + 1000
+messagebox 兑换成功
+#ELSEACT
+MessageBox \　\　\　　　<*>您没有足够的金币来兑换元宝!
+BREAK
+
+[@领取会员工资]
+#IF
+LARGE J19 0
+#ACT
+MESSAGEBOX 你已经领取过会员工资了！
+BREAK
+
+#IF
+EQUAL U109 0
+#ACT
+MESSAGEBOX 你的会员等级为0！
+BREAK
+
+#IF
+#ACT
+INC J19 1
+MUL N$会员给金刚石 <$STR(U109)> 5
+MUL N$会员给装备升级石 <$STR(U109)> 4
+MUL N$会员给装备进阶石 <$STR(U109)> 2
+MUL N$会员给精铁石 <$STR(U109)> 20
+MUL N$会员给进阶石 <$STR(U109)> 10
+MUL N$会员给白玉 <$STR(U109)> 10
+MUL N$会员给彩玉 <$STR(U109)> 1
+GAMEDIAMOND + <$STR(N$会员给金刚石)>
+GIVE 装备升级石 <$STR(N$会员给装备升级石)>
+GIVE 装备进阶石 <$STR(N$会员给装备进阶石)>
+GIVE 精铁石 <$STR(N$会员给精铁石)>
+GIVE 进阶石 <$STR(N$会员给进阶石)>
+GIVE 白玉 <$STR(N$会员给白玉)>
+GIVE 彩玉 <$STR(N$会员给彩玉)>
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{领取了今日的|251:0}{[<$STR(U109)>级会员工资]|254:0}
+
+[@点击晋升会员]
+#IF
+CHECKGAMEDIAMOND < <$STR(L$会员升级金刚石需求数组[<$STR(U109)>])>
+#ACT
+MESSAGEBOX 你没有足够的金刚石
+BREAK
+
+#IF
+LARGE U109 5
+#ACT
+MESSAGEBOX 你的会员等级已经满了！
+BREAK
+
+#IF
+#ACT
+GAMEDIAMOND - <$STR(L$会员升级金刚石需求数组[<$STR(U109)>])>
+MOV L$当前给予会员奖励数组 <$STR(S$<$STR(U109)>级会员奖励物品)>
+MOV L$当前给予会员奖励数量数组 <$STR(S$<$STR(U109)>级会员奖励数量)>
+
+#IF
+EQUAL U109 3
+#ACT
+MOV L$当前给予会员奖励数组 <$STR(S$3<$JOB>级会员奖励物品)>
+MOV L$当前给予会员奖励数量数组 <$STR(S$3<$JOB>级会员奖励数量)>
+
+#IF
+NOT EQUAL L$当前给予会员奖励数组[0]
+#ACT
+GIVEIDX <$STR(L$当前给予会员奖励数组[0])> <$STR(L$当前给予会员奖励数量数组[0])>
+
+#IF
+NOT EQUAL L$当前给予会员奖励数组[1]
+#ACT
+GIVEIDX <$STR(L$当前给予会员奖励数组[1])> <$STR(L$当前给予会员奖励数量数组[1])>
+
+#IF
+NOT EQUAL L$当前给予会员奖励数组[2]
+#ACT
+GIVEIDX <$STR(L$当前给予会员奖励数组[2])> <$STR(L$当前给予会员奖励数量数组[2])>
+
+#IF
+#ACT
+INC U109 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{经过不懈努力,提升了自己的|251:0}{[会员等级]|254:0}{，当前会员等级为：|251:0}{[<$STR(U109)>]|254:0}
+#CALL [登陆功能\属性计算.TXT] @属性计算
+GOTO @MAIN
+
+[@_@计算会员奖励展示]
+#IF
+#ACT
+MUL N$会员爆率加成展示 <$STR(U109)> 10
+
+#IF
+#ACT
+MOV S$会员奖励展示0 
+MOV S$会员奖励展示1 
+MOV S$会员奖励展示2 
+MOV L$当前会员奖励数组 <$STR(S$<$STR(U109)>级会员奖励物品)>
+MOV L$当前会员奖励数量数组 <$STR(S$<$STR(U109)>级会员奖励数量)>
+
+#IF
+EQUAL U109 3
+#ACT
+MOV L$当前会员奖励数组 <$STR(S$<$STR(U109)><$JOB>级会员奖励物品)>
+MOV L$当前会员奖励数量数组 <$STR(S$<$STR(U109)><$JOB>级会员奖励数量)>
+
+#IF
+NOT EQUAL L$当前会员奖励数组[0]
+#ACT
+MOV S$会员奖励展示0 <ItemShow:<$STR(L$当前会员奖励数组[0])>:<$STR(L$当前会员奖励数量数组[0])>:0:0:1>
+
+#IF
+NOT EQUAL L$当前会员奖励数组[1]
+#ACT
+MOV S$会员奖励展示1 <ItemShow:<$STR(L$当前会员奖励数组[1])>:<$STR(L$当前会员奖励数量数组[1])>:0:0:1>
+
+#IF
+NOT EQUAL L$当前会员奖励数组[2]
+#ACT
+MOV S$会员奖励展示2 <ItemShow:<$STR(L$当前会员奖励数组[2])>:<$STR(L$当前会员奖励数量数组[2])>:0:0:1>

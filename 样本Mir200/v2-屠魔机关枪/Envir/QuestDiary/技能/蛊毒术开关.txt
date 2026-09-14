@@ -1,0 +1,51 @@
+[@蛊毒术开关]
+{
+
+
+#IF
+#ACT
+RangeHarmEx <$STR(N998)> <$STR(N999)> <$STR(N$蛊毒术范围)> 1 0 0 0 2 0 0 0 0 0 0 0 0 
+RangeHarmEx <$STR(N998)> <$STR(N999)> 3 1 0 0 0 1 0 0 0 0 0 0 0 0 
+
+
+MOV N$蛊毒术开关 1
+setontimer 3 1 1
+#if
+randomex N$法宝战争弓箭手召唤几率 101
+CheckCacheTextList ..\questdiary\怪物名称\统领及以上怪物.txt  <$ATTACKMONSTER_NAME>
+#ACT
+RECALLMOB 战争弓箭手 7 1
+
+Goto @统计属性
+
+; releasemagicEX 1007 0 0 1 1
+; releasemagicEX 1007 0 0 1 1
+; releasemagicEX 1007 0 0 1 1
+; releasemagicEX 1007 0 0 1 1
+; releasemagicEX 1007 0 0 1 1
+; releasemagicEX 1007 0 0 1 1才
+; m.HumanHP - 10 1000 100
+; RangeHarm <$X> <$Y> 4 0 1 5 0 0
+
+#IF
+LARGE N$铭文蛊毒术增加致命几率 0
+EQUAL N$蛊毒术铭文增加致命一击几率开关 0
+#ACT
+FORMULATION <$STR(N$铭文蛊毒术增加致命几率)>+<$STR(N$人物致命一击几率)> N$人物致命一击几率
+AddHumNewValue 21 = N$人物致命一击几率
+MOV N$蛊毒术铭文增加致命一击几率开关 1
+
+Goto @属性面板
+delaycall 5000 @蛊毒术恢复致命几率
+
+[@蛊毒术恢复致命几率]
+#IF
+#ACT
+MOV N$蛊毒术铭文增加致命一击几率开关 0
+FORMULATION <$STR(N$人物致命一击几率)>-<$STR(N$铭文蛊毒术增加致命几率)> N$人物致命一击几率
+AddHumNewValue 21 = N$人物致命一击几率
+
+Goto @属性面板
+
+
+}

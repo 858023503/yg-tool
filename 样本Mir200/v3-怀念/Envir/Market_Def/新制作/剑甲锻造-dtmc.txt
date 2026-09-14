@@ -1,0 +1,332 @@
+[@main]
+#IF
+#ACT
+OPENMERCHANTBIGDLG 0 130 1 0 0 0 1 399 1 1
+#SAY
+\
+<------------------------------------------------------------/SCOLOR=13>\ 
+< 尊敬的玩家您好我为你提供天地系列剑甲锻造，让你实力大增！/SCOLOR=249> \
+<------------------------------------------------------------/SCOLOR=13>\ \
+<>　<ItemShow:695:0:10:-22:1>     <text:锻造|250#需要仙·屠龙の刀+残剑碎片*88+588积分50%几率成功^250#失败扣除货币和材料,仙·屠龙の刀返还:0:-15/@天地の攻速>     <ItemShow:696:0:10:-22:1>     <text:锻造|250#需要仙·苍龙の甲+羽衣碎片*88+588积分50%几率成功^250#失败扣除货币和材料,仙·苍龙の甲返还:0:-15/@天地の攻防甲>     <ItemShow:697:0:10:-22:1>     <text:锻造|250#仙·苍龙の袍+羽衣碎片*88+588积分50%几率成功^250#失败扣除货币和材料,仙·苍龙の袍返还:0:-15/@天地の攻防袍>  \ \ \
+
+<>　<ItemShow:698:0:10:-22:1>     <text:锻造|250#需要仙·星光の剑+残剑碎片*88+588积分50%几率成功^250#失败扣除货币和材料,仙·星光の剑返还:0:-15/@天地の噬魔>     <ItemShow:699:0:10:-22:1>     <text:锻造|250#需要仙·苍龙の甲+羽衣碎片*88+588积分50%几率成功^250#失败扣除货币和材料,仙·苍龙の甲返还:0:-15/@天地の噬防甲>     <ItemShow:700:0:10:-22:1>     <text:锻造|250#仙·苍龙の袍+羽衣碎片*88+588积分50%几率成功^250#失败扣除货币和材料,仙·苍龙の袍返还:0:-15/@天地の噬防袍>\ \ \
+ 
+<>　<ItemShow:701:0:10:-22:1>     <text:锻造|250#需要仙·倚天の剑+残剑碎片*88+588积分50%几率成功^250#失败扣除货币和材料,仙·倚天の剑返还:0:-15/@天地の悟道>     <ItemShow:702:0:10:-22:1>     <text:锻造|250#需要仙·苍龙の甲+羽衣碎片*88+588积分50%几率成功^250#失败扣除货币和材料,仙·苍龙の甲返还:0:-15/@天地の悟防甲>     <ItemShow:703:0:10:-22:1>     <text:锻造|250#仙·苍龙の袍+羽衣碎片*88+588积分50%几率成功^250#失败扣除货币和材料,仙·苍龙の袍返还:0:-15/@天地の悟防袍>\
+
+
+
+[@天地の悟防袍]
+#IF
+CHECKITEM  仙·苍龙の袍 1
+CHECKITEM  羽衣碎片 88
+CHECKCREDITPOINT > 587
+#ACT
+CREDITPOINT - 588
+TAKE 羽衣碎片 88
+break
+#IF
+CHECKITEM  仙·苍龙の袍 1
+CHECKITEM  羽衣碎片 88
+CHECKGAMEGIRD > 587
+#ACT
+GAMEGIRD - 588
+TAKE 羽衣碎片 88
+GOTO @天地の悟防袍a
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@天地の悟防袍a]
+#IF
+RANDOMEX 1 7
+#ACT
+TAKE 仙·苍龙の袍 1
+GIVE 天地の悟防袍 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(剑袍锻造)|254:0:1}合成了{【天地の悟防袍】|252:251:1}..
+break
+#IF
+#ACT
+MESSAGEBOX \合成失败，请再接再厉！
+break
+[@天地の悟防甲]
+#IF
+CHECKITEM  仙·苍龙の甲 1
+CHECKITEM  羽衣碎片 88
+CHECKCREDITPOINT > 587
+#ACT
+CREDITPOINT - 588
+TAKE 羽衣碎片 88
+break
+#IF
+CHECKITEM  仙·苍龙の甲 1
+CHECKITEM  羽衣碎片 88
+CHECKGAMEGIRD > 587
+#ACT
+GAMEGIRD - 588
+TAKE 羽衣碎片 88
+GOTO @天地の悟防甲a
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@天地の悟防甲a]
+#IF
+RANDOMEX 1 7
+#ACT
+TAKE 仙·苍龙の甲 1
+GIVE 天地の悟防甲 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(剑甲锻造)|254:0:1}合成了{【天地の悟防甲】|252:251:1}..
+break
+#IF
+#ACT
+MESSAGEBOX \合成失败，请再接再厉！
+break
+
+
+[@天地の悟道]
+#IF
+CHECKITEM  仙·倚天の剑 1
+CHECKITEM  残剑碎片 88
+CHECKCREDITPOINT > 587
+#ACT
+CREDITPOINT - 588
+TAKE 残剑碎片 88
+break
+#IF
+CHECKITEM  仙·倚天の剑 1
+CHECKITEM  残剑碎片 88
+CHECKGAMEGIRD > 587
+#ACT
+GAMEGIRD - 588
+TAKE 残剑碎片 88
+GOTO @倚天の剑a
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@倚天の剑a]
+#IF
+RANDOMEX 1 7
+#ACT
+TAKE 仙·倚天の剑 1
+GIVE 天地の悟道 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(剑甲锻造)|254:0:1}合成了{【天地の悟道】|252:251:1}..
+break
+#IF
+#ACT
+MESSAGEBOX \合成失败，请再接再厉！
+break
+
+
+
+
+
+[@天地の噬防袍]
+#IF
+CHECKITEM  仙·苍龙の袍 1
+CHECKITEM  羽衣碎片 88
+CHECKCREDITPOINT > 587
+#ACT
+CREDITPOINT - 588
+TAKE 羽衣碎片 88
+break
+#IF
+CHECKITEM  仙·苍龙の袍 1
+CHECKITEM  羽衣碎片 88
+CHECKGAMEGIRD > 587
+#ACT
+GAMEGIRD - 588
+TAKE 羽衣碎片 88
+GOTO @天地の噬防袍a
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@天地の噬防袍a]
+#IF
+RANDOMEX 1 7
+#ACT
+TAKE 仙·苍龙の袍 1
+GIVE 天地の噬防袍 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(剑袍锻造)|254:0:1}合成了{【天地の噬防袍】|252:251:1}..
+break
+#IF
+#ACT
+MESSAGEBOX \合成失败，请再接再厉！
+break
+[@天地の噬防甲]
+#IF
+CHECKITEM  仙·苍龙の甲 1
+CHECKITEM  羽衣碎片 88
+CHECKCREDITPOINT > 587
+#ACT
+CREDITPOINT - 588
+TAKE 羽衣碎片 88
+break
+#IF
+CHECKITEM  仙·苍龙の甲 1
+CHECKITEM  羽衣碎片 88
+CHECKGAMEGIRD > 587
+#ACT
+GAMEGIRD - 588
+TAKE 羽衣碎片 88
+GOTO @天地の噬防甲a
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@天地の噬防甲a]
+#IF
+RANDOMEX 1 7
+#ACT
+TAKE 仙·苍龙の甲 1
+GIVE 天地の噬防甲 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(剑甲锻造)|254:0:1}合成了{【天地の噬防甲】|252:251:1}..
+break
+#IF
+#ACT
+MESSAGEBOX \合成失败，请再接再厉！
+break
+
+
+[@天地の噬魔]
+#IF
+CHECKITEM  仙·星光の剑 1
+CHECKITEM  残剑碎片 88
+CHECKCREDITPOINT > 587
+#ACT
+CREDITPOINT - 588
+TAKE 残剑碎片 88
+break
+#IF
+CHECKITEM  仙·星光の剑 1
+CHECKITEM  残剑碎片 88
+CHECKGAMEGIRD > 587
+#ACT
+GAMEGIRD - 588
+TAKE 残剑碎片 88
+GOTO @星光の剑a
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@星光の剑a]
+#IF
+RANDOMEX 1 7
+#ACT
+TAKE 仙·星光の剑 1
+GIVE 天地の噬魔 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(剑甲锻造)|254:0:1}合成了{【天地の噬魔】|252:251:1}..
+break
+#IF
+#ACT
+MESSAGEBOX \合成失败，请再接再厉！
+break
+
+
+
+
+
+[@天地の攻防袍]
+#IF
+CHECKITEM  仙·苍龙の袍 1
+CHECKITEM  羽衣碎片 88
+CHECKCREDITPOINT > 587
+#ACT
+CREDITPOINT - 588
+TAKE 羽衣碎片 88
+break
+#IF
+CHECKITEM  仙·苍龙の袍 1
+CHECKITEM  羽衣碎片 88
+CHECKGAMEGIRD > 587
+#ACT
+GAMEGIRD - 588
+TAKE 羽衣碎片 88
+GOTO @苍龙の袍a
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@苍龙の袍a]
+#IF
+RANDOMEX 1 7
+#ACT
+TAKE 仙·苍龙の袍 1
+GIVE 天地の攻防袍 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(剑袍锻造)|254:0:1}合成了{【天地の攻防袍】|252:251:1}..
+break
+#IF
+#ACT
+MESSAGEBOX \合成失败，请再接再厉！
+break
+[@天地の攻防甲]
+#IF
+CHECKITEM  仙·苍龙の甲 1
+CHECKITEM  羽衣碎片 88
+CHECKCREDITPOINT > 587
+#ACT
+CREDITPOINT - 588
+TAKE 羽衣碎片 88
+break
+#IF
+CHECKITEM  仙·苍龙の甲 1
+CHECKITEM  羽衣碎片 88
+CHECKGAMEGIRD > 587
+#ACT
+GAMEGIRD - 588
+TAKE 羽衣碎片 88
+GOTO @苍龙の甲a
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@苍龙の甲a]
+#IF
+RANDOMEX 1 7
+#ACT
+TAKE 仙·苍龙の甲 1
+GIVE 天地の攻防甲 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(剑甲锻造)|254:0:1}合成了{【天地の攻防甲】|252:251:1}..
+break
+#IF
+#ACT
+MESSAGEBOX \合成失败，请再接再厉！
+break
+
+
+[@天地の攻速]
+#IF
+CHECKITEM  仙·屠龙の刀 1
+CHECKITEM  残剑碎片 88
+CHECKCREDITPOINT > 587
+#ACT
+CREDITPOINT - 588
+TAKE 残剑碎片 88
+TAKE 屠龙の刀 5
+break
+#IF
+CHECKITEM  仙·屠龙の刀 1
+CHECKITEM  残剑碎片 88
+CHECKGAMEGIRD > 587
+#ACT
+GAMEGIRD - 588
+TAKE 残剑碎片 88
+GOTO @屠龙の刀a
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@屠龙の刀a]
+#IF
+RANDOMEX 1 7
+#ACT
+TAKE 仙·屠龙の刀 1
+GIVE 天地の攻速 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(剑甲锻造)|254:0:1}合成了{【天地の攻速】|252:251:1}..
+break
+#IF
+#ACT
+MESSAGEBOX \合成失败，请再接再厉！
+break
+

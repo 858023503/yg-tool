@@ -1,0 +1,70 @@
+[@凤爆狂雷]
+{
+#if
+#act
+
+; SENDMSG 6 N998 <$STR(N998)>
+; SENDMSG 6 N999 <$STR(N999)>
+; SENDMSG 6 X <$X>
+; SENDMSG 6 Y <$Y>
+; FORMULATION <$STR(N998)>-<$X> N$信心坐标
+
+
+; #if
+; LARGE N$信心坐标 0
+; #act
+
+; #elseact
+#if
+#act
+FORMULATION <$STR(N$麻痹戒指对怪物伤害)>+<$STR(N$石化戒指对怪物伤害)>+<$STR(N$冰冻戒指对怪物伤害)>+<$STR(N$战灵法相对怪物伤害)> N$麻痹戒指伤害
+
+
+ 
+#if
+#ACT
+FORMULATION <$STR(N$凤爆狂雷伤害)>+1000000000000000+(<$STR(N$七大陆凤爆狂雷伤害增加)>*1000000000000) N$凤爆狂雷伤害最终
+
+
+
+
+#if
+LARGE N$麻痹戒指伤害 0
+#act
+FORMULATION <$STR(N$麻痹戒指伤害)>/100*<$STR(N$凤爆狂雷伤害最终)> N$凤爆狂雷伤害最终
+
+
+
+
+
+#if
+#act
+FORMULATION <$STR(N$凤爆狂雷伤害最终)>*3 N$凤爆狂雷伤害最终
+
+
+; FORMULATION (1600/2+30)+(<$STR(N$信心坐标)>*50) N$新坐标X
+; ; FORMULATION <$X>+<$STR(N998)> N$新坐标X
+; FORMULATION (900/2-81)/<$Y>*<$STR(N999)> N$新坐标Y
+; SENDMSG 6 新坐标X <$STR(N$新坐标X)>
+; SENDMSG 6 新坐标Y <$STR(N$新坐标Y)>
+; SCREENEFFECT <$STR(N$新坐标X)> <$STR(N$新坐标Y)> 1 5174 10 1 100 0 1 0
+
+#if
+equal S$玩家当前大陆 八大陆
+#act
+FORMULATION <$STR(N$凤爆狂雷伤害最终)>/50 N$凤爆狂雷伤害最终
+
+
+#if
+#ACT
+RangeHarm <$STR(N998)> <$STR(N999)> <$STR(N$凤爆狂雷范围)> <$STR(N$凤爆狂雷伤害最终)> 0 0 0 2 1 0 0 0 0 0
+; ; MAPEFFECT <$map> <$X> <$Y>  1 5174 10 1 50 0
+; ; delaycall 300 @新特效测试
+[@新特效测试]
+#if
+#ACT
+; SCREENEFFECT <$STR(N$新坐标X)> <$STR(N$新坐标Y)> 1 5184 24 1 50 0 1 0
+; MAPEFFECT <$map> <$X> <$Y>  1 4766 25 1 50 0
+; RangeHarm <$STR(N998)> <$STR(N999)> 3 1000 0 0 0 2 1 0 0 0 0 0
+; RangeHarm <$STR(N998)> <$STR(N999)> <$STR(N$寂静之雷范围)> 1 0 0 0 2 1 5174 10 1 50 0 1 0
+}

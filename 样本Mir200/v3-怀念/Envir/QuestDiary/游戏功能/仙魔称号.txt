@@ -1,0 +1,50 @@
+[@判断称号]
+{
+#if
+#Act
+RECYCFENGHAO 小有所成
+RECYCFENGHAO 勇者无敌
+RECYCFENGHAO 独霸一方
+
+#if
+Large U21 4
+Large U22 4
+Large U23 4
+Large U24 4
+Large U25 4
+Large U26 4
+#Act
+RECYCFENGHAO 小有所成
+RECYCFENGHAO 勇者无敌
+RECYCFENGHAO 独霸一方
+GIVEFENGHAO 小有所成
+
+
+#if
+Large U21 6
+Large U22 6
+Large U23 6
+Large U24 6
+Large U25 6
+Large U26 6
+#Act
+RECYCFENGHAO 小有所成
+RECYCFENGHAO 勇者无敌
+RECYCFENGHAO 独霸一方
+GIVEFENGHAO 勇者无敌
+
+#if
+Large U21 9
+Large U22 9
+Large U23 9
+Large U24 9
+Large U25 9
+Large U26 9
+#Act
+RECYCFENGHAO 小有所成
+RECYCFENGHAO 勇者无敌
+RECYCFENGHAO 独霸一方
+GIVEFENGHAO 独霸一方
+
+}
+

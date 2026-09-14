@@ -1,0 +1,36 @@
+[@Markets]
+{
+#IF
+#SAY
+MAINMSG\ \
+ <BUYITEMMSG/@buy>\
+ <SELLITEMMSG/@sell>\
+ <REPAIRITEMMSG/@repair>\
+ <REPAIRSITEMMSG/@s_repair>\ \
+<关闭/@exit>
+
+[@buy]
+#IF
+#SAY
+MAINBUYMSG\ \
+<返回/@Markets>
+
+[@sell]
+#IF
+#SAY
+MAINSELLMSG\ \
+ <返回/@Markets>
+
+[@repair]
+#IF
+#SAY
+MAINREPAIRMSG\ \
+ <返回/@Markets>
+
+[@s_repair]
+#IF
+#SAY
+MAINREPAIR_SMSG\ \
+<返回/@Markets>
+
+}

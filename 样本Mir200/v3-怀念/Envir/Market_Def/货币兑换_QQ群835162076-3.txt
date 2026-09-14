@@ -1,0 +1,127 @@
+;该脚本由蜗牛实用工具生成，QQ群：835162076[注册后可移除此提示]
+[@MAIN]
+#IF
+#ACT
+#SAY
+
+<> <您当前的货币概况：/scolor=215>   <公益币：<$GameDiamond>/scolor=215>  <充值点：<$GamePoint>/scolor=249>\ \
+<> <500公益币兑换50万金币/@蜗牛兑换1>    <5000公益币兑换500万金币/@蜗牛兑换10> \
+<> <500公益币兑换5万元宝/@蜗牛兑换2>     <5000公益币兑换50万元宝/@蜗牛兑换20> \
+<> <500公益币兑换10积分/@蜗牛兑换3>      <5000公益币兑换100积分/@蜗牛兑换30> \
+<> <5000公益币兑换10充值点/@蜗牛兑换4>   <5万公益币兑换100充值点/@蜗牛兑换40> \ \
+<> <每2点充值点额外加1%爆率 最高增加500%/scolor=253>\ 
+<> <公益币杀怪就加 30顶赞加的更多 也可以充值比例：1元=5000公益币/scolor=254>
+[@蜗牛兑换1]
+#IF
+CHECKGameDiamond < 500
+#ACT
+MESSAGEBOX 当前没有500公益币
+BREAK
+#IF
+CHECKGameDiamond > 499
+#ACT
+GameDiamond - 500
+give 金币 500000
+MESSAGEBOX 尊敬的【<$USERNAME>】玩家：成功兑换了500000金币
+GOTO @MAIN
+BREAK
+[@蜗牛兑换10]
+#IF
+CHECKGameDiamond < 5000
+#ACT
+MESSAGEBOX 当前没有5000公益币
+BREAK
+#IF
+CHECKGameDiamond > 4999
+#ACT
+GameDiamond - 5000
+give 金币 5000000
+MESSAGEBOX 尊敬的【<$USERNAME>】玩家：成功兑换了5000000金币
+GOTO @MAIN
+BREAK
+[@蜗牛兑换2]
+#IF
+CHECKGameDiamond < 500
+#ACT
+MESSAGEBOX 当前没有500公益币
+BREAK
+#IF
+CHECKGameDiamond > 499
+#ACT
+GameDiamond - 500
+GameGold + 50000
+MESSAGEBOX 尊敬的【<$USERNAME>】玩家：成功兑换了50000元宝
+GOTO @MAIN
+BREAK
+[@蜗牛兑换20]
+#IF
+CHECKGameDiamond < 5000
+#ACT
+MESSAGEBOX 当前没有5000公益币
+BREAK
+#IF
+CHECKGameDiamond > 4999
+#ACT
+GameDiamond - 5000
+GameGold + 500000
+MESSAGEBOX 尊敬的【<$USERNAME>】玩家：成功兑换了500000元宝
+GOTO @MAIN
+BREAK
+[@蜗牛兑换3]
+#IF
+CHECKGameDiamond < 500
+#ACT
+MESSAGEBOX 当前没有500公益币
+BREAK
+#IF
+CHECKGameDiamond > 499
+#ACT
+GameDiamond - 500
+GameGird + 10
+MESSAGEBOX 尊敬的【<$USERNAME>】玩家：成功兑换了10积分
+GOTO @MAIN
+BREAK
+[@蜗牛兑换30]
+#IF
+CHECKGameDiamond < 5000
+#ACT
+MESSAGEBOX 当前没有5000公益币
+BREAK
+#IF
+CHECKGameDiamond > 4999
+#ACT
+GameDiamond - 5000
+GameGird + 100
+MESSAGEBOX 尊敬的【<$USERNAME>】玩家：成功兑换了100积分
+GOTO @MAIN
+BREAK
+[@蜗牛兑换4]
+#IF
+CHECKGameDiamond < 5000
+#ACT
+MESSAGEBOX 当前没有5000公益币
+BREAK
+#IF
+CHECKGameDiamond > 4999
+#ACT
+GameDiamond - 5000
+GamePoint + 10
+#CALL [\1游戏登陆\爆率加成.txt] @爆率加成
+MESSAGEBOX 尊敬的【<$USERNAME>】玩家：成功兑换了10充值点
+GOTO @MAIN
+BREAK
+[@蜗牛兑换40]
+#IF
+CHECKGameDiamond < 50000
+#ACT
+MESSAGEBOX 当前没有5万公益币
+BREAK
+#IF
+CHECKGameDiamond > 49999
+#ACT
+GameDiamond - 50000
+GamePoint + 100
+#CALL [\1游戏登陆\爆率加成.txt] @爆率加成
+MESSAGEBOX 尊敬的【<$USERNAME>】玩家：成功兑换了100充值点
+GOTO @MAIN
+BREAK

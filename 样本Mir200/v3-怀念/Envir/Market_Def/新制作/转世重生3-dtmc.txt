@@ -1,0 +1,100 @@
+[@main]
+#if
+#act
+#say
+<转生证明在所有地图可以爆出，每次转生都会获得一定的属性点。/SCOLOR=249>\ \
+<我要进行七转/@开始七转>：<需要60级 七转神石*7 元宝3000000/SCOLOR=249>\
+<              转生后可以获得/SCOLOR=255><400属性点/SCOLOR=249>\ \
+<我要进行八转/@开始八转>：<需要63级 八转神石*8 元宝5000000/SCOLOR=249>\
+<              转生后可以获得/SCOLOR=255><400属性点/SCOLOR=249>\
+
+
+
+
+[@开始八转]
+#IF
+CHECKRENEWLEVEL > 7
+#act
+MESSAGEBOX 您已经八转了！
+break
+
+#IF
+CHECKLEVELEX < 63
+#act
+MESSAGEBOX 你都还没有<63级>不能进行转生！
+break
+
+#IF
+NOT CHECKITEM 八转神石 8
+#act
+MESSAGEBOX 转生需要<八转神石*8>张！
+break
+
+#IF
+NOT CHECKGAMEGOLD > 5000000
+#act
+MESSAGEBOX 转生需要<5000000>元宝！
+break
+
+
+
+#IF
+CHECKRENEWLEVEL = 7
+CHECKLEVELEX > 62
+CHECKGAMEGOLD > 5000000
+CHECKITEM 八转神石 8
+#act
+GAMEGOLD - 5000000
+TAKE  八转神石 8
+RENEWLEVEL 1 0 400
+RECYCFENGHAO 七转大将
+GiveFengHao 八转将军
+
+MESSAGEBOX 恭喜你完成<第八次>转生，获得<400属性点>，获得<八转将军>称号！
+#ELSEACT
+MESSAGEBOX 转生条件不足或你已经八转了！
+BREAK
+
+[@开始七转]
+#IF
+CHECKRENEWLEVEL > 6
+#act
+MESSAGEBOX 您已经七转了！
+break
+
+
+#IF
+CHECKLEVELEX < 60
+#act
+MESSAGEBOX 你都还没有<60级>不能进行转生！
+break
+
+#IF
+NOT CHECKITEM 七转神石 7
+#act
+MESSAGEBOX 转生需要<七转神石*7>张！
+break
+
+#IF
+NOT CHECKGAMEGOLD > 3000000
+#act
+MESSAGEBOX 转生需要<3000000>元宝！
+break
+
+#IF
+CHECKRENEWLEVEL = 6
+CHECKLEVELEX > 59
+CHECKGAMEGOLD > 3000000
+CHECKITEM 七转神石 7
+#act
+GAMEGOLD - 3000000
+TAKE  七转神石 7
+RENEWLEVEL 1 0 400
+RECYCFENGHAO 六转参将
+GiveFengHao 七转大将
+
+MESSAGEBOX 恭喜你完成<第七次>转生，获得<400属性点>，获得<七转大将>称号！
+#ELSEACT
+MESSAGEBOX 转生条件不足或你已经七转了！
+BREAK
+

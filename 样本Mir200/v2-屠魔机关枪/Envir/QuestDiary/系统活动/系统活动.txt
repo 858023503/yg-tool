@@ -1,0 +1,246 @@
+[@系统活动]
+{
+#IF
+#ACT
+FORMULATION 3600-<$STR(G9)> N$幽灵骑士刷新时间
+FORMULATION 5400-<$STR(G11)> N$宝箱活动刷新时间
+#IF
+SMALL G9 3600
+#ACT
+MOV S$幽灵骑士活动状态 <&TEXT:<$STR(N$幽灵骑士刷新时间)>秒后开始:534:156/FCOLOR=132>
+#IF
+LARGE G9 3600
+#ACT
+MOV S$幽灵骑士活动状态 <&TEXT:活动已结束:534:156>
+#IF
+SMALL G11 5400
+#ACT
+MOV S$宝箱活动状态 <&TEXT:<$STR(N$宝箱活动刷新时间)>秒后开始:534:181/FCOLOR=132>
+
+#IF
+LARGE G11 5400
+#ACT
+MOV S$宝箱活动状态 <&TEXT:活动进行中:534:181/FCOLOR=132>
+
+
+#IF
+EQUAL G12 1
+#ACT
+MOV S$宝箱活动状态 <&TEXT:活动已结束:534:181>
+
+
+#IF
+EQUAL G13 1
+#ACT
+MOV S$死亡赛道活动状态 <&TEXT:活动已开始:534:206/FCOLOR=132>
+#IF
+EQUAL G13 0
+#ACT
+MOV S$死亡赛道活动状态 <&TEXT:活动未开始:534:206>
+
+#IF
+#ACT
+MOV S$赶尸活动状态 <&TEXT:活动进行中:534:231/FCOLOR=132>
+
+
+#IF
+#act
+OPENMERCHANTBIGDLG 5 592 1 4 -1 0 1 720 15 1
+;大富翁
+;赶尸
+#say
+\ \ \ \ \ \ \ \
+;<&TEXT:世界BOSS:90:130/FCOLOR=100>      <&TEXT:全服跨区|全服务器玩家一起参与:214:130/FCOLOR=100>      <&TEXT:(暂不开放):322:130/fcolor=100>      <&TEXT:点击查看:431:130/@查看世界BOSS活动>    <&TEXT:上古劫阵<$STR(G3)>件:534:130>   <&TEXT:参加活动:648:130/@参加世界BOSS活动>\ \
+<&TEXT:幽灵骑士BOSS攻城:65:156/FCOLOR=100>      <&TEXT:本区活动:214:156/FCOLOR=100>      <&TEXT:开区一次:322:156/fcolor=100>      <&TEXT:点击查看:431:156/@查看幽灵骑士>    <$STR(S$幽灵骑士活动状态)>   <&TEXT:参加活动:648:156/@参加幽灵骑士活动>\ \
+<&TEXT:宝箱争夺战:84:181/FCOLOR=100>      <&TEXT:本区活动:214:181/FCOLOR=100>      <&TEXT:开区一次:322:181/fcolor=100>      <&TEXT:点击查看:431:181/@查看宝箱争夺战活动>    <$STR(S$宝箱活动状态)>   <&TEXT:参加活动:648:181/@参加宝箱争夺战活动>\ \
+<&TEXT:死亡赛道:89:206/FCOLOR=100>      <&TEXT:全服跨区|服务器所有玩家一同参与:214:206/FCOLOR=100>      <&TEXT:2小时一次:320:206/fcolor=100>      <&TEXT:点击查看:431:206/@查看死亡跑酷活动>    <$STR(S$死亡赛道活动状态)>   <&TEXT:参加活动:648:206/@参加死亡赛道活动>\ \
+<&TEXT:赶尸活动:89:231/FCOLOR=100>      <&TEXT:统战跨区|每周一个统战区所有玩家一起参与:214:231/FCOLOR=100>      <&TEXT:一直开放:318:231/fcolor=100>      <&TEXT:点击查看:431:231/@查看赶尸活动>    <$STR(S$赶尸活动状态)>   <&TEXT:参加活动:648:231/@参加赶尸活动>\ \
+;<&TEXT:天降财宝:89:256/FCOLOR=100>      <&TEXT:全服跨区|全服务器玩家一起参与:214:256/FCOLOR=100>      <&TEXT:2小时一次:318:256/fcolor=100>      <&TEXT:点击查看:431:256/@查看天降财宝活动>    <&TEXT:活动时弹窗通知:525:256/FCOLOR=132>   <&TEXT:参加活动:648:256/@参加天降财宝>\ \
+
+
+
+;15:00一次 
+;
+<$STR(S$查看活动的奖励)>
+
+
+;[@查看天降财宝活动]
+;#IF
+;#ACT
+;MOV S$查看活动的奖励 <&TEXT:每次刷新10000元宝和圣兽羽毛随机拾取,:200:430/FCOLOR=100>
+;goto @系统活动
+
+[@查看世界BOSS奖励]
+#IF
+#ACT
+MOV S$查看活动的奖励 <&TEXT:将神品投入上古劫阵全服数量达到1000件时活动开启，对怪物造伤害越高奖励越丰富,人物死亡、回城、退出游戏累计伤害清空:50:400/FCOLOR=100><&TEXT:活动奖励：:50:435/FCOLOR=251><&ITEMSHOW:191:1000:120:420:1><&ITEMSHOW:191:1000:180:420:1><&ITEMSHOW:191:1000:240:420:1><&ITEMSHOW:191:1000:300:420:1><&ITEMSHOW:191:1000:360:420:1><&ITEMSHOW:191:1000:420:420:1><&ITEMSHOW:191:1000:480:420:1><&ITEMSHOW:191:1000:540:420:1><&ITEMSHOW:191:1000:600:420:1><&ITEMSHOW:191:1000:660:420:1>
+goto @系统活动
+
+
+[@查看赶尸活动]
+#IF
+#ACT
+MOV S$查看活动的奖励 <&TEXT:每次赶尸获取15元宝,可无限赶尸,也可以去击杀赶尸玩家可获得15元宝:200:430/FCOLOR=100>
+goto @系统活动
+
+[@查看死亡跑酷活动]
+#IF
+#ACT
+MOV S$查看活动的奖励 <&TEXT:参与玩家可获得大量金币和皮肤碎片,地图内有活动说明:200:430/FCOLOR=100>
+goto @系统活动
+
+
+[@查看幽灵骑士]
+#IF
+#ACT
+MOV S$查看活动的奖励 <&TEXT:每个新区都有可获取500传仙币和大量元宝:250:430/FCOLOR=100>
+goto @系统活动
+
+
+[@查看宝箱争夺战活动]
+#IF
+#ACT
+MOV S$查看活动的奖励 <&TEXT:每个新区都有开启宝箱获得一个箱子持有X秒后奖励1000传仙币:200:430/FCOLOR=100>
+goto @系统活动
+
+[@参加死亡赛道活动]
+#if
+
+#act
+messagebox 活动弹出提示框后,从提示框进入
+
+
+[@参加天降财宝]
+#if
+
+#act
+messagebox 活动弹出提示框后,从提示框进入
+
+[@参加世界BOSS活动]
+#if
+#act
+;死亡赛道活动定时器
+setofftimer 48
+#if
+CHECKITEM 争夺战宝箱
+#act
+setofftimer 47
+MOV N$宝箱争夺战计时 0
+TAKE 争夺战宝箱
+THROWITEM baoxiang 24 35 0 争夺战宝箱 1|1 1
+#IF
+EQUAL G6 1
+#ACT
+MAPMOVE MAP053 51 38 10
+writeconfigfileitem ..\..\..\..\通区文件\世界BOSS\世界BOSS数据保存.txt <$username> 伤害值 0
+MOV U68 0
+
+#ELSEACT
+messagebox 世界BOSS活动未开启
+
+
+
+
+[@参加幽灵骑士活动]
+#if
+#act
+sendmsg 6 功能取消自己跑过去在土城194,163
+; ;死亡赛道活动定时器
+; setofftimer 48
+; #if
+; CHECKITEM 争夺战宝箱
+; #act
+; setofftimer 47
+; MOV N$宝箱争夺战计时 0
+; TAKE 争夺战宝箱
+; THROWITEM baoxiang 24 35 0 争夺战宝箱 1|1 1
+; #iF
+; #ACT
+; MAPMOVE 3 193 151 
+
+
+
+[@参加宝箱争夺战活动]
+#if
+#act
+;死亡赛道活动定时器
+setofftimer 48
+#if
+equal <$MAP> baoxiang
+#act
+messagebox 你就在宝箱争夺战活动地图中
+break
+
+#if
+#ACT
+MAPMOVE baoxiang
+setontimer 47
+
+
+
+
+
+
+[@参加赶尸活动]
+#if
+; COMPARETEXT T14 第一统战
+#act
+messagebox 请前往传仙战场参加
+; MAPMOVE kuafu1 255 263
+; delaycall 1500 @进入传仙战场
+; break
+; #if
+; COMPARETEXT T14 第二统战
+; #act
+; MAPMOVE kuafu1 255 263
+; delaycall 1500 @进入传仙战场
+; break
+; #if
+; COMPARETEXT T14 第三统战
+; #act
+; MAPMOVE kuafu3 255 263
+; delaycall 1500 @进入传仙战场
+; break
+; #if
+; COMPARETEXT T14 第四统战
+; #act
+; MAPMOVE kuafu4 255 263
+; delaycall 1500 @进入传仙战场
+; break
+; #if
+; COMPARETEXT T14 第五统战
+; #act
+; MAPMOVE kuafu5 255 263
+; delaycall 1500 @进入传仙战场
+; break
+; #if
+; COMPARETEXT T14 第六统战
+; #act
+; MAPMOVE kuafu6 255 263
+; delaycall 1500 @进入传仙战场
+; break
+; #if
+; COMPARETEXT T14 第七统战
+; #act
+; MAPMOVE kuafu7 255 263
+; delaycall 1500 @进入传仙战场
+; break
+; #if
+; COMPARETEXT T14 第八统战
+; #act
+; MAPMOVE kuafu8 255 263
+; delaycall 1500 @进入传仙战场
+; break
+; #if
+; COMPARETEXT T14 第九统战
+; #act
+; MAPMOVE kuafu9 255 263
+; delaycall 1500 @进入传仙战场
+; break
+; #if
+; COMPARETEXT T14 第十统战
+; #act
+; MAPMOVE kuafu10 255 263
+; delaycall 1500 @进入传仙战场
+
+}

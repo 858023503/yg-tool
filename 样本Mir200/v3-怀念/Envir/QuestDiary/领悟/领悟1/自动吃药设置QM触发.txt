@@ -1,0 +1,39 @@
+[@自动吃药设置QM触发]
+{
+#IF
+CHECKLEVELEX > 0
+#ACT
+VAR Integer HUMAN zdcy-HP百分比值
+VAR Integer HUMAN zdcy-HP当前值
+VAR Integer HUMAN zdcy-MP百分比值
+VAR Integer HUMAN zdcy-MP当前值
+
+VAR String HUMAN zdcy-勾选显示11
+VAR String HUMAN zdcy-勾选显示12
+VAR String HUMAN zdcy-勾选显示13
+VAR String HUMAN zdcy-勾选显示14
+
+VAR String HUMAN zdcy-勾选显示21
+VAR String HUMAN zdcy-勾选显示22
+VAR String HUMAN zdcy-勾选显示23
+VAR String HUMAN zdcy-勾选显示24
+
+VAR Integer HUMAN zdcy-药百分比显示1
+VAR Integer HUMAN zdcy-药百分比显示2
+VAR Integer HUMAN zdcy-药百分比显示3
+VAR Integer HUMAN zdcy-药百分比显示4
+LOADVAR HUMAN zdcy-药百分比显示1 ..\QuestDiary\领悟\领悟1\变量数据.txt
+LOADVAR HUMAN zdcy-药百分比显示2 ..\QuestDiary\领悟\领悟1\变量数据.txt
+LOADVAR HUMAN zdcy-药百分比显示3 ..\QuestDiary\领悟\领悟1\变量数据.txt
+LOADVAR HUMAN zdcy-药百分比显示4 ..\QuestDiary\领悟\领悟1\变量数据.txt
+
+VAR Integer HUMAN zdcy-每秒消耗
+VAR Integer HUMAN zdcy-HPMP增加值
+VAR Integer HUMAN zdcy-吃药百分比
+LOADVAR HUMAN zdcy-HPMP增加值 ..\QuestDiary\领悟\领悟1\变量数据.txt
+LOADVAR HUMAN zdcy-吃药百分比 ..\QuestDiary\领悟\领悟1\变量数据.txt
+LOADVAR HUMAN zdcy-每秒消耗 ..\QuestDiary\领悟\领悟1\变量数据.txt
+
+VAR String HUMAN zdcy-药物选择
+LOADVAR HUMAN zdcy-药物选择 ..\QuestDiary\领悟\领悟1\变量数据.txt
+}

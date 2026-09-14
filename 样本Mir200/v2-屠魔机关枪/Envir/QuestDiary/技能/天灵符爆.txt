@@ -1,0 +1,155 @@
+[@天灵符爆]
+{
+#IF
+#ACT
+
+Goto @技能伤害
+#if
+EQUAL S$玩家当前大陆 五大陆
+#act
+AddHpPer - N$五大陆反伤
+#IF
+LARGE N$法宝释放天灵符爆后攻击力提升百分比 0
+EQUAL N$血镰之舞开关 0
+#act
+
+FORMULATION <$STR(N$初始化道术力下限)>*<$STR(N$法宝释放天灵符爆后攻击力提升百分比)>/100 N$血镰之舞人物道术力百分比下限
+FORMULATION <$STR(N$初始化道术力上限)>*<$STR(N$法宝释放天灵符爆后攻击力提升百分比)>/100 N$血镰之舞人物道术力百分比上限
+ChangeHumAbility 9 + N$血镰之舞人物道术力百分比下限
+ChangeHumAbility 10 + N$血镰之舞人物道术力百分比上限
+MOV N$血镰之舞开关 1
+PLAYEFFECT 59 330 20 1 100 0 -150 -280 1
+delaycall 5000 @血镰之舞恢复道术力
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#if
+NOT CHECKCURRTARGETRACE = 0
+#act
+PLAYEFFECT 1 3337 10 1 70 0 0 0 1
+DELAYCALL 300 @天灵符爆开始打怪
+break
+#if
+CHECKCURRTARGETRACE = 0
+#act
+PLAYEFFECT 1 3337 10 1 70 0 0 0 1
+DELAYCALL 300 @天灵符爆开始打人
+break
+
+[@天灵符爆开始打人]
+
+#if
+LARGE N$天灵符爆幸运 0
+#ACT
+FORMULATION <$SC>+((<$MAXSC>-<$SC>)/10)*<$STR(N$天灵符爆幸运)> N$天灵符爆人物幸运攻击下限
+
+DEC N$天灵符爆人物幸运攻击下限 1
+#elseact
+MOV N$天灵符爆人物幸运攻击下限 <$SC>
+#if
+#act
+MOV N$天灵符爆打人暴击几率 0
+GetHumVar <$C.USERNAME> <$STR(N$人物暴击防御)> N$对方暴击防御
+GetHumVar <$C.USERNAME> <$STR(N$免疫对人物真实伤害)> N$对方免疫对人物真实伤害
+FORMULATION <$STR(N$对人物真实伤害)>-<$STR(N$对方免疫对人物真实伤害)> N$对人物造成的真实伤害
+MOVR N$天灵符爆最终伤害 <$STR(N$天灵符爆人物幸运攻击下限)> <$MAXSC>
+CalcPercent N$天灵符爆最终伤害 N$天灵符爆打人默认伤害 N$天灵符爆最终伤害
+CalcPercent N$天灵符爆打人最终伤害 N$天灵符爆对人物伤害百分比 N$天灵符爆打人最终伤害
+
+#if
+LARGE N$人物暴击几率 <$STR(N$对方暴击防御)>
+#ACT
+FORMULATION <$STR(N$人物暴击几率)>-<$STR(N$对方暴击防御)> N$天灵符爆打人暴击几率
+
+#IF
+LARGE N$天灵符爆打人暴击几率 0
+RANDOMEX N$天灵符爆打人暴击几率 101
+#ACT
+PLAYEFFECT 73 0 12 1 80 0 -125 -170 1
+FORMULATION (<$STR(N$人物暴击伤害)>+100)/100*<$STR(N$天灵符爆打人最终伤害)> N$天灵符爆打人最终伤害
+
+#if
+#ACT
+MAPEFFECT <$MAP> <$STR(N998)> <$STR(N999)> 1 1614 17 1 100 0
+RangeHarm <$C.X> <$C.Y> 0 <$STR(N$天灵符爆打人最终伤害)> 0 0 0 1 0 0 0 0 0 0
+RangeHarm <$C.X> <$C.Y> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 0
+
+[@天灵符爆开始打怪]
+
+#if
+LARGE N$天灵符爆幸运 0
+#ACT
+FORMULATION <$SC>+(((<$MAXSC>-<$SC>)/10)*<$STR(N$天灵符爆幸运)>) N$天灵符爆人物幸运攻击下限
+DEC N$天灵符爆人物幸运攻击下限 1
+#elseact
+MOV N$天灵符爆人物幸运攻击下限 <$SC>
+#if
+#act
+MOVR N$天灵符爆最终伤害 <$STR(N$天灵符爆人物幸运攻击下限)> <$MAXSC>
+CalcPercent N$天灵符爆最终伤害 N$天灵符爆打怪默认伤害 N$天灵符爆最终伤害
+CalcPercent N$天灵符爆最终伤害 N$天灵符爆对怪物伤害百分比 N$天灵符爆最终伤害
+CalcPercent N$天灵符爆最终伤害 N$天灵符爆倍攻 N$天灵符爆最终伤害
+FORMULATION <$STR(N$天灵符爆最终伤害)>/<$STR(N$所有技能伤害降低倍数)> N$天灵符爆最终伤害
+
+#IF
+RANDOMEX N$人物暴击几率 100
+#ACT
+PLAYEFFECT 73 0 12 1 80 0 -125 -170 1
+FORMULATION (<$STR(N$人物暴击伤害)>+100)/100*<$STR(N$天灵符爆最终伤害)> N$天灵符爆最终伤害
+
+#if
+CheckCacheTextList ..\QuestDiary\怪物名称\精英及以下怪物.txt <$ATTACKMONSTER_NAMEEX>
+LARGE N$精英怪增加伤害 100
+#act
+CalcPercent N$天灵符爆最终伤害 N$精英怪增加伤害 N$天灵符爆最终伤害
+
+
+
+#if
+#act
+FORMULATION <$STR(N$天灵符爆最终伤害)>+<$STR(N$天殇套真实伤害)> N$天灵符爆最终伤害
+
+#if
+#ACT
+MAPEFFECT <$MAP> <$STR(N998)> <$STR(N999)> 1 1614 17 1 100 0
+
+RangeHarm <$STR(N998)> <$STR(N999)> <$STR(N$天灵符爆范围)> <$STR(N$天灵符爆最终伤害)> 0 0 0 2 0 0 0 0 0 0
+
+
+
+
+#if
+NOT CHECKCURRTARGETRACE = 0
+RANDOMEX N$法宝释放天灵符爆有几率切割BOSS 101
+CheckCacheTextList ..\QuestDiary\怪物名称\统领及以上怪物.txt <$ATTACKMONSTER_NAMEEX>
+#act
+M.AddhpPerEx - 10
+;天魔琴
+PLAYEFFECT 59 530 20 1 100 0 -150 -280 1
+
+
+
+[@血镰之舞恢复道术力]
+#IF
+#act
+ChangeHumAbility 9 - N$血镰之舞人物道术力百分比下限
+ChangeHumAbility 10 - N$血镰之舞人物道术力百分比上限
+MOV N$血镰之舞开关 0
+PLAYEFFECT 59 350 20 1 100 0 -150 -280 1
+}

@@ -1,0 +1,783 @@
+[@Body]
+{
+[@STDMODEFUNCEX28]
+#IF
+CHECKGAMEDIAMOND < 200
+#ACT
+MESSAGEBOX 你的金刚石不足200个！
+BREAK
+
+#IF
+#ACT
+KILLSLAVE 1 秦广王·蒋
+KILLSLAVE 1 楚江王·历
+KILLSLAVE 1 宋帝王·余
+KILLSLAVE 1 五官王·吕
+KILLSLAVE 1 阎罗天子·包
+KILLSLAVE 1 卞城王·毕
+KILLSLAVE 1 泰山王·董
+KILLSLAVE 1 都市王·黄
+KILLSLAVE 1 平等王·陆
+KILLSLAVE 1 转轮王·薛
+MOVR N$随机阎罗王编号 0 10
+GAMEDIAMOND - 200
+RECALLMOB <$STR(L$统率者击杀目标数组[<$STR(N$随机阎罗王编号)>])>
+GuildNoticeMsg 244 0 {[公告]|250:0}{玩家|251:0}{『<$USERNAME>』|245:0}{通过|251:0}{[<$UseItemName>]|254:0}{花费200金刚石召唤了|251:0}{[<$STR(L$统率者击杀目标数组[<$STR(N$随机阎罗王编号)>])>]|254:0}{帮助战斗！|251:0}
+
+[@STDMODEFUNCEX27]
+#IF
+NOT CHECKITEM 楚江刑狱 1
+#ACT
+MESSAGEBOX 你没有[楚江刑狱]！
+BREAK
+
+#IF
+NOT CHECKITEM 黑绳天谴明王 1
+#ACT
+MESSAGEBOX 你没有[黑绳天谴明王]！
+BREAK
+
+#IF
+NOT CHECKITEM 堰肩刷皮 1
+#ACT
+MESSAGEBOX 你没有[堰肩刷皮]！
+BREAK
+
+#IF
+NOT CHECKITEM 望乡台 1
+#ACT
+MESSAGEBOX 你没有[望乡台]！
+BREAK
+
+#IF
+NOT CHECKITEM 剥皮揎草 1
+#ACT
+MESSAGEBOX 你没有[剥皮揎草]！
+BREAK
+
+#IF
+NOT CHECKITEM 泰山府君祭 1
+#ACT
+MESSAGEBOX 你没有[泰山府君祭]！
+BREAK
+
+#IF
+NOT CHECKITEM 刀山火海 1
+#ACT
+MESSAGEBOX 你没有[刀山火海]！
+BREAK
+
+#IF
+NOT CHECKITEM 阿鼻无间 1
+#ACT
+MESSAGEBOX 你没有[阿鼻无间]！
+BREAK
+
+#IF
+NOT CHECKITEM 孽镜台 1
+#ACT
+MESSAGEBOX 你没有[孽镜台]！
+BREAK
+
+#IF
+NOT CHECKITEM 酆都王冠 1
+#ACT
+MESSAGEBOX 你没有[酆都王冠]！
+BREAK
+
+#IF
+RANDOMEX 50 100
+#ACT
+TAKE <$UseItemName> 1
+TAKE 楚江刑狱 1
+TAKE 黑绳天谴明王 1
+TAKE 堰肩刷皮 1
+TAKE 望乡台 1
+TAKE 剥皮揎草 1
+TAKE 泰山府君祭 1
+TAKE 刀山火海 1
+TAKE 孽镜台 1
+TAKE 酆都王冠 1
+TAKE 阿鼻无间 1
+GIVE 寿夭生死册 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{玩家|251:0}{『<$USERNAME>』|245:0}{合成|251:0}{[寿夭生死册]|254:0}{成功！正式宣告魔龙城毕业！|251:0}
+#ELSEACT
+MOV L$寿夭合成失败扣除数组 [楚江刑狱,黑绳天谴明王,堰肩刷皮,望乡台,剥皮揎草,泰山府君祭,刀山火海,酆都王冠,阿鼻无间]
+MOVR N$寿夭合成失败扣除编号 0 9
+TAKE <$STR(L$寿夭合成失败扣除数组[<$STR(N$寿夭合成失败扣除编号)>])> 1
+SENDMSG 6 合成[寿夭生死册]失败，你失去了一件[<$STR(L$寿夭合成失败扣除数组[<$STR(N$寿夭合成失败扣除编号)>])>]。
+GuildNoticeMsg 244 0 {[公告]|250:0}{玩家|251:0}{『<$USERNAME>』|245:0}{合成|251:0}{[寿夭生死册]|254:0}{失败！哈哈哈哈哈！大家快来看非洲狗啊！|251:0}
+
+[@STDMODEFUNCEX26]
+#IF
+NOT CHECKITEM 楚江刑狱 1
+#ACT
+MESSAGEBOX 你没有[楚江刑狱]！
+BREAK
+
+#IF
+NOT CHECKITEM 黑绳天谴明王 1
+#ACT
+MESSAGEBOX 你没有[黑绳天谴明王]！
+BREAK
+
+#IF
+NOT CHECKITEM 堰肩刷皮 1
+#ACT
+MESSAGEBOX 你没有[堰肩刷皮]！
+BREAK
+
+#IF
+NOT CHECKITEM 望乡台 1
+#ACT
+MESSAGEBOX 你没有[望乡台]！
+BREAK
+
+#IF
+NOT CHECKITEM 剥皮揎草 1
+#ACT
+MESSAGEBOX 你没有[剥皮揎草]！
+BREAK
+
+#IF
+NOT CHECKITEM 泰山府君祭 1
+#ACT
+MESSAGEBOX 你没有[泰山府君祭]！
+BREAK
+
+#IF
+NOT CHECKITEM 刀山火海 1
+#ACT
+MESSAGEBOX 你没有[刀山火海]！
+BREAK
+
+#IF
+NOT CHECKITEM 阿鼻无间 1
+#ACT
+MESSAGEBOX 你没有[阿鼻无间]！
+BREAK
+
+#IF
+CHECKGAMEDIAMOND < 1000
+#ACT
+MESSAGEBOX 你没有[1000金刚石]！
+BREAK
+
+#IF
+#ACT
+GAMEDIAMOND - 1000
+
+#IF
+RANDOMEX 10 100
+#ACT
+TAKE <$UseItemName> 1
+TAKE 楚江刑狱 1
+TAKE 黑绳天谴明王 1
+TAKE 堰肩刷皮 1
+TAKE 望乡台 1
+TAKE 剥皮揎草 1
+TAKE 泰山府君祭 1
+TAKE 刀山火海 1
+TAKE 阿鼻无间 1
+GIVE 孽镜台 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{玩家|251:0}{『<$USERNAME>』|245:0}{合成|251:0}{[孽镜台]|254:0}{成功！即将魔龙城毕业！|251:0}
+#ELSEACT
+GuildNoticeMsg 244 0 {[公告]|250:0}{玩家|251:0}{『<$USERNAME>』|245:0}{合成|251:0}{[孽镜台]|254:0}{失败！哈哈哈哈哈！大家快来看非洲狗啊！|251:0}
+
+[@STDMODEFUNCEX25]
+#IF
+CHECKFENGHAO 包青天
+#ACT
+MESSAGEBOX 你已经拥有该称号了！
+BREAK
+
+#IF
+#ACT
+TAKE <$UseItemName> 1
+GIVEFENGHAO 包青天
+SetBodyColor 18 0
+GuildNoticeMsg 244 0 {[公告]|250:0}{玩家|251:0}{『<$USERNAME>』|245:0}{使用|251:0}{[<$UseItemName>]|254:0}{获得了高级称号|251:0}{[包青天]|254:0}
+
+[@STDMODEFUNCEX22]
+#IF
+LARGE U144 99
+#ACT
+MESSAGEBOX 你的爆率已经吃满了！
+BREAK
+
+#IF
+#ACT
+TAKE <$UseItemName> 1
+
+#IF
+RANDOMEX 1 100
+#ACT
+INC U144 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用|251:0}{[<$UseItemName>]|254:0}{增加了|251:0}{[1%爆率]|254:0}{,当前使用次数<$STR(U144)>/100！|251:0}
+#ELSEACT
+SENDMSG 6 1%概率未达成，使用失败！
+
+[@STDMODEFUNCEX24]
+#OR
+NOT CHECKITEM 使者的弯刀 50
+NOT CHECKITEM 金蟾的毒腺 50
+NOT CHECKITEM 鱼人的利齿 50
+NOT CHECKITEM 火鸟的羽毛 1
+NOT CHECKITEM 弩手的玉佩 1
+#ACT
+MESSAGEBOX 你没有集齐所有材料！
+BREAK
+
+#IF
+#ACT
+TAKE <$UseItemName> 1
+TAKE 使者的弯刀 50
+TAKE 金蟾的毒腺 50
+TAKE 鱼人的利齿 50
+
+#IF
+RANDOMEX 50 100
+#ACT
+TAKE 火鸟的羽毛 1
+TAKE 弩手的玉佩 1
+GIVE 瘟疫麻痹之力 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{合成了|251:0}{[瘟疫麻痹之力]|254:0}{,大家快去瞻仰一番！|251:0}
+#ELSEACT
+MESSAGEBOX 合成失败！
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{合成|251:0}{[瘟疫麻痹之力]|254:0}{失败！请有序赶到现场进行嘲笑。|251:0}
+
+[@STDMODEFUNCEX23]
+#OR
+NOT CHECKITEM 瘟疫元素·火 1
+NOT CHECKITEM 瘟疫元素·雷 1
+NOT CHECKITEM 瘟疫元素·冰 1
+NOT CHECKITEM 瘟疫元素·毒 1
+#ACT
+MESSAGEBOX 你没有集齐四种瘟疫元素！
+BREAK
+
+#IF
+#ACT
+TAKE <$UseItemName> 1
+
+#IF
+RANDOMEX 70 100
+#ACT
+TAKE 瘟疫元素·火 1
+TAKE 瘟疫元素·雷 1
+TAKE 瘟疫元素·冰 1
+TAKE 瘟疫元素·毒 1
+GIVE 瘟疫元素之心 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{合成了|251:0}{[瘟疫元素之心]|254:0}{,大家快去瞻仰一番！|251:0}
+#ELSEACT
+MOVR N$扣除瘟疫元素编号 0 4
+TAKE <$STR(L$瘟疫元素列表[<$STR(N$扣除瘟疫元素编号)>])> 1
+MESSAGEBOX 合成失败，你失去了[<$STR(L$瘟疫元素列表[<$STR(N$扣除瘟疫元素编号)>])>]！
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{合成|251:0}{[瘟疫元素之心]|254:0}{失败！请有序赶到现场进行嘲笑。|251:0}
+
+[@STDMODEFUNCEX21]
+#IF
+#ACT
+MOV L$已装备魔兽神佑数组 <$STR(T2)>
+GetDBItemFieldValue <$UseItemName> IDX S$当前物品IDX
+GetDBItemFieldValue <$UseItemName> EXPAND3 S$当前物品EXPAND
+
+#OR
+EQUAL S$当前物品EXPAND 13
+EQUAL S$当前物品EXPAND 0
+EQUAL S$当前物品EXPAND
+#ACT
+GOTO @_@任意位置装备魔兽神佑
+#ELSEACT
+GOTO @_@指定位置装备魔兽神佑
+
+[@STDMODEFUNCEX20]
+#IF
+LARGE U113 9
+#ACT
+MESSAGEBOX 你的生命已经吃满了！
+BREAK
+
+#IF
+#ACT
+TAKE <$UseItemName> 1
+
+#IF
+RANDOMEX 1 100
+#ACT
+INC U113 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用|251:0}{[<$UseItemName>]|254:0}{增加了|251:0}{[1%暴击伤害]|254:0}{,当前使用次数<$STR(U113)>/10！|251:0}
+#ELSEACT
+SENDMSG 6 1%概率未达成，使用失败！
+
+[@STDMODEFUNCEX18]
+#IF
+#ACT
+CHANGESTATE 6 30
+MOV N$锁链主属性加成 5
+MOV N$锁链攻击伤害加成 5
+SetArrBuff 2 67 0 2169 -1 10 -1 0 {巨怪锁链：|70}\{主属性增加：|250}{5%|253}\{攻击伤害增加：|250}{5%|253}\　\{点击可取消BUFF|249}
+GOTO @开始计算基础属性
+GOTO @开始计算元素属性
+
+[@STDMODEFUNCEX17]
+#IF
+CHECKFENGHAO 公主病
+#ACT
+MESSAGEBOX 你已经拥有该称号了！
+BREAK
+
+#IF
+GENDER MAN
+#ACT
+MESSAGEBOX 不要男妈妈！不要男妈妈！
+BREAK
+
+#IF
+#ACT
+TAKE <$UseItemName> 1
+GIVEFENGHAO 公主病
+GuildNoticeMsg 244 0 {[公告]|250:0}{美女玩家|251:0}{『<$USERNAME>』|245:0}{使用|251:0}{[<$UseItemName>]|254:0}{获得了高级称号|251:0}{[公主病]|254:0}
+
+[@STDMODEFUNCEX16]
+#IF
+LARGE U110 19
+#ACT
+MESSAGEBOX 你的主属性已经吃满了！
+BREAK
+
+#OR
+NOT CHECKITEM 石原深渊精华 1
+NOT CHECKITEM 陵墓深渊精华 1
+#ACT
+MESSAGEBOX [石原深渊精华]与[陵墓深渊精华]必须一起使用！
+BREAK
+
+#IF
+#ACT
+TAKE 石原深渊精华 1
+TAKE 陵墓深渊精华 1
+
+#IF
+RANDOMEX 1 100
+#ACT
+INC U110 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用|251:0}{[石原深渊精华+陵墓深渊精华]|254:0}{增加了|251:0}{[1%主属性]|254:0}{,当前使用次数<$STR(U110)>/20！|251:0}
+GOTO @开始计算基础属性
+#ELSEACT
+SENDMSG 6 1%概率未达成，使用失败！
+
+[@STDMODEFUNCEX15]
+#IF
+LARGE <$SLAVECOUNT> 4
+#ACT
+MESSAGEBOX 你的宝宝已经够多了！
+BREAK
+
+#IF
+#ACT
+LINKBAGITEM <$USEITEMMAKEINDEX>
+GETCUSTOMITEMTEXT -1 S$当前使用诱惑蛋参数
+RECALLMOB <$STR(S$当前使用诱惑蛋参数)> 0 240 0 0 5 1
+DELLINKITEM 1
+UPDATEITEM -1
+CLEARLINKITEM
+
+[@STDMODEFUNCEX14]
+#IF
+#ACT
+MOV L$背包物品数组 <$STR(T8)>
+
+#IF
+NOT CheckVarInList L$背包物品数组 0
+#ACT
+GIVE <$UseItemName> 1
+MESSAGEBOX <你身上的背包已经满了！/SCOLOR=249>
+BREAK
+
+#IF
+#ACT
+GetListVarIndex L$背包物品数组 0 N$背包剩余空位位置
+MOV L$背包物品数组[<$STR(N$背包剩余空位位置)>] <$UseItemName>
+MOV T8 <$STR(L$背包物品数组)>
+GOTO @_@构造背包系统
+GOTO @_@计算背包容量与负重
+GOTO @_@计算人物背包属性加成
+GOTO @开始计算基础属性
+
+[@STDMODEFUNCEX13]
+#IF
+LARGE U108 49
+#ACT
+MESSAGEBOX 你的生命已经吃满了！
+BREAK
+
+#IF
+#ACT
+TAKE <$UseItemName> 1
+
+#IF
+RANDOMEX 3 100
+#ACT
+INC U108 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用|251:0}{[<$UseItemName>]|254:0}{增加了|251:0}{[50生命值]|254:0}{,当前使用次数<$STR(U108)>/50！|251:0}
+GOTO @开始计算基础属性
+#ELSEACT
+SENDMSG 6 3%概率未达成，使用失败！
+
+[@STDMODEFUNCEX11]
+#IF
+SMALL <$GOLDCOUNT> 1000000000
+#ACT
+MESSAGEBOX 你没有足够的金币！
+BREAK
+
+#OR
+NOT CHECKITEM 雷霆项链 1
+NOT CHECKITEM 雷霆护腕 2
+NOT CHECKITEM 雷霆战戒 2
+NOT CHECKITEM 雷霆战靴 1
+NOT CHECKITEM 雷霆腰带 1
+NOT CHECKITEM 圣龙盔 1
+NOT CHECKITEM 烈焰项链 1
+NOT CHECKITEM 烈焰护腕 2
+NOT CHECKITEM 烈焰魔戒 2
+NOT CHECKITEM 烈焰魔靴 1
+NOT CHECKITEM 烈焰腰带 1
+NOT CHECKITEM 魔龙盔 1
+NOT CHECKITEM 光芒项链 1
+NOT CHECKITEM 光芒护腕 2
+NOT CHECKITEM 光芒道戒 2
+NOT CHECKITEM 光芒道靴 1
+NOT CHECKITEM 光芒腰带 1
+NOT CHECKITEM 天龙盔 1
+#ACT
+MESSAGEBOX 你的装备不足！
+BREAK
+
+#IF
+#ACT
+TAKE 金币 1000000000
+MOV N$合成成功率百分比 60
+
+#IF
+CHECKITEM 开天 1
+CHECKITEM 镇天 1
+CHECKITEM 玄天 1
+CHECKITEM 雷霆战甲(男) 1
+CHECKITEM 雷霆战甲(女) 1
+CHECKITEM 烈焰魔衣(男) 1
+CHECKITEM 烈焰魔衣(女) 1
+CHECKITEM 光芒道袍(男) 1
+CHECKITEM 光芒道袍(女) 1
+#ACT
+TAKE 开天 1
+TAKE 镇天 1
+TAKE 玄天 1
+TAKE 雷霆战甲(男) 1
+TAKE 雷霆战甲(女) 1
+TAKE 烈焰魔衣(男) 1
+TAKE 烈焰魔衣(女) 1
+TAKE 光芒道袍(男) 1
+TAKE 光芒道袍(女) 1
+INC N$合成成功率百分比 40
+
+#IF
+RANDOMEX <$STR(N$合成成功率百分比)> 100
+#ACT
+TAKE 雷霆项链 1
+TAKE 雷霆护腕 2
+TAKE 雷霆战戒 2
+TAKE 雷霆战靴 1
+TAKE 雷霆腰带 1
+TAKE 圣龙盔 1
+TAKE 烈焰项链 1
+TAKE 烈焰护腕 2
+TAKE 烈焰魔戒 2
+TAKE 烈焰魔靴 1
+TAKE 烈焰腰带 1
+TAKE 魔龙盔 1
+TAKE 光芒项链 1
+TAKE 光芒护腕 2
+TAKE 光芒道戒 2
+TAKE 光芒道靴 1
+TAKE 光芒腰带 1
+TAKE 天龙盔 1
+TAKE 世界树叶锻造书 1
+GIVE 世界树叶 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用|251:0}{[<$UseItemName>]|254:0}{合成了|251:0}{[世界树叶]|254:0}{,他已经是天下无敌辣！|251:0}
+#ELSEACT
+MESSAGEBOX 合成失败！
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{合成|251:0}{[世界树叶]|254:0}{失败！请各位观众保持秩序，有序的赶到现场进行嘲笑！|251:0}
+
+[@STDMODEFUNCEX12]
+#IF
+LARGE U107 9
+#ACT
+MESSAGEBOX 你的神力已经吃满了！
+BREAK
+
+#IF
+#ACT
+TAKE <$UseItemName> 1
+
+#IF
+RANDOMEX 1 100
+#ACT
+INC U107 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用|251:0}{[<$UseItemName>]|254:0}{增加了|251:0}{[1点神力]|254:0}{,当前附加神力<$STR(U107)>/10！|251:0}
+#ELSEACT
+SENDMSG 6 1%概率未达成，使用失败！
+
+[@STDMODEFUNCEX9]
+#IF
+#ACT
+MOV S$当前使用物品名称 <$UseItemName>
+DEC S$当前使用物品名称 魔龙贡献点
+INC U103 <$STR(S$当前使用物品名称)>
+SENDMSG 6 你的魔龙贡献点增加了{<$STR(S$当前使用物品名称)>点|253}
+
+[@STDMODEFUNCEX8]
+#IF
+LARGE U106 49
+#ACT
+MESSAGEBOX 你的主属性已经吃满了！
+GIVE <$UseItemName> 1
+BREAK
+
+#IF
+RANDOMEX 3 100
+#ACT
+INC U106 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用|251:0}{[<$UseItemName>]|254:0}{增加了|251:0}{[1点主属性]|254:0}{,当前主属性<$STR(U106)>/50！|251:0}
+GOTO @_@开始计算基础属性
+#ELSEACT
+SENDMSG 6 3%概率未达成，使用失败！
+
+[@STDMODEFUNCEX7]
+#IF
+LARGE U105 4
+#ACT
+MESSAGEBOX 你已经使用5次了！
+BREAK
+
+#IF
+#ACT
+TAKE <$UseItemName> 1
+INC U105 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用了|251:0}{[<$UseItemName>]|254:0}{，真实伤害额外增加|251:0}{[100点]|254:0}
+GOTO @_@开始计算人物速度
+
+[@STDMODEFUNCEX6]
+#IF
+CHECK [<$STR(N$<$UseItemName>使用标识)>] 1
+#ACT
+MESSAGEBOX 你已经使用过了【<$UseItemName>】了！
+BREAK
+
+#IF
+#ACT
+TAKE <$UseItemName> 1
+SET [<$STR(N$<$UseItemName>使用标识)>] 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用|251:0}{[<$UseItemName>]|254:0}{极大的增强了战斗力！|251:0}
+GOTO @开始计算特殊属性
+GOTO @开始计算基础属性
+
+
+[@STDMODEFUNCEX10]
+#IF
+CHECKITEM 玻璃沙 50
+#ACT
+TAKE 玻璃沙 50
+GIVE 玻璃珠 1
+SENDMSG 6 合成{【玻璃珠】|253}成功！
+#ELSEACT
+MESSAGEBOX 你没有足够的<【玻璃沙】/SCOLOR=249>
+
+[@STDMODEFUNCEX2]
+#IF
+LARGE U0 4
+#ACT
+MESSAGEBOX 你已经足够强大,无需使用该物品了！
+BREAK
+
+#IF
+CHECKITEM 稻草之心 1
+CHECKITEM 多钩猫肉 1
+CHECKITEM 钉耙猫油 1
+#ACT
+TAKE 稻草之心 1
+TAKE 多钩猫肉 1
+TAKE 钉耙猫油 1
+INC U0 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{服用|251:0}{[稻草之心+多钩猫肉+钉耙猫油]|254:0}{，获得了|251:0}{[10点HP+1点主属性]|254:0}{,使用次数<$STR(U0)>/5|251:0}
+#CALL [登陆功能\属性计算.txt] @属性计算
+
+
+[@STDMODEFUNCEX3]
+#IF
+CHECK [11] 1
+#ACT
+MESSAGEBOX 你已经拥有核心的力量了！
+BREAK
+
+#IF
+#ACT
+TAKE 沃玛神教核心 1
+
+#IF
+NOT RANDOMEX 30 100
+#ACT
+MESSAGEBOX <30%概率未达成,使用失败！/SCOLOR=249>
+BREAK
+
+#IF
+#ACT
+SET [11] 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{服用|251:0}{[沃玛神教核心]|254:0}{，获得了|251:0}{[50%爆率]|254:0}
+
+#IF
+EQUAL A10
+#ACT
+MOV A10 <$USERNAME>
+SENDMOVEMSG 0 150 0 110 1 {系统公告ぐ:/SCOLOR=251}{玩家/SCOLOR=255}{【<$USERNAME>】/SCOLOR=254}第一个使用{【沃玛神教核心】/SCOLOR=249},额外增加5点主属性,他就是欧洲之王！！！ 12 20 0
+GOTO @属性计算
+
+[@STDMODEFUNCEX4]
+#IF
+NOT CHECKITEM <$UseItemName> 10
+#ACT
+MESSAGEBOX 材料不足！
+BREAK
+
+#IF
+#ACT
+TAKE <$UseItemName> 10
+GIVE <$STR(S$<$UseItemName>下级合成)> 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{将10份|251:0}{[<$UseItemName>]|254:0}{合成了|251:0}{[<$STR(S$<$UseItemName>下级合成)>]|254:0}{,出货率大大提高！|251:0}
+
+[@STDMODEFUNCEX5]
+#IF
+LARGE U102 199
+#ACT
+MESSAGEBOX 你的真伤已经满了！
+BREAK
+
+#IF
+#ACT
+TAKE <$UseItemName> 1
+
+#IF
+RANDOMEX 7 100
+#ACT
+INC U102 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用|251:0}{[<$UseItemName>]|254:0}{增加了|251:0}{[1点真伤]|254:0}{,当前真伤<$STR(U102)>/200！|251:0}
+#ELSEACT
+SENDMSG 6 10%概率未达成，使用失败！
+
+[@_@任意位置装备魔兽神佑]
+#IF
+NOT CheckVarInList L$已装备魔兽神佑数组 0
+#ACT
+MESSAGEBOX 你的魔兽神佑已经装备满格,请先取下再进行操作！
+BREAK
+
+#IF
+#ACT
+GetListVarIndex L$已装备魔兽神佑数组 0 N$魔兽神佑第一个空位
+TAKE <$UseItemName> 1
+MOV L$已装备魔兽神佑数组[<$STR(N$魔兽神佑第一个空位)>] <$STR(S$当前物品IDX)>
+MOV T2 <$STR(L$已装备魔兽神佑数组)>
+GOTO @加载魔兽神佑
+#CALL [登陆功能\属性计算.TXT] @属性计算
+
+[@_@指定位置装备魔兽神佑]
+#IF
+#ACT
+MOV N$当前魔兽神佑位置 <$STR(S$当前物品EXPAND)>
+DEC N$当前魔兽神佑位置 1
+
+#IF
+#ACT
+TAKE <$UseItemName> 1
+
+#IF
+NOT EQUAL L$已装备魔兽神佑数组[<$STR(N$当前魔兽神佑位置)>] 0
+#ACT
+GIVEIDX <$STR(L$已装备魔兽神佑数组[<$STR(N$当前魔兽神佑位置)>])> 1
+
+#IF
+#ACT
+MOV L$已装备魔兽神佑数组[<$STR(N$当前魔兽神佑位置)>] <$STR(S$当前物品IDX)>
+MOV T2 <$STR(L$已装备魔兽神佑数组)>
+GOTO @加载魔兽神佑
+#CALL [登陆功能\属性计算.TXT] @属性计算
+
+[@StdModeFunc35]
+#if
+CHECKITEMADDVALUE 1 3 > 6
+#act
+messagebox 总幸运已经达到+7,没办法再加了.
+give 命运之血 1
+break
+
+#IF
+CHECKITEMW 命运之勋
+CheckCustomItemValue 2 5 = 0
+RANDOMEX 5 100
+#ACT
+GOTO @_@命运之血加勋章属性
+GOTO @属性计算
+
+#IF
+RANDOMEX 1 50
+#ACT
+CHANGEITEMADDVALUE 1 3 = 0
+CHANGEITEMADDVALUE 1 3 = 7
+MESSAGEBOX <$WEAPON>改运成功,当前幸运+7
+BREAK
+
+
+#IF
+RANDOMEX 1 30
+#ACT
+CHANGEITEMADDVALUE 1 3 = 0
+CHANGEITEMADDVALUE 1 3 = 6
+MESSAGEBOX <$WEAPON>改运成功,当前幸运+6
+BREAK
+
+#if
+#act
+movr N$幸运 1 6
+CHANGEITEMADDVALUE 1 3 = 0
+CHANGEITEMADDVALUE 1 3 = <$str(N$幸运)>
+sendmsg 7 <$WEAPON>改运成功,当前幸运+<$str(N$幸运)>
+break
+
+[@_@命运之血加勋章属性]
+#IF
+#ACT
+GetListVarCount L$勋章词缀对应位置 N$勋章可选词缀数量
+MOVR N$勋章随机获得词缀 0 <$STR(N$勋章可选词缀数量)>
+
+#IF
+RANDOMEX 20 100
+#ACT
+DEC N$勋章可选词缀数量 1
+MOV N$勋章随机获得词缀 <$STR(N$勋章可选词缀数量)>
+
+#IF
+#ACT
+MOVR N$勋章属性取值 1 <$STR(L$勋章词缀取值上限[<$STR(N$勋章随机获得词缀)>])>
+GOTO @_@初始化随身工坊用默认自定义参数
+MOV L$添加用自定义属性参数数组[0] 2
+MOV L$添加用自定义属性参数数组[1] 5
+MOV L$添加用自定义属性参数数组[3] 56
+MOV L$添加用自定义属性参数数组[4] 5
+MOV L$添加用自定义属性参数数组[6] 2
+MOV L$添加用自定义属性参数数组[7] <$STR(L$勋章词缀对应位置[<$STR(N$勋章随机获得词缀)>])>
+MOV L$添加用自定义属性参数数组[8] <$STR(N$勋章属性取值)>
+GOTO @_@不带参赋予单条自定义属性
+UPDATEITEM 2
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{服用|251:0}{[命运之血]|254:0}{时为命运之勋附加了一条|251:0}{[随机词条]|254:0}
+}

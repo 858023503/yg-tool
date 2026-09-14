@@ -1,0 +1,38 @@
+[@不屈意志]
+{
+#IF
+#ACT
+DELAYCALL  1000 @不屈意志特效
+[@不屈意志特效]
+#if
+EQUAL N$不屈意志开关 0
+#ACT
+mov N$不屈意志开关 1
+PLAYEFFECT 1 4823 10 0 100 0 0 0 1
+FORMULATION <$STR(N$初始化防御力下限)>*<$STR(N$不屈意志防御)>/100 N$不屈意志增加人物防御下限
+FORMULATION <$STR(N$初始化防御力上限)>*<$STR(N$不屈意志防御)>/100 N$不屈意志增加人物防御上限
+FORMULATION <$STR(N$初始化魔御力下限)>*<$STR(N$不屈意志防御)>/100 N$不屈意志增加人物魔御下限
+FORMULATION <$STR(N$初始化魔御力上限)>*<$STR(N$不屈意志防御)>/100 N$不屈意志增加人物魔御上限
+
+
+ChangeHumAbility 1 + N$不屈意志增加人物防御下限
+ChangeHumAbility 2 + N$不屈意志增加人物防御上限
+ChangeHumAbility 3 + N$不屈意志增加人物魔御下限
+ChangeHumAbility 4 + N$不屈意志增加人物魔御上限
+
+FORMULATION <$STR(N$人物暴击防御)>+<$STR(N$法宝释放不屈意志时增加暴击防御)> N$不屈意志暴击防御
+AddHumNewValue 24 = N$不屈意志暴击防御
+
+Goto @属性面板
+; setontimer 41 <$STR(N$不屈意志持续时间)> 1
+
+#IF
+LARGE N$铭文不屈意志加持中吸血百分比 0
+#ACT
+FORMULATION <$STR(N$不屈意志魔法盾防御之盾吸血值)>*(<$STR(N$攻击吸血百分比)>+<$STR(N$铭文不屈意志加持中吸血百分比)>)/100 N$铭文不屈意志百分比吸血值
+MOV N$铭文不屈意志魔法盾防御之盾百分比吸血开关 1
+
+Goto @属性面板
+
+
+}

@@ -1,0 +1,280 @@
+[@腰带攻击BUFF触发]
+{
+#if
+#ACT
+MOV N$吸血值 0
+MOV N$伤害 0
+MOV N$攻击伤害 0
+
+
+#if
+CHECKUSEITEM 10
+CHECKCUSTOMITEMPROGRESSBAR 10 0
+#act
+GetCustomItemProgressbarValue 10 0 2  <$STR(N$装备BUFF百分比)>
+MOVR N$点数 1 1201
+INC N$点数 1
+#ELSEACT
+break
+
+#if
+equal <$CURRRUSEMAGICID> 22
+#act
+break
+
+
+
+#if
+equal <$CURRRUSEMAGICID> 39
+#act
+break
+
+;===================疯狂的=======================
+#if
+CheckContainsText <$G_BELT> 疯狂的
+Large N$点数 0
+Small N$点数 <$STR(N$装备BUFF百分比)>
+#ACT
+AddHumNewValue 1 = 20 3
+M.AddHumNewValue 1 = 20 3
+PLAYEFFECT 16 1315 10 3 100 0
+SendCenterMsg 254 0 攻击触发疯狂BUFF，伤害额外提高20%.持续3s 0 3
+
+;===================绝望的=======================
+#if
+CheckContainsText <$G_BELT> 绝望的
+CHECKCURRTARGETRACE = 0
+Large N$点数 0
+Small N$点数 <$STR(N$装备BUFF百分比)>
+M.check [200] 0
+#ACT
+MOV N$掉血时间 120
+M.PLAYEFFECT 13 270 10 120 100 0
+M.set [200] 1
+SETONTIMER 10 1 120
+SendCenterMsg 241 0 绝望BUFF触发,目标每秒损失2%hP，直到死亡或者小退 0 3
+
+;===================恶毒的=======================
+#if
+CheckContainsText <$G_BELT> 恶毒的
+Large N$点数 0
+Small N$点数 <$STR(N$装备BUFF百分比)>
+#ACT
+M.ChangeState 4 10
+M.ChangeState 5 10
+M.PLAYEFFECT 6 90 10 10 100 0
+SendCenterMsg 22 0 恶毒BUFF触发,目标中红毒，持续10s 0 3
+
+;===================力量的=======================
+#if
+CheckContainsText <$G_BELT> 力量的
+Large N$点数 0
+Small N$点数 <$STR(N$装备BUFF百分比)>
+#ACT
+MOV N$攻击伤害 <$MAXHP>
+DIV N$攻击伤害 20
+RangeHarm <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y>  0 <$STR(N$攻击伤害)> 6
+PLAYEFFECT 12 0 10 1 100 0
+SendCenterMsg 70 0 力量BUFF触发,附加自身hp5%的伤害 0 3
+
+;===================智慧的=======================
+#if
+CheckContainsText <$G_BELT> 智慧的
+Large N$点数 0
+Small N$点数 <$STR(N$装备BUFF百分比)>
+#ACT
+MOV N$攻击伤害 <$MAXMP>
+DIV N$攻击伤害 20
+RangeHarm <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y>  0 <$STR(N$攻击伤害)> 6
+PLAYEFFECT 12 20 10 1 100 0
+SendCenterMsg 251 0 智慧BUFF触发,附加自身mp5%的伤害 0 3
+
+;===================破甲的=======================
+#if
+CheckContainsText <$G_BELT> 破甲的
+Large N$点数 0
+Small N$点数 <$STR(N$装备BUFF百分比)>
+CHECKCURRTARGETRACE = 0
+#ACT
+MOV N$防御 <$AC>
+MOV N$魔防 <$MAC>
+MOV N$最大防御 <$MAXAC>
+MOV N$最大魔防 <$MAXMAC>
+DIV N$防御 2
+DIV N$魔防 2
+DIV N$最大防御 2
+DIV N$最大魔防 2
+M.ChangeHumAbility 1 - <$STR(N$防御)> 3
+M.ChangeHumAbility 2 - <$STR(N$最大防御)> 3
+M.ChangeHumAbility 3 - <$STR(N$魔防)> 3
+M.ChangeHumAbility 4 - <$STR(N$最大魔防)> 3
+M.PLAYEFFECT 13 820 10 3 100 0
+SendCenterMsg 70 0 破甲BUFF触发,粉粹目标护甲，目标防御魔防降低50%持续3s 0 3
+
+
+;===================嗜血的=======================
+#if
+CheckContainsText <$G_BELT> 嗜血的
+Large N$点数 0
+Small N$点数 <$STR(N$装备BUFF百分比)>
+#ACT
+HumanHP + 500
+M.PLAYEFFECT 11 1060 20 1 50 0
+PLAYEFFECT 11 1090 10 1 100 0
+SendCenterMsg 22 0 嗜血BUFF触发,汲取目标生命恢复自身 0 3
+
+;===================吸血的=======================
+#if
+CheckContainsText <$G_BELT> 吸血的
+Large N$点数 0
+Small N$点数 <$STR(N$装备BUFF百分比)>
+#ACT
+MOV N$吸血值 <$MAXHP>
+DIV N$吸血值 50
+ChangeState 10 5 <$STR(N$吸血值)>
+PLAYEFFECT 13 190 10 10 100 0
+SendCenterMsg 22 0 吸血BUFF触发,你进入吸血状态,持续5秒 0 3
+
+
+;===================慈航普度的=======================
+#if
+CheckContainsText <$G_BELT> 慈航普度的
+Large N$点数 0
+Small N$点数 <$STR(N$装备BUFF百分比)>
+#ACT
+MOVR N$点数 0 2
+M.PLAYEFFECT 10 1030 4 1 110 0
+goto @慈航普度的
+
+;===================致命的=======================
+#if
+CheckContainsText <$G_BELT> 致命的
+Large N$点数 0
+Small N$点数 <$STR(N$装备BUFF百分比)>
+#ACT
+MOV N$攻击伤害 <$MAXDC>
+DIV N$攻击伤害 100
+MUL N$攻击伤害 150
+RangeHarm <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y>  0 <$STR(N$攻击伤害)> 6
+M.PLAYEFFECT 10 1030 4 1 110 0
+SendCenterMsg 254 0 致命BUFF触发,造成主属性上限*1.5的伤害 0 3
+
+
+;===================霸道的=======================
+#if
+CheckContainsText <$G_BELT> 霸道的
+Large N$点数 0
+Small N$点数 <$STR(N$装备BUFF百分比)>
+#ACT
+MOV N$攻击伤害 <$MAXDC>
+RangeHarm <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y>  0 <$STR(N$攻击伤害)> 6
+M.PLAYEFFECT 10 1240 11 1 90 0
+SendCenterMsg 70 0 霸道BUFF触发,额外的主属性上限的伤害 0 3
+
+;===================暴击的=======================
+#if
+CheckContainsText <$G_BELT> 暴击的
+Large N$点数 0
+Small N$点数 <$STR(N$装备BUFF百分比)>
+#ACT
+MOV N$攻击伤害 <$PKPOWER>
+DIV N$攻击伤害 4
+RangeHarm <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y>  0 <$STR(N$攻击伤害)> 6
+M.PLAYEFFECT 10 870 4 1 200 0
+SendCenterMsg 254 0 暴击BUFF触发,本次攻击造成暴击伤害 0 3
+
+;===================复苏之风的=======================
+#if
+CheckContainsText <$G_BELT> 复苏之风的
+Large N$点数 0
+Small N$点数 <$STR(N$装备BUFF百分比)>
+#ACT
+AddhpPer + 15
+PLAYEFFECT 16 71 10 1 100 0 0 0 1
+SendCenterMsg 222 0 复苏之风BUFF触发,恢复20%生命值 0 3
+
+;===================善恶有报的=======================
+#if
+CheckContainsText <$G_BELT> 善恶有报的
+Large N$点数 0
+Small N$点数 <$STR(N$装备BUFF百分比)>
+#ACT
+MOVR N$点数 0 2
+PLAYEFFECT 16 101 9 1 90 0 0 0 1
+goto @善恶有报的
+
+;===================祝福的=======================
+#if
+CheckContainsText <$G_BELT> 祝福的
+Large N$点数 0
+Small N$点数 <$STR(N$装备BUFF百分比)>
+check [202] 0
+#ACT
+MOV N$攻击 <$DC>
+MOV N$魔法 <$MC>
+MOV N$道术 <$SC>
+MOV N$最大攻击 <$MAXDC>
+MOV N$最大魔法 <$MAXMC>
+MOV N$最大道术 <$MAXSC>
+DIV N$攻击 10
+DIV N$魔法 10
+DIV N$道术 10
+DIV N$最大攻击 10
+DIV N$最大魔法 10
+DIV N$最大道术 10
+ChangeHumAbility 5 + <$STR(N$攻击)> 7
+ChangeHumAbility 6 + <$STR(N$最大攻击)> 7
+ChangeHumAbility 7 + <$STR(N$魔法)> 7
+ChangeHumAbility 8 + <$STR(N$最大魔法)> 7
+ChangeHumAbility 9 + <$STR(N$道术)> 7
+ChangeHumAbility 10 + <$STR(N$最大道术)> 7
+set [202] 1
+setontimer 12 8 1
+PLAYEFFECT 39 250 30 5 100 0 0 0 1
+SendCenterMsg 222 0 祝福BUFF触发,提升10%魔攻道,持续7秒 0 3
+
+
+;===================幸运的=======================
+#if
+CheckContainsText <$G_BELT> 幸运的
+Large N$点数 0
+Small N$点数 <$STR(N$装备BUFF百分比)>
+Check [201] 0
+#ACT
+ChangeHumAbility 21  + 9 10
+set [201] 1
+SetOntimer 11 11 1
+PLAYEFFECT 6 810 15 10 90 0
+SendCenterMsg 254 0 幸运BUFF触发,幸运值增加9点持续10秒 0 3
+
+
+[@慈航普度的]
+#if
+EQUAL N$点数 0
+#ACT
+AddhpPer + 20
+SendCenterMsg 254 0 慈航普度BUFF触发,恢复20%的HP 0 3
+
+#if
+EQUAL N$点数 1
+#ACT
+AddmpPer + 20
+SendCenterMsg 254 0 慈航普度BUFF触发,恢复20%的MP 0 3
+
+[@善恶有报的]
+#if
+EQUAL N$点数 0
+#ACT
+MOV N$伤害 <$PKPOWER>
+HumanHP + <$STR(N$伤害)>
+SendCenterMsg 22 0 善恶有报BUFF触发,恢复[<$STR(N$伤害)>]HP 0 3
+
+#if
+EQUAL N$点数 1
+#ACT
+MOV N$伤害 <$PKPOWER>
+RangeHarm <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y>  0 <$STR(N$伤害)> 6
+SendCenterMsg 22 0 善恶有报BUFF触发,目标损失[<$STR(N$伤害)>]HP 0 3
+
+
+}

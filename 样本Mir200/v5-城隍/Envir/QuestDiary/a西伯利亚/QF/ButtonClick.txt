@@ -1,0 +1,212 @@
+[@Body]
+{
+[@ButtonClick30]
+#ACT
+MOV N$当前点击背包按钮下标 0
+GOTO @_@卸下人物背包
+
+[@ButtonClick31]
+#ACT
+MOV N$当前点击背包按钮下标 1
+GOTO @_@卸下人物背包
+
+[@ButtonClick32]
+#ACT
+MOV N$当前点击背包按钮下标 2
+GOTO @_@卸下人物背包
+
+[@ButtonClick33]
+#ACT
+MOV N$当前点击背包按钮下标 3
+GOTO @_@卸下人物背包
+
+[@_@卸下人物背包]
+#IF
+#ACT
+MOV L$卸下背包数组 <$STR(T8)>
+GETDBITEMFIELDVALUE <$STR(L$卸下背包数组[<$STR(N$当前点击背包按钮下标)>])> EXPAND3 N$卸下用数据库背包容量
+
+#IF
+CHECKBAGSIZE <$STR(N$卸下用数据库背包容量)>
+#ACT
+GIVE <$STR(L$卸下背包数组[<$STR(N$当前点击背包按钮下标)>])> 1
+MOV L$卸下背包数组[<$STR(N$当前点击背包按钮下标)>] 0
+MOV T8 <$STR(L$卸下背包数组)>
+RefreshBag
+GOTO @_@构造背包系统
+GOTO @_@计算背包容量与负重
+GOTO @_@计算人物背包属性加成
+GOTO @开始计算基础属性
+#ELSEACT
+MESSAGEBOX <背包剩余格子数不够,请清理后再取下背包！/SCOLOR=249>
+
+[@CustomButtonClick]
+#IF
+EQUAL <$CustomButtonID> 72
+#ACT
+#CALL [a西伯利亚\QF\自定按钮\咸鱼之王淬炼.txt] @加载咸鱼之王淬炼
+
+#IF
+EQUAL <$CustomButtonID> 71
+#ACT
+#CALL [a西伯利亚\QF\自定按钮\时装界面DNF装备.txt] @加载DNF装备
+
+#IF
+EQUAL <$CustomButtonID> 70
+#ACT
+#CALL [a西伯利亚\QF\自定按钮\时装界面魔兽神佑.txt] @加载魔兽神佑
+
+[@GodBlessItemClick5]
+#IF
+CheckOpenGodBless 5
+#ACT
+MESSAGEBOX 你已经开启了该位置！
+BREAK
+
+#OR
+LARGE <$MAXDC> 2000
+LARGE <$MAXMC> 2000
+LARGE <$MAXSC> 2000
+#ACT
+OpenGodBless 5
+SENDMSG 6 你开启了神佑6号位！
+#ELSEACT
+MESSAGEBOX 你的属性不足2000！
+
+[@GodBlessItemClick3]
+#IF
+CheckOpenGodBless 3
+#ACT
+MESSAGEBOX 你已经开启了该位置！
+BREAK
+
+#IF
+LARGE U109 5
+#ACT
+OpenGodBless 3
+SENDMSG 6 你开启了神佑4号位！
+#ELSEACT
+MESSAGEBOX 你的会员等级不到6级！
+
+[@GodBlessItemClick1]
+#IF
+CheckOpenGodBless 1
+#ACT
+MESSAGEBOX 你已经开启了该位置！
+BREAK
+
+#IF
+CHECKGAMEDIAMOND > 499
+#ACT
+GAMEDIAMOND - 500
+OpenGodBless 1
+SENDMSG 6 你开启了神佑2号位！
+#ELSEACT
+MESSAGEBOX 你的金刚石不足500！
+
+[@GodBlessItemClick4]
+#IF
+CheckOpenGodBless 4
+#ACT
+MESSAGEBOX 你已经开启了该位置！
+BREAK
+
+#IF
+LARGE U101 879999
+#ACT
+OpenGodBless 4
+SENDMSG 6 你开启了神佑5号位！
+#ELSEACT
+MESSAGEBOX 你的熔炼点数不足88W！
+
+[@GodBlessItemClick2]
+#IF
+CheckOpenGodBless 2
+#ACT
+MESSAGEBOX 你已经开启了该位置！
+BREAK
+
+#IF
+EQUAL N$秦广王·蒋神佑击杀标识 1
+EQUAL N$楚江王·历神佑击杀标识 1
+EQUAL N$宋帝王·余神佑击杀标识 1
+EQUAL N$五官王·吕神佑击杀标识 1
+EQUAL N$阎罗天子·包神佑击杀标识 1
+EQUAL N$卞城王·毕神佑击杀标识 1
+EQUAL N$泰山王·董神佑击杀标识 1
+EQUAL N$都市王·黄神佑击杀标识 1
+EQUAL N$平等王·陆神佑击杀标识 1
+EQUAL N$转轮王·薛神佑击杀标识 1
+#ACT
+OpenGodBless 2
+SENDMSG 6 你开启了神佑3号位！
+#ELSEACT
+MESSAGEBOX 你没有击杀怪十殿阎罗！
+
+[@GodBlessItemClick0]
+#IF
+CheckOpenGodBless 0
+#ACT
+MESSAGEBOX 你已经开启了该位置！
+BREAK
+
+#IF
+EQUAL N$阿拉蕾神佑击杀标识 1
+EQUAL N$怪博士神佑击杀标识 1
+#ACT
+OpenGodBless 0
+SENDMSG 6 你开启了神佑1号位！
+#ELSEACT
+MESSAGEBOX 你没有击杀怪博士与阿拉蕾！
+
+[@ButtonClick1]
+#ACT
+OpenStorageView 1
+
+[@ButtonClick2]
+#ACT
+OpenStorageView 0 
+
+[@ButtonClick4]
+#CALL [\功能脚本\远程回收.txt] @回收首页
+
+[@ButtonClick5]
+#ACT
+GOTO @装备升级
+
+[@ButtonClick3]
+#IF
+CHECK [30] 0
+#ACT
+SET [30] 1
+;FILTERGLOBALMSG 2 1
+FILTERGLOBALMSG 3 1
+FILTERGLOBALMSG 1 1
+SENDMSG 6 〖系统〗系统信息提示已关闭.. 250 0
+break
+#IF
+CHECK [30] 1
+#ACT
+SET [30] 0
+;FILTERGLOBALMSG 2 0
+FILTERGLOBALMSG 3 0
+FILTERGLOBALMSG 1 0
+SENDMSG 6 〖系统〗系统信息提示已开启.. 
+break
+
+[@ButtonClick20]
+#IF
+CheckJob Wizard
+#CALL [魂环功能\法师魂环.txt] @法师魂环
+BREAK
+
+#IF
+CheckJob Taoist
+#CALL [魂环功能\道士魂环.txt] @道士魂环
+BREAK
+
+#IF
+CheckJob Warrior
+#CALL [魂环功能\战士魂环.txt] @战士魂环
+BREAK
+}

@@ -1,0 +1,483 @@
+[@限时奖励显示]
+{
+#if
+#act
+MOV N$限时资源编号 2
+
+MOV N$首爆按钮1	216
+MOV N$首爆按钮2	217
+MOV N$首爆按钮3	218
+MOV N$首杀按钮1	219
+MOV N$首杀按钮2	220
+MOV N$首杀按钮3	221
+
+OPENMERCHANTBIGDLG <$Str(N$限时资源编号)> 215 1 4 0 -50 1 511 23 1 1
+goto @首爆奖励
+
+[@首杀奖励]
+#if
+#act
+GetStringPos ..\QuestDiary\首杀首爆\首杀奖励数据.txt 　:
+MOV N$首杀总行 <$Str(N0)>
+MOV N$首杀当页 1
+DIV N$首杀总页 N$首杀总行 31
+INC N$首杀总页 1
+mov N$首杀行号 0
+goto @首杀奖励界面
+
+[@首爆奖励]
+#if
+#act
+GetStringPos ..\QuestDiary\首杀首爆\首爆奖励数据.txt 　:
+MOV N$首爆总行 <$Str(N0)>
+MOV N$首爆当页 1
+DIV N$首爆总页 N$首爆总行 31
+INC N$首爆总页 1
+mov N$首爆行号 0
+goto @首爆奖励界面
+
+[@首爆奖励界面]
+#if
+#act
+goto @首爆奖励获取数据
+goto @首爆字符补齐
+#say
+<ImgEX:<$Str(N$限时资源编号)>:<$Str(N$首爆按钮1)>:<$Str(N$首爆按钮1)>:<$Str(N$首爆按钮1)>:16:80>\
+<ImgEX:<$Str(N$限时资源编号)>:<$Str(N$首杀按钮2)>:<$Str(N$首杀按钮1)>:<$Str(N$首杀按钮2)>:16:200/@首杀奖励>\
+
+　　      {NO.0/FCOLOR=70}　   {<$STR(S$首爆名0)>/FCOLOR=254}   {<$STR(S$首爆金0)>/FCOLOR=151}   {<$STR(S$首爆人0)>/FCOLOR=250}　　　　{<$STR(S$首爆玩家0)>/FCOLOR=250}\
+　\
+　　      {NO.1/FCOLOR=70}　   {<$STR(S$首爆名1)>/FCOLOR=254}   {<$STR(S$首爆金1)>/FCOLOR=151}   {<$STR(S$首爆人1)>/FCOLOR=250}　　　　{<$STR(S$首爆玩家1)>/FCOLOR=250}\
+　\
+　　      {NO.2/FCOLOR=70}　   {<$STR(S$首爆名2)>/FCOLOR=254}   {<$STR(S$首爆金2)>/FCOLOR=151}   {<$STR(S$首爆人2)>/FCOLOR=250}　　　　{<$STR(S$首爆玩家2)>/FCOLOR=250}\
+　\
+　　      {NO.3/FCOLOR=70}　   {<$STR(S$首爆名3)>/FCOLOR=254}   {<$STR(S$首爆金3)>/FCOLOR=151}   {<$STR(S$首爆人3)>/FCOLOR=250}　　　　{<$STR(S$首爆玩家3)>/FCOLOR=250}\
+　\
+　　      {NO.4/FCOLOR=70}　   {<$STR(S$首爆名4)>/FCOLOR=254}   {<$STR(S$首爆金4)>/FCOLOR=151}   {<$STR(S$首爆人4)>/FCOLOR=250}　　　　{<$STR(S$首爆玩家4)>/FCOLOR=250}\
+　\
+　　      {NO.5/FCOLOR=70}　   {<$STR(S$首爆名5)>/FCOLOR=254}   {<$STR(S$首爆金5)>/FCOLOR=151}   {<$STR(S$首爆人5)>/FCOLOR=250}　　　　{<$STR(S$首爆玩家5)>/FCOLOR=250}\
+　\
+　　      {NO.6/FCOLOR=70}　   {<$STR(S$首爆名6)>/FCOLOR=254}   {<$STR(S$首爆金6)>/FCOLOR=151}   {<$STR(S$首爆人6)>/FCOLOR=250}　　　　{<$STR(S$首爆玩家6)>/FCOLOR=250}\
+　\
+　　      {NO.7/FCOLOR=70}　   {<$STR(S$首爆名7)>/FCOLOR=254}   {<$STR(S$首爆金7)>/FCOLOR=151}   {<$STR(S$首爆人7)>/FCOLOR=250}　　　　{<$STR(S$首爆玩家7)>/FCOLOR=250}\
+　\
+　　      {NO.8/FCOLOR=70}　   {<$STR(S$首爆名8)>/FCOLOR=254}   {<$STR(S$首爆金8)>/FCOLOR=151}   {<$STR(S$首爆人8)>/FCOLOR=250}　　　　{<$STR(S$首爆玩家8)>/FCOLOR=250}\
+　\
+　　      {NO.9/FCOLOR=70}　   {<$STR(S$首爆名9)>/FCOLOR=254}   {<$STR(S$首爆金9)>/FCOLOR=151}   {<$STR(S$首爆人9)>/FCOLOR=250}　　　　{<$STR(S$首爆玩家9)>/FCOLOR=250}\
+　\
+<>         <限时首爆时间为不限/fcolor=10>  <上一页/@首爆翻页减>　{[<$Str(N$首爆当页)>┃<$Str(N$首爆总页)>]/FCOLOR=250}　<下一页/@首爆翻页加>  <先下手为强：/FCOLOR=10>{抢到就是赚到/FCOLOR=249}\
+
+
+[@首杀奖励界面]
+#if
+#act
+goto @首杀奖励获取数据
+goto @首杀字符补齐
+#say
+<ImgEX:<$Str(N$限时资源编号)>:<$Str(N$首爆按钮2)>:<$Str(N$首爆按钮1)>:<$Str(N$首爆按钮2)>:16:80/@首爆奖励>\
+<ImgEX:<$Str(N$限时资源编号)>:<$Str(N$首杀按钮1)>:<$Str(N$首杀按钮2)>:<$Str(N$首杀按钮3)>:16:200>\
+
+　　      {NO.0/FCOLOR=70}　 {<$STR(S$首杀名0)>/FCOLOR=254} {<$STR(S$首杀金0)>/FCOLOR=151} {<$STR(S$首杀人0)>/FCOLOR=250}　{<$STR(S$首杀玩家0)>/FCOLOR=250}\
+　\
+　　      {NO.1/FCOLOR=70}　 {<$STR(S$首杀名1)>/FCOLOR=254} {<$STR(S$首杀金1)>/FCOLOR=151} {<$STR(S$首杀人1)>/FCOLOR=250}　{<$STR(S$首杀玩家1)>/FCOLOR=250}\
+　\
+　　      {NO.2/FCOLOR=70}　 {<$STR(S$首杀名2)>/FCOLOR=254} {<$STR(S$首杀金2)>/FCOLOR=151} {<$STR(S$首杀人2)>/FCOLOR=250}　{<$STR(S$首杀玩家2)>/FCOLOR=250}\
+　\
+　　      {NO.3/FCOLOR=70}　 {<$STR(S$首杀名3)>/FCOLOR=254} {<$STR(S$首杀金3)>/FCOLOR=151} {<$STR(S$首杀人3)>/FCOLOR=250}　{<$STR(S$首杀玩家3)>/FCOLOR=250}\
+　\
+　　      {NO.4/FCOLOR=70}　 {<$STR(S$首杀名4)>/FCOLOR=254} {<$STR(S$首杀金4)>/FCOLOR=151} {<$STR(S$首杀人4)>/FCOLOR=250}　{<$STR(S$首杀玩家4)>/FCOLOR=250}\
+　\
+　　      {NO.5/FCOLOR=70}　 {<$STR(S$首杀名5)>/FCOLOR=254} {<$STR(S$首杀金5)>/FCOLOR=151} {<$STR(S$首杀人5)>/FCOLOR=250}　{<$STR(S$首杀玩家5)>/FCOLOR=250}\
+　\
+　　      {NO.6/FCOLOR=70}　 {<$STR(S$首杀名6)>/FCOLOR=254} {<$STR(S$首杀金6)>/FCOLOR=151} {<$STR(S$首杀人6)>/FCOLOR=250}　{<$STR(S$首杀玩家6)>/FCOLOR=250}\
+　\
+　　      {NO.7/FCOLOR=70}　 {<$STR(S$首杀名7)>/FCOLOR=254} {<$STR(S$首杀金7)>/FCOLOR=151} {<$STR(S$首杀人7)>/FCOLOR=250}　{<$STR(S$首杀玩家7)>/FCOLOR=250}\
+　\
+　　      {NO.8/FCOLOR=70}　 {<$STR(S$首杀名8)>/FCOLOR=254} {<$STR(S$首杀金8)>/FCOLOR=151} {<$STR(S$首杀人8)>/FCOLOR=250}　{<$STR(S$首杀玩家8)>/FCOLOR=250}\
+　\
+　　      {NO.9/FCOLOR=70}　 {<$STR(S$首杀名9)>/FCOLOR=254} {<$STR(S$首杀金9)>/FCOLOR=151} {<$STR(S$首杀人9)>/FCOLOR=250}　{<$STR(S$首杀玩家9)>/FCOLOR=250}\
+　\
+<>         <限时首杀时间为不限/fcolor=10>  <上一页/@首杀翻页减>　{[<$Str(N$首杀当页)>┃<$Str(N$首杀总页)>]/FCOLOR=250}　<下一页/@首杀翻页加>  <先下手为强：/FCOLOR=10>{抢到就是赚到/FCOLOR=249}\
+
+[@首杀奖励获取数据]
+#if
+#act
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$首杀名0	S$首杀玩家0
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀金0
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀人0
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$首杀名1	S$首杀玩家1
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀金1
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀人1
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$首杀名2	S$首杀玩家2
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀金2
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀人2
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$首杀名3	S$首杀玩家3
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀金3
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀人3
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$首杀名4	S$首杀玩家4
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀金4
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀人4
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$首杀名5	S$首杀玩家5
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀金5
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀人5
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$首杀名6	S$首杀玩家6
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀金6
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀人6
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$首杀名7	S$首杀玩家7
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀金7
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀人7
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$首杀名8	S$首杀玩家8
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀金8
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀人8
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$首杀名9	S$首杀玩家9
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀金9
+inc N$首杀行号 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N$首杀行号)>	S$无用		S$首杀人9
+inc N$首杀行号 1
+
+[@首爆奖励获取数据]
+#if
+#act
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$首爆名0	S$首爆玩家0
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆金0
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆人0
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$首爆名1	S$首爆玩家1
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆金1
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆人1
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$首爆名2	S$首爆玩家2
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆金2
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆人2
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$首爆名3	S$首爆玩家3
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆金3
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆人3
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$首爆名4	S$首爆玩家4
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆金4
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆人4
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$首爆名5	S$首爆玩家5
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆金5
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆人5
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$首爆名6	S$首爆玩家6
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆金6
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆人6
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$首爆名7	S$首爆玩家7
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆金7
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆人7
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$首爆名8	S$首爆玩家8
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆金8
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆人8
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$首爆名9	S$首爆玩家9
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆金9
+inc N$首爆行号 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N$首爆行号)>	S$无用		S$首爆人9
+inc N$首爆行号 1
+
+
+[@首杀字符补齐]
+#if
+#act
+SetStringBlank <$Str(S$首杀名0)> 30 1
+SetStringBlank <$Str(S$首杀名1)> 30 1
+SetStringBlank <$Str(S$首杀名2)> 30 1
+SetStringBlank <$Str(S$首杀名3)> 30 1
+SetStringBlank <$Str(S$首杀名4)> 30 1
+SetStringBlank <$Str(S$首杀名5)> 30 1
+SetStringBlank <$Str(S$首杀名6)> 30 1
+SetStringBlank <$Str(S$首杀名7)> 30 1
+SetStringBlank <$Str(S$首杀名8)> 30 1
+SetStringBlank <$Str(S$首杀名9)> 30 1
+
+SetStringBlank <$Str(S$首杀金0)> 9 0
+SetStringBlank <$Str(S$首杀金1)> 9 0
+SetStringBlank <$Str(S$首杀金2)> 9 0
+SetStringBlank <$Str(S$首杀金3)> 9 0
+SetStringBlank <$Str(S$首杀金4)> 9 0
+SetStringBlank <$Str(S$首杀金5)> 9 0
+SetStringBlank <$Str(S$首杀金6)> 9 0
+SetStringBlank <$Str(S$首杀金7)> 9 0
+SetStringBlank <$Str(S$首杀金8)> 9 0
+SetStringBlank <$Str(S$首杀金9)> 9 0
+
+[@首爆字符补齐]
+#if
+#act
+SetStringBlank <$Str(S$首爆名0)> 15 1
+SetStringBlank <$Str(S$首爆名1)> 15 1
+SetStringBlank <$Str(S$首爆名2)> 15 1
+SetStringBlank <$Str(S$首爆名3)> 15 1
+SetStringBlank <$Str(S$首爆名4)> 15 1
+SetStringBlank <$Str(S$首爆名5)> 15 1
+SetStringBlank <$Str(S$首爆名6)> 15 1
+SetStringBlank <$Str(S$首爆名7)> 15 1
+SetStringBlank <$Str(S$首爆名8)> 15 1
+SetStringBlank <$Str(S$首爆名9)> 15 1
+
+SetStringBlank <$Str(S$首爆金0)> 9 0
+SetStringBlank <$Str(S$首爆金1)> 9 0
+SetStringBlank <$Str(S$首爆金2)> 9 0
+SetStringBlank <$Str(S$首爆金3)> 9 0
+SetStringBlank <$Str(S$首爆金4)> 9 0
+SetStringBlank <$Str(S$首爆金5)> 9 0
+SetStringBlank <$Str(S$首爆金6)> 9 0
+SetStringBlank <$Str(S$首爆金7)> 9 0
+SetStringBlank <$Str(S$首爆金8)> 9 0
+SetStringBlank <$Str(S$首爆金9)> 9 0
+
+[@升级翻页减]
+#if
+large N$升级行号 59
+#act
+DEC N$升级当页 1
+dec N$升级行号 60
+goto @升级奖励界面
+#elseact
+messagebox 已经是第一页了！
+
+[@升级翻页加]
+#if
+small N$升级行号 <$Str(N$升级总行)>
+#act
+INC N$升级当页 1
+goto @升级奖励界面
+#elseact
+messagebox 已经是最后一页了！
+
+[@首杀翻页减]
+#if
+large N$首杀行号 59
+#act
+DEC N$首杀当页 1
+dec N$首杀行号 60
+goto @首杀奖励界面
+#elseact
+messagebox 已经是第一页了！
+
+[@首杀翻页加]
+#if
+small N$首杀行号 <$Str(N$首杀总行)>
+#act
+INC N$首杀当页 1
+goto @首杀奖励界面
+#elseact
+messagebox 已经是最后一页了！
+
+[@首爆翻页减]
+#if
+large N$首爆行号 59
+#act
+DEC N$首爆当页 1
+dec N$首爆行号 60
+goto @首爆奖励界面
+#elseact
+messagebox 已经是第一页了！
+
+[@首爆翻页加]
+#if
+small N$首爆行号 <$Str(N$首爆总行)>
+#act
+INC N$首爆当页 1
+goto @首爆奖励界面
+#elseact
+messagebox 已经是最后一页了！
+}
+
+[@首爆奖励触发]
+{
+#if
+#act
+;GetItemFrom -1 0 N$物品来源
+LINKPICKUPITEM 
+#if
+;not equal N$物品来源 4
+checktextlist ..\QuestDiary\首杀首爆\首爆奖励数据.txt  <$USERNAME>:<$PICKDROPITEMNAME>:已经触发首爆了
+#ACT
+break
+
+#IF
+CHECKTEXTLIST ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$PICKDROPITEMNAME>:无
+#ACT
+GetStringPos  ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$PICKDROPITEMNAME>:无
+MOV N1 <$STR(N0)>
+INC N0 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N0)>	S$无用	S$首爆金额
+INC N0 1
+GetListString ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$Str(N0)>	S$无用	S$首爆名额
+DEC S$首爆名额 剩：
+DEC S$首爆名额 个
+
+#if
+not CHECKITEMADDVALUE -1 13 = 1
+large <$Str(S$首爆名额)> 0
+#act
+CHANGEITEMADDVALUE -1  13 = 1
+MOV N$首爆名额 <$Str(S$首爆名额)>
+DelTextList   ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$PICKDROPITEMNAME>:无
+DelTextList   ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$PICKDROPITEMNAME>:剩：<$Str(N$首爆名额)>个 
+MOV S$首爆奖金 <$Str(S$首爆金额)>
+GOTO @首爆奖金
+DEC N$首爆名额 1
+AddTextListEx ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$PICKDROPITEMNAME>:<$USERNAME> <$Str(N1)>
+AddTextListEx ..\QuestDiary\首杀首爆\首爆奖励数据.txt <$PICKDROPITEMNAME>:剩：<$Str(N$首爆名额)>个 <$Str(N0)>
+MOVR N$纵轴坐标 80 530
+
+SENDMOVEMSG 0 251 0 <$STR(N$纵轴坐标)> 1 恭喜:玩家{[<$USERNAME>]/SCOLOR=254}捡到了一个{【<$PICKDROPITEMNAME>】/Scolor=250}获得限时奖励{【<$STR(S$首爆奖金)>】/Scolor=253}。 14  30 0
+addtextlist ..\QuestDiary\首杀首爆\首爆奖励数据.txt  <$USERNAME>:<$PICKDROPITEMNAME>:已经触发首爆了
+#if
+#act
+MOV S$首爆金额 
+MOV S$首爆名额 
+MOV N$首爆名额 
+MOV S$首爆奖金
+MOV N0 0
+mov N$纵轴坐标 0
+
+[@首爆奖金]
+#if
+#act
+DEC S$首爆金额 元宝
+DEC S$首爆金额 RMB点
+DEC S$首爆金额 充值点
+
+#if
+checkcontainstext <$Str(S$首爆奖金)> 元宝
+#act
+GameGold + <$Str(S$首爆金额)>
+break
+#if
+checkcontainstext <$Str(S$首爆奖金)> RMB点
+#act
+GAMEDIAMOND + <$Str(S$首爆金额)>
+break
+#if
+checkcontainstext <$Str(S$首爆奖金)> 充值点
+#act
+GAMEGIRD + <$Str(S$首爆金额)>
+break
+
+}
+
+[@首杀奖励触发]
+{
+
+#or
+checktextlist ..\QuestDiary\首杀首爆\首杀奖励数据.txt  <$USERNAME>:<$KILLMONNAME>:已经触发首杀了
+#ACT
+break
+
+#IF
+CHECKTEXTLIST ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$KILLMONNAME>:无
+#ACT
+GetStringPos ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$KILLMONNAME>:无
+MOV N1 <$STR(N0)>
+INC N0 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N0)>	S$无用	S$首杀金额
+INC N0 1
+GetListString ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$Str(N0)>	S$无用	S$首杀名额
+DEC S$首杀名额 剩：
+DEC S$首杀名额 个
+
+#if
+large <$Str(S$首杀名额)> 0
+#act
+MOV N$首杀名额 <$Str(S$首杀名额)>
+DelTextList   ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$KILLMONNAME>:无
+DelTextList   ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$KILLMONNAME>:剩：<$Str(N$首杀名额)>个
+MOV S$首杀奖金 <$Str(S$首杀金额)>
+goto @首杀奖金
+DEC N$首杀名额 1
+AddTextListEx ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$KILLMONNAME>:<$USERNAME> <$STR(N1)>
+AddTextListEx ..\QuestDiary\首杀首爆\首杀奖励数据.txt <$KILLMONNAME>:剩：<$Str(N$首杀名额)>个 <$Str(N0)>
+MOVR N$纵轴坐标 80 530
+
+SENDMOVEMSG 0 251 0 N$纵轴坐标 1 恭喜:玩家{[<$USERNAME>]/SCOLOR=254}击杀了{【<$KILLMONNAME>】/SCOLOR=250}获得限时首杀奖励{【<$STR(S$首杀奖金)>】/Scolor=253}。 14  30 0
+addtextlist ..\QuestDiary\首杀首爆\首杀奖励数据.txt  <$USERNAME>:<$KILLMONNAME>:已经触发首杀了
+
+#if
+#act
+MOV S$首杀金额 
+MOV S$首杀名额 
+MOV S$首杀奖金 
+MOV N$首杀名额 
+MOV N0 0
+mov N$纵轴坐标 0
+
+[@首杀奖金]
+#if
+#act
+DEC S$首杀金额 元宝
+DEC S$首杀金额 RMB点
+DEC S$首杀金额 充值点
+
+#if
+checkcontainstext <$Str(S$首杀奖金)> 元宝
+#act
+GameGold + <$Str(S$首杀金额)>
+break
+#if
+checkcontainstext <$Str(S$首杀奖金)> RMB点
+#act
+GAMEDIAMOND + <$Str(S$首杀金额)>
+break
+#if
+checkcontainstext <$Str(S$首杀奖金)> 充值点
+#act
+GAMEGIRD + <$Str(S$首杀金额)>
+break
+
+
+}

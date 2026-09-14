@@ -1,0 +1,646 @@
+// Electron 主进程 — 爆率修改工具 GUI（3 大块）
+const { app, BrowserWindow, dialog, ipcMain, shell } = require('electron');
+const path = require('path');
+const fs = require('fs');
+const { Worker } = require('worker_threads');
+const lib = require('./lib.js');
+
+
+// 存销生成/清理在 worker 线程执行（主进程零阻塞，避免窗口消息/输入框卡顿）
+// worker 启动失败/超时 → 兜底主进程直接调用（lib 已 async 分片）
+function runStoreWorker(action, root, o) {
+  return new Promise((resolve) => {
+    let settled = false;
+    const done = (r) => { if (!settled) { settled = true; resolve(r); } };
+    let w = null;
+    try {
+      w = new Worker(path.join(__dirname, 'store-worker.js'), { workerData: { action, root, o } });
+      w.once('message', (msg) => { done(msg || { ok: false, msg: 'worker 无返回' }); try { w.terminate(); } catch (e) {} });
+      w.once('error', (err) => { done({ ok: false, msg: 'worker 出错: ' + (err && err.message || err) }); });
+      w.once('exit', (code) => { if (!settled) done({ ok: false, msg: 'worker 异常退出(' + code + ')' }); });
+      setTimeout(() => { if (!settled) { done({ ok: false, msg: 'worker 超时(60s)' }); try { w.terminate(); } catch (e) {} } }, 60000);
+    } catch (e) {
+      // worker 启动失败 → 兜底主进程直接调用（async lib 分片版）
+      done((async () => {
+        try {
+          return action === 'clean'
+            ? await lib.storeCleanScripts(root, o || {})
+            : await lib.genStoreScript(root, o || {});
+        } catch (e2) { return { ok: false, msg: '生成/清理出错: ' + e2.message }; }
+      })());
+    }
+  });
+}
+
+function createWindow() {
+  const win = new BrowserWindow({
+    width: 760,
+    height: 760,
+    title: '元歌工具箱',
+    autoHideMenuBar: true,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      contextIsolation: true,
+      nodeIntegration: false,
+    },
+  });
+  win.loadFile(path.join(__dirname, 'index.html'));
+}
+
+ipcMain.handle('select-dir', async (e) => {
+  const win = BrowserWindow.getFocusedWindow() || BrowserWindow.getAllWindows()[0] || null;
+  const opts = { properties: ['openDirectory'], title: '选择传奇引擎根目录' };
+  const r = win ? await dialog.showOpenDialog(win, opts) : await dialog.showOpenDialog(opts);
+  return r.canceled ? null : r.filePaths[0];
+});
+
+ipcMain.handle('backup', (e, root) => {
+  const src = lib.monItemsDir(root);
+  if (!fs.existsSync(src)) return { ok: false, msg: '目录不存在: ' + src };
+  const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+  const dst = src + '.bak-' + stamp;
+  fs.cpSync(src, dst, { recursive: true });
+  return { ok: true, msg: '已备份到: ' + dst };
+});
+
+function runOnMons(root, monList, fn) {
+  const log = [];
+  let ok = 0, err = 0;
+  for (const m of monList) {
+    try {
+      const r = fn(m);
+      log.push(r.msg);
+      ok++;
+    } catch (ex) {
+      err++;
+      log.push('✗ ' + m + ': ' + ex.message);
+    }
+  }
+  log.unshift('—— 处理完成: 成功 ' + ok + ' / 失败 ' + err + ' ——');
+  return { ok: err === 0, log };
+}
+
+// 范围解析：all=全服 / mon=指定怪物 / map=按地图(MonGen)
+function resolveMons(root, scope, mon, mapCode) {
+  if (scope === 'all') return lib.listMonFiles(root);
+  if (scope === 'map') return lib.monsByMap(root, mapCode);
+  return [mon];
+}
+
+// ① 爆率调整
+ipcMain.handle('do-op', (e, args) => {
+  const { root, scope, mon, mapCode, gitem, gnew, rs, re, op, item, rate, count, cat } = args;
+  if (!root) return { ok: false, log: ['错误: 未选择引擎根目录'] };
+  // goods：加在指定物品后
+  if (scope === 'goods') {
+    if (!gitem) return { ok: false, log: ['错误: 未填写目标物品（加在哪个物品后）'] };
+    if (!gnew) return { ok: false, log: ['错误: 未填写追加物品'] };
+    let n = rate || 0;
+    if (cat === 'range') n = lib.randRate(rs || 10, re || 100);
+    const res = lib.addAfterItem(root, gitem, gnew, n, count || 1, cat === 'child' || cat === 'range');
+    if (res.length === 0) return { ok: false, log: ['全服未找到物品「' + gitem + '」的掉落，无法追加'] };
+    const log = ['—— 已在 ' + res.length + ' 处「' + gitem + '」后追加 ——'];
+    for (const x of res.slice(0, 20)) log.push('  ✓ ' + x.mon + ' → ' + x.line);
+    if (res.length > 20) log.push('  ... 共 ' + res.length + ' 处');
+    return { ok: true, log };
+  }
+  if (!item) return { ok: false, log: ['错误: 未填写物品名'] };
+  const monList = resolveMons(root, scope, mon, mapCode);
+  if (scope === 'all' && monList.length === 0) return { ok: false, log: ['未找到爆率文件（期望 Mir200\\Envir\\MonItems\\*.txt）'] };
+  if (scope === 'map' && monList.length === 0) return { ok: false, log: ['MonGen.txt 中未找到地图 ' + mapCode + ' 的怪物'] };
+  if (scope === 'mon' && !mon) return { ok: false, log: ['错误: 未填写怪物名'] };
+  return runOnMons(root, monList, m => {
+    if (op === 'del') {
+      const rr = lib.delRate(root, m, item);
+      return { msg: (rr.removed > 0 ? '✓ ' : '· ') + m + ': 删除 ' + item + ' ' + (rr.removed || 0) + ' 条（剩 ' + rr.total + '）' };
+    }
+    let n = rate || 0;
+    if (cat === 'range') n = lib.randRate(rs || 10, re || 100);
+    if (cat === 'child' || cat === 'range') {
+      const { file, items } = lib.readMonFile(root, m);
+      items.push({ kind: 'child', num: 1, rate: n, flag: 'RANDOM', cond: null, raw: '' });
+      lib.writeMonFile(root, m, items);
+      return { msg: '✓ ' + m + ': 追加 #CHILD 1/' + n + (count > 1 ? ' x' + count : '') + '（共 ' + items.filter(x => x.kind !== 'blank').length + ' 条）' };
+    }
+    const rr = lib.addRate(root, m, item, n, count || 1, true);
+    return { msg: '✓ ' + m + ': 追加 ' + item + ' 1/' + n + (count > 1 ? ' x' + count : '') + '（共 ' + rr.total + ' 条）' };
+  });
+});
+
+ipcMain.handle('open-path', async (e, p) => {
+  if (!p) return { ok: false, msg: '路径为空' };
+  if (!fs.existsSync(p)) return { ok: false, msg: '路径不存在: ' + p };
+  try {
+    const err = await shell.openPath(p);
+    return err ? { ok: false, msg: '打开失败: ' + err } : { ok: true, msg: '已打开' };
+  } catch (err2) { return { ok: false, msg: '打开异常: ' + err2.message }; }
+});
+
+
+
+
+
+ipcMain.handle('m2-reload', (e, o) => {
+  const r = lib.m2Reload(o || {});
+  if (r.ok) return { ok: true, msg: r.msg, log: [r.msg] };
+  return { ok: false, msg: r.msg, log: ['❌ ' + r.msg] };
+});
+
+
+ipcMain.handle('port-config', (e, o) => {
+  const { root, action, data } = o || {};
+  if (!root) return { ok: false, msg: '未选择引擎根目录', log: ['错误: 未选择引擎根目录'] };
+  if (action === 'list') { const r = lib.readPortConfig(root); return { ok: true, count: r.count, files: r.files, log: ['端口配置 ' + r.count + ' 个'] }; }
+  if (action === 'dup') { const r = lib.checkPortConsistency(root); return { ok: true, total: r.total, dups: r.dups, log: ['一致性检查 ' + r.dups.length + ' 组重复'] }; }
+  if (action === 'preset-save') { const r = lib.savePortPreset(root, data.name); return { ok: r.ok, msg: r.msg, log: [r.msg] }; }
+  if (action === 'preset-apply') { const r = lib.applyPortPreset(root, data.name); return { ok: r.ok, msg: r.msg, log: [r.msg] }; }
+  if (action === 'write') { const r = lib.writePortConfig(root, data.file, data.key, parseInt(data.port, 10)); return { ok: r.ok, msg: r.msg, log: [r.msg] }; }
+  if (action === 'replace') { const r = lib.replacePorts(root, parseInt(data.from, 10), parseInt(data.to, 10)); return { ok: r.ok, msg: r.msg, log: [r.msg] }; }
+  return { ok: false, msg: '未知操作', log: [] };
+});
+ipcMain.handle('item-cfg', (e, o) => {
+  const { root, action, data } = o || {};
+  if (!root) return { ok: false, msg: '未选择引擎根目录', log: ['错误: 未选择引擎根目录'] };
+  const mode = (data && data.mode) || 'desc';
+  const top = mode === 'desctop';
+  if (action === 'list') {
+    if (mode === 'desc' || mode === 'desctop') { const r = lib.readItemDesc(root, top); const lines = ['=== 物品备注' + (top ? '（上）' : '（下）') + '（' + r.count + ' 条）===']; for (const x of r.items.slice(0, 60)) lines.push('  ' + x.name + ' = ' + x.segs.map(s => '\\' + s.color + '/' + s.text).join('')); if (r.count > 60) lines.push('  ...共 ' + r.count + ' 条'); return { ok: true, log: lines }; }
+    if (mode === 'unbind') { const r = lib.readUnbindList(root); const lines = ['=== 物品解包（' + r.count + ' 条）===']; for (const x of r.items) lines.push('  ' + x.id + '\t' + x.name); return { ok: true, log: lines }; }
+    if (mode === 'shop') { const r = lib.readShopList(root); const lines = ['=== 系统商铺（' + r.count + ' 条）===']; for (const x of r.items.slice(0, 60)) lines.push('  [' + x.shopType + '] ' + x.name); if (r.count > 60) lines.push('  ...共 ' + r.count + ' 条'); return { ok: true, log: lines }; }
+    if (mode === 'group') { const r = lib.readGroupItems(root); const lines = ['=== 物品套装（' + r.count + ' 组）===']; for (const x of r.rows.slice(0, 40)) lines.push('  ' + x.group + ' ' + x.trigger + ' → ' + x.members.join('+')); if (r.count > 40) lines.push('  ...共 ' + r.count + ' 组'); return { ok: true, log: lines }; }
+  }
+  if (action === 'file') {
+    const r0 = lib.readSimpleFile(root, data.file);
+    if (!r0.ok) return { ok: false, msg: r0.msg, log: [r0.msg] };
+    const lines = ['=== ' + r0.label + '（' + r0.count + ' 条）==='];
+    r0.items.forEach((x, i) => lines.push('  ' + (i + 1) + '. ' + x.cols.join('\t')));
+    lines.push('格式: ' + r0.desc);
+    return { ok: true, log: lines };
+  }
+  if (action === 'add') {
+    if (mode === 'unbind') { const r = lib.addUnbindItem(root, data.name, data.text); return { ok: r.ok, msg: r.msg, log: [r.msg] }; }
+    const r = lib.addItemDesc(root, top, data.name, data.color || '243', data.text); return { ok: r.ok, msg: r.msg, log: [r.msg] };
+  }
+  if (action === 'del') {
+    if (mode === 'unbind') { const r = lib.delUnbindItem(root, data.name); return { ok: r.ok, msg: r.msg, log: [r.msg] }; }
+    const r = lib.delItemDesc(root, top, data.name); return { ok: r.ok, msg: r.msg, log: [r.msg] };
+  }
+  return { ok: false, msg: '未知操作', log: [] };
+});
+ipcMain.handle('map-cfg', (e, o) => {
+  const { root, action, data } = o || {};
+  if (!root) return { ok: false, msg: '未选择引擎根目录', log: ['错误: 未选择引擎根目录'] };
+  const mode = (data && data.mode) || 'start';
+  if (action === 'list') {
+    if (mode === 'start') { const r = lib.readStartPoint(root); const lines = ['=== 安全区（' + r.count + ' 个）===']; for (const x of r.rows) lines.push('  ' + x.map + '\t' + x.x + ',' + x.y + '\t禁说' + x.noTalk + '\t范围' + x.range + '\t光环' + x.halo + (x.pkzone ? '\tPK' + x.pkzone : '') + (x.pkfire ? '\tPKF' + x.pkfire : '')); return { ok: true, log: lines }; }
+    if (mode === 'mapinfo') { const r = lib.readMapInfo(root); const kw = (data && data.filter) || ''; const maps = kw ? r.maps.filter(m => m.code.includes(kw) || m.title.includes(kw)) : r.maps.slice(0, 40); const lines = ['=== 地图配置（' + r.maps.length + ' 地图 + ' + r.links.length + ' 传送门）' + (kw ? ' 过滤:' + kw : '') + '===']; for (const m of maps.slice(0, 40)) lines.push('  [' + m.code + '] ' + m.title + (m.props ? ' ' + m.props.slice(0, 60) : '')); if (r.maps.length > 40 && !kw) lines.push('  ...共 ' + r.maps.length + ' 地图（用过滤框搜索）'); return { ok: true, log: lines }; }
+    if (mode === 'mapevent') { const r = lib.readMapEvent(root); const lines = ['=== 地图事件（' + r.count + ' 条）===']; for (const x of r.items) lines.push('  ' + x.cols.join('\t')); return { ok: true, log: lines }; }
+    if (mode === 'minimap') { const r = lib.readMiniMap(root); const lines = ['=== 小地图配置（' + r.count + ' 条）===']; for (const x of r.rows.slice(0, 40)) lines.push('  ' + x.map + '\t' + x.id); if (r.count > 40) lines.push('  ...共 ' + r.count + ' 条'); return { ok: true, log: lines }; }
+  }
+  if (action === 'add' && mode === 'start') {
+    const r = lib.addStartPoint(root, data.a, parseInt(data.b, 10), parseInt(data.c, 10), parseInt(data.d || 0, 10), parseInt(data.e || 0, 10), parseInt(data.f || 0, 10));
+    return { ok: r.ok, msg: r.msg, log: [r.msg] };
+  }
+  if (action === 'del' && mode === 'start') {
+    const parts = data.name.split(/[,\s]+/);
+    if (parts.length >= 3) { const r = lib.delStartPoint(root, parts[0], parseInt(parts[1], 10), parseInt(parts[2], 10)); return { ok: r.ok, msg: r.msg, log: [r.msg] }; }
+    return { ok: false, msg: '格式: 地图 X Y', log: ['格式: 地图 X Y'] };
+  }
+  return { ok: false, msg: '未知操作', log: [] };
+});
+ipcMain.handle('engine-check', (e, root) => {
+  if (!root) return { ok: false, checks: [], issues: ['未选择引擎根目录'], log: ['错误: 未选择引擎根目录'] };
+  const r = lib.checkServerConfig(root);
+  const lines = ['=== 引擎识别 + 服务端健检 ==='];
+  for (const c of r.checks) lines.push((c.ok ? '✓' : '✗') + ' ' + c.name + ': ' + c.detail);
+  if (r.issues.length) { lines.push('发现 ' + r.issues.length + ' 个问题:'); for (const i of r.issues) lines.push('  ❌ ' + i); }
+  else lines.push('✅ 未发现问题');
+  return { ok: r.ok, checks: r.checks, issues: r.issues, log: lines };
+});
+ipcMain.handle('setup-dir-scan', (e, root) => {
+  if (!root) return { ok: false, keys: [], issues: ['未选择引擎根目录'], log: ['错误: 未选择引擎根目录'] };
+  const r = lib.scanSetupDirKeys(root);
+  const lines = ['=== 目录键扫描（' + root + '）==='];
+  for (const k of r.keys) lines.push((k.exists ? '✅' : '❌') + ' ' + k.key + ' = ' + (k.value || '(缺失)'));
+  if (r.issues.length) { for (const i of r.issues) lines.push('  ⚠️ ' + i); }
+  else lines.push('✅ 全部目录键存在');
+  return { ok: r.ok, keys: r.keys, issues: r.issues, log: lines };
+});
+ipcMain.handle('setup-dir-fix', (e, root) => {
+  if (!root) return { ok: false, changed: [], log: ['错误: 未选择引擎根目录'] };
+  const r = lib.fixSetupDirKeys(root, { dryRun: false });
+  const lines = ['=== 目录键校正 ==='];
+  for (const c of r.changed || []) lines.push('🔧 ' + c.key + ': ' + c.from + ' → ' + c.to);
+  lines.push(r.msg);
+  return { ok: r.ok, changed: r.changed, fixed: r.fixed, log: lines };
+});
+ipcMain.handle('store-gen', async (e, root, o) => {
+  if (!root) return { ok: false, msg: '未选择引擎根目录' };
+  const r = await runStoreWorker('gen', root, o || {});
+  return { ok: r.ok, msg: r.msg, timerId: r.timerId, files: r.files || [], qm: r.qm || '' };
+});
+ipcMain.handle('login-cfg', (e, o) => {
+  if (!o || !o.dir) return { ok: false, msg: '未选择登录器目录' };
+  try { return lib.replaceLoginCfg(o.dir, { clientDir: o.clientDir, patchDir: o.patchDir }); }
+  catch (err) { return { ok: false, msg: '替换出错: ' + err.message }; }
+});
+ipcMain.handle('server-zone', (e, root) => {
+  const z = lib.serverZoneName(root || '');
+  return { ok: !!z, zone: z };
+});
+ipcMain.handle('store-timer', (e, root, o) => {
+  if (!root) return { ok: false, msg: '未选择引擎根目录' };
+  const tid = lib.storeTimerId(root, o || {});
+  return { ok: tid > 0, timerId: tid, msg: tid > 0 ? '空闲定时器: ' + tid : '无空闲定时器' };
+});
+ipcMain.handle('store-clean', async (e, root, o) => {
+  if (!root) return { ok: false, msg: '未选择引擎根目录' };
+  const r = await runStoreWorker('clean', root, o || {});
+  return { ok: r.ok, msg: r.msg };
+});
+ipcMain.handle('remote-listen', async (e, root, o) => {
+  if (!root) return { ok: false, msg: '未选择引擎根目录' };
+  if (global.__remoteServer) { try { global.__remoteServer.close(); } catch (err) {} global.__remoteServer = null; }
+  const r = lib.remoteListen(root, o || {});
+  if (r.ok) {
+    global.__remoteServer = r.server;
+    // 端口占用是 listen 异步 error（uv 层对 EADDRINUSE 立即触发 error 事件），给事件循环一个窗口让 error/listening 落定
+    await new Promise(res => setTimeout(res, 120));
+    if (r.server._listenErr || !r.server._ready) {
+      try { r.server.close(); } catch (err) {}
+      global.__remoteServer = null;
+      return { ok: false, msg: '端口被占用：' + (r.server._listenErr || r.port) };
+    }
+  }
+  return { ok: r.ok, msg: r.msg, port: r.port };
+});
+ipcMain.handle('remote-stop', () => {
+  if (global.__remoteServer) { try { global.__remoteServer.close(); } catch (e) {} global.__remoteServer = null; return { ok: true, msg: '接收服务已停止' }; }
+  return { ok: true, msg: '接收服务未运行' };
+});
+ipcMain.handle('remote-push', async (e, root, o) => {
+  if (!root) return { ok: false, msg: '未选择引擎根目录' };
+  return await lib.remotePush(root, o || {});
+});
+
+
+ipcMain.handle('compare-dirs', (e, o) => {
+  if (!o || !o.a || !o.b) return { ok: false, log: ['请填写两个目录'] };
+  try {
+    const r = lib.compareDirs(o.a, o.b, { maxLines: 20 });
+    return { ok: true, ...r };
+  } catch (err) { return { ok: false, log: ['对比失败: ' + err.message] }; }
+});
+ipcMain.handle('health-check', (e, root) => {
+  if (!root) return { ok: false, checks: [], issues: ['未选择引擎根目录'], score: 0 };
+  return lib.healthReport(root);
+});
+ipcMain.handle('gen-site', (e, o) => {
+  if (!o || !o.root) return { ok: false, msg: '未选择引擎根目录' };
+  return lib.genOpenSite(o.root, o.o || {});
+});
+ipcMain.handle('gm-commands', (e, root) => {
+  const r = lib.readGmCommands(root || '');
+  const list = r.builtin.concat(r.custom).map(c => ({ cmd: c.cmd, desc: c.desc }));
+  return { ok: true, list, total: list.length };
+});
+ipcMain.handle('copy-text', (e, t) => {
+  const { clipboard } = require('electron');
+  clipboard.writeText(t || '');
+  return { ok: true };
+});
+ipcMain.handle('pick-dir', async (e) => {
+  const { dialog } = require('electron');
+  const r = await dialog.showOpenDialog({ properties: ['openDirectory'] });
+  return r.canceled ? null : r.filePaths[0];
+});
+
+ipcMain.handle('preview-site', async (e, dir) => {
+  if (!dir || !fs.existsSync(dir)) return { ok: false, msg: '站点目录不存在: ' + dir };
+  const http = require('http');
+  if (global.__prevServer) { try { global.__prevServer.close(); } catch (e) {} }
+  const server = http.createServer((req, res) => {
+    let p = req.url.split('?')[0]; if (p === '/') p = '/index.html';
+    const f = path.join(dir, p);
+    if (!fs.existsSync(f)) { res.writeHead(404); res.end('404'); return; }
+    const ext = path.extname(f);
+    const mime = { '.html': 'text/html; charset=utf-8', '.js': 'application/javascript', '.json': 'application/json', '.css': 'text/css', '.ico': 'image/x-icon' };
+    res.writeHead(200, { 'Content-Type': mime[ext] || 'application/octet-stream' });
+    res.end(fs.readFileSync(f));
+  });
+  await new Promise((resolve, reject) => { server.on('error', reject); server.listen(0, '127.0.0.1', resolve); });
+  global.__prevServer = server;
+  const port = server.address().port;
+  const url = 'http://127.0.0.1:' + port + '/droprate.html';
+  shell.openExternal(url);
+  return { ok: true, port, url };
+});
+ipcMain.handle('del-rates', async (e, root, o) => { try { return lib.delRates(root, o); } catch (err) { return { ok: false, msg: '指定删除出错: ' + err.message }; } });
+ipcMain.handle('group-rates', async (e, root, o) => { try { return lib.groupRates(root, o); } catch (err) { return { ok: false, msg: '分组出错: ' + err.message }; } });
+ipcMain.handle('optimize-rates', async (e, root, o) => { try { return lib.optimizeRates(root, o); } catch (err) { return { ok: false, msg: '二级优化出错: ' + err.message }; } });
+ipcMain.handle('add-rates', async (e, root, o) => { try { return lib.addRates(root, o); } catch (err) { return { ok: false, msg: '批量新增出错: ' + err.message }; } });
+ipcMain.handle('restore-call', async (e, root, o) => { try { return lib.restoreCall(root, o); } catch (err) { return { ok: false, msg: '#CALL 还原出错: ' + err.message }; } });
+ipcMain.handle('overall-optimize', async (e, root, o) => { try { return lib.overallOptimize(root, o); } catch (err) { return { ok: false, msg: '整体优化出错: ' + err.message }; } });
+ipcMain.handle('backup-monitems', async (e, root, tag) => { try { return lib.backupMonItems(root, tag); } catch (err) { return { ok: false, msg: '备份出错: ' + err.message }; } });
+ipcMain.handle('list-backups', async (e, root) => { try { return lib.listBackups(root); } catch (err) { return { ok: false, list: [] }; } });
+ipcMain.handle('restore-backup', async (e, root, name) => { try { return lib.restoreBackup(root, name); } catch (err) { return { ok: false, msg: '还原出错: ' + err.message }; } });
+ipcMain.handle('open-config-file', async () => {
+  const { dialog } = require('electron');
+  const w = BrowserWindow.getFocusedWindow() || BrowserWindow.getAllWindows()[0];
+  const r = await dialog.showOpenDialog(w, { title: '选择后台导出的站点配置', filters: [{ name: '站点配置', extensions: ['json'] }], properties: ['openFile'] });
+  return r.canceled ? null : r.filePaths[0];
+});
+
+
+ipcMain.handle('mongen-snapshot', (e, root) => { return lib.monGenSnapshot(root); });
+ipcMain.handle('mongen-check', (e, o) => { return lib.checkMonGenModified(o.root, o.snap); });
+
+ipcMain.handle('merchant-list', (e, root) => lib.readMerChant(root));
+ipcMain.handle('quick-open', async (e, { root, rel }) => {
+  const p = require('path').join(root, rel.split('/').join('\\'));
+  if (!fs.existsSync(p)) return { ok: false, msg: '路径不存在: ' + rel };
+  try {
+    const err = await shell.openPath(p);
+    return err ? { ok: false, msg: '打开失败: ' + err + ' (' + rel + ')' } : { ok: true, msg: '已打开: ' + rel };
+  } catch (err2) { return { ok: false, msg: '打开异常: ' + err2.message }; }
+});
+
+
+ipcMain.handle('extract-currencies', (e, root) => {
+  if (!root) return { log: ['错误: 未选择引擎根目录'] };
+  const r = lib.extractCurrencies(root);
+  if (!r.ok) return { log: [r.msg] };
+  const log = ['=== 一键提取全服货币（' + r.total + ' 种）==='];
+  for (const c of r.currencies.slice(0, 40)) log.push('  ' + c.name + '（' + c.count + '次/' + c.fileCount + '文件）');
+  if (r.currencies.length > 40) log.push('  ... 共 ' + r.currencies.length + ' 种');
+  return { log, currencies: r.currencies };
+});
+
+ipcMain.handle('mg-adjust', (e, o) => {
+  if (!o.root) return { log: ['错误: 未选择引擎根目录'] };
+  const r = lib.adjustMonGen(o.root, o);
+  if (!r.ok) return { log: [r.msg] };
+  return { log: ['=== 原刷怪调整完成 ===', '刷新数量调整 ' + r.changedCount + ' 行 / 刷新时间调整 ' + r.changedDate + ' 行', '文件: ' + r.file] };
+});
+
+ipcMain.handle('dynamic-spawn', (e, o) => {
+  if (!o.root) return { log: ['错误: 未选择引擎根目录'] };
+  const r = lib.genDynamicSpawn(o.root, o);
+  if (!r.ok) return { log: [r.msg] };
+  const logs = ['=== 动态刷怪配置生成（' + r.engine + ' 引擎）===', '地图 ' + r.maps + ' 个 / 记录 ' + r.records + ' 条（' + r.spawnCmd + ' 补怪）',
+    'RobotManage + AutoRunRobot 已写入（不改造原 MonGen）', '提示: 动态刷怪数据已经处理成功，请重启M2生效'];
+  if (r.qm) logs.push(r.qm.msg);
+  return { log: logs };
+});
+
+ipcMain.handle('spawn-table', (e, o) => {
+  if (!o.root) return { log: ['错误: 未选择引擎根目录'] };
+  const r = lib.spawnTable(o.root, o);
+  if (!r.ok) return { log: [r.msg] };
+  return { ok: true, total: r.total, maps: r.maps, rows: r.rows };
+});
+ipcMain.handle('detect-dungeons', (e, root) => {
+  if (!root) return { log: ['错误: 未选择引擎根目录'] };
+  const r = lib.detectDungeonMaps(root);
+  return r.ok ? { ok: true, dungeons: r.dungeons, count: r.count } : { log: [r.msg] };
+});
+ipcMain.handle('pspawn', (e, o) => {
+  if (!o.root) return { log: ['错误: 未选择引擎根目录'] };
+  const r = lib.genPersonalSpawn(o.root, o);
+  return { log: [r.msg] };
+});
+ipcMain.handle('ispawn', (e, o) => {
+  if (!o.root) return { log: ['错误: 未选择引擎根目录'] };
+  const r = lib.genInstanceSpawn(o.root, o);
+  return { log: [r.msg] };
+});
+ipcMain.handle('list-maps', (e, root) => {
+  if (!root) return { log: ['错误: 未选择引擎根目录'] };
+  const r = lib.listMaps(root);
+  return r.ok ? { ok: true, maps: r.maps, count: r.count } : { log: [r.msg] };
+});
+ipcMain.handle('sales-timers', (e, root) => {
+  if (!root) return { log: ['错误: 未选择引擎根目录'] };
+  const r = lib.salesTimers(root);
+  if (!r.ok) return { log: [r.msg] };
+  return { ok: true, used: r.used, next: r.next, qmanage: r.qmanage };
+});
+ipcMain.handle('scan-variables', (e, root) => {
+  if (!root) return { log: ['错误: 未选择引擎根目录'] };
+  const r = lib.scanVariables(root);
+  if (!r.ok) return { log: [r.msg] };
+  return { ok: true, files: r.files, matches: r.matches, types: r.types, groups: r.groups, byGroup: r.byGroup, limits: r.limits };
+});
+ipcMain.handle('open-file', async (e, { root, file }) => {
+  if (!root || !file) return { ok: false, msg: '参数缺失' };
+  const full = require('path').join(root, file);
+  if (!require('fs').existsSync(full)) return { ok: false, msg: '文件不存在: ' + full };
+  // 用系统默认软件打开（对齐用户需求：不依赖 Notepad++/定位行）
+  try {
+    const err = await require('electron').shell.openPath(full);
+    return err ? { ok: false, msg: err } : { ok: true, file: full };
+  } catch (e) {
+    return { ok: false, msg: '打开失败: ' + e.message };
+  }
+});
+
+ipcMain.handle('gen-sales', (e, o) => {
+  if (!o.root) return { log: ['错误: 未选择引擎根目录'] };
+  const r = lib.genSalesData(o.root, o);
+  if (!r.ok) return { log: [r.msg, ...(r.stages || []).map(s => '  ' + s)] };
+  return { log: ['=== 存销系统生成 ===', ...r.stages.map(s => '  ' + s), '输出: ' + r.outBase] };
+});
+
+ipcMain.handle('add-recycle', (e, o) => {
+  if (!o.root) return { ok: false, msg: '未选择引擎根目录' };
+  const r = lib.addRecycleNpc(o.root, o);
+  if (!r.ok) return { ok: false, msg: r.msg };
+  return r;
+});
+
+ipcMain.handle('sync-save', (e, cfg) => {
+  const r = lib.saveSyncConfig(cfg);
+  return { log: ['配置已保存: ' + r.file] };
+});
+
+ipcMain.handle('sync-run', async (e, { root, cfg }) => {
+  const log = ['=== 目录同步到 ' + cfg.host + ':' + cfg.port + ' ==='];
+  for (const rule of cfg.rules) log.push('规则: ' + rule.local + ' → ' + rule.remote);
+  const r = await lib.ftpSync(root, cfg, m => log.push('  ' + m));
+  if (!r.ok) { log.push(r.msg); return { log }; }
+  log.push('完成: 上传 ' + r.uploaded + ' / 跳过 ' + r.skipped + ' / 失败 ' + r.failed);
+  for (const e of r.errors.slice(0, 8)) log.push('  ✗ ' + e);
+  return { log };
+});
+
+ipcMain.handle('robot-list', (e, root) => {
+  if (!root) return { log: ['错误: 未选择引擎根目录'] };
+  const r = lib.readRobots(root);
+  if (!r.ok) return { log: [r.msg] };
+  const log = ['=== 机器人脚本（' + r.dir + '）===', 'AutoRunRobot.txt 定时行 ' + r.robots.length + ' 条：'];
+  for (const rb of r.robots) log.push('  ' + (rb.enabled ? '✓' : '✗禁用') + ' #AutoRun NPC ' + rb.unit + ' ' + rb.value + ' @' + rb.section);
+  log.push('RobotManage.txt 段 ' + r.sections.length + ' 个：');
+  for (const sec of r.sections) log.push('  [@' + sec + ']');
+  return { log };
+});
+
+ipcMain.handle('robot-add', (e, { root, opts }) => {
+  if (!root) return { log: ['错误: 未选择引擎根目录'] };
+  const a = lib.addRobot(root, opts);
+  return { log: [a.ok ? '已新增 ' + a.section + '（' + a.runLine + '）' : a.msg] };
+});
+
+ipcMain.handle('robot-del', (e, { root, name }) => {
+  if (!root) return { log: ['错误: 未选择引擎根目录'] };
+  const d = lib.delRobot(root, name);
+  return { log: [d.ok ? '已删除 ' + name + '（定时行已注释，段已移除）' : d.msg] };
+});
+
+ipcMain.handle('do-inject', (e, o) => {
+  if (!o.root) return { log: ['错误: 未选择引擎根目录'] };
+  const r = lib.injectScript(o.root, o);
+  if (!r.ok) return { log: [r.msg] };
+  return { log: ['=== 脚本注入完成 ===', '名称: ' + r.name + (r.already ? '（检测到已注入，模式=' + r.mode + '）' : ''), '文件: ' + r.file] };
+});
+
+ipcMain.handle('check-ports', async (e, root) => {
+  if (!root) return { log: ['错误: 未选择引擎根目录'] };
+  const c = await lib.checkPorts(root);
+  const log = ['=== 服务端端口占用检测（' + root + '）===', '共 ' + c.total + ' 个端口，占用 ' + c.inUseCount + ' 个：', '状态\t端口\t用途'];
+  for (const r of c.results) {
+    const labels = r.keys.map(k => k.label + '/' + k.key).join(', ');
+    log.push((r.inUse ? '■ 占用' : '□ 空闲') + '\t' + r.port + '\t' + labels);
+  }
+  return { results: c.results, total: c.total, inUseCount: c.inUseCount, log };
+});
+
+ipcMain.handle('add-exchange', (e, o) => {
+  if (!o.root) return { ok: false, msg: '未选择引擎根目录' };
+  const r = lib.addExchangeNpc(o.root, o);
+  if (!r.ok) return { ok: false, msg: r.msg };
+  return r;
+});
+
+
+ipcMain.handle('script-search', (e, o) => {
+  if (!o.dir) return { log: ['错误: 未填写搜索目录'] };
+  const r = lib.searchScripts('', o);
+  if (!r.ok) return { log: [r.msg] };
+  const log = ['=== 搜索「' + o.search + '」===', '目录: ' + r.dir, '共 ' + r.total + ' 处匹配 / ' + r.results.length + ' 个文件:'];
+  for (const x of r.results.slice(0, 40)) {
+    log.push('  ' + x.rel + ' (' + x.count + ' 处): 行 ' + x.lines.slice(0, 12).join(','));
+    if (x.lines.length > 12) log.push('     ...');
+  }
+  if (r.results.length > 40) log.push('  ... 共 ' + r.results.length + ' 个文件');
+  return { log };
+});
+
+ipcMain.handle('script-replace', (e, o) => {
+  if (!o.dir) return { log: ['错误: 未填写搜索目录'] };
+  const r = lib.replaceScripts('', o);
+  if (!r.ok) return { log: [r.msg] };
+  const log = ['=== 替换完成 ===', '目录: ' + r.dir, '共替换 ' + r.total + ' 处 / ' + r.results.length + ' 个文件:'];
+  for (const x of r.results.slice(0, 40)) log.push('  ' + x.rel + ': ' + x.replaced + ' 处');
+  if (r.results.length > 40) log.push('  ... 共 ' + r.results.length + ' 个文件');
+  return { log };
+});
+
+ipcMain.handle('currency-report', (e, { root, opts }) => {
+  if (!root) return { log: ['错误: 未选择引擎根目录'] };
+  const rep = lib.currencyReport(root, opts || {});
+  if (!rep.ok) return { log: [rep.msg] };
+  const log = ['=== 版本货币消耗分析（' + rep.base + '）===', '共匹配 ' + rep.total + ' 条货币命令：', '', '货币\t消耗\t收入\t检查\t次数\t文件数\tNPC数'];
+  for (const c of rep.currencies) {
+    log.push(c.currency + '\t' + c.consume + '\t' + c.income + '\t' + c.check + '\t' + c.count + '\t' + c.fileCount + '\t' + c.npcCount);
+  }
+  log.push('', '=== NPC 消耗排行（前 15）===');
+  for (const n of rep.npcs.slice(0, 15)) {
+    log.push(n.currency + ' | ' + n.npc + ': 消耗 ' + n.consume + ' / 收入 ' + n.income + '（' + n.count + ' 次）');
+  }
+  return { log };
+});
+
+ipcMain.handle('mongen-list', (e, { root, map }) => {
+  if (!root) return { log: ['错误: 未选择引擎根目录'] };
+  const l = lib.listMonGen(root, map);
+  if (!l.ok) return { log: [l.msg] };
+  const log = [(map ? '地图 ' + map + ' 的刷怪配置' : '全部刷怪配置') + '（共 ' + l.total + ' 行，显示 ' + l.rows.length + ' 条）',
+    '地图\tX\tY\t怪物名\t数量\t范围\t间隔\t时间\t触发'];
+  for (const s of l.rows.slice(0, 50)) {
+    log.push(s.map + '\t' + s.x + '\t' + s.y + '\t' + s.mon + '\t' + s.count + '\t' + s.range + '\t' + s.interval + '\t' + s.time + '\t' + s.trigger);
+  }
+  if (l.rows.length > 50) log.push('... 共 ' + l.rows.length + ' 条');
+  return { log };
+});
+
+ipcMain.handle('mongen-add', (e, p) => {
+  if (!p.root || !p.map || !p.x || !p.y || !p.mon) return { log: ['错误: 缺少必填字段'] };
+  const a = lib.addMonGen(p.root, p);
+  return { log: [a.ok ? '已追加: ' + a.line + ' → ' + a.file : a.msg] };
+});
+
+ipcMain.handle('mongen-del', (e, { root, map, mon }) => {
+  if (!root || !map || !mon) return { log: ['错误: 缺少必填字段'] };
+  const d = lib.delMonGen(root, map, mon);
+  return { log: [d.ok ? '已删除 ' + d.removed + ' 条刷怪行 → ' + d.file : d.msg] };
+});
+
+ipcMain.handle('do-bulk', (e, args) => {
+  const { root, scope, mon, mapCode, opt } = args;
+  if (!root) return { ok: false, log: ['错误: 未选择引擎根目录'] };
+  const monList = resolveMons(root, scope, mon, mapCode);
+  if (scope === 'all' && monList.length === 0) return { ok: false, log: ['未找到爆率文件'] };
+  if (scope === 'map' && monList.length === 0) return { ok: false, log: ['MonGen.txt 中未找到地图 ' + mapCode + ' 的怪物'] };
+  if (scope === 'mon' && !mon) return { ok: false, log: ['错误: 未填写怪物名'] };
+  return runOnMons(root, monList, m => {
+    const r = lib.adjustRateFile(root, m, opt);
+    return { msg: '✓ ' + m + ': 调整 ' + r.changed + ' 条（共 ' + r.total + '）' };
+  });
+});
+
+// ③ 随机转换
+ipcMain.handle('do-random', (e, args) => {
+  const { root, scope, mon, mapCode, opt } = args;
+  if (!root) return { ok: false, log: ['错误: 未选择引擎根目录'] };
+  const monList = resolveMons(root, scope, mon, mapCode);
+  if (scope === 'all' && monList.length === 0) return { ok: false, log: ['未找到爆率文件'] };
+  if (scope === 'map' && monList.length === 0) return { ok: false, log: ['MonGen.txt 中未找到地图 ' + mapCode + ' 的怪物'] };
+  if (scope === 'mon' && !mon) return { ok: false, log: ['错误: 未填写怪物名'] };
+  return runOnMons(root, monList, m => {
+    const r = lib.convertRandomFile(root, m, opt);
+    return { msg: '✓ ' + m + ': 转换 ' + r.changed + ' 条为随机爆率（共 ' + r.total + '）' };
+  });
+});
+
+// ④ 按地图查看
+ipcMain.handle('map-view', (e, args) => {
+  const { root, mapCode } = args;
+  if (!root) return { ok: false, log: ['错误: 未选择引擎根目录'] };
+  if (!mapCode) return { ok: false, log: ['错误: 未填写地图代码'] };
+  const mm = lib.mapMonsters(root, mapCode);
+  if (mm.length === 0) return { ok: false, log: ['MonGen.txt 中未找到地图 ' + mapCode + '，或该地图没有刷怪记录'] };
+  const log = ['—— 地图 ' + mapCode + ' 共 ' + mm.length + ' 种怪 ——'];
+  for (const x of mm) {
+    log.push((x.exists ? '✓ ' : '· ') + x.mon + (x.exists ? '（爆率 ' + x.lines + ' 行）' : '（无爆率文件）'));
+    for (const it of x.items) log.push('     ' + it);
+    if (x.items.length >= 10) log.push('     ... 共 ' + x.lines + ' 行');
+  }
+  return { ok: true, log };
+});
+
+// ⑤ 物品产出查询
+ipcMain.handle('item-find', (e, args) => {
+  const { root, item } = args;
+  if (!root) return { ok: false, log: ['错误: 未选择引擎根目录'] };
+  if (!item) return { ok: false, log: ['错误: 未填写物品名'] };
+  const drops = lib.findItemDrops(root, item);
+  if (drops.length === 0) return { ok: false, log: ['全服 ' + lib.listMonFiles(root).length + ' 个爆率文件中没有找到「' + item + '」'] };
+  const log = ['—— 物品「' + item + '」被 ' + drops.length + ' 个怪掉落 ——'];
+  for (const d of drops.slice(0, 40)) log.push('  ' + d.mon + ' → ' + d.line);
+  if (drops.length > 40) log.push('  ... 共 ' + drops.length + ' 条');
+  return { ok: true, log };
+});
+
+app.disableHardwareAcceleration();
+app.whenReady().then(createWindow);
+app.on('window-all-closed', () => app.quit());

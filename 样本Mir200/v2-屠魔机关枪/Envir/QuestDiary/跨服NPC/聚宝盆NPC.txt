@@ -1,0 +1,8 @@
+[@æ€±¶≈ËNPC]
+{
+#if
+#act
+MAPMOVE jubaopen 63 53 10
+
+Goto @Õ≥º∆ Ù–‘
+}

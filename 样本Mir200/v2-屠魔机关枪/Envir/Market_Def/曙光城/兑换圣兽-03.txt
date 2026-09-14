@@ -1,0 +1,40 @@
+[@main]
+
+#if
+#act
+OPENMERCHANTBIGDLG 5 941 1 4 0 0  0 360 15 1
+#say
+<&Text:1000个圣兽羽毛可以兑换一本召唤圣兽:70:55{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+;<&Text:圣兽羽毛天降财宝活动,三大陆城主爆出:65:85{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:也可以击杀三大陆城主直接爆出圣兽:70:115{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+
+<&IMGEX:5:730:731:732:70:178:1/@兑换圣兽>
+<&ImgEx:5:1308:1308:1308:200:178|充值积分1000可直接兑换^三大陆城主有几率爆出召唤圣兽^必爆羽毛/@学习召唤圣兽>
+[@兑换圣兽]
+#if
+NOT CHECKITEM 圣兽羽毛 1000
+#act
+messagebox 你的毛呢
+break
+
+#IF
+CHECKITEM 圣兽羽毛 1000
+#ACT
+take 圣兽羽毛 1000
+give 召唤圣兽
+messagebox 兑换成功
+addtextlist ..\..\..\..\通区文件\大喇叭\公屏.txt <$STR(T14)><$STR(U162)>区【<$USERNAME>】用1000个圣兽羽毛兑换了一本【召唤圣兽】~<$DATETIME>
+
+
+
+[@学习召唤圣兽]
+#if
+checkgamepoint < 1000
+#act
+messagebox 当日充值不足
+break
+#if
+checkgamepoint > 999
+#act
+gamepoint - 1000
+GIVE 召唤圣兽

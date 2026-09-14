@@ -1,0 +1,14 @@
+来源: 蜗牛实用工具 REVERSE-REPORT.md
+
+### 2. 爆率系统（rate.*）
+- 爆率调整：全服/按地图/按怪物名，向符合条件怪**追加/删除物品爆率**，调整倍数，随机值
+- 从 `MonGen.txt` 反查"地图刷哪些怪"；`MonItems\` 目录爆率文件解析
+- 爆率模拟器、爆率查看（Ctrl+左键跳转）、爆率生成头注释（`以下爆率为蜗牛实用工具生成，群：835162076`）
+
+---
+
+### 9.4.2 随机爆率 #CHILD（区间）—— category=3
+还原自「随机爆率#CHILD(开始和结束之间的)」：N 在 startRange~endRange 之间随机，生成 `#CHILD 1/N RANDOM`。
+实现：`randRate(start, end)` 均匀随机。
+CLI：`add <根> <怪> x 0 1 --range 开始 结束`
+GUI：追加类型「#CHILD 区间」+ 区间输入。

@@ -1,0 +1,111 @@
+[@main]
+#if
+#ACT
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+<>[<$USERNAME>]<您好！/SCOLOR=253>  欢迎勇士归来\ 
+<><参与玩家活动奖励 可以在这里换取材料/SCOLOR=254>\
+<><★时装羽毛★/@兑换1>   <消耗1个令牌兑换 10根羽毛/SCOLOR=250>\
+<><★天地结晶★/@兑换2>   <消耗1个令牌兑换 10个天地结晶/SCOLOR=250>\
+<><★盾牌碎片★/@兑换3>   <消耗1个令牌兑换 10个盾牌碎片/SCOLOR=250>\
+<><★面巾碎片★/@兑换4>   <消耗1个令牌兑换 10个面巾碎片/SCOLOR=250>\
+<><★大量元宝★/@兑换5>   <消耗1个令牌兑换 300元宝/SCOLOR=250>\
+<>\ 
+<>\ 
+
+
+
+
+[@兑换1]
+#if
+CheckItem  英雄令 1
+#ACT
+Take 英雄令 1
+Give 时装羽毛 10
+Break
+#ELSEACT
+MessageBox 材料不足,无法合成.
+
+
+[@兑换2]
+#if
+CheckItem  英雄令 1
+#ACT
+Take 英雄令 1
+Give 天地结晶 10
+Break
+#ELSEACT
+MessageBox 材料不足,无法合成.
+
+
+
+[@兑换3]
+#if
+CheckItem  英雄令 1
+#ACT
+Take 英雄令 1
+Give 盾牌碎片 10
+Break
+#ELSEACT
+MessageBox 材料不足,无法合成.
+
+
+
+[@兑换4]
+#if
+CheckItem  英雄令 1
+#ACT
+Take 英雄令 1
+Give 面巾碎片 10
+Break
+#ELSEACT
+MessageBox 材料不足,无法合成.
+
+
+
+[@兑换5]
+#if
+CheckItem  英雄令 1
+#ACT
+Take 英雄令 1
+Give 100元宝 3
+Break
+#ELSEACT
+MessageBox 材料不足,无法合成.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

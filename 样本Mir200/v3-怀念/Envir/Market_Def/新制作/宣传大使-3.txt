@@ -1,0 +1,75 @@
+[@main]
+;u7    u8  u9
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+\ \
+尊敬的玩家您好：<【怀念沉默感谢一路有你！】/SCOLOR=249>\
+本服为了让兄弟们再聚沙城特推出<宣传大使>称号\
+宣传大使称号可以<联系管理>做推广领取宣传码或充值10积分\
+从<以下>进入QQ群联系<群主>或<管理>，宣传3个群领取\
+QQ群:123456\  \
+<积分兑换/@积分兑换>     <宣传码兑换/@@InPutString88>     <鼠标移动到这里查看宣传大使奖励|250#01.召唤神兽(学习麒麟武兽法兽)/SCOLOR=251>\
+
+[@InPutString88]
+#IF
+EQUAL S88
+#ACT
+messagebox 请不要输入空内容！
+BREAK
+
+
+
+#IF
+CheckTextList ..\..\..\..\宣传奖励.txt <$STR(S88)>
+#ACT
+;DelTextList ..\..\..\..\宣传奖励.txt <$STR(S88)>
+SET [4] 1
+GIVE 召唤神兽 1
+GiveFengHao 宣传大使
+goto @main
+#CALL [\1游戏登陆\属性加成.txt] @属性加成
+#CALL [\1游戏登陆\爆率加成.txt] @爆率加成
+SENDMSG 5 <$USERNAME>成功加入本服宣传大使！
+messagebox 领取成功！
+#ELSEACT
+messagebox 领取失败。宣传码错误！
+
+[@积分兑换]
+#IF
+CHECK [4] 1
+#ACT
+MESSAGEBOX 你已经是本服宣传大使了!
+BREAK
+
+#IF
+CHECKCREDITPOINT > 9
+#ACT
+CREDITPOINT - 10
+SET [4] 1
+GIVE 召唤神兽 1
+GiveFengHao 宣传大使
+goto @main
+#CALL [\1游戏登陆\属性加成.txt] @属性加成
+#CALL [\1游戏登陆\爆率加成.txt] @爆率加成
+SENDMSG 5 <$USERNAME>成功加入本服宣传大使！
+break
+#IF
+CHECKGAMEGIRD > 9
+#ACT
+GAMEGIRD - 10
+SET [4] 1
+GIVE 召唤神兽 1
+GiveFengHao 宣传大使
+goto @main
+#CALL [\1游戏登陆\属性加成.txt] @属性加成
+#CALL [\1游戏登陆\爆率加成.txt] @爆率加成
+SENDMSG 5 <$USERNAME>成功加入本服宣传大使！
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:积分或者转区积分不足10点
+break
+
+
+

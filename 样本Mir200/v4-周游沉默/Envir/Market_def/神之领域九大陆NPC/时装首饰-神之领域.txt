@@ -1,0 +1,101 @@
+[@main]
+#if
+#ACT
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+<><据说上古流传下来的神器，分布在玛法大陆的各各角落！/SCOLOR=70>\
+<><神器犹豫威力强大，想要得到它，不只是人类！/SCOLOR=70>\
+<><被盘踞的首领占为己有，要从它们手中取得神器不是易事！/SCOLOR=70>\ \
+<><ITEMSHOW:1898:0:0:0:1/@首饰1>      <ITEMSHOW:1899:0:0:0:1/@首饰2>      <ITEMSHOW:1900:0:0:0:1/@首饰3>      <ITEMSHOW:1901:0:0:0:1/@首饰4>\ 
+
+
+
+
+[@首饰1]
+#ACT
+MessageBox  合成:<[恒古匆匆]/FCOLOR=253>\\<需要五色神羽*100+飞鸿踏雪*1+3000Rmb点/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @1 @取消合成
+
+[@1]
+#if
+CheckItem  飞鸿踏雪 1
+CheckItem  五色神羽 100
+CHECKGameDiamond > 2999
+#ACT
+GameDiamond - 3000
+Take 五色神羽 100
+Take 飞鸿踏雪 1
+Give 恒古匆匆 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@首饰2]
+#ACT
+MessageBox  合成:<[传奇寞路]/FCOLOR=253>\\<需要五色神羽*100+龙王神力*1+3000Rmb点/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @2 @取消合成
+
+[@2]
+#if
+CheckItem  龙王神力 1
+CheckItem  五色神羽 100
+CHECKGameDiamond > 2999
+#ACT
+GameDiamond - 3000
+Take 五色神羽 100
+Take 龙王神力 1
+Give 传奇寞路 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@首饰3]
+#ACT
+MessageBox  合成:<[太上忘情]/FCOLOR=253>\\<需要五色神羽*100+山河画卷*1+3000Rmb点/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @3 @取消合成
+
+[@3]
+#if
+CheckItem  山河画卷 1
+CheckItem  五色神羽 100
+CHECKGameDiamond > 2999
+#ACT
+GameDiamond - 3000
+Take 五色神羽 100
+Take 山河画卷 1
+Give 太上忘情 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+
+[@首饰4]
+#ACT
+MessageBox  合成:<[净天之命]/FCOLOR=253>\\<需要五色神羽*100+琉璃月*1+3000Rmb点/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @4 @取消合成
+
+[@4]
+#if
+CheckItem  琉璃月 1
+CheckItem  五色神羽 100
+CHECKGameDiamond > 2999
+#ACT
+GameDiamond - 3000
+Take 五色神羽 100
+Take 琉璃月 1
+Give 净天之命 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+
+[@取消合成]
+#ACT
+Sendmsg 7 取消合成
+Break
+
+
+
+
+

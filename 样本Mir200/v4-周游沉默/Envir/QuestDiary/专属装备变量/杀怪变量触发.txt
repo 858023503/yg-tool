@@ -1,0 +1,129 @@
+[@杀怪变量触发]
+{
+#IF
+EQUAL t50 未击杀
+EQUAL <$KILLMONNAME> 花仙子
+#ACT
+MOV t50 已击杀
+
+#IF
+EQUAL t51 未击杀
+EQUAL <$KILLMONNAME> 九绝尸王
+#ACT
+MOV t51 已击杀
+
+#IF
+EQUAL t52 未击杀
+EQUAL <$KILLMONNAME> 迷失洞主
+#ACT
+MOV t52 已击杀
+
+#IF
+EQUAL t53 未击杀
+EQUAL <$KILLMONNAME> 玄冥教主
+#ACT
+MOV t53 已击杀
+
+
+
+#IF
+EQUAL t11
+EQUAL <$KILLMONNAME> 炼狱霸刀·狂傲天【无天】
+#ACT
+MOV t11 已击杀
+
+#IF
+EQUAL t12
+EQUAL <$KILLMONNAME> 死亡骑士·阿尔萨斯·亡灵
+#ACT
+MOV t12 已击杀
+
+#IF
+EQUAL t13
+EQUAL <$KILLMONNAME> 半神之子·塞纳留斯·教父
+#ACT
+MOV t13 已击杀
+#IF
+EQUAL t14
+EQUAL <$KILLMONNAME> 囚笼守护·复仇女神玛维
+#ACT
+MOV t14 已击杀
+#IF
+EQUAL t15
+EQUAL <$KILLMONNAME> 罪恶克星·杀戮【神魔】
+#ACT
+MOV t15 已击杀
+#IF
+EQUAL t16
+EQUAL <$KILLMONNAME> 鬼女红叶·鬼寐【孤寂】
+#ACT
+MOV t16 已击杀
+#IF
+EQUAL t17
+EQUAL <$KILLMONNAME> 永恒之王·亚瑟·潘德拉贡
+#ACT
+MOV t17 已击杀
+#IF
+EQUAL t18
+EQUAL <$KILLMONNAME> 烈焰树妖【仲古】·至兇
+#ACT
+MOV t18 已击杀
+#IF
+EQUAL t19
+EQUAL <$KILLMONNAME> 大主教阿伦索斯·白银之手
+#ACT
+MOV t19 已击杀
+
+
+#or
+EQUAL <$MAP> 阴阳两界1
+EQUAL <$MAP> 阴阳两界2
+#ACT
+INC U36 1
+SENDMSG 7 [系统提示]：=============当前地图除魔数量：<$STR(U36)>===================
+
+#or
+EQUAL <$MAP> 天眼幻境1
+EQUAL <$MAP> 天眼幻境2
+#ACT
+INC U37 1
+SENDMSG 7 [系统提示]：=============当前地图除魔数量：<$STR(U37)>===================
+
+#or
+EQUAL <$MAP> 神墓通道
+EQUAL <$MAP> 神之墓地
+#ACT
+INC U38 1
+SENDMSG 7 [系统提示]：=============当前地图除魔数量：<$STR(U38)>===================
+
+#or
+EQUAL <$MAP> 风云之路
+EQUAL <$MAP> 风云之地
+#ACT
+INC U39 1
+SENDMSG 7 [系统提示]：=============当前地图除魔数量：<$STR(U39)>===================
+
+#or
+EQUAL <$MAP> 海角天涯
+EQUAL <$MAP> 天涯海角
+#ACT
+INC U40 1
+SENDMSG 7 [系统提示]：=============当前地图除魔数量：<$STR(U40)>===================
+
+#or
+EQUAL <$MAP> 审判广场
+EQUAL <$MAP> 审判之地
+#ACT
+INC U41 1
+SENDMSG 7 [系统提示]：=============当前地图除魔数量：<$STR(U41)>===================
+
+#or
+EQUAL <$MAP> 妖魔之路
+EQUAL <$MAP> 妖神殿
+#ACT
+INC U42 1
+SENDMSG 7 [系统提示]：=============当前地图除魔数量：<$STR(U42)>===================
+
+
+
+}

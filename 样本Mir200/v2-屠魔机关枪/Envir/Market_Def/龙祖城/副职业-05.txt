@@ -1,0 +1,172 @@
+[@main]
+
+
+#if
+EQUAL N$副职业 0
+#act
+MOV S$副职业背景图 <&img:41:50:205:72>
+MOV S$副职业动画 <&PlayImgEx:50:11:31:80:1:205:72:0>
+MOV S$炼丹师图标 3:3:3
+MOV S$炼器师图标 6:5:6
+MOV S$淘金者图标 8:7:8
+
+#if
+EQUAL N$副职业 1
+#act
+MOV S$副职业背景图 <&img:67:50:205:72>
+MOV S$副职业动画 <&PlayImgEx:50:42:26:80:1:205:72:0>
+MOV S$炼丹师图标 4:3:4
+MOV S$炼器师图标 5:5:5
+MOV S$淘金者图标 8:7:8
+
+#if
+EQUAL N$副职业 2
+#act
+MOV S$副职业背景图 <&img:96:50:205:72>
+MOV S$副职业动画 <&PlayImgEx:50:68:29:80:1:205:72:0>
+MOV S$炼丹师图标 4:3:4
+MOV S$炼器师图标 6:5:6
+MOV S$淘金者图标 7:7:7
+
+
+#IF
+EQUAL U85 1
+#act
+MOV S$副职业背景图 <&img:167:50:205:72>
+MOV S$副职业动画 <&PlayImgEx:50:133:35:80:1:205:72:0>
+MOV S$炼丹师图标 3:3:3
+MOV S$炼器师图标 6:5:6
+MOV S$淘金者图标 8:7:8
+
+
+
+
+#IF
+EQUAL U86 1
+#act
+MOV S$副职业背景图 <&img:132:50:205:72>
+MOV S$副职业动画 <&PlayImgEx:50:97:36:80:1:205:72:0>
+MOV S$炼丹师图标 4:3:4
+MOV S$炼器师图标 5:5:5
+MOV S$淘金者图标 8:7:8
+
+#IF
+EQUAL U87 1
+#act
+MOV S$副职业背景图 <&img:203:50:205:72>
+MOV S$副职业动画 <&PlayImgEx:50:168:36:80:1:205:72:0>
+MOV S$炼丹师图标 4:3:4
+MOV S$炼器师图标 6:5:6
+MOV S$淘金者图标 7:7:7
+
+#if
+#act
+OPENMERCHANTBIGDLG 50 10 0 4 0 -100 1 867 65 0
+#say
+<$STR(S$副职业背景图)>
+<$STR(S$副职业动画)>
+
+<&IMGEX:50:<$STR(S$炼丹师图标)>:39:50/@炼丹师>
+<&IMGEX:50:<$STR(S$炼器师图标)>:39:173/@炼器师>
+<&IMGEX:50:<$STR(S$淘金者图标)>:39:280/@淘金者>
+
+<&IMGEX:50:0:1:2:405:310/@解锁副职业>
+
+[@炼丹师]
+#or
+EQUAL U85 1
+EQUAL U86 1
+EQUAL U87 1
+#act
+messagebox 你已经选择过副职业了
+break
+
+#IF
+EQUAL U85 0
+EQUAL U86 0
+EQUAL U87 0
+#act
+MOV N$副职业 0
+goto @main
+#ELSEACT
+SENDMSG 6 你已选择过副职业了
+[@炼器师]
+
+#or
+EQUAL U85 1
+EQUAL U86 1
+EQUAL U87 1
+#act
+messagebox 你已经选择过副职业了
+break
+#IF
+EQUAL U85 0
+EQUAL U86 0
+EQUAL U87 0
+#act
+MOV N$副职业 1
+goto @main
+#ELSEACT
+SENDMSG 6 你已选择过副职业了
+[@淘金者]
+#or
+EQUAL U85 1
+EQUAL U86 1
+EQUAL U87 1
+#act
+messagebox 你已经选择过副职业了
+break
+#IF
+EQUAL U85 0
+EQUAL U86 0
+EQUAL U87 0
+#act
+MOV N$副职业 2
+goto @main
+#ELSEACT
+SENDMSG 6 你已选择过副职业了
+
+[@解锁副职业]
+#if
+checkgamegird < 499
+#act
+messagebox 解锁副职业需要500传仙币
+break
+
+#IF
+EQUAL N$副职业 0
+EQUAL U85 0
+EQUAL U86 0
+EQUAL U87 0
+#ACT
+gamegird  - 500
+mov U85 1
+messagebox 炼丹师副职业学习成功
+GOTO @MAIN
+
+
+#IF
+EQUAL N$副职业 1
+EQUAL U85 0
+EQUAL U86 0
+EQUAL U87 0
+#ACT
+messagebox 炼器师副职业未开放
+break
+; gamegird  - 500
+; messagebox 炼器师副职业学习成功
+; MOV U86 1
+; GOTO @main
+
+#IF
+EQUAL N$副职业 2
+EQUAL U85 0
+EQUAL U86 0
+EQUAL U87 0
+#ACT
+messagebox 炼淘金者副职业未开放
+break
+; gamegird  - 500
+; messagebox 淘金者副职业学习成功
+; MOV U87 1
+; GOTO @main

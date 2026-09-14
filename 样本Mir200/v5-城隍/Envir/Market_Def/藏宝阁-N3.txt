@@ -1,0 +1,27 @@
+[@main]
+#if
+#act
+#say
+沙巴克成员免费进，非成员2万一次\ \
+<我是沙巴克成员/@抽奖检测>\ \
+<我是散修/@抽奖检测2>\ \
+
+
+[@抽奖检测]
+#if
+ISCASTLEGUILD
+#act
+mapmove  H201  16 100
+break
+
+
+[@抽奖检测2]
+#if
+CHECKGOLD 20000
+#ACT
+take 金币 20000
+mapmove  H201  110 183
+break
+
+
+

@@ -1,0 +1,52 @@
+[@MAIN]
+当你在凝视深渊时,深渊也在凝视着你\
+魔龙城自从那位自称破碎而来的【天师孙恩】\
+来了之后，形式便愈发的诡谲了\
+如果你有能力,希望能帮我去探一探他的底\
+
+<组队进入深渊之心|70#至少需要二名以上的玩家组队进入,发起者需缴纳5块[阎罗天子令]+20金刚石/@组队进入深渊之心>   <单人进入深渊之心|70#1需要缴纳5块[阎罗天子令]+50金刚石/@单人进入深渊之心>
+
+[@组队进入深渊之心]
+#IF
+SMALL <$GROUPMEMBERCOUNT> 2
+#ACT
+MESSAGEBOX 请组满2人再来！
+BREAK
+
+#IF
+CheckMapHumanCount bsrlm < 2
+#ACT
+MESSAGEBOX 你的队友与你不在同一地图！
+BREAK
+
+#OR
+NOT CHECKITEM 阎罗天子令 5
+CHECKGAMEDIAMOND < 20
+#ACT
+MESSAGEBOX 你的材料不够！
+BREAK
+
+#IF
+#ACT
+TAKE 阎罗天子令 5
+GAMEDIAMOND - 20
+GROUPMAPMOVE SY_H011 100 24
+
+[@单人进入深渊之心]
+#IF
+NOT CHECKITEM 阎罗天子令 5
+#ACT
+MESSAGEBOX 你没有5个【阎罗天子令】
+BREAK
+
+#IF
+SMALL <$GAMEDIAMOND> 50
+#ACT
+MESSAGEBOX 你没有【50金刚石】！
+BREAK
+
+#IF
+#ACT
+TAKE 阎罗天子令 5
+GAMEDIAMOND - 50
+MAPMOVE SY_H011

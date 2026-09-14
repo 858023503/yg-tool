@@ -1,0 +1,148 @@
+[@新人登陆]
+{
+
+
+
+#if
+ISNEWHUMAN
+#act
+;玩家所在区
+MOV U162 1
+;玩家统战区
+MOV T14 第1统战
+
+set [320] 1
+set [321] 1
+inc u399 1
+#CALL [\新手奖励\新手奖励.TXT] @新手奖励
+mapmove 3 176 131 3
+
+
+#if
+ISNEWHUMAN
+EQUAL <$GameDirectory> $常量_母端位置
+#act
+;玩家所在区
+MOV U162 9999
+;玩家统战区
+MOV T14 第1统战
+
+
+
+#if
+checkjob warrior
+ISNEWHUMAN
+#act
+ADDSKILL 基本剑术 0
+ADDSKILL 刺杀剑术 0
+ADDSKILL 仙法·万象魔咒 0
+ADDSKILL 野蛮冲撞 3
+ADDSKILL 战士机关枪 0
+ADDSKILL 不屈意志 3
+ADDSKILL 金殇斩 3
+MOV T11 战士
+;GIVE 入群礼包
+#IF
+checkjob wizard
+ISNEWHUMAN
+#act
+ADDSKILL 魔法精通 0
+ADDSKILL 群体雷电术 0
+ADDSKILL 漫天火雨打怪 0
+ADDSKILL 漫天火雨PK 0
+ADDSKILL 梵天圣火 0
+ADDSKILL 仙法·万象魔咒 0
+ADDSKILL 法师机关枪 0
+ADDSKILL 诱惑之光 0
+ADDSKILL 魔法盾 3
+MOV T11 法师
+MOV U83 1
+;GIVE 入群礼包
+#IF
+checkjob taoist
+ISNEWHUMAN
+#ACT
+ADDSKILL 精神力战法 0
+ADDSKILL 神愈术 0
+ADDSKILL 蛊毒术 0
+ADDSKILL 隐身术 0
+ADDSKILL 灵魂火葫 0
+ADDSKILL 天灵符爆 0
+ADDSKILL 召唤骷髅 0
+ADDSKILL 仙法·万象魔咒 0
+ADDSKILL 道士机关枪 0
+ADDSKILL 心灵召唤 3
+ADDSKILL 杀死宝宝 3
+ADDSKILL 双防之盾 3
+MOV T11 道士
+MOV U83 1
+;GIVE 入群礼包
+#if
+ISNEWHUMAN
+#ACT
+HAIRSTYLE 0
+;开盒子
+OpenGodBless ALL
+activationcasket
+SetSndacasket 1 
+ShowGodBless 1
+;开仓库
+OpenStoratge 2 1
+OpenStoratge 3 1
+OpenStoratge 4 1
+;仓库页数
+ExtBagPageCount + 4
+ExtBagOpenItemCount + 200
+gmexecute 加入行会
+gmexecute 允许行会传送
+gmexecute 允许记忆传送
+MOV T12 灵气出现
+MOV U82 19469
+MOV U83 1
+CHANGELEVEL = 10
+MOV T13 无
+;MAPMOVE CLT 24 20
+;预加载领取路费素材
+;新人登录血量
+MOV U309 100
+
+
+
+
+;和平模式
+changeattatckmode 1
+;机关枪技能攻击次数
+MOV U141 10
+;机关枪技能伤害
+; MOV U142 1000
+;机关枪减少的CD
+MOV U143 1
+;传仙盲盒随机时间爆率
+MOVR U151 1 181
+
+
+MOV T2 <$MACHINEID>
+GetPlayInfo IP S$登陆脚本IP地址
+MOV T3 <$STR(S$登陆脚本IP地址)>
+;账号
+MOV T4 <$USERID>
+MOV T5 <$USERNAME>
+
+
+; #if
+
+; LARGE G38 144
+; EQUAL <$LEVEL> 10
+; #act
+; messagebox 请去新区从新创建角色
+; sendmsg 5 请去新区从新创建角色
+; sendmsg 5 请去新区从新创建角色
+; sendmsg 5 请去新区从新创建角色
+; sendmsg 5 请去新区从新创建角色
+; sendmsg 5 请去新区从新创建角色
+; ChangeState 6 9999999
+; break
+
+
+
+}

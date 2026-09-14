@@ -1,0 +1,2078 @@
+[@进图浮现]
+{
+#if
+#act
+MOV N$高级幽魂宝箱给神品
+MOV N$超级幽魂宝箱给史诗
+MOV N$幽魂宝箱进度是否允许 0
+mov S$玩家当前大陆
+MOV S$玩家当前地图
+
+
+#if
+EQUAL <$MAP> <$USERNAME>的天命龙珠
+#act
+MOV S$玩家当前大陆 三大陆
+
+
+
+
+
+
+#IF
+EQUAL <$MAP> 3
+#ACT
+mov S$玩家当前大陆 土城
+break
+
+#IF
+EQUAL <$MAP> 01
+;暗夜成
+#ACT
+SCREENEFFECT 308 0 24 0 18 1 130 0 0 1
+mov S$玩家当前大陆 一大陆
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 02
+;暗夜成
+#ACT
+; SCREENEFFECT 308 0 24 0 18 1 130 0 0 1
+mov S$玩家当前大陆 二大陆
+
+Goto @统计属性
+break
+#IF
+EQUAL <$MAP> 03
+;暗夜成
+#ACT
+; SCREENEFFECT 308 0 24 0 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+
+Goto @统计属性
+break
+#IF
+EQUAL <$MAP> 04
+;暗夜成
+#ACT
+; SCREENEFFECT 308 0 24 0 18 1 130 0 0 1
+mov S$玩家当前大陆 四大陆
+
+Goto @统计属性
+break
+#IF
+EQUAL <$MAP> 05
+;暗夜成
+#ACT
+; SCREENEFFECT 308 0 24 0 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+
+Goto @统计属性
+break
+
+
+#IF
+EQUAL <$MAP> 08
+;冰火城
+#ACT
+;SCREENEFFECT 308 0 24 2140 18 1 130 0 0 1
+mov S$玩家当前大陆 八大陆
+Goto @统计属性
+break
+
+#or
+equal <$map> huanggong1
+equal <$map> huanggong2
+equal <$map> huanggong3
+equal <$map> huanggong4
+equal <$map> huanggong5
+equal <$map> huanggong6
+equal <$map> huanggong7
+equal <$map> huanggong8
+equal <$map> huanggong9
+equal <$map> huanggong10
+equal <$map> huanggong11
+equal <$map> huanggong12
+equal <$map> huanggong13
+equal <$map> huanggong14
+equal <$map> huanggong15
+equal <$map> huanggong16
+equal <$map> huanggong17
+equal <$map> huanggong18
+equal <$map> huanggong19
+equal <$map> huanggong20
+#act
+MOV S$玩家当前地图 皇宫
+
+
+
+#or
+equal <$map> kuafu1
+equal <$map> kuafu2
+equal <$map> kuafu3
+equal <$map> kuafu4
+equal <$map> kuafu5
+equal <$map> kuafu6
+equal <$map> kuafu7
+equal <$map> kuafu8
+equal <$map> kuafu9
+equal <$map> kuafu10
+equal <$map> kuafu11
+equal <$map> kuafu12
+equal <$map> kuafu13
+equal <$map> kuafu14
+equal <$map> kuafu15
+equal <$map> kuafu16
+equal <$map> kuafu17
+equal <$map> kuafu18
+equal <$map> kuafu19
+equal <$map> kuafu20
+#act
+MOV S$玩家当前地图 跨服
+
+
+
+#OR
+COMPARETEXT T14 第一统战
+COMPARETEXT T14 第二统战
+COMPARETEXT T14 第三统战
+COMPARETEXT T14 第四统战
+COMPARETEXT T14 第五统战
+COMPARETEXT T14 第六统战
+COMPARETEXT T14 第七统战
+COMPARETEXT T14 第八统战
+COMPARETEXT T14 第九统战
+COMPARETEXT T14 第十统战
+COMPARETEXT T14 第十一统战
+COMPARETEXT T14 第十二统战
+COMPARETEXT T14 第十三统战
+COMPARETEXT T14 第十四统战
+COMPARETEXT T14 第十五统战
+COMPARETEXT T14 第十六统战
+COMPARETEXT T14 第十七统战
+COMPARETEXT T14 第十八统战
+COMPARETEXT T14 第十九统战
+COMPARETEXT T14 第二十统战
+#act
+MOV S$跨服主城地图 kuafu1
+
+#if
+COMPARETEXT T14 第二十二统战
+#act
+MOV S$跨服主城地图  kuafu2
+
+#if
+COMPARETEXT T14 第二十三统战
+#act
+MOV S$跨服主城地图 kuafu3
+
+#if
+COMPARETEXT T14 第二十四统战
+#act
+MOV S$跨服主城地图 kuafu4
+
+#if
+COMPARETEXT T14 第二十五统战
+#act
+MOV S$跨服主城地图 kuafu5
+
+#if
+COMPARETEXT T14 第二十六统战
+#act
+MOV S$跨服主城地图 kuafu6
+
+#if
+COMPARETEXT T14 第二十七统战
+#act
+MOV S$跨服主城地图 kuafu7
+
+#if
+COMPARETEXT T14 第二十八统战
+#act
+MOV S$跨服主城地图 kuafu8
+
+#if
+COMPARETEXT T14 第二十九统战
+#act
+MOV S$跨服主城地图  kuafu9
+
+#if
+COMPARETEXT T14 第三十统战
+#act
+MOV S$跨服主城地图 kuafu10
+
+#IF
+COMPARETEXT T14 第三十一统战
+#act
+MOV S$跨服主城地图 kuafu11
+
+
+
+#IF
+COMPARETEXT T14 第三十二统战
+#act
+MOV S$跨服主城地图 kuafu12
+
+
+
+#IF
+COMPARETEXT T14 第三十三统战
+#act
+MOV S$跨服主城地图 kuafu13
+
+
+
+#IF
+COMPARETEXT T14 第三十四统战
+#act
+MOV S$跨服主城地图 kuafu14
+
+
+
+#IF
+COMPARETEXT T14 第三十五统战
+#act
+MOV S$跨服主城地图 kuafu15
+
+
+
+#IF
+COMPARETEXT T14 第三十六统战
+#act
+MOV S$跨服主城地图 kuafu16
+
+
+
+#IF
+COMPARETEXT T14 第三十七统战
+#act
+MOV S$跨服主城地图 kuafu17
+
+
+
+#IF
+COMPARETEXT T14 第三十八统战
+#act
+MOV S$跨服主城地图 kuafu18
+
+
+
+#IF
+COMPARETEXT T14 第三十九统战
+#act
+MOV S$跨服主城地图 kuafu19
+
+
+
+#IF
+COMPARETEXT T14 第四十统战
+#act
+MOV S$跨服主城地图 kuafu20
+
+
+
+
+#IF
+EQUAL <$MAP> 2101
+;骷髅矿区一层
+#ACT
+SCREENEFFECT 308 0 24 20 18 1 130 0 0 1
+mov S$玩家当前大陆 一大陆
+MOV S$玩家当前地图 骷髅矿区
+goto @骷髅矿区进图判断
+
+Goto @统计属性
+
+break
+
+#IF
+EQUAL <$MAP> 2102
+;骷髅矿区二层
+#ACT
+SCREENEFFECT 308 0 24 40 18 1 130 0 0 1
+mov S$玩家当前大陆 一大陆
+MOV S$玩家当前地图 骷髅矿区
+goto @骷髅矿区进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 2103
+;骷髅矿区三层
+#ACT
+SCREENEFFECT 308 0 24 60 18 1 130 0 0 1
+mov S$玩家当前大陆 一大陆
+MOV S$玩家当前地图 骷髅矿区
+goto @骷髅矿区进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 1101
+;僵尸矿洞一层
+#ACT
+SCREENEFFECT 308 0 24 80 18 1 130 0 0 1
+mov S$玩家当前大陆 一大陆
+MOV S$玩家当前地图 僵尸矿洞
+goto @僵尸矿洞进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 1102
+;僵尸矿洞二层
+#ACT
+SCREENEFFECT 308 0 24 100 18 1 130 0 0 1
+mov S$玩家当前大陆 一大陆
+MOV S$玩家当前地图 僵尸矿洞
+goto @僵尸矿洞进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 1103
+;僵尸矿洞三层
+#ACT
+SCREENEFFECT 308 0 24 120 18 1 130 0 0 1
+mov S$玩家当前大陆 一大陆
+MOV S$玩家当前地图 僵尸矿洞
+goto @僵尸矿洞进图判断
+
+Goto @统计属性
+break
+
+
+
+#IF
+EQUAL <$MAP> 2201
+;蜈蚣洞一层
+#ACT
+SCREENEFFECT 308 0 24 260 18 1 130 0 0 1
+mov S$玩家当前大陆 一大陆
+MOV S$玩家当前地图 蜈蚣洞
+goto @蜈蚣洞进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 2202
+;蜈蚣洞二层
+#ACT
+SCREENEFFECT 308 0 24 280 18 1 130 0 0 1
+mov S$玩家当前大陆 一大陆
+MOV S$玩家当前地图 蜈蚣洞
+goto @蜈蚣洞进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 1201
+;兽人古墓一层
+#ACT
+SCREENEFFECT 308 0 24 140 18 1 130 0 0 1
+mov S$玩家当前大陆 一大陆
+MOV S$玩家当前地图 兽人古墓
+goto @兽人古墓进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 1202
+;兽人古墓二层
+#ACT
+SCREENEFFECT 308 0 24 160 18 1 130 0 0 1
+mov S$玩家当前大陆 一大陆
+MOV S$玩家当前地图 兽人古墓
+goto @兽人古墓进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 1203
+;兽人古墓三层
+#ACT
+SCREENEFFECT 308 0 24 180 18 1 130 0 0 1
+mov S$玩家当前大陆 一大陆
+MOV S$玩家当前地图 兽人古墓
+goto @兽人古墓进图判断
+
+Goto @统计属性
+break
+;香石古墓无效
+
+#IF
+EQUAL <$MAP> 1204
+;香石古墓一层
+#ACT
+SCREENEFFECT 308 0 24 200 18 1 130 0 0 1
+mov S$玩家当前大陆 一大陆
+break
+
+#IF
+EQUAL <$MAP> 1205
+;香石古墓二层
+#ACT
+SCREENEFFECT 308 0 24 220 18 1 130 0 0 1
+mov S$玩家当前大陆 一大陆
+break
+;香石古墓无效
+#IF
+EQUAL <$MAP> 02
+;天威城
+#ACT
+SCREENEFFECT 308 0 24 240 18 1 130 0 0 1
+mov S$玩家当前大陆 二大陆
+break
+
+#IF
+EQUAL <$MAP> 1301
+;沃玛寺庙一层
+#ACT
+SCREENEFFECT 308 0 24 380 18 1 130 0 0 1
+mov S$玩家当前大陆 二大陆
+MOV S$玩家当前地图 沃玛寺庙
+goto @沃玛寺庙进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 1302
+;沃玛寺庙二层
+#ACT
+SCREENEFFECT 308 0 24 400 18 1 130 0 0 1
+mov S$玩家当前大陆 二大陆
+MOV S$玩家当前地图 沃玛寺庙
+goto @沃玛寺庙进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 1303
+;沃玛寺庙三层
+#ACT
+SCREENEFFECT 308 0 24 420 18 1 130 0 0 1
+mov S$玩家当前大陆 二大陆
+MOV S$玩家当前地图 沃玛寺庙
+goto @沃玛寺庙进图判断
+
+Goto @统计属性
+break
+
+
+
+#IF
+EQUAL <$MAP> 1401
+;祖玛秘境一层
+#ACT
+SCREENEFFECT 308 0 24 300 18 1 130 0 0 1
+mov S$玩家当前大陆 二大陆
+MOV S$玩家当前地图 祖玛秘境
+goto @祖玛秘境进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 1402
+;祖玛秘境二层
+#ACT
+SCREENEFFECT 308 0 24 320 18 1 130 0 0 1
+mov S$玩家当前大陆 二大陆
+MOV S$玩家当前地图 祖玛秘境
+goto @祖玛秘境进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 1403
+;祖玛秘境三层
+#ACT
+SCREENEFFECT 308 0 24 340 18 1 130 0 0 1
+mov S$玩家当前大陆 二大陆
+MOV S$玩家当前地图 祖玛秘境
+goto @祖玛秘境进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 1404
+;祖玛秘境四层
+#ACT
+SCREENEFFECT 308 0 24 360 18 1 130 0 0 1
+mov S$玩家当前大陆 二大陆
+MOV S$玩家当前地图 祖玛秘境
+goto @祖玛秘境进图判断
+
+Goto @统计属性
+break
+
+
+
+#IF
+EQUAL <$MAP> 2104
+;骨魔洞一层
+#ACT
+SCREENEFFECT 308 0 24 440 18 1 130 0 0 1
+mov S$玩家当前大陆 二大陆
+MOV S$玩家当前地图 骨魔洞
+goto @骨魔洞进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 2105
+;骨魔洞二层
+#ACT
+SCREENEFFECT 308 0 24 460 18 1 130 0 0 1
+mov S$玩家当前大陆 二大陆
+MOV S$玩家当前地图 骨魔洞
+goto @骨魔洞进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 2106
+;骨魔洞三层
+#ACT
+SCREENEFFECT 308 0 24 480 18 1 130 0 0 1
+mov S$玩家当前大陆 二大陆
+MOV S$玩家当前地图 骨魔洞
+goto @骨魔洞进图判断
+
+Goto @统计属性
+break
+
+
+#IF
+EQUAL <$MAP> 2501
+;恶魔营地一层
+#ACT
+SCREENEFFECT 308 0 24 2920 20 1 130 0 0 1
+mov S$玩家当前大陆 二大陆
+MOV S$玩家当前地图 恶魔营地
+goto @恶魔营地进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 2502
+;恶魔营地二层
+#ACT
+SCREENEFFECT 308 0 24 2940 20 1 130 0 0 1
+mov S$玩家当前大陆 二大陆
+MOV S$玩家当前地图 恶魔营地
+goto @恶魔营地进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 2503
+;恶魔营地三层
+#ACT
+SCREENEFFECT 308 0 24 2960 20 1 130 0 0 1
+mov S$玩家当前大陆 二大陆
+MOV S$玩家当前地图 恶魔营地
+goto @恶魔营地进图判断
+
+Goto @统计属性
+break
+
+
+
+
+
+
+
+#IF
+EQUAL <$MAP> 03
+;曙光白日城
+#ACT
+SCREENEFFECT 308 0 24 500 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+break
+
+#IF
+EQUAL <$MAP> 2203
+;蚂蚁洞一层
+#ACT
+SCREENEFFECT 308 0 24 520 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 蚂蚁洞
+goto @蚂蚁洞进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> MAP067
+;蚂蚁洞一层
+#ACT
+SCREENEFFECT 308 0 24 520 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 剑冢
+
+
+Goto @统计属性
+break
+
+
+#IF
+EQUAL <$MAP> 2204
+;蚂蚁洞二层
+#ACT
+SCREENEFFECT 308 0 24 540 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 蚂蚁洞
+goto @蚂蚁洞进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 2205
+;蚂蚁洞三层
+#ACT
+SCREENEFFECT 308 0 24 560 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 蚂蚁洞
+goto @蚂蚁洞进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 2301
+;精灵谷一层
+#ACT
+SCREENEFFECT 308 0 24 580 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 精灵谷
+goto @精灵谷进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 2302
+;精灵谷二层
+#ACT
+SCREENEFFECT 308 0 24 600 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 精灵谷
+goto @精灵谷进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 2303
+;精灵谷三层
+#ACT
+SCREENEFFECT 308 0 24 620 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 精灵谷
+goto @精灵谷进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 2304
+;精灵谷四层
+#ACT
+SCREENEFFECT 308 0 24 640 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 精灵谷
+goto @精灵谷进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 2305
+;精灵谷五层
+#ACT
+SCREENEFFECT 308 0 24 660 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 精灵谷
+goto @精灵谷进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 2306
+;精灵谷六层
+#ACT
+SCREENEFFECT 308 0 24 680 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 精灵谷
+goto @精灵谷进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 2307
+;精灵谷七层
+#ACT
+SCREENEFFECT 308 0 24 700 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 精灵谷
+goto @精灵谷进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 2308
+;精灵谷八层
+#ACT
+SCREENEFFECT 308 0 24 720 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 精灵谷
+goto @精灵谷进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 2401
+;黑暗魔殿一层
+#ACT
+SCREENEFFECT 308 0 24 740 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 黑暗魔殿
+goto @黑暗魔殿进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 2402
+;黑暗魔殿二层
+#ACT
+SCREENEFFECT 308 0 24 760 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 黑暗魔殿
+goto @黑暗魔殿进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 2403
+;黑暗魔殿三层
+#ACT
+SCREENEFFECT 308 0 24 780 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 黑暗魔殿
+goto @黑暗魔殿进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 3101
+;赤月峡谷一层
+#ACT
+SCREENEFFECT 308 0 24 800 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 赤月峡谷
+goto @赤月峡谷进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 3102
+;赤月峡谷二层
+#ACT
+SCREENEFFECT 308 0 24 820 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 赤月峡谷
+goto @赤月峡谷进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 3103
+;赤月峡谷三层
+#ACT
+SCREENEFFECT 308 0 24 840 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 赤月峡谷
+goto @赤月峡谷进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 3104
+;赤月峡谷四层
+#ACT
+SCREENEFFECT 308 0 24 860 18 1 130 0 0 1
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 赤月峡谷
+goto @赤月峡谷进图判断
+
+Goto @统计属性
+break
+
+
+
+#IF
+EQUAL <$MAP> 04
+;归隐城
+#ACT
+SCREENEFFECT 308 0 24 880 18 1 130 0 0 1
+mov S$玩家当前大陆 四大陆
+
+break
+
+#IF
+EQUAL <$MAP> 3201
+;封魔古刹一层
+#ACT
+SCREENEFFECT 308 0 24 900 18 1 130 0 0 1
+mov S$玩家当前大陆 四大陆
+MOV S$玩家当前地图 封魔古刹
+goto @封魔古刹进图判断
+
+Goto @统计属性
+break
+
+
+#IF
+EQUAL <$MAP> 3202
+;封魔古刹二层
+#ACT
+SCREENEFFECT 308 0 24 920 18 1 130 0 0 1
+mov S$玩家当前大陆 四大陆
+MOV S$玩家当前地图 封魔古刹
+goto @封魔古刹进图判断
+
+Goto @统计属性
+break
+
+
+#IF
+EQUAL <$MAP> 3203
+;封魔古刹三层
+#ACT
+SCREENEFFECT 308 0 24 940 18 1 130 0 0 1
+mov S$玩家当前大陆 四大陆
+MOV S$玩家当前地图 封魔古刹
+goto @封魔古刹进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 3204
+;封魔古刹四层
+#ACT
+SCREENEFFECT 308 0 24 960 18 1 130 0 0 1
+mov S$玩家当前大陆 四大陆
+MOV S$玩家当前地图 封魔古刹
+goto @封魔古刹进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 3301
+;牛魔寺庙一层
+#ACT
+SCREENEFFECT 308 0 24 980 18 1 130 0 0 1
+mov S$玩家当前大陆 四大陆
+MOV S$玩家当前地图 牛魔寺庙
+goto @牛魔寺庙进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 3302
+;牛魔寺庙二层
+#ACT
+SCREENEFFECT 308 0 24 1000 18 1 130 0 0 1
+mov S$玩家当前大陆 四大陆
+MOV S$玩家当前地图 牛魔寺庙
+goto @牛魔寺庙进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 3303
+;牛魔寺庙三层
+#ACT
+SCREENEFFECT 308 0 24 1020 18 1 130 0 0 1
+mov S$玩家当前大陆 四大陆
+MOV S$玩家当前地图 牛魔寺庙
+goto @牛魔寺庙进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 3401
+;魔毒蚀地一层
+#ACT
+SCREENEFFECT 308 0 24 1040 18 1 130 0 0 1
+mov S$玩家当前大陆 四大陆
+MOV S$玩家当前地图 魔毒蚀地
+goto @魔毒蚀地进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 3402
+;魔毒蚀地二层
+#ACT
+SCREENEFFECT 308 0 24 1060 18 1 130 0 0 1
+mov S$玩家当前大陆 四大陆
+MOV S$玩家当前地图 魔毒蚀地
+goto @魔毒蚀地进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 3403
+;魔毒蚀地三层
+#ACT
+SCREENEFFECT 308 0 24 1080 18 1 130 0 0 1
+mov S$玩家当前大陆 四大陆
+MOV S$玩家当前地图 魔毒蚀地
+goto @魔毒蚀地进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 4101
+;封魔宫一层
+#ACT
+SCREENEFFECT 308 0 24 1100 18 1 130 0 0 1
+mov S$玩家当前大陆 四大陆
+MOV S$玩家当前地图 封魔宫
+goto @封魔宫进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 4102
+;封魔宫二层
+#ACT
+SCREENEFFECT 308 0 24 1120 18 1 130 0 0 1
+mov S$玩家当前大陆 四大陆
+MOV S$玩家当前地图 封魔宫
+goto @封魔宫进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 4103
+;封魔宫三层
+#ACT
+SCREENEFFECT 308 0 24 1140 18 1 130 0 0 1
+mov S$玩家当前大陆 四大陆
+MOV S$玩家当前地图 封魔宫
+goto @封魔宫进图判断
+
+Goto @统计属性
+break
+
+
+#IF
+EQUAL <$MAP> 05
+;龙祖城
+#ACT
+SCREENEFFECT 308 0 24 1160 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+
+break
+
+
+#IF
+EQUAL <$MAP> 4201
+;魔龙峡谷一层
+#ACT
+SCREENEFFECT 308 0 24 1180 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+MOV S$玩家当前地图 魔龙峡谷
+goto @魔龙峡谷进图判断
+
+Goto @统计属性
+break
+
+
+#IF
+EQUAL <$MAP> 4202
+;魔龙峡谷二层
+#ACT
+SCREENEFFECT 308 0 24 1200 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+MOV S$玩家当前地图 魔龙峡谷
+goto @魔龙峡谷进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 4203
+;魔龙沼泽一层
+#ACT
+SCREENEFFECT 308 0 24 1220 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+MOV S$玩家当前地图 魔龙峡谷
+goto @魔龙峡谷进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 4204
+;魔龙沼泽二层
+#ACT
+SCREENEFFECT 308 0 24 1240 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+MOV S$玩家当前地图 魔龙峡谷
+goto @魔龙峡谷进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 4205
+;魔龙地宫一层
+#ACT
+SCREENEFFECT 308 0 24 1260 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+MOV S$玩家当前地图 魔龙峡谷
+goto @魔龙峡谷进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 4206
+;魔龙地宫二层
+#ACT
+SCREENEFFECT 308 0 24 1280 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+MOV S$玩家当前地图 魔龙峡谷
+goto @魔龙峡谷进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 4301
+;幽暗地底一层
+#ACT
+SCREENEFFECT 308 0 24 1300 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+MOV S$玩家当前地图 幽暗地底
+goto @幽暗地底进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 4302
+;幽暗地底二层
+#ACT
+SCREENEFFECT 308 0 24 1320 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+MOV S$玩家当前地图 幽暗地底
+goto @幽暗地底进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 4303
+;幽暗地底三层
+#ACT
+SCREENEFFECT 308 0 24 1340 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+MOV S$玩家当前地图 幽暗地底
+goto @幽暗地底进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 4304
+;幽暗地底四层
+#ACT
+SCREENEFFECT 308 0 24 1360 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+MOV S$玩家当前地图 幽暗地底
+goto @幽暗地底进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 4401
+;魔化工厂一层
+#ACT
+SCREENEFFECT 308 0 24 1380 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+MOV S$玩家当前地图 魔化工厂
+goto @魔化工厂进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 4402
+;魔化工厂二层
+#ACT
+SCREENEFFECT 308 0 24 1400 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+MOV S$玩家当前地图 魔化工厂
+goto @魔化工厂进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 4403
+;魔化工厂三层
+#ACT
+SCREENEFFECT 308 0 24 1420 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+MOV S$玩家当前地图 魔化工厂
+goto @魔化工厂进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 4404
+;魔化工厂四层
+#ACT
+SCREENEFFECT 308 0 24 1440 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+MOV S$玩家当前地图 魔化工厂
+goto @魔化工厂进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 5301
+;火龙地洞一层
+#ACT
+SCREENEFFECT 308 0 24 1460 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+MOV S$玩家当前地图 火龙地洞
+goto @火龙地洞进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 5302
+;火龙地洞二层
+#ACT
+SCREENEFFECT 308 0 24 1480 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+MOV S$玩家当前地图 火龙地洞
+goto @火龙地洞进图判断
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 5303
+;火龙地洞三层
+#ACT
+SCREENEFFECT 308 0 24 1500 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+MOV S$玩家当前地图 火龙地洞
+goto @火龙地洞进图判断
+
+Goto @统计属性
+break
+
+
+
+#IF
+EQUAL <$MAP> 5304
+;火龙地洞四层
+#ACT
+SCREENEFFECT 308 0 24 1520 18 1 130 0 0 1
+mov S$玩家当前大陆 五大陆
+MOV S$玩家当前地图 火龙地洞
+goto @火龙地洞进图判断
+
+Goto @统计属性
+break
+#IF
+EQUAL <$MAP> 06
+;兰陵城
+#ACT
+mov S$玩家当前大陆 六大陆
+MOV N$幽魂宝箱进度是否允许 1
+
+Goto @统计属性
+
+#IF
+EQUAL <$MAP> 5101
+;火龙地洞四层
+#ACT
+mov S$玩家当前大陆 六大陆
+MOV S$玩家当前地图 雪城旧址
+MOV N$幽魂宝箱进度是否允许 1
+
+Goto @统计属性
+break
+
+
+#IF
+EQUAL <$MAP> 5102
+;火龙地洞四层
+#ACT
+mov S$玩家当前大陆 六大陆
+MOV S$玩家当前地图 雪城旧址
+MOV N$幽魂宝箱进度是否允许 1
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 5103
+;火龙地洞四层
+#ACT
+mov S$玩家当前大陆 六大陆
+MOV S$玩家当前地图 雪城旧址
+MOV N$幽魂宝箱进度是否允许 1
+
+Goto @统计属性
+break
+
+
+#IF
+EQUAL <$MAP> 5104
+;火龙地洞四层
+#ACT
+mov S$玩家当前大陆 六大陆
+MOV S$玩家当前地图 冰晶宫
+MOV N$幽魂宝箱进度是否允许 1
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 5105
+;火龙地洞四层
+#ACT
+mov S$玩家当前大陆 六大陆
+MOV S$玩家当前地图 冰晶宫
+MOV N$幽魂宝箱进度是否允许 1
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 5106
+;火龙地洞四层
+#ACT
+mov S$玩家当前大陆 六大陆
+MOV S$玩家当前地图 冰晶宫
+MOV N$幽魂宝箱进度是否允许 1
+
+Goto @统计属性
+break
+
+
+#IF
+EQUAL <$MAP> 5201
+;火龙地洞四层
+#ACT
+mov S$玩家当前大陆 六大陆
+MOV S$玩家当前地图 沼泽秘境
+MOV N$幽魂宝箱进度是否允许 1
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 5201
+;火龙地洞四层
+#ACT
+mov S$玩家当前大陆 六大陆
+MOV S$玩家当前地图 沼泽秘境
+MOV N$幽魂宝箱进度是否允许 1
+
+Goto @统计属性
+break
+
+
+#IF
+EQUAL <$MAP> 5202
+;火龙地洞四层
+#ACT
+mov S$玩家当前大陆 六大陆
+MOV S$玩家当前地图 沼泽秘境
+MOV N$幽魂宝箱进度是否允许 1
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 5203
+;火龙地洞四层
+#ACT
+mov S$玩家当前大陆 六大陆
+MOV S$玩家当前地图 沼泽秘境
+MOV N$幽魂宝箱进度是否允许 1
+
+Goto @统计属性
+break
+
+
+#IF
+EQUAL <$MAP> 5204
+;火龙地洞四层
+#ACT
+mov S$玩家当前大陆 六大陆
+MOV S$玩家当前地图 沼泽秘境
+MOV N$幽魂宝箱进度是否允许 1
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 5401
+;火龙地洞四层
+#ACT
+mov S$玩家当前大陆 六大陆
+MOV S$玩家当前地图 万劫地宫
+MOV N$幽魂宝箱进度是否允许 1
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 5402
+;火龙地洞四层
+#ACT
+mov S$玩家当前大陆 六大陆
+MOV S$玩家当前地图 万劫地宫
+MOV N$幽魂宝箱进度是否允许 1
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 5403
+;火龙地洞四层
+#ACT
+mov S$玩家当前大陆 六大陆
+MOV S$玩家当前地图 万劫地宫
+MOV N$幽魂宝箱进度是否允许 1
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 5404
+;火龙地洞四层
+#ACT
+mov S$玩家当前大陆 六大陆
+MOV S$玩家当前地图 万劫地宫
+MOV N$幽魂宝箱进度是否允许 1
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 5405
+;火龙地洞四层
+#ACT
+mov S$玩家当前大陆 六大陆
+MOV S$玩家当前地图 万劫地宫
+MOV N$幽魂宝箱进度是否允许 1
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 5406
+;火龙地洞四层
+#ACT
+mov S$玩家当前大陆 六大陆
+MOV S$玩家当前地图 万劫地宫
+MOV N$幽魂宝箱进度是否允许 1
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 07
+;兰陵城
+#ACT
+SCREENEFFECT 308 0 24 1880 18 1 130 0 0 1
+mov S$玩家当前大陆 七大陆
+MOV N$幽魂宝箱进度是否允许 1
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 7101
+;精绝古墓一层
+#ACT
+SCREENEFFECT 308 0 24 1900 18 1 130 0 0 1
+mov S$玩家当前大陆 七大陆
+MOV S$玩家当前地图 精绝古墓
+MOV N$幽魂宝箱进度是否允许 1
+goto @精绝古墓进图判断
+
+Goto @统计属性
+break
+
+
+#IF
+EQUAL <$MAP> 7102
+;精绝古墓二层
+#ACT
+SCREENEFFECT 308 0 24 1920 18 1 130 0 0 1
+mov S$玩家当前大陆 七大陆
+MOV S$玩家当前地图 精绝古墓
+MOV N$幽魂宝箱进度是否允许 1
+
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 7103
+;精绝古墓三层
+#ACT
+SCREENEFFECT 308 0 24 1940 18 1 130 0 0 1
+mov S$玩家当前大陆 七大陆
+MOV S$玩家当前地图 精绝古墓
+MOV N$幽魂宝箱进度是否允许 1
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 7104
+;精绝古墓四层
+#ACT
+SCREENEFFECT 308 0 24 1960 18 1 130 0 0 1
+mov S$玩家当前大陆 七大陆
+MOV S$玩家当前地图 精绝古墓
+MOV N$幽魂宝箱进度是否允许 1
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 7201
+;焚燃之地一层
+#ACT
+SCREENEFFECT 308 0 24 1980 18 1 130 0 0 1
+mov S$玩家当前大陆 七大陆
+MOV S$玩家当前地图 焚燃之地
+MOV N$幽魂宝箱进度是否允许 1
+goto @焚燃之地进图判断
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 7202
+;焚燃之地二层
+#ACT
+SCREENEFFECT 308 0 24 2000 18 1 130 0 0 1
+mov S$玩家当前大陆 七大陆
+MOV S$玩家当前地图 焚燃之地
+MOV N$幽魂宝箱进度是否允许 1
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 7301
+;岩浆地宫一层
+#ACT
+SCREENEFFECT 308 0 24 2020 18 1 130 0 0 1
+mov S$玩家当前大陆 七大陆
+MOV S$玩家当前地图 岩浆地宫
+MOV N$幽魂宝箱进度是否允许 1
+Goto @统计属性
+goto @岩浆地宫进图判断
+break
+
+#IF
+EQUAL <$MAP> 7302
+;岩浆地宫二层
+#ACT
+SCREENEFFECT 308 0 24 2040 18 1 130 0 0 1
+mov S$玩家当前大陆 七大陆
+MOV S$玩家当前地图 岩浆地宫
+MOV N$幽魂宝箱进度是否允许 1
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 7303
+;岩浆地宫三层
+#ACT
+SCREENEFFECT 308 0 24 2060 18 1 130 0 0 1
+mov S$玩家当前大陆 七大陆
+MOV S$玩家当前地图 岩浆地宫
+MOV N$幽魂宝箱进度是否允许 1
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 7401
+;血海魔宫一层
+#ACT
+SCREENEFFECT 308 0 24 2080 18 1 130 0 0 1
+mov S$玩家当前大陆 七大陆
+MOV S$玩家当前地图 血海魔宫
+MOV N$幽魂宝箱进度是否允许 1
+Goto @统计属性
+goto @血海魔宫进图判断
+break
+
+#IF
+EQUAL <$MAP> 7402
+;血海魔宫二层
+#ACT
+SCREENEFFECT 308 0 24 2100 18 1 130 0 0 1
+mov S$玩家当前大陆 七大陆
+MOV S$玩家当前地图 血海魔宫
+MOV N$幽魂宝箱进度是否允许 1
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 7403
+;血海魔宫三层
+#ACT
+SCREENEFFECT 308 0 24 2120 18 1 130 0 0 1
+mov S$玩家当前大陆 七大陆
+MOV S$玩家当前地图 血海魔宫
+MOV N$幽魂宝箱进度是否允许 1
+Goto @统计属性
+break
+
+
+
+
+
+#IF
+EQUAL <$MAP> 8101
+;炼狱之路一层
+#ACT
+SCREENEFFECT 308 0 24 2160 18 1 130 0 0 1
+mov S$玩家当前大陆 八大陆
+MOV S$玩家当前地图 炼狱之路
+Goto @统计属性
+goto @炼狱之路进图判断
+break
+
+#IF
+EQUAL <$MAP> 8102
+;炼狱之路二层
+#ACT
+SCREENEFFECT 308 0 24 2180 18 1 130 0 0 1
+mov S$玩家当前大陆 八大陆
+MOV S$玩家当前地图 炼狱之路
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 8103
+;炼狱之路三层
+#ACT
+SCREENEFFECT 308 0 24 2200 18 1 130 0 0 1
+mov S$玩家当前大陆 八大陆
+MOV S$玩家当前地图 炼狱之路
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 8201
+;冥府之路一层
+#ACT
+SCREENEFFECT 308 0 24 2220 18 1 130 0 0 1
+mov S$玩家当前大陆 八大陆
+MOV S$玩家当前地图 冥府之路
+Goto @统计属性
+goto @冥府之路进图判断
+break
+
+#IF
+EQUAL <$MAP> 8202
+;冥府之路二层
+#ACT
+SCREENEFFECT 308 0 24 2240 18 1 130 0 0 1
+mov S$玩家当前大陆 八大陆
+MOV S$玩家当前地图 冥府之路
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 8203
+;冥府之路三层
+#ACT
+SCREENEFFECT 308 0 24 2260 18 1 130 0 0 1
+mov S$玩家当前大陆 八大陆
+MOV S$玩家当前地图 冥府之路
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 8301
+;瘟疫之地一层
+#ACT
+SCREENEFFECT 308 0 24 2280 18 1 130 0 0 1
+mov S$玩家当前大陆 八大陆
+MOV S$玩家当前地图 瘟疫之地
+Goto @统计属性
+goto @瘟疫之地进图判断
+break
+
+#IF
+EQUAL <$MAP> 8302
+;瘟疫之地二层
+#ACT
+SCREENEFFECT 308 0 24 2300 18 1 130 0 0 1
+mov S$玩家当前大陆 八大陆
+MOV S$玩家当前地图 瘟疫之地
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 8401
+;暗黑之地一层
+#ACT
+SCREENEFFECT 308 0 24 2320 18 1 130 0 0 1
+mov S$玩家当前大陆 八大陆
+MOV S$玩家当前地图 暗黑之地
+Goto @统计属性
+goto @暗黑之地进图判断
+break
+
+#IF
+EQUAL <$MAP> 8402
+;暗黑之地二层
+#ACT
+SCREENEFFECT 308 0 24 2340 18 1 130 0 0 1
+mov S$玩家当前大陆 八大陆
+MOV S$玩家当前地图 暗黑之地
+Goto @统计属性
+break
+
+#IF
+EQUAL <$MAP> 8403
+;暗黑之地三层
+#ACT
+SCREENEFFECT 308 0 24 2360 18 1 130 0 0 1
+mov S$玩家当前大陆 八大陆
+MOV S$玩家当前地图 暗黑之地
+Goto @统计属性
+break
+
+
+
+#IF
+EQUAL <$MAP> 09
+;暴风城
+#ACT
+SCREENEFFECT 308 0 24 2380 18 1 130 0 0 1
+mov S$玩家当前大陆 九大陆
+break
+
+#IF
+EQUAL <$MAP> 9101
+;杀戮战场一层
+#ACT
+SCREENEFFECT 308 0 24 2400 18 1 130 0 0 1
+mov S$玩家当前大陆 九大陆
+MOV S$玩家当前地图 杀戮战场
+goto @杀戮战场进图判断
+break
+
+#IF
+EQUAL <$MAP> 9102
+;战场密道
+#ACT
+SCREENEFFECT 308 0 24 2420 18 1 130 0 0 1
+mov S$玩家当前大陆 九大陆
+MOV S$玩家当前地图 杀戮战场
+break
+
+#IF
+EQUAL <$MAP> 9103
+;杀戮战场二层
+#ACT
+SCREENEFFECT 308 0 24 2440 18 1 130 0 0 1
+mov S$玩家当前大陆 九大陆
+MOV S$玩家当前地图 杀戮战场
+break
+
+#IF
+EQUAL <$MAP> 9201
+;暴风金墓一层
+#ACT
+SCREENEFFECT 308 0 24 2460 18 1 130 0 0 1
+mov S$玩家当前大陆 九大陆
+MOV S$玩家当前地图 暴风金墓
+goto @暴风金墓进图判断
+break
+
+#IF
+EQUAL <$MAP> 9202
+;暴风金墓二层
+#ACT
+SCREENEFFECT 308 0 24 2480 18 1 130 0 0 1
+mov S$玩家当前大陆 九大陆
+MOV S$玩家当前地图 暴风金墓
+break
+
+#IF
+EQUAL <$MAP> 9203
+;暴风金墓三层
+#ACT
+SCREENEFFECT 308 0 24 2500 18 1 130 0 0 1
+mov S$玩家当前大陆 九大陆
+MOV S$玩家当前地图 暴风金墓
+break
+
+#IF
+EQUAL <$MAP> 9301
+;地底晶矿一层
+#ACT
+SCREENEFFECT 308 0 24 2520 18 1 130 0 0 1
+mov S$玩家当前大陆 九大陆
+MOV S$玩家当前地图 地底晶矿
+goto @地底晶矿进图判断
+break
+
+#IF
+EQUAL <$MAP> 9302
+;地底晶矿二层
+#ACT
+SCREENEFFECT 308 0 24 2540 18 1 130 0 0 1
+mov S$玩家当前大陆 九大陆
+MOV S$玩家当前地图 地底晶矿
+break
+
+#IF
+EQUAL <$MAP> 9401
+;上古遗迹一层
+#ACT
+SCREENEFFECT 308 0 24 2560 18 1 130 0 0 1
+mov S$玩家当前大陆 九大陆
+MOV S$玩家当前地图 上古遗迹
+goto @上古遗迹进图判断
+break
+
+#IF
+EQUAL <$MAP> 9402
+;上古遗迹二层
+#ACT
+SCREENEFFECT 308 0 24 2580 18 1 130 0 0 1
+mov S$玩家当前大陆 九大陆
+MOV S$玩家当前地图 上古遗迹
+break
+
+#IF
+EQUAL <$MAP> 9403
+;上古遗迹三层
+#ACT
+SCREENEFFECT 308 0 24 2600 18 1 130 0 0 1
+mov S$玩家当前大陆 九大陆
+MOV S$玩家当前地图 上古遗迹
+break
+
+
+
+#IF
+EQUAL <$MAP> 10
+;荒漠沙城
+#ACT
+SCREENEFFECT 308 0 24 2620 18 1 130 0 0 1
+mov S$玩家当前大陆 十大陆
+break
+
+#IF
+EQUAL <$MAP> 10101
+;荒漠遗迹一层
+#ACT
+SCREENEFFECT 308 0 24 2640 18 1 130 0 0 1
+mov S$玩家当前大陆 十大陆
+MOV S$玩家当前地图 荒漠遗迹
+goto @荒漠遗迹进图判断
+break
+
+#IF
+EQUAL <$MAP> 10102
+;荒漠遗迹二层
+#ACT
+SCREENEFFECT 308 0 24 2660 18 1 130 0 0 1
+mov S$玩家当前大陆 十大陆
+MOV S$玩家当前地图 荒漠遗迹
+break
+
+#IF
+EQUAL <$MAP> 10103
+;荒漠遗迹三层
+#ACT
+SCREENEFFECT 308 0 24 2680 18 1 130 0 0 1
+mov S$玩家当前大陆 十大陆
+MOV S$玩家当前地图 荒漠遗迹
+break
+
+#IF
+EQUAL <$MAP> 10201
+;熔岩密境一层
+#ACT
+SCREENEFFECT 308 0 24 2700 18 1 130 0 0 1
+mov S$玩家当前大陆 十大陆
+MOV S$玩家当前地图 熔岩密境
+goto @熔岩密境进图判断
+break
+
+
+#IF
+EQUAL <$MAP> 10202
+;熔岩密境二层
+#ACT
+SCREENEFFECT 308 0 24 2720 18 1 130 0 0 1
+mov S$玩家当前大陆 十大陆
+MOV S$玩家当前地图 熔岩密境
+break
+
+
+#IF
+EQUAL <$MAP> 10203
+;熔岩密境三层
+#ACT
+SCREENEFFECT 308 0 24 2740 18 1 130 0 0 1
+mov S$玩家当前大陆 十大陆
+MOV S$玩家当前地图 熔岩密境
+break
+
+
+#IF
+EQUAL <$MAP> 10301
+;沙漠孤城一层
+#ACT
+SCREENEFFECT 308 0 24 2760 18 1 130 0 0 1
+mov S$玩家当前大陆 十大陆
+MOV S$玩家当前地图 沙漠孤城
+goto @沙漠孤城进图判断
+break
+
+#IF
+EQUAL <$MAP> 10302
+;沙漠孤城二层
+#ACT
+SCREENEFFECT 308 0 24 2780 18 1 130 0 0 1
+mov S$玩家当前大陆 十大陆
+MOV S$玩家当前地图 沙漠孤城
+break
+
+#IF
+EQUAL <$MAP> 10303
+;沙漠孤城三层
+#ACT
+SCREENEFFECT 308 0 24 2800 18 1 130 0 0 1
+mov S$玩家当前大陆 十大陆
+MOV S$玩家当前地图 沙漠孤城
+break
+
+#IF
+EQUAL <$MAP> 10401
+;深渊秘道一层
+#ACT
+SCREENEFFECT 308 0 24 2820 18 1 130 0 0 1
+mov S$玩家当前大陆 十大陆
+MOV S$玩家当前地图 深渊秘道
+goto @深渊秘道进图判断
+break
+
+#IF
+EQUAL <$MAP> 10402
+;深渊秘道二层
+#ACT
+SCREENEFFECT 308 0 24 2840 18 1 130 0 0 1
+mov S$玩家当前大陆 十大陆
+MOV S$玩家当前地图 深渊秘道
+break
+
+#IF
+EQUAL <$MAP> 10403
+;深渊秘道三层
+#ACT
+SCREENEFFECT 308 0 24 2860 18 1 130 0 0 1
+mov S$玩家当前大陆 十大陆
+MOV S$玩家当前地图 深渊秘道
+break
+
+#IF
+EQUAL <$MAP> 10404
+;深渊密道四层
+#ACT
+SCREENEFFECT 308 0 24 2880 18 1 130 0 0 1
+mov S$玩家当前大陆 十大陆
+MOV S$玩家当前地图 深渊秘道
+break
+
+#IF
+EQUAL <$MAP> 10405
+;深渊密道五层
+#ACT
+SCREENEFFECT 308 0 24 2900 18 1 130 0 0 1
+mov S$玩家当前大陆 十大陆
+MOV S$玩家当前地图 恶魔营地
+
+break
+
+
+
+
+[@骷髅矿区进图判断]
+#if
+SMALL <$LEVEL> 30
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+
+
+[@僵尸矿洞进图判断]
+#if
+SMALL <$LEVEL> 40
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+[@蜈蚣洞进图判断]
+#if
+SMALL <$LEVEL> 50
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+[@兽人古墓进图判断]
+#if
+SMALL <$LEVEL> 60
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+[@沃玛寺庙进图判断]
+#if
+SMALL <$LEVEL> 70
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+[@祖玛秘境进图判断]
+#if
+SMALL <$LEVEL> 80
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+[@骨魔洞进图判断]
+#if
+SMALL <$LEVEL> 90
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+[@恶魔营地进图判断]
+#if
+SMALL <$LEVEL> 100
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+[@蚂蚁洞进图判断]
+#if
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+[@精灵谷进图判断]
+#if
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+[@黑暗魔殿进图判断]
+#if
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+[@赤月峡谷进图判断]
+#if
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+[@封魔古刹进图判断]
+#if
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+[@牛魔寺庙进图判断]
+#if
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+[@魔毒蚀地进图判断]
+#if
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+[@封魔宫进图判断]
+#if
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+[@魔龙峡谷进图判断]
+#if
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+[@幽暗地底进图判断]
+#if
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+[@魔化工厂进图判断]
+#if
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+[@火龙地洞进图判断]
+#if
+#act
+MOV N$幽魂宝箱进度是否允许 1
+
+
+}

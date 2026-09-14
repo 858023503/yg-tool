@@ -1,0 +1,39 @@
+[@开始减]
+{
+#if
+CHECKSKILL 突刺斩 = 1 0
+#act
+SetSkillDecCD 突刺斩 + 1
+
+#if
+CHECKSKILL 突刺斩 = 2 0
+#act
+SetSkillDecCD 突刺斩 + 2
+
+#if
+CHECKSKILL 突刺斩 = 3 0
+#act
+SetSkillDecCD 突刺斩 + 3
+
+
+
+#if
+CHECKSKILL 十方俱灭 = 1 0
+#act
+SetSkillDecCD 十方俱灭 + 1
+
+#if
+CHECKSKILL 十方俱灭 = 2 0
+#act
+SetSkillDecCD 十方俱灭 + 2
+
+#if
+CHECKSKILL 十方俱灭 = 3 0
+#act
+SetSkillDecCD 十方俱灭 + 3
+
+
+
+
+
+}

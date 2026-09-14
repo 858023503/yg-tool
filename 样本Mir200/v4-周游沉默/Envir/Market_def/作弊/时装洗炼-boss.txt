@@ -1,0 +1,61 @@
+[@main]
+#if
+#ACT
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+<>[<$USERNAME>]<您好！/SCOLOR=254>\
+<我这里可以为你量身打造时装剑甲！/SCOLOR=254>\ 
+<我本沉默，传奇永恒，再续经典/SCOLOR=254>\ \
+<>\ \ \
+<>                                             <时装重置/@重置>\
+<><ITEMBOX:1:18:513:280:100:32:32:66,67,68,75,83,85,87:251#时装重置>\
+<>\
+<>\
+
+
+
+
+
+
+
+
+[@重置]
+#if
+equal <$BOXITEM[1].NAME> 
+#ACT
+messagebox 请先放入装备!
+break
+
+#if
+;CheckGameGold > 199
+;checkitem 时装羽毛 20
+#act
+;take 时装羽毛 20
+;GameGold - 200
+SetCustomItemValue boxitem1  3 = 0
+SetCustomItemValue boxitem1  4 = 0
+SetCustomItemValue boxitem1  5 = 0
+SetCustomItemValue boxitem1  6 = 0
+SetCustomItemValue boxitem1  7 = 0
+SetCustomItemValue boxitem1  8 = 0
+SetCustomItemValue boxitem1  9 = 0
+#CALL [\游戏功能\作弊属性重置3.txt] @属性重置
+Messagebox 装备属性重置成功！
+#ELSEACT
+MessageBox 缺少重置装备属性的材料！
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

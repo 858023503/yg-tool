@@ -1,0 +1,505 @@
+[@BUGÐÞ¸Ä]
+{
+
+
+#if
+EQUAL U90 1
+#ACT
+break
+
+
+#if
+#ACT
+ChangeHumAbilityEX  11 = 0
+ChangeHumAbilityEX  12 = 0
+MOV U83 0
+MOV U84 0
+
+#if
+CheckJob Warrior
+EQUAL U33 20
+#ACT
+ChangeHumAbilityEX  11  =  400
+ChangeHumAbilityEX  12  =  100
+
+#if
+CheckJob Warrior
+EQUAL U33 19
+#ACT
+ChangeHumAbilityEX  11  =  380
+ChangeHumAbilityEX  12  =  95
+
+
+#if
+CheckJob Warrior
+EQUAL U33 18
+#ACT
+ChangeHumAbilityEX  11  =  360
+ChangeHumAbilityEX  12  =  90
+
+
+#if
+CheckJob Warrior
+EQUAL U33 17
+#ACT
+ChangeHumAbilityEX  11  =  340
+ChangeHumAbilityEX  12  =  85
+
+
+#if
+CheckJob Warrior
+EQUAL U33 16
+#ACT
+ChangeHumAbilityEX  11  =  320
+ChangeHumAbilityEX  12  =  80
+
+
+#if
+CheckJob Warrior
+EQUAL U33 15
+#ACT
+ChangeHumAbilityEX  11  =  300
+ChangeHumAbilityEX  12  =  75
+
+
+#if
+CheckJob Warrior
+EQUAL U33 14
+#ACT
+ChangeHumAbilityEX  11  =  280
+ChangeHumAbilityEX  12  =  70
+
+
+#if
+CheckJob Warrior
+EQUAL U33 13
+#ACT
+ChangeHumAbilityEX  11  =  260
+ChangeHumAbilityEX  12  =  65
+
+
+#if
+CheckJob Warrior
+EQUAL U33 12
+#ACT
+ChangeHumAbilityEX  11  =  240
+ChangeHumAbilityEX  12  =  60
+
+
+#if
+CheckJob Warrior
+EQUAL U33 11
+#ACT
+ChangeHumAbilityEX  11  =  220
+ChangeHumAbilityEX  12  =  55
+
+
+#if
+CheckJob Warrior
+EQUAL U33 10
+#ACT
+ChangeHumAbilityEX  11  =  200
+ChangeHumAbilityEX  12  =  50
+
+
+#if
+CheckJob Warrior
+EQUAL U33 9
+#ACT
+ChangeHumAbilityEX  11  =  180
+ChangeHumAbilityEX  12  =  45
+
+
+#if
+CheckJob Warrior
+EQUAL U33 8
+#ACT
+ChangeHumAbilityEX  11  =  160
+ChangeHumAbilityEX  12  =  40
+
+
+#if
+CheckJob Warrior
+EQUAL U33 7
+#ACT
+ChangeHumAbilityEX  11  =  140
+ChangeHumAbilityEX  12  =  35
+
+
+#if
+CheckJob Warrior
+EQUAL U33 6
+#ACT
+ChangeHumAbilityEX  11  =  120
+ChangeHumAbilityEX  12  =  30
+
+
+#if
+CheckJob Warrior
+EQUAL U33 5
+#ACT
+ChangeHumAbilityEX  11  =  100
+ChangeHumAbilityEX  12  =  25
+
+
+#if
+CheckJob Warrior
+EQUAL U33 4
+#ACT
+ChangeHumAbilityEX  11  =  80
+ChangeHumAbilityEX  12  =  20
+
+
+#if
+CheckJob Warrior
+EQUAL U33 3
+#ACT
+ChangeHumAbilityEX  11  =  60
+ChangeHumAbilityEX  12  =  15
+
+
+#if
+CheckJob Warrior
+EQUAL U33 2
+#ACT
+ChangeHumAbilityEX  11  =  40
+ChangeHumAbilityEX  12  =  10
+
+
+#if
+CheckJob Warrior
+EQUAL U33 1
+#ACT
+ChangeHumAbilityEX  11  =  20
+ChangeHumAbilityEX  12  =  5
+
+;------------------------------------------------------------------------
+
+#if
+CheckJob Wizard
+EQUAL U33 20
+#ACT
+ChangeHumAbilityEX  11  =  100
+ChangeHumAbilityEX  12  =  400
+
+#if
+CheckJob Wizard
+EQUAL U33 19
+#ACT
+ChangeHumAbilityEX  11  =  95
+ChangeHumAbilityEX  12  =  380
+
+
+#if
+CheckJob Wizard
+EQUAL U33 18
+#ACT
+ChangeHumAbilityEX  11  =  90
+ChangeHumAbilityEX  12  =  360
+
+
+#if
+CheckJob Wizard
+EQUAL U33 17
+#ACT
+ChangeHumAbilityEX  11  =  85
+ChangeHumAbilityEX  12  =  340
+
+
+#if
+CheckJob Wizard
+EQUAL U33 16
+#ACT
+ChangeHumAbilityEX  11  =  80
+ChangeHumAbilityEX  12  =  320
+
+
+#if
+CheckJob Wizard
+EQUAL U33 15
+#ACT
+ChangeHumAbilityEX  11  =  75
+ChangeHumAbilityEX  12  =  300
+
+
+#if
+CheckJob Wizard
+EQUAL U33 14
+#ACT
+ChangeHumAbilityEX  11  =  70
+ChangeHumAbilityEX  12  =  280
+
+
+#if
+CheckJob Wizard
+EQUAL U33 13
+#ACT
+ChangeHumAbilityEX  11  =  65
+ChangeHumAbilityEX  12  =  260
+
+
+#if
+CheckJob Wizard
+EQUAL U33 12
+#ACT
+ChangeHumAbilityEX  11  =  60
+ChangeHumAbilityEX  12  =  240
+
+
+#if
+CheckJob Wizard
+EQUAL U33 11
+#ACT
+ChangeHumAbilityEX  11  =  55
+ChangeHumAbilityEX  12  =  220
+
+
+#if
+CheckJob Wizard
+EQUAL U33 10
+#ACT
+ChangeHumAbilityEX  11  =  50
+ChangeHumAbilityEX  12  =  200
+
+
+#if
+CheckJob Wizard
+EQUAL U33 9
+#ACT
+ChangeHumAbilityEX  11  =  45
+ChangeHumAbilityEX  12  =  180
+
+
+#if
+CheckJob Wizard
+EQUAL U33 8
+#ACT
+ChangeHumAbilityEX  11  =  40
+ChangeHumAbilityEX  12  =  160
+
+
+#if
+CheckJob Wizard
+EQUAL U33 7
+#ACT
+ChangeHumAbilityEX  11  =  35
+ChangeHumAbilityEX  12  =  140
+
+
+#if
+CheckJob Wizard
+EQUAL U33 6
+#ACT
+ChangeHumAbilityEX  11  =  30
+ChangeHumAbilityEX  12  =  120
+
+
+#if
+CheckJob Wizard
+EQUAL U33 5
+#ACT
+ChangeHumAbilityEX  11  =  25
+ChangeHumAbilityEX  12  =  100
+
+
+#if
+CheckJob Wizard
+EQUAL U33 4
+#ACT
+ChangeHumAbilityEX  11  =  20
+ChangeHumAbilityEX  12  =  80
+
+
+#if
+CheckJob Wizard
+EQUAL U33 3
+#ACT
+ChangeHumAbilityEX  11  =  15
+ChangeHumAbilityEX  12  =  60
+
+
+#if
+CheckJob Wizard
+EQUAL U33 2
+#ACT
+ChangeHumAbilityEX  11  =  10
+ChangeHumAbilityEX  12  =  40
+
+
+#if
+CheckJob Wizard
+EQUAL U33 1
+#ACT
+ChangeHumAbilityEX  11  =  5
+ChangeHumAbilityEX  12  =  20
+;-------------------------------------------------------------------
+
+#if
+CheckJob Taoist
+EQUAL U33 20
+#ACT
+ChangeHumAbilityEX  11  =  240
+ChangeHumAbilityEX  12  =  240
+
+#if
+CheckJob Taoist
+EQUAL U33 19
+#ACT
+ChangeHumAbilityEX  11  =  228
+ChangeHumAbilityEX  12  =  228
+
+
+#if
+CheckJob Taoist
+EQUAL U33 18
+#ACT
+ChangeHumAbilityEX  11  =  216
+ChangeHumAbilityEX  12  =  216
+
+
+#if
+CheckJob Taoist
+EQUAL U33 17
+#ACT
+ChangeHumAbilityEX  11  =  204
+ChangeHumAbilityEX  12  =  204
+
+
+#if
+CheckJob Taoist
+EQUAL U33 16
+#ACT
+ChangeHumAbilityEX  11  =  192
+ChangeHumAbilityEX  12  =  192
+
+
+#if
+CheckJob Taoist
+EQUAL U33 15
+#ACT
+ChangeHumAbilityEX  11  =  180
+ChangeHumAbilityEX  12  =  180
+
+
+#if
+CheckJob Taoist
+EQUAL U33 14
+#ACT
+ChangeHumAbilityEX  11  =  168
+ChangeHumAbilityEX  12  =  168
+
+
+#if
+CheckJob Taoist
+EQUAL U33 13
+#ACT
+ChangeHumAbilityEX  11  =  156
+ChangeHumAbilityEX  12  =  156
+
+
+#if
+CheckJob Taoist
+EQUAL U33 12
+#ACT
+ChangeHumAbilityEX  11  =  144
+ChangeHumAbilityEX  12  =  144
+
+
+#if
+CheckJob Taoist
+EQUAL U33 11
+#ACT
+ChangeHumAbilityEX  11  =  132
+ChangeHumAbilityEX  12  =  132
+
+
+#if
+CheckJob Taoist
+EQUAL U33 10
+#ACT
+ChangeHumAbilityEX  11  =  120
+ChangeHumAbilityEX  12  =  120
+
+
+#if
+CheckJob Taoist
+EQUAL U33 9
+#ACT
+ChangeHumAbilityEX  11  =  108
+ChangeHumAbilityEX  12  =  108
+
+
+#if
+CheckJob Taoist
+EQUAL U33 8
+#ACT
+ChangeHumAbilityEX  11  =  96
+ChangeHumAbilityEX  12  =  96
+
+
+#if
+CheckJob Taoist
+EQUAL U33 7
+#ACT
+ChangeHumAbilityEX  11  =  84
+ChangeHumAbilityEX  12  =  84
+
+
+#if
+CheckJob Taoist
+EQUAL U33 6
+#ACT
+ChangeHumAbilityEX  11  =  72
+ChangeHumAbilityEX  12  =  72
+
+
+#if
+CheckJob Taoist
+EQUAL U33 5
+#ACT
+ChangeHumAbilityEX  11  =  60
+ChangeHumAbilityEX  12  =  60
+
+
+#if
+CheckJob Taoist
+EQUAL U33 4
+#ACT
+ChangeHumAbilityEX  11  =  48
+ChangeHumAbilityEX  12  =  48
+
+
+#if
+CheckJob Taoist
+EQUAL U33 3
+#ACT
+ChangeHumAbilityEX  11  =  36
+ChangeHumAbilityEX  12  =  36
+
+
+#if
+CheckJob Taoist
+EQUAL U33 2
+#ACT
+ChangeHumAbilityEX  11  =  24
+ChangeHumAbilityEX  12  =  24
+
+
+#if
+CheckJob Taoist
+EQUAL U33 1
+#ACT
+ChangeHumAbilityEX  11  =  12
+ChangeHumAbilityEX  12  =  12
+
+
+
+#if
+#ACT
+MOV  U90 1
+break
+
+
+
+
+}

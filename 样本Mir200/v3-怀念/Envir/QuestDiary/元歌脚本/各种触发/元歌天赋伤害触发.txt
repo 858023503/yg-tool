@@ -1,0 +1,679 @@
+[@天赋物理攻击执行]
+{
+; ========== 杀怪点获取（统一1/6概率） ==========
+#IF
+NOT CHECKCURRTARGETRACE = 0
+RANDOMEX 1 6
+#ACT
+INC U<$str(N$元歌杀怪点)> 1
+#IF
+RANDOMEX 1 10
+#ACT
+sendmsg 6 砍了下怪物：【<$CURRRTARGETNAME>】, 元歌杀怪点+1!!!当前元歌杀怪点：<$str(U<$str(N$元歌杀怪点)>)>
+
+; ========== 赞助神器BUFF：第一刀切割10% ==========
+#IF
+CHECKITEM 元歌·国服玩家[神器] 1
+M.CheckHPPer > 90
+NOT CHECKCURRTARGETRACE = 0
+#act
+M.PLAYEFFECT <$STR(N$素材X)> 168 18 1 200 0 -600 -600 1
+M.AddhpPer - 10
+
+; ========== 赞助神器BUFF：血量<20%斩杀（已注释） ==========
+;#IF
+;CHECKITEM 元歌·国服玩家[神器] 1
+;M.CheckHPPer < 20
+;NOT CHECKCURRTARGETRACE = 0
+;#act
+;M.PLAYEFFECT <$STR(N$素材X)> 194 9 1 100 0 -400 -400 1
+;M.AddhpPer - 100
+
+; ========== 赞助神器BUFF：红绿毒 ==========
+#IF
+CHECKITEM 元歌·国服玩家[神器] 1
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+m.ChangeState 5 100 1
+m.ChangeState 4 100 1
+
+; ========== 赞助神器BUFF：半月溅射 ==========
+#IF
+CHECKITEM 元歌·国服玩家[神器] 1
+NOT CHECKCURRTARGETRACE = 0
+EQUAL <$CURRRUSEMAGICID> 25
+randomex 1 30
+#ACT
+M.PLAYEFFECT <$STR(N$素材X)> 154 14 1 200 0 -200 -200 1
+RangeHarm <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y> 3 1 6 <$MAXDC> 3
+SendCenterMsg 0 250  【国服玩家专属BUFF】触发：对周围目标造成<$MAXDC>点溅射伤害! 0 2
+
+; ========== 赞助神器BUFF：吸血 ==========
+#if
+CHECKITEM 元歌·国服玩家[神器] 1
+NOT CHECKCURRTARGETRACE = 0
+randomex 1 30
+#ACT
+CHANGESTATE 10 3 100 10
+PLAYEFFECT <$STR(N$素材X)> 94 5 1 150 0 0 0 1
+SendCenterMsg 0 250  【国服玩家专属BUFF】触发：获得10%吸血，持续3秒！
+
+; ========== 赞助神器BUFF：攻速 ==========
+#IF
+CHECKITEM 元歌·国服玩家[神器] 1
+NOT CHECKCURRTARGETRACE = 0
+randomex 1 50
+#ACT
+MOV N$元歌赞助神器攻击速度 5
+#CALL [\元歌脚本\倍率倍数\元歌各种倍率.txt] @元歌速度倍数
+PLAYEFFECT <$STR(N$素材X)> 133 8 1 200 0 -500 -500 1
+SendCenterMsg 0 250  【元歌赞助专属BUFF】触发：提高20%基础攻速，持续5秒！
+DELAYGOTO 4900 @清空攻速
+
+; ========== 赞助神器BUFF：刑铭审判 ==========
+#if
+CHECKITEM 元歌·国服玩家[神器] 1
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+GOTO @审判X
+
+; ========== 天赋BUFF：半月 ==========
+#IF
+EQUAL <$MagicName> 半月弯刀
+NOT CHECKCURRTARGETRACE = 0
+RANDOMEX <$HUMAN(元歌天赋半月)> 100
+#ACT
+PLAYEFFECT <$STR(N$素材X)> 154 14 1 200 0 -200 -200 1
+RangeHarm <$X> <$Y> 5 <$MAXDC> 6 <$MAXDC> 0
+SENDMSG 6 半月天赋触发：对周围5×5目标造成<$MAXDC>点溅射伤害！
+
+; ========== 天赋：物理魔次 ==========
+#IF
+LARGE <$HUMAN(元歌天赋攻击多倍)> 0
+#ACT
+MOV N$天赋额外伤害 <$PKPOWER>
+MUL N$天赋额外伤害 <$HUMAN(元歌天赋攻击多倍)>
+M.humanhp - <$STR(N$天赋额外伤害)>
+SendCenterMsg 69 0  触发物理魔次天赋,额外伤害<$STR(N$天赋额外伤害)>!
+
+; ========== 天赋：核心逻辑（斩杀/吸血/吸蓝/切割） ==========
+#IF
+#ACT
+GOTO @天赋核心逻辑
+
+; ========== 诛仙剑阵 ==========
+#IF
+CheckVAR HUMAN 元歌诛仙技能点 = 1
+randomex 1 100
+#ACT
+#CALL [\元歌脚本\各种触发\战士诛仙剑阵.txt] @诛仙剑阵_战士
+
+[@天赋魔法攻击执行]
+; ========== 杀怪点获取（统一1/6概率） ==========
+#IF
+NOT CHECKCURRTARGETRACE = 0
+RANDOMEX 1 6
+#ACT
+INC U<$str(N$元歌杀怪点)> 1
+#IF
+RANDOMEX 1 10
+#ACT
+sendmsg 6 魔法打了下怪物：【<$CURRRTARGETNAME>】, 元歌杀怪点+1!!!当前元歌杀怪点：<$str(U<$str(N$元歌杀怪点)>)>
+
+; ========== 赞助神器BUFF：第一刀切割10% ==========
+#IF
+CHECKITEM 元歌·国服玩家[神器] 1
+M.CheckHPPer > 90
+NOT CHECKCURRTARGETRACE = 0
+#act
+M.PLAYEFFECT <$STR(N$素材X)> 168 18 1 200 0 -600 -600 1
+M.AddhpPer - 10
+
+; ========== 赞助神器BUFF：血量<20%斩杀（已注释） ==========
+;#IF
+;CHECKITEM 元歌·国服玩家[神器] 1
+;M.CheckHPPer < 20
+;NOT CHECKCURRTARGETRACE = 0
+;#act
+;M.PLAYEFFECT <$STR(N$素材X)> 194 9 1 100 0 -400 -400 1
+;M.AddhpPer - 100
+
+; ========== 赞助神器BUFF：红绿毒 ==========
+#IF
+CHECKITEM 元歌·国服玩家[神器] 1
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+m.ChangeState 5 100 1
+m.ChangeState 4 100 1
+
+; ========== 赞助神器BUFF：雷电术双发 ==========
+#IF
+CHECKITEM 元歌·国服玩家[神器] 1
+NOT CHECKCURRTARGETRACE = 0
+EQUAL <$CURRRUSEMAGICID> 11
+randomex 1 30
+#ACT
+MOV N$雷电1 0
+mov N$雷电A <$MAXMC>
+div N$雷电A 2
+M.HumanHP - <$STR(N$雷电A)> 1000 2
+M.PLAYEFFECT <$STR(N$素材X)> 84 10 2 30 0 0 0 1
+SendCenterMsg 0 250  【国服玩家专属BUFF】触发:雷电术重复释放2次！ 0 2
+
+; ========== 赞助神器BUFF：流星火雨陨石 ==========
+#IF
+CHECKITEM 元歌·国服玩家[神器] 1
+NOT CHECKCURRTARGETRACE = 0
+EQUAL <$CURRRUSEMAGICID> 58
+randomex 1 30
+#ACT
+mov N$陨石A <$MAXMC>
+MUL N$陨石A 3
+MAPEFFECT <$MAP> <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y> <$STR(N$素材X)> 20 20 1 100 0 0 0
+RangeHarm <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y> 3 1 6 <$STR(N$陨石A)>
+SendCenterMsg 0 250  【国服玩家专属BUFF】触发:流星火雨召唤一颗大陨石，造成高额伤害！ 0 2
+
+; ========== 赞助神器BUFF：冰咆哮溅射 ==========
+#IF
+CHECKITEM 元歌·国服玩家[神器] 1
+NOT CHECKCURRTARGETRACE = 0
+EQUAL <$CURRRUSEMAGICID> 33
+randomex 1 30
+#ACT
+MOV N$冰咆哮1 0
+mov N$冰咆哮A <$MAXMC>
+div N$冰咆哮A 1
+M.HumanHP - <$STR(N$冰咆哮A)> 1000 1
+PLAYEFFECT <$STR(N$素材X)> 60 12 1 100 0 0 0 0
+M.PLAYEFFECT <$STR(N$素材X)> 0 20 1 150 0 0 0 0
+SendCenterMsg 0 250  【国服玩家专属BUFF】触发:冰咆哮触发重复释放1次！ 0 2
+
+; ========== 赞助神器BUFF：刑铭审判（法师版，计数19） ==========
+#if
+CHECKITEM 元歌·国服玩家[神器] 1
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+GOTO @审判X法
+
+; ========== 天赋：法术连击 ==========
+#if
+LARGE <$HUMAN(元歌天赋法术连击)> 0
+#ACT
+mov N$法术连击天赋伤害 <$CURRRUSEMAGICID>
+MOV N$法术连击天赋概率 <$HUMAN(元歌天赋法术连击)>
+#if
+LARGE <$HUMAN(元歌天赋法术连击)> 0
+RANDOMEX <$STR(N$法术连击天赋概率)> 100
+NOT CHECKCURRTARGETRACE = 0
+#act
+releasemagicEX <$str(N$法术连击天赋伤害)> 0 3 1
+SendCenterMsg 69 0  触发法术连击天赋,法术连击概率为<$STR(N$法术连击天赋概率)>!
+
+; ========== 天赋：法术魔次 ==========
+#IF
+LARGE <$HUMAN(元歌天赋法术魔次)> 0
+#ACT
+MOV N$天赋额外伤害 <$PKPOWER>
+MUL N$天赋额外伤害 <$HUMAN(元歌天赋法术魔次)>
+M.humanhp - <$STR(N$天赋额外伤害)>
+SendCenterMsg 69 0  触发法术魔次天赋,额外伤害<$STR(N$天赋额外伤害)>!
+
+; ========== 天赋：核心逻辑 ==========
+#IF
+#ACT
+GOTO @天赋核心逻辑
+
+; ========== 诛仙剑阵 ==========
+#IF
+EQUAL N$加特林禁止诛仙 0
+CheckVAR HUMAN 元歌诛仙技能点 = 1
+randomex 1 100
+#ACT
+#CALL [\元歌脚本\各种触发\法师诛仙剑阵.txt] @诛仙剑阵_法师
+
+[@天赋宝宝攻击执行]
+; ========== 杀怪点获取（统一1/6概率） ==========
+#IF
+NOT CHECKCURRTARGETRACE = 0
+RANDOMEX 1 6
+#ACT
+INC U<$str(N$元歌杀怪点)> 1
+#IF
+RANDOMEX 1 10
+#Act
+sendmsg 6 宝宝打了下怪物：【<$CURRRTARGETNAME>】, 元歌杀怪点+1!!!当前元歌杀怪点：<$str(U<$str(N$元歌杀怪点)>)>
+
+; ========== 赞助神器BUFF：第一刀切割10% ==========
+#IF
+CHECKITEM 元歌·国服玩家[神器] 1
+M.CheckHPPer > 90
+NOT CHECKCURRTARGETRACE = 0
+#act
+M.PLAYEFFECT <$STR(N$素材X)> 168 18 1 200 0 -600 -600 1
+M.AddhpPer - 10
+
+; ========== 赞助神器BUFF：血量<20%斩杀（已注释） ==========
+;#IF
+;CHECKITEM 元歌·国服玩家[神器] 1
+;M.CheckHPPer < 20
+;NOT CHECKCURRTARGETRACE = 0
+;#act
+;M.PLAYEFFECT <$STR(N$素材X)> 194 9 1 100 0 -400 -400 1
+;M.AddhpPer - 100
+
+; ========== 赞助神器BUFF：红绿毒 ==========
+#IF
+CHECKITEM 元歌·国服玩家[神器] 1
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+m.ChangeState 5 100 1
+m.ChangeState 4 100 1
+
+; ========== 赞助神器BUFF：宝宝溅射 ==========
+#IF
+CHECKITEM 元歌·国服玩家[神器] 1
+NOT CHECKCURRTARGETRACE = 0
+randomex 1 30
+#act
+mov N$宝宝溅射 <$MAXSC>
+MUL N$宝宝溅射 1
+M.PLAYEFFECT <$STR(N$素材X)> 40 20 1 150 0 0 0 0
+BB.RangeHarm <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y> 3 1 6 <$STR(N$宝宝溅射)> 3
+SendCenterMsg 0 250  【国服玩家专属BUFF】触发：宝宝对周围目标造成[<$STR(N$宝宝溅射)>]点溅射伤害! 0 2
+
+; ========== 赞助神器BUFF：宝宝3倍伤害 ==========
+#IF
+CHECKITEM 元歌·国服玩家[神器] 1
+NOT CHECKCURRTARGETRACE = 0
+randomex 1 30
+#act
+BB.SetNextDamage 300
+M.PLAYEFFECT <$STR(N$素材X)> 203 12 1 100 0 -430 -430 1
+SendCenterMsg 0 243 【国服玩家专属BUFF】触发：宝宝对目标造成了300%伤害 0 2
+
+; ========== 赞助神器BUFF：宝宝加速 ==========
+#IF
+CHECKITEM 元歌·国服玩家[神器] 1
+NOT CHECKCURRTARGETRACE = 0
+randomex 1 30
+#act
+BB.PLAYEFFECT <$STR(N$素材X)> 141 13 1 100 0 -185 -260 1
+ChangeSlaveAbilityEX 14 -10 1
+ChangeSlaveAbilityEX 15 -10 1
+ChangeSlaveAbilityEX 30 5
+RecalcSlaveAbility 
+SendCenterMsg 0 250  【国服玩家专属BUFF】触发：您的所有宝宝攻击速度和移动速度加快了10%，有效时间5秒！ 0 2
+
+; ========== 赞助神器BUFF：刑铭审判 ==========
+#if
+CHECKITEM 元歌·国服玩家[神器] 1
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+GOTO @审判X宝
+
+; ========== 诛仙剑阵 ==========
+#IF
+CheckVAR HUMAN 元歌诛仙技能点 = 1
+randomex 1 100
+#ACT
+#CALL [\元歌脚本\各种触发\道士诛仙剑阵.txt] @诛仙剑阵_道士
+
+; ========== 天赋：斩杀 ==========
+#IF
+LARGE <$HUMAN(元歌天赋斩杀)> 0
+#ACT
+MOV N$天赋斩杀线 <$HUMAN(元歌天赋斩杀)>
+MUL N$天赋斩杀线 2
+#IF
+LARGE <$HUMAN(元歌天赋斩杀)> 0
+M.CheckHpPer < <$STR(N$天赋斩杀线)>
+#ACT
+M.AddhpPer - <$STR(N$天赋斩杀线)>
+SendCenterMsg 69 0  恭喜宝宝触发斩杀天赋,斩杀血量<$STR(N$天赋斩杀线)>%!
+
+; ========== 天赋：切割 ==========
+#IF
+LARGE <$HUMAN(元歌天赋切割概率)> 0
+#ACT
+MOV N$天赋切割概率 <$HUMAN(元歌天赋切割概率)>
+#IF
+LARGE <$HUMAN(元歌天赋切割概率)> 0
+LARGE <$HUMAN(元歌天赋切割)> 0
+RANDOMEX <$STR(N$天赋切割概率)> 100
+#ACT
+MOV N$天赋切割伤害 <$HUMAN(元歌天赋切割)>
+M.AddHpPerEx - <$STR(N$天赋切割伤害)>
+M.PLAYEFFECT <$STR(N$素材X)> 179 6 1 100
+SendCenterMsg 69 0  恭喜宝宝触发切割天赋,当前血量伤害<$STR(N$天赋切割伤害)>%,概率为<$STR(N$天赋切割概率)>%!
+
+; ========== 天赋：宝宝群攻 ==========
+#IF
+NOT CHECKCURRTARGETRACE = 0
+LARGE <$HUMAN(元歌天赋宝宝伤害)> 0
+LARGE <$HUMAN(元歌天赋宝宝范围)> 0
+#ACT
+mov N$天赋宝宝伤害 <$DamageValue>
+MOV N$天赋宝宝伤害倍率 <$HUMAN(元歌天赋宝宝伤害)>
+MUL N$天赋宝宝伤害 <$STR(N$天赋宝宝伤害倍率)>
+BB.RangeHarm <$SlaveX> <$SlaveY> <$HUMAN(元歌天赋宝宝范围)> <$STR(N$天赋宝宝伤害)> 0 0 0 2
+SendCenterMsg 69 0  恭喜宝宝触发群攻天赋,当前伤害范围<$HUMAN(元歌天赋宝宝范围)>*<$HUMAN(元歌天赋宝宝范围)>,伤害为<$STR(N$天赋宝宝伤害)>!
+
+[@天赋核心逻辑]
+#IF
+LARGE <$HUMAN(元歌天赋斩杀)> 0
+#ACT
+MOV N$天赋斩杀线 <$HUMAN(元歌天赋斩杀)>
+MUL N$天赋斩杀线 2
+
+#IF
+LARGE <$HUMAN(元歌天赋斩杀)> 0
+M.CheckHpPer < <$STR(N$天赋斩杀线)>
+#ACT
+M.AddhpPer - <$STR(N$天赋斩杀线)>
+M.PLAYEFFECT <$STR(N$素材X)> 560 6 1 100
+SendCenterMsg 69 0  触发斩杀天赋,斩杀血量<$STR(N$天赋斩杀线)>%!
+
+#IF
+LARGE <$HUMAN(元歌天赋吸血)> 0
+#ACT
+MOV N$天赋吸血 <$PKPOWER>
+MUL N$天赋吸血 <$HUMAN(元歌天赋吸血)>
+DIV N$天赋吸血 10
+HumanHP + <$STR(N$天赋吸血)>
+SENDMSG 6 [天赋吸血] 回复血量：<$STR(N$天赋吸血)>
+
+#IF
+LARGE <$HUMAN(元歌天赋吸蓝)> 0
+#ACT
+MOV N$天赋吸蓝 <$PKPOWER>
+MUL N$天赋吸蓝 <$HUMAN(元歌天赋吸蓝)>
+DIV N$天赋吸蓝 10
+HumanMP + <$STR(N$天赋吸蓝)>
+SENDMSG 6 [天赋吸蓝] 回复蓝量：<$STR(N$天赋吸蓝)>
+
+#IF
+LARGE <$HUMAN(元歌天赋切割概率)> 0
+#ACT
+MOV N$天赋切割概率 <$HUMAN(元歌天赋切割概率)>
+
+#IF
+LARGE <$HUMAN(元歌天赋切割概率)> 0
+LARGE <$HUMAN(元歌天赋切割)> 0
+RANDOMEX <$STR(N$天赋切割概率)> 100
+#ACT
+MOV N$天赋切割伤害 <$HUMAN(元歌天赋切割)>
+M.AddHpPerEx - <$STR(N$天赋切割伤害)>
+M.PLAYEFFECT <$STR(N$素材X)> 602 12 1 50
+SendCenterMsg 69 0  恭喜触发切割天赋,伤害<$STR(N$天赋切割伤害)>%,概率<$STR(N$天赋切割概率)>%!
+
+[@天赋击杀触发]
+; ========== 金币/元宝/充值点掉落 ==========
+#IF
+RANDOMEX 50 100
+#ACT
+MOVR N$元歌金币值 300 30000
+MOVR N$元歌元宝值 1 100
+give 金币 <$STR(N$元歌金币值)>
+GAMEGOLD + <$STR(N$元歌元宝值)>
+SENDMSG 6 杀死怪物：【<$KILLMONNAME>】获得<$STR(N$元歌金币值)>点金币，获得<$STR(N$元歌元宝值)>点元宝！
+
+#IF
+RANDOMEX 10 100
+#ACT
+MOVR N$元歌灵符值 1 5
+MOVR N$元歌金刚石值 1 5
+GameGird + <$STR(N$元歌灵符值)>
+GAMEDIAMOND + <$STR(N$元歌金刚石值)>
+SENDMSG 6 杀死怪物：【<$KILLMONNAME>】获得<$STR(N$元歌灵符值)>点灵符，<$STR(N$元歌金刚石值)>点金刚石！
+; ========== 杀怪点获取 ==========
+#IF
+NOT CHECKCURRTARGETRACE = 0
+RANDOMEX 1 3
+#ACT
+INC U<$str(N$元歌杀怪点)> 1
+sendmsg 6 杀死了怪物：【<$CURRRTARGETNAME>】, 元歌杀怪点+1!!!当前元歌杀怪点：<$str(U<$str(N$元歌杀怪点)>)>
+
+; ========== 赞助神器BUFF：鞭尸 ==========
+#IF
+CHECKITEM 元歌·国服玩家[神器] 1
+NOT CHECKCURRTARGETRACE = 0
+RANDOMEX 1 66
+#ACT
+PLAYEFFECT <$STR(N$素材X)> 186 8 1 200 0 -390 -390 1
+ScatterMonItems <$KILLMONNAME>
+SendCenterMsg 69 0 恭喜你触发了【国服玩家BUFF】鞭尸，使击杀的怪物再爆一次 ！
+
+; ========== 天赋：鞭尸 ==========
+#IF
+LARGE <$HUMAN(元歌天赋鞭尸)> 0
+#ACT
+MOV N$天赋鞭尸概率 <$HUMAN(元歌天赋鞭尸)>
+#IF
+LARGE <$HUMAN(元歌天赋鞭尸)> 0
+RANDOMEX <$STR(N$天赋鞭尸概率)> 100
+#ACT
+ScatterMonItems <$KILLMONNAME>
+SendCenterMsg 69 0  恭喜触发鞭尸天赋,当前鞭尸概率<$STR(N$天赋鞭尸概率)>%!
+
+; ========== 亡灵归来召唤 ==========
+#IF
+CheckJob Taoist
+CHECKSKILL 亡灵归来 = 3
+CheckVAR HUMAN 元歌亡灵点 = 1
+CHECKSLAVECOUNT < 30
+RANDOM 8
+#ACT
+RECALLMOB 复生神兽63 3 5 0 246
+SetSlaveAttackHumPowerRate 复生神兽63 0
+SENDMSG 6 亡灵归来召唤！当前神兽数：<$SLAVECOUNT>
+
+[@天赋被攻击触发]
+; ========== 赞助神器BUFF：吸收伤害护盾 ==========
+#IF
+CHECKITEM 元歌·国服玩家[神器] 1
+NOT CHECKCURRTARGETRACE = 0
+randomex 1 15
+#ACT
+MOV M34 <$HP>
+DIV M34 100
+MUL M34 20
+MOVR M35 <$STR(M34)> 
+PLAYEFFECT <$STR(N$素材X)> 123 10 1 200 0 0 0 1
+SetSuckDamage = <$STR(M35)> 1000 100 
+SendCenterMsg 168 255 触发【国服玩家专属BUFF】抵御并吸收伤害<$STR(M35)>点,最大不超过当前HP20% 0
+break
+
+; ========== 天赋：反震 ==========
+#IF
+LARGE <$HUMAN(元歌天赋反震)> 0
+#ACT
+MOV N$天赋反震 <$DamageValue>
+MUL N$天赋反震 <$HUMAN(元歌天赋反震)>
+M.humanhp - <$STR(N$天赋反震)>
+SendCenterMsg 69 0 反震天赋触发，反震倍数<$HUMAN(元歌天赋反震)>，反震血量<$STR(N$天赋反震)>！
+
+; 每秒自动执行 (由 [@OnTimer89] 触发)
+[@星芒光环执行]
+#IF
+LARGE <$HUMAN(元歌天赋光环范围)> 0
+#ACT
+MOV N$天赋光环范围执行 <$HUMAN(元歌天赋光环范围)>
+
+#IF
+CHECKJOB warrior
+NOT CHECKCURRTARGETRACE = 0
+CHECK [912] 1
+LARGE <$HUMAN(元歌天赋光环伤害)> 0
+CheckRangeMonCount <$MAP> <$X> <$Y> 10 > 0
+NOT INSAFEZONE
+RANDOMEX <$STR(N$天赋光环范围执行)> 100
+#ACT
+MOV N$天赋光环伤害 <$MAXDC>
+MOV N$天赋光环倍率 <$HUMAN(元歌天赋光环伤害)>
+MUL N$天赋光环伤害 <$STR(N$天赋光环倍率)>
+RangeHarm <$X> <$Y> 5 <$STR(N$天赋光环伤害)> 0 0 0 2
+SendCenterMsg 69 0  恭喜触发星芒光环，范围5*5，伤害<$STR(N$天赋光环伤害)>！
+
+#IF
+CHECKJOB wizard
+NOT CHECKCURRTARGETRACE = 0
+CHECK [912] 1
+LARGE <$HUMAN(元歌天赋光环伤害)> 0
+CheckRangeMonCount <$MAP> <$X> <$Y> 10 > 0
+NOT INSAFEZONE
+RANDOMEX <$STR(N$天赋光环范围执行)> 100
+#ACT
+MOV N$天赋光环伤害 <$MAXMC>
+MOV N$天赋光环倍率 <$HUMAN(元歌天赋光环伤害)>
+MUL N$天赋光环伤害 <$STR(N$天赋光环倍率)>
+RangeHarm <$X> <$Y> 5 <$STR(N$天赋光环伤害)> 0 0 0 2
+SendCenterMsg 69 0 恭喜触发星芒光环，范围5*5，伤害<$STR(N$天赋光环伤害)>！
+
+#IF
+CHECKJOB taoist
+NOT CHECKCURRTARGETRACE = 0
+CHECK [912] 1
+LARGE <$HUMAN(元歌天赋光环伤害)> 0
+CheckRangeMonCount <$MAP> <$X> <$Y> 10 > 0
+NOT INSAFEZONE
+RANDOMEX <$STR(N$天赋光环范围执行)> 100
+#ACT
+MOV N$天赋光环伤害 <$MAXSC>
+MOV N$天赋光环倍率 <$HUMAN(元歌天赋光环伤害)>
+MUL N$天赋光环伤害 <$STR(N$天赋光环倍率)>
+RangeHarm <$X> <$Y> 5 <$STR(N$天赋光环伤害)> 0 0 0 2
+SendCenterMsg 69 0 恭喜触发星芒光环，范围5*5，伤害<$STR(N$天赋光环伤害)>！
+
+; 手动开关 (由玩家释放MagicID 1200技能触发)
+[@星芒光环]
+#if
+CHECK [912] 0
+#act
+SET [912] 1
+PLAYEFFECT <$STR(N$素材X)> 525 10 0 300 1
+SendCenterMsg 69 0 开启星芒光环..每秒概率对5*5范围伤害..伤害根据各职业主属性而定
+#ELSEACT
+SET [912] 0
+ClearPlayEffect
+SendCenterMsg 69 0 关闭星芒光环。
+
+; ========== 元歌1专属技能触发 ==========
+
+[@毒雾献祭触发]
+#IF
+CheckJob Warrior
+CHECKSKILL 毒雾献祭 = 3
+CheckVAR HUMAN 元歌毒雾点 = 1
+NOT CHECKCURRTARGETRACE = 0
+RANDOM 18
+#ACT
+MOV N$毒雾伤害 <$MAXDC>
+MUL N$毒雾伤害 300
+DIV N$毒雾伤害 100
+RangeHarm <$X> <$Y> 5 <$STR(N$毒雾伤害)> 0 0 0 2 93 919 28 100 1 0
+SENDMSG 6 毒雾献祭触发！5×5范围造成<$STR(N$毒雾伤害)>点物理伤害！
+
+[@天雷尸爆魔法触发]
+#IF
+CheckJob Wizard
+CHECKSKILL 天雷尸爆 = 3
+CheckVAR HUMAN 元歌天雷点 = 1
+NOT CHECKCURRTARGETRACE = 0
+RANDOM 18
+#ACT
+MOV N$天雷伤害 <$MAXMC>
+MUL N$天雷伤害 300
+DIV N$天雷伤害 100
+RangeHarm <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y> 5 <$STR(N$天雷伤害)> 5 100 0 2 93 894 25 100 1 0
+SENDMSG 6 天雷尸爆触发！造成<$STR(N$天雷伤害)>点魔法伤害+吸蓝100！
+
+[@亡灵归来魔法触发]
+#IF
+CheckJob Taoist
+CHECKSKILL 亡灵归来 = 3
+CheckVAR HUMAN 元歌亡灵点 = 1
+NOT CHECKCURRTARGETRACE = 0
+RANDOM 18
+#ACT
+MOV N$亡灵伤害 <$MAXSC>
+MUL N$亡灵伤害 300
+DIV N$亡灵伤害 100
+RangeHarm <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y> 5 <$STR(N$亡灵伤害)> 0 0 0 2 93 978 15 100 1 0
+SENDMSG 6 亡灵归来触发！5×5范围造成<$STR(N$亡灵伤害)>点道术伤害！
+
+; ========== 刑铭审判（物理版，计数39） ==========
+[@审判X]
+#if
+#act
+INC N$刑铭X 1
+
+#IF
+large N$刑铭X 39
+#ACT
+MOV N$刑铭X1 <$ATTACKMONSTER_MAXHP>
+MOV N$刑铭X2 <$ATTACKMONSTER_HP>
+DEC N$刑铭X1 <$STR(N$刑铭X2)>
+DIV N$刑铭X1 15
+
+#if
+large N$刑铭X  39
+large N$刑铭X1 0
+#act
+M.PLAYEFFECT <$STR(N$素材X)> 109 14 1 100 0 0 0 0
+m.HUMANHP - <$STR(N$刑铭X1)>
+SendCenterMsg 69 0 【元歌赞助专属BUFF】触发:刑铭命中了【<$CURRRTARGETNAME>】斩杀对方<$str(N$刑铭X1)>血量
+MOV N$刑铭X 0
+
+; ========== 刑铭审判（法师版，计数19） ==========
+[@审判X法]
+#if
+#act
+INC N$刑铭X法 1
+
+#IF
+large N$刑铭X法 19
+#ACT
+MOV N$刑铭X1 <$ATTACKMONSTER_MAXHP>
+MOV N$刑铭X2 <$ATTACKMONSTER_HP>
+DEC N$刑铭X1 <$STR(N$刑铭X2)>
+DIV N$刑铭X1 15
+
+#if
+large N$刑铭X法  19
+large N$刑铭X1 0
+#act
+M.PLAYEFFECT <$STR(N$素材X)> 109 14 1 100 0 0 0 0
+m.HUMANHP - <$STR(N$刑铭X1)>
+SendCenterMsg 69 0 【国服玩家专属BUFF】触发:刑铭命中了【<$CURRRTARGETNAME>】斩杀对方<$str(N$刑铭X1)>血量
+MOV N$刑铭X法 0
+
+; ========== 刑铭审判（宝宝版，计数39） ==========
+[@审判X宝]
+#if
+#act
+INC N$刑铭X宝 1
+
+#IF
+large N$刑铭X宝 39
+#ACT
+MOV N$刑铭X1 <$ATTACKMONSTER_MAXHP>
+MOV N$刑铭X2 <$ATTACKMONSTER_HP>
+DEC N$刑铭X1 <$STR(N$刑铭X2)>
+DIV N$刑铭X1 15
+
+#if
+large N$刑铭X宝  39
+large N$刑铭X1 0
+#act
+M.PLAYEFFECT <$STR(N$素材X)> 109 14 1 100 0 0 0 0
+m.HUMANHP - <$STR(N$刑铭X1)>
+SendCenterMsg 69 0 【国服玩家专属BUFF】触发:刑铭命中了【<$CURRRTARGETNAME>】斩杀对方<$str(N$刑铭X1)>血量
+MOV N$刑铭X宝 0
+
+; ========== 清空攻速 ==========
+[@清空攻速]
+#IF
+#ACT
+MOV N$元歌赞助神器攻击速度 0
+#CALL [\元歌脚本\倍率倍数\元歌各种倍率.txt] @元歌速度倍数
+}

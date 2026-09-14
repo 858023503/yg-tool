@@ -1,0 +1,356 @@
+[@main]
+
+#if
+#ACT
+OPENMERCHANTBIGDLG 45 1796 1 4 0 -80 1 386 5 1
+#Call [称号变量.txt] @开始计算
+#SAY
+
+
+
+\
+<> <------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243} {专/AUTOCOLOR=243,222,241,255,242,254,253,249,180} {属/AUTOCOLOR=180,243,222,241,255,242,254,253,249} {称/AUTOCOLOR=249,180,243,222,241,255,242,254,253} {号/AUTOCOLOR=253,249,180,243,222,241,255,242,254}< --------------------/SCOLOR=254>\ \ 
+<>    <乱世英雄/SCOLOR=246>     <称号属性|254#切割+1400,全属性10-10,HP-MP+450,伤害吸收+10%/SCOLOR=250>     <查看所需物品|251#战士：英雄圣剑*1,英雄圣(甲)(袍)各一件,英雄の战盔|英雄の战链|英雄の战腕|英雄の战镯|英雄の战戒|英雄の战指|英雄の战带|英雄の战靴|700000元宝^251#法师：英雄月神*1,英雄法袍(男)(女)各一件,英雄の魔盔|英雄の魔链|英雄の魔镯|英雄の魔腕|英雄の魔戒|英雄の魔指|英雄の魔带|英雄の魔靴|700000元宝^251#道士：英雄鸣啼*1,英雄道袍(男)(女)各一件,英雄の尊盔|英雄の尊链|英雄の尊镯|英雄の尊腕|英雄の尊戒|英雄の尊指|英雄の尊带|英雄の尊靴|700000元宝>     <$STR(S159)>\ \
+<>    <皇图霸业/SCOLOR=246>     <称号属性|254#切割+1600,全属性11-11,HP-MP+500,伤害吸收+11%/SCOLOR=250>     <查看所需物品|251#战士：霸者战刃*1,霸者战甲,霸者战袍各一件,霸者战盔*1|霸者战链*1|霸者战镯*2|霸者战戒*2|霸者の勋章*1|霸者战带*1|霸者战靴*1|800000元宝^251#法师：龙渊魔杖*1,龙渊魔甲,龙渊魔袍各一件,龙渊魔盔*1|龙渊魔链*1|龙渊魔镯*2|龙渊魔戒*2|龙渊の勋章*1|龙渊魔带*1|龙渊魔靴*1|800000元宝^251#道士：诛邪道剑*1,诛邪道甲各一件,诛邪道袍,诛邪道盔|诛邪道链|诛邪道镯*2|诛邪道戒*2|诛邪の勋章|诛邪道带|诛邪道靴|800000元宝>     <$STR(S160)>\ \  
+<>    <龙神护体/SCOLOR=246>     <称号属性|254#切割+1800,全属性12-12,HP-MP+550,伤害吸收+12%/SCOLOR=250>     <查看所需物品|251#战士：火龙·神剑*1,火龙·神(甲)(袍)各一件,火龙·战盔*1|火龙·战链*1|火龙·战镯*2|火龙·战戒*2|火龙·之心[战]|火龙·战带|火龙·战靴|1000000元宝^251#法师：火龙·神剑*1,火龙·神(甲)(袍)各一件,火龙·魔盔*1|火龙·魔链*1|火龙·魔镯*2|火龙·魔戒*2|火龙·之心[法]*1|火龙·魔带*1|火龙·魔靴*1|1000000元宝^251#道士：火龙·神剑*1,火龙·神(甲)(袍)各一件,火龙·道盔*1|火龙·道链*1|火龙·道镯*2|火龙·道戒*2|火龙·之心[道]*1|火龙·道带*1|火龙·道靴*1|1000000元宝>     <$STR(S161)>\ \
+
+<>        <我本沉默 再续金典 一直被模仿 从未被超越/SCOLOR=70>   \
+
+
+[@龙神护体]
+
+#if
+check [60] 0
+#act
+MessageBox [系统提示]：请您先获得【皇图霸业】称号..
+break
+#if
+checkjob warrior
+CheckGameGold > 999999
+CHECKITEM 火龙·神剑 1
+CHECKITEM 火龙·神甲 1
+CHECKITEM 火龙·神袍 1
+CHECKITEM 火龙·战盔 1
+CHECKITEM 火龙·战链 1
+CHECKITEM 火龙·战镯 2
+CHECKITEM 火龙·战戒 2
+CHECKITEM 火龙·战带 1
+CHECKITEM 火龙·战靴 1
+CHECKITEM 火龙·之心[战] 1
+#ACT
+GameGold - 1000000
+TAKE 火龙·之心[战] 1
+TAKE 火龙·神剑 1
+TAKE 火龙·神甲 1
+TAKE 火龙·神袍 1
+TAKE 火龙·战盔 1
+TAKE 火龙·战链 1
+TAKE 火龙·战镯 2
+TAKE 火龙·战戒 2
+TAKE 火龙·战带 1
+TAKE 火龙·战靴 1
+RECYCFENGHAO 皇图霸业
+GIVEFENGHAO 龙神护体 1
+set [61] 1
+MessageBox [系统提示]：恭喜您获得了【龙神护体】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob wizard
+CheckGameGold > 999999
+CHECKITEM 火龙·神剑 1
+CHECKITEM 火龙·神甲 1
+CHECKITEM 火龙·神袍 1
+CHECKITEM 火龙·魔盔 1
+CHECKITEM 火龙·魔链 1
+CHECKITEM 火龙·魔镯 2
+CHECKITEM 火龙·魔戒 2
+CHECKITEM 火龙·魔带 1
+CHECKITEM 火龙·魔靴 1
+CHECKITEM 火龙·之心[法] 1
+#ACT
+GameGold - 1000000
+TAKE 火龙·之心[法] 1
+TAKE 火龙·神剑 1
+TAKE 火龙·神甲 1
+TAKE 火龙·神袍 1
+TAKE 火龙·魔盔 1
+TAKE 火龙·魔链 1
+TAKE 火龙·魔镯 2
+TAKE 火龙·魔戒 2
+TAKE 火龙·魔带 1
+TAKE 火龙·魔靴 1
+RECYCFENGHAO 皇图霸业
+GIVEFENGHAO 龙神护体 1
+set [61] 1
+MessageBox [系统提示]：恭喜您获得了【龙神护体】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob taoist
+CheckGameGold > 999999
+CHECKITEM 火龙·神剑 1
+CHECKITEM 火龙·神甲 1
+CHECKITEM 火龙·神袍 1
+CHECKITEM 火龙·道盔 1
+CHECKITEM 火龙·道链 1
+CHECKITEM 火龙·道镯 2
+CHECKITEM 火龙·道戒 2
+CHECKITEM 火龙·道带 1
+CHECKITEM 火龙·道靴 1
+CHECKITEM 火龙·之心[道] 1
+#ACT
+GameGold - 1000000
+TAKE 火龙·之心[道] 1
+TAKE 火龙·神剑 1
+TAKE 火龙·神甲 1
+TAKE 火龙·神袍 1
+TAKE 火龙·道盔 1
+TAKE 火龙·道链 1
+TAKE 火龙·道镯 2
+TAKE 火龙·道戒 2
+TAKE 火龙·道带 1
+TAKE 火龙·道靴 1
+RECYCFENGHAO 皇图霸业
+GIVEFENGHAO 龙神护体 1
+set [61] 1
+MessageBox [系统提示]：恭喜您获得了【龙神护体】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+#IF
+#ACT
+MessageBox 材料或者元宝不足,请详细查看背包..
+
+break
+
+[@皇图霸业]
+#if
+check [59] 0
+#act
+MessageBox [系统提示]：请您先获得【乱世英雄】称号..
+break
+#if
+checkjob warrior
+CheckGameGold > 799999
+CHECKITEM 霸者战刃 1
+CHECKITEM 霸者战甲 1
+CHECKITEM 霸者战袍 1
+CHECKITEM 霸者战盔 1
+CHECKITEM 霸者战链 1
+CHECKITEM 霸者战镯 2
+CHECKITEM 霸者战戒 2
+CHECKITEM 霸者战带 1
+CHECKITEM 霸者战靴 1
+#ACT
+GameGold - 800000
+TAKE 霸者战刃 1
+TAKE 霸者战甲 1
+TAKE 霸者战袍 1
+TAKE 霸者战盔 1
+TAKE 霸者战链 1
+TAKE 霸者战镯 2
+TAKE 霸者战戒 2
+TAKE 霸者战带 1
+TAKE 霸者战靴 1
+RECYCFENGHAO 乱世英雄
+GIVEFENGHAO 皇图霸业 1
+set [60] 1
+MessageBox [系统提示]：恭喜您获得了【皇图霸业】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob wizard
+CheckGameGold > 799999
+CHECKITEM 龙渊魔杖 1
+CHECKITEM 龙渊魔甲 1
+CHECKITEM 龙渊魔袍 1
+CHECKITEM 龙渊魔盔 1
+CHECKITEM 龙渊魔链 1
+CHECKITEM 龙渊魔镯 2
+CHECKITEM 龙渊魔戒 2
+CHECKITEM 龙渊魔带 1
+CHECKITEM 龙渊魔靴 1
+#ACT
+GameGold - 800000
+TAKE 龙渊魔杖 1
+TAKE 龙渊魔甲 1
+TAKE 龙渊魔袍 1
+TAKE 龙渊魔盔 1
+TAKE 龙渊魔链 1
+TAKE 龙渊魔镯 2
+TAKE 龙渊魔戒 2
+TAKE 龙渊魔带 1
+TAKE 龙渊魔靴 1
+RECYCFENGHAO 乱世英雄
+GIVEFENGHAO 皇图霸业 1
+set [60] 1
+MessageBox [系统提示]：恭喜您获得了【皇图霸业】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob taoist
+CheckGameGold > 799999
+CHECKITEM 诛邪道剑 1
+CHECKITEM 诛邪道甲 1
+CHECKITEM 诛邪道袍 1
+CHECKITEM 诛邪道盔 1
+CHECKITEM 诛邪道链 1
+CHECKITEM 诛邪道镯 2
+CHECKITEM 诛邪道戒 2
+CHECKITEM 诛邪道带 1
+CHECKITEM 诛邪道靴 1
+#ACT
+GameGold - 800000
+TAKE 诛邪道剑 1
+TAKE 诛邪道甲 1
+TAKE 诛邪道袍 1
+TAKE 诛邪道盔 1
+TAKE 诛邪道链 1
+TAKE 诛邪道镯 2
+TAKE 诛邪道戒 2
+TAKE 诛邪道带 1
+TAKE 诛邪道靴 1
+RECYCFENGHAO 乱世英雄
+GIVEFENGHAO 皇图霸业 1
+set [60] 1
+MessageBox [系统提示]：恭喜您获得了【皇图霸业】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+#IF
+#ACT
+MessageBox 材料或者元宝不足,请详细查看背包..
+
+break
+
+
+[@乱世英雄]
+
+#if
+check [58] 0
+#act
+MessageBox [系统提示]：请您先获得【日月乾坤】称号..
+break
+#if
+checkjob warrior
+CheckGameGold > 699999
+CHECKITEM 英雄圣剑 1
+CHECKITEM 英雄圣甲(男) 1
+CHECKITEM 英雄圣袍(女) 1
+CHECKITEM 英雄の战盔 1
+CHECKITEM 英雄の战链 1
+CHECKITEM 英雄の战腕 1
+CHECKITEM 英雄の战镯 1
+CHECKITEM 英雄の战戒 1
+CHECKITEM 英雄の战指 1
+CHECKITEM 英雄の战带 1
+CHECKITEM 英雄の战靴 1
+#ACT
+GameGold - 700000
+TAKE 英雄圣剑 1
+TAKE 英雄圣甲(男) 1
+TAKE 英雄圣袍(女) 1
+TAKE 英雄の战盔 1
+TAKE 英雄の战链 1
+TAKE 英雄の战腕 1
+TAKE 英雄の战镯 1
+TAKE 英雄の战戒 1
+TAKE 英雄の战指 1
+TAKE 英雄の战带 1
+TAKE 英雄の战靴 1
+RECYCFENGHAO 日月乾坤
+GIVEFENGHAO 乱世英雄 1
+set [59] 1
+MessageBox [系统提示]：恭喜您获得了【乱世英雄】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob wizard
+CheckGameGold > 699999
+CHECKITEM 英雄月神 1
+CHECKITEM 英雄法袍(男) 1
+CHECKITEM 英雄法袍(女) 1
+CHECKITEM 英雄の魔盔 1
+CHECKITEM 英雄の魔链 1
+CHECKITEM 英雄の魔腕 1
+CHECKITEM 英雄の魔镯 1
+CHECKITEM 英雄の魔戒 1
+CHECKITEM 英雄の魔指 1
+CHECKITEM 英雄の魔带 1
+CHECKITEM 英雄の魔靴 1
+#ACT
+GameGold - 700000
+TAKE 英雄月神 1
+TAKE 英雄法袍(男) 1
+TAKE 英雄法袍(女) 1
+TAKE 英雄の魔盔 1
+TAKE 英雄の魔链 1
+TAKE 英雄の魔腕 1
+TAKE 英雄の魔镯 1
+TAKE 英雄の魔戒 1
+TAKE 英雄の魔指 1
+TAKE 英雄の魔带 1
+TAKE 英雄の魔靴 1
+RECYCFENGHAO 日月乾坤
+GIVEFENGHAO 乱世英雄 1
+set [59] 1
+MessageBox [系统提示]：恭喜您获得了【乱世英雄】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob taoist
+CheckGameGold > 699999
+CHECKITEM 英雄鸣啼 1
+CHECKITEM 英雄道袍(男) 1
+CHECKITEM 英雄道袍(女) 1
+CHECKITEM 英雄の尊盔 1
+CHECKITEM 英雄の尊链 1
+CHECKITEM 英雄の尊腕 1
+CHECKITEM 英雄の尊镯 1
+CHECKITEM 英雄の尊戒 1
+CHECKITEM 英雄の尊指 1
+CHECKITEM 英雄の尊带 1
+CHECKITEM 英雄の尊靴 1
+#ACT
+GameGold - 700000
+TAKE 英雄鸣啼 1
+TAKE 英雄道袍(男) 1
+TAKE 英雄道袍(女) 1
+TAKE 英雄の尊盔 1
+TAKE 英雄の尊链 1
+TAKE 英雄の尊腕 1
+TAKE 英雄の尊镯 1
+TAKE 英雄の尊戒 1
+TAKE 英雄の尊指 1
+TAKE 英雄の尊带 1
+TAKE 英雄の尊靴 1
+RECYCFENGHAO 日月乾坤
+GIVEFENGHAO 乱世英雄 1
+set [59] 1
+MessageBox [系统提示]：恭喜您获得了【乱世英雄】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+#IF
+#ACT
+MessageBox 材料或者元宝不足,请详细查看背包..
+
+break
+
+
+
+
+

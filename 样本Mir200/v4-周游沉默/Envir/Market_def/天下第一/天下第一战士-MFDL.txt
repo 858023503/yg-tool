@@ -1,0 +1,183 @@
+[@MAIN]
+#if
+EQUAL A15 <$USERNAME>
+#SAY
+请问你需要进行什么操作？\ \
+你申请时的信息\
+申请人物名称：<$STR(A15)>\
+申请人物等级：<$STR(G31)>\
+申请人物攻击：<$STR(G32)>\
+人物所属行会：<$STR(A25)>\
+<更换形像/@天下第一更换形像>\
+<关闭/@exit>\
+#ELSESAY
+<想为自己树立一尊雕像，从此天下扬名？现在机会来了！/FCOLOR=250>\
+<只要你有信心打败对手，申请成功后，还可以自由设定雕像的样子/FCOLOR=250>\
+<--------------------------------------------------/FCOLOR=151>\
+<天下第一战士：/FCOLOR=70><$STR(A15)>  <所属行会：/FCOLOR=70><$STR(A25)>\
+<纷扰乱世群雄逐鹿，他在烽烟四起的<$SERVERNAME>中修炼成为/FCOLOR=70>\
+<天下第一，至今还没有人可以超越。/FCOLOR=70>\
+<今天天下第一是：/FCOLOR=70><$STR(A15)>  <明天的天下第一会是谁？/FCOLOR=70>\
+<--------------------------------------------------/FCOLOR=151>\
+<我要申请天下第一战士/@天下第一我要申请>            <谁是天下第一/@谁是第一>\
+
+
+
+
+[@谁是第一]
+最强的勇士们\
+<--------------------------------------------------/FCOLOR=151>\
+天下第一战士：  <$STR(A15)> 攻击力:<$STR(G32)>\
+天下第一法师：  <$STR(A14)> 魔法力:<$STR(G38)>\
+天下第一道士：  <$STR(A13)> 道术力:<$STR(G34)>\
+-------------------<久仰大名/@exit>-----------------------\
+
+
+[@天下第一我要申请]
+#if
+equal A2 <$USERNAME>
+#act
+MESSAGEBOX 你已经是天下第一法师了，不能再申请！！
+Break
+
+#if
+equal A3 <$USERNAME>
+#act
+MESSAGEBOX 你已经是天下第一道士了，不能再申请！！
+Break
+
+
+#if
+CHECKJOB Warrior
+#ACT
+Goto @申请检测
+#ELSEACT
+MESSAGEBOX 失败，只有战士才能申请！
+Break
+
+[@申请检测]
+#if
+NOT LARGE G32 <$MAXDC> 
+#ACT
+Goto @天下第一申请成功
+Break
+
+#if
+NOT LARGE G32 <$MAXDC> 
+CHECKLEVELEX > <$STR(G31)>
+#ACT
+Goto @天下第一申请成功
+#ELSEACT
+MESSAGEBOX 申请失败，你的攻击力还没有超过他！
+Break
+
+
+[@天下第一申请成功]
+#if
+#ACT
+MOV A1 <$username>
+GIVEFENGHAO 天下第一战士
+GmexeCute 全服触发 @更换天下第一
+
+#SAY
+恭喜你，申请成功！你现在可以对雕像进行维护、管理，以及\
+设定造形。\ \ \ \ \ \
+
+
+<关闭/@exit>\
+#ACT
+MOV A15 <$USERNAME>
+MOV G31 <$LEVEL>
+MOV G32 <$MAXDC>
+MOV A25 <$GUILDNAME>
+SetNpcImage 40 0 0
+CLEARNAMELIST ..\QuestDiary\数据文件\天下第一\战士.txt
+addnamelist ..\QuestDiary\数据文件\天下第一\战士.txt 
+SENDMSG 0 【公告】：[<$USERNAME>]成功申请了天下第一战士，，攻击力(<$STR(G32)>)，天下第一拥有天下第一战士称号！
+Break
+
+
+
+[@天下第一更换形像]
+雕像的形象是根据人物当前的信息实时显示的。\
+雕像的衣服、武器和发型是根据你当前的装备情况来显示。\
+此外，你还可以自由把雕像设定为六种姿势。\
+请您自由打造雕像吧：\ \
+<攻击造形一/@攻击造形一>        <攻击造形二/@攻击造形二>        <攻击造形三/@攻击造形三>\ \
+<站立造形/@站立造形>          <走路造形/@走路造形>          <跑步造形/@跑步造形>\ \ 
+
+<关闭/@exit>\
+
+
+
+[@攻击造形一]
+#if
+EQUAL A15 <$USERNAME>
+#ACT
+SetNpcImage 240 1 0
+MESSAGEBOX 恭喜，雕像打造成功！
+#elsesay
+[失败]\ \
+这座雕像不是您的哦！\
+Break
+
+
+[@攻击造形二]
+#if
+EQUAL A15 <$USERNAME>
+#ACT
+SetNpcImage 436 1 0
+MESSAGEBOX 恭喜，雕像打造成功！
+#elsesay
+[失败]\ \
+这座雕像不是您的哦！\
+Break
+
+
+[@攻击造形三]
+#if
+EQUAL A15 <$USERNAME>
+#ACT
+SetNpcImage 514 1 0
+MESSAGEBOX 恭喜，雕像打造成功！
+#elsesay
+[失败]\ \
+这座雕像不是您的哦！\
+Break
+
+
+[@站立造形]
+#if
+EQUAL A15 <$USERNAME>
+#ACT
+SetNpcImage 40 1 0
+MESSAGEBOX 恭喜，雕像打造成功！
+#elsesay
+[失败]\ \
+这座雕像不是您的哦！\
+Break
+
+
+[@走路造形]
+#if
+EQUAL A15 <$USERNAME>
+#ACT
+SetNpcImage 107 1 0
+MESSAGEBOX 恭喜，雕像打造成功！
+#elsesay
+[失败]\ \
+这座雕像不是您的哦！\
+Break
+
+
+[@跑步造形]
+#if
+EQUAL A15 <$USERNAME>
+#ACT
+SetNpcImage 173 1 0
+MESSAGEBOX 恭喜，雕像打造成功！
+#elsesay
+[失败]\ \
+这座雕像不是您的哦！\
+Break
+

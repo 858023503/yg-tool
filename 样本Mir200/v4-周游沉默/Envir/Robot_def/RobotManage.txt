@@ -1,0 +1,461 @@
+[@一大陆野外BOSS1]
+
+#if
+CheckRangeMONCount MFDL 284 168 40 < 10
+#ACT
+MOV G10 0
+While G10 < 20
+GetRandomText ..\QuestDiary\一大陆野外BOSS.txt S3
+MONGENEX MFDL 284 168 <$str(S3)> 5 1 5
+Inc G10 1
+EndWhile
+[@一大陆野外BOSS2]
+#if
+CheckRangeMONCount MFDL 646 236 40 < 10
+#ACT
+MOV G11 0
+While G11 < 20
+GetRandomText ..\QuestDiary\一大陆野外BOSS.txt S4
+MONGENEX MFDL 646 236 <$str(S4)> 5 1 5
+Inc G11 1
+EndWhile
+[@一大陆野外BOSS3]
+#if
+CheckRangeMONCount MFDL 645 629 40 < 10
+#ACT
+MOV G13 0
+While G13 < 20
+GetRandomText ..\QuestDiary\一大陆野外BOSS.txt S5
+MONGENEX MFDL 645 629 <$str(S5)> 5 1 5
+Inc G13 1
+EndWhile
+[@一大陆野外BOSS4]
+#if
+CheckRangeMONCount MFDL 245 468 40 < 10
+#ACT
+MOV G14 0
+While G14 < 20
+GetRandomText ..\QuestDiary\一大陆野外BOSS.txt S6
+MONGENEX MFDL 245 468 <$str(S6)> 5 1 5
+Inc G14 1
+EndWhile
+
+
+
+
+[@送宝人偶]
+#IF
+CheckMapSameMonCount EV002 清风送礼[超级福利BOSS] < 1 
+#ACT
+MONGENEX EV002  23 27 清风送礼[超级福利BOSS] 0  1 249
+
+#if
+#ACT
+SENDMSG 0 【清风送礼】活动两小时一次，BOSS刷新于【浑水摸鱼23 27】！. . 此BOSS必爆充值，白嫖必抢！！！
+SENDMSG 0 【清风送礼】活动两小时一次，BOSS刷新于【浑水摸鱼23 27】！. . 此BOSS必爆充值，白嫖必抢！！！
+SENDMSG 0 【清风送礼】活动两小时一次，BOSS刷新于【浑水摸鱼23 27】！. . 此BOSS必爆充值，白嫖必抢！！！
+SENDMSG 0 【清风送礼】活动两小时一次，BOSS刷新于【浑水摸鱼23 27】！. . 此BOSS必爆充值，白嫖必抢！！！
+SENDMSG 0 【清风送礼】活动两小时一次，BOSS刷新于【浑水摸鱼23 27】！. . 此BOSS必爆充值，白嫖必抢！！！ 
+SENDMSG 0 【清风送礼】活动两小时一次，BOSS刷新于【浑水摸鱼23 27】！. . 此BOSS必爆充值，白嫖必抢！！！ 
+SENDMSG 0 【清风送礼】活动两小时一次，BOSS刷新于【浑水摸鱼23 27】！. . 此BOSS必爆充值，白嫖必抢！！！ 
+SENDMSG 0 【清风送礼】活动两小时一次，BOSS刷新于【浑水摸鱼23 27】！. . 此BOSS必爆充值，白嫖必抢！！！ 
+SENDMSG 0 【清风送礼】活动两小时一次，BOSS刷新于【浑水摸鱼23 27】！. . 此BOSS必爆充值，白嫖必抢！！！ 
+SENDMSG 0 【清风送礼】活动两小时一次，BOSS刷新于【浑水摸鱼23 27】！. . 此BOSS必爆充值，白嫖必抢！！！
+
+Gmexecute 全服触发 @送宝人偶
+break
+
+
+
+
+[@行会争霸战提示]
+#if
+#ACT
+MOV G480 1
+Gmexecute 开始提问 @弹出行会争霸
+SENDMSG 0 [行会争霸战]活动19:00分正式开始,参加的玩家请在玛法大陆进入!
+SENDMSG 0 [行会争霸战]活动19:00分正式开始,参加的玩家请在玛法大陆进入!
+SENDMSG 0 [行会争霸战]活动19:00分正式开始,参加的玩家请在玛法大陆进入!
+
+[@行会争霸战刷怪1]
+#if
+#act
+MONGENEX  行会争霸赛  9 11  清风送礼[超级福利BOSS] 0 1
+SENDMSG 0 [行会争霸战]活动中清风送礼[超级福利BOSS]也来凑热闹了!
+SENDMSG 0 [行会争霸战]活动中清风送礼[超级福利BOSS]也来凑热闹了!
+SENDMSG 0 [行会争霸战]活动中清风送礼[超级福利BOSS]也来凑热闹了！
+break
+[@行会争霸战刷怪2]
+#if
+#act
+MONGENEX  行会争霸赛  24 13  清风送礼[超级福利BOSS] 0 1
+SENDMSG 0 [行会争霸战]活动中清风送礼[超级福利BOSS]也来凑热闹了!
+SENDMSG 0 [行会争霸战]活动中清风送礼[超级福利BOSS]也来凑热闹了!
+SENDMSG 0 [行会争霸战]活动中清风送礼[超级福利BOSS]也来凑热闹了！
+break
+[@行会争霸战刷怪3]
+#if
+#act
+MONGENEX  行会争霸赛  36 25  清风送礼[超级福利BOSS] 0 1
+SENDMSG 0 [行会争霸战]活动中清风送礼[超级福利BOSS]也来凑热闹了!
+SENDMSG 0 [行会争霸战]活动中清风送礼[超级福利BOSS]也来凑热闹了!
+SENDMSG 0 [行会争霸战]活动中清风送礼[超级福利BOSS]也来凑热闹了！
+break
+[@行会争霸战刷怪4]
+#if
+#act
+MONGENEX  行会争霸赛  36 38  清风送礼[超级福利BOSS] 0 1
+SENDMSG 0 [行会争霸战]活动中清风送礼[超级福利BOSS]也来凑热闹了!
+SENDMSG 0 [行会争霸战]活动中清风送礼[超级福利BOSS]也来凑热闹了!
+SENDMSG 0 [行会争霸战]活动中清风送礼[超级福利BOSS]也来凑热闹了！
+break
+[@行会争霸战刷怪5]
+#if
+#act
+MONGENEX  行会争霸赛  25 37  清风送礼[超级福利BOSS] 0 1
+SENDMSG 0 [行会争霸战]活动中清风送礼[超级福利BOSS]也来凑热闹了!
+SENDMSG 0 [行会争霸战]活动中清风送礼[超级福利BOSS]也来凑热闹了!
+SENDMSG 0 [行会争霸战]活动中清风送礼[超级福利BOSS]也来凑热闹了！
+break
+[@行会争霸战刷怪6]
+#if
+#act
+MONGENEX  行会争霸赛  12 26  清风送礼[超级福利BOSS] 0 1
+SENDMSG 0 [行会争霸战]活动中九只清风送礼[福利BOSS]也来凑热闹了!
+SENDMSG 0 [行会争霸战]活动中九只清风送礼[福利BOSS]也来凑热闹了!
+SENDMSG 0 [行会争霸战]活动中九只清风送礼[福利BOSS]也来凑热闹了！
+break
+[@行会争霸战刷怪]
+#IF
+CheckMapSameMonCount 行会争霸赛 清风送礼[福利BOSS]1 < 1 
+#ACT
+MONGENEX 行会争霸赛  20 22 清风送礼[福利BOSS]1 0  1 249
+SENDMSG 0 [行会争霸战]活动中清风送礼[福利BOSS]也来凑热闹了!
+#IF
+CheckMapSameMonCount 行会争霸赛 清风送礼[福利BOSS]2 < 1 
+#ACT
+MONGENEX 行会争霸赛  20 22 清风送礼[福利BOSS]2 0  1 249
+SENDMSG 0 [行会争霸战]活动中清风送礼[福利BOSS]也来凑热闹了!
+#IF
+CheckMapSameMonCount 行会争霸赛 清风送礼[福利BOSS]3 < 1 
+#ACT
+MONGENEX 行会争霸赛  20 22 清风送礼[福利BOSS]3 0  1 249
+SENDMSG 0 [行会争霸战]活动中清风送礼[福利BOSS]也来凑热闹了!
+#IF
+CheckMapSameMonCount 行会争霸赛 清风送礼[福利BOSS]4 < 1 
+#ACT
+MONGENEX 行会争霸赛  20 22 清风送礼[福利BOSS]4 0  1 249
+SENDMSG 0 [行会争霸战]活动中清风送礼[福利BOSS]也来凑热闹了!
+#IF
+CheckMapSameMonCount 行会争霸赛 清风送礼[福利BOSS]5 < 1 
+#ACT
+MONGENEX 行会争霸赛  20 22 清风送礼[福利BOSS]5 0  1 249
+SENDMSG 0 [行会争霸战]活动中清风送礼[福利BOSS]也来凑热闹了!
+#IF
+CheckMapSameMonCount 行会争霸赛 清风送礼[福利BOSS]6 < 1 
+#ACT
+MONGENEX 行会争霸赛  20 22 清风送礼[福利BOSS]6 0  1 249
+SENDMSG 0 [行会争霸战]活动中清风送礼[福利BOSS]也来凑热闹了!
+#IF
+CheckMapSameMonCount 行会争霸赛 清风送礼[福利BOSS]7 < 1 
+#ACT
+MONGENEX 行会争霸赛  20 22 清风送礼[福利BOSS]7 0  1 249
+SENDMSG 0 [行会争霸战]活动中清风送礼[福利BOSS]也来凑热闹了!
+#IF
+CheckMapSameMonCount 行会争霸赛 清风送礼[福利BOSS]8 < 1 
+#ACT
+MONGENEX 行会争霸赛  20 22 清风送礼[福利BOSS]8 0  1 249
+SENDMSG 0 [行会争霸战]活动中清风送礼[福利BOSS]也来凑热闹了!
+#IF
+CheckMapSameMonCount 行会争霸赛 清风送礼[福利BOSS]9 < 1 
+#ACT
+MONGENEX 行会争霸赛  20 22 清风送礼[福利BOSS]9 0  1 249
+SENDMSG 0 [行会争霸战]活动中清风送礼[福利BOSS]也来凑热闹了!
+
+break
+
+
+
+[@定时公告设置]
+#if
+#acT
+SENDMOVEMSG 0 249 0 75 1 实力铸就非凡.王者绝非偶然.不要问别人装备为什么那么好，他只不过把别人睡觉的时间用在打怪上 11 60 0
+
+
+;-----------------------------------------------------------------------------------------
+ 
+;============================攻沙
+[@攻城变量]
+#if
+#ACT
+INC G889 1
+break
+
+[@首次集体攻沙巴克]
+#if
+EQUAL G889 3
+#ACT
+AddAttackSabukAll 0
+SENDMSG 1  ╔═══════════════════════╗
+SENDMSG 1  ║永不停息的荣誉战火，熊熊燃烧！║
+SENDMSG 1  ║═══════════════════════║
+SENDMSG 1  ║╔┯╗╔┯╗╔┯╗╔┯╗║
+SENDMSG 1  ║┠荣┨┠耀┨┠之┨┠战┨║
+SENDMSG 1  ║╚┷╝╚┷╝╚┷╝╚┷╝║
+SENDMSG 1  ║═══════════════════════║
+SENDMSG 1  ║     20点进行沙巴克争夺战,请做好准备      ║
+SENDMSG 1  ╚═══════════════════════╝
+break
+
+
+[@首次攻沙喊话]
+#if
+EQUAL G889 3
+#ACT
+SENDMSG 1  ╔═══════════════════════╗
+SENDMSG 1  ║永不停息的荣誉战火，熊熊燃烧！║
+SENDMSG 1  ║═══════════════════════║
+SENDMSG 1  ║╔┯╗╔┯╗╔┯╗╔┯╗║
+SENDMSG 1  ║┠荣┨┠耀┨┠之┨┠战┨║
+SENDMSG 1  ║╚┷╝╚┷╝╚┷╝╚┷╝║
+SENDMSG 1  ║═══════════════════════║
+SENDMSG 1  ║     20点进行沙巴克争夺战,请做好准备      ║
+SENDMSG 1  ╚═══════════════════════╝
+break
+
+[@首次盗取开始]
+#if
+EQUAL G889 3
+#ACT
+MOV G887 0
+SendNewLineMsg 0 249 0 15 100 13 2 全服通告||沙巴克盗取奖励活动正式开始||请沙巴克城主守住你们的奖励这不能被亵渎
+
+[@首次盗取结束]
+#if
+EQUAL G889 3
+#ACT
+MOV G887 1
+SendNewLineMsg 0 249 0 15 100 13 2 全服通告||沙巴克盗取奖励活动正式关闭||请沙巴克城主来到复活点领取你们的奖励
+
+
+[@首次领奖开始]
+#if
+EQUAL G889 3
+#ACT
+MOV G888 0
+
+[@首次领奖结束]
+#if
+EQUAL G889 3
+#ACT
+MOV G888 1
+
+[@老区集体攻沙巴克]
+#if
+LARGE G889 3
+#ACT
+AddAttackSabukAll 0
+SENDMSG 1  ╔═══════════════════════╗
+SENDMSG 1  ║永不停息的荣誉战火，熊熊燃烧！║
+SENDMSG 1  ║═══════════════════════║
+SENDMSG 1  ║╔┯╗╔┯╗╔┯╗╔┯╗║
+SENDMSG 1  ║┠荣┨┠耀┨┠之┨┠战┨║
+SENDMSG 1  ║╚┷╝╚┷╝╚┷╝╚┷╝║
+SENDMSG 1  ║═══════════════════════║
+SENDMSG 1  ║     20点进行沙巴克争夺战,请做好准备      ║
+SENDMSG 1  ╚═══════════════════════╝
+break
+
+
+[@老区攻沙喊话]
+#if
+LARGE G889 3
+#ACT
+SENDMSG 1  ╔═══════════════════════╗
+SENDMSG 1  ║永不停息的荣誉战火，熊熊燃烧！║
+SENDMSG 1  ║═══════════════════════║
+SENDMSG 1  ║╔┯╗╔┯╗╔┯╗╔┯╗║
+SENDMSG 1  ║┠荣┨┠耀┨┠之┨┠战┨║
+SENDMSG 1  ║╚┷╝╚┷╝╚┷╝╚┷╝║
+SENDMSG 1  ║═══════════════════════║
+SENDMSG 1  ║     20点进行沙巴克争夺战,请做好准备      ║
+SENDMSG 1  ╚═══════════════════════╝
+break
+
+[@老区盗取开始]
+#if
+LARGE G889 3
+#ACT
+MOV G887 0
+SendNewLineMsg 0 249 0 15 100 13 2 全服通告||沙巴克盗取奖励活动正式开始||请沙巴克城主守住你们的奖励这不能被亵渎
+
+[@老区盗取结束]
+#if
+LARGE G889 3
+#ACT
+MOV G887 1
+SendNewLineMsg 0 249 0 15 100 13 2 全服通告||沙巴克盗取奖励活动正式关闭||请沙巴克城主来到复活点领取你们的奖励
+
+
+[@老区领奖开始]
+#if
+LARGE G889 3
+#ACT
+MOV G888 0
+
+[@老区领奖结束]
+#if
+LARGE G889 3
+#ACT
+MOV G888 1
+
+
+
+[@异界检测]
+#if
+#ACT
+gmexecute 全服触发 @异界时间检测
+
+
+
+
+[@清空变量]
+#if
+#ACT
+mov G484 0
+mov G666 0
+;CLEARNAMELIST  ..\QuestDiary\英雄之塔\机器码.txt
+
+
+
+[@世界BOSS1]
+#if
+CheckMapSameMonCount MFDL 【世界BOSS】摩达途 < 1
+#act
+MONGENEX  MFDL  22 630  【世界BOSS】摩达途 0 1 253
+SENDMOVEMSG 0 70 0 60 1 【世界BOSS】摩达途出现在玛法大陆,27.656各位玩家抓紧参与击杀！  16 15 0
+
+#if
+CheckMapSameMonCount MFDL 【世界BOSS】摩达途 > 0
+#act
+SENDMOVEMSG 0 70 0 60 1 【世界BOSS】摩达途出现在玛法大陆,27.656各位玩家抓紧参与击杀！  16 15 0
+
+;--------------------------------------------------------------------------------------------------------------
+[@世界BOSS2]
+#if
+CheckMapSameMonCount  九黎 【世界BOSS】魔尊重楼 < 1
+#act
+MONGENEX  九黎  147 179 【世界BOSS】魔尊重楼 0 1 253
+SENDMOVEMSG 0 70 0 60 1 【世界BOSS】魔尊重楼出现在九黎,147.179各位玩家抓紧参与击杀！  16 15 0
+
+#if
+CheckMapSameMonCount  九黎 【世界BOSS】魔尊重楼 > 0
+#act
+SENDMOVEMSG 0 70 0 60 1 【世界BOSS】魔尊重楼出现在九黎,147.179各位玩家抓紧参与击杀！  16 15 0
+
+[@世界BOSS3]
+#if
+CheckMapSameMonCount  天合关 【世界BOSS】炼狱魔王 < 1
+#act
+MONGENEX  天合关  63 445 【世界BOSS】炼狱魔王 0 1 253
+SENDMOVEMSG 0 70 0 60 1 【世界BOSS】炼狱魔王出现在天合关，63，445，各位玩家抓紧参与击杀！  16 15 0
+
+#if
+CheckMapSameMonCount  天合关 【世界BOSS】魔尊重楼 > 0
+#act
+SENDMOVEMSG 0 70 0 60 1 【世界BOSS】炼狱魔王出现在天合关，63，445，各位玩家抓紧参与击杀！  16 15 0
+
+
+
+;--------------------------------------------------------------------------------------------------------------
+[@世界BOSS4]
+#if
+CheckMapSameMonCount  雷泽 【世界BOSS】精灵王 < 1
+#act
+MONGENEX  雷泽  271 623  【世界BOSS】精灵王 0 1 253
+SENDMOVEMSG 0 70 0 60 1 【世界BOSS】精灵王出现在雷泽,271.623各位玩家抓紧参与击杀！ 16 15 0
+
+#if
+CheckMapSameMonCount  雷泽 【世界BOSS】精灵王 > 0
+#act
+SENDMOVEMSG 0 70 0 60 1 【世界BOSS】精灵王出现在雷泽,271.623各位玩家抓紧参与击杀！ 16 15 0
+
+
+;--------------------------------------------------------------------------------------------------------------
+[@世界BOSS5]
+#if
+CheckMapSameMonCount  荒原 【世界BOSS】荒漠之王 < 1
+#act
+MONGENEX  荒原  418 221  【世界BOSS】荒漠之王 0 1 253
+SENDMOVEMSG 0 70 0 60 1 【世界BOSS】荒漠之王出现在雷泽,418.221各位玩家抓紧参与击杀！ 16 15 0
+
+#if
+CheckMapSameMonCount  荒原 【世界BOSS】荒漠之王> 0
+#act
+SENDMOVEMSG 0 70 0 60 1 【世界BOSS】荒漠之王出现在雷泽,418.221各位玩家抓紧参与击杀！ 16 15 0
+
+
+;--------------------------------------------------------------------------------------------------------------
+
+[@世界BOSS6]
+#if
+CheckMapSameMonCount  北寒边界 【世界BOSS】魔道真君 < 1
+#act
+MONGENEX  北寒边界 46 462 【世界BOSS】魔道真君 0 1 253
+SENDMOVEMSG 0 70 0 60 1 【世界BOSS】魔道真君出现在北寒边界,46.462各位玩家抓紧参与击杀！ 16 15 0
+
+#if
+CheckMapSameMonCount  北寒边界 【世界BOSS】魔道真君 > 0
+#act
+SENDMOVEMSG 0 70 0 60 1 【世界BOSS】魔道真君出现在北寒边界,46.462各位玩家抓紧参与击杀！ 16 15 0
+
+
+;--------------------------------------------------------------------------------------------------------------
+
+[@世界BOSS7]
+#if
+CheckMapSameMonCount  北寒仙域 【世界BOSS】九魔绝天 < 1
+#act
+MONGENEX  北寒仙域 349 858  【世界BOSS】九魔绝天 0 1 253
+SENDMOVEMSG 0 70 0 60 1 【世界BOSS】九魔绝天出现在北寒仙域,349.858各位玩家抓紧参与击杀！ 16 15 0
+
+#if
+CheckMapSameMonCount  群魔营地 【世界BOSS】九魔绝天 > 0
+#act
+SENDMOVEMSG 0 70 0 60 1 【世界BOSS】九魔绝天出现在北寒仙域,349.858各位玩家抓紧参与击杀！ 16 15 0
+
+
+;--------------------------------------------------------------------------------------------------------------
+
+
+
+[@世界BOSS8]
+#if
+CheckMapSameMonCount  群魔营地 【世界BOSS】异炎邪帝 < 1
+#act
+MONGENEX  群魔营地  109 119  【世界BOSS】异炎邪帝 0 1 253
+SENDMOVEMSG 0 70 0 60 1 【世界BOSS】异炎邪帝出现在群魔营地,109.119 各位玩家抓紧参与击杀！ 16 15 0
+
+#if
+CheckMapSameMonCount  群魔营地 【世界BOSS】异炎邪帝 > 0
+#act
+SENDMOVEMSG 0 70 0 60 1 【世界BOSS】异炎邪帝出现在群魔营地,109.119 各位玩家抓紧参与击杀！ 16 15 0
+
+
+;--------------------------------------------------------------------------------------------------------------
+[@世界BOSS9]
+#if
+CheckMapSameMonCount  神之领域 【世界BOSS】玄天战神 < 1
+#act
+MONGENEX  神之领域  686 617  【世界BOSS】玄天战神 0 1 253
+SENDMOVEMSG 0 70 0 60 1 【世界BOSS】玄天战神出现在神之领域,686.617各位玩家抓紧参与击杀！ 16 15 0
+
+#if
+CheckMapSameMonCount  神之领域 【世界BOSS】玄天战神 > 0
+#act
+SENDMOVEMSG 0 70 0 60 1 【世界BOSS】玄天战神出现在神之领域,686.617各位玩家抓紧参与击杀！ 16 15 0
+
+;--------------------------------------------------------------------------------------------------------------
+
+
+

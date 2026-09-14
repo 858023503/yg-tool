@@ -1,0 +1,53 @@
+;地图事件触发列表
+黑色荒地 36 81 0 -1:1 4:*:0 0 1:@MapEventWalk
+H203 77 16 0 -1:1 4:*:0 0 1:@MapEventWalk
+月河渊 79 13 0 -1:1 4:*:0 0 1:@MapEventWalk
+D2011 19 21 0 -1:1 4:*:0 0 1:@MapEventWalk
+D2008 26 24 0 -1:1 4:*:0 0 1:@MapEventWalk
+D2006 15 22 0 -1:1 4:*:0 0 1:@MapEventWalk
+D10053 41 91 0 -1:1 4:*:0 0 1:@MapEventWalk
+震天秘境 13 9 0 -1:1 4:*:0 0 1:@MapEventWalk
+英灵奈何路 178 156 0 -1:1 4:*:0 0 1:@MapEventWalk
+
+群魔营地 336 329 0 -1:1 4:*:0 0 1:@MapEventWalk
+群魔营地 32 319 0 -1:1 4:*:0 0 1:@MapEventWalk
+群魔营地 176 78 0 -1:1 4:*:0 0 1:@MapEventWalk
+群魔营地 251 223 0 -1:1 4:*:0 0 1:@MapEventWalk
+群魔营地 174 252 0 -1:1 4:*:0 0 1:@MapEventWalk
+群魔营地 331 40 0 -1:1 4:*:0 0 1:@MapEventWalk
+群魔营地 89 156 0 -1:1 4:*:0 0 1:@MapEventWalk
+群魔营地 268 286 0 -1:1 4:*:0 0 1:@MapEventWalk
+群魔营地 107 232 0 -1:1 4:*:0 0 1:@MapEventWalk
+
+神之领域 616 208 0  -1:1 4:*:0 0 1:@MapEventWalk
+神之领域 444 237 0  -1:1 4:*:0 0 1:@MapEventWalk
+神之领域  306 682 0  -1:1 4:*:0 0 1:@MapEventWalk
+神之领域  564 31 0  -1:1 4:*:0 0 1:@MapEventWalk
+神之领域  612 926 0  -1:1 4:*:0 0 1:@MapEventWalk
+神之领域  50 344 0  -1:1 4:*:0 0 1:@MapEventWalk
+神之领域  304 814 0  -1:1 4:*:0 0 1:@MapEventWalk
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

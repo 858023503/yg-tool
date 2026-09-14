@@ -1,0 +1,97 @@
+[@MAIN]
+#IF
+#ACT
+#SAY
+黑暗神殿共5个，每次随机进入其中一个\
+每人每天最多可进入10次，当前次数：<[<$STR(J14)>]/SCOLOR=250>\ \
+<摇骰子进入|70#300万金币投掷一次,随机到3个相同数字可进入^-^253#投掷到100的倍数次数必定进入一次^-^250#投掷3个相同数字达到100次可获得[魔龙骰神]称号/@摇骰子进入黑暗神殿>       <直接进入|70#3亿金币直接进入/@直接进入黑暗神殿>
+
+[@直接进入黑暗神殿]
+#IF
+LARGE J14 9
+#ACT
+MESSAGEBOX 今日次数已耗尽,请明日再来！
+BREAK
+
+#IF
+SMALL <$GOLDCOUNT> 300000000
+#ACT
+MESSAGEBOX 你的金币数量不足！
+BREAK
+
+#IF
+#ACT
+GOTO @_@确定进入黑暗神殿
+
+[@摇骰子进入黑暗神殿]
+#IF
+LARGE J14 9
+#ACT
+MESSAGEBOX 今日次数已耗尽,请明日再来！
+BREAK
+
+#IF
+SMALL <$GOLDCOUNT> 3000000
+#ACT
+MESSAGEBOX 你的金币数量不足！
+BREAK
+
+#IF
+#ACT
+MOV S$魔龙黑暗神殿入场描述
+INC J13 1
+TAKE 金币 3000000
+MOVR N$摇骰子一号 1 7
+MOVR N$摇骰子二号 1 7
+MOVR N$摇骰子三号 1 7
+
+#OR
+EQUAL <$STR(N$摇骰子一号)><$STR(N$摇骰子二号)><$STR(N$摇骰子三号)> 111
+EQUAL <$STR(N$摇骰子一号)><$STR(N$摇骰子二号)><$STR(N$摇骰子三号)> 222
+EQUAL <$STR(N$摇骰子一号)><$STR(N$摇骰子二号)><$STR(N$摇骰子三号)> 333
+EQUAL <$STR(N$摇骰子一号)><$STR(N$摇骰子二号)><$STR(N$摇骰子三号)> 444
+EQUAL <$STR(N$摇骰子一号)><$STR(N$摇骰子二号)><$STR(N$摇骰子三号)> 555
+EQUAL <$STR(N$摇骰子一号)><$STR(N$摇骰子二号)><$STR(N$摇骰子三号)> 666
+#ACT
+INC U201 1
+MOV S$魔龙黑暗神殿入场描述 {[公告]|250:0}{『<$USERNAME>』|245:0}{运气爆棚，摇出了|251:0}{[三个<$STR(N$摇骰子三号)>]|254:0}{，成功进入黑暗神殿。|251:0}
+SENDMSG 6 掷骰子次数:<$STR(U201)>/100。100次可获得[魔龙至尊骰神]称号。
+
+#IF
+LARGE J13 99
+#ACT
+MOV J13 0
+MOV N$摇骰子一号 6
+MOV N$摇骰子二号 6
+MOV N$摇骰子三号 6
+MOV S$魔龙黑暗神殿入场描述 {[公告]|250:0}{『<$USERNAME>』|245:0}{摇骰子100次，保底进入|251:0}{[黑暗神殿]|254:0}
+
+#IF
+LARGE U201 99
+NOT CHECKFENGHAO 魔龙至尊骰神
+#ACT
+GIVEFENGHAO 魔龙至尊骰神
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{摇骰子成功100次，喜提称号|251:0}{[魔龙至尊骰神]|254:0}
+
+#OR
+EQUAL <$STR(N$摇骰子一号)><$STR(N$摇骰子二号)><$STR(N$摇骰子三号)> 111
+EQUAL <$STR(N$摇骰子一号)><$STR(N$摇骰子二号)><$STR(N$摇骰子三号)> 222
+EQUAL <$STR(N$摇骰子一号)><$STR(N$摇骰子二号)><$STR(N$摇骰子三号)> 333
+EQUAL <$STR(N$摇骰子一号)><$STR(N$摇骰子二号)><$STR(N$摇骰子三号)> 444
+EQUAL <$STR(N$摇骰子一号)><$STR(N$摇骰子二号)><$STR(N$摇骰子三号)> 555
+EQUAL <$STR(N$摇骰子一号)><$STR(N$摇骰子二号)><$STR(N$摇骰子三号)> 666
+#ACT
+GuildNoticeMsg 244 0 <$STR(S$魔龙黑暗神殿入场描述)>
+GOTO @_@确定进入黑暗神殿
+BREAK
+
+#IF
+#ACT
+SENDMSG 6 你摇出了{[<$STR(N$摇骰子一号)><$STR(N$摇骰子二号)><$STR(N$摇骰子三号)>]|249},很遗憾无法进入！当前累计摇骰子次数:<$STR(J13)>
+
+[@_@确定进入黑暗神殿]
+#IF
+#ACT
+INC J14 1
+MOVR N$随机黑暗神殿编号 1 6
+MAPMOVE 魔龙黑暗神殿<$STR(N$随机黑暗神殿编号)>号

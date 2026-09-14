@@ -1,0 +1,294 @@
+[@开始计算人物魂环]
+{
+#IF
+#ACT
+MOV N$疾风激活标识 0
+MOV N$灵巧激活标识 0
+MOV N$锐利激活标识 0
+MOV N$巧手激活标识 0
+MOV N$雷霆激活标识 0
+MOV N$盛宴激活标识 0
+MOV N$粉碎激活标识 0
+MOV N$回音激活标识 0
+MOV N$邪光激活标识 0
+MOV N$破魔激活标识 0
+MOV N$瘫痪激活标识 0
+MOV N$波动激活标识 0
+MOV N$嘲讽激活标识 0
+MOV N$盾反激活标识 0
+MOV N$蓄势激活标识 0
+MOV N$吸收激活标识 0
+MOV N$抱月激活标识 0
+MOV N$固月激活标识 0
+MOV N$血月激活标识 0
+MOV N$灵月激活标识 0
+MOV N$流星激活标识 0
+MOV N$怒焰激活标识 0
+MOV N$焚烧激活标识 0
+MOV N$缴械激活标识 0
+MOV N$引雷诀激活标识 0
+MOV N$摄魂雷激活标识 0
+MOV N$灭魂雷激活标识 0
+MOV N$麻痹雷激活标识 0
+MOV N$多重火球激活标识 0
+MOV N$死亡火球激活标识 0
+MOV N$点燃激活标识 0
+MOV N$神火激活标识 0
+MOV N$傀儡术激活标识 0
+MOV N$魅惑激活标识 0
+MOV N$鞭挞激活标识 0
+MOV N$灵光激活标识 0
+MOV N$蔓延激活标识 0
+MOV N$轰燃激活标识 0
+MOV N$冰焰激活标识 0
+MOV N$踏火激活标识 0
+MOV N$强身激活标识 0
+MOV N$灵盾激活标识 0
+MOV N$两仪激活标识 0
+MOV N$火甲激活标识 0
+MOV N$冰爆激活标识 0
+MOV N$急冻激活标识 0
+MOV N$冰魄激活标识 0
+MOV N$冰雨激活标识 0
+MOV N$灵剑激活标识 0
+MOV N$明神激活标识 0
+MOV N$天罡激活标识 0
+MOV N$疯魔剑法激活标识 0
+MOV N$六道激活标识 0
+MOV N$式纸激活标识 0
+MOV N$裂神激活标识 0
+MOV N$神速激活标识 0
+MOV N$并列激活标识 0
+MOV N$道傀儡激活标识 0
+MOV N$骷髅武士激活标识 0
+MOV N$骷髅法师激活标识 0
+MOV N$吝啬激活标识 0
+MOV N$毒体激活标识 0
+MOV N$感染激活标识 0
+MOV N$断肠激活标识 0
+MOV N$固化激活标识 0
+MOV N$强化激活标识 0
+MOV N$祈福激活标识 0
+MOV N$祝福激活标识 0
+MOV N$迅捷激活标识 0
+MOV N$双生暗影激活标识 0
+MOV N$攻击姿态激活标识 0
+MOV N$巨大化激活标识 0
+MOV N$三环激活标识 0
+MOV N$魔次激活标识 0
+MOV N$灼烧激活标识 0
+MOV N$混乱之雨激活标识 0
+MOV N$剧毒斩激活标识 0
+MOV N$质朴激活标识 0
+MOV N$舍命激活标识 0
+MOV N$麻痹斩激活标识 0
+MOV N$暴躁激活标识 0
+MOV N$妻妾成群激活标识 0
+MOV N$不死于徒手激活标识 0
+MOV N$不稳定发挥激活标识 0
+MOV N$卸甲激活标识 0
+MOV N$双重打击激活标识 0
+MOV N$八重激活标识 0
+MOV N$鲜红激活标识 0
+MOV L$已激活魂环编号数组 [无,无,无,无,无,无,无,无]
+GOTO @_@职业<$JOB>进行魂环计算
+
+#IF
+NOT EQUAL L$已激活魂环编号数组[0] 无
+NOT EQUAL L$已激活魂环编号数组[0]
+#ACT
+MOV L$本组魂环描述数组 <$STR(S$职业<$JOB>0号魂环描述数组)>
+MOV L$本组魂环图标数组 <$STR(S$职业<$JOB>0号魂环图标数组)>
+SetArrBuff 2 49 0 <$STR(L$本组魂环图标数组[<$STR(L$已激活魂环编号数组[0])>])> -1 0 0 0 <$STR(L$本组魂环描述数组[<$STR(L$已激活魂环编号数组[0])>])>
+#ELSEACT
+CloseArrBuff 49
+
+#IF
+NOT EQUAL L$已激活魂环编号数组[1] 无
+NOT EQUAL L$已激活魂环编号数组[1]
+#ACT
+MOV L$本组魂环描述数组 <$STR(S$职业<$JOB>1号魂环描述数组)>
+MOV L$本组魂环图标数组 <$STR(S$职业<$JOB>1号魂环图标数组)>
+SetArrBuff 2 50 0 <$STR(L$本组魂环图标数组[<$STR(L$已激活魂环编号数组[1])>])> -1 0 0 0 <$STR(L$本组魂环描述数组[<$STR(L$已激活魂环编号数组[1])>])>
+#ELSEACT
+CloseArrBuff 50
+
+#IF
+NOT EQUAL L$已激活魂环编号数组[2] 无
+NOT EQUAL L$已激活魂环编号数组[2]
+#ACT
+MOV L$本组魂环描述数组 <$STR(S$职业<$JOB>2号魂环描述数组)>
+MOV L$本组魂环图标数组 <$STR(S$职业<$JOB>2号魂环图标数组)>
+SetArrBuff 2 51 0 <$STR(L$本组魂环图标数组[<$STR(L$已激活魂环编号数组[2])>])> -1 0 0 0 <$STR(L$本组魂环描述数组[<$STR(L$已激活魂环编号数组[2])>])>
+#ELSEACT
+CloseArrBuff 51
+
+#IF
+NOT EQUAL L$已激活魂环编号数组[3] 无
+NOT EQUAL L$已激活魂环编号数组[3]
+#ACT
+MOV L$本组魂环描述数组 <$STR(S$职业<$JOB>3号魂环描述数组)>
+MOV L$本组魂环图标数组 <$STR(S$职业<$JOB>3号魂环图标数组)>
+SetArrBuff 2 52 0 <$STR(L$本组魂环图标数组[<$STR(L$已激活魂环编号数组[3])>])> -1 0 0 0 <$STR(L$本组魂环描述数组[<$STR(L$已激活魂环编号数组[3])>])>
+#ELSEACT
+CloseArrBuff 52
+
+#IF
+NOT EQUAL L$已激活魂环编号数组[4] 无
+NOT EQUAL L$已激活魂环编号数组[4]
+#ACT
+MOV L$本组魂环描述数组 <$STR(S$职业<$JOB>4号魂环描述数组)>
+MOV L$本组魂环图标数组 <$STR(S$职业<$JOB>4号魂环图标数组)>
+SetArrBuff 2 53 0 <$STR(L$本组魂环图标数组[<$STR(L$已激活魂环编号数组[4])>])> -1 0 0 0 <$STR(L$本组魂环描述数组[<$STR(L$已激活魂环编号数组[4])>])>
+#ELSEACT
+CloseArrBuff 53
+
+#IF
+NOT EQUAL L$已激活魂环编号数组[5] 无
+NOT EQUAL L$已激活魂环编号数组[5]
+#ACT
+MOV L$本组魂环描述数组 <$STR(S$职业<$JOB>5号魂环描述数组)>
+MOV L$本组魂环图标数组 <$STR(S$职业<$JOB>5号魂环图标数组)>
+SetArrBuff 2 54 0 <$STR(L$本组魂环图标数组[<$STR(L$已激活魂环编号数组[5])>])> -1 0 0 0 <$STR(L$本组魂环描述数组[<$STR(L$已激活魂环编号数组[5])>])>
+#ELSEACT
+CloseArrBuff 54
+
+#IF
+NOT EQUAL L$已激活魂环编号数组[6] 无
+NOT EQUAL L$已激活魂环编号数组[6]
+#ACT
+MOV L$本组魂环描述数组 <$STR(S$职业<$JOB>6号魂环描述数组)>
+MOV L$本组魂环图标数组 <$STR(S$职业<$JOB>6号魂环图标数组)>
+SetArrBuff 2 55 0 <$STR(L$本组魂环图标数组[<$STR(L$已激活魂环编号数组[6])>])> -1 0 0 0 <$STR(L$本组魂环描述数组[<$STR(L$已激活魂环编号数组[6])>])>
+#ELSEACT
+CloseArrBuff 55
+
+#IF
+NOT EQUAL L$已激活魂环编号数组[7] 无
+NOT EQUAL L$已激活魂环编号数组[7]
+#ACT
+MOV L$本组魂环描述数组 <$STR(S$职业<$JOB>7号魂环描述数组)>
+MOV L$本组魂环图标数组 <$STR(S$职业<$JOB>7号魂环图标数组)>
+SetArrBuff 2 72 0 <$STR(L$本组魂环图标数组[<$STR(L$已激活魂环编号数组[7])>])> -1 0 0 0 <$STR(L$本组魂环描述数组[<$STR(L$已激活魂环编号数组[7])>])>
+#ELSEACT
+CloseArrBuff 72
+
+[@_@职业0进行魂环计算]
+#IF
+#ACT
+MOV L$0号魂环选择使用数组 [<$STR(U119)>,<$STR(U120)>,<$STR(U121)>,<$STR(U122)>]
+MOV L$1号魂环选择使用数组 [<$STR(U123)>,<$STR(U124)>,<$STR(U125)>,<$STR(U126)>]
+MOV L$2号魂环选择使用数组 [<$STR(U127)>,<$STR(U128)>,<$STR(U129)>,<$STR(U130)>]
+MOV L$3号魂环选择使用数组 [<$STR(U131)>,<$STR(U132)>,<$STR(U133)>,<$STR(U134)>]
+MOV L$4号魂环选择使用数组 [<$STR(U135)>,<$STR(U136)>,<$STR(U137)>,<$STR(U138)>]
+MOV L$5号魂环选择使用数组 [<$STR(U139)>,<$STR(U140)>,<$STR(U141)>,<$STR(U142)>]
+MOV L$6号魂环选择使用数组 <$STR(T101)>
+MOV L$7号魂环选择使用数组 <$STR(T103)>
+GOTO @_@加载魂环标识
+
+[@_@职业1进行魂环计算]
+#IF
+#ACT
+MOV L$0号魂环选择使用数组 [<$STR(U19)>,<$STR(U20)>,<$STR(U21)>,<$STR(U22)>]
+MOV L$1号魂环选择使用数组 [<$STR(U23)>,<$STR(U24)>,<$STR(U25)>,<$STR(U26)>]
+MOV L$2号魂环选择使用数组 [<$STR(U27)>,<$STR(U28)>,<$STR(U29)>,<$STR(U30)>]
+MOV L$3号魂环选择使用数组 [<$STR(U31)>,<$STR(U32)>,<$STR(U33)>,<$STR(U34)>]
+MOV L$4号魂环选择使用数组 [<$STR(U35)>,<$STR(U36)>,<$STR(U37)>,<$STR(U38)>]
+MOV L$5号魂环选择使用数组 [<$STR(U39)>,<$STR(U40)>,<$STR(U41)>,<$STR(U42)>]
+MOV L$6号魂环选择使用数组 <$STR(T100)>
+GOTO @_@加载魂环标识
+
+[@_@职业2进行魂环计算]
+#IF
+#ACT
+MOV L$0号魂环选择使用数组 [<$STR(U59)>,<$STR(U60)>,<$STR(U61)>,<$STR(U62)>]
+MOV L$1号魂环选择使用数组 [<$STR(U63)>,<$STR(U64)>,<$STR(U65)>,<$STR(U66)>]
+MOV L$2号魂环选择使用数组 [<$STR(U67)>,<$STR(U68)>,<$STR(U69)>,<$STR(U70)>]
+MOV L$3号魂环选择使用数组 [<$STR(U71)>,<$STR(U72)>,<$STR(U73)>,<$STR(U74)>]
+MOV L$4号魂环选择使用数组 [<$STR(U75)>,<$STR(U76)>,<$STR(U77)>,<$STR(U78)>]
+MOV L$5号魂环选择使用数组 [<$STR(U79)>,<$STR(U80)>,<$STR(U81)>,<$STR(U82)>]
+MOV L$6号魂环选择使用数组 <$STR(T102)>
+GOTO @_@加载魂环标识
+
+[@_@加载魂环标识]
+#IF
+CheckVarInList L$0号魂环选择使用数组 2
+#ACT
+MOV L$本组魂环名称数组 <$STR(S$职业<$JOB>0号魂环名称数组)>
+GetListVarIndex L$0号魂环选择使用数组 2 N$选中魂环位置
+MOV N$<$STR(L$本组魂环名称数组[<$STR(N$选中魂环位置)>])>激活标识 1
+MOV L$已激活魂环编号数组[0] <$STR(N$选中魂环位置)>
+#ELSEACT
+MOV L$已激活魂环编号数组[0] 无
+
+#IF
+CheckVarInList L$1号魂环选择使用数组 2
+#ACT
+MOV L$本组魂环名称数组 <$STR(S$职业<$JOB>1号魂环名称数组)>
+GetListVarIndex L$1号魂环选择使用数组 2 N$选中魂环位置
+MOV N$<$STR(L$本组魂环名称数组[<$STR(N$选中魂环位置)>])>激活标识 1
+MOV L$已激活魂环编号数组[1] <$STR(N$选中魂环位置)>
+#ELSEACT
+MOV L$已激活魂环编号数组[1] 无
+
+#IF
+CheckVarInList L$2号魂环选择使用数组 2
+#ACT
+MOV L$本组魂环名称数组 <$STR(S$职业<$JOB>2号魂环名称数组)>
+GetListVarIndex L$2号魂环选择使用数组 2 N$选中魂环位置
+MOV N$<$STR(L$本组魂环名称数组[<$STR(N$选中魂环位置)>])>激活标识 1
+MOV L$已激活魂环编号数组[2] <$STR(N$选中魂环位置)>
+#ELSEACT
+MOV L$已激活魂环编号数组[2] 无
+
+#IF
+CheckVarInList L$3号魂环选择使用数组 2
+#ACT
+MOV L$本组魂环名称数组 <$STR(S$职业<$JOB>3号魂环名称数组)>
+GetListVarIndex L$3号魂环选择使用数组 2 N$选中魂环位置
+MOV N$<$STR(L$本组魂环名称数组[<$STR(N$选中魂环位置)>])>激活标识 1
+MOV L$已激活魂环编号数组[3] <$STR(N$选中魂环位置)>
+#ELSEACT
+MOV L$已激活魂环编号数组[3] 无
+
+#IF
+CheckVarInList L$4号魂环选择使用数组 2
+#ACT
+MOV L$本组魂环名称数组 <$STR(S$职业<$JOB>4号魂环名称数组)>
+GetListVarIndex L$4号魂环选择使用数组 2 N$选中魂环位置
+MOV N$<$STR(L$本组魂环名称数组[<$STR(N$选中魂环位置)>])>激活标识 1
+MOV L$已激活魂环编号数组[4] <$STR(N$选中魂环位置)>
+#ELSEACT
+MOV L$已激活魂环编号数组[4] 无
+
+#IF
+CheckVarInList L$5号魂环选择使用数组 2
+#ACT
+MOV L$本组魂环名称数组 <$STR(S$职业<$JOB>5号魂环名称数组)>
+GetListVarIndex L$5号魂环选择使用数组 2 N$选中魂环位置
+MOV N$<$STR(L$本组魂环名称数组[<$STR(N$选中魂环位置)>])>激活标识 1
+MOV L$已激活魂环编号数组[5] <$STR(N$选中魂环位置)>
+#ELSEACT
+MOV L$已激活魂环编号数组[5] 无
+
+
+#IF
+CheckVarInList L$6号魂环选择使用数组 2
+#ACT
+MOV L$本组魂环名称数组 <$STR(S$职业<$JOB>6号魂环名称数组)>
+GetListVarIndex L$6号魂环选择使用数组 2 N$选中魂环位置
+MOV N$<$STR(L$本组魂环名称数组[<$STR(N$选中魂环位置)>])>激活标识 1
+MOV L$已激活魂环编号数组[6] <$STR(N$选中魂环位置)>
+#ELSEACT
+MOV L$已激活魂环编号数组[6] 无
+
+#IF
+CheckVarInList L$7号魂环选择使用数组 2
+#ACT
+MOV L$本组魂环名称数组 <$STR(S$职业<$JOB>7号魂环名称数组)>
+GetListVarIndex L$7号魂环选择使用数组 2 N$选中魂环位置
+MOV N$<$STR(L$本组魂环名称数组[<$STR(N$选中魂环位置)>])>激活标识 1
+MOV L$已激活魂环编号数组[7] <$STR(N$选中魂环位置)>
+#ELSEACT
+MOV L$已激活魂环编号数组[7] 无
+}

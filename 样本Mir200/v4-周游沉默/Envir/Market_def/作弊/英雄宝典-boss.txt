@@ -1,0 +1,233 @@
+[@main]
+#if
+#ACT
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+<>[<$USERNAME>]<您好！/SCOLOR=249>\
+<><英雄宝典是上古留下来的宝物/SCOLOR=254>\
+<><宝典里蕴含了神秘的力量 开启宝典可获得神奇的力量/SCOLOR=254>\
+<><每次升级可获得随机属性或元素 最高为/SCOLOR=254><30级/SCOLOR=249>\
+<><每次成长属性/SCOLOR=254><(1-30)/SCOLOR=253> <属性最高值为/SCOLOR=254><300/SCOLOR=251>\ \
+<><属性清零/@清零>    <成长30级/@成长40级>\ \ 
+;<成长5级|500元宝/@成长5级> <成长10级|1000元宝/@成长10级> <成长30级|3000元宝/@成长40级>
+
+
+[@111]
+#IF
+#ACT
+SetCustomItemProgressbar 12 0 0 1
+SetCustomItemProgressbar 12 0 1 等级: %p-%m
+SetCustomItemProgressbar 12 0 2 243
+SetCustomItemProgressbar 12 0 3 3
+SetCustomItemProgressbar 12 0 4 2
+SetCustomItemProgressbarValue 12 0 0 = 30
+SetCustomItemProgressbarValue 12 0 1 = 0
+MessageBox 成功开启宝典..
+
+[@成长40级]
+#IF
+CheckCustomItemProgressbarValue 12 0 1 = 0
+#ACT
+LockUpdateItem 12
+SetCustomItemProgressbarValue 12 0 1 + 30
+GetCustomItemProgressbarValue 12 0 1 <$STR(N1)>
+SENDMSG 6 恭喜您，成长+30，目前等级为：<$STR(N1)>。
+Loopgoto @属性成长 30
+UpdateItem 12
+BREAK
+#ELSEACT
+MessageBox 您的宝典已经满级了。\或者元宝不够20W。
+BREAK
+
+[@成长10级]
+#IF
+CHECKGAMEGOLD > 999
+CheckCustomItemProgressbarValue 12 0 1 < 21
+#ACT
+GAMEGOLD - 1000
+LockUpdateItem 12
+SetCustomItemProgressbarValue 12 0 1 + 10
+GetCustomItemProgressbarValue 12 0 1 <$STR(N1)>
+SENDMSG 6 恭喜您，您的爵位等级+10，目前等级为：<$STR(N1)>。
+Loopgoto @属性成长 10
+UpdateItem 12
+BREAK
+#ELSEACT
+MessageBox 您的爵位已经超过30级了。\或者元宝不够400。
+BREAK
+
+[@成长5级]
+#IF
+CHECKGAMEGOLD > 499
+CheckCustomItemProgressbarValue 12 0 1 < 26
+#ACT
+GAMEGOLD - 500
+LockUpdateItem 12
+SetCustomItemProgressbarValue 12 0 1 + 5
+GetCustomItemProgressbarValue 12 0 1 <$STR(N1)>
+SENDMSG 6 恭喜您，您的爵位等级+5，目前等级为：<$STR(N1)>。
+Loopgoto @属性成长 5
+UpdateItem 12
+BREAK
+#ELSEACT
+MessageBox 您的爵位已经超过25级了。\或者元宝不够200。
+BREAK
+
+
+[@成长1级]
+#IF
+CHECKCUSTOMITEMPROGRESSBAR 12 0
+CheckCustomItemProgressbarValue 12 0 1 < 30
+CHECKGAMEGOLD > 9999
+#ACT
+GAMEGOLD - 10000
+LockUpdateItem 12
+SetCustomItemProgressbarValue 12 0 1 + 1
+GetCustomItemProgressbarValue 12 0 1 <$STR(N1)>
+SENDMSG 6 恭喜您，成长+1，目前等级为：<$STR(N1)>..
+goto @属性成长
+UpdateItem 12
+#ELSEACT
+MessageBox 您的成长满级了。\或者元宝不足..
+BREAK
+
+
+[@属性成长]
+#IF
+#ACT
+MOVR N5 0 6
+MOVR N3 1 3
+
+#IF
+EQUAL <$STR(N5)> 5
+#ACT
+goto @检测属性
+break
+#ELSEACT
+goto @增加攻魔道
+break
+
+
+[@增加攻魔道]
+#IF
+#ACT
+MOVR P1 1 60
+CHANGEITEMADDVALUE 12 <$STR(N5)> + <$str(P1)>
+
+#IF
+CheckItemAddValue 12 <$STR(N5)> > 300
+#act
+CHANGEITEMADDVALUE 12 <$STR(N5)> = 300
+
+
+
+[@检测属性]
+#IF
+EQUAL <$STR(N5)> 5
+#ACT
+MOVR N2 1 5
+
+#IF
+EQUAL <$STR(N2)> 1
+#ACT
+goto @属性1
+
+#IF
+EQUAL <$STR(N2)> 2
+#ACT
+goto @属性2
+
+#IF
+EQUAL <$STR(N2)> 3
+#ACT
+goto @属性3
+
+#IF
+EQUAL <$STR(N2)> 4
+#ACT
+goto @属性4
+
+
+[@属性1]
+#IF
+#ACT
+MOVR P1 1 2
+SetNewItemValue 12 0 + <$str(P1)>
+
+#IF
+CHECKNEWITEMVALUE 12 0 > 5
+#ACT
+SetNewItemValue 12 0 = 5
+
+
+[@属性2]
+#IF
+#ACT
+MOVR P1 1 3
+SetNewItemValue 12 1 + <$str(P1)>
+
+#IF
+CHECKNEWITEMVALUE 12 1 > 10
+#ACT
+SetNewItemValue 12 1 = 10
+
+[@属性3]
+#IF
+#ACT
+MOVR P1 1 3
+SetNewItemValue 12 2 + <$str(P1)>
+SetNewItemValue 12 3 + <$str(P1)>
+
+#IF
+CHECKNEWITEMVALUE 12 2 > 10
+#ACT
+SetNewItemValue 12 2 = 10
+SetNewItemValue 12 3 = 10
+
+
+[@属性4]
+#IF
+#ACT
+MOVR P1 1 7
+SetNewItemValue 12 7 + <$str(P1)>
+SetNewItemValue 12 8 + <$str(P1)>
+
+#IF
+CHECKNEWITEMVALUE 12 7 > 30
+#ACT
+SetNewItemValue 12 7 = 30
+SetNewItemValue 12 8 = 30
+
+
+
+
+
+
+
+
+
+[@清零]
+#IF
+#ACT
+LockUpdateItem 12
+SetCustomItemProgressbar 12 0 0 1
+SetCustomItemProgressbar 12 0 1 等级: %p-%m
+SetCustomItemProgressbar 12 0 2 243
+SetCustomItemProgressbar 12 0 3 3
+SetCustomItemProgressbar 12 0 4 2
+SetCustomItemProgressbarValue 12 0 0 = 30
+SetCustomItemProgressbarValue 12 0 1 = 0
+CHANGEITEMADDVALUE 12 0 = 0
+CHANGEITEMADDVALUE 12 1 = 0
+CHANGEITEMADDVALUE 12 2 = 0
+CHANGEITEMADDVALUE 12 3 = 0
+CHANGEITEMADDVALUE 12 4 = 0
+SetNewItemValue 12 0 = 0
+SetNewItemValue 12 1 = 0
+SetNewItemValue 12 2 = 0
+SetNewItemValue 12 3 = 0
+SetNewItemValue 12 7 = 0
+SetNewItemValue 12 8 = 0
+UpdateItem 12
+UpdateAbil

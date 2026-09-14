@@ -1,0 +1,142 @@
+[@野蛮冲撞]
+{
+;判断是否撞到了人或者怪
+#if
+EQUAL N$熔岩烈剑野蛮CD清零 1
+#act
+SetSkillDecCD 野蛮冲撞 - 15
+MOV N$熔岩烈剑野蛮CD清零 0
+#IF
+#ACT
+
+Goto @技能伤害
+#IF
+RANDOMEX N$法宝野蛮冲撞有几率重置烈火CD 101
+#act
+SetSkillDecCD 烈火剑法 30
+MOV N$焰之守护烈火判断 1
+PLAYEFFECT 59 870 20 1 100 0 -150 -280 1
+
+#if
+#ACT
+GetPlayInfo Dir N$玩家野蛮冲撞方向
+MOV N$玩家野蛮冲撞方向X <$X>
+MOV N$玩家野蛮冲撞方向Y <$Y>
+MOV N$野蛮冲撞是否撞到人 0
+MOV N$野蛮冲撞是否撞到怪 0
+
+#if
+EQUAL N$玩家野蛮冲撞方向 7
+#act
+DEC N$玩家野蛮冲撞方向X 1
+DEC N$玩家野蛮冲撞方向Y 1
+#if
+EQUAL N$玩家野蛮冲撞方向 6
+#act
+DEC N$玩家野蛮冲撞方向X 1
+#if
+EQUAL N$玩家野蛮冲撞方向 5
+#act
+DEC N$玩家野蛮冲撞方向X 1
+INC N$玩家野蛮冲撞方向Y 1
+#if
+EQUAL N$玩家野蛮冲撞方向 4
+#act
+INC N$玩家野蛮冲撞方向Y 1
+#if
+EQUAL N$玩家野蛮冲撞方向 3
+#act
+INC N$玩家野蛮冲撞方向X 1
+INC N$玩家野蛮冲撞方向Y 1
+#if
+EQUAL N$玩家野蛮冲撞方向 2
+#act
+INC N$玩家野蛮冲撞方向X 1
+#if
+EQUAL N$玩家野蛮冲撞方向 1
+#act
+INC N$玩家野蛮冲撞方向X 1
+DEC N$玩家野蛮冲撞方向Y 1
+#if
+EQUAL N$玩家野蛮冲撞方向 0
+#act
+DEC N$玩家野蛮冲撞方向Y 1
+#if
+#act
+MOV N$野蛮冲撞循环 8
+while N$野蛮冲撞循环 > 0
+DEC N$野蛮冲撞循环 1
+GOTO @野蛮冲撞判断对面是否有人
+endwhile
+
+
+#if
+EQUAL N$玩家野蛮冲撞方向 0
+#act
+
+Goto @野蛮冲撞位置00
+#if
+EQUAL N$玩家野蛮冲撞方向 1
+#act
+
+Goto @野蛮冲撞位置01
+#if
+EQUAL N$玩家野蛮冲撞方向 2
+#act
+
+Goto @野蛮冲撞位置02
+#if
+EQUAL N$玩家野蛮冲撞方向 3
+#act
+
+Goto @野蛮冲撞位置03
+#if
+EQUAL N$玩家野蛮冲撞方向 4
+#act
+
+Goto @野蛮冲撞位置04
+#if
+EQUAL N$玩家野蛮冲撞方向 5
+#act
+
+Goto @野蛮冲撞位置05
+#if
+EQUAL N$玩家野蛮冲撞方向 6
+#act
+
+Goto @野蛮冲撞位置06
+#if
+EQUAL N$玩家野蛮冲撞方向 7
+#act
+
+Goto @野蛮冲撞位置07
+
+
+
+
+
+
+[@野蛮冲撞判断对面是否有人]
+#if
+EQUAL N$玩家野蛮冲撞方向 <$STR(N$野蛮冲撞循环)>
+CheckRangeHumCount <$MAP> <$STR(N$玩家野蛮冲撞方向X)> <$STR(N$玩家野蛮冲撞方向Y)> 0 > 0
+#act
+MOV N$野蛮冲撞是否撞到人 1
+
+MOV N$野蛮冲撞循环 0
+
+#if
+EQUAL N$玩家野蛮冲撞方向 <$STR(N$野蛮冲撞循环)>
+CheckRangeMonCount <$MAP> <$STR(N$玩家野蛮冲撞方向X)> <$STR(N$玩家野蛮冲撞方向Y)> 0 > 0
+#act
+MOV N$野蛮冲撞是否撞到怪 1
+
+MOV N$野蛮冲撞循环 0
+
+
+
+
+
+
+
+}

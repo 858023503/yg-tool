@@ -1,0 +1,681 @@
+[@main]
+
+
+
+#if
+#ACT
+OPENMERCHANTBIGDLG 45 1796 1 4 0 -80 1 386 5 1
+#Call [称号变量.txt] @开始计算
+#SAY
+\
+<> <------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243} {专/AUTOCOLOR=243,222,241,255,242,254,253,249,180} {属/AUTOCOLOR=180,243,222,241,255,242,254,253,249} {称/AUTOCOLOR=249,180,243,222,241,255,242,254,253} {号/AUTOCOLOR=253,249,180,243,222,241,255,242,254}< --------------------/SCOLOR=254>\ \ 
+<>  <[圣皇]·举世无双/SCOLOR=191>     <称号属性|254#切割+5600,全属性23-23,HP-MP+3000,伤害吸收+23%/SCOLOR=250>     <查看所需物品|251#战士：圣皇の刃|圣皇の铠|圣皇の袍|圣皇の盔[战]|圣皇の链[战]|圣皇の章[战]|圣皇の镯[战]*2|圣皇の戒[战]*2|圣皇の带[战]|圣皇の靴[战]|5500000元宝^251#法师：圣皇の刃|圣皇の铠|圣皇の袍|圣皇の盔[法]|圣皇の链[法]|圣皇の章[法]|圣皇の镯[法]*2|圣皇の戒[法]*2|圣皇の带[法]|圣皇の靴[法]|5500000元宝^251#道士：圣皇の刃|圣皇の铠|圣皇の袍|圣皇の盔[道]|圣皇の链[道]|圣皇の章[道]|圣皇の镯[道]*2|圣皇の戒[道]*2|圣皇の带[道]|圣皇の靴[道]|5500000元宝>     <$STR(S172)>\ \
+<>  <[天绝]·屠戮苍生/SCOLOR=191>     <称号属性|254#切割+6000,全属性24-24,HP-MP+3500,伤害吸收+24%/SCOLOR=250>     <查看所需物品|251#战士：天绝の刀|天绝の铠|天绝の袍|天绝の盔[战]|天绝の链[战]|天绝の章[战]|天绝の镯[战]*2|天绝の戒[战]*2|天绝の带[战]|天绝の靴[战]|6600000元宝^251#法师：天绝の刀|天绝の铠|天绝の袍|天绝の盔[法]|天绝の链[法]|天绝の章[法]|天绝の镯[法]*2|天绝の戒[法]*2|天绝の带[法]|天绝の靴[法]|6600000元宝^251#道士：天绝の刀|天绝の铠|天绝の袍|天绝の盔[道]|天绝の链[道]|天绝の章[道]|天绝の镯[道]*2|天绝の戒[道]*2|天绝の带[道]|天绝の靴[道]|6600000元宝>     <$STR(S173)>\ \
+<>  <[寂灭]·杀戮轮回/SCOLOR=241>     <称号属性|254#切割+6500,全属性25-25,HP-MP+4000,伤害吸收+25%/SCOLOR=250>     <查看所需物品|251#战士：寂灭の神剑|寂灭の神铠|寂灭の神袍|寂灭の盔[战]|寂灭の链[战]|寂灭の章[战]|寂灭の镯[战]*2|寂灭の戒[战]*2|寂灭の带[战]|寂灭の靴[战]|8000000元宝^251#法师：寂灭の神剑|寂灭の神铠|寂灭の神袍|寂灭の盔[法]|寂灭の链[法]|寂灭の章[法]|寂灭の镯[法]*2|寂灭の戒[法]*2|寂灭の带[法]|寂灭の靴[法]|8000000元宝^251#道士：寂灭の神剑|寂灭の神铠|寂灭の神袍|寂灭の盔[道]|寂灭の链[道]|寂灭の章[道]|寂灭の镯[道]*2|寂灭の戒[道]*2|寂灭の带[道]|寂灭の靴[道]|8000000元宝>     <$STR(S174)>\ \ 
+<>  <[无尽]·无极真义/SCOLOR=150>     <称号属性|254#切割+7000,全属性26-26,HP-MP+4500,伤害吸收+26%/SCOLOR=250>     <查看所需物品|251#战士：无尽の神剑|无尽の神铠|无尽の神袍|无尽の盔[战]|无尽の链[战]|无尽の章[战]|无尽の镯[战]*2|无尽の戒[战]*2|无尽の带[战]|无尽の靴[战]|10000000元宝^251#法师：无尽の神剑|无尽の神铠|无尽の神袍|无尽の盔[法]|无尽の链[法]|无尽の章[法]|无尽の镯[法]*2|无尽の戒[法]*2|无尽の带[法]|无尽の靴[法]|10000000元宝^251#道士：无尽の神剑|无尽の神铠|无尽の神袍|无尽の盔[道]|无尽の链[道]|无尽の章[道]|无尽の镯[道]*2|无尽の戒[道]*2|无尽の带[道]|无尽の靴[道]|10000000元宝>     <$STR(S175)>\ \  
+<>  <[苍穹]·不朽之王/SCOLOR=250>     <称号属性|254#切割+8000,全属性27-27,HP-MP+5000,伤害吸收+27%/SCOLOR=250>     <查看所需物品|251#战士：苍穹の之杖|苍穹の之铠|苍穹の之袍|苍穹の盔[战]|苍穹の链[战]|苍穹の章[战]|苍穹の镯[战]*2|苍穹の戒[战]*2|苍穹の带[战]|苍穹の靴[战]|15000000元宝^251#法师：苍穹の之杖|苍穹の之铠|苍穹の之袍|苍穹の盔[法]|苍穹の链[法]|苍穹の章[法]|苍穹の镯[法]*2|苍穹の戒[法]*2|苍穹の带[法]|苍穹の靴[法]|15000000元宝^251#道士：苍穹の之杖|苍穹の之铠|苍穹の之袍|苍穹の盔[道]|苍穹の链[道]|苍穹の章[道]|苍穹の镯[道]*2|苍穹の戒[道]*2|苍穹の带[道]|苍穹の靴[道]|15000000元宝>     <$STR(S176)>\ \  
+<>  <[涅槃]·洪荒破天/SCOLOR=249>     <称号属性|254#切割+10000,全属性28-28,HP-MP+5500,伤害吸收+28%/SCOLOR=250>     <查看所需物品|251#战士：涅槃の圣刃|涅槃の圣铠|涅槃の圣袍|涅槃の盔[战]|涅槃の链[战]|涅槃の章[战]|涅槃の镯[战]*2|涅槃の戒[战]*2|涅槃の带[战]|涅槃の靴[战]|30000000元宝^251#法师：涅槃の圣刃|涅槃の圣铠|涅槃の圣袍|涅槃の盔[法]|涅槃の链[法]|涅槃の章[法]|涅槃の镯[法]*2|涅槃の戒[法]*2|涅槃の带[法]|涅槃の靴[法]|30000000元宝^251#道士：涅槃の圣刃|涅槃の圣铠|涅槃の圣袍|涅槃の盔[道]|涅槃の链[道]|涅槃の章[道]|涅槃の镯[道]*2|涅槃の戒[道]*2|涅槃の带[道]|涅槃の靴[道]|30000000元宝>     <$STR(S177)>\ \ 
+
+
+
+<>        <我本沉默 再续金典 一直被模仿 从未被超越/SCOLOR=229>   \
+
+[@屠戮苍生2]
+#if
+check [72] 0
+#act
+MessageBox [系统提示]：请您先获得【[圣皇]·举世无双】称号..
+break
+#if
+checkjob warrior
+CheckGameGold > 6599999
+CHECKITEM 天绝の刀 1
+CHECKITEM 天绝の铠 1
+CHECKITEM 天绝の袍 1
+CHECKITEM 天绝の盔[战] 1
+CHECKITEM 天绝の链[战] 1
+CHECKITEM 天绝の镯[战] 2
+CHECKITEM 天绝の戒[战] 2
+CHECKITEM 天绝の带[战] 1
+CHECKITEM 天绝の靴[战] 1
+CHECKITEM 天绝の章[战] 1
+#ACT
+GameGold - 6600000
+TAKE 天绝の章[战] 1
+TAKE 天绝の刀 1
+TAKE 天绝の铠 1
+TAKE 天绝の袍 1
+TAKE 天绝の盔[战] 1
+TAKE 天绝の链[战] 1
+TAKE 天绝の镯[战] 2
+TAKE 天绝の戒[战] 2
+TAKE 天绝の带[战] 1
+TAKE 天绝の靴[战] 1
+RECYCFENGHAO [圣皇]·举世无双
+GIVEFENGHAO [天绝]·屠戮苍生 1
+set [73] 1
+MessageBox [系统提示]：恭喜您获得了【[天绝]·屠戮苍生】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob wizard
+CheckGameGold > 6599999
+CHECKITEM 天绝の刀 1
+CHECKITEM 天绝の铠 1
+CHECKITEM 天绝の袍 1
+CHECKITEM 天绝の盔[法] 1
+CHECKITEM 天绝の链[法] 1
+CHECKITEM 天绝の镯[法] 2
+CHECKITEM 天绝の戒[法] 2
+CHECKITEM 天绝の带[法] 1
+CHECKITEM 天绝の靴[法] 1
+CHECKITEM 天绝の章[法] 1
+#ACT
+GameGold - 6600000
+TAKE 天绝の章[法] 1
+TAKE 天绝の刀 1
+TAKE 天绝の铠 1
+TAKE 天绝の袍 1
+TAKE 天绝の盔[法] 1
+TAKE 天绝の链[法] 1
+TAKE 天绝の镯[法] 2
+TAKE 天绝の戒[法] 2
+TAKE 天绝の带[法] 1
+TAKE 天绝の靴[法] 1
+RECYCFENGHAO [圣皇]·举世无双
+GIVEFENGHAO [天绝]·屠戮苍生 1
+set [73] 1
+MessageBox [系统提示]：恭喜您获得了【[天绝]·屠戮苍生】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob taoist
+CheckGameGold > 6599999
+CHECKITEM 天绝の刀 1
+CHECKITEM 天绝の铠 1
+CHECKITEM 天绝の袍 1
+CHECKITEM 天绝の盔[道] 1
+CHECKITEM 天绝の链[道] 1
+CHECKITEM 天绝の镯[道] 2
+CHECKITEM 天绝の戒[道] 2
+CHECKITEM 天绝の带[道] 1
+CHECKITEM 天绝の靴[道] 1
+CHECKITEM 天绝の章[道] 1
+#ACT
+GameGold - 6600000
+TAKE 天绝の章[道] 1
+TAKE 天绝の刀 1
+TAKE 天绝の铠 1
+TAKE 天绝の袍 1
+TAKE 天绝の盔[道] 1
+TAKE 天绝の链[道] 1
+TAKE 天绝の镯[道] 2
+TAKE 天绝の戒[道] 2
+TAKE 天绝の带[道] 1
+TAKE 天绝の靴[道] 1
+RECYCFENGHAO [圣皇]·举世无双
+GIVEFENGHAO [天绝]·屠戮苍生 1
+set [73] 1
+MessageBox [系统提示]：恭喜您获得了【[天绝]·屠戮苍生】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+#IF
+#ACT
+MessageBox 材料或者元宝不足,请详细查看背包..
+
+break
+[@举世无双1]
+#if
+check [71] 0
+#act
+MessageBox [系统提示]：请您先获得【森罗·万象·唯我独尊】称号..
+break
+#if
+checkjob warrior
+CheckGameGold > 5499999
+CHECKITEM 圣皇の刃 1
+CHECKITEM 圣皇の铠 1
+CHECKITEM 圣皇の袍 1
+CHECKITEM 圣皇の盔[战] 1
+CHECKITEM 圣皇の链[战] 1
+CHECKITEM 圣皇の镯[战] 2
+CHECKITEM 圣皇の戒[战] 2
+CHECKITEM 圣皇の带[战] 1
+CHECKITEM 圣皇の靴[战] 1
+CHECKITEM 圣皇の章[战] 1
+#ACT
+GameGold - 5500000
+TAKE 圣皇の章[战] 1
+TAKE 圣皇の刃 1
+TAKE 圣皇の铠 1
+TAKE 圣皇の袍 1
+TAKE 圣皇の盔[战] 1
+TAKE 圣皇の链[战] 1
+TAKE 圣皇の镯[战] 2
+TAKE 圣皇の戒[战] 2
+TAKE 圣皇の带[战] 1
+TAKE 圣皇の靴[战] 1
+RECYCFENGHAO 森罗·万象·唯我独尊
+GIVEFENGHAO [圣皇]·举世无双 1
+set [72] 1
+MessageBox [系统提示]：恭喜您获得了【[圣皇]·举世无双】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob wizard
+CheckGameGold > 5499999
+CHECKITEM 圣皇の刃 1
+CHECKITEM 圣皇の铠 1
+CHECKITEM 圣皇の袍 1
+CHECKITEM 圣皇の盔[法] 1
+CHECKITEM 圣皇の链[法] 1
+CHECKITEM 圣皇の镯[法] 2
+CHECKITEM 圣皇の戒[法] 2
+CHECKITEM 圣皇の带[法] 1
+CHECKITEM 圣皇の靴[法] 1
+CHECKITEM 圣皇の章[法] 1
+#ACT
+GameGold - 5500000
+TAKE 圣皇の章[法] 1
+TAKE 圣皇の刃 1
+TAKE 圣皇の铠 1
+TAKE 圣皇の袍 1
+TAKE 圣皇の盔[法] 1
+TAKE 圣皇の链[法] 1
+TAKE 圣皇の镯[法] 2
+TAKE 圣皇の戒[法] 2
+TAKE 圣皇の带[法] 1
+TAKE 圣皇の靴[法] 1
+RECYCFENGHAO 森罗·万象·唯我独尊
+GIVEFENGHAO [圣皇]·举世无双 1
+set [72] 1
+MessageBox [系统提示]：恭喜您获得了【[圣皇]·举世无双】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob taoist
+CheckGameGold > 5499999
+CHECKITEM 圣皇の刃 1
+CHECKITEM 圣皇の铠 1
+CHECKITEM 圣皇の袍 1
+CHECKITEM 圣皇の盔[道] 1
+CHECKITEM 圣皇の链[道] 1
+CHECKITEM 圣皇の镯[道] 2
+CHECKITEM 圣皇の戒[道] 2
+CHECKITEM 圣皇の带[道] 1
+CHECKITEM 圣皇の靴[道] 1
+CHECKITEM 圣皇の章[道] 1
+#ACT
+GameGold - 5500000
+TAKE 圣皇の章[道] 1
+TAKE 圣皇の刃 1
+TAKE 圣皇の铠 1
+TAKE 圣皇の袍 1
+TAKE 圣皇の盔[道] 1
+TAKE 圣皇の链[道] 1
+TAKE 圣皇の镯[道] 2
+TAKE 圣皇の戒[道] 2
+TAKE 圣皇の带[道] 1
+TAKE 圣皇の靴[道] 1
+RECYCFENGHAO 森罗·万象·唯我独尊
+GIVEFENGHAO [圣皇]·举世无双 1
+set [72] 1
+MessageBox [系统提示]：恭喜您获得了【[圣皇]·举世无双】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+#IF
+#ACT
+MessageBox 材料或者元宝不足,请详细查看背包..
+
+break
+
+
+[@洪荒破天]
+#if
+check [76] 0
+#act
+MessageBox [系统提示]：请您先获得【[苍穹]·不朽之王】称号..
+break
+#if
+checkjob warrior
+CheckGameGold > 29999999
+CHECKITEM 涅槃の圣刃 1
+CHECKITEM 涅槃の圣铠 1
+CHECKITEM 涅槃の圣袍 1
+CHECKITEM 涅槃の盔[战] 1
+CHECKITEM 涅槃の链[战] 1
+CHECKITEM 涅槃の镯[战] 2
+CHECKITEM 涅槃の戒[战] 2
+CHECKITEM 涅槃の带[战] 1
+CHECKITEM 涅槃の靴[战] 1
+CHECKITEM 涅槃の章[战] 1
+#ACT
+set [77] 1
+GameGold - 30000000
+TAKE 涅槃の章[战] 1
+TAKE 涅槃の圣刃 1
+TAKE 涅槃の圣铠 1
+TAKE 涅槃の圣袍 1
+TAKE 涅槃の盔[战] 1
+TAKE 涅槃の链[战] 1
+TAKE 涅槃の镯[战] 2
+TAKE 涅槃の戒[战] 2
+TAKE 涅槃の带[战] 1
+TAKE 涅槃の靴[战] 1
+RECYCFENGHAO [苍穹]·不朽之王
+GIVEFENGHAO [涅槃]·洪荒破天 1
+MessageBox [系统提示]：恭喜您获得了【[涅槃]·洪荒破天】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob wizard
+CheckGameGold > 29999999
+CHECKITEM 涅槃の圣刃 1
+CHECKITEM 涅槃の圣铠 1
+CHECKITEM 涅槃の圣袍 1
+CHECKITEM 涅槃の盔[法] 1
+CHECKITEM 涅槃の链[法] 1
+CHECKITEM 涅槃の镯[法] 2
+CHECKITEM 涅槃の戒[法] 2
+CHECKITEM 涅槃の带[法] 1
+CHECKITEM 涅槃の靴[法] 1
+CHECKITEM 涅槃の章[法] 1
+#ACT
+GameGold - 30000000
+TAKE 涅槃の章[法] 1
+TAKE 涅槃の圣刃 1
+TAKE 涅槃の圣铠 1
+TAKE 涅槃の圣袍 1
+TAKE 涅槃の盔[法] 1
+TAKE 涅槃の链[法] 1
+TAKE 涅槃の镯[法] 2
+TAKE 涅槃の戒[法] 2
+TAKE 涅槃の带[法] 1
+TAKE 涅槃の靴[法] 1
+RECYCFENGHAO [苍穹]·不朽之王
+GIVEFENGHAO [涅槃]·洪荒破天 1
+set [77] 1
+MessageBox [系统提示]：恭喜您获得了【[涅槃]·洪荒破天】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob taoist
+CheckGameGold > 29999999
+CHECKITEM 涅槃の圣刃 1
+CHECKITEM 涅槃の圣铠 1
+CHECKITEM 涅槃の圣袍 1
+CHECKITEM 涅槃の盔[道] 1
+CHECKITEM 涅槃の链[道] 1
+CHECKITEM 涅槃の镯[道] 2
+CHECKITEM 涅槃の戒[道] 2
+CHECKITEM 涅槃の带[道] 1
+CHECKITEM 涅槃の靴[道] 1
+CHECKITEM 涅槃の章[道] 1
+#ACT
+GameGold - 30000000
+TAKE 涅槃の章[道] 1
+TAKE 涅槃の圣刃 1
+TAKE 涅槃の圣铠 1
+TAKE 涅槃の圣袍 1
+TAKE 涅槃の盔[道] 1
+TAKE 涅槃の链[道] 1
+TAKE 涅槃の镯[道] 2
+TAKE 涅槃の戒[道] 2
+TAKE 涅槃の带[道] 1
+TAKE 涅槃の靴[道] 1
+RECYCFENGHAO [苍穹]·不朽之王
+GIVEFENGHAO [涅槃]·洪荒破天 1
+set [77] 1
+MessageBox [系统提示]：恭喜您获得了【[涅槃]·洪荒破天】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+#IF
+#ACT
+MessageBox 材料或者元宝不足,请详细查看背包..
+
+break
+[@不朽之王]
+#if
+check [75] 0
+#act
+MessageBox [系统提示]：请您先获得【[无尽]·无极真义】称号..
+break
+#if
+checkjob warrior
+CheckGameGold > 14999999
+CHECKITEM 苍穹の之杖 1
+CHECKITEM 苍穹の之铠 1
+CHECKITEM 苍穹の之袍 1
+CHECKITEM 苍穹の盔[战] 1
+CHECKITEM 苍穹の链[战] 1
+CHECKITEM 苍穹の镯[战] 2
+CHECKITEM 苍穹の戒[战] 2
+CHECKITEM 苍穹の带[战] 1
+CHECKITEM 苍穹の靴[战] 1
+CHECKITEM 苍穹の章[战] 1
+#ACT
+set [76] 1
+GameGold - 15000000
+TAKE 苍穹の章[战] 1
+TAKE 苍穹の之杖 1
+TAKE 苍穹の之铠 1
+TAKE 苍穹の之袍 1
+TAKE 苍穹の盔[战] 1
+TAKE 苍穹の链[战] 1
+TAKE 苍穹の镯[战] 2
+TAKE 苍穹の戒[战] 2
+TAKE 苍穹の带[战] 1
+TAKE 苍穹の靴[战] 1
+RECYCFENGHAO [无尽]·无极真义
+GIVEFENGHAO [苍穹]·不朽之王 1
+MessageBox [系统提示]：恭喜您获得了【[苍穹]·不朽之王】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob wizard
+CheckGameGold > 14999999
+CHECKITEM 苍穹の之杖 1
+CHECKITEM 苍穹の之铠 1
+CHECKITEM 苍穹の之袍 1
+CHECKITEM 苍穹の盔[法] 1
+CHECKITEM 苍穹の链[法] 1
+CHECKITEM 苍穹の镯[法] 2
+CHECKITEM 苍穹の戒[法] 2
+CHECKITEM 苍穹の带[法] 1
+CHECKITEM 苍穹の靴[法] 1
+CHECKITEM 苍穹の章[法] 1
+#ACT
+GameGold - 15000000
+TAKE 苍穹の章[法] 1
+TAKE 苍穹の之杖 1
+TAKE 苍穹の之铠 1
+TAKE 苍穹の之袍 1
+TAKE 苍穹の盔[法] 1
+TAKE 苍穹の链[法] 1
+TAKE 苍穹の镯[法] 2
+TAKE 苍穹の戒[法] 2
+TAKE 苍穹の带[法] 1
+TAKE 苍穹の靴[法] 1
+RECYCFENGHAO [无尽]·无极真义
+GIVEFENGHAO [苍穹]·不朽之王 1
+set [76] 1
+MessageBox [系统提示]：恭喜您获得了【[苍穹]·不朽之王】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob taoist
+CheckGameGold > 14999999
+CHECKITEM 苍穹の之杖 1
+CHECKITEM 苍穹の之铠 1
+CHECKITEM 苍穹の之袍 1
+CHECKITEM 苍穹の盔[道] 1
+CHECKITEM 苍穹の链[道] 1
+CHECKITEM 苍穹の镯[道] 2
+CHECKITEM 苍穹の戒[道] 2
+CHECKITEM 苍穹の带[道] 1
+CHECKITEM 苍穹の靴[道] 1
+CHECKITEM 苍穹の章[道] 1
+#ACT
+GameGold - 15000000
+TAKE 苍穹の章[道] 1
+TAKE 苍穹の之杖 1
+TAKE 苍穹の之铠 1
+TAKE 苍穹の之袍 1
+TAKE 苍穹の盔[道] 1
+TAKE 苍穹の链[道] 1
+TAKE 苍穹の镯[道] 2
+TAKE 苍穹の戒[道] 2
+TAKE 苍穹の带[道] 1
+TAKE 苍穹の靴[道] 1
+RECYCFENGHAO [无尽]·无极真义
+GIVEFENGHAO [苍穹]·不朽之王 1
+set [76] 1
+MessageBox [系统提示]：恭喜您获得了【[苍穹]·不朽之王】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+#IF
+#ACT
+MessageBox 材料或者元宝不足,请详细查看背包..
+
+break
+[@无极真义]
+#if
+check [74] 0
+#act
+MessageBox [系统提示]：请您先获得【[寂灭]·杀戮轮回】称号..
+break
+#if
+checkjob warrior
+CheckGameGold > 9999999
+CHECKITEM 无尽の神剑 1
+CHECKITEM 无尽の神铠 1
+CHECKITEM 无尽の神袍 1
+CHECKITEM 无尽の盔[战] 1
+CHECKITEM 无尽の链[战] 1
+CHECKITEM 无尽の镯[战] 2
+CHECKITEM 无尽の戒[战] 2
+CHECKITEM 无尽の带[战] 1
+CHECKITEM 无尽の靴[战] 1
+CHECKITEM 无尽の章[战] 1
+#ACT
+set [75] 1
+GameGold - 10000000
+TAKE 无尽の章[战] 1
+TAKE 无尽の神剑 1
+TAKE 无尽の神铠 1
+TAKE 无尽の神袍 1
+TAKE 无尽の盔[战] 1
+TAKE 无尽の链[战] 1
+TAKE 无尽の镯[战] 2
+TAKE 无尽の戒[战] 2
+TAKE 无尽の带[战] 1
+TAKE 无尽の靴[战] 1
+RECYCFENGHAO [寂灭]·杀戮轮回
+GIVEFENGHAO [无尽]·无极真义 1
+MessageBox [系统提示]：恭喜您获得了【[无尽]·无极真义】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob wizard
+CheckGameGold > 9999999
+CHECKITEM 无尽の神剑 1
+CHECKITEM 无尽の神铠 1
+CHECKITEM 无尽の神袍 1
+CHECKITEM 无尽の盔[法] 1
+CHECKITEM 无尽の链[法] 1
+CHECKITEM 无尽の镯[法] 2
+CHECKITEM 无尽の戒[法] 2
+CHECKITEM 无尽の带[法] 1
+CHECKITEM 无尽の靴[法] 1
+CHECKITEM 无尽の章[法] 1
+#ACT
+GameGold - 10000000
+TAKE 无尽の章[法] 1
+TAKE 无尽の神剑 1
+TAKE 无尽の神铠 1
+TAKE 无尽の神袍 1
+TAKE 无尽の盔[法] 1
+TAKE 无尽の链[法] 1
+TAKE 无尽の镯[法] 2
+TAKE 无尽の戒[法] 2
+TAKE 无尽の带[法] 1
+TAKE 无尽の靴[法] 1
+RECYCFENGHAO [寂灭]·杀戮轮回
+GIVEFENGHAO [无尽]·无极真义 1
+set [75] 1
+MessageBox [系统提示]：恭喜您获得了【[无尽]·无极真义】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob taoist
+CheckGameGold > 9999999
+CHECKITEM 无尽の神剑 1
+CHECKITEM 无尽の神铠 1
+CHECKITEM 无尽の神袍 1
+CHECKITEM 无尽の盔[道] 1
+CHECKITEM 无尽の链[道] 1
+CHECKITEM 无尽の镯[道] 2
+CHECKITEM 无尽の戒[道] 2
+CHECKITEM 无尽の带[道] 1
+CHECKITEM 无尽の靴[道] 1
+CHECKITEM 无尽の章[道] 1
+#ACT
+GameGold - 10000000
+TAKE 无尽の章[道] 1
+TAKE 无尽の神剑 1
+TAKE 无尽の神铠 1
+TAKE 无尽の神袍 1
+TAKE 无尽の盔[道] 1
+TAKE 无尽の链[道] 1
+TAKE 无尽の镯[道] 2
+TAKE 无尽の戒[道] 2
+TAKE 无尽の带[道] 1
+TAKE 无尽の靴[道] 1
+RECYCFENGHAO [寂灭]·杀戮轮回
+GIVEFENGHAO [无尽]·无极真义 1
+set [75] 1
+MessageBox [系统提示]：恭喜您获得了【[无尽]·无极真义】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+#IF
+#ACT
+MessageBox 材料或者元宝不足,请详细查看背包..
+
+break
+[@杀戮轮回]
+#if
+check [73] 0
+#act
+MessageBox [系统提示]：请您先获得【[天绝]·屠戮苍生】称号..
+break
+#if
+checkjob warrior
+CheckGameGold > 7999999
+CHECKITEM 寂灭の神剑 1
+CHECKITEM 寂灭の神铠 1
+CHECKITEM 寂灭の神袍 1
+CHECKITEM 寂灭の盔[战] 1
+CHECKITEM 寂灭の链[战] 1
+CHECKITEM 寂灭の镯[战] 2
+CHECKITEM 寂灭の戒[战] 2
+CHECKITEM 寂灭の带[战] 1
+CHECKITEM 寂灭の靴[战] 1
+CHECKITEM 寂灭の章[战] 1
+#ACT
+set [74] 1
+GameGold - 8000000
+TAKE 寂灭の章[战] 1
+TAKE 寂灭の神剑 1
+TAKE 寂灭の神铠 1
+TAKE 寂灭の神袍 1
+TAKE 寂灭の盔[战] 1
+TAKE 寂灭の链[战] 1
+TAKE 寂灭の镯[战] 2
+TAKE 寂灭の戒[战] 2
+TAKE 寂灭の带[战] 1
+TAKE 寂灭の靴[战] 1
+RECYCFENGHAO [天绝]·屠戮苍生
+GIVEFENGHAO [寂灭]·杀戮轮回 1
+MessageBox [系统提示]：恭喜您获得了【[寂灭]·杀戮轮回】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob wizard
+CheckGameGold > 7999999
+CHECKITEM 寂灭の神剑 1
+CHECKITEM 寂灭の神铠 1
+CHECKITEM 寂灭の神袍 1
+CHECKITEM 寂灭の盔[法] 1
+CHECKITEM 寂灭の链[法] 1
+CHECKITEM 寂灭の镯[法] 2
+CHECKITEM 寂灭の戒[法] 2
+CHECKITEM 寂灭の带[法] 1
+CHECKITEM 寂灭の靴[法] 1
+CHECKITEM 寂灭の章[法] 1
+#ACT
+GameGold - 8000000
+TAKE 寂灭の章[法] 1
+TAKE 寂灭の神剑 1
+TAKE 寂灭の神铠 1
+TAKE 寂灭の神袍 1
+TAKE 寂灭の盔[法] 1
+TAKE 寂灭の链[法] 1
+TAKE 寂灭の镯[法] 2
+TAKE 寂灭の戒[法] 2
+TAKE 寂灭の带[法] 1
+TAKE 寂灭の靴[法] 1
+RECYCFENGHAO [天绝]·屠戮苍生
+GIVEFENGHAO [寂灭]·杀戮轮回 1
+set [74] 1
+MessageBox [系统提示]：恭喜您获得了【[寂灭]·杀戮轮回】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob taoist
+CheckGameGold > 7999999
+CHECKITEM 寂灭の神剑 1
+CHECKITEM 寂灭の神铠 1
+CHECKITEM 寂灭の神袍 1
+CHECKITEM 寂灭の盔[道] 1
+CHECKITEM 寂灭の链[道] 1
+CHECKITEM 寂灭の镯[道] 2
+CHECKITEM 寂灭の戒[道] 2
+CHECKITEM 寂灭の带[道] 1
+CHECKITEM 寂灭の靴[道] 1
+CHECKITEM 寂灭の章[道] 1
+#ACT
+GameGold - 8000000
+TAKE 寂灭の章[道] 1
+TAKE 寂灭の神剑 1
+TAKE 寂灭の神铠 1
+TAKE 寂灭の神袍 1
+TAKE 寂灭の盔[道] 1
+TAKE 寂灭の链[道] 1
+TAKE 寂灭の镯[道] 2
+TAKE 寂灭の戒[道] 2
+TAKE 寂灭の带[道] 1
+TAKE 寂灭の靴[道] 1
+RECYCFENGHAO [天绝]·屠戮苍生
+GIVEFENGHAO [寂灭]·杀戮轮回 1
+set [74] 1
+MessageBox [系统提示]：恭喜您获得了【[寂灭]·杀戮轮回】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+#IF
+#ACT
+MessageBox 材料或者元宝不足,请详细查看背包..
+
+break
+
+
+

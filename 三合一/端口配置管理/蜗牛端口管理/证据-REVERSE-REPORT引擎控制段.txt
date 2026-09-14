@@ -1,0 +1,6 @@
+### 6. 引擎控制（FFI + Win32）
+- 支持引擎：**LF / GOM / NGOM / 996 / ssNGom**（M2Config* 配置对象）
+- 通过 user32.dll（ffi-napi）FindWindow → 定位 `\Mir200\M2Server.exe` 窗口（Delphi 类名 TfrmMain/TApplication/TFrmFileList…）→ 遍历菜单（GetMenu/GetMenuItemCount/GetMenuStringA）→ SendMessage/PostMessage 模拟操作、SetCursorPos/BringWindowToTop
+- **端口管理**：读取/修改 M2 全服务端口（DBPort1-8、GatePort1-8、RunGate/SelGate/LoginGate、LogServerPort、MsgSrvPort、IOCPRunGate 等），冲突检测（netstat）→ 报红 → 一键替换
+- `!setup.txt` 目录键读写（BaseDir/BoxsDir/CastleDir/ChatDir/ConLogDir/LogDir/GuildDir/NoticeDir…）
+

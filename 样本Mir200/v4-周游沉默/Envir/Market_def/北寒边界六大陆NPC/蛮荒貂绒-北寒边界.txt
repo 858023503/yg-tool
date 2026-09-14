@@ -1,0 +1,160 @@
+[@main]
+#if
+#ACT
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+<>[<$USERNAME>]<您好！/SCOLOR=254>\
+<我这里可以为你量身打造时装剑甲！/SCOLOR=254>\ 
+<我本沉默，传奇永恒，再续经典/SCOLOR=254>\ \
+<><ITEMSHOW:1296:0:0:0:1/@时装武器>  <ITEMSHOW:1297:0:0:0:1/@时装衣服1>  <ITEMSHOW:1298:0:0:0:1/@时装衣服2>  <ITEMSHOW:1299:0:0:0:1/@时装1>  <ITEMSHOW:1300:0:0:0:1/@时装2>  <ITEMSHOW:1301:0:0:0:1/@时装3>  <ITEMSHOW:1302:0:0:0:1/@时装4>\ \ \
+<>\
+<>\
+
+
+
+[@时装武器]
+#ACT
+MessageBox 合成:<[主宰之刃]/FCOLOR=253>\\<时装羽毛*1500+200W*元宝+风雷剑/FCOLOR=251>\\点击确认开始合成   @兑换武器  @取消兑换
+
+[@兑换武器]
+#if
+CheckItem 风雷剑 1
+CheckItem 时装羽毛 1500
+CheckGameGold > 1999999
+#ACT
+GameGold  - 2000000
+Take 时装羽毛 1500
+Take 风雷剑 1
+Give 主宰之刃 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@时装衣服1]
+#ACT
+MessageBox 合成:<[主宰战甲]/FCOLOR=253>\\<时装羽毛*1500+200W*元宝+天龙羽衣(男)/FCOLOR=251>\\点击确认开始合成   @兑换1  @取消兑换
+
+[@兑换1]
+#if
+CheckItem 天龙羽衣(男) 1
+CheckItem 时装羽毛 1500
+CheckGameGold > 1999999
+#ACT
+GameGold  - 2000000
+Take 时装羽毛 1500
+Take 天龙羽衣(男) 1
+Give 主宰战甲 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@时装衣服2]
+#ACT
+MessageBox 合成:<[主宰战袍]/FCOLOR=253>\\<时装羽毛*1500+200W*元宝+天龙羽衣(女)/FCOLOR=251>\\点击确认开始合成   @兑换2  @取消兑换
+
+[@兑换2]
+#if
+CheckItem 天龙羽衣(女) 1
+CheckItem 时装羽毛 1500
+CheckGameGold > 1999999
+#ACT
+GameGold  - 2000000
+Take 时装羽毛 1500
+Take 天龙羽衣(女) 1
+Give 主宰战袍 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+;------------------------------------------------------------------------------------------------------------------------------------------
+
+[@时装1]
+#ACT
+MessageBox 合成:<[定风珠]/FCOLOR=253>\\<时装羽毛*800+60W*元宝+蓝色妖姬/FCOLOR=251>\\点击确认开始合成   @兑换3  @取消兑换
+
+
+[@兑换3]
+#if
+CheckItem 蓝色妖姬 1
+CheckItem 时装羽毛 800
+CheckGameGold > 599999
+#ACT
+GameGold  - 600000
+Take 时装羽毛 800
+Take 蓝色妖姬 1
+Give 定风珠 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@时装2]
+#ACT
+MessageBox 合成:<八卦盘]/FCOLOR=253>\\<时装羽毛*800+60W*元宝+珠宝/FCOLOR=251>\\点击确认开始合成   @兑换4  @取消兑换
+
+[@兑换4]
+#if
+CheckItem 珠宝 1
+CheckItem 时装羽毛 800
+CheckGameGold > 599999
+#ACT
+GameGold  - 600000
+Take 时装羽毛 800
+Take 珠宝 1
+Give 八卦盘 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+
+[@时装3]
+#ACT
+MessageBox 合成:<[炼妖壶]/FCOLOR=253>\\<时装羽毛*800+60W*元宝+力量指环/FCOLOR=251>\\点击确认开始合成   @兑换5  @取消兑换
+
+[@兑换5]
+#if
+CheckItem 力量指环 1
+CheckItem 时装羽毛 800
+CheckGameGold > 599999
+#ACT
+GameGold  - 600000
+Take 时装羽毛 800
+Take 力量指环 1
+Give 炼妖壶 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@时装4]
+#ACT
+MessageBox 合成:<[彼岸花]/FCOLOR=253>\\<时装羽毛*800+60W*元宝+醉意玲珑/FCOLOR=251>\\点击确认开始合成   @兑换6  @取消兑换
+
+[@兑换6]
+#if
+CheckItem 醉意玲珑 1
+CheckItem 时装羽毛 800
+CheckGameGold > 599999
+#ACT
+GameGold  - 600000
+Take 时装羽毛 800
+Take 醉意玲珑 1
+Give 彼岸花 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@取消兑换]
+#ACT
+Sendmsg 7 取消合成
+Break
+
+
+
+
+

@@ -1,0 +1,51 @@
+[@main]
+#if
+#act
+;mul n$好处费 <$STR(u15)> 10000
+;closebigdialogbox
+;OPENMERCHANTBIGDLG 4 607 1 0 50 20  0 1 1 ;大对话框
+;OPENMERCHANTBIGDLG 14 46 1 0 50 20  0 1 1 ;大对话框
+;OPENMERCHANTBIGDLG 14 45 1 0 50 20  0 1 1 ;中对话框
+OPENMERCHANTBIGDLG 14 44 1 0 50 20  0 1 1 ;小对话框
+#SAY
+<Img:48:14:387:0/@exit>\ \
+　<充值1元网银=400元宝+1积分/SCOLOR=70>；<您已充值：/SCOLOR=70><$GAMEPOINT>元；<积分还剩：/SCOLOR=70><$GAMEDIAMOND>\\
+　<┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈/SCOLOR=83>\
+　 　　 <赵小六/SCOLOR=19> <讨厌的开挂玩家,活该/SCOLOR=151> <〖绝对零容忍 严厉打击外挂〗/SCOLOR=87>\
+　<┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈/SCOLOR=83>\
+　<1./AUTOCOLOR=242><进来了就别想轻易的出去！/AUTOCOLOR=242>\
+　<2./AUTOCOLOR=154><你想出去，不过你得给我相应的/AUTOCOLOR=154><元宝><保释费用/AUTOCOLOR=70>！\ 
+　<3./AUTOCOLOR=250><如果使用其他方法出去了也是无法动弹的。请勿尝试！/SCOLOR=250>！\
+　<4./AUTOCOLOR=254><你本次担保释放的费用为：/AUTOCOLOR=253>{50000元宝/SCOLOR=254}\
+　<┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈/SCOLOR=83>\
+　　<√我要保释,保证不再开挂/@给好处>         <√我要保释,保证不再开挂/@给好处>\ 
+
+
+
+
+[@给好处]
+#if
+checkgamegold > 49999
+#ACT
+gamegold - 50000
+MAPMOVE 密码验证室
+MESSAGEBOX \　\为了能正常游戏，系统将在2秒给你强制小退....
+ClearNameList ..\QuestDiary\GK后台\开挂名单.txt
+SendMsg 0 (*)ぐ{监狱看守员|151:0:1}：{【%s】|227:0:1}花费（{50000元宝|154:0:1}）{保释了自己|223:0:1}.希望以后引以为戒
+SendMsg 0 (*)ぐ{监狱看守员|151:0:1}：{【%s】|227:0:1}花费（{50000元宝|154:0:1}）{保释了自己|223:0:1}.希望以后引以为戒
+SendMsg 0 (*)ぐ{监狱看守员|151:0:1}：{【%s】|227:0:1}花费（{50000元宝|154:0:1}）{保释了自己|223:0:1}.希望以后引以为戒
+DELAYGOTO 2000 @人物小退
+#elseact
+MESSAGEBOX \　\你保费用不够50000元宝，我不能让你出去！\
+break
+
+
+
+
+
+
+[@人物小退]
+#if
+#act
+KICK 1
+break

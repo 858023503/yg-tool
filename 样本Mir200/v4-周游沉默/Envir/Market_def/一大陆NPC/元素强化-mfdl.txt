@@ -1,0 +1,1310 @@
+[@MAIN]
+#ACT
+CloseBigDialogBox
+OPENMERCHANTBIGDLG 26 751 1 0 0 50 1 253 0 1
+LOADVAR GLOBAL 元素成功_机率倍数 ..\QuestDiary\数据文件\固定数据\公用数据.txt
+LOADVAR GLOBAL 幸运成功_机率相加 ..\QuestDiary\数据文件\固定数据\公用数据.txt
+LOADVAR GLOBAL 暴击机率_需要元宝 ..\QuestDiary\数据文件\固定数据\公用数据.txt
+LOADVAR GLOBAL 攻击伤害_需要元宝 ..\QuestDiary\数据文件\固定数据\公用数据.txt
+LOADVAR GLOBAL 物伤减少_需要元宝 ..\QuestDiary\数据文件\固定数据\公用数据.txt
+LOADVAR GLOBAL 魔伤减少_需要元宝 ..\QuestDiary\数据文件\固定数据\公用数据.txt
+LOADVAR GLOBAL 忽视防御_需要元宝 ..\QuestDiary\数据文件\固定数据\公用数据.txt
+LOADVAR GLOBAL 伤害反弹_需要元宝 ..\QuestDiary\数据文件\固定数据\公用数据.txt
+LOADVAR GLOBAL 目标爆率_需要元宝 ..\QuestDiary\数据文件\固定数据\公用数据.txt
+LOADVAR GLOBAL 体力增加_需要元宝 ..\QuestDiary\数据文件\固定数据\公用数据.txt
+LOADVAR GLOBAL 魔力增加_需要元宝 ..\QuestDiary\数据文件\固定数据\公用数据.txt
+LOADVAR GLOBAL 武器幸运_需要元宝 ..\QuestDiary\数据文件\固定数据\公用数据.txt
+MOV N$暴击机率 0
+MOV N$攻击伤害 0
+MOV N$物伤减少 0
+MOV N$魔伤减少 0
+MOV N$忽视防御 0
+MOV N$伤害反弹 0
+MOV N$目标爆率 0
+MOV N$体力增加 0
+MOV N$魔力增加 0
+MOV N$武器幸运 0
+MOV N$最高武器伤害 10
+MOV N$最高手镯忽视防御 5
+MOV N$最高攻击伤害 5
+MOV N$最高物伤减少 7
+MOV N$最高魔伤减少 7
+MOV N$最高忽视防御 7
+MOV N$最高伤害反弹 5
+MOV N$最高目标爆率 10
+MOV N$最高体力增加 15
+MOV N$最高魔力增加 15
+MOV N$最高武器幸运 15
+MOV N$强化价格 0
+MOV N$元素类型 999
+MOV N$成功机率 0
+MOV S$元素名称 
+MOV S$按钮0 <Img:756:26:153:160>
+MOV S$按钮1 <Img:759:26:9:-2>
+MOV S$按钮2 <Img:759:26:9:-2>
+MOV S$按钮3 <Img:759:26:9:-2>
+MOV S$按钮4 <Img:759:26:9:-2>
+MOV S$按钮5 <Img:759:26:9:-2>
+MOV S$按钮6 <Img:759:26:9:-2>
+MOV S$按钮7 <Img:759:26:9:-2>
+MOV S$按钮8 <Img:759:26:9:-2>
+MOV S$按钮9 <Img:759:26:9:-2>
+;MOV S$按钮10 <Img:759:26:9:-2>
+UpdateItem 3
+Goto @显示属性
+break
+
+[@显示属性]
+<ITEMBOX:3:26:417:10:30:76:76:*:250#请放入装备。>\
+<Img:757:26:153:230|点击取消强化。/@关闭强化>\
+　　　　　　　　　<需要：/SCOLOR=250>{<$STR(N$强化价格)>/SCOLOR=253}<元宝/SCOLOR=250>\
+<$STR(S$按钮0)>\
+　　　　　　　　　成功机率：1/<$STR(N$成功机率)>\　\　\
+<$STR(S$按钮1)>　　<暴击机率+/SCOLOR=254>{<$STR(N$暴击机率)>/SCOLOR=250}<%/SCOLOR=254>\
+<$STR(S$按钮2)>　　<攻击伤害+/SCOLOR=254>{<$STR(N$攻击伤害)>/SCOLOR=250}<%/SCOLOR=254>\
+<$STR(S$按钮3)>　　<物伤减少+/SCOLOR=254>{<$STR(N$物伤减少)>/SCOLOR=250}<%/SCOLOR=254>\
+<$STR(S$按钮4)>　　<魔伤减少+/SCOLOR=254>{<$STR(N$魔伤减少)>/SCOLOR=250}<%/SCOLOR=254>\
+<$STR(S$按钮5)>　　<忽视防御+/SCOLOR=254>{<$STR(N$忽视防御)>/SCOLOR=250}<%/SCOLOR=254>\
+<$STR(S$按钮6)>　　<伤害反弹+/SCOLOR=254>{<$STR(N$伤害反弹)>/SCOLOR=250}<%/SCOLOR=254>\
+<$STR(S$按钮7)>　　<目标爆率+/SCOLOR=254>{<$STR(N$目标爆率)>/SCOLOR=250}<%/SCOLOR=254>\
+<$STR(S$按钮8)>　　<体力增加+/SCOLOR=254>{<$STR(N$体力增加)>/SCOLOR=250}<%/SCOLOR=254>\
+<$STR(S$按钮9)>　　<魔力增加+/SCOLOR=254>{<$STR(N$魔力增加)>/SCOLOR=250}<%/SCOLOR=254>\
+;<$STR(S$按钮10)>　　<武器幸运+/SCOLOR=253>{<$STR(N$武器幸运)>/SCOLOR=250}\
+
+[@关闭强化]
+#ACT
+MOV N$暴击机率 0
+MOV N$攻击伤害 0
+MOV N$物伤减少 0
+MOV N$魔伤减少 0
+MOV N$忽视防御 0
+MOV N$伤害反弹 0
+MOV N$目标爆率 0
+MOV N$体力增加 0
+MOV N$魔力增加 0
+MOV N$武器幸运 0
+MOV N$强化价格 0
+MOV N$成功机率 0
+MOV S$元素名称 
+UpdateItem 3
+CloseBigDialogBox
+close
+break
+
+[@ItemIntoBox3]
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#if
+NOT CHECKTEXTLIST ..\QuestDiary\数据文件\固定数据\元素装备类型.txt <$BOXITEM[3].STDMODE>
+#ACT
+messagebox 错误：【<$BOXITEM[3].NAME>】不能增加元素。
+GOTO @MAIN
+break
+#if
+#act
+SetUpgradeItem 3
+MOV N$暴击机率 0
+MOV N$攻击伤害 0
+MOV N$物伤减少 0
+MOV N$魔伤减少 0
+MOV N$忽视防御 0
+MOV N$伤害反弹 0
+MOV N$目标爆率 0
+MOV N$体力增加 0
+MOV N$魔力增加 0
+MOV N$武器幸运 0
+MOV N$最高武器伤害 10
+MOV N$最高手镯忽视防御 5
+MOV N$最高攻击伤害 5
+MOV N$最高物伤减少 7
+MOV N$最高魔伤减少 7
+MOV N$最高忽视防御 7
+MOV N$最高伤害反弹 5
+MOV N$最高目标爆率 10
+MOV N$最高体力增加 15
+MOV N$最高魔力增加 15
+MOV N$最高武器幸运 15
+MOV N$元素类型 999
+MOV N$强化价格 0
+MOV N$成功机率 0
+MOV S$元素名称 
+MOV S$按钮0 <Img:756:26:153:160>
+MOV S$按钮1 <Img:759:26:9:-2>
+MOV S$按钮2 <Img:759:26:9:-2>
+MOV S$按钮3 <Img:759:26:9:-2>
+MOV S$按钮4 <Img:759:26:9:-2>
+MOV S$按钮5 <Img:759:26:9:-2>
+MOV S$按钮6 <Img:759:26:9:-2>
+MOV S$按钮7 <Img:759:26:9:-2>
+MOV S$按钮8 <Img:759:26:9:-2>
+MOV S$按钮9 <Img:759:26:9:-2>
+;MOV S$按钮10 <Img:759:26:9:-2>
+;----------------------------------项链
+#if
+equal <$BOXITEM[3].STDMODE> 19
+#act
+;//加幸运
+MOV N$伤害反弹 <$BOXITEM[3].VALUE6>
+MOV S$按钮6 <Img:760:26:9:-2|点击选择/@按钮勾选6>
+Goto @显示属性
+break
+#if
+equal <$BOXITEM[3].STDMODE> 20
+#act
+MOV N$伤害反弹 <$BOXITEM[3].VALUE6>
+MOV S$按钮6 <Img:760:26:9:-2|点击选择/@按钮勾选6>
+Goto @显示属性
+break
+#if
+equal <$BOXITEM[3].STDMODE> 21
+#act
+MOV N$伤害反弹 <$BOXITEM[3].VALUE6>
+MOV S$按钮6 <Img:760:26:9:-2|点击选择/@按钮勾选6>
+Goto @显示属性
+break
+;----------------------------------衣服
+#if
+equal <$BOXITEM[3].STDMODE> 10
+#act
+MOV N$体力增加 <$BOXITEM[3].VALUE8>
+MOV N$魔力增加 <$BOXITEM[3].VALUE9>
+MOV S$按钮8 <Img:760:26:9:-2|点击选择/@按钮勾选8>
+MOV S$按钮9 <Img:760:26:9:-2|点击选择/@按钮勾选9>
+MOV N$伤害反弹 <$BOXITEM[3].VALUE6>
+MOV S$按钮6 <Img:760:26:9:-2|点击选择/@按钮勾选6>
+Goto @显示属性
+break
+#if
+equal <$BOXITEM[3].STDMODE> 11
+#act
+MOV N$体力增加 <$BOXITEM[3].VALUE8>
+MOV N$魔力增加 <$BOXITEM[3].VALUE9>
+MOV S$按钮8 <Img:760:26:9:-2|点击选择/@按钮勾选8>
+MOV S$按钮9 <Img:760:26:9:-2|点击选择/@按钮勾选9>
+MOV N$伤害反弹 <$BOXITEM[3].VALUE6>
+MOV S$按钮6 <Img:760:26:9:-2|点击选择/@按钮勾选6>
+Goto @显示属性
+break
+;----------------------------------头盔+斗笠+勋章
+#if
+equal <$BOXITEM[3].STDMODE> 15
+#act
+MOV N$物伤减少 <$BOXITEM[3].VALUE3>
+MOV S$按钮3 <Img:760:26:9:-2|点击选择/@按钮勾选3>
+MOV N$魔伤减少 <$BOXITEM[3].VALUE4>
+MOV S$按钮4 <Img:760:26:9:-2|点击选择/@按钮勾选4>
+MOV N$忽视防御 <$BOXITEM[3].VALUE5>
+MOV S$按钮5 <Img:760:26:9:-2|点击选择/@按钮勾选5>
+Goto @显示属性
+break
+#if
+equal <$BOXITEM[3].STDMODE> 30
+#act
+MOV N$物伤减少 <$BOXITEM[3].VALUE3>
+MOV S$按钮3 <Img:760:26:9:-2|点击选择/@按钮勾选3>
+MOV N$魔伤减少 <$BOXITEM[3].VALUE4>
+MOV S$按钮4 <Img:760:26:9:-2|点击选择/@按钮勾选4>
+;MOV N$忽视防御 <$BOXITEM[3].VALUE5>
+;MOV S$按钮5 <Img:760:26:9:-2|点击选择/@按钮勾选5>
+Goto @显示属性
+break
+#if
+equal <$BOXITEM[3].STDMODE> 16
+#act
+MOV N$物伤减少 <$BOXITEM[3].VALUE3>
+MOV S$按钮3 <Img:760:26:9:-2|点击选择/@按钮勾选3>
+MOV N$魔伤减少 <$BOXITEM[3].VALUE4>
+MOV S$按钮4 <Img:760:26:9:-2|点击选择/@按钮勾选4>
+Goto @显示属性
+break
+;----------------------------------盾牌
+#if
+equal <$BOXITEM[3].STDMODE> 48
+#act
+MOV N$物伤减少 <$BOXITEM[3].VALUE3>
+MOV S$按钮3 <Img:760:26:9:-2|点击选择/@按钮勾选3>
+MOV N$魔伤减少 <$BOXITEM[3].VALUE4>
+MOV S$按钮4 <Img:760:26:9:-2|点击选择/@按钮勾选4>
+MOV N$目标爆率 <$BOXITEM[3].VALUE7>
+MOV S$按钮7 <Img:760:26:9:-2|点击选择/@按钮勾选7>
+Goto @显示属性
+break
+;----------------------------------靴子
+#if
+equal <$BOXITEM[3].STDMODE> 62
+#act
+MOV N$物伤减少 <$BOXITEM[3].VALUE3>
+MOV S$按钮3 <Img:760:26:9:-2|点击选择/@按钮勾选3>
+MOV N$体力增加 <$BOXITEM[3].VALUE8>
+MOV S$按钮8 <Img:760:26:9:-2|点击选择/@按钮勾选8>
+Goto @显示属性
+break
+;----------------------------------腰带
+#if
+equal <$BOXITEM[3].STDMODE> 64
+#act
+MOV N$魔伤减少 <$BOXITEM[3].VALUE4>
+MOV S$按钮4 <Img:760:26:9:-2|点击选择/@按钮勾选4>
+MOV N$魔力增加 <$BOXITEM[3].VALUE9>
+MOV S$按钮9 <Img:760:26:9:-2|点击选择/@按钮勾选9>
+Goto @显示属性
+break
+;----------------------------------手镯
+#if
+equal <$BOXITEM[3].STDMODE> 24
+#act
+MOV N$忽视防御 <$BOXITEM[3].VALUE5>
+MOV S$按钮5 <Img:760:26:9:-2|点击选择/@按钮勾选11>
+Goto @显示属性
+break
+#if
+equal <$BOXITEM[3].STDMODE> 26
+#act
+MOV N$忽视防御 <$BOXITEM[3].VALUE5>
+MOV S$按钮5 <Img:760:26:9:-2|点击选择/@按钮勾选11>
+Goto @显示属性
+break
+;----------------------------------戒指
+#if
+equal <$BOXITEM[3].STDMODE> 22
+#act
+MOV N$攻击伤害 <$BOXITEM[3].VALUE2>
+MOV S$按钮2 <Img:760:26:9:-2|点击选择/@按钮勾选2>
+Goto @显示属性
+break
+#if
+equal <$BOXITEM[3].STDMODE> 23
+#act
+MOV N$攻击伤害 <$BOXITEM[3].VALUE2>
+MOV S$按钮2 <Img:760:26:9:-2|点击选择/@按钮勾选2>
+Goto @显示属性
+break
+;----------------------------------武器
+#if
+equal <$BOXITEM[3].STDMODE> 5
+#act
+MOV N$攻击伤害 <$BOXITEM[3].VALUE2> 
+MOV S$按钮2 <Img:760:26:9:-2|点击选择/@按钮勾选1>
+Goto @显示属性
+break
+
+;#if
+;equal <$BOXITEM[3].STDMODE> 6
+;#act
+;MOV N$暴击机率 <$BOXITEM[3].VALUE1> 
+;MOV S$按钮1 <Img:760:26:9:-2|点击选择/@按钮勾选1>
+;Goto @显示属性
+;break
+;#if
+;equal <$BOXITEM[3].STDMODE> 5
+;CHECKITEMADDVALUE -1 3 > 9
+;#act
+;MOV N$暴击机率 <$BOXITEM[3].VALUE1> 
+;MOV S$按钮1 <Img:760:26:9:-2|点击选择/@按钮勾选1>
+;Goto @武器幸运
+;Goto @显示属性
+;break
+;#if
+;equal <$BOXITEM[3].STDMODE> 6
+;CHECKITEMADDVALUE -1 3 > 9
+;#act
+;MOV N$暴击机率 <$BOXITEM[3].VALUE1> 
+;MOV S$按钮1 <Img:760:26:9:-2|点击选择/@按钮勾选1>
+;Goto @武器幸运
+;Goto @显示属性
+;break
+;#if
+;equal <$BOXITEM[3].STDMODE> 5
+;CHECKITEMADDVALUE -1 3 < 10
+;#act
+MOV S$按钮10 <Img:758:26:9:-2|必须先使用超级祝福油把武器幸^运附加值加到10才能继续强化。>
+;MOV N$暴击机率 <$BOXITEM[3].VALUE1> 
+;MOV S$按钮1 <Img:760:26:9:-2|点击选择/@按钮勾选1>
+;Goto @显示属性
+;break
+;#if
+;equal <$BOXITEM[3].STDMODE> 6
+;CHECKITEMADDVALUE -1 3 < 10
+;#act
+MOV S$按钮10 <Img:758:26:9:-2|必须先使用超级祝福油把武器幸^运附加值加到10才能继续强化。>
+;MOV N$暴击机率 <$BOXITEM[3].VALUE1> 
+;MOV S$按钮1 <Img:760:26:9:-2|点击选择/@按钮勾选1>
+;Goto @显示属性
+;break
+
+[@ItemOutBox3]
+#ACT
+Goto @main
+break
+
+[@武器幸运]
+#if
+#act
+SetUpgradeItem 3
+#if
+CHECKITEMADDVALUE -1 3 = <$STR(N$武器幸运)>
+#ACT
+MOV S$按钮10 <Img:760:26:9:-2|点击选择/@按钮勾选10>
+break
+#ELSEACT
+inc N$武器幸运 1
+GOTO @武器幸运
+break
+
+[@按钮勾选10];//10+3+5武器幸运
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#if
+equal <$STR(N$武器幸运)> <$STR(N$最高武器幸运)>
+#ACT
+messagebox 错误：武器幸运附加属性已满！
+break
+#if
+large <$STR(N$武器幸运)> <$STR(N$最高武器幸运)>
+#ACT
+messagebox 错误：武器幸运附加属性已满！
+break
+#ELSEACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 <$STR(N$武器幸运)>
+MUL N$成功机率 2
+;INC N$成功机率 <$GLOBAL(幸运成功_机率相加)>
+MOV N$强化价格 <$GLOBAL(武器幸运_需要元宝)>
+MOV N$最高点数 <$STR(N$最高武器幸运)>
+MOV S$按钮10 <Img:761:26:9:-2|点击取消选择/@按钮勾选10_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮_武器>
+GOTO @显示属性
+break
+
+[@按钮勾选10_取消]武器幸运
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#ELSEACT
+MOV N$成功机率 0
+MOV N$强化价格 0
+MOV N$最高点数 0
+MOV S$按钮10 <Img:760:26:9:-2|点击选择/@按钮勾选10>
+MOV S$按钮0 <Img:756:26:153:160>
+GOTO @显示属性
+break
+
+[@按钮勾选9];//2 1*3+2
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#if
+Equal <$BOXITEM[3].NAME> 仙女の带
+#ACT
+messagebox 错误：<$BOXITEM[3].NAME>不能再增加魔力增加。
+GOTO @MAIN
+break
+#if
+equal <$STR(N$魔力增加)> <$STR(N$最高魔力增加)>
+#ACT
+messagebox 错误：魔力增加附加属性已满！
+break
+#if
+large <$STR(N$魔力增加)> <$STR(N$最高魔力增加)>
+#ACT
+messagebox 错误：魔力增加附加属性已满！
+break
+#if
+equal <$STR(N$魔力增加)> 0
+#ACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 2
+MOV N$强化价格 <$GLOBAL(魔力增加_需要元宝)>
+MOV N$元素类型 8
+MOV N$最高点数 <$STR(N$最高魔力增加)>
+MOV S$元素名称 魔力增加
+MOV S$按钮9 <Img:761:26:9:-2|点击取消选择/@按钮勾选9_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+#ELSEACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 <$STR(N$魔力增加)>
+MUL N$成功机率 <$GLOBAL(元素成功_机率倍数)>
+INC N$成功机率 3
+MOV N$强化价格 <$GLOBAL(魔力增加_需要元宝)>
+MOV N$元素类型 8
+MOV N$最高点数 <$STR(N$最高魔力增加)>
+MOV S$元素名称 魔力增加
+MOV S$按钮9 <Img:761:26:9:-2|点击取消选择/@按钮勾选9_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+
+[@按钮勾选8];//2 1*3+2
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#if
+Equal <$BOXITEM[3].NAME> 追日の靴
+#ACT
+messagebox 错误：<$BOXITEM[3].NAME>不能再增加体力增加。
+GOTO @MAIN
+break
+#if
+equal <$STR(N$体力增加)> <$STR(N$最高体力增加)>
+#ACT
+messagebox 错误：体力增加附加属性已满！
+break
+#if
+large <$STR(N$体力增加)> <$STR(N$最高体力增加)>
+#ACT
+messagebox 错误：体力增加附加属性已满！
+break
+#if
+equal <$STR(N$体力增加)> 0
+#ACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 2
+MOV N$强化价格 <$GLOBAL(体力增加_需要元宝)>
+MOV N$元素类型 7
+MOV N$最高点数 <$STR(N$最高体力增加)>
+MOV S$元素名称 体力增加
+MOV S$按钮8 <Img:761:26:9:-2|点击取消选择/@按钮勾选8_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+#ELSEACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 <$STR(N$体力增加)>
+MUL N$成功机率 <$GLOBAL(元素成功_机率倍数)>
+INC N$成功机率 2
+MOV N$强化价格 <$GLOBAL(体力增加_需要元宝)>
+MOV N$元素类型 7
+MOV N$最高点数 <$STR(N$最高体力增加)>
+MOV S$元素名称 体力增加
+MOV S$按钮8 <Img:761:26:9:-2|点击取消选择/@按钮勾选8_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+
+[@按钮勾选7];//3 1*3+3
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#if
+Equal <$BOXITEM[3].NAME> 孤风の泪
+#ACT
+messagebox 错误：<$BOXITEM[3].NAME>不能再增加目标爆率。
+GOTO @MAIN
+break
+#if
+equal <$STR(N$目标爆率)> <$STR(N$最高目标爆率)>
+#ACT
+messagebox 错误：目标爆率附加属性已满！
+break
+#if
+large <$STR(N$目标爆率)> <$STR(N$最高目标爆率)>
+#ACT
+messagebox 错误：目标爆率附加属性已满！
+break
+#if
+equal <$STR(N$目标爆率)> 0
+#ACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 3
+MOV N$强化价格 <$GLOBAL(目标爆率_需要元宝)>
+MOV N$元素类型 6
+MOV N$最高点数 <$STR(N$最高目标爆率)>
+MOV S$元素名称 目标爆率
+MOV S$按钮7 <Img:761:26:9:-2|点击取消选择/@按钮勾选7_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+#ELSEACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 <$STR(N$目标爆率)>
+MUL N$成功机率 <$GLOBAL(元素成功_机率倍数)>
+INC N$成功机率 3
+MOV N$强化价格 <$GLOBAL(目标爆率_需要元宝)>
+MOV N$元素类型 6
+MOV N$最高点数 <$STR(N$最高目标爆率)>
+MOV S$元素名称 目标爆率
+MOV S$按钮7 <Img:761:26:9:-2|点击取消选择/@按钮勾选7_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+
+[@按钮勾选6];//3 1*5
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#OR
+Equal <$BOXITEM[3].NAME> 天地の防(男)
+Equal <$BOXITEM[3].NAME> 天地の防(女)
+#ACT
+messagebox 错误：<$BOXITEM[3].NAME>不能再增加伤害反弹。
+GOTO @MAIN
+break
+#if
+equal <$STR(N$伤害反弹)> <$STR(N$最高伤害反弹)>
+#ACT
+messagebox 错误：伤害反弹附加属性已满！
+break
+#if
+large <$STR(N$伤害反弹)> <$STR(N$最高伤害反弹)>
+#ACT
+messagebox 错误：伤害反弹附加属性已满！
+break
+#if
+equal <$STR(N$伤害反弹)> 0
+#ACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 3
+MOV N$强化价格 <$GLOBAL(伤害反弹_需要元宝)>
+MOV N$元素类型 5
+MOV N$最高点数 <$STR(N$最高伤害反弹)>
+MOV S$元素名称 伤害反弹
+MOV S$按钮6 <Img:761:26:9:-2|点击取消选择/@按钮勾选6_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+#ELSEACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 <$STR(N$伤害反弹)>
+MUL N$成功机率 5
+MOV N$强化价格 <$GLOBAL(伤害反弹_需要元宝)>
+MOV N$元素类型 5
+MOV N$最高点数 <$STR(N$最高伤害反弹)>
+MOV S$元素名称 伤害反弹
+MOV S$按钮6 <Img:761:26:9:-2|点击取消选择/@按钮勾选6_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+
+[@按钮勾选5];//3 1*3+3
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#if
+Equal <$BOXITEM[3].NAME> 战神の帝
+#ACT
+messagebox 错误：<$BOXITEM[3].NAME>不能再增加忽视防御。
+GOTO @MAIN
+break
+#if
+equal <$STR(N$忽视防御)> <$STR(N$最高忽视防御)>
+#ACT
+messagebox 错误：忽视防御附加属性已满！
+break
+#if
+large <$STR(N$忽视防御)> <$STR(N$最高忽视防御)>
+#ACT
+messagebox 错误：忽视防御附加属性已满！
+break
+#if
+equal <$STR(N$忽视防御)> 0
+#ACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 3
+MOV N$强化价格 <$GLOBAL(忽视防御_需要元宝)>
+MOV N$元素类型 4
+MOV N$最高点数 <$STR(N$最高忽视防御)>
+MOV S$元素名称 忽视防御
+MOV S$按钮5 <Img:761:26:9:-2|点击取消选择/@按钮勾选5_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+#ELSEACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 <$STR(N$忽视防御)>
+MUL N$成功机率 3
+INC N$成功机率 3
+MOV N$强化价格 <$GLOBAL(忽视防御_需要元宝)>
+MOV N$元素类型 4
+MOV N$最高点数 <$STR(N$最高忽视防御)>
+MOV S$元素名称 忽视防御
+MOV S$按钮5 <Img:761:26:9:-2|点击取消选择/@按钮勾选5_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+
+[@按钮勾选11]
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#if
+Equal <$BOXITEM[3].NAME> 战神の帝
+#ACT
+messagebox 错误：<$BOXITEM[3].NAME>不能再增加忽视防御。
+GOTO @MAIN
+break
+#if
+equal <$STR(N$忽视防御)> <$STR(N$最高手镯忽视防御)>
+#ACT
+messagebox 错误：忽视防御附加属性已满！
+break
+#if
+large <$STR(N$忽视防御)> <$STR(N$最高手镯忽视防御)>
+#ACT
+messagebox 错误：忽视防御附加属性已满！
+break
+#if
+equal <$STR(N$忽视防御)> 0
+#ACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 3
+MOV N$强化价格 <$GLOBAL(忽视防御_需要元宝)>
+MOV N$元素类型 4
+MOV N$最高点数 <$STR(N$最高忽视防御)>
+MOV S$元素名称 忽视防御
+MOV S$按钮5 <Img:761:26:9:-2|点击取消选择/@按钮勾选11_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+#ELSEACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 <$STR(N$忽视防御)>
+MUL N$成功机率 3
+INC N$成功机率 3
+MOV N$强化价格 <$GLOBAL(忽视防御_需要元宝)>
+MOV N$元素类型 4
+MOV N$最高点数 <$STR(N$最高手镯忽视防御)>
+MOV S$元素名称 忽视防御
+MOV S$按钮5 <Img:761:26:9:-2|点击取消选择/@按钮勾选11_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+[@按钮勾选4];//3 1*3+3
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#if
+Equal <$BOXITEM[3].NAME> 守护の神
+#ACT
+messagebox 错误：<$BOXITEM[3].NAME>不能再增加魔伤减少。
+GOTO @MAIN
+break
+#if
+equal <$STR(N$魔伤减少)> <$STR(N$最高魔伤减少)>
+#ACT
+messagebox 错误：魔伤减少附加属性已满！
+break
+#if
+large <$STR(N$魔伤减少)> <$STR(N$最高魔伤减少)>
+#ACT
+messagebox 错误：魔伤减少附加属性已满！
+break
+#if
+equal <$STR(N$魔伤减少)> 0
+#ACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 3
+MOV N$强化价格 <$GLOBAL(魔伤减少_需要元宝)>
+MOV N$元素类型 3
+MOV N$最高点数 <$STR(N$最高魔伤减少)>
+MOV S$元素名称 魔伤减少
+MOV S$按钮4 <Img:761:26:9:-2|点击取消选择/@按钮勾选4_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+#ELSEACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 <$STR(N$魔伤减少)>
+MUL N$成功机率 <$GLOBAL(元素成功_机率倍数)>
+INC N$成功机率 3
+MOV N$强化价格 <$GLOBAL(魔伤减少_需要元宝)>
+MOV N$元素类型 3
+MOV N$最高点数 <$STR(N$最高魔伤减少)>
+MOV S$元素名称 魔伤减少
+MOV S$按钮4 <Img:761:26:9:-2|点击取消选择/@按钮勾选4_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+
+[@按钮勾选3];//3 1*3+3
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#if
+Equal <$BOXITEM[3].NAME> 守护の神
+#ACT
+messagebox 错误：<$BOXITEM[3].NAME>不能再增加物伤减少。
+GOTO @MAIN
+break
+#if
+equal <$STR(N$物伤减少)> <$STR(N$最高物伤减少)>
+#ACT
+messagebox 错误：物伤减少附加属性已满！
+break
+#if
+large <$STR(N$物伤减少)> <$STR(N$最高物伤减少)>
+#ACT
+messagebox 错误：物伤减少附加属性已满！
+break
+#if
+equal <$STR(N$物伤减少)> 0
+#ACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 3
+MOV N$强化价格 <$GLOBAL(物伤减少_需要元宝)>
+MOV N$元素类型 2
+MOV N$最高点数 <$STR(N$最高物伤减少)>
+MOV S$元素名称 物伤减少
+MOV S$按钮3 <Img:761:26:9:-2|点击取消选择/@按钮勾选3_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+#ELSEACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 <$STR(N$物伤减少)>
+MUL N$成功机率 <$GLOBAL(元素成功_机率倍数)>
+INC N$成功机率 3
+MOV N$强化价格 <$GLOBAL(物伤减少_需要元宝)>
+MOV N$元素类型 2
+MOV N$最高点数 <$STR(N$最高物伤减少)>
+MOV S$元素名称 物伤减少
+MOV S$按钮3 <Img:761:26:9:-2|点击取消选择/@按钮勾选3_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+
+[@按钮勾选2];//3 1*5
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+;#OR
+;Equal <$BOXITEM[3].NAME> 武神麻痹
+;Equal <$BOXITEM[3].NAME> 武圣麻痹
+;Equal <$BOXITEM[3].NAME> 狂战麻痹
+;Equal <$BOXITEM[3].NAME> 沉默麻痹
+;Equal <$BOXITEM[3].NAME> 逆火涅槃麻痹
+;Equal <$BOXITEM[3].NAME> 法痴护身
+;Equal <$BOXITEM[3].NAME> 武神麻痹
+;Equal <$BOXITEM[3].NAME> 魔神护身
+;Equal <$BOXITEM[3].NAME> 魔尊护身
+;Equal <$BOXITEM[3].NAME> 无量护身
+;Equal <$BOXITEM[3].NAME> 法神麻痹护身
+;Equal <$BOXITEM[3].NAME> 道巅复活
+;Equal <$BOXITEM[3].NAME> 两仪复活
+;Equal <$BOXITEM[3].NAME> 四象复活
+;Equal <$BOXITEM[3].NAME> 八卦复活
+;Equal <$BOXITEM[3].NAME> 太极守护复活
+;#ACT
+;messagebox 错误：<$BOXITEM[3].NAME>不能增加攻击伤害。
+;GOTO @MAIN
+;break
+#if
+equal <$STR(N$攻击伤害)> <$STR(N$最高攻击伤害)>
+#ACT
+messagebox 错误：攻击伤害附加属性已满！
+break
+#if
+large <$STR(N$攻击伤害)> <$STR(N$最高攻击伤害)>
+#ACT
+messagebox 错误：攻击伤害附加属性已满！
+break
+#if
+equal <$STR(N$攻击伤害)> 0
+#ACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 3
+MOV N$强化价格 <$GLOBAL(攻击伤害_需要元宝)>
+MOV N$元素类型 1
+MOV N$最高点数 <$STR(N$最高攻击伤害)>
+MOV S$元素名称 攻击伤害
+MOV S$按钮2 <Img:761:26:9:-2|点击取消选择/@按钮勾选2_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+#ELSEACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 <$STR(N$攻击伤害)>
+MUL N$成功机率 5
+MOV N$强化价格 <$GLOBAL(攻击伤害_需要元宝)>
+MOV N$元素类型 1
+MOV N$最高点数 <$STR(N$最高攻击伤害)>
+MOV S$元素名称 攻击伤害
+MOV S$按钮2 <Img:761:26:9:-2|点击取消选择/@按钮勾选2_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+
+[@按钮勾选1]
+#if
+equal <$STR(N$攻击伤害)> <$STR(N$最高武器伤害)>
+#ACT
+messagebox 错误：攻击伤害附加属性已满！
+break
+#if
+large <$STR(N$攻击伤害)> <$STR(N$最高武器伤害)>
+#ACT
+messagebox 错误：攻击伤害附加属性已满！
+break
+#if
+equal <$STR(N$攻击伤害)> 0
+#ACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 3
+MOV N$强化价格 <$GLOBAL(攻击伤害_需要元宝)>
+MOV N$元素类型 1
+MOV N$最高点数 <$STR(N$最高武器伤害)>
+MOV S$元素名称 攻击伤害
+MOV S$按钮2 <Img:761:26:9:-2|点击取消选择/@按钮勾选1_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+#ELSEACT
+GOTO @ItemIntoBox3
+MOV N$成功机率 <$STR(N$攻击伤害)>
+MUL N$成功机率 5
+MOV N$强化价格 <$GLOBAL(攻击伤害_需要元宝)>
+MOV N$元素类型 1
+MOV N$最高点数 <$STR(N$最高武器伤害)>
+MOV S$元素名称 攻击伤害
+MOV S$按钮2 <Img:761:26:9:-2|点击取消选择/@按钮勾选1_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+
+
+[@按钮勾选1111111];//3 1*3+3
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#if
+equal <$STR(N$暴击机率)> <$STR(N$最高暴击机率)>
+#ACT
+messagebox 错误：暴击机率附加属性已满！
+break
+#if
+large <$STR(N$暴击机率)> <$STR(N$最高暴击机率)>
+#ACT
+messagebox 错误：暴击机率附加属性已满！
+break
+#if
+equal <$STR(N$暴击机率)> 0
+#ACT
+;默认机率3
+GOTO @ItemIntoBox3
+MOV N$成功机率 3
+MOV N$强化价格 <$GLOBAL(暴击机率_需要元宝)>
+MOV N$元素类型 0
+MOV N$最高点数 <$STR(N$最高暴击机率)>
+MOV S$元素名称 暴击机率
+MOV S$按钮1 <Img:761:26:9:-2|点击取消选择/@按钮勾选1_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+#ELSEACT
+;默认机率：点数*3+3
+GOTO @ItemIntoBox3
+MOV N$成功机率 <$STR(N$暴击机率)>
+MUL N$成功机率 <$GLOBAL(元素成功_机率倍数)>
+INC N$成功机率 3
+MOV N$强化价格 <$GLOBAL(暴击机率_需要元宝)>
+MOV N$元素类型 0
+MOV N$最高点数 <$STR(N$最高暴击机率)>
+MOV S$元素名称 暴击机率
+MOV S$按钮1 <Img:761:26:9:-2|点击取消选择/@按钮勾选1_取消>
+MOV S$按钮0 <Img:755:26:153:160|点击开始强化！/@确定强化按钮>
+GOTO @显示属性
+break
+
+[@按钮勾选9_取消]
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#ELSEACT
+MOV N$成功机率 0 
+MOV N$强化价格 0
+MOV N$元素类型 999
+MOV N$最高点数 0
+MOV S$元素名称 
+MOV S$按钮9 <Img:760:26:9:-2|点击选择/@按钮勾选9>
+MOV S$按钮0 <Img:756:26:153:160>
+GOTO @显示属性
+break
+
+[@按钮勾选8_取消]
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#ELSEACT
+MOV N$成功机率 0 
+MOV N$强化价格 0
+MOV N$元素类型 999
+MOV N$最高点数 0
+MOV S$元素名称 
+MOV S$按钮8 <Img:760:26:9:-2|点击选择/@按钮勾选8>
+MOV S$按钮0 <Img:756:26:153:160>
+GOTO @显示属性
+break
+
+[@按钮勾选7_取消]
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#ELSEACT
+MOV N$成功机率 0 
+MOV N$强化价格 0
+MOV N$元素类型 999
+MOV N$最高点数 0
+MOV S$元素名称 
+MOV S$按钮7 <Img:760:26:9:-2|点击选择/@按钮勾选7>
+MOV S$按钮0 <Img:756:26:153:160>
+GOTO @显示属性
+break
+
+[@按钮勾选6_取消]
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#ELSEACT
+MOV N$成功机率 0 
+MOV N$强化价格 0
+MOV N$元素类型 999
+MOV N$最高点数 0
+MOV S$元素名称 
+MOV S$按钮6 <Img:760:26:9:-2|点击选择/@按钮勾选6>
+MOV S$按钮0 <Img:756:26:153:160>
+GOTO @显示属性
+break
+
+[@按钮勾选5_取消]
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#ELSEACT
+MOV N$成功机率 0 
+MOV N$强化价格 0
+MOV N$元素类型 999
+MOV N$最高点数 0
+MOV S$元素名称 
+MOV S$按钮5 <Img:760:26:9:-2|点击选择/@按钮勾选5>
+MOV S$按钮0 <Img:756:26:153:160>
+GOTO @显示属性
+break
+
+[@按钮勾选4_取消]
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#ELSEACT
+MOV N$成功机率 0 
+MOV N$强化价格 0
+MOV N$元素类型 999
+MOV N$最高点数 0
+MOV S$元素名称 
+MOV S$按钮4 <Img:760:26:9:-2|点击选择/@按钮勾选4>
+MOV S$按钮0 <Img:756:26:153:160>
+GOTO @显示属性
+break
+
+[@按钮勾选3_取消]
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#ELSEACT
+MOV N$成功机率 0 
+MOV N$强化价格 0
+MOV N$元素类型 999
+MOV N$最高点数 0
+MOV S$元素名称 
+MOV S$按钮3 <Img:760:26:9:-2|点击选择/@按钮勾选3>
+MOV S$按钮0 <Img:756:26:153:160>
+GOTO @显示属性
+break
+
+[@按钮勾选2_取消]
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#ELSEACT
+MOV N$成功机率 0 
+MOV N$强化价格 0
+MOV N$元素类型 999
+MOV N$最高点数 0
+MOV S$元素名称 
+MOV S$按钮2 <Img:760:26:9:-2|点击选择/@按钮勾选2>
+MOV S$按钮0 <Img:756:26:153:160>
+GOTO @显示属性
+break
+
+[@按钮勾选1_取消]
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#ELSEACT
+MOV N$成功机率 0 
+MOV N$强化价格 0
+MOV N$元素类型 999
+MOV N$最高点数 0
+MOV S$元素名称 
+MOV S$按钮2 <Img:760:26:9:-2|点击选择/@按钮勾选2>
+MOV S$按钮0 <Img:756:26:153:160>
+GOTO @显示属性
+break
+
+[@确定强化按钮]
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#if
+Equal <$STR(N$强化价格)> 0
+#ACT
+messagebox 错误：未知错误。
+GOTO @MAIN
+break
+#if
+Equal <$STR(N$元素类型)> 999
+#ACT
+messagebox 错误：未知错误。
+GOTO @MAIN
+break
+#if
+CHECKNEWITEMVALUE -1 <$STR(N$元素类型)> ? <$STR(N$最高点数)>
+#ACT
+messagebox 错误：(<$BOXITEM[3].NAME>)装备上的(<$STR(S$元素名称)>)附加值已达(<$STR(N$最高点数)>)点。
+GOTO @MAIN
+break
+;检测沉默币
+#if
+CHECKGAMEGOLD ? <$STR(N$强化价格)>
+#ACT
+GameGold - <$STR(N$强化价格)>
+goto @确定强化按钮_增加属性
+break
+;不够的话
+#ELSEACT
+messagebox 错误：您没有（<$STR(N$强化价格)>）个沉默币。\
+break
+
+[@确定强化按钮_增加属性]
+#if
+EQUAL <$STR(N$元素作弊)> 1
+#ACT
+;显示总点数
+MOV N$元素类型2 <$STR(N$元素类型)>
+INC N$元素类型2 1
+MOV S$元素总点数 <$BOXITEM[3].VALUE
+INC S$元素总点数 <$STR(N$元素类型2)>
+INC S$元素总点数 >
+SetNewItemValue -1 <$STR(N$元素类型)> + 1
+updateitem 3
+GuildNoticeMsg 254 0 [提示]：{<$USERNAME>|151:0:1} 消耗({<$STR(N$强化价格)>个沉默币)|253:0:1}成功将{(<$BOXITEM[3].NAME>)|255:0:1}的<$STR(S$元素名称)>强化到了第{(<$STR(S$元素总点数)>点)|250:0:1}。
+GOTO @ItemIntoBox3
+break
+#if
+random <$STR(N$成功机率)>
+#act
+;显示总点数
+MOV N$元素类型2 <$STR(N$元素类型)>
+INC N$元素类型2 1
+MOV S$元素总点数 <$BOXITEM[3].VALUE
+INC S$元素总点数 <$STR(N$元素类型2)>
+INC S$元素总点数 >
+;//增加点数
+SetNewItemValue -1 <$STR(N$元素类型)> + 1
+updateitem 3
+GuildNoticeMsg 254 0 [提示]：{<$USERNAME>|151:0:1} 消耗({<$STR(N$强化价格)>个沉默币)|253:0:1}成功将{(<$BOXITEM[3].NAME>)|255:0:1}的<$STR(S$元素名称)>强化到了第{(<$STR(S$元素总点数)>点)|250:0:1}。
+MOV N$元素类型2 0
+MOV S$元素总点数 
+GOTO @ItemIntoBox3
+break
+#ELSEACT
+SENDMSG 5 [提示]：强化失败，消耗<$STR(N$强化价格)>个沉默币，成功机率：1/<$STR(N$成功机率)>。
+break
+
+[@确定强化按钮_武器];//武器幸运
+#if
+#act
+SetUpgradeItem 3
+#if
+Equal <$BOXITEM[3].NAME>
+#ACT
+messagebox 错误：请先放入装备。
+GOTO @MAIN
+break
+#if
+Equal <$STR(N$强化价格)> 0
+#ACT
+messagebox 错误：未知错误。
+GOTO @MAIN
+break
+#if
+CHECKITEMADDVALUE -1 3 > 9
+#ELSEACT
+messagebox 错误：<$BOXITEM[3].NAME>的幸运附加值必须≥10点。
+GOTO @MAIN
+break
+#if
+CHECKITEMADDVALUE -1 3 ? <$STR(N$最高点数)>
+#ACT
+messagebox 错误：(<$BOXITEM[3].NAME>)的幸运附加值已达(<$STR(N$最高点数)>)点。
+GOTO @MAIN
+break
+;检测沉默币
+#if
+CHECKGAMEGOLD ? <$STR(N$强化价格)>
+#ACT
+GameGold - <$STR(N$强化价格)>
+goto @确定强化按钮_增加属性_武器
+break
+;不够的话
+#ELSEACT
+messagebox 错误：您没有（<$STR(N$强化价格)>）个沉默币。\
+break
+
+[@确定强化按钮_增加属性_武器];//武器幸运
+#if
+EQUAL <$STR(N$元素作弊)> 1
+#ACT
+CHANGEITEMADDVALUE -1 3 + 1
+updateitem 3
+GuildNoticeMsg 254 0 [提示]：{<$USERNAME>|151:0:1}消耗{<$STR(N$强化价格)>个沉默币|253:0:1}成功将 {<$BOXITEM[3].NAME>|255:0:1} 增加了1点幸运。 Self
+GOTO @ItemIntoBox3
+break
+#if
+random <$STR(N$成功机率)>
+#act
+CHANGEITEMADDVALUE -1 3 + 1
+updateitem 3
+GuildNoticeMsg 254 0 [提示]：{<$USERNAME>|151:0:1}消耗{<$STR(N$强化价格)>个沉默币|253:0:1}成功将 {<$BOXITEM[3].NAME>|255:0:1} 增加了1点幸运。
+GOTO @ItemIntoBox3
+break
+#ELSEACT
+SENDMSG 5 [提示]：强化失败，消耗<$STR(N$强化价格)>个沉默币，成功机率：1/<$STR(N$成功机率)>。
+break

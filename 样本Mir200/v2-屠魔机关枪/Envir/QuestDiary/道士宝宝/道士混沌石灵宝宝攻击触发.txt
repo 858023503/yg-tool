@@ -1,0 +1,157 @@
+[@道士混沌石灵宝宝攻击触发]
+{
+#IF
+#ACT
+
+
+#if
+LARGE 328 0
+#act
+GOTO @麻痹戒指触发效果
+
+#if
+LARGE 329 0
+#act
+GOTO @石化戒指触发效果
+
+#if
+LARGE 330 0
+#act
+GOTO @冰冻戒指触发效果
+
+
+#if
+EQUAL S$玩家当前大陆 五大陆
+#act
+AddHpPer - N$五大陆反伤
+
+#IF
+CHECKCURRTARGETRACE = 0
+#ACT
+MOV N$战斗状态倒计时 10
+sendmsg 6 已经入战斗状态
+setontimer 40
+SetHumVar <$C.USERNAME> N$战斗状态倒计时 10
+HCALL <$C.USERNAME> @进入战斗状态
+
+
+#if
+LARGE N$道士召唤宝宝幸运 0
+#ACT
+;计算人物幸运攻击伤害下限
+FORMULATION <$STR(N$圣兽宝宝伤害下限)>+(((<$STR(N$圣兽宝宝伤害上限)>-<$STR(N$圣兽宝宝伤害下限)>)/10)*<$STR(N$道士召唤宝宝幸运)>) N$圣兽宝宝伤害幸运下限
+
+DEC N$圣兽宝宝伤害幸运下限 1
+#elseact
+MOV N$圣兽宝宝伤害幸运下限 <$STR(N$圣兽宝宝伤害下限)>
+
+
+#if
+#act
+MOVR  N$圣兽宝宝随机伤害 N$圣兽宝宝伤害幸运下限 N$圣兽宝宝伤害上限
+; sendmsg 6 圣兽宝宝随机伤害<$STR(N$圣兽宝宝随机伤害)>
+CalcPercent N$圣兽宝宝随机伤害 N$圣兽伤害倍攻 N$圣兽宝宝随机伤害
+; sendmsg 6 圣兽伤害倍攻<$STR(N$圣兽宝宝随机伤害)>
+FORMULATION <$STR(N$圣兽宝宝随机伤害)>/<$STR(N$所有技能伤害降低倍数)> N$圣兽宝宝随机伤害
+; sendmsg 6 所有技能伤害降低倍数<$STR(N$圣兽宝宝随机伤害)>
+sendmsg 6 <$STR(N$圣兽宝宝随机伤害)>
+
+
+#if
+randomex N$人物暴击几率 100
+#act
+; FORMULATION <$STR(N$圣兽宝宝随机伤害)>*2 N$圣兽宝宝随机伤害
+CalcPercent N$圣兽宝宝随机伤害 N$人物暴击伤害 N$圣兽宝宝随机伤害
+
+; sendmsg 6 人物暴击伤害<$STR(N$圣兽宝宝随机伤害)>
+
+
+#if
+CheckCacheTextList ..\QuestDiary\怪物名称\精英及以下怪物.txt <$ATTACKMONSTER_NAMEEX>
+LARGE N$精英怪增加伤害 100
+#act
+CalcPercent N$圣兽宝宝随机伤害 N$精英怪增加伤害 N$圣兽宝宝随机伤害
+
+
+
+#if
+CheckCacheTextList ..\QuestDiary\怪物名称\统领及以上怪物.txt <$ATTACKMONSTER_NAMEEX>
+LARGE N$对BOSS伤害增加 100
+#act
+CalcPercent N$圣兽宝宝随机伤害 N$对BOSS伤害增加 N$圣兽宝宝随机伤害
+sendmsg 6 <$STR(N$圣兽宝宝随机伤害)>
+#if
+#ACT
+CalcPercent N$圣兽宝宝随机伤害 N$混沌石灵伤害 N$圣兽宝宝随机伤害
+
+
+FORMULATION <$STR(N$圣兽宝宝随机伤害)>+<$STR(N$天殇套真实伤害)> N$圣兽宝宝随机伤害
+
+
+
+
+
+
+#if
+EQUAL S$攻击触发宝宝名字 混沌石灵
+CHECK [996] 0
+#ACT
+; RangeHarmEx <$SlaveTargetX> <$SlaveTargetY> 17 N$圣兽宝宝随机伤害 0 0 0 2 0 0 15 4775 10 50 0 0
+RangeHarm <$SlaveTargetX> <$SlaveTargetY> N$混沌石灵范围 N$圣兽宝宝随机伤害 0 0 0 2 1 1797 10 100 0 1
+
+break
+
+
+#if
+EQUAL S$攻击触发宝宝名字 混沌石灵
+CHECK [996] 1
+#ACT
+; RangeHarmEx <$SlaveTargetX> <$SlaveTargetY> 17 N$圣兽宝宝随机伤害 0 0 0 2 0 0 15 4775 10 50 0 0
+RangeHarm <$SlaveTargetX> <$SlaveTargetY> N$混沌石灵范围 N$圣兽宝宝随机伤害 0 0 0 2 0 0 0 0 0 1
+
+
+
+
+
+
+[@麻痹戒指触发效果]
+#if
+RANDOMEX N$道士宝宝麻痹戒指几率 101
+CHECKCURRTARGETRACE = 0
+#act
+HCALL <$C.USERNAME> @麻痹自己
+
+#if
+RANDOMEX N$道士宝宝麻痹戒指几率 101
+NOT CHECKCURRTARGETRACE = 0
+#act
+M.ChangeState 1 3
+
+
+[@石化戒指触发效果]
+#if
+RANDOMEX N$道士宝宝石化戒指几率 101
+CHECKCURRTARGETRACE = 0
+#act
+HCALL <$C.USERNAME> @石化自己
+
+#if
+RANDOMEX N$道士宝宝石化戒指几率 101
+NOT CHECKCURRTARGETRACE = 0
+#act
+M.ChangeState 1 3
+
+
+[@冰冻戒指触发效果]
+#if
+RANDOMEX N$道士宝宝冰冻戒指几率 101
+CHECKCURRTARGETRACE = 0
+#act
+HCALL <$C.USERNAME> @冰冻自己
+
+#if
+RANDOMEX N$道士宝宝冰冻戒指几率 101
+NOT CHECKCURRTARGETRACE = 0
+#act
+M.ChangeState 2 3
+}

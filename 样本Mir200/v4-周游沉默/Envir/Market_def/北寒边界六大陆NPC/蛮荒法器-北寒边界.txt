@@ -1,0 +1,244 @@
+[@main]
+#if
+#ACT
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1794 1 4 0 -150 1 390 5 0
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\ \
+<>      <据说上古流传下来的神器，分布在玛法大陆的各各角落！/SCOLOR=70>\
+<>      <神器犹豫威力强大，想要得到它，不只是人类！/SCOLOR=70>\
+<>      <被盘踞的首领占为己有，要从它们手中取得神器不是易事！/SCOLOR=70>\ 
+<>                 <ITEMSHOW:1304:0:0:0:1:1/@神器1>    <ITEMSHOW:1305:0:0:0:1:1/@神器2>    <ITEMSHOW:1307:0:0:0:1:1/@神器4>\ \ \
+<>            <ITEMSHOW:1306:0:0:0:1:1/@神器3>    <ITEMSHOW:1308:0:0:0:1:1/@神器5>    <ITEMSHOW:1215:0:0:0:1:1/@神器6>   <ITEMSHOW:1216:0:0:0:1:1/@神器7>\ \ \
+<>            <ITEMSHOW:1217:0:0:0:1:1/@神器8>    <ITEMSHOW:1218:0:0:0:1:1/@神器9>    <ITEMSHOW:1219:0:0:0:1:1/@神器10>   <ITEMSHOW:1220:0:0:0:1:1/@神器11>\ 
+
+
+[@神器1]
+#ACT
+MessageBox  合成:<[炎魔の之手]/FCOLOR=253>\\<需要：魔之左手+灭世者的死亡之帽+1200W元宝/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @1 @取消合成
+
+[@1]
+#if
+CheckItem  魔之左手 1
+CheckItem  灭世者的死亡之帽 1
+CheckGameGold > 11999999
+#ACT
+GameGold - 12000000
+Take 魔之左手 1
+Take 灭世者的死亡之帽 1
+;gmexecute 11 炎魔の之手 1
+Give 炎魔の之手 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@神器2]
+#ACT
+MessageBox  合成:<[泰坦の之怒]/FCOLOR=253>\\<需要：腐蚀之心+馬拉的萬花筒+1200W元宝/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @2 @取消合成
+
+[@2]
+#if
+CheckItem  腐蚀之心 1
+CheckItem  馬拉的萬花筒 1
+CheckGameGold > 11999999
+#ACT
+GameGold - 12000000
+Take 腐蚀之心 1
+Take 馬拉的萬花筒 1
+Give 泰坦の之怒 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+
+[@神器3]
+#ACT
+MessageBox  合成:<[九幽の黄泉]/FCOLOR=253>\\<需要：镜花水月+恩赐解脱+1200W元宝/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @3 @取消合成
+
+[@3]
+#if
+CheckItem  镜花水月 1
+CheckItem  恩赐解脱 1
+CheckGameGold > 11999999
+#ACT
+GameGold - 12000000
+Take 镜花水月 1
+Take 恩赐解脱 1
+Give 九幽の黄泉 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@神器4]
+#ACT
+MessageBox  合成:<[兽王の令]/FCOLOR=253>\\<需要：招魂魔戒+月光+1200W元宝/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @4 @取消合成
+
+[@4]
+#if
+CheckItem  招魂魔戒 1
+CheckItem  月光 1
+CheckGameGold > 11999999
+#ACT
+GameGold - 12000000
+Take 招魂魔戒 1
+Take 月光 1
+Give 兽王の令 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@神器5]
+#ACT
+MessageBox  合成:<[超能の力]/FCOLOR=253>\\<需要：死神赌注+狂暴之心+1200W元宝/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @5 @取消合成
+
+[@5]
+#if
+CheckItem  死神赌注 1
+CheckItem  狂暴之心 1
+CheckGameGold > 11999999
+#ACT
+GameGold - 12000000
+Take 死神赌注 1
+Take 狂暴之心 1
+;gmexecute 11 超能の力 1
+Give 超能の力 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+[@神器6]
+#ACT
+MessageBox  合成:<[大日の如来]/FCOLOR=253>\\<需要：魔之左手+神之右手+麒麟臂+1200W元宝/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @6 @取消合成
+
+[@6]
+#if
+CheckItem  魔之左手 1
+CheckItem  神之右手 1
+CheckItem  麒麟臂 1
+CheckGameGold ? 12000000
+#ACT
+GameGold - 12000000
+Take 魔之左手 1
+Take 神之右手 1
+Take 麒麟臂 1
+;gmexecute 11 大日の如来 1
+Give 大日の如来 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@神器7]
+#ACT
+MessageBox  合成:<[永恒の之夜]/FCOLOR=253>\\<需要：残忍利爪+猎人之怒+齐天+1200W元宝/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @7 @取消合成
+
+[@7]
+#if
+CheckItem  残忍利爪 1
+CheckItem  猎人之怒 1
+CheckItem  齐天 1
+CheckGameGold ? 12000000
+#ACT
+GameGold - 12000000
+Take 残忍利爪 1
+Take 猎人之怒 1
+Take 齐天 1
+;gmexecute 11 永恒の之夜 1
+Give 永恒の之夜 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+
+[@神器8]
+#ACT
+MessageBox  合成:<[三尸の六魔]/FCOLOR=253>\\<需要：上古遗愿+先祖的召唤+英雄的枯骨+1200W元宝/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @8 @取消合成
+
+[@8]
+#if
+CheckItem  上古遗愿 1
+CheckItem  先祖的召唤 1
+CheckItem  英雄的枯骨 1
+CheckGameGold ? 12000000
+#ACT
+GameGold - 12000000
+Take 上古遗愿 1
+Take 先祖的召唤 1
+Take 英雄的枯骨 1
+Give 三尸の六魔 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@神器9]
+#ACT
+MessageBox  合成:<[虚无の缥缈]/FCOLOR=253>\\<需要：恐怖的黎明+幻神靴+地狱阔步+1200W元宝/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @9 @取消合成
+
+[@9]
+#if
+CheckItem  恐怖的黎明 1
+CheckItem  幻神靴 1
+CheckItem  地狱阔步 1
+CheckGameGold ? 12000000
+#ACT
+GameGold - 12000000
+Take 恐怖的黎明 1
+Take 幻神靴 1
+Take 地狱阔步 1
+Give 虚无の缥缈 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@神器10]
+#ACT
+MessageBox  合成:<[恶魔の降临]/FCOLOR=253>\\<需要：巨人腰带+王者之心+兽人面具+1200W元宝/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @10 @取消合成
+
+[@10]
+#if
+CheckItem  巨人腰带 1
+CheckItem  王者之心 1
+CheckItem  兽人面具 1
+CheckGameGold ? 12000000
+#ACT
+GameGold - 12000000
+Take 巨人腰带 1
+Take 王者之心 1
+Take 兽人面具 1
+Give 恶魔の降临 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@神器11]
+#ACT
+MessageBox  合成:<[天使の祝福]/FCOLOR=253>\\<需要：腐蚀之心+祝福+镜花水月+1200W元宝/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @11 @取消合成
+
+[@11]
+#if
+CheckItem  腐蚀之心 1
+CheckItem  祝福 1
+CheckItem  镜花水月 1
+CheckGameGold ? 12000000
+#ACT
+GameGold - 12000000
+Take 腐蚀之心 1
+Take 祝福 1
+Take 镜花水月 1
+Give 天使の祝福 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+[@取消合成]
+#ACT
+Sendmsg 7 取消合成
+Break

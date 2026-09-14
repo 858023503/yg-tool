@@ -1,0 +1,31 @@
+[@龙袭风暴开启]
+{
+
+
+
+#if
+EQUAL N$龙袭风暴开关 1
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+;  MOV N$龙袭风暴开关 0
+
+releasemagicEX 1029 0 0 1 1 
+break
+
+MOV N$龙袭风暴允许次数 10
+
+
+GOTO  @允许龙袭风暴释放
+
+
+
+[@允许龙袭风暴释放]
+#IF
+LARGE N$龙袭风暴允许次数 0
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+DEC N$龙袭风暴允许次数 1
+releasemagicEX 1029 0 0 1 1
+
+DELAYGOTO 100 @允许龙袭风暴释放
+}

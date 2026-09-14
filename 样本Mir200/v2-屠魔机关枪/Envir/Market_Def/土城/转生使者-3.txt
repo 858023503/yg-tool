@@ -1,0 +1,738 @@
+[@main]
+
+#IF
+EQUAL U2 0
+#ACT
+MOV N$一转费用 5000000
+FORMULATION <$STR(N$一转费用)>-<$STR(N$一转费用)>*<$STR(N$法宝降低转生费用)>/100 N$一转费用
+OPENMERCHANTBIGDLG 5 3 1 4 0 -80 1 610 0 1
+#SAY
+<&ImgNum:8:0:-1:390:95> 
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>        <修神修仙法力无边/FCOLOR=70>                                                         <修神修仙法力无边/FCOLOR=245> \
+<>\
+<>\
+<>\
+<>        <当前转生需要50级,进入后遭受天雷洗礼/FCOLOR=70>                               <↓↓↓转生奖励物品↓↓↓/FCOLOR=245> \
+<>        <当前转生费用<$STR(N$一转费用)>金币/FCOLOR=70>                                         <所有技能对怪物伤害增加10%/FCOLOR=245> \
+<>        <当前转生费用10个一大陆转生水晶/FCOLOR=70> \
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<&PlayImg:5:5:8:100:200:120>\
+<&PlayImg:5:110:10:100:59:410>\
+
+<&Img:4:5:86:478/@一转转生>
+
+
+
+#IF
+EQUAL U2 1
+#ACT
+MOV N$二转费用 20000000
+FORMULATION <$STR(N$二转费用)>-<$STR(N$二转费用)>*<$STR(N$法宝降低转生费用)>/100 N$二转费用
+OPENMERCHANTBIGDLG 5 3 1 4 0 -80 1 610 0 1
+#SAY
+<&ImgNum:8:1:-1:390:95> 
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>        <修神修仙法力无边/FCOLOR=70>                                                         <修神修仙法力无边/FCOLOR=245> \
+<>\
+<>\
+<>\
+<>        <当前转生需要100级,进入后遭受天雷洗礼/FCOLOR=70>                               <↓↓↓转生奖励物品↓↓↓/FCOLOR=245> \
+<>        <当前转生费用<$STR(N$二转费用)>金币/FCOLOR=70>                                         <所有技能对怪物伤害增加20%/FCOLOR=245> \
+<>        <当前转生费用10个二大陆转生水晶/FCOLOR=70> \
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<&PlayImg:5:5:8:100:200:120>\
+<&PlayImg:5:110:10:100:109:410>\
+
+<&PlayImg:5:15:12:100:66:432><&Img:4:5:137:478/@二转转生>
+; <&PlayImg:32:2969:12:100:410:230>
+<&PlayImg:20:207:23:100:350:200>
+
+#IF
+EQUAL U2 2
+#ACT
+MOV N$三转费用 50000000
+FORMULATION <$STR(N$三转费用)>-<$STR(N$三转费用)>*<$STR(N$法宝降低转生费用)>/100 N$三转费用
+OPENMERCHANTBIGDLG 5 3 1 4 0 -80 1 610 0 1
+#SAY
+<&ImgNum:8:2:-1:390:95>  
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>        <修神修仙法力无边/FCOLOR=70>                                                         <修神修仙法力无边/FCOLOR=245> \
+<>\
+<>\
+<>\
+<>        <当前转生需要150级,进入后遭受天雷洗礼/FCOLOR=70>                               <↓↓↓转生奖励物品↓↓↓/FCOLOR=245> \
+<>        <当前转生费用<$STR(N$三转费用)>金币/FCOLOR=70>                                         <所有技能对怪物伤害增加30%/FCOLOR=245> \
+<>        <当前转生费用10个三大陆转生水晶/FCOLOR=70> \
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<&PlayImg:5:5:8:100:200:120>\
+<&PlayImg:5:110:10:100:160:410>\
+
+<&PlayImg:5:15:12:100:65:434><&PlayImg:5:15:12:100:116:434><&Img:4:5:188:479/@三转转生>
+<&PlayImg:32:2969:12:100:410:230>
+#IF
+EQUAL U2 3
+#ACT
+MOV N$四转费用 100000000
+FORMULATION <$STR(N$四转费用)>-<$STR(N$四转费用)>*<$STR(N$法宝降低转生费用)>/100 N$四转费用
+OPENMERCHANTBIGDLG 5 3 1 4 0 -80 1 610 0 1
+#SAY
+<&ImgNum:8:3:-1:390:95>  
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>        <修神修仙法力无边/FCOLOR=70>                                                         <修神修仙法力无边/FCOLOR=245> \
+<>\
+<>\
+<>\
+<>        <当前转生需要200级,进入后遭受天雷洗礼/FCOLOR=70>                               <↓↓↓转生奖励物品↓↓↓/FCOLOR=245> \
+<>        <当前转生费用<$STR(N$四转费用)>金币/FCOLOR=70>                                         <所有技能对怪物伤害增加40%/FCOLOR=245> \
+<>        <当前转生费用10个四大陆转生水晶/FCOLOR=70> \
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<&PlayImg:5:5:8:100:200:120>\
+<&PlayImg:5:110:10:100:211:410>\
+
+<&PlayImg:5:15:12:100:65:434><&PlayImg:5:15:12:100:116:434><&PlayImg:5:15:12:100:167:434><&Img:4:5:239:479/@四转转生>
+<&PlayImg:32:2969:12:100:410:230>
+
+
+#IF
+EQUAL U2 4
+#ACT
+MOV N$五转费用 500000000
+FORMULATION <$STR(N$五转费用)>-<$STR(N$五转费用)>*<$STR(N$法宝降低转生费用)>/100 N$五转费用
+OPENMERCHANTBIGDLG 5 3 1 4 0 -80 1 610 0 1
+#SAY
+<&ImgNum:8:4:-1:390:95> 
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>        <修神修仙法力无边/FCOLOR=70>                                                         <修神修仙法力无边/FCOLOR=245> \
+<>\
+<>\
+<>\
+<>        <当前转生需要250级,进入后遭受天雷洗礼/FCOLOR=70>                               <↓↓↓转生奖励物品↓↓↓/FCOLOR=245> \
+<>        <当前转生费用<$STR(N$五转费用)>金币/FCOLOR=70>                                         <所有技能对怪物伤害增加50%/FCOLOR=245> \
+<>        <当前转生费用10个五大陆转生水晶/FCOLOR=70> \
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<&PlayImg:5:5:8:100:200:120>\
+<&PlayImg:5:110:10:100:262:410>\
+
+<&PlayImg:5:15:12:100:65:434><&PlayImg:5:15:12:100:116:434><&PlayImg:5:15:12:100:167:434><&PlayImg:5:15:12:100:218:434><&Img:4:5:290:479/@五转转生>
+<&PlayImg:32:2969:12:100:410:230>
+
+
+#IF
+EQUAL U2 5
+#ACT
+MOV N$六转费用 1000000000
+FORMULATION <$STR(N$六转费用)>-<$STR(N$六转费用)>*<$STR(N$法宝降低转生费用)>/100 N$六转费用
+OPENMERCHANTBIGDLG 5 3 1 4 0 -80 1 610 0 1
+#SAY
+<&ImgNum:8:5:-1:390:95> 
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>        <修神修仙法力无边/FCOLOR=70>                                                         <修神修仙法力无边/FCOLOR=245> \
+<>\
+<>\
+<>\
+<>        <当前转生需要300级,进入后遭受天雷洗礼/FCOLOR=70>                               <↓↓↓转生奖励物品↓↓↓/FCOLOR=245> \
+<>        <当前转生费用<$STR(N$六转费用)>金币/FCOLOR=70>                                         <所有技能对怪物伤害增加60%/FCOLOR=245> \
+<>        <当前转生费用10个二大陆转生水晶/FCOLOR=70> \
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<&PlayImg:5:5:8:100:200:120>\
+<&PlayImg:5:110:10:100:313:410>\
+
+<&PlayImg:5:15:12:100:65:434><&PlayImg:5:15:12:100:116:434><&PlayImg:5:15:12:100:167:434><&PlayImg:5:15:12:100:218:434><&PlayImg:5:15:12:100:269:434><&Img:4:5:341:479/@六转转生>
+<&PlayImg:32:2969:12:100:410:230>
+
+
+#IF
+EQUAL U2 6
+#ACT
+MOV N$七转费用 2000000000
+FORMULATION <$STR(N$七转费用)>-<$STR(N$七转费用)>*<$STR(N$法宝降低转生费用)>/100 N$七转费用
+OPENMERCHANTBIGDLG 5 3 1 4 0 -80 1 610 0 1
+#SAY
+<&ImgNum:8:6:-1:390:95>  
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>        <修神修仙法力无边/FCOLOR=70>                                                         <修神修仙法力无边/FCOLOR=245> \
+<>\
+<>\
+<>\
+<>        <当前转生需要350级,进入后遭受天雷洗礼/FCOLOR=70>                               <↓↓↓转生奖励物品↓↓↓/FCOLOR=245> \
+<>        <当前转生费用<$STR(N$七转费用)>金币/FCOLOR=70>                                         <所有技能对怪物伤害增加70%/FCOLOR=245> \
+<>        <当前转生费用10个七大陆转生水晶/FCOLOR=70> \
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<&PlayImg:5:5:8:100:200:120>\
+<&PlayImg:5:110:10:100:364:410>\
+
+<&PlayImg:5:15:12:100:65:434><&PlayImg:5:15:12:100:116:434><&PlayImg:5:15:12:100:167:434><&PlayImg:5:15:12:100:218:434><&PlayImg:5:15:12:100:269:434><&PlayImg:5:15:12:100:320:434> <&Img:4:5:392:479/@七转转生>
+<&PlayImg:32:2969:12:100:410:230>
+
+#IF
+EQUAL U2 7
+#ACT
+MOV N$八转费用 4000000000
+FORMULATION <$STR(N$八转费用)>-<$STR(N$八转费用)>*<$STR(N$法宝降低转生费用)>/100 N$八转费用
+OPENMERCHANTBIGDLG 5 3 1 4 0 -80 1 610 0 1
+#SAY
+<&ImgNum:8:7:-1:390:95> 
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>        <修神修仙法力无边/FCOLOR=70>                                                         <修神修仙法力无边/FCOLOR=245> \
+<>\
+<>\
+<>\
+<>        <当前转生需要400级,进入后遭受天雷洗礼/FCOLOR=70>                               <↓↓↓转生奖励物品↓↓↓/FCOLOR=245> \
+<>        <当前转生费用<$STR(N$八转费用)>金币/FCOLOR=70>                                         <所有技能对怪物伤害增加80%/FCOLOR=245> \
+<>        <当前转生费用10个八大陆转生水晶/FCOLOR=70> \
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<&PlayImg:5:5:8:100:200:120>\
+<&PlayImg:5:110:10:100:415:410>\
+
+<&PlayImg:5:15:12:100:65:434><&PlayImg:5:15:12:100:116:434><&PlayImg:5:15:12:100:167:434><&PlayImg:5:15:12:100:218:434><&PlayImg:5:15:12:100:269:434><&PlayImg:5:15:12:100:320:434><&PlayImg:5:15:12:100:371:434> <&Img:4:5:443:479/@八转转生>
+<&PlayImg:32:2969:12:100:410:230>
+
+
+#IF
+EQUAL U2 8
+#ACT
+MOV N$九转费用 8000000000
+FORMULATION <$STR(N$九转费用)>-<$STR(N$九转费用)>*<$STR(N$法宝降低转生费用)>/100 N$九转费用
+OPENMERCHANTBIGDLG 5 3 1 4 0 -80 1 610 0 1
+#SAY
+<&ImgNum:8:8:-1:390:95> 
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>        <修神修仙法力无边/FCOLOR=70>                                                         <修神修仙法力无边/FCOLOR=245> \
+<>\
+<>\
+<>\
+<>        <当前转生需要450级,进入后遭受天雷洗礼/FCOLOR=70>                               <↓↓↓转生奖励物品↓↓↓/FCOLOR=245> \
+<>        <当前转生费用<$STR(N$九转费用)>金币/FCOLOR=70>                                         <所有技能对怪物伤害增加90%/FCOLOR=245> \
+<>        <当前转生费用10个九大陆转生水晶/FCOLOR=70> \
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<&PlayImg:5:5:8:100:200:120>\
+<&PlayImg:5:110:10:100:466:410>\
+
+<&PlayImg:5:15:12:100:65:434><&PlayImg:5:15:12:100:116:434><&PlayImg:5:15:12:100:167:434><&PlayImg:5:15:12:100:218:434><&PlayImg:5:15:12:100:269:434><&PlayImg:5:15:12:100:320:434><&PlayImg:5:15:12:100:371:434><&PlayImg:5:15:12:100:422:434> <&Img:4:5:494:479/@九转转生>
+<&PlayImg:32:2969:12:100:410:230>
+
+#IF
+EQUAL U2 9
+#ACT
+MOV N$十转费用 15000000000
+FORMULATION <$STR(N$十转费用)>-<$STR(N$十转费用)>*<$STR(N$法宝降低转生费用)>/100 N$十转费用
+OPENMERCHANTBIGDLG 5 3 1 4 0 -80 1 610 0 1
+#SAY
+<&ImgNum:8:9:-1:390:95> 
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>        <修神修仙法力无边/FCOLOR=70>                                                         <修神修仙法力无边/FCOLOR=245> \
+<>\
+<>\
+<>\
+<>        <当前转生需要500级,进入后遭受天雷洗礼/FCOLOR=70>                               <↓↓↓转生奖励物品↓↓↓/FCOLOR=245> \
+<>        <当前转生费用<$STR(N$十转费用)>金币/FCOLOR=70>                                         <所有技能对怪物伤害增加100%/FCOLOR=245> \
+<>        <当前转生费用10个十大陆转生水晶/FCOLOR=70> \
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<&PlayImg:5:5:8:100:200:120>\
+<&PlayImg:5:110:10:100:517:410>\
+
+<&PlayImg:5:15:12:100:65:434><&PlayImg:5:15:12:100:116:434><&PlayImg:5:15:12:100:167:434><&PlayImg:5:15:12:100:218:434><&PlayImg:5:15:12:100:269:434><&PlayImg:5:15:12:100:320:434><&PlayImg:5:15:12:100:371:434><&PlayImg:5:15:12:100:422:434><&PlayImg:5:15:12:100:473:434> <&Img:4:5:545:479/@十转转生>
+<&PlayImg:32:2969:12:100:410:230>
+
+
+#IF
+EQUAL U2 10
+#ACT
+
+OPENMERCHANTBIGDLG 5 3 1 4 0 -80 1 610 0 1
+#SAY
+<&ImgNum:8:10:-1:390:95>  
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>        <修神修仙法力无边/FCOLOR=70>                                                         <修神修仙法力无边/FCOLOR=245> \
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<&PlayImg:5:5:8:100:200:120>\
+<PlayImg:5:110:10:100:38:40>\
+
+
+<PlayImg:5:15:12:100:45:50><PlayImg:5:15:12:100:21:50><PlayImg:5:15:12:100:-3:50><PlayImg:5:15:12:100:-26:50>
+<PlayImg:5:15:12:100:-51:50><PlayImg:5:15:12:100:-75:50><PlayImg:5:15:12:100:-99:50><PlayImg:5:15:12:100:-123:50>
+<PlayImg:5:15:12:100:-147:50><PlayImg:5:15:12:100:-171:50>
+; <Img:4:5:-171:51/@十转>
+
+
+[@一转转生]
+#if
+#act
+messagebox 进入前务必多带瞬间恢复药水否则死亡渡劫失败 @确认一转
+
+
+[@确认一转]
+#if
+NOT CHECKLEVEL 50
+#ACT
+messagebox 一转需要【50级】你的等级不够
+break
+
+#if
+NOT checkgold N$一转费用
+#act
+messagebox 一转需要【<$STR(N$一转费用)>金币】你的数量不够
+break
+#if
+not checkitem 一大陆转生水晶 10
+#act
+messagebox 一转需要一大陆转生水晶10个,你的数量不够
+break
+
+#IF
+EQUAL U2 0
+#ACT
+TAKE 金币 5000000
+TAKE 一大陆转生水晶 10
+MOV N$修神次数 0
+MAPMOVE MAP028 20 26
+setontimer 44 2
+
+
+[@二转转生]
+#if
+#act
+messagebox 进入前务必多带瞬间恢复药水否则死亡渡劫失败 @确认二转
+
+
+[@确认二转]
+#if
+NOT CHECKLEVEL 100
+#ACT
+messagebox 二转需要【100级】你的等级不够
+break
+
+#if
+NOT checkgold N$二转费用
+#act
+messagebox 二转需要【<$STR(N$二转费用)>金币】你的数量不够
+break
+#if
+not checkitem 二大陆转生水晶 10
+#act
+messagebox 二转需要二大陆转生水晶10个,你的数量不够
+break
+
+#IF
+EQUAL U2 1
+#ACT
+TAKE 金币 10000000
+TAKE 二大陆转生水晶 10
+MOV N$修神次数 0
+MAPMOVE MAP028 20 26
+setontimer 44 2
+[@三转转生]
+#if
+#act
+messagebox 进入前务必多带瞬间恢复药水否则死亡渡劫失败 @确认三转
+
+
+[@确认三转]
+#if
+NOT CHECKLEVEL 150
+#ACT
+messagebox 三转需要【150级】你的等级不够
+break
+
+#if
+NOT checkgold N$三转费用
+#act
+messagebox 三转需要【<$STR(N$三转费用)>金币】你的数量不够
+break
+#if
+not checkitem 三大陆转生水晶 10
+#act
+messagebox 三转需要三大陆转生水晶10个,你的数量不够
+break
+
+#IF
+EQUAL U2 2
+#ACT
+TAKE 金币 20000000
+TAKE 三大陆转生水晶 10
+MOV N$修神次数 0
+MAPMOVE MAP028 20 26
+setontimer 44 2
+[@四转转生]
+#if
+#act
+messagebox 进入前务必多带瞬间恢复药水否则死亡渡劫失败 @确认四转
+
+
+[@确认四转]
+#if
+NOT CHECKLEVEL 200
+#ACT
+messagebox 四转需要【200级】你的等级不够
+break
+
+#if
+NOT checkgold N$四转费用
+#act
+messagebox 四转需要【<$STR(N$四转费用)>金币】你的数量不够
+break
+#if
+not checkitem 四大陆转生水晶 10
+#act
+messagebox 四转需要四大陆转生水晶10个,你的数量不够
+break
+
+#IF
+EQUAL U2 3
+#ACT
+TAKE 金币 40000000
+TAKE 四大陆转生水晶 10
+MOV N$修神次数 0
+MAPMOVE MAP028 20 26
+setontimer 44 2
+[@五转转生]
+#if
+#act
+messagebox 进入前务必多带瞬间恢复药水否则死亡渡劫失败 @确认五转
+
+
+[@确认五转]
+#if
+NOT CHECKLEVEL 250
+#ACT
+messagebox 五转需要【250级】你的等级不够
+break
+
+#if
+NOT checkgold N$五转费用
+#act
+messagebox 五转需要【<$STR(N$五转费用)>金币】你的数量不够
+break
+#if
+not checkitem 五大陆转生水晶 10
+#act
+messagebox 五转需要五大陆转生水晶10个,你的数量不够
+break
+
+#IF
+EQUAL U2 4
+#ACT
+TAKE 金币 60000000
+TAKE 五大陆转生水晶 10
+MOV N$修神次数 0
+MAPMOVE MAP028 20 26
+setontimer 44 2
+[@六转转生]
+#if
+#act
+messagebox 进入前务必多带瞬间恢复药水否则死亡渡劫失败 @确认六转
+
+
+[@确认六转]
+#if
+NOT CHECKLEVEL 300
+#ACT
+messagebox 五转需要【300级】你的等级不够
+break
+
+#if
+NOT checkgold N$六转费用
+#act
+messagebox 六转需要【<$STR(N$六转费用)>金币】你的数量不够
+break
+#if
+not checkitem 六大陆转生水晶 10
+#act
+messagebox 六转需要六大陆转生水晶10个,你的数量不够
+break
+
+#IF
+EQUAL U2 5
+#ACT
+TAKE 金币 80000000
+TAKE 六大陆转生水晶 10
+MOV N$修神次数 0
+MAPMOVE MAP028 20 26
+setontimer 44 2
+[@七转转生]
+#if
+#act
+messagebox 进入前务必多带瞬间恢复药水否则死亡渡劫失败 @确认七转
+
+
+[@确认七转]
+#if
+NOT CHECKLEVEL 350
+#ACT
+messagebox 七转需要【350级】你的等级不够
+break
+
+#if
+NOT checkgold N$七转费用
+#act
+messagebox 七转需要【<$STR(N$七转费用)>金币】你的数量不够
+break
+#if
+not checkitem 七大陆转生水晶 10
+#act
+messagebox 七转需要七大陆转生水晶10个,你的数量不够
+break
+
+#IF
+EQUAL U2 6
+#ACT
+TAKE 金币 100000000
+TAKE 七大陆转生水晶 10
+MOV N$修神次数 0
+MAPMOVE MAP028 20 26
+setontimer 44 2
+[@八转转生]
+#if
+#act
+messagebox 进入前务必多带瞬间恢复药水否则死亡渡劫失败 @确认八转
+
+
+[@确认八转]
+#if
+NOT CHECKLEVEL 400
+#ACT
+messagebox 八转需要【400级】你的等级不够
+break
+
+#if
+NOT checkgold N$八转费用
+#act
+messagebox 八转需要【<$STR(N$八转费用)>金币】你的数量不够
+break
+#if
+not checkitem 八大陆转生水晶 10
+#act
+messagebox 八转需要八大陆转生水晶10个,你的数量不够
+break
+
+#IF
+EQUAL U2 7
+#ACT
+TAKE 金币 150000000
+TAKE 八大陆转生水晶 10
+MOV N$修神次数 0
+MAPMOVE MAP028 20 26
+setontimer 44 2
+[@九转转生]
+#if
+#act
+messagebox 进入前务必多带瞬间恢复药水否则死亡渡劫失败 @确认九转
+
+
+[@确认九转]
+#if
+NOT CHECKLEVEL 450
+#ACT
+messagebox 九转需要【400级】你的等级不够
+break
+
+#if
+NOT checkgold N$九转费用
+#act
+messagebox 九转需要【<$STR(N$九转费用)>金币】你的数量不够
+break
+#if
+not checkitem 九大陆转生水晶 10
+#act
+messagebox 九转需要九大陆转生水晶10个,你的数量不够
+break
+
+#IF
+EQUAL U2 8
+#ACT
+TAKE 金币 200000000
+TAKE 九大陆转生水晶 10
+MOV N$修神次数 0
+MAPMOVE MAP028 20 26
+setontimer 44 2
+
+[@十转转生]
+#if
+NOT CHECKLEVEL 500
+#ACT
+messagebox 十转需要【500级】你的等级不够
+break
+
+#if
+NOT checkgold N$十转费用
+#act
+messagebox 十转需要【<$STR(N$十转费用)>金币】你的数量不够
+break
+#if
+not checkitem 十大陆转生水晶 10
+#act
+messagebox 十转需要十大陆转生水晶10个,你的数量不够
+break
+
+#IF
+EQUAL U2 9
+#ACT
+TAKE 金币 500000000
+TAKE 十大陆转生水晶 10
+MOV N$修神次数 0
+MAPMOVE MAP028 20 26
+setontimer 44 2
+
+
+

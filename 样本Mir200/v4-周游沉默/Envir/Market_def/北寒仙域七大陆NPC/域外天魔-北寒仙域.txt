@@ -1,0 +1,81 @@
+[@main]
+#if
+#ACT
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+<><据说上古流传下来的神器，分布在玛法大陆的各各角落！/SCOLOR=70>\
+<><神器犹豫威力强大，想要得到它，不只是人类！/SCOLOR=70>\
+<><被盘踞的首领占为己有，要从它们手中取得神器不是易事！/SCOLOR=70>\ \
+<><天衍神剑の【诛仙】/@神器1>    <葬法金甲の【法相】/@神器2>    <葬法金袍の【法相】/@神器3>\ \ \
+<>\ 
+<>\   
+
+
+
+
+[@神器1]
+#ACT
+MessageBox  合成:<[天衍神剑の【诛仙】]/FCOLOR=253>\\<需要:镇妖剑+光芒圣剑+天涯游龙剑+破败王者之刃+1500W元宝/FCOLOR=251>\\\<点击确认开始合成/FCOLOR=254> @1 @取消合成
+
+[@1]
+#if
+CheckItem  镇妖剑 1
+CheckItem  光芒圣剑 1
+CheckItem  天涯游龙剑 1
+CheckItem  破败王者之刃 1
+CheckGameGold ? 15000000
+#ACT
+GameGold - 15000000
+Take 镇妖剑 1
+Take 光芒圣剑 1
+Take 天涯游龙剑 1
+Take 破败王者之刃 1
+Give 天衍神剑の【诛仙】 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@神器2]
+#ACT
+MessageBox  合成:<[葬法金甲の【法相】]/FCOLOR=253>\\<需要:恶魔の使者(男)+真·天魔甲+999W元宝/FCOLOR=251>\\\<点击确认开始合成/FCOLOR=254> @2 @取消合成
+
+[@2]
+#if
+CheckItem  恶魔の使者(男) 1
+CheckItem  真·天魔甲 1
+CheckGameGold ? 9999999
+#ACT
+GameGold - 9999999
+Take 恶魔の使者(男) 1
+Take 真·天魔甲 1
+Give 葬法金甲の【法相】 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@神器3]
+#ACT
+MessageBox  合成:<[葬法金袍の【法相】]/FCOLOR=253>\\<需要:恶魔の使者(女)+真·天魔袍+999W元宝/FCOLOR=251>\\\<点击确认开始合成/FCOLOR=254> @3 @取消合成
+
+[@3]
+#if
+CheckItem  恶魔の使者(女) 1
+CheckItem  真·天魔袍 1
+CheckGameGold > 9999999
+#ACT
+GameGold - 9999999
+Take 恶魔の使者(女) 1
+Take 真·天魔袍 1
+Give 葬法金袍の【法相】 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@取消合成]
+#ACT
+Sendmsg 7 取消合成
+Break

@@ -1,0 +1,125 @@
+[@梵天圣火开启]
+{
+;当前地图装备词条+10伤害下一个地图精英怪物总血量的20%
+;计算公式 魔法50-100 梵天圣火伤害50% 幸运10
+;幸运攻击99*(50/100)=99*0.5=49.5
+;特效播放次数有问题
+#if
+EQUAL S$玩家当前大陆 五大陆
+#act
+AddHpPer - N$五大陆反伤
+#if
+LARGE N$梵天圣火幸运 0
+#ACT
+FORMULATION <$MC>+((<$MAXMC>-<$MC>)/10)*<$STR(N$梵天圣火幸运)> N$梵天圣火人物幸运攻击下限
+DEC N$梵天圣火人物幸运攻击下限 1
+#elseact
+MOV N$梵天圣火人物幸运攻击下限 <$MC>
+
+
+#if
+NOT CHECKCURRTARGETRACE = 0
+equal N$梵天圣火开关 1
+#act
+MOVR N$梵天圣火最终伤害 <$STR(N$梵天圣火人物幸运攻击下限)> <$MAXMC>
+
+CalcPercent N$梵天圣火最终伤害 N$梵天圣火默认打怪伤害 N$梵天圣火最终伤害
+CalcPercent N$梵天圣火最终伤害 N$梵天圣火怪物伤害百分比 N$梵天圣火最终伤害
+CalcPercent N$梵天圣火最终伤害 N$梵天圣火倍攻 N$梵天圣火最终伤害
+FORMULATION <$STR(N$梵天圣火最终伤害)>/<$STR(N$所有技能伤害降低倍数)> N$梵天圣火最终伤害
+
+;动画 一圈 1.5秒
+;伤害 500毫秒 3次伤害等于1圈
+;通过伤害增加火苗播放次数
+;次数/3*500/100=播放次数
+FORMULATION <$STR(N$梵天圣火伤害次数)>*<$STR(N$梵天圣火伤害间隔)>/3000 N$梵天圣火播放次数
+
+
+#IF
+RANDOMEX N$人物暴击几率 100
+#ACT
+; PLAYEFFECT 73 0 12 1 80 0 -125 -170 1
+FORMULATION (<$STR(N$人物暴击伤害)>+100)/100*<$STR(N$梵天圣火最终伤害)> N$梵天圣火最终伤害
+
+#if
+CheckCacheTextList ..\QuestDiary\怪物名称\精英及以下怪物.txt <$ATTACKMONSTER_NAMEEX>
+LARGE N$精英怪增加伤害 100
+#act
+CalcPercent N$梵天圣火最终伤害 N$精英怪增加伤害 N$梵天圣火最终伤害
+
+
+
+#if
+#act
+FORMULATION <$STR(N$梵天圣火最终伤害)>+(<$STR(N$天殇套真实伤害)>/55) N$梵天圣火最终伤害
+
+
+
+#IF
+NOT CHECKCURRTARGETRACE = 0
+equal N$梵天圣火开关 1
+#ACT
+M.PLAYEFFECT 1 329 30 <$STR(N$梵天圣火播放次数)> 100 0 0 0 0
+M.HumanHP - <$STR(N$梵天圣火最终伤害)> <$STR(N$梵天圣火伤害间隔)> <$STR(N$梵天圣火伤害次数)>
+
+
+
+; #if
+; CHECKCURRTARGETRACE = 0
+; equal N$梵天圣火开关 1
+; #act
+
+; MOVR N$梵天圣火最终伤害 <$STR(N$梵天圣火人物幸运攻击下限)> <$MAXMC>
+
+; CalcPercent N$梵天圣火最终伤害 N$梵天圣火默认打人伤害 N$梵天圣火最终伤害
+; GetHumVar <$ATTACKMONSTER_NAMEEX> <$STR(T11)> S$当前攻击的人物职业
+
+; #IF
+; EQUAL S$当前攻击的人物职业 道士
+; #ACT
+; FORMULATION <$STR(N$梵天圣火最终伤害)>*<$STR(N$攻击道士时额外造成伤害)>/100+<$STR(N$梵天圣火最终伤害)> N$梵天圣火最终伤害
+
+; #if
+; CHECKCURRTARGETRACE = 0
+; equal N$梵天圣火开关 1
+; #act
+; MOVR N$梵天圣火对方防御 <$C.MAC> <$C.MAXMAC>
+
+; FORMULATION <$STR(N$梵天圣火最终伤害)>-<$STR(N$梵天圣火对方防御)> N$梵天圣火打人伤害
+
+; CalcPercent N$梵天圣火打人伤害 N$梵天圣火人物伤害百分比 N$梵天圣火打人伤害
+; SENDMSG 6 梵天圣火打人伤害<$STR(N$梵天圣火打人伤害)>
+#if
+equal N$梵天圣火开关 1
+CHECKCURRTARGETRACE = 0
+#act
+goto @梵天圣火开始伤害
+[@梵天圣火开始伤害]
+#if
+#act
+MOV N$梵天圣火打人暴击几率 0
+GetHumVar <$C.USERNAME> <$STR(N$人物暴击防御)> N$对方暴击防御
+formulation <$C.MAXHP>/10/55 N$梵天圣火打人伤害
+#if
+LARGE N$人物暴击几率 <$STR(N$对方暴击防御)>
+#ACT
+FORMULATION <$STR(N$人物暴击几率)>-<$STR(N$对方暴击防御)> N$梵天圣火打人暴击几率
+
+#IF
+LARGE N$梵天圣火打人暴击几率 0
+RANDOMEX N$梵天圣火打人暴击几率 101
+#ACT
+PLAYEFFECT 73 0 12 1 80 0 -125 -170 1
+FORMULATION (<$STR(N$人物暴击伤害)>+100)/100*<$STR(N$梵天圣火打人伤害)> N$梵天圣火打人伤害
+
+#if
+#act
+SetSkillDecCD 梵天圣火 - 100
+SetHumVar <$C.USERNAME> N$梵天圣火自己受到伤害 N$梵天圣火打人伤害
+SetHumVar <$C.USERNAME> N$梵天圣火自己伤害次数 N$梵天圣火伤害次数
+SetHumVar <$C.USERNAME> N$梵天圣火自己伤害间隔 N$梵天圣火伤害间隔
+hcall <$C.USERNAME> @梵天圣火对人物伤害开始
+
+
+
+}

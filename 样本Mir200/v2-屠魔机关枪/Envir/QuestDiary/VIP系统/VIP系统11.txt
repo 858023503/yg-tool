@@ -1,0 +1,198 @@
+[@VIP系统]
+{
+#if
+#act
+MOV S$已获得图标 
+; #if
+; EQUAL U138 3
+; #act   
+; mov S$VIP显示特权 <&IMG:57:58:550:110>
+; mov S$已获得图标 <&IMG:54:58:750:130>
+
+; goto @VIP对话框
+; break
+; #if
+; EQUAL U138 2
+; #act
+; mov S$VIP显示特权 <&IMG:52:58:550:110>
+; mov S$已获得图标 <&IMG:54:58:750:130>
+
+
+; goto @VIP对话框
+; break
+
+; #if
+; EQUAL U138 1
+; #act
+; mov S$VIP显示特权 <&IMG:48:58:550:110>
+; mov S$已获得图标 <&IMG:54:58:750:130>
+
+; goto @VIP对话框
+
+; break
+#if
+
+#act
+
+
+goto @VIP对话框 
+break
+
+
+
+[@VIP对话框]
+#if
+CHECKJOB WARRIOR
+#act
+MOV S$战士VIP魔坠属性 <&Text:查看法宝属性|刺杀范围全屏:147:120{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+#if
+CHECKJOB wizard
+#act
+MOV S$战士VIP魔坠属性 <&Text:查看法宝属性|群雷范围全屏:147:120{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+
+#if
+CHECKJOB taoist
+#act
+MOV S$战士VIP魔坠属性 <&Text:查看法宝属性|灵魂火葫范围全屏:147:120{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+
+
+#if
+#act
+OPENMERCHANTBIGDLG 5 941 1 4 0 0  0 360 15 1
+#say
+<&Text:本服就一个VIP3需要58积分(可通关):70:60{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:赠送一个本职业永久全屏法宝:90:80{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:查看VIP属性|刺杀魔次+533^群雷魔次+1440^灵魂火葫魔次+1673^自动拾取范围+20^所有技能幸运+5^机关枪技能范围+15^金币回收增加100%^杀怪经验增加150%^杀怪爆率增加350%^人物攻魔道增加100%^人物双方增加100%:150:100{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<$STR(S$战士VIP魔坠属性)>
+<&IMGEX:5:730:731:732:145:178:2|开通/@开通会员3>
+
+
+
+
+[@开通会员3]
+#if
+equal U138 3
+#act
+messagebox 你已经开通过会员了
+break
+#if
+CheckHumBag < 10
+#act
+messagebox 领取奖励前背包需要有10个位置
+break
+
+#if
+checkgamepoint < 58
+#act
+messagebox 积分不足58,充值1元赠送1积分
+break
+#if
+EQUAL U138 0
+checkgamepoint > 57
+#act
+gamepoint - 58
+MOV U138 3
+SCREENEFFECT 0 0 58 79 10 1 150 0 0 1
+
+Goto @统计属性
+
+SET [500] 0
+messagebox  回收已关闭防止法宝回收
+setofftimer  37
+
+#if
+CHECKJOB WIZARD
+#act
+GIVE 恶魔铃铛
+LINKGIVEITEM
+SetCustomItemText -1 <IMG:113:0>
+;1
+SetCustomItemAbil -1 1 0 151
+SetCustomItemAbil -1 1 1 8
+SetCustomItemAbil -1 1 2 1
+SetCustomItemAbil -1 1 3 0
+SetCustomItemValueEX -1 1 = 35 15 15
+
+
+#if
+CHECKJOB warrior
+#act
+GIVE 森林之心
+LINKGIVEITEM
+SetCustomItemText -1 <IMG:113:0>
+;1
+SetCustomItemAbil -1 1 0 151
+SetCustomItemAbil -1 1 1 8
+SetCustomItemAbil -1 1 2 1
+SetCustomItemAbil -1 1 3 0
+SetCustomItemValueEX -1 1 = 34 15 15
+
+
+#if
+CHECKJOB taoist
+#act
+GIVE 不朽之铠
+LINKGIVEITEM
+SetCustomItemText -1 <IMG:113:0>
+;1
+SetCustomItemAbil -1 1 0 151
+SetCustomItemAbil -1 1 1 8
+SetCustomItemAbil -1 1 2 1
+SetCustomItemAbil -1 1 3 0
+SetCustomItemValueEX -1 1 = 36 15 15
+[@开通会员]
+
+
+
+
+
+
+
+#if
+EQUAL U138 0
+LARGE U374 37
+#act
+DEC U374 38 
+MOV U138 1
+SCREENEFFECT 0 0 58 79 10 1 150 0 0 1
+
+Goto @统计属性
+GOTO @VIP系统
+BREAK
+
+
+#if
+EQUAL U138 1
+LARGE U374 67
+#act
+DEC U374 68 
+MOV U138 2
+SCREENEFFECT 0 0 58 79 10 1 150 0 0 1
+
+Goto @统计属性
+GOTO @VIP系统
+BREAK
+
+#if
+EQUAL U138 2
+LARGE U374 97
+#act
+DEC U374 98
+MOV U138 3
+SCREENEFFECT 0 0 58 79 10 1 150 0 0 1
+
+Goto @统计属性
+GOTO @VIP系统
+BREAK
+
+#if
+#act
+
+messagebox 积分不够
+
+
+[@EXIT]
+#if
+#act
+CLOSE
+}

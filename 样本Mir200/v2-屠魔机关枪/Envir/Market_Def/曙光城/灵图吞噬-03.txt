@@ -1,0 +1,495 @@
+[@main]
+#IF
+#act
+OPENMERCHANTBIGDLG 5 915 1 4 -15 -52 1 900 30 1
+#say
+<ITEMBOX:11:5:125:718:312:63:63:*:95#放入法宝>
+<ITEMBOX:12:5:125:825:312:63:63:*:95#放入法宝>
+<&img:536:5:715:120><&TEXT:一个法宝:795:120{FCOLOR=95}>
+<&img:538:5:715:140><&TEXT:200元宝:795:140{FCOLOR=95}>
+<&img:916:5:715:160><&TEXT:法宝被灵图吞噬后消失:790:161{FCOLOR=95}>
+<&IMGEX:5:912:913:914:758:464/@灵图吞噬法宝属性>
+[@ItemIntoBox11]
+#IF
+NOT checkcontainstext <$BOXITEM[11].NAME> 仙之灵图
+#ACT
+messagebox 左侧装备框只能放入灵图呦
+goto @main
+break
+#if
+EQUAL <$BOXITEM[11].NAME> 仙之灵图【鼠】
+#act
+MOV S$灵图特效  <&playimg:23:0:12:100:328:178:0>
+
+#if
+EQUAL <$BOXITEM[11].NAME> 仙之灵图【猪】
+#act
+MOV S$灵图特效  <&playimg:23:20:12:100:328:178:0>
+
+
+
+#if
+EQUAL <$BOXITEM[11].NAME> 仙之灵图【虎】
+#act
+MOV S$灵图特效  <&playimg:23:40:12:100:328:178:0>
+
+#if
+EQUAL <$BOXITEM[11].NAME> 仙之灵图【兔】
+#act
+MOV S$灵图特效  <&playimg:23:60:12:100:425:213:0>
+
+#if
+EQUAL <$BOXITEM[11].NAME> 仙之灵图【龙】
+#act
+MOV S$灵图特效  <&playimg:23:80:12:100:401:326:0>
+
+#if
+EQUAL <$BOXITEM[11].NAME> 仙之灵图【蛇】
+#act
+MOV S$灵图特效  <&playimg:23:100:12:100:327:401:0>
+
+#if
+EQUAL <$BOXITEM[11].NAME> 仙之灵图【马】
+#act
+MOV S$灵图特效  <&playimg:23:120:12:100:213:428:0>
+
+#if
+EQUAL <$BOXITEM[11].NAME> 仙之灵图【羊】
+#act
+MOV S$灵图特效  <&playimg:23:140:12:100:100:401:0>
+
+#if
+EQUAL <$BOXITEM[11].NAME> 仙之灵图【羊】
+#act
+MOV S$灵图特效  <&playimg:23:140:12:100:100:401:0>
+
+#if
+EQUAL <$BOXITEM[11].NAME> 仙之灵图【猴】
+#act
+MOV S$灵图特效  <&playimg:23:160:12:100:25:326:0>
+
+#if
+EQUAL <$BOXITEM[11].NAME> 仙之灵图【鸡】
+#act
+MOV S$灵图特效  <&playimg:23:180:12:100:-5:213:0>
+
+#if
+EQUAL <$BOXITEM[11].NAME> 仙之灵图【狗】
+#act
+MOV S$灵图特效  <&playimg:23:200:12:100:23:105:0>
+
+#if
+EQUAL <$BOXITEM[11].NAME> 仙之灵图【牛】
+#act
+MOV S$灵图特效  <&playimg:23:220:12:100:98:28:0>
+
+#if
+#act
+SetUpgradeItem 11
+GetCustomItemValueEx -1 1 <$STR(N$没用)>  <$STR(N$左边第一条属性对应编号)> <$str(N$灵图左边属性值一)> <$str(N$左边属性上限一)> <$STR(N$没用)>
+GetCustomItemValueEx -1 2 <$STR(N$没用)>  <$STR(N$左边第二条属性对应编号)> <$str(N$灵图左边属性值二)> <$str(N$左边属性上限二)> <$STR(N$没用)>
+GetCustomItemValueEx -1 3 <$STR(N$没用)>  <$STR(N$左边第三条属性对应编号)> <$str(N$灵图左边属性值三)> <$str(N$左边属性上限三)> <$STR(N$没用)>
+GetCustomItemValueEx -1 4 <$STR(N$没用)>  <$STR(N$左边第四条属性对应编号)> <$str(N$灵图左边属性值四)> <$str(N$左边属性上限四)> <$STR(N$没用)>
+GetCustomItemValueEx -1 5 <$STR(N$没用)>  <$STR(N$左边第五条属性对应编号)> <$str(N$灵图左边属性值五)> <$str(N$左边属性上限五)> <$STR(N$没用)>
+GetCustomItemValueEx -1 6 <$STR(N$没用)>  <$STR(N$左边第六条属性对应编号)> <$str(N$灵图左边属性值六)> <$str(N$左边属性上限六)> <$STR(N$没用)>
+GetCustomItemValueEx -1 7 <$STR(N$没用)>  <$STR(N$左边第七条属性对应编号)> <$str(N$灵图左边属性值七)> <$str(N$左边属性上限七)> <$STR(N$没用)>
+GetCustomItemValueEx -1 8 <$STR(N$没用)>  <$STR(N$左边第八条属性对应编号)> <$str(N$灵图左边属性值八)> <$str(N$左边属性上限八)> <$STR(N$没用)>
+GetCustomItemValueEx -1 9 <$STR(N$没用)>  <$STR(N$左边第九条属性对应编号)> <$str(N$灵图左边属性值九)> <$str(N$左边属性上限九)> <$STR(N$没用)>
+GetCustomItemValueEx -1 10 <$STR(N$没用)>  <$STR(N$左边第十条属性对应编号)> <$str(N$灵图左边属性值十)> <$str(N$左边属性上限十)> <$STR(N$没用)>
+
+
+
+
+
+
+
+
+
+
+#IF
+#act
+#say
+<ITEMBOX:11:5:125:718:312:63:63:*:95#放入法宝>
+<ITEMBOX:12:5:125:825:312:63:63:*:95#放入法宝>
+<&img:536:5:715:120><&TEXT:一个法宝:795:120{FCOLOR=95}>
+<&img:538:5:715:140><&TEXT:200元宝:795:140{FCOLOR=95}>
+<&img:916:5:715:160><&TEXT:法宝被灵图吞噬后消失:790:161{FCOLOR=95}>
+<&playimg:5:552:12:100:200:55:0>
+<$STR(S$灵图特效)>
+<&IMGEX:5:912:913:914:758:464/@灵图吞噬法宝属性>
+
+
+
+[@ItemIntoBox12]
+#or
+EQUAL <$BOXITEM[12].NAME>  戮仙剑
+EQUAL <$BOXITEM[12].NAME>  陷仙剑
+EQUAL <$BOXITEM[12].NAME>  绝仙剑
+EQUAL <$BOXITEM[12].NAME>  影仙剑
+EQUAL <$BOXITEM[12].NAME>  越女剑
+EQUAL <$BOXITEM[12].NAME>  赤霄剑
+#act
+messagebox 禁止吞噬
+break
+
+
+
+#if
+EQUAL <$BOXITEM[11].NAME>
+#act
+messagebox 请先将灵图放入左边装备框
+#if
+EQUAL <$BOXITEM[12].NAME>
+#act
+messagebox 右边装备框没有放入法宝
+goto @main
+break
+
+#if
+#act
+SetUpgradeItem 12
+GetCustomItemValueEx -1 1 <$STR(N$没用)>  <$STR(N$左边法宝第一条属性对应编号)> <$str(N$左边属性值)> <$str(N$左边属性上限一)> <$STR(N$没用)>
+ReadConfigFileItem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$BOXITEM[12].NAME>    融合属性上限      N$左边法宝属性上限
+ReadConfigFileItem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$BOXITEM[12].NAME>    鉴定条目      N$左边法宝编号
+ReadConfigFileItem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$BOXITEM[12].NAME>    需要材料数量      N$左边法宝需要材料
+ReadConfigFileItem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$BOXITEM[12].NAME>    需要费用      N$左边法宝需要费用
+ReadConfigFileItem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$BOXITEM[12].NAME>    后缀      S$法宝融合后缀
+ReadConfigFileItem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$BOXITEM[12].NAME>    几率     N$法宝融合几率
+ReadConfigFileItem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$BOXITEM[12].NAME>    元宝费用     N$法宝融合元宝费用
+ReadConfigFileItem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$BOXITEM[12].NAME>    法宝动态效果     S$法宝动态效果
+
+
+
+
+
+#IF
+#act
+#say
+<ITEMBOX:11:5:125:718:312:63:63:*:95#放入法宝>
+<ITEMBOX:12:5:125:825:312:63:63:*:95#放入法宝>
+<&img:536:5:715:120><&TEXT:一个法宝:795:120{FCOLOR=95}>
+<&img:538:5:715:140><&TEXT:200元宝:795:140{FCOLOR=95}>
+<&img:916:5:715:160><&TEXT:法宝被灵图吞噬后消失:790:161{FCOLOR=95}>
+<$STR(S$灵图特效)>
+<&playimg:5:552:12:100:200:55:0>
+<&TEXT:被吞噬的法宝：<$BOXITEM[12].NAME>属性<$str(N$左边属性值)><$STR(S$法宝融合后缀)>:720:244{FCOLOR=95}>
+<&IMGEX:5:912:913:914:758:464/@灵图吞噬法宝属性>
+
+
+[@灵图吞噬法宝属性]
+#IF
+NOT checkcontainstext <$BOXITEM[11].NAME> 仙之灵图
+#ACT
+messagebox 左侧装备框只能放入灵图呦
+goto @main
+break
+#if
+EQUAL <$BOXITEM[11].NAME>
+#act
+messagebox 请先将灵图放入左边装备框
+goto @main
+break
+#if
+EQUAL <$BOXITEM[12].NAME>
+#act
+messagebox 右边装备框没有放入法宝
+goto @main
+break
+#if
+checkgamegold < 199
+
+#act
+messagebox 元宝不足
+break
+
+
+#if
+EQUAL N$灵图左边属性值一 0
+#act
+SetUpgradeItem 11
+SetCustomItemText -1 <IMG:1090:0>
+SetCustomItemAbil -1 1 0 151
+SetCustomItemAbil -1 1 1 8
+SetCustomItemAbil -1 1 2 1
+SetCustomItemAbil -1 1 3 0
+SetCustomItemValueEX -1 1 = N$左边法宝编号 <$str(N$左边属性值)> <$STR(N$左边法宝属性上限)>
+UpdateItem boxitem11
+SENDMSG 6 吞噬成功
+gamegold  - 200
+DelBoxItem 12
+MOV N$左边法宝编号
+MOV N$左边属性值
+MOV N$左边法宝属性上限
+mov N$左边法宝属性上限
+mov N$左边法宝编号
+mov N$左边法宝需要材料
+mov N$左边法宝需要费用
+mov S$法宝融合后缀
+mov N$法宝融合几率
+mov N$法宝融合元宝费用
+mov S$法宝动态效果
+ReturnBoxItem 11
+goto @main
+break
+#if
+EQUAL N$灵图左边属性值二 0
+#act
+SetUpgradeItem 11
+
+SetCustomItemAbil -1 2 0 151
+SetCustomItemAbil -1 2 1 8
+SetCustomItemAbil -1 2 2 2
+SetCustomItemAbil -1 2 3 0
+SetCustomItemValueEX -1 2 = N$左边法宝编号 <$str(N$左边属性值)> <$STR(N$左边法宝属性上限)>
+UpdateItem boxitem11
+SENDMSG 6 吞噬成功
+gamegold  - 200
+DelBoxItem 12
+MOV N$左边法宝编号
+MOV N$左边属性值
+MOV N$左边法宝属性上限
+mov N$左边法宝属性上限
+mov N$左边法宝编号
+mov N$左边法宝需要材料
+mov N$左边法宝需要费用
+mov S$法宝融合后缀
+mov N$法宝融合几率
+mov N$法宝融合元宝费用
+mov S$法宝动态效果
+ReturnBoxItem 11
+goto @main
+break
+
+#if
+EQUAL N$灵图左边属性值三 0
+#act
+SetUpgradeItem 11
+
+SetCustomItemAbil -1 3 0 151
+SetCustomItemAbil -1 3 1 8
+SetCustomItemAbil -1 3 2 3
+SetCustomItemAbil -1 3 3 0
+SetCustomItemValueEX -1 3 = N$左边法宝编号 <$str(N$左边属性值)> <$STR(N$左边法宝属性上限)>
+UpdateItem boxitem11
+SENDMSG 6 吞噬成功
+gamegold  - 200
+DelBoxItem 12
+MOV N$左边法宝编号
+MOV N$左边属性值
+MOV N$左边法宝属性上限
+mov N$左边法宝属性上限
+mov N$左边法宝编号
+mov N$左边法宝需要材料
+mov N$左边法宝需要费用
+mov S$法宝融合后缀
+mov N$法宝融合几率
+mov N$法宝融合元宝费用
+mov S$法宝动态效果
+ReturnBoxItem 11
+goto @main
+break
+
+#if
+EQUAL N$灵图左边属性值四 0
+#act
+SetUpgradeItem 11
+
+SetCustomItemAbil -1 4 0 151
+SetCustomItemAbil -1 4 1 8
+SetCustomItemAbil -1 4 2 4
+SetCustomItemAbil -1 4 3 0
+SetCustomItemValueEX -1 4 = N$左边法宝编号 <$str(N$左边属性值)> <$STR(N$左边法宝属性上限)>
+UpdateItem boxitem11
+SENDMSG 6 吞噬成功
+gamegold  - 200
+DelBoxItem 12
+MOV N$左边法宝编号
+MOV N$左边属性值
+MOV N$左边法宝属性上限
+mov N$左边法宝属性上限
+mov N$左边法宝编号
+mov N$左边法宝需要材料
+mov N$左边法宝需要费用
+mov S$法宝融合后缀
+mov N$法宝融合几率
+mov N$法宝融合元宝费用
+mov S$法宝动态效果
+ReturnBoxItem 11
+goto @main
+break
+
+#if
+EQUAL N$灵图左边属性值五 0
+#act
+SetUpgradeItem 11
+
+SetCustomItemAbil -1 5 0 151
+SetCustomItemAbil -1 5 1 8
+SetCustomItemAbil -1 5 2 5
+SetCustomItemAbil -1 5 3 0
+SetCustomItemValueEX -1 5 = N$左边法宝编号 <$str(N$左边属性值)> <$STR(N$左边法宝属性上限)>
+UpdateItem boxitem11
+SENDMSG 6 吞噬成功
+gamegold  - 200
+DelBoxItem 12
+MOV N$左边法宝编号
+MOV N$左边属性值
+MOV N$左边法宝属性上限
+mov N$左边法宝属性上限
+mov N$左边法宝编号
+mov N$左边法宝需要材料
+mov N$左边法宝需要费用
+mov S$法宝融合后缀
+mov N$法宝融合几率
+mov N$法宝融合元宝费用
+mov S$法宝动态效果
+ReturnBoxItem 11
+goto @main
+break
+
+#if
+EQUAL N$灵图左边属性值六 0
+#act
+SetUpgradeItem 11
+
+SetCustomItemAbil -1 6 0 151
+SetCustomItemAbil -1 6 1 8
+SetCustomItemAbil -1 6 2 6
+SetCustomItemAbil -1 6 3 0
+SetCustomItemValueEX -1 6 = N$左边法宝编号 <$str(N$左边属性值)> <$STR(N$左边法宝属性上限)>
+UpdateItem boxitem11
+SENDMSG 6 吞噬成功
+gamegold  - 200
+DelBoxItem 12
+MOV N$左边法宝编号
+MOV N$左边属性值
+MOV N$左边法宝属性上限
+mov N$左边法宝属性上限
+mov N$左边法宝编号
+mov N$左边法宝需要材料
+mov N$左边法宝需要费用
+mov S$法宝融合后缀
+mov N$法宝融合几率
+mov N$法宝融合元宝费用
+mov S$法宝动态效果
+ReturnBoxItem 11
+goto @main
+break
+
+
+#if
+EQUAL N$灵图左边属性值七 0
+#act
+SetUpgradeItem 11
+
+SetCustomItemAbil -1 7 0 151
+SetCustomItemAbil -1 7 1 8
+SetCustomItemAbil -1 7 2 7
+SetCustomItemAbil -1 7 3 0
+SetCustomItemValueEX -1 7 = N$左边法宝编号 <$str(N$左边属性值)> <$STR(N$左边法宝属性上限)>
+UpdateItem boxitem11
+SENDMSG 6 吞噬成功
+gamegold  - 200
+DelBoxItem 12
+MOV N$左边法宝编号
+MOV N$左边属性值
+MOV N$左边法宝属性上限
+mov N$左边法宝属性上限
+mov N$左边法宝编号
+mov N$左边法宝需要材料
+mov N$左边法宝需要费用
+mov S$法宝融合后缀
+mov N$法宝融合几率
+mov N$法宝融合元宝费用
+mov S$法宝动态效果
+ReturnBoxItem 11
+goto @main
+break
+
+#if
+EQUAL N$灵图左边属性值八 0
+#act
+SetUpgradeItem 11
+
+SetCustomItemAbil -1 8 0 151
+SetCustomItemAbil -1 8 1 8
+SetCustomItemAbil -1 8 2 8
+SetCustomItemAbil -1 8 3 0
+SetCustomItemValueEX -1 8 = N$左边法宝编号 <$str(N$左边属性值)> <$STR(N$左边法宝属性上限)>
+UpdateItem boxitem11
+SENDMSG 6 吞噬成功
+gamegold  - 200
+DelBoxItem 12
+MOV N$左边法宝编号
+MOV N$左边属性值
+MOV N$左边法宝属性上限
+mov N$左边法宝属性上限
+mov N$左边法宝编号
+mov N$左边法宝需要材料
+mov N$左边法宝需要费用
+mov S$法宝融合后缀
+mov N$法宝融合几率
+mov N$法宝融合元宝费用
+mov S$法宝动态效果
+ReturnBoxItem 11
+goto @main
+break
+
+
+#if
+EQUAL N$灵图左边属性值九 0
+#act
+SetUpgradeItem 11
+
+SetCustomItemAbil -1 9 0 151
+SetCustomItemAbil -1 9 1 8
+SetCustomItemAbil -1 9 2 9
+SetCustomItemAbil -1 9 3 0
+SetCustomItemValueEX -1 9 = N$左边法宝编号 <$str(N$左边属性值)> <$STR(N$左边法宝属性上限)>
+UpdateItem boxitem11
+SENDMSG 6 吞噬成功
+gamegold  - 200
+DelBoxItem 12
+MOV N$左边法宝编号
+MOV N$左边属性值
+MOV N$左边法宝属性上限
+mov N$左边法宝属性上限
+mov N$左边法宝编号
+mov N$左边法宝需要材料
+mov N$左边法宝需要费用
+mov S$法宝融合后缀
+mov N$法宝融合几率
+mov N$法宝融合元宝费用
+mov S$法宝动态效果
+ReturnBoxItem 11
+goto @main
+break
+
+#if
+EQUAL N$灵图左边属性值十 0
+#act
+SetUpgradeItem 11
+
+SetCustomItemAbil -1 10 0 151
+SetCustomItemAbil -1 10 1 8
+SetCustomItemAbil -1 10 2 10
+SetCustomItemAbil -1 10 3 0
+SetCustomItemValueEX -1 10 = N$左边法宝编号 <$str(N$左边属性值)> <$STR(N$左边法宝属性上限)>
+UpdateItem boxitem11
+SENDMSG 6 吞噬成功
+gamegold  - 200
+DelBoxItem 12
+MOV N$左边法宝编号
+MOV N$左边属性值
+MOV N$左边法宝属性上限
+mov N$左边法宝属性上限
+mov N$左边法宝编号
+mov N$左边法宝需要材料
+mov N$左边法宝需要费用
+mov S$法宝融合后缀
+mov N$法宝融合几率
+mov N$法宝融合元宝费用
+mov S$法宝动态效果
+ReturnBoxItem 11
+goto @main
+break

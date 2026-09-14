@@ -1,0 +1,57 @@
+[@双防之盾]
+{
+#if
+EQUAL N$双防之盾开启状态 0
+#act
+Mov N$双防之盾开启状态 1
+FORMULATION <$STR(N$初始化防御力下限)>*<$STR(N$双防之盾防御)>/100-<$STR(N$初始化防御力下限)> N$双防之盾增加人物防御下限
+FORMULATION <$STR(N$初始化防御力上限)>*<$STR(N$双防之盾防御)>/100-<$STR(N$初始化防御力上限)> N$双防之盾增加人物防御上限
+FORMULATION <$STR(N$初始化魔御力下限)>*<$STR(N$双防之盾魔御)>/100-<$STR(N$初始化魔御力下限)> N$双防之盾增加人物魔御下限
+FORMULATION <$STR(N$初始化魔御力上限)>*<$STR(N$双防之盾魔御)>/100-<$STR(N$初始化魔御力上限)> N$双防之盾增加人物魔御上限
+
+
+ChangeHumAbility 1 + N$双防之盾增加人物防御下限
+ChangeHumAbility 2 + N$双防之盾增加人物防御上限
+ChangeHumAbility 3 + N$双防之盾增加人物魔御下限
+ChangeHumAbility 4 + N$双防之盾增加人物魔御上限
+
+FORMULATION <$STR(N$人物暴击防御)>+<$STR(N$法宝释放双防之盾时增加暴击防御)> N$双防之盾暴击防御
+AddHumNewValue 24 = N$双防之盾暴击防御
+
+Goto @属性面板
+; delaycall <$STR(N$双防之盾持续时间)> @关闭双防之盾属性
+
+DELAYCALL 1000 @双防之盾特效
+
+#IF
+LARGE N$铭文双防之盾加持中吸血百分比 0
+#ACT
+FORMULATION <$STR(N$不屈意志魔法盾双防之盾吸血值)>*(<$STR(N$攻击吸血百分比)>+<$STR(N$铭文双防之盾加持中吸血百分比)>)/100 N$铭文不屈意志魔法盾双防之盾百分比吸血值
+MOV N$铭文不屈意志魔法盾双防之盾百分比吸血开关 1
+
+Goto @属性面板
+
+
+
+[@关闭双防之盾属性]
+#IF
+#act
+StopPlayEffect 1 1004 10 0 100 0 0 0 1
+ChangeHumAbility 1 - N$双防之盾增加人物防御下限
+ChangeHumAbility 2 - N$双防之盾增加人物防御上限
+ChangeHumAbility 3 - N$双防之盾增加人物魔御下限
+ChangeHumAbility 4 - N$双防之盾增加人物魔御上限
+MOV N$双防之盾开启状态 0
+MOV N$铭文不屈意志魔法盾双防之盾百分比吸血开关 0
+AddHumNewValue 23 = N$人物致命一击防御
+
+Goto @属性面板
+
+
+
+[@双防之盾特效]
+#if
+#ACT
+PLAYEFFECT 1 1004 10 0 100 0 0 0 1
+
+}

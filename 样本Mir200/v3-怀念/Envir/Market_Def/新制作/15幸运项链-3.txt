@@ -1,0 +1,283 @@
+[@main]
+#IF
+#ACT
+MOV S$项链名称 不支持
+MOV S$当前幸运 不支持
+MOV S$升级费用 0　　
+MOV S$成功几率 0%
+SetStringBlank <$STR(S$项链名称)> 14 1
+SetStringBlank <$STR(S$升级费用)> 14 1
+goto @幸运变量
+
+
+
+
+
+#IF
+#ACT
+CloseBigDialogBox
+BREAK
+#SAY
+\
+最高升级至+3{(幸运+3随机出1-5点暴击属性)/SCOLOR=249}\
+{-------------------------------------------------------------/FCOLOR=35}\
+　      [项链名称] {<$STR(S$项链名称)>/SCOLOR=249}  [当前幸运] {<$STR(S$当前幸运)>/SCOLOR=249}\
+　                          \
+　      [升级费用] {<$STR(S$升级费用)>/SCOLOR=249}  [成功几率] {<$STR(S$成功几率)>/SCOLOR=249}\
+{-------------------------------------------------------------/FCOLOR=35}\
+　         {[提示]请将要升级幸运的项链戴在身上！/FCOLOR=249}\ \
+　       <开始升级/@开始升级>        <清洗幸运|251#如果您对项链属性不满意，可以使用本功能清除幸运！^250#(本功能免费)/@清洗幸运>        <项链传承/@项链幸运转移>
+[@项链幸运转移]
+#IF
+#ACT
+#say
+\ \ \
+　<转移费用：白手转移/SCOLOR=87>\ \ \ \ \ \
+
+　　　　　　　　　　<幸运转移/@幸运转移>\
+
+<ITEMBOX:2:11:250:98:68:50:50:20,19:254#请放入有幸运的项链><ITEMBOX:3:11:250:205:68:50:50:20,19:251#请放入无幸运的项链>
+;------------------------------------------------------------------------------------------------
+[@幸运转移]
+#If
+checkboxitemcount 2 1
+checkboxitemcount 3 1
+#ELSEACT
+MessageBox [系统]：\　\　　　　　请放入你要转移的幸运项链！~
+Break
+ 
+#IF
+#Act
+Setupgradeitem 3
+
+
+#IF
+Checkitemaddvalue -1 1 > 0
+#Act
+MessageBox [系统]：\　\　　　　　请先清除被转移项链上的幸运属性！~
+Break
+
+#IF
+#Act
+Setupgradeitem 2
+Getitemaddvalue -1 1 N$转移加工属性
+GetItemFieldValue -1 uelement0 N$转移加工元素
+Changeitemaddvalue -1 1 = 0
+Changeitemaddvalue -1 9 = 0
+Setnewitemvalue -1 0 = 0
+UpdateITem Boxitem2
+Setupgradeitem 3
+Changeitemaddvalue -1 1 = <$Str(N$转移加工属性)>
+Changeitemaddvalue -1 9 = <$Str(N$转移加工元素)>
+SetNewItemValue -1 0 = <$Str(N$转移加工元素)>
+UpdateITem Boxitem3
+MessageBox [系统]：\　\　　　　　项链幸运属性转移成功！~
+Break
+
+[@开始升级]
+#IF
+NOT CHECKUSEITEM 3
+#ACT
+MESSAGEBOX 你还没有佩戴项链无法升级！
+Break
+
+#IF
+CHECKITEMADDVALUE 3 1 = 3
+#ACT
+MESSAGEBOX 您当前身上佩戴的【<$NECKLACE>】项链幸运已经达到最高值3点.
+BREAK
+
+#IF
+CHECKITEMW 幸运二项链 1
+#ACT
+goto @幸运升级
+Break
+
+
+
+#IF
+not CHECKITEMW 狂风项链 1
+#ACT
+goto @开始升级a1
+Break
+
+#IF
+#ACT
+MESSAGEBOX 当前佩戴项链不支持升级幸运，请佩戴灯笼以上项链！
+Break
+
+
+
+
+
+
+
+[@清洗幸运]
+#IF
+#ACT
+MESSAGEBOX 确定清洗身上佩戴的【<$NECKLACE>】项链幸运及附加暴击属性吗？ @清洗幸运a @取消
+Break
+
+[@清洗幸运a]
+#IF
+CHECKUSEITEM 3
+#ACT
+CHANGEITEMADDVALUE 3 1 = 0
+SetNewItemValue 3 0 = 0
+MESSAGEBOX 项链幸运清洗成功！
+goto @main
+Break
+#ELSEACT
+MESSAGEBOX 您没有佩带项链无法清洗。
+
+
+
+;---------------------------------------------------------------------------------------
+[@幸运升级]
+#IF
+random 5
+CHECKITEMADDVALUE 3 1 = 0
+CHECKGAMEGOLD > 9999
+#ACT
+GAMEGOLD - 10000
+CHANGEITEMADDVALUE 3 1 = 1
+GetRandomText ..\QuestDiary\5抽取数据\项链暴击.txt S5
+SetNewItemValue 3 0 = <$STR(S5)>
+MESSAGEBOX [升级成功]:项链【<$NECKLACE>】升级为幸运+3,暴击额外+<$STR(S5)>！
+SENDMSG 1 ★恭喜玩家[<$USERNAME>]在土城[幸运项链]NPC处，将【<$NECKLACE>】升级为幸运+3，暴击额外+<$STR(S5)>。
+MOV S5
+goto @main
+Break
+
+#IF
+CHECKITEMADDVALUE 3 1 = 0
+CHECKGAMEGOLD > 9999
+#ACT
+GAMEGOLD - 10000
+SENDMSG 6 非常抱歉！您的【<$NECKLACE>】幸运升级失败！
+Break
+
+#IF
+#ACT
+MESSAGEBOX 元宝不足或者您的项链已经幸运+3！
+Break
+
+
+
+
+;---------------------------------------------------------------------------------------火龙
+[@开始升级a1]
+#IF
+CHECKITEMADDVALUE 3 1 = 0
+CHECKGAMEGOLD > 1999
+#ACT
+GAMEGOLD - 2000
+CHANGEITEMADDVALUE 3 1 = 1
+MESSAGEBOX [升级成功]:项链【<$NECKLACE>】升级为幸运+1！
+SENDMSG 1 ★恭喜玩家[<$USERNAME>]在土城[幸运项链]NPC处，将【<$NECKLACE>】升级为幸运+1！
+goto @main
+Break
+
+#IF
+random 3
+CHECKITEMADDVALUE 3 1 = 1
+CHECKGAMEGOLD > 4999
+#ACT
+GAMEGOLD - 5000
+CHANGEITEMADDVALUE 3 1 = 2
+MESSAGEBOX [升级成功]:项链【<$NECKLACE>】升级为幸运+2！
+SENDMSG 1 ★恭喜玩家[<$USERNAME>]在土城[幸运项链]NPC处，将【<$NECKLACE>】升级为幸运+2！
+goto @main
+Break
+
+#IF
+CHECKITEMADDVALUE 3 1 = 1
+CHECKGAMEGOLD > 4999
+#ACT
+GAMEGOLD - 5000
+SENDMSG 6 非常抱歉！您的【<$NECKLACE>】幸运升级失败！
+Break
+
+
+#IF
+random 5
+CHECKITEMADDVALUE 3 1 = 2
+CHECKGAMEGOLD > 9999
+#ACT
+GAMEGOLD - 10000
+CHANGEITEMADDVALUE 3 1 = 3
+GetRandomText ..\QuestDiary\5抽取数据\项链暴击.txt S5
+SetNewItemValue 3 0 = <$STR(S5)>
+MESSAGEBOX [升级成功]:项链【<$NECKLACE>】升级为幸运+3,暴击额外+<$STR(S5)>！
+SENDMSG 1 ★恭喜玩家[<$USERNAME>]在土城[幸运项链]NPC处，将【<$NECKLACE>】升级为幸运+3，暴击额外+<$STR(S5)>。
+goto @BJJC
+MOV S5
+goto @main
+Break
+
+#IF
+CHECKITEMADDVALUE 3 1 = 2
+CHECKGAMEGOLD > 9999
+#ACT
+GAMEGOLD - 10000
+SENDMSG 6 非常抱歉！您的【<$NECKLACE>】幸运升级失败！
+Break
+
+#IF
+#ACT
+MESSAGEBOX 元宝不足，无法升级！
+Break
+
+
+[@BJJC]
+#IF
+EQUAL <$STR(S5)> 5
+#ACT
+SETITEMEFFECT 3 73
+
+
+
+
+
+
+;-------------------------------------------------------------------------------------------------------------------------------------------------------
+[@幸运变量]
+#IF
+#ACT
+MOV S$项链名称 <$NECKLACE>
+SetStringBlank <$STR(S$项链名称)> 14 1
+goto @火龙幸运
+Break
+
+
+[@火龙幸运]
+#IF
+CHECKITEMADDVALUE 3 1 = 0
+#ACT
+MOV S$当前幸运 0
+MOV S$升级费用 2000
+MOV S$成功几率 100%
+SetStringBlank <$STR(S$升级费用)> 14 1
+#IF
+CHECKITEMADDVALUE 3 1 = 1
+#ACT
+MOV S$当前幸运 1
+MOV S$升级费用 5000
+MOV S$成功几率 35%
+SetStringBlank <$STR(S$升级费用)> 14 1
+
+#IF
+CHECKITEMADDVALUE 3 1 = 2
+#ACT
+MOV S$当前幸运 2
+MOV S$升级费用 10000
+MOV S$成功几率 20%
+SetStringBlank <$STR(S$升级费用)> 14 1
+
+#IF
+CHECKITEMADDVALUE 3 1 = 3
+#ACT
+MOV S$当前幸运 3
+MOV S$升级费用 0　
+MOV S$成功几率 0%
+SetStringBlank <$STR(S$升级费用)> 14 1

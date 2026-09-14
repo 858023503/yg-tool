@@ -1,0 +1,317 @@
+[@main]
+#IF
+#Act
+#SAY
+
+<勋章、斗笠、虎符、神石、盾牌、特戒> 可以进行合成！\ \
+<例如：合成麻痹戒指[印+1]需要麻痹戒指*3！/FCOLOR=230>\
+<ITEMBOX:0:1:50:175:80:42:42:*:250#主框放入装备>\
+<ITEMBOX:3:1:50:130:122:42:42:*:250#副框放入装备>\
+<ITEMBOX:4:1:50:218:122:42:42:*:250#副框放入装备>\
+<text:合成:165:25/@ronglian>                         \
+
+[@显示]
+#IF
+#SAY
+<勋章、斗笠、虎符、神石、盾牌、特戒> 可以进行合成！\ \
+<例如：合成麻痹戒指[印+1]需要麻痹戒指*3！/FCOLOR=230> <合成费用|70#合成<$STR(S$下级材料)>需要<$STR(S$上级材料)>*3+<$STR(N$强化费用)>元宝/SCOLOR=70>\
+<ITEMBOX:0:1:50:175:80:42:42:*:250#主框放入装备>\
+<ITEMBOX:3:1:50:130:122:42:42:*:250#副框放入装备>\
+<ITEMBOX:4:1:50:218:122:42:42:*:250#副框放入装备>\
+<text:合成:165:25/@ronglian>                         \
+
+[@ItemIntoBox0]
+#IF
+Checktextlist	..\QuestDiary\游戏功能\装备熔炼\合成材料.txt	<$BOXITEM[0].NAME>
+#Act
+goto @材料验证
+goto @显示
+#Elseact
+MOV S$上级材料
+MOV S$下级材料
+MOV N$强化费用
+goto @材料验证
+goto @显示
+Messagebox	该装备无法合成！
+ReturnBoxItem 0
+Break
+
+[@ItemIntoBox3]
+#IF
+EQUAL <$BOXITEM[0].NAME>
+#Act
+Messagebox 请先放入主框装备！
+ReturnBoxItem 3
+Break
+#IF
+Equal	<$BOXITEM[0].NAME> <$BOXITEM[3].NAME>
+#Elseact
+ReturnBoxItem 3
+Messagebox	请放入和主框相同装备！
+Break
+
+[@ItemIntoBox4]
+#IF
+EQUAL <$BOXITEM[0].NAME>
+#Act
+Messagebox 请先放入主框装备！
+ReturnBoxItem 4
+Break
+#IF
+Equal	<$BOXITEM[0].NAME> <$BOXITEM[4].NAME>
+#Elseact
+ReturnBoxItem 4
+Messagebox	请放入和主框相同装备！
+Break
+
+[@材料验证]
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 深渊凝视
+#ACT
+MOV S$上级材料 深渊凝视
+MOV S$下级材料 深渊凝视[印+1] 
+MOV N$强化费用 60000
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 深渊凝视[印+1]
+#ACT
+MOV S$上级材料 深渊凝视[印+1]
+MOV S$下级材料 深渊凝视[印+2] 
+MOV N$强化费用 150000
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 深渊凝视[印+2]
+#ACT
+MOV S$上级材料 深渊凝视[印+2]
+MOV S$下级材料 深渊凝视[终极] 
+MOV N$强化费用 300000
+
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 蜃楼笠
+#ACT
+MOV S$上级材料 蜃楼笠
+MOV S$下级材料 蜃楼笠[印+1] 
+MOV N$强化费用 60000
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 蜃楼笠[印+1]
+#ACT
+MOV S$上级材料 蜃楼笠[印+1]
+MOV S$下级材料 蜃楼笠[印+2] 
+MOV N$强化费用 150000
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 蜃楼笠[印+2]
+#ACT
+MOV S$上级材料 蜃楼笠[印+2]
+MOV S$下级材料 蜃楼笠[终极] 
+MOV N$强化费用 300000
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 先祖之魂
+#ACT
+MOV S$上级材料 先祖之魂
+MOV S$下级材料 先祖之魂[印+1]
+MOV N$强化费用 60000
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 先祖之魂[印+1]
+#ACT
+MOV S$上级材料 先祖之魂[印+1]
+MOV S$下级材料 先祖之魂[印+2]
+MOV N$强化费用 150000
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 先祖之魂[印+2]
+#ACT
+MOV S$上级材料 先祖之魂[印+2]
+MOV S$下级材料 先祖之魂[终极]
+MOV N$强化费用 300000
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 万兽裂空玺
+#ACT
+MOV S$上级材料 万兽裂空玺
+MOV S$下级材料 万兽裂空玺[印+1]
+MOV N$强化费用 60000
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 万兽裂空玺[印+1]
+#ACT
+MOV S$上级材料 万兽裂空玺[印+1]
+MOV S$下级材料 万兽裂空玺[印+2]
+MOV N$强化费用 150000
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 万兽裂空玺[印+2]
+#ACT
+MOV S$上级材料 万兽裂空玺[印+2]
+MOV S$下级材料 万兽裂空玺[终极]
+MOV N$强化费用 300000
+
+
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 轮湮
+#ACT
+MOV S$上级材料 轮湮
+MOV S$下级材料 天地の攻
+MOV N$强化费用 30000
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 天地の攻
+#ACT
+MOV S$上级材料 天地の攻
+MOV S$下级材料 天地の防
+MOV N$强化费用 60000
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 天地の防
+#ACT
+MOV S$上级材料 天地の防
+MOV S$下级材料 天地の攻防
+MOV N$强化费用 150000
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 麻痹戒指[印+3]
+#ACT
+MOV S$上级材料 麻痹戒指[印+3]
+MOV S$下级材料 麻痹戒指[印+4]
+MOV N$强化费用 100000
+
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 麻痹戒指[印+4]
+#ACT
+MOV S$上级材料 麻痹戒指[印+4]
+MOV S$下级材料 麻痹戒指[印+5]
+MOV N$强化费用 200000
+
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 麻痹戒指[印+5]
+#ACT
+MOV S$上级材料 麻痹戒指[印+5]
+MOV S$下级材料 麻痹戒指[终极]
+MOV N$强化费用 500000
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 复活戒指[印+3]
+#ACT
+MOV S$上级材料 复活戒指[印+3]
+MOV S$下级材料 复活戒指[印+4]
+MOV N$强化费用 100000
+
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 复活戒指[印+4]
+#ACT
+MOV S$上级材料 复活戒指[印+4]
+MOV S$下级材料 复活戒指[印+5]
+MOV N$强化费用 200000
+
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 复活戒指[印+5]
+#ACT
+MOV S$上级材料 复活戒指[印+5]
+MOV S$下级材料 复活戒指[终极]
+MOV N$强化费用 500000
+
+
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 护身戒指[印+3]
+#ACT
+MOV S$上级材料 护身戒指[印+3]
+MOV S$下级材料 护身戒指[印+4]
+MOV N$强化费用 100000
+
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 护身戒指[印+4]
+#ACT
+MOV S$上级材料 护身戒指[印+4]
+MOV S$下级材料 护身戒指[印+5]
+MOV N$强化费用 200000
+
+
+#IF
+EQUAL <$BOXITEM[0].NAME> 护身戒指[印+5]
+#ACT
+MOV S$上级材料 护身戒指[印+5]
+MOV S$下级材料 护身戒指[终极]
+MOV N$强化费用 500000
+
+#OR
+Equal	<$BOXITEM[0].NAME>
+Equal	<$BOXITEM[3].NAME>
+Equal	<$BOXITEM[4].NAME>
+#act
+BREAK
+
+#IF
+#Act
+MOV S$熔炼装备 <$BOXITEM[0].NAME>
+
+#IF
+Equal	<$BOXITEM[0].NAME> <$STR(S$熔炼装备)>
+Equal	<$BOXITEM[3].NAME> <$STR(S$熔炼装备)>
+Equal	<$BOXITEM[3].NAME> <$STR(S$熔炼装备)>
+#Elseact
+ReturnBoxItem 3
+ReturnBoxItem 4
+Messagebox	材料放置放置不正确！
+Break
+
+[@ronglian]
+#OR
+Equal	<$BOXITEM[0].NAME>
+Equal	<$BOXITEM[3].NAME>
+Equal	<$BOXITEM[4].NAME>
+#act
+Messagebox	请先放入要合成的装备与材料！
+Break
+
+#IF
+CHECKGAMEGOLD < <$STR(N$强化费用)>
+#Act
+Messagebox	需要<$STR(N$强化费用)>元宝！
+Break
+
+#IF
+#Act
+MOV S$熔炼装备 <$BOXITEM[0].NAME>
+
+#IF
+Equal	<$BOXITEM[0].NAME> <$STR(S$熔炼装备)>
+Equal	<$BOXITEM[3].NAME> <$STR(S$熔炼装备)>
+Equal	<$BOXITEM[4].NAME> <$STR(S$熔炼装备)>
+#Elseact
+ReturnBoxItem 3
+ReturnBoxItem 4
+Messagebox	材料放置放置不正确！
+Break
+
+
+
+
+
+#IF
+#Act
+SetUpgradeItem 0
+DELBOXITEM 0 1
+DELBOXITEM 3 1
+DELBOXITEM 4 1
+GAMEGOLD - <$STR(N$强化费用)>
+GIVE <$STR(S$下级材料)> 1
+UpdateItem boxitem0
+MOV S$上级材料
+MOV S$下级材料
+MOV N$强化费用
+#Elseact
+Messagebox	该装备无法合成！
+ReturnBoxItem 0
+Break

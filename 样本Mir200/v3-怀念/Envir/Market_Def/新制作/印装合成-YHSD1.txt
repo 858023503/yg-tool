@@ -1,0 +1,1639 @@
+()
+%100
+[@main]
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+<------------------------------------------------------------/SCOLOR=13>\ 
+< 尊敬的玩家您好：【为您提供印装合成服务】/SCOLOR=249> \
+< 合成装备让你变强大，所有BOSS都有几率爆出终极/SCOLOR=246> \
+<------------------------------------------------------------/SCOLOR=13>\ \
+【<域类系列/@域类系列>】        【<轩辕系列/@轩辕系列>】       【<诅咒系列/@诅咒系列>】 \ \
+【<剑甲系列/@剑甲系列>】        【<聖の诅咒/@聖の诅咒>】       【<印装元素/@印装元素>】   \ \
+
+
+
+[@印装元素]
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+\ \
+带印的装备可以锻造<元素属性>，锻造的元素属性可以<免费传承>！\ \
+每个印装每个<元素属性>最高5%，<成功加1%>，<失败减1%>   【<元素传承/@元素传承>】\ \ \
+<ITEMBOX:0:1:50:165:90:42:42:*:250#放入需要锻造的装备>\ \
+<攻击伤害|250#需要精炼神石*20+8000元宝/@攻击伤害>    <物伤减少|250#需要精炼神石*20+8000元宝/@物伤减少>    <魔伤减少|250#需要精炼神石*20+8000元宝/@魔伤减少>    <人物体力|250#需要精炼神石*20+8000元宝/@人物体力>    <人物魔力|250#需要精炼神石*20+8000元宝/@人物魔力>\
+[@ItemIntoBox0]
+#IF
+Checktextlist	..\QuestDiary\游戏功能\印装元素.txt	<$BOXITEM[0].NAME>
+#Act
+#Elseact
+Messagebox 该装备无法锻造！
+ReturnBoxItem 0
+Break
+[@人物魔力]
+#IF
+#ACT
+	SetUpgradeItem 0
+#or
+	Checktextlist	..\QuestDiary\游戏功能\印装元素.txt	<$BOXITEM[0].NAME>
+#ELSEACT
+	ReturnBoxItem 0
+	Messagebox 对不起,你放入的装备无法升级属性
+BREAK
+
+
+#IF
+	CHECKNEWITEMVALUE -1 8 ? 5
+#ACT
+	Messagebox 无法升级,此人物魔力已经达到5点了
+BREAK
+
+#IF
+	CHECKITEM 精炼神石 20
+	CHECKGAMEGOLD > 7999
+#ACT
+	TAKE 精炼神石 20
+	GAMEGOLD - 8000
+#ELSEACT
+	Messagebox 对不起,你没有20个[精炼神石]或者没有8000元宝
+BREAK
+
+#IF
+	RANDOM 3
+#ACT
+	SetNewItemValue -1 8 + 1
+	UpdateITem Boxitem0
+	Messagebox 恭喜你,升级成功!请查看属性
+BREAK
+#IF
+	CHECKNEWITEMVALUE -1 8 = 0
+#ACT
+	SetNewItemValue -1 8 + 1
+	UpdateITem Boxitem0
+	Messagebox 恭喜你,升级成功!请查看属性
+BREAK
+#IF
+	CHECKNEWITEMVALUE -1 8 > 0
+	RANDOM 1
+#ACT
+	SetNewItemValue -1 8 - 1
+	UpdateITem Boxitem0
+	Messagebox  属性升级失败!请查看属性
+[@人物体力]
+#IF
+#ACT
+	SetUpgradeItem 0
+#or
+	Checktextlist	..\QuestDiary\游戏功能\印装元素.txt	<$BOXITEM[0].NAME>
+#ELSEACT
+	ReturnBoxItem 0
+	Messagebox 对不起,你放入的装备无法升级属性
+BREAK
+
+
+#IF
+	CHECKNEWITEMVALUE -1 7 ? 5
+#ACT
+	Messagebox 无法升级,此人物体力已经达到5点了
+BREAK
+
+#IF
+	CHECKITEM 精炼神石 20
+	CHECKGAMEGOLD > 7999
+#ACT
+	TAKE 精炼神石 20
+	GAMEGOLD - 8000
+#ELSEACT
+	Messagebox 对不起,你没有20个[精炼神石]或者没有8000元宝
+BREAK
+
+#IF
+	RANDOM 3
+#ACT
+	SetNewItemValue -1 7 + 1
+	UpdateITem Boxitem0
+	Messagebox 恭喜你,升级成功!请查看属性
+BREAK
+#IF
+	CHECKNEWITEMVALUE -1 7 = 0
+#ACT
+	SetNewItemValue -1 7 + 1
+	UpdateITem Boxitem0
+	Messagebox 恭喜你,升级成功!请查看属性
+BREAK
+#IF
+	CHECKNEWITEMVALUE -1 7 > 0
+	RANDOM 1
+#ACT
+	SetNewItemValue -1 7 - 1
+	UpdateITem Boxitem0
+	Messagebox  属性升级失败!请查看属性
+
+
+[@魔伤减少]
+#IF
+#ACT
+	SetUpgradeItem 0
+#or
+	Checktextlist	..\QuestDiary\游戏功能\印装元素.txt	<$BOXITEM[0].NAME>
+#ELSEACT
+	ReturnBoxItem 0
+	Messagebox 对不起,你放入的装备无法升级属性
+BREAK
+
+
+#IF
+	CHECKNEWITEMVALUE -1 3 ? 5
+#ACT
+	Messagebox 无法升级,此魔伤减少已经达到5点了
+BREAK
+
+#IF
+	CHECKITEM 精炼神石 20
+	CHECKGAMEGOLD > 7999
+#ACT
+	TAKE 精炼神石 20
+	GAMEGOLD - 8000
+#ELSEACT
+	Messagebox 对不起,你没有20个[精炼神石]或者没有8000元宝
+BREAK
+
+#IF
+	RANDOM 3
+#ACT
+	SetNewItemValue -1 3 + 1
+	UpdateITem Boxitem0
+	Messagebox 恭喜你,升级成功!请查看属性
+BREAK
+#IF
+	CHECKNEWITEMVALUE -1 3 = 0
+#ACT
+	SetNewItemValue -1 3 + 1
+	UpdateITem Boxitem0
+	Messagebox 恭喜你,升级成功!请查看属性
+BREAK
+#IF
+	CHECKNEWITEMVALUE -1 3 > 0
+	RANDOM 1
+#ACT
+	SetNewItemValue -1 3 - 1
+	UpdateITem Boxitem0
+	Messagebox  属性升级失败!请查看属性
+
+[@物伤减少]
+#IF
+#ACT
+	SetUpgradeItem 0
+#or
+	Checktextlist	..\QuestDiary\游戏功能\印装元素.txt	<$BOXITEM[0].NAME>
+#ELSEACT
+	ReturnBoxItem 0
+	Messagebox 对不起,你放入的装备无法升级属性
+BREAK
+
+
+#IF
+	CHECKNEWITEMVALUE -1 2 ? 5
+#ACT
+	Messagebox 无法升级,此物伤减少已经达到5点了
+BREAK
+
+#IF
+	CHECKITEM 精炼神石 20
+	CHECKGAMEGOLD > 7999
+#ACT
+	TAKE 精炼神石 20
+	GAMEGOLD - 8000
+#ELSEACT
+	Messagebox 对不起,你没有20个[精炼神石]或者没有8000元宝
+BREAK
+
+#IF
+	RANDOM 3
+#ACT
+	SetNewItemValue -1 2 + 1
+	UpdateITem Boxitem0
+	Messagebox 恭喜你,升级成功!请查看属性
+BREAK
+#IF
+	CHECKNEWITEMVALUE -1 2 = 0
+#ACT
+	SetNewItemValue -1 2 + 1
+	UpdateITem Boxitem0
+	Messagebox 恭喜你,升级成功!请查看属性
+BREAK
+#IF
+	CHECKNEWITEMVALUE -1 2 > 0
+	RANDOM 1
+#ACT
+	SetNewItemValue -1 2 - 1
+	UpdateITem Boxitem0
+	Messagebox  属性升级失败!请查看属性
+[@攻击伤害]
+#IF
+#ACT
+	SetUpgradeItem 0
+#or
+	Checktextlist	..\QuestDiary\游戏功能\印装元素.txt	<$BOXITEM[0].NAME>
+#ELSEACT
+	ReturnBoxItem 0
+	Messagebox 对不起,你放入的装备无法升级属性
+BREAK
+
+
+#IF
+	CHECKNEWITEMVALUE -1 1 ? 5
+#ACT
+	Messagebox 无法升级,此攻击伤害已经达到5点了
+BREAK
+
+#IF
+	CHECKITEM 精炼神石 20
+	CHECKGAMEGOLD > 7999
+#ACT
+	TAKE 精炼神石 20
+	GAMEGOLD - 8000
+#ELSEACT
+	Messagebox 对不起,你没有20个[精炼神石]或者没有8000元宝
+BREAK
+
+#IF
+	RANDOM 3
+#ACT
+	SetNewItemValue -1 1 + 1
+	UpdateITem Boxitem0
+	Messagebox 恭喜你,升级成功!请查看属性
+BREAK
+#IF
+	CHECKNEWITEMVALUE -1 1 = 0
+#ACT
+	SetNewItemValue -1 1 + 1
+	UpdateITem Boxitem0
+	Messagebox 恭喜你,升级成功!请查看属性
+BREAK
+#IF
+	CHECKNEWITEMVALUE -1 1 > 0
+	RANDOM 1
+#ACT
+	SetNewItemValue -1 1 - 1
+	UpdateITem Boxitem0
+	Messagebox  属性升级失败!请查看属性
+[@剑甲系列]
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+<------------------------------------------------------------/SCOLOR=13>\ \
+<合成需要相同装备5件+相对应的武器[印]2个合成印系装备/SCOLOR=255>\
+<------------------------------------------------------------/SCOLOR=13>\ \
+<仙·星光の剑|250#需要星光の剑*5+魔尊の杖*2/@星光の剑>        <仙·倚天の剑|250#需要倚天の剑*5+阴龙の剑*2/@倚天の剑>       <仙·屠龙の刀|250#需要屠龙の刀*5+金刚の刃*2/@屠龙の刀> \ \
+<仙·苍龙の甲|250#需要苍龙の甲*5+轩辕或者无极或者魔神[印]衣服*2/@苍龙の甲>        <仙·苍龙の袍|250#需要苍龙の袍*5+轩辕或者无极或者魔神[印]衣服*2/@苍龙の袍>
+
+
+[@诅咒系列]
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+<------------------------------------------------------------/SCOLOR=13>\ \
+<合成需要相同装备5件+两个轩辕或者魔神或者无极带印的合成印系装备/SCOLOR=255>\
+<优先扣除轩辕，其次魔神，然后无极装备，贵重物品请存放仓库/SCOLOR=255>\
+<------------------------------------------------------------/SCOLOR=13>\
+<仙·战神の帝|250#需要战神の帝*5+金刚の盔*2或者魔尊の盔*2或者阴龙の盔*2/@战神の帝>     <仙·守护の神|250#需要守护の神*5+金刚の镯*2或者魔尊の镯*2或者阴龙の镯*2/@守护の神>    <仙·傀儡の隐|250#需要傀儡の隐*5+金刚の镯*2或者魔尊の镯*2或者阴龙の镯*2/@傀儡の隐>    <诅咒腰带[印]|250#需要诅咒の带*5+金刚の带*2或者魔尊の带*2或者阴龙の带*2/@诅咒腰带>\ \
+<仙·诅咒の亡|250#需要诅咒の亡*5+金刚の戒*2或者魔尊の戒*2或者阴龙の戒*2/@诅咒の亡>     <仙·凤凰の飞|250#需要凤凰の飞*5+金刚の戒*2或者魔尊の戒*2或者阴龙の戒*2/@凤凰の飞>    <仙·精灵の翔|250#需要精灵の翔*5+金刚の链*2或者魔尊の链*2或者阴龙の链*2/@精灵の翔>    <仙·诅咒の靴|250#需要诅咒の靴*5+金刚の靴*2或者魔尊の靴*2或者阴龙の靴*2/@诅咒の靴> \ \
+
+[@轩辕系列]
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+<------------------------------------------------------------/SCOLOR=13>\ \
+<Hot~/SCOLOR=249> 尊敬的玩家您好 .<【为您提供供印装合成服务】/SCOLOR=249> <Hot~/SCOLOR=249>\
+<------------------------------------------------------------/SCOLOR=13>\ \
+【<轩辕系列/@轩辕系列a>】        【<魔神系列/@魔神系列>】       【<无极系列/@无极系列>】 \ \
+[@域类系列]
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+<------------------------------------------------------------/SCOLOR=13>\ \
+<Hot~/SCOLOR=249> 尊敬的玩家您好 .<【为您提供供印装合成服务】/SCOLOR=249> <Hot~/SCOLOR=249>\
+<------------------------------------------------------------/SCOLOR=13>\ \
+【<铜域系列/@铜域系列>】        【<水域系列/@水域系列>】       【<土域系列/@土域系列>】 \ \
+
+
+[@轩辕系列a]
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+<------------------------------------------------------------/SCOLOR=13>\ \
+<合成需要相同装备5件+相对应的铜域[印]2个合成印系装备/SCOLOR=255>\
+<------------------------------------------------------------/SCOLOR=13>\
+<><金刚の盔|250#需要轩辕头盔*5+神·勇士头盔*2/@轩辕头盔>        <金刚の链|250#需要轩辕项链*5+神·铜域项链*2/@轩辕项链>       <金刚の镯|250#需要轩辕手镯*5+神·铜域手镯*2/@轩辕手镯> \ \
+<><金刚の戒|250#需要轩辕戒指*5+神·铜域戒指*2/@轩辕戒指>        <轩 辕 靴[印]|250#需要轩辕靴*5+神·铜域靴*2/@轩辕靴>       <金刚の带|250#需要轩辕腰带*5+神·铜域腰带*2/@轩辕腰带> \ \
+<><金刚の刃|250#需要轩辕开天*5+神·绿玉屠龙*2/@轩辕开天>        <金刚の甲|250#需要轩辕战甲*5+神·骑士战袍(男)*2/@轩辕战甲>       <金刚の袍|250#需要轩辕战袍*5+神·骑士战袍(女)*2/@轩辕战袍> \ \
+[@魔神系列]
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+<------------------------------------------------------------/SCOLOR=13>\ \
+<合成需要相同装备5件+相对应的水域[印]2个合成印系装备/SCOLOR=255>\
+<------------------------------------------------------------/SCOLOR=13>\
+<><魔尊の盔|250#需要魔神头盔*5+神·勇士头盔*2/@魔神头盔>        <魔尊の链|250#需要魔神项链*5+神·水域项链*2/@魔神项链>       <魔尊の镯|250#需要魔神手镯*5+神·水域手镯*2/@魔神手镯> \ \
+<><魔尊の戒|250#需要魔神戒指*5+神·水域戒指*2/@魔神戒指>        <魔 神 靴[印]|250#需要魔神靴*5+神·水域靴*2/@魔神靴>       <魔尊の带|250#需要魔神腰带*5+神·水域腰带*2/@魔神腰带> \ \
+<><魔尊の杖|250#需要魔神镇天*5+神·恶魔权杖*2/@魔神镇天>        <魔尊の甲|250#需要魔神魔甲*5+神·骑士魔袍(男)*2/@魔神魔甲>       <魔尊の袍|250#需要魔神魔袍*5+神·骑士魔袍(女)*2/@魔神魔袍> \ \
+[@无极系列]
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+<------------------------------------------------------------/SCOLOR=13>\ \
+<合成需要相同装备5件+相对应的土域[印]2个合成印系装备/SCOLOR=255>\
+<------------------------------------------------------------/SCOLOR=13>\
+<><阴龙の盔|250#需要无极头盔*5+神·道域头盔*2/@无极头盔>        <阴龙の链|250#需要无极项链*5+神·土域项链*2/@无极项链>       <阴龙の镯|250#需要无极手镯*5+神·土域手镯*2/@无极手镯> \ \
+<><阴龙の戒|250#需要无极戒指*5+神·土域戒指*2/@无极戒指>        <道 神 靴[印]|250#需要无极靴*5+神·土域靴*2/@无极靴>       <阴龙の带|250#需要无极腰带*5+神·土域腰带*2/@无极腰带> \ \
+<><阴龙の剑|250#需要无极玄天*5+神·天尊之扇*2/@无极玄天>        <阴龙の甲|250#需要无极道甲*5+神·骑士道袍(男)*2/@无极道甲>       <阴龙の袍|250#需要无极道袍*5+神·骑士道袍(女)*2/@无极道袍> \ \
+
+[@聖の诅咒]
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+<------------------------------------------------------------/SCOLOR=13>\ \
+<合成需要对应诅咒[印]5件/SCOLOR=255>\
+<------------------------------------------------------------/SCOLOR=13>\
+<><聖·战神の帝|250#需要仙·战神の帝*5/@聖·战神の帝>        <聖·守护の神|250#需要仙·守护の神*5/@聖·守护の神>       <聖·傀儡の隐|250#需要仙·傀儡の隐*5/@聖·傀儡の隐> \ \
+<><聖·诅咒の亡|250#需要仙·诅咒の亡*5/@聖·诅咒の亡>        <聖·凤凰の飞|250#需要仙·凤凰の飞*5/@聖·凤凰の飞>       <聖·精灵の翔|250#需要仙·精灵の翔*5/@聖·精灵の翔> \ \
+<><聖·诅咒腰带|250#需要仙·诅咒の带*5/@聖·诅咒腰带>        <聖·诅咒の靴|250#需要仙·诅咒の靴*5/@聖·诅咒の靴> \ \
+
+[@聖·诅咒の靴]
+#IF
+CHECKITEM  仙·诅咒の靴 5
+#ACT
+TAKE 仙·诅咒の靴 5
+GIVE 聖·诅咒の靴 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【聖·诅咒の靴】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@聖·诅咒腰带]
+#IF
+CHECKITEM  仙·诅咒の带 5
+#ACT
+TAKE 仙·诅咒の带 5
+GIVE 聖·诅咒の带 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【聖·诅咒の带】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@聖·精灵の翔]
+#IF
+CHECKITEM  仙·精灵の翔 5
+#ACT
+TAKE 仙·精灵の翔 5
+GIVE 聖·精灵の翔 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【聖·精灵の翔】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@聖·凤凰の飞]
+#IF
+CHECKITEM  仙·凤凰の飞 5
+#ACT
+TAKE 仙·凤凰の飞 5
+GIVE 聖·凤凰の飞 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【聖·凤凰の飞】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@聖·诅咒の亡]
+#IF
+CHECKITEM  仙·诅咒の亡 5
+#ACT
+TAKE 仙·诅咒の亡 5
+GIVE 聖·诅咒の亡 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【聖·诅咒の亡】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@聖·傀儡の隐]
+#IF
+CHECKITEM  仙·傀儡の隐 5
+#ACT
+TAKE 仙·傀儡の隐 5
+GIVE 聖·傀儡の隐 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【聖·傀儡の隐】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@聖·守护の神]
+#IF
+CHECKITEM  仙·守护の神 5
+#ACT
+TAKE 仙·守护の神 5
+GIVE 聖·守护の神 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【聖·守护の神】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@聖·战神の帝]
+#IF
+CHECKITEM  仙·战神の帝 5
+#ACT
+TAKE 仙·战神の帝 5
+GIVE 聖·战神の帝 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【聖·战神の帝】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@苍龙の袍]
+#IF
+CHECKITEM  苍龙の袍 5
+CHECKITEM  金刚の袍 2
+#ACT
+TAKE 金刚の袍 2
+TAKE 苍龙の袍 5
+GIVE 仙·苍龙の袍 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·苍龙の袍】|252:251:1}..
+break
+#IF
+CHECKITEM  苍龙の袍 5
+CHECKITEM  魔尊の袍 2
+#ACT
+TAKE 魔尊の袍 2
+TAKE 苍龙の袍 5
+GIVE 仙·苍龙の袍 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·苍龙の袍】|252:251:1}..
+break
+#IF
+CHECKITEM  苍龙の袍 5
+CHECKITEM  阴龙の袍 2
+#ACT
+TAKE 阴龙の袍 2
+TAKE 苍龙の袍 5
+GIVE 仙·苍龙の袍 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·苍龙の袍】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@苍龙の甲]
+#IF
+CHECKITEM  苍龙の甲 5
+CHECKITEM  金刚の甲 2
+#ACT
+TAKE 金刚の甲 2
+TAKE 苍龙の甲 5
+GIVE 仙·苍龙の甲 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·苍龙の甲】|252:251:1}..
+break
+#IF
+CHECKITEM  苍龙の甲 5
+CHECKITEM  魔尊の甲 2
+#ACT
+TAKE 魔尊の甲 2
+TAKE 苍龙の甲 5
+GIVE 仙·苍龙の甲 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·苍龙の甲】|252:251:1}..
+break
+#IF
+CHECKITEM  苍龙の甲 5
+CHECKITEM  阴龙の甲 2
+#ACT
+TAKE 阴龙の甲 2
+TAKE 苍龙の甲 5
+GIVE 仙·苍龙の甲 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·苍龙の甲】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@屠龙の刀]
+#IF
+CHECKITEM  屠龙の刀 5
+CHECKITEM  金刚の刃 2
+#ACT
+TAKE 金刚の刃 2
+TAKE 屠龙の刀 5
+GIVE 仙·屠龙の刀 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·屠龙の刀】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@倚天の剑]
+#IF
+CHECKITEM  倚天の剑 5
+CHECKITEM  阴龙の剑 2
+#ACT
+TAKE 阴龙の剑 2
+TAKE 倚天の剑 5
+GIVE 仙·倚天の剑 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·倚天の剑】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@星光の剑]
+#IF
+CHECKITEM  星光の剑 5
+CHECKITEM  魔尊の杖 2
+#ACT
+TAKE 魔尊の杖 2
+TAKE 星光の剑 5
+GIVE 仙·星光の剑 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·星光の剑】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@精灵の翔]
+#IF
+CHECKITEM  精灵の翔 5
+CHECKITEM  金刚の链 2
+#ACT
+TAKE 金刚の链 2
+TAKE 精灵の翔 5
+GIVE 仙·精灵の翔 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·精灵の翔】|252:251:1}..
+break
+#IF
+CHECKITEM  精灵の翔 5
+CHECKITEM  魔尊の链 2
+#ACT
+TAKE 魔尊の链 2
+TAKE 精灵の翔 5
+GIVE 仙·精灵の翔 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·精灵の翔】|252:251:1}..
+break
+#IF
+CHECKITEM  精灵の翔 5
+CHECKITEM  阴龙の链 2
+#ACT
+TAKE 阴龙の链 2
+TAKE 精灵の翔 5
+GIVE 仙·精灵の翔 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·精灵の翔】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@凤凰の飞]
+#IF
+CHECKITEM  凤凰の飞 5
+CHECKITEM  金刚の戒 2
+#ACT
+TAKE 金刚の戒 2
+TAKE 凤凰の飞 5
+GIVE 仙·凤凰の飞 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·凤凰の飞】|252:251:1}..
+break
+#IF
+CHECKITEM  凤凰の飞 5
+CHECKITEM  魔尊の戒 2
+#ACT
+TAKE 魔尊の戒 2
+TAKE 凤凰の飞 5
+GIVE 仙·凤凰の飞 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·凤凰の飞】|252:251:1}..
+break
+#IF
+CHECKITEM  凤凰の飞 5
+CHECKITEM  阴龙の戒 2
+#ACT
+TAKE 阴龙の戒 2
+TAKE 凤凰の飞 5
+GIVE 仙·凤凰の飞 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·凤凰の飞】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@诅咒の亡]
+#IF
+CHECKITEM  诅咒の亡 5
+CHECKITEM  金刚の戒 2
+#ACT
+TAKE 金刚の戒 2
+TAKE 诅咒の亡 5
+GIVE 仙·诅咒の亡 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·诅咒の亡】|252:251:1}..
+break
+#IF
+CHECKITEM  诅咒の亡 5
+CHECKITEM  魔尊の戒 2
+#ACT
+TAKE 魔尊の戒 2
+TAKE 诅咒の亡 5
+GIVE 仙·诅咒の亡 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·诅咒の亡】|252:251:1}..
+break
+#IF
+CHECKITEM  诅咒の亡 5
+CHECKITEM  阴龙の戒 2
+#ACT
+TAKE 阴龙の戒 2
+TAKE 诅咒の亡 5
+GIVE 仙·诅咒の亡 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·诅咒の亡】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@诅咒の靴]
+#IF
+CHECKITEM  诅咒の靴 5
+CHECKITEM  金刚の靴 2
+#ACT
+TAKE 金刚の靴 2
+TAKE 诅咒の靴 5
+GIVE 仙·诅咒の靴 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·诅咒の靴】|252:251:1}..
+break
+#IF
+CHECKITEM  诅咒の靴 5
+CHECKITEM  魔尊の靴 2
+#ACT
+TAKE 魔尊の靴 2
+TAKE 诅咒の靴 5
+GIVE 仙·诅咒の靴 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·诅咒の靴】|252:251:1}..
+break
+#IF
+CHECKITEM  诅咒の靴 5
+CHECKITEM  阴龙の靴 2
+#ACT
+TAKE 阴龙の靴 2
+TAKE 诅咒の靴 5
+GIVE 仙·诅咒の靴 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·诅咒の靴】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@诅咒腰带]
+#IF
+CHECKITEM  诅咒の带 5
+CHECKITEM  金刚の带 2
+#ACT
+TAKE 金刚の带 2
+TAKE 诅咒の带 5
+GIVE 仙·诅咒の带 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·诅咒の带】|252:251:1}..
+break
+#IF
+CHECKITEM  诅咒の带 5
+CHECKITEM  魔尊の带 2
+#ACT
+TAKE 魔尊の带 2
+TAKE 诅咒の带 5
+GIVE 仙·诅咒の带 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·诅咒の带】|252:251:1}..
+break
+#IF
+CHECKITEM  诅咒の带 5
+CHECKITEM  阴龙の带 2
+#ACT
+TAKE 阴龙の带 2
+TAKE 诅咒の带 5
+GIVE 仙·诅咒の带 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·诅咒の带】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@傀儡の隐]
+#IF
+CHECKITEM  傀儡の隐 5
+CHECKITEM  金刚の镯 2
+#ACT
+TAKE 金刚の镯 2
+TAKE 傀儡の隐 5
+GIVE 仙·傀儡の隐 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·傀儡の隐】|252:251:1}..
+break
+#IF
+CHECKITEM  傀儡の隐 5
+CHECKITEM  魔尊の镯 2
+#ACT
+TAKE 魔尊の镯 2
+TAKE 傀儡の隐 5
+GIVE 仙·傀儡の隐 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·傀儡の隐】|252:251:1}..
+break
+#IF
+CHECKITEM  傀儡の隐 5
+CHECKITEM  阴龙の镯 2
+#ACT
+TAKE 阴龙の镯 2
+TAKE 傀儡の隐 5
+GIVE 仙·傀儡の隐 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·傀儡の隐】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@守护の神]
+#IF
+CHECKITEM  守护の神 5
+CHECKITEM  金刚の镯 2
+#ACT
+TAKE 金刚の镯 2
+TAKE 守护の神 5
+GIVE 仙·守护の神 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·守护の神】|252:251:1}..
+break
+#IF
+CHECKITEM  守护の神 5
+CHECKITEM  魔尊の镯 2
+#ACT
+TAKE 魔尊の镯 2
+TAKE 守护の神 5
+GIVE 仙·守护の神 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·守护の神】|252:251:1}..
+break
+#IF
+CHECKITEM  守护の神 5
+CHECKITEM  阴龙の镯 2
+#ACT
+TAKE 阴龙の镯 2
+TAKE 守护の神 5
+GIVE 仙·守护の神 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·守护の神】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@战神の帝]
+#IF
+CHECKITEM  战神の帝 5
+CHECKITEM  金刚の盔 2
+#ACT
+TAKE 金刚の盔 2
+TAKE 战神の帝 5
+GIVE 仙·战神の帝 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·战神の帝】|252:251:1}..
+break
+#IF
+CHECKITEM  战神の帝 5
+CHECKITEM  魔尊の盔 2
+#ACT
+TAKE 魔尊の盔 2
+TAKE 战神の帝 5
+GIVE 仙·战神の帝 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·战神の帝】|252:251:1}..
+break
+#IF
+CHECKITEM  战神の帝 5
+CHECKITEM  阴龙の盔 2
+#ACT
+TAKE 阴龙の盔 2
+TAKE 战神の帝 5
+GIVE 仙·战神の帝 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【仙·战神の帝】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@无极道袍]
+#IF
+CHECKITEM  无极道袍 5
+CHECKITEM  神·骑士道袍(女) 2
+#ACT
+TAKE 神·骑士道袍(女) 2
+TAKE 无极道袍 5
+GIVE 阴龙の袍 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【阴龙の袍】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@无极道甲]
+#IF
+CHECKITEM  无极道甲 5
+CHECKITEM  神·骑士道袍(男) 2
+#ACT
+TAKE 神·骑士道袍(男) 2
+TAKE 无极道甲 5
+GIVE 阴龙の甲 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【阴龙の甲】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@无极玄天]
+#IF
+CHECKITEM  无极玄天 5
+CHECKITEM  神·天尊之扇 2
+#ACT
+TAKE 神·天尊之扇 2
+TAKE 无极玄天 5
+GIVE 阴龙の剑 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【阴龙の剑】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@无极腰带]
+#IF
+CHECKITEM  无极腰带 5
+CHECKITEM  神·土域腰带 2
+#ACT
+TAKE 神·土域腰带 2
+TAKE 无极腰带 5
+GIVE 阴龙の带 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【阴龙の带】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@无极靴]
+#IF
+CHECKITEM  无极靴 5
+CHECKITEM  神·土域靴 2
+#ACT
+TAKE 神·土域靴 2
+TAKE 无极靴 5
+GIVE 阴龙の靴 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【阴龙の靴】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@无极戒指]
+#IF
+CHECKITEM  无极戒指 5
+CHECKITEM  神·土域戒指 2
+#ACT
+TAKE 神·土域戒指 2
+TAKE 无极戒指 5
+GIVE 阴龙の戒 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【阴龙の戒】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@无极手镯]
+#IF
+CHECKITEM  无极手镯 5
+CHECKITEM  神·土域手镯 2
+#ACT
+TAKE 神·土域手镯 2
+TAKE 无极手镯 5
+GIVE 阴龙の镯 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【阴龙の镯】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+
+[@无极项链]
+#IF
+CHECKITEM  无极项链 5
+CHECKITEM  神·土域项链 2
+#ACT
+TAKE 神·土域项链 2
+TAKE 无极项链 5
+GIVE 阴龙の链 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【阴龙の链】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@无极头盔]
+#IF
+CHECKITEM  无极头盔 5
+CHECKITEM  神·道域头盔 2
+#ACT
+TAKE 神·道域头盔 2
+TAKE 无极头盔 5
+GIVE 阴龙の盔 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【阴龙の盔】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@魔神魔袍]
+#IF
+CHECKITEM  魔神魔袍 5
+CHECKITEM  神·骑士魔袍(女) 2
+#ACT
+TAKE 神·骑士魔袍(女) 2
+TAKE 魔神魔袍 5
+GIVE 魔尊の袍 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【魔尊の袍】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@魔神魔甲]
+#IF
+CHECKITEM  魔神魔甲 5
+CHECKITEM  神·骑士魔袍(男) 2
+#ACT
+TAKE 神·骑士魔袍(男) 2
+TAKE 魔神魔甲 5
+GIVE 魔尊の甲 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【魔尊の甲】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@魔神镇天]
+#IF
+CHECKITEM  魔神镇天 5
+CHECKITEM  神·恶魔权杖 2
+#ACT
+TAKE 神·恶魔权杖 2
+TAKE 魔神镇天 5
+GIVE 魔尊の杖 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【魔尊の杖】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@魔神腰带]
+#IF
+CHECKITEM  魔神腰带 5
+CHECKITEM  神·水域腰带 2
+#ACT
+TAKE 神·水域腰带 2
+TAKE 魔神腰带 5
+GIVE 魔尊の带 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【魔尊の带】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@魔神靴]
+#IF
+CHECKITEM  魔神靴 5
+CHECKITEM  神·水域靴 2
+#ACT
+TAKE 神·水域靴 2
+TAKE 魔神靴 5
+GIVE 魔尊の靴 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【魔尊の靴】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@魔神戒指]
+#IF
+CHECKITEM  魔神戒指 5
+CHECKITEM  神·水域戒指 2
+#ACT
+TAKE 神·水域戒指 2
+TAKE 魔神戒指 5
+GIVE 魔尊の戒 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【魔尊の戒】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@魔神手镯]
+#IF
+CHECKITEM  魔神手镯 5
+CHECKITEM  神·水域手镯 2
+#ACT
+TAKE 神·水域手镯 2
+TAKE 魔神手镯 5
+GIVE 魔尊の镯 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【魔尊の镯】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+
+[@魔神项链]
+#IF
+CHECKITEM  魔神项链 5
+CHECKITEM  神·水域项链 2
+#ACT
+TAKE 神·水域项链 2
+TAKE 魔神项链 5
+GIVE 魔尊の链 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【魔尊の链】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@魔神头盔]
+#IF
+CHECKITEM  魔神头盔 5
+CHECKITEM  神·勇士头盔 2
+#ACT
+TAKE 神·勇士头盔 2
+TAKE 魔神头盔 5
+GIVE 魔尊の盔 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【魔尊の盔】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+
+[@轩辕战袍]
+#IF
+CHECKITEM  轩辕战袍 5
+CHECKITEM  神·骑士战袍(女) 2
+#ACT
+TAKE 神·骑士战袍(女) 2
+TAKE 轩辕战袍 5
+GIVE 金刚の袍 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【金刚の袍】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@轩辕战甲]
+#IF
+CHECKITEM  轩辕战甲 5
+CHECKITEM  神·骑士战袍(男) 2
+#ACT
+TAKE 神·骑士战袍(男) 2
+TAKE 轩辕战甲 5
+GIVE 金刚の甲 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【金刚の甲】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@轩辕开天]
+#IF
+CHECKITEM  轩辕开天 5
+CHECKITEM  神·绿玉屠龙 2
+#ACT
+TAKE 神·绿玉屠龙 2
+TAKE 轩辕开天 5
+GIVE 金刚の刃 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【金刚の刃】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@轩辕腰带]
+#IF
+CHECKITEM  轩辕腰带 5
+CHECKITEM  神·铜域腰带 2
+#ACT
+TAKE 神·铜域腰带 2
+TAKE 轩辕腰带 5
+GIVE 金刚の带 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【金刚の带】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@轩辕靴]
+#IF
+CHECKITEM  轩辕靴 5
+CHECKITEM  神·铜域靴 2
+#ACT
+TAKE 神·铜域靴 2
+TAKE 轩辕靴 5
+GIVE 金刚の靴 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【金刚の靴】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@轩辕戒指]
+#IF
+CHECKITEM  轩辕戒指 5
+CHECKITEM  神·铜域戒指 2
+#ACT
+TAKE 神·铜域戒指 2
+TAKE 轩辕戒指 5
+GIVE 金刚の戒 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【金刚の戒】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@轩辕手镯]
+#IF
+CHECKITEM  轩辕手镯 5
+CHECKITEM  神·铜域手镯 2
+#ACT
+TAKE 神·铜域手镯 2
+TAKE 轩辕手镯 5
+GIVE 金刚の镯 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【金刚の镯】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+
+[@轩辕项链]
+#IF
+CHECKITEM  轩辕项链 5
+CHECKITEM  神·铜域项链 2
+#ACT
+TAKE 神·铜域项链 2
+TAKE 轩辕项链 5
+GIVE 金刚の链 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【金刚の链】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@轩辕头盔]
+#IF
+CHECKITEM  轩辕头盔 5
+CHECKITEM  神·宙迪头盔 2
+#ACT
+TAKE 神·宙迪头盔 2
+TAKE 轩辕头盔 5
+GIVE 金刚の盔 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【金刚の盔】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@土域系列]
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+<------------------------------------------------------------/SCOLOR=13>\
+<合成需要相同装备5件合成印系装备，例如道域头盔*5合成神·道域头盔/SCOLOR=255>\
+<------------------------------------------------------------/SCOLOR=13>\ \
+<><神·道域头盔|250#需要道域头盔*5/@道域头盔>        <神·土域项链|250#需要土域项链*5/@土域项链>       <神·土域手镯|250#需要土域手镯*5/@土域手镯>\ \
+<><神·土域戒指|250#需要土域戒指*5/@土域戒指>        <铜 域 靴[印]|250#需要土域靴*5/@土域靴>       <神·土域腰带|250#需要土域腰带*5/@土域腰带>\ \
+<><神·天尊之扇|250#需要天尊之扇*5/@天尊之扇>        <骑士男道[印]|250#需要骑士道袍(男)*5/@骑士男道>       <骑士女道[印]|250#需要骑士道袍(女)*5/@骑士女道>\ \
+
+[@骑士女道]
+#IF
+CHECKITEM  骑士道袍(女) 5
+#ACT
+TAKE 骑士道袍(女) 5
+GIVE 神·骑士道袍(女) 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·骑士道袍(女)】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@骑士男道]
+#IF
+CHECKITEM  骑士道袍(男) 5
+#ACT
+TAKE 骑士道袍(男) 5
+GIVE 神·骑士道袍(男) 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·骑士道袍(男)】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@天尊之扇]
+#IF
+CHECKITEM  天尊之扇 5
+#ACT
+TAKE 天尊之扇 5
+GIVE 神·天尊之扇 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·天尊之扇】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@土域腰带]
+#IF
+CHECKITEM  土域腰带 5
+#ACT
+TAKE 土域腰带 5
+GIVE 神·土域腰带 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·土域腰带】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@土域靴]
+#IF
+CHECKITEM  土域靴 5
+#ACT
+TAKE 土域靴 5
+GIVE 神·土域靴 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·土域靴】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@土域戒指]
+#IF
+CHECKITEM  土域戒指 5
+#ACT
+TAKE 土域戒指 5
+GIVE 神·土域戒指 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·土域戒指】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@土域手镯]
+#IF
+CHECKITEM  土域手镯 5
+#ACT
+TAKE 土域手镯 5
+GIVE 神·土域手镯 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·土域手镯】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@土域项链]
+#IF
+CHECKITEM  土域项链 5
+#ACT
+TAKE 土域项链 5
+GIVE 神·土域项链 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·土域项链】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@道域头盔]
+#IF
+CHECKITEM  道域头盔 5
+#ACT
+TAKE 道域头盔 5
+GIVE 神·道域头盔 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·道域头盔】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@水域系列]
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+<------------------------------------------------------------/SCOLOR=13>\
+<合成需要相同装备5件合成印系装备，例如勇士头盔*5合成神·勇士头盔/SCOLOR=255>\
+<------------------------------------------------------------/SCOLOR=13>\ \
+<><神·勇士头盔|250#需要勇士头盔*5/@勇士头盔>        <神·水域项链|250#需要水域项链*5/@水域项链>       <神·水域手镯|250#需要水域手镯*5/@水域手镯>\ \
+<><神·水域戒指|250#需要水域戒指*5/@水域戒指>        <铜 域 靴[印]|250#需要水域靴*5/@水域靴>       <神·水域腰带|250#需要水域腰带*5/@水域腰带>\ \
+<><神·恶魔权杖|250#需要恶魔权杖*5/@恶魔权杖>        <骑士男魔[印]|250#需要骑士魔袍(男)*5/@骑士男魔>       <骑士女魔[印]|250#需要骑士魔袍(女)*5/@骑士女魔>\ \
+
+[@骑士女魔]
+#IF
+CHECKITEM  骑士魔袍(女) 5
+#ACT
+TAKE 骑士魔袍(女) 5
+GIVE 神·骑士魔袍(女) 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·骑士魔袍(女)】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@骑士男魔]
+#IF
+CHECKITEM  骑士魔袍(男) 5
+#ACT
+TAKE 骑士魔袍(男) 5
+GIVE 神·骑士魔袍(男) 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·骑士魔袍(男)】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+
+[@恶魔权杖]
+#IF
+CHECKITEM  恶魔权杖 5
+#ACT
+TAKE 恶魔权杖 5
+GIVE 神·恶魔权杖 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·恶魔权杖】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@水域腰带]
+#IF
+CHECKITEM  水域腰带 5
+#ACT
+TAKE 水域腰带 5
+GIVE 神·水域腰带 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·水域腰带】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@水域靴]
+#IF
+CHECKITEM  水域靴 5
+#ACT
+TAKE 水域靴 5
+GIVE 神·水域靴 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·水域靴】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@水域戒指]
+#IF
+CHECKITEM  水域戒指 5
+#ACT
+TAKE 水域戒指 5
+GIVE 神·水域戒指 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·水域戒指】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@水域手镯]
+#IF
+CHECKITEM  水域手镯 5
+#ACT
+TAKE 水域手镯 5
+GIVE 神·水域手镯 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·水域手镯】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@水域项链]
+#IF
+CHECKITEM  水域项链 5
+#ACT
+TAKE 水域项链 5
+GIVE 神·水域项链 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·水域项链】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@勇士头盔]
+#IF
+CHECKITEM  勇士头盔 5
+#ACT
+TAKE 勇士头盔 5
+GIVE 神·勇士头盔 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·勇士头盔】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@铜域系列]
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+<------------------------------------------------------------/SCOLOR=13>\
+<合成需要相同装备5件合成印系装备，例如宙迪头盔*5合成神·宙迪头盔/SCOLOR=255>\
+<------------------------------------------------------------/SCOLOR=13>\ \
+<><神·宙迪头盔|250#需要宙迪头盔*5/@宙迪头盔>        <神·铜域项链|250#需要铜域项链*5/@铜域项链>       <神·铜域手镯|250#需要铜域手镯*5/@铜域手镯>\ \
+<><神·铜域戒指|250#需要铜域戒指*5/@铜域戒指>        <铜 域 靴[印]|250#需要铜域靴*5/@铜域靴>       <神·铜域腰带|250#需要铜域腰带*5/@铜域腰带>\ \
+<><神·绿玉屠龙|250#需要绿玉屠龙*5/@绿玉屠龙>        <骑士男袍[印]|250#需要骑士战袍(男)*5/@骑士男袍>       <骑士女袍[印]|250#需要骑士战袍(女)*5/@骑士女袍>\ \
+
+
+[@骑士女袍]
+#IF
+CHECKITEM  骑士战袍(女) 5
+#ACT
+TAKE 骑士战袍(女) 5
+GIVE 神·骑士战袍(女) 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·骑士战袍(女)】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@骑士男袍]
+#IF
+CHECKITEM  骑士战袍(男) 5
+#ACT
+TAKE 骑士战袍(男) 5
+GIVE 神·骑士战袍(男) 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·骑士战袍(男)】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@绿玉屠龙]
+#IF
+CHECKITEM  绿玉屠龙 5
+#ACT
+TAKE 绿玉屠龙 5
+GIVE 神·绿玉屠龙 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·绿玉屠龙】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@铜域腰带]
+#IF
+CHECKITEM  铜域腰带 5
+#ACT
+TAKE 铜域腰带 5
+GIVE 神·铜域腰带 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·铜域腰带】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@铜域靴]
+#IF
+CHECKITEM  铜域靴 5
+#ACT
+TAKE 铜域靴 5
+GIVE 神·铜域靴 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·铜域靴】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@铜域戒指]
+#IF
+CHECKITEM  铜域戒指 5
+#ACT
+TAKE 铜域戒指 5
+GIVE 神·铜域戒指 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·铜域戒指】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@铜域手镯]
+#IF
+CHECKITEM  铜域手镯 5
+#ACT
+TAKE 铜域手镯 5
+GIVE 神·铜域手镯 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·铜域手镯】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@铜域项链]
+#IF
+CHECKITEM  铜域项链 5
+#ACT
+TAKE 铜域项链 5
+GIVE 神·铜域项链 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·铜域项链】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+[@宙迪头盔]
+#IF
+CHECKITEM  宙迪头盔 5
+#ACT
+TAKE 宙迪头盔 5
+GIVE 神·宙迪头盔 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(印装合成)|254:0:1}合成了{【神·宙迪头盔】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX \材料不足无法合成！
+break
+
+[@元素传承]
+
+#IF
+#ACT
+#say
+\ \ \
+　<转移费用：白手转移/SCOLOR=87>\
+<ITEMBOX:2:11:250:98:68:50:50:*:254#请放入有属性的印装><ITEMBOX:3:11:250:205:68:50:50:*:251#请放入无属性的印装>\ \ \
+
+　　　　　　　　　　<属性转移/@属性转移>\
+[@ItemIntoBox2]
+#IF
+Checktextlist	..\QuestDiary\游戏功能\印装元素.txt	<$BOXITEM[2].NAME>
+#Act
+#Elseact
+Messagebox 该装备无法转移！
+ReturnBoxItem 2
+Break
+[@ItemIntoBox3]
+#IF
+Checktextlist	..\QuestDiary\游戏功能\印装元素.txt	<$BOXITEM[3].NAME>
+#Act
+#Elseact
+Messagebox 该装备无法转移！
+ReturnBoxItem 3
+Break
+
+[@属性转移]
+#If
+checkboxitemcount 2 1
+checkboxitemcount 3 1
+#ELSEACT
+MessageBox [系统]：\　\　　　　　请放入你要转移的印装！~
+Break
+ 
+#IF
+#Act
+Setupgradeitem 3
+
+
+
+#IF
+#Act
+Setupgradeitem 2
+GetItemFieldValue -1 uelement1 N$攻伤
+GetItemFieldValue -1 uelement2 N$物减
+GetItemFieldValue -1 uelement3 N$魔减
+GetItemFieldValue -1 uelement7 N$体力
+GetItemFieldValue -1 uelement8 N$魔力
+Setnewitemvalue -1 1 = 0
+Setnewitemvalue -1 2 = 0
+Setnewitemvalue -1 3 = 0
+Setnewitemvalue -1 7 = 0
+Setnewitemvalue -1 8 = 0
+UpdateITem Boxitem2
+Setupgradeitem 3
+SetNewItemValue -1 1 = <$Str(N$攻伤)>
+SetNewItemValue -1 2 = <$Str(N$物减)>
+SetNewItemValue -1 3 = <$Str(N$魔减)>
+SetNewItemValue -1 7 = <$Str(N$体力)>
+SetNewItemValue -1 8 = <$Str(N$魔力)>
+UpdateITem Boxitem3
+MessageBox [系统]：\　\　　　　　属性转移成功！~
+Break
+
+

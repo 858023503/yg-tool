@@ -1,0 +1,4 @@
+[@main]
+#IF
+#ACT
+#CALL [\BUFF´¥·¢\BUFF.txt] @BUFFa

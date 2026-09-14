@@ -1,0 +1,10 @@
+[@Body]
+{
+[@ActiveTitle_2]
+#ACT
+SetBodyColor 18 0
+
+[@UnActiveTitle_2]
+#ACT
+SetBodyColor 255 0
+}

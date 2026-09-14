@@ -1,0 +1,32 @@
+[@main]
+冲破封印，前面就是玛法勇士们梦寐以求的家园--神龙帝国了。\\
+
+<进入神龙帝国/@go>  \ 
+
+
+[@go]
+#IF
+CheckItem  一星龙珠 1
+CheckItem  二星龙珠 1
+CheckItem  三星龙珠 1
+CheckItem  四星龙珠 1
+CheckItem  五星龙珠 1
+CheckItem  六星龙珠 1
+CheckItem  七星龙珠 1
+CheckItem  八星龙珠 1
+CheckItem  九星龙珠 1
+CHECKLEVELEX > 87
+#act
+take  一星龙珠 1
+take  二星龙珠 1
+take  三星龙珠 1
+take  四星龙珠 1
+take  五星龙珠 1
+take  六星龙珠 1
+take  七星龙珠 1
+take  八星龙珠 1
+take  九星龙珠 1
+MAPMOVE sldg  484 476
+#elsesay
+你好像没有集齐九颗龙珠或者等级低于88。
+

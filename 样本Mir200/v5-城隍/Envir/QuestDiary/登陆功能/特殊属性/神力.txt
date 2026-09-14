@@ -1,0 +1,61 @@
+[@开始计算人物神力]
+{
+#IF
+#ACT
+MOV N$人物实际神力 100
+MOV N$王冠神力 0
+INC N$人物实际神力 <$STR(U109)>
+INC N$人物实际神力 <$STR(U107)>
+INC N$人物实际神力 <$STR(N$套装神力加成)>
+INC N$人物实际神力 <$STR(N$背包加成人物攻击倍数)>
+INC N$人物实际神力 <$STR(N$神助词缀取值)>
+INC N$人物实际神力 <$STR(N$魔兽神佑倍攻加成)>
+INC N$人物实际神力 <$STR(N$咸鱼淬炼词条攻击倍数加成)>
+
+#IF
+CHECKITEMW 酆都王冠
+ISGUILDMASTER
+#ACT
+GETGUILDMEMBERCOUNT <$GUILDNAME> N$王冠神力行会在线人数 1
+DIV N$王冠神力 <$STR(N$王冠神力行会在线人数)> 2
+
+#IF
+LARGE N$王冠神力 20
+#ACT
+MOV N$王冠神力 20
+
+#IF
+#ACT
+INC N$人物实际神力 <$STR(N$王冠神力)>
+
+#OR
+CHECKITEMW 开天
+CHECKITEMW 镇天
+#ACT
+INC N$人物实际神力 5
+
+#IF
+CHECKITEMW 世界树叶
+#ACT
+INC N$人物实际神力 3
+
+#IF
+CHECKITEMW 孽镜台
+LARGE <$PKPOINT> 199
+#ACT
+INC N$人物实际神力 8
+
+#IF
+LARGE <$LUCK> 9
+#ACT
+MOV N$幸运加成神力 <$LUCK>
+DEC N$幸运加成神力 9
+DIV N$幸运加成神力 2
+INC N$人物实际神力 <$STR(N$幸运加成神力)>
+
+#IF
+NOT EQUAL N$人物实际神力 <$STR(N$上次记录人物神力)>
+#ACT
+MOV N$上次记录人物神力 <$STR(N$人物实际神力)>
+POWERRATE <$STR(N$人物实际神力)> 0 0 1 2
+}

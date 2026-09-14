@@ -1,0 +1,6 @@
+[@Body]
+{
+[@StartUP]
+#CALL [a西伯利亚\地图链接.txt] @加载地图链接
+#CALL [a西伯利亚\加载CSV.txt] @开始加载CSV
+}

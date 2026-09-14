@@ -1,0 +1,507 @@
+[@金甲]
+{
+#IF
+#ACT
+MOV S$金甲名称 金甲骷髅
+MOV N$金甲数量 1
+MOV N$金甲等级 0
+MOV N$金甲召唤加成 0
+
+#or
+Checkitemw 承影剑 1
+Checkitemw 干将莫邪 1
+Checkitemw 七星龙渊 1
+Checkitemw [仙]·一眼万年 1
+#ACT
+INC N$金甲召唤加成 100
+
+#if
+Checkitemw 兽王の令 1
+#ACT
+INC N$金甲召唤加成 30
+
+#if
+Checkitemw 英雄之翼 1
+#ACT
+INC N$金甲召唤加成 20
+
+#IF
+CHECKITEMW 英雄徽章lv1 1
+CHECKSKILL 金甲骷髅 = 0 1
+#ACT
+MOV S$金甲名称 金甲骷髅
+MOV N$金甲等级 1
+
+#IF
+CHECKITEMW 英雄徽章lv1 1
+CHECKSKILL 金甲骷髅 > 0 1
+#ACT
+MOV S$金甲名称 金甲骷髅
+MOV N$金甲等级 7
+
+
+#IF
+CHECKITEMW 英雄徽章lv2 1
+CHECKSKILL 金甲骷髅 > 0 1
+#ACT
+MOV S$金甲名称 金甲骷髅
+MOV N$金甲等级 9
+
+
+#IF
+CHECKITEMW 英雄徽章lv2 1
+CHECKSKILL 金甲骷髅 = 0 1
+#ACT
+MOV S$金甲名称 金甲骷髅
+MOV N$金甲等级 7
+
+#IF
+CHECKITEMW 英雄徽章lv3 1
+CHECKSKILL 金甲骷髅 > 1 1
+#ACT
+MOV S$金甲名称 金甲骷髅[战神]
+MOV N$金甲等级 9
+
+
+#IF
+CHECKITEMW 英雄徽章lv3 1
+CHECKSKILL 金甲骷髅 < 2 1
+#ACT
+MOV S$金甲名称 金甲骷髅
+MOV N$金甲等级 9
+
+
+#IF
+CHECKITEMW 英雄徽章lv4 1
+CHECKSKILL 金甲骷髅 > 2 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武圣]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv4 1
+CHECKSKILL 金甲骷髅 = 2 1
+#ACT
+MOV S$金甲名称 金甲骷髅[战神]
+MOV N$金甲等级 1
+
+#IF
+CHECKITEMW 英雄徽章lv4 1
+CHECKSKILL 金甲骷髅 < 2 1
+#ACT
+MOV S$金甲名称 金甲骷髅
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv5 1
+CHECKSKILL 金甲骷髅 > 3 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武神]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv5 1
+CHECKSKILL 金甲骷髅 = 3 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武圣]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv5 1
+CHECKSKILL 金甲骷髅 = 2 1
+#ACT
+MOV S$金甲名称 金甲骷髅[战神]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv5 1
+CHECKSKILL 金甲骷髅 < 2 1
+#ACT
+MOV S$金甲名称 金甲骷髅
+MOV N$金甲等级 9
+
+
+#IF
+CHECKITEMW 英雄徽章lv6 1
+CHECKSKILL 金甲骷髅 > 4 1
+#ACT
+MOV S$金甲名称 金甲骷髅[战狂]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv6 1
+CHECKSKILL 金甲骷髅 = 4 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武神]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv6 1
+CHECKSKILL 金甲骷髅 = 3 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武圣]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv6 1
+CHECKSKILL 金甲骷髅 = 2 1
+#ACT
+MOV S$金甲名称 金甲骷髅[战神]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv6 1
+CHECKSKILL 金甲骷髅 < 2 1
+#ACT
+MOV S$金甲名称 金甲骷髅
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv7 1
+CHECKSKILL 金甲骷髅 > 5 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武狂]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv7 1
+CHECKSKILL 金甲骷髅 = 5 1
+#ACT
+MOV S$金甲名称 金甲骷髅[战狂]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv7 1
+CHECKSKILL 金甲骷髅 = 4 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武神]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv7 1
+CHECKSKILL 金甲骷髅 = 3 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武圣]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv7 1
+CHECKSKILL 金甲骷髅 = 2 1
+#ACT
+MOV S$金甲名称 金甲骷髅[战神]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv7 1
+CHECKSKILL 金甲骷髅 < 2 1
+#ACT
+MOV S$金甲名称 金甲骷髅
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv8 1
+CHECKSKILL 金甲骷髅 > 6 1
+#ACT
+MOV S$金甲名称 金甲骷髅[狂暴]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv8 1
+CHECKSKILL 金甲骷髅 = 6 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武狂]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv8 1
+CHECKSKILL 金甲骷髅 = 5 1
+#ACT
+MOV S$金甲名称 金甲骷髅[战狂]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv8 1
+CHECKSKILL 金甲骷髅 = 4 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武神]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv8 1
+CHECKSKILL 金甲骷髅 = 3 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武圣]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv8 1
+CHECKSKILL 金甲骷髅 = 2 1
+#ACT
+MOV S$金甲名称 金甲骷髅[战神]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv8 1
+CHECKSKILL 金甲骷髅 < 2 1
+#ACT
+MOV S$金甲名称 金甲骷髅
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv9 1
+CHECKSKILL 金甲骷髅 > 7 1
+#ACT
+MOV S$金甲名称 金甲骷髅[恐惧]
+MOV N$金甲等级 9
+
+
+#IF
+CHECKITEMW 英雄徽章lv9 1
+CHECKSKILL 金甲骷髅 = 7 1
+#ACT
+MOV S$金甲名称 金甲骷髅[狂暴]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv9 1
+CHECKSKILL 金甲骷髅 = 6 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武狂]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv9 1
+CHECKSKILL 金甲骷髅 = 5 1
+#ACT
+MOV S$金甲名称 金甲骷髅[战狂]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv9 1
+CHECKSKILL 金甲骷髅 = 4 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武神]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv9 1
+CHECKSKILL 金甲骷髅 = 3 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武圣]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv9 1
+CHECKSKILL 金甲骷髅 = 2 1
+#ACT
+MOV S$金甲名称 金甲骷髅[战神]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv9 1
+CHECKSKILL 金甲骷髅 < 2 1
+#ACT
+MOV S$金甲名称 金甲骷髅
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv10 1
+CHECKSKILL 金甲骷髅 = 9 1
+#ACT
+MOV S$金甲名称 金甲骷髅[无视]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv10 1
+CHECKSKILL 金甲骷髅 = 8 1
+#ACT
+MOV S$金甲名称 金甲骷髅[恐惧]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv10 1
+CHECKSKILL 金甲骷髅 = 7 1
+#ACT
+MOV S$金甲名称 金甲骷髅[狂暴]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv10 1
+CHECKSKILL 金甲骷髅 = 6 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武狂]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv10 1
+CHECKSKILL 金甲骷髅 = 5 1
+#ACT
+MOV S$金甲名称 金甲骷髅[战狂]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv10 1
+CHECKSKILL 金甲骷髅 = 4 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武神]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv10 1
+CHECKSKILL 金甲骷髅 = 3 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武圣]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv10 1
+CHECKSKILL 金甲骷髅 = 2 1
+#ACT
+MOV S$金甲名称 金甲骷髅[战神]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄徽章lv10 1
+CHECKSKILL 金甲骷髅 < 2 1
+#ACT
+MOV S$金甲名称 金甲骷髅
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄之翼 1
+CHECKSKILL 金甲骷髅 = 9 1
+#ACT
+MOV S$金甲名称 金甲骷髅[无视]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄之翼 1
+CHECKSKILL 金甲骷髅 = 8 1
+#ACT
+MOV S$金甲名称 金甲骷髅[恐惧]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄之翼 1
+CHECKSKILL 金甲骷髅 = 7 1
+#ACT
+MOV S$金甲名称 金甲骷髅[狂暴]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄之翼 1
+CHECKSKILL 金甲骷髅 = 6 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武狂]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄之翼 1
+CHECKSKILL 金甲骷髅 = 5 1
+#ACT
+MOV S$金甲名称 金甲骷髅[战狂]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄之翼 1
+CHECKSKILL 金甲骷髅 = 4 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武神]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄之翼 1
+CHECKSKILL 金甲骷髅 = 3 1
+#ACT
+MOV S$金甲名称 金甲骷髅[武圣]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄之翼 1
+CHECKSKILL 金甲骷髅 = 2 1
+#ACT
+MOV S$金甲名称 金甲骷髅[战神]
+MOV N$金甲等级 9
+
+#IF
+CHECKITEMW 英雄之翼 1
+CHECKSKILL 金甲骷髅 < 2 1
+#ACT
+MOV S$金甲名称 金甲骷髅
+MOV N$金甲等级 9
+
+
+#if
+#ACT
+KILLCALLMOB  金甲骷髅 3 1
+KILLCALLMOB  金甲骷髅[战神] 3 1
+KILLCALLMOB  金甲骷髅[武圣] 3 1
+KILLCALLMOB  金甲骷髅[武神] 3 1
+KILLCALLMOB  金甲骷髅[战狂] 3 1
+KILLCALLMOB  金甲骷髅[武狂] 3 1
+KILLCALLMOB  金甲骷髅[狂暴] 3 1
+KILLCALLMOB  金甲骷髅[恐惧] 3 1
+KILLCALLMOB  金甲骷髅[无视] 3 1
+KILLCALLMOB  先祖之魂 3 1
+KILLCALLMOB  远古骷髅王 3 1
+KILLCALLMOB  上古尸魔 3 1
+KILLCALLMOB  太阴 3 1
+
+
+
+RECALLMOB <$STR(S$金甲名称)> <$STR(N$金甲等级)> 600 1
+GOTO @金甲属性附加
+break
+
+[@金甲属性附加]
+#IF
+#ACT
+
+GetDBMonsterFieldValue <$STR(S$金甲名称)> AC    <$STR(N$宝宝自身防)>
+GetDBMonsterFieldValue <$STR(S$金甲名称)> MAC   <$STR(N$宝宝自身魔)>
+GetDBMonsterFieldValue <$STR(S$金甲名称)> DC    <$STR(N$宝宝自身攻)>
+GetDBMonsterFieldValue <$STR(S$金甲名称)> DCMAX <$STR(N$宝宝自身攻2)>
+
+MOV N$人物血加成  <$HP>
+MOV N$人物攻加成  <$SC>
+MOV N$人物攻加成2 <$MAXSC>
+MOV N$人物防加成  <$AC>
+MOV N$人物防加成2 <$MAXAC>
+MOV N$人物魔加成  <$MAC>
+MOV N$人物魔加成2 <$MAXMAC>
+
+
+CalcPercent <$STR(N$人物攻加成)>  <$STR(N$金甲召唤加成)> N$宝宝最终攻
+CalcPercent <$STR(N$人物攻加成2)> <$STR(N$金甲召唤加成)> N$宝宝最终攻2
+CalcPercent <$STR(N$人物防加成)>  <$STR(N$金甲召唤加成)> N$宝宝最终防
+CalcPercent <$STR(N$人物防加成2)> <$STR(N$金甲召唤加成)> N$宝宝最终防2
+CalcPercent <$STR(N$人物魔加成)>  <$STR(N$金甲召唤加成)> N$宝宝最终魔
+CalcPercent <$STR(N$人物魔加成2)> <$STR(N$金甲召唤加成)> N$宝宝最终魔2
+
+INC <$STR(N$宝宝最终攻)>  <$STR(N$宝宝自身攻)>
+INC <$STR(N$宝宝最终攻2)> <$STR(N$宝宝自身攻2)>
+INC <$STR(N$宝宝最终防)> <$STR(N$宝宝自身防)>
+INC <$STR(N$宝宝最终防2)> <$STR(N$宝宝自身防)>
+INC <$STR(N$宝宝最终魔)> <$STR(N$宝宝自身魔)>
+INC <$STR(N$宝宝最终魔2)> <$STR(N$宝宝自身魔)>
+INC <$STR(N$宝宝最终攻2)> <$STR(N$宝宝)>
+
+ChangeSlaveAbility 8 <$STR(N$宝宝最终攻)> <$STR(S$金甲名称)>
+ChangeSlaveAbility 9 <$STR(N$宝宝最终攻2)> <$STR(S$金甲名称)>
+ChangeSlaveAbility 4 <$STR(N$宝宝最终防)> <$STR(S$金甲名称)>
+ChangeSlaveAbility 5 <$STR(N$宝宝最终防2)> <$STR(S$金甲名称)>
+ChangeSlaveAbility 6 <$STR(N$宝宝最终魔)> <$STR(S$金甲名称)>
+ChangeSlaveAbility 7 <$STR(N$宝宝最终魔2)> <$STR(S$金甲名称)>
+ChangeSlaveAbility 15 600 <$STR(S$金甲名称)>
+ChangeSlaveAbility 30
+RecalcSlaveAbility <$STR(S$金甲名称)>
+break
+
+
+
+
+
+
+
+
+}

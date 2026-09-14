@@ -1,0 +1,21 @@
+[@龙袭风暴开关]
+{
+
+
+#IF
+EQUAL N$龙袭风暴开关 1
+#ACT
+MOV N$龙袭风暴开关 0
+setofftimer  36
+sendmsg 7 【提示】关闭龙袭风暴
+BREAK
+#IF
+EQUAL N$龙袭风暴开关 0
+#ACT
+
+MOV N$龙袭风暴开关 1
+setontimer 36 1
+sendmsg 7 【提示】龙袭风暴已开启,每秒对所有怪物造成10次伤害
+BREAK
+
+}

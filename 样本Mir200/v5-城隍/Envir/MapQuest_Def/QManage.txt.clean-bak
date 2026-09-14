@@ -1,0 +1,52 @@
+#include 随身工坊参数.txt
+#include 咸鱼淬炼参数.txt
+#CALL [a西伯利亚\通用触发段.txt] @Body
+#CALL [a西伯利亚\QM\NewHuman.txt] @Body
+#CALL [a西伯利亚\QM\StartUP.txt] @Body
+#CALL [a西伯利亚\QM\Robot.txt] @Body
+#CALL [a西伯利亚\QM\Login.txt] @Body
+#CALL [a西伯利亚\QM\定时器\2秒定时器.txt] @Body
+#CALL [a西伯利亚\QM\定时器\10秒定时器.txt] @Body
+#CALL [a西伯利亚\QM\定时器\管理测试用定时器.txt] @Body
+#CALL [a西伯利亚\QF\自定按钮\时装界面DNF装备.txt] @Body
+#CALL [\a西伯利亚\QF\自定按钮\时装界面魔兽神佑.txt] @Body
+[@Login]
+
+;TOOL_INJECTED_START
+;存销写入记录结束,请勿删除,元歌工具箱
+#IF
+NOT ISDUMMY
+#ACT
+#CALL [\商店功能\存销变量初始化.txt] @存销变量初始化
+mov S$用户数据存储地址 ..\..\..\..\通区文件\城隍\<$USERID>_<$USERNAME>.ini
+mov S$物品数据存储地址 ..\..\..\..\通区文件\城隍\物品数据\
+mov S$地图数据存储地址 ..\..\..\..\通区文件\城隍\地图数据\
+mov S$本地物品数据存储地址 ..\QuestDiary\武器\
+#CALL [\商店功能\界面配置读取.txt] @界面配置读取
+mov N$虾米资源编号 123
+ADDBUTTON <$STR(N$虾米资源编号)> 200 10 11 12 10 92 1 -1
+
+#IF
+NOT ISDUMMY
+ISNEWHUMAN
+#ACT
+#CALL [\商店功能\创建文件.txt] @创建文件
+;TOOL_INJECTED_END
+;TOOL_STORE_TIMER_START
+[@OnTimer51]
+#IF
+#ACT
+MOV S$用户数据存储地址 ..\..\..\..\通区文件\城隍\<$USERID>_<$USERNAME>.ini
+MOV N$背包存储_定时开关 0
+ReadConfigFileItem S$用户数据存储地址 商店 背包存储定时 N$背包存储_定时开关
+
+#IF
+EQUAL N$背包存储_定时开关 1
+#ACT
+#CALL [\商店功能\商店.txt] @开启背包存储
+#IF
+NOT EQUAL N$背包存储_定时开关 1
+#ACT
+SetOffTimer 51
+BREAK
+;TOOL_STORE_TIMER_END

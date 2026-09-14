@@ -1,0 +1,173 @@
+[@MAIN]
+#IF
+#act
+OPENMERCHANTBIGDLG 5 941 1 4 -15 -52 1 360 20 1
+#say
+<&Text:100¸ö±ù¾§ËéÆ¬¿ÉËæ»ú¶Ò»»Ò»ÕÅ±ù¾§¿¨ÅÆ°²:40:60{FCOLOR=250;FSIZE=12;FNAME=ºÚÌå}>
+
+<&Text:Ã¿´ÎÊÕ·Ñ100000000½ð±Ò:40:80{FCOLOR=250;FSIZE=12;FNAME=ºÚÌå}>
+
+<&Text:Îå¸ö¿¨Æ¬¿ÉÒÔËæ»ú³éÈ¡Ò»ÕÅÐÂµÄ¿¨Æ¬:40:120{FCOLOR=250;FSIZE=12;FNAME=ºÚÌå}>
+<&Text:¶Ò»»±ù¾§¿¨Æ¬:50:185{FCOLOR=250;FSIZE=14;FNAME=ºÚÌå}/@¶Ò»»±ù¾§¿¨Æ¬>
+<&Text:³éÈ¡¿¨Æ¬:230:185{FCOLOR=250;FSIZE=14;FNAME=ºÚÌå}/@³éÈ¡¿¨Æ¬>
+[@¶Ò»»±ù¾§¿¨Æ¬]
+#if
+not CHECKGOLD 100000000
+#act
+messagebox ½ð±Ò²»×ã
+break
+
+#if
+checkitem ±ù¾§ËéÆ¬ 100
+#act
+take ½ð±Ò 100000000
+take ±ù¾§ËéÆ¬ 100
+GetCacheRandomText ..\QuestDiary\±ù¾§¿¨Æ¬\±ù¾§¿¨Æ¬.txt S$±ù¾§¿¨Æ¬
+GIVE <$STR(S$±ù¾§¿¨Æ¬)>
+#ELSEACT
+messagebox ²ÄÁÏ²»×ã
+
+[@³éÈ¡¿¨Æ¬]
+#if
+CHECKITEM ±ù¾§Ä§Öë 5
+#act
+TAKE ±ù¾§Ä§Öë 5
+GetCacheRandomText ..\QuestDiary\±ù¾§¿¨Æ¬\±ù¾§¿¨Æ¬.txt S$±ù¾§¿¨Æ¬
+GIVE <$STR(S$±ù¾§¿¨Æ¬)>
+BREAK
+
+#if
+CHECKITEM ±ù¾§ÌìÂ¿ 5
+#act
+TAKE ±ù¾§ÌìÂ¿ 5
+GetCacheRandomText ..\QuestDiary\±ù¾§¿¨Æ¬\±ù¾§¿¨Æ¬.txt S$±ù¾§¿¨Æ¬
+GIVE <$STR(S$±ù¾§¿¨Æ¬)>
+BREAK
+
+#if
+CHECKITEM ±ù¾§¶À½ÇÊÞ 5
+#act
+TAKE ±ù¾§¶À½ÇÊÞ 5
+GetCacheRandomText ..\QuestDiary\±ù¾§¿¨Æ¬\±ù¾§¿¨Æ¬.txt S$±ù¾§¿¨Æ¬
+GIVE <$STR(S$±ù¾§¿¨Æ¬)>
+BREAK
+
+#if
+CHECKITEM ±ù¾§¶ñÊó 5
+#act
+TAKE ±ù¾§¶ñÊó 5
+GetCacheRandomText ..\QuestDiary\±ù¾§¿¨Æ¬\±ù¾§¿¨Æ¬.txt S$±ù¾§¿¨Æ¬
+GIVE <$STR(S$±ù¾§¿¨Æ¬)>
+BREAK
+
+#if
+CHECKITEM ±ù¾§Î×Ê¦ 5
+#act
+TAKE ±ù¾§Î×Ê¦ 5
+GetCacheRandomText ..\QuestDiary\±ù¾§¿¨Æ¬\±ù¾§¿¨Æ¬.txt S$±ù¾§¿¨Æ¬
+GIVE <$STR(S$±ù¾§¿¨Æ¬)>
+BREAK
+
+#if
+CHECKITEM ±ù¾§µÁÔô 5
+#act
+TAKE ±ù¾§µÁÔô 5
+GetCacheRandomText ..\QuestDiary\±ù¾§¿¨Æ¬\±ù¾§¿¨Æ¬.txt S$±ù¾§¿¨Æ¬
+GIVE <$STR(S$±ù¾§¿¨Æ¬)>
+BREAK
+
+#if
+CHECKITEM ±ù¾§¸ç²¼ÁÖ 5
+#act
+TAKE ±ù¾§¸ç²¼ÁÖ 5
+GetCacheRandomText ..\QuestDiary\±ù¾§¿¨Æ¬\±ù¾§¿¨Æ¬.txt S$±ù¾§¿¨Æ¬
+GIVE <$STR(S$±ù¾§¿¨Æ¬)>
+BREAK
+
+#if
+CHECKITEM ±ù¾§ÂÌÄ§ 5
+#act
+TAKE ±ù¾§ÂÌÄ§ 5
+GetCacheRandomText ..\QuestDiary\±ù¾§¿¨Æ¬\±ù¾§¿¨Æ¬.txt S$±ù¾§¿¨Æ¬
+GIVE <$STR(S$±ù¾§¿¨Æ¬)>
+BREAK
+
+#if
+CHECKITEM ±ù¾§¶ÝµØÊÞ 5
+#act
+TAKE ±ù¾§¶ÝµØÊÞ 5
+GetCacheRandomText ..\QuestDiary\±ù¾§¿¨Æ¬\±ù¾§¿¨Æ¬.txt S$±ù¾§¿¨Æ¬
+GIVE <$STR(S$±ù¾§¿¨Æ¬)>
+BREAK
+
+#if
+CHECKITEM ±ù¾§ÓÄ»ê 5
+#act
+TAKE ±ù¾§ÓÄ»ê 5
+GetCacheRandomText ..\QuestDiary\±ù¾§¿¨Æ¬\±ù¾§¿¨Æ¬.txt S$±ù¾§¿¨Æ¬
+GIVE <$STR(S$±ù¾§¿¨Æ¬)>
+BREAK
+
+#if
+CHECKITEM ±ù¾§¹ÖÈË 5
+#act
+TAKE ±ù¾§¹ÖÈË 5
+GetCacheRandomText ..\QuestDiary\±ù¾§¿¨Æ¬\±ù¾§¿¨Æ¬.txt S$±ù¾§¿¨Æ¬
+GIVE <$STR(S$±ù¾§¿¨Æ¬)>
+BREAK
+
+#if
+CHECKITEM ±ù¾§¶öÀÇ 5
+#act
+TAKE ±ù¾§¶öÀÇ 5
+GetCacheRandomText ..\QuestDiary\±ù¾§¿¨Æ¬\±ù¾§¿¨Æ¬.txt S$±ù¾§¿¨Æ¬
+GIVE <$STR(S$±ù¾§¿¨Æ¬)>
+BREAK
+
+#if
+CHECKITEM ±ù¾§Ê¯ÈË 5
+#act
+TAKE ±ù¾§Ê¯ÈË 5
+GetCacheRandomText ..\QuestDiary\±ù¾§¿¨Æ¬\±ù¾§¿¨Æ¬.txt S$±ù¾§¿¨Æ¬
+GIVE <$STR(S$±ù¾§¿¨Æ¬)>
+BREAK
+
+#if
+CHECKITEM ±ù¾§ÓÄÀÇ 5
+#act
+TAKE ±ù¾§ÓÄÀÇ 5
+GetCacheRandomText ..\QuestDiary\±ù¾§¿¨Æ¬\±ù¾§¿¨Æ¬.txt S$±ù¾§¿¨Æ¬
+GIVE <$STR(S$±ù¾§¿¨Æ¬)>
+BREAK
+
+#if
+CHECKITEM ±ù¾§¾Þ×ìÊÞ 5
+#act
+TAKE ±ù¾§¾Þ×ìÊÞ 5
+GetCacheRandomText ..\QuestDiary\±ù¾§¿¨Æ¬\±ù¾§¿¨Æ¬.txt S$±ù¾§¿¨Æ¬
+GIVE <$STR(S$±ù¾§¿¨Æ¬)>
+BREAK
+
+#if
+CHECKITEM ±ù¾§¾§Ä§ 5
+#act
+TAKE ±ù¾§¾§Ä§ 5
+GetCacheRandomText ..\QuestDiary\±ù¾§¿¨Æ¬\±ù¾§¿¨Æ¬.txt S$±ù¾§¿¨Æ¬
+GIVE <$STR(S$±ù¾§¿¨Æ¬)>
+BREAK
+
+#if
+CHECKITEM ±ù¾§·¨ÀÏ 5
+#act
+TAKE ±ù¾§·¨ÀÏ 5
+GetCacheRandomText ..\QuestDiary\±ù¾§¿¨Æ¬\±ù¾§¿¨Æ¬.txt S$±ù¾§¿¨Æ¬
+GIVE <$STR(S$±ù¾§¿¨Æ¬)>
+BREAK
+
+#if
+CHECKITEM ±ù¾§ÈÌÊ¿ 5
+#act
+TAKE ±ù¾§ÈÌÊ¿ 5
+GetCacheRandomText ..\QuestDiary\±ù¾§¿¨Æ¬\±ù¾§¿¨Æ¬.txt S$±ù¾§¿¨Æ¬
+GIVE <$STR(S$±ù¾§¿¨Æ¬)>
+BREAK

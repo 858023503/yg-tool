@@ -1,0 +1,458 @@
+[@加载魔兽神佑]
+{
+#IF
+#ACT
+GOTO @_@初始化魔兽装备界面
+GOTO @_@计算魔兽装备加成
+GOTO @_@魔兽装备数值字符序列化
+OPENMERCHANTBIGDLG 0 2548 1 4 -200 0 1 508 17
+#SAY
+<$STR(S$一号魔兽装备位文本)>
+<$STR(S$二号魔兽装备位文本)>
+<$STR(S$三号魔兽装备位文本)>
+<$STR(S$四号魔兽装备位文本)>
+<$STR(S$五号魔兽装备位文本)>
+<$STR(S$六号魔兽装备位文本)>
+<$STR(S$七号魔兽装备位文本)>
+<$STR(S$八号魔兽装备位文本)>
+<$STR(S$九号魔兽装备位文本)>
+<$STR(S$十号魔兽装备位文本)>
+<$STR(S$十一号魔兽装备位文本)>
+<$STR(S$十二号魔兽装备位文本)>
+ 
+<&Text:三围转换比例：|70#力量、智力、精神可按比例转换为攻击、魔法、道术:250:20{FCOLOR=70}>
+<&Text:[<$STR(N$初始三维转化率)>%]:330:20{FCOLOR=250}/>\
+<                              >
+<力量点数：/SCOLOR=70><[<$STR(S$魔兽神佑力量点数)>/SCOLOR=250><转化攻击：/SCOLOR=254><[<$STR(N$魔兽神佑攻击加成)>]/SCOLOR=253>\
+<                              >
+<智力点数：/SCOLOR=70><[<$STR(S$魔兽神佑智力点数)>/SCOLOR=250><转化魔法：/SCOLOR=254><[<$STR(N$魔兽神佑魔法加成)>]/SCOLOR=253>\
+<                              >
+<精神点数：/SCOLOR=70><[<$STR(S$魔兽神佑精神点数)>/SCOLOR=250><转化道术：/SCOLOR=254><[<$STR(N$魔兽神佑道术加成)>]/SCOLOR=253>\
+<                              >
+<体力点数：/SCOLOR=70><[<$STR(S$魔兽神佑体力点数)>/SCOLOR=250><转化生命：|70#各职业初始加成比例不同^-^250#战士生命加成比例：{80%|249},魔力加成比例：{20%|249}^250#法师生命加成比例：{20%|249},魔力加成比例：{80%|249}^250#道士生命加成比例：{50%|249},魔力加成比例：{50%|249}^-^145#当前生命转化比例：{<$STR(N$魔兽神佑实际生命转化比例)>%|253}^145#当前魔力转化比例：{<$STR(N$魔兽神佑实际魔力转化比例)>%|253}/SCOLOR=254><[<$STR(N$魔兽神佑生命加成)>]/SCOLOR=253>\
+<                                                   >
+        <转化魔力：|70#各职业加成比例不同^-^250#战士生命加成比例：{80%|249},魔力加成比例：{20%|249}^250#法师生命加成比例：{20%|249},魔力加成比例：{80%|249}^250#道士生命加成比例：{50%|249},魔力加成比例：{50%|249}^-^145#当前生命转化比例：{<$STR(N$魔兽神佑实际生命转化比例)>%|253}^145#当前魔力转化比例：{<$STR(N$魔兽神佑实际魔力转化比例)>%|253}/SCOLOR=254><[<$STR(N$魔兽神佑魔力加成)>]/SCOLOR=253>\
+<                              >
+<精通等级：|250#每{300点精通等级|249}可增加{1%攻击倍数|253}/SCOLOR=70><[<$STR(S$魔兽神佑精通等级)>/SCOLOR=250><转化倍攻：/SCOLOR=254><[<$STR(N$魔兽神佑倍攻加成)>%]/SCOLOR=253>\ \
+<                              >
+<暴击等级：|250#每{100点暴击等级|249}可增加{1%暴击几率|253}^-^250#每{200点暴击等级|249}可增加{1%暴击伤害|253}/SCOLOR=70><[<$STR(S$魔兽神佑暴击等级)>/SCOLOR=250><转化暴击几率：/SCOLOR=254><[<$STR(N$魔兽神佑暴击率加成)>%]/SCOLOR=253>\ 
+<                                                   >
+        <转化暴击伤害：/SCOLOR=254><[<$STR(N$魔兽神佑暴击伤加成)>%]/SCOLOR=253>\ \
+<                              >
+<致命等级：|250#每{200点致命等级|249}可增加{1%致命伤害|253}^-^250#每{200点致命等级|249}可增加{1%致命几率|253}/SCOLOR=70><[<$STR(S$魔兽神佑致命等级)>/SCOLOR=250><转化致命几率：/SCOLOR=254><[<$STR(N$魔兽神佑致命率加成)>%]/SCOLOR=253>\ 
+<                                                   >
+        <转化致命伤害：/SCOLOR=254><[<$STR(N$魔兽神佑致命伤加成)>%]/SCOLOR=253>\ 
+}
+
+[@Body]
+{
+[@_@计算魔兽装备加成]
+#IF
+#ACT
+MOV N$魔兽神佑力量点数 0
+MOV N$魔兽神佑智力点数 0
+MOV N$魔兽神佑精神点数 0
+MOV N$魔兽神佑体力点数 0
+MOV N$魔兽神佑精通等级 0
+MOV N$魔兽神佑暴击等级 0
+MOV N$魔兽神佑致命等级 0
+MOV N$魔兽神佑攻击加成 0
+MOV N$魔兽神佑魔法加成 0
+MOV N$魔兽神佑道术加成 0
+MOV N$魔兽神佑生命加成 0
+MOV N$魔兽神佑魔力加成 0
+MOV N$魔兽神佑防御加成 0
+MOV N$魔兽神佑魔御加成 0
+MOV N$魔兽神佑攻速加成 0
+MOV N$魔兽神佑暴击元素加成 0
+MOV N$魔兽神佑攻伤元素加成 0
+MOV N$魔兽神佑体力元素加成 0
+MOV N$魔兽神佑魔力元素加成 0
+MOV N$魔兽神佑忽视元素加成 0
+MOV N$魔兽神佑物抗元素加成 0
+MOV N$魔兽神佑魔抗元素加成 0
+MOV N$魔兽神佑倍攻加成 0
+MOV N$魔兽神佑暴击率加成 0
+MOV N$魔兽神佑暴击伤加成 0
+MOV N$魔兽神佑致命率加成 0
+MOV N$魔兽神佑致命伤加成 0
+MOV N$魔兽神佑实际生命转化比例 <$STR(N$<$JOB>体力转生命比例)>
+MOV N$魔兽神佑实际魔力转化比例 <$STR(N$<$JOB>体力转魔力比例)>
+MOV N$魔兽神佑直接魔力加成 0
+MOV L$魔兽神佑计算加成数组 <$STR(T2)>
+
+MOV N$魔兽神佑循环变量 0
+WHILE N$魔兽神佑循环变量 < 12
+GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> AC N$数据库魔兽神佑体力固值
+INC N$魔兽神佑体力点数 <$STR(N$数据库魔兽神佑体力固值)>
+GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> DC N$数据库魔兽神佑力量固值
+INC N$魔兽神佑力量点数 <$STR(N$数据库魔兽神佑力量固值)>
+GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> MC N$数据库魔兽神佑智力固值
+INC N$魔兽神佑智力点数 <$STR(N$数据库魔兽神佑智力固值)>
+GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> SC N$数据库魔兽神佑精神固值
+INC N$魔兽神佑精神点数 <$STR(N$数据库魔兽神佑精神固值)>
+GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> NEED N$数据库魔兽神佑精通等级固值
+INC N$魔兽神佑精通等级 <$STR(N$数据库魔兽神佑精通等级固值)>
+GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> EXPAND1 N$数据库魔兽神佑暴击等级固值
+INC N$魔兽神佑暴击等级 <$STR(N$数据库魔兽神佑暴击等级固值)>
+GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> INSURANCECURRENCY N$数据库魔兽神佑致命等级固值
+INC N$魔兽神佑致命等级 <$STR(N$数据库魔兽神佑致命等级固值)>
+GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> MP N$数据库魔兽神佑魔力固值
+INC N$魔兽神佑直接魔力加成 <$STR(N$数据库魔兽神佑魔力固值)>
+GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> WEIGHT N$数据库魔兽神佑攻速
+INC N$魔兽神佑攻速加成 <$STR(N$数据库魔兽神佑魔力固值)>
+GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> ELEMENT N$数据库魔兽神佑暴击几率
+INC N$魔兽神佑暴击元素加成 <$STR(N$数据库魔兽神佑暴击几率)>
+GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> ELEMENT1 N$数据库魔兽神佑攻击伤害
+INC N$魔兽神佑攻伤元素加成 <$STR(N$数据库魔兽神佑攻击伤害)>
+GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> ELEMENT2 N$数据库魔兽神佑物理抗性
+INC N$魔兽神佑物抗元素加成 <$STR(N$数据库魔兽神佑物理抗性)>
+GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> ELEMENT3 N$数据库魔兽神佑魔法抗性
+INC N$魔兽神佑魔抗元素加成 <$STR(N$数据库魔兽神佑魔法抗性)>
+GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> ELEMENT4 N$数据库魔兽神佑忽视防御
+INC N$魔兽神佑忽视元素加成 <$STR(N$数据库魔兽神佑忽视防御)>
+GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> ELEMENT7 N$数据库魔兽神佑体力
+INC N$魔兽神佑体力元素加成 <$STR(N$数据库魔兽神佑体力)>
+GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> ELEMENT8 N$数据库魔兽神佑魔力
+INC N$魔兽神佑魔力元素加成 <$STR(N$数据库魔兽神佑魔力)>
+;GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> ELEMENT11 N$数据库魔兽神佑怪物爆率
+;GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> ELEMENT13 N$数据库魔兽神佑防麻
+;GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> ELEMENT14 N$数据库魔兽神佑防护
+;GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> ELEMENT15 N$数据库魔兽神佑防复
+;GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> ELEMENT16 N$数据库魔兽神佑防毒
+;GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> ELEMENT21 N$数据库魔兽神佑致命几率
+;GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> ELEMENT22 N$数据库魔兽神佑致命伤害
+;GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> ELEMENT24 N$数据库魔兽神佑暴击抗性
+;GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> ELEMENT25 N$数据库魔兽神佑攻伤抗性
+;GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> AC2 N$数据库魔兽神佑体力比例
+;GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> DC2 N$数据库魔兽神佑力量比例
+;GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> MC2 N$数据库魔兽神佑智力比例
+;GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> SC2 N$数据库魔兽神佑精神比例
+;GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> NEEDLEVEL N$数据库魔兽神佑精通等级比例
+;GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> EXPAND2 N$数据库魔兽神佑暴击等级比例
+;GETDBIDXITEMFIELDVALUE <$STR(L$魔兽神佑计算加成数组[<$STR(N$魔兽神佑循环变量)>])> INSURANCEGOLD N$数据库魔兽神佑致命等级比例
+INC N$魔兽神佑循环变量 1
+ENDWHILE
+
+#IF
+CheckVarInList L$魔兽神佑计算加成数组 954
+#ACT
+INC N$魔兽神佑实际生命转化比例 5
+
+#IF
+CheckVarInList L$魔兽神佑计算加成数组 955
+#ACT
+INC N$魔兽神佑实际魔力转化比例 5
+
+#IF
+CheckVarInList L$魔兽神佑计算加成数组 956
+#ACT
+INC N$魔兽神佑实际生命转化比例 10
+INC N$魔兽神佑实际魔力转化比例 10
+
+#IF
+#ACT
+CalcPercent <$STR(N$魔兽神佑力量点数)> <$STR(N$初始三维转化率)> N$魔兽神佑攻击加成
+CalcPercent <$STR(N$魔兽神佑智力点数)> <$STR(N$初始三维转化率)> N$魔兽神佑魔法加成
+CalcPercent <$STR(N$魔兽神佑精神点数)> <$STR(N$初始三维转化率)> N$魔兽神佑道术加成
+CalcPercent <$STR(N$魔兽神佑体力点数)> <$STR(N$魔兽神佑实际生命转化比例)> N$魔兽神佑生命加成
+CalcPercent <$STR(N$魔兽神佑体力点数)> <$STR(N$魔兽神佑实际魔力转化比例)> N$魔兽神佑魔力加成
+DIV N$魔兽神佑倍攻加成 <$STR(N$魔兽神佑精通等级)> 300
+DIV N$魔兽神佑暴击率加成 <$STR(N$魔兽神佑暴击等级)> 100
+DIV N$魔兽神佑暴击伤加成 <$STR(N$魔兽神佑暴击等级)> 200
+DIV N$魔兽神佑致命率加成 <$STR(N$魔兽神佑致命等级)> 200
+DIV N$魔兽神佑致命伤加成 <$STR(N$魔兽神佑致命等级)> 200
+
+[@_@魔兽装备数值字符序列化]
+#IF
+#ACT
+MOV S$魔兽神佑力量点数 0
+MOV S$魔兽神佑智力点数 0
+MOV S$魔兽神佑精神点数 0
+MOV S$魔兽神佑体力点数 0
+MOV S$魔兽神佑精通等级 0
+MOV S$魔兽神佑暴击等级 0
+MOV S$魔兽神佑致命等级 0
+MOV S$魔兽神佑力量点数 <$STR(N$魔兽神佑力量点数)>]
+MOV S$魔兽神佑智力点数 <$STR(N$魔兽神佑智力点数)>]
+MOV S$魔兽神佑精神点数 <$STR(N$魔兽神佑精神点数)>]
+MOV S$魔兽神佑体力点数 <$STR(N$魔兽神佑体力点数)>]
+MOV S$魔兽神佑精通等级 <$STR(N$魔兽神佑精通等级)>]
+MOV S$魔兽神佑暴击等级 <$STR(N$魔兽神佑暴击等级)>]
+MOV S$魔兽神佑致命等级 <$STR(N$魔兽神佑致命等级)>]
+SETSTRINGBLANK <$STR(S$魔兽神佑力量点数)> 10 1
+SETSTRINGBLANK <$STR(S$魔兽神佑智力点数)> 10 1
+SETSTRINGBLANK <$STR(S$魔兽神佑精神点数)> 10 1
+SETSTRINGBLANK <$STR(S$魔兽神佑体力点数)> 10 1
+SETSTRINGBLANK <$STR(S$魔兽神佑精通等级)> 10 1
+SETSTRINGBLANK <$STR(S$魔兽神佑暴击等级)> 10 1
+SETSTRINGBLANK <$STR(S$魔兽神佑致命等级)> 10 1
+
+[@取下魔兽神佑]
+#IF
+#ACT
+MOV S$取下魔兽神佑参数1 <$SCRIPTPARAM1>
+
+#IF
+NOT CheckVarInList L$魔兽神佑位置参数列表 <$STR(S$取下魔兽神佑参数1)>
+#ACT
+BREAK
+
+#IF
+#ACT
+MOV L$当前装备魔兽神佑数组 <$STR(T2)>
+
+#IF
+EQUAL L$当前装备魔兽神佑数组[<$STR(S$取下魔兽神佑参数1)>] 0
+#ACT
+MESSAGEBOX 当前位置没有魔兽装备！
+BREAK
+
+#IF
+#ACT
+GIVEIDX <$STR(L$当前装备魔兽神佑数组[<$STR(S$取下魔兽神佑参数1)>])> 1
+MOV L$当前装备魔兽神佑数组[<$STR(S$取下魔兽神佑参数1)>] 0
+MOV T2 <$STR(L$当前装备魔兽神佑数组)>
+GOTO @加载魔兽神佑
+GOTO @开始计算基础属性
+GOTO @开始计算元素属性
+GOTO @开始计算技能伤害
+
+[@_@初始化魔兽装备界面]
+#IF
+#ACT
+MOV S$一号魔兽装备位文本 
+MOV S$二号魔兽装备位文本 
+MOV S$三号魔兽装备位文本 
+MOV S$四号魔兽装备位文本 
+MOV S$五号魔兽装备位文本 
+MOV S$六号魔兽装备位文本 
+MOV S$七号魔兽装备位文本 
+MOV S$八号魔兽装备位文本 
+MOV S$九号魔兽装备位文本 
+MOV S$十号魔兽装备位文本 
+MOV S$十一号魔兽装备位文本 
+MOV S$十二号魔兽装备位文本 
+MOV L$已装备魔兽装备列表 <$STR(T2)>
+
+#IF
+EQUAL L$已装备魔兽装备列表[0] 0
+#ACT
+MOV S$一号魔兽装备位文本 <ITEMBOX:2:$NEWOPUI.PAK$:67:137:54:40:40:31:253#一号魔兽位>
+#ELSEACT
+MOV S$一号魔兽装备位文本 <&ITEMSHOW:<$STR(L$已装备魔兽装备列表[0])>:0:142:58:0:0/@取下魔兽神佑(0)>
+
+#IF
+EQUAL L$已装备魔兽装备列表[1] 0
+#ACT
+MOV S$二号魔兽装备位文本 <ITEMBOX:3:$NEWOPUI.PAK$:67:137:109:40:40:31:253#二号魔兽位>
+#ELSEACT
+MOV S$二号魔兽装备位文本 <&ITEMSHOW:<$STR(L$已装备魔兽装备列表[1])>:0:142:113:0:0/@取下魔兽神佑(1)>
+
+#IF
+EQUAL L$已装备魔兽装备列表[2] 0
+#ACT
+MOV S$三号魔兽装备位文本 <ITEMBOX:4:$NEWOPUI.PAK$:67:137:164:40:40:31:253#三号魔兽位>
+#ELSEACT
+MOV S$三号魔兽装备位文本 <&ITEMSHOW:<$STR(L$已装备魔兽装备列表[2])>:0:142:167:0:0/@取下魔兽神佑(2)>
+
+#IF
+EQUAL L$已装备魔兽装备列表[3] 0
+#ACT
+MOV S$四号魔兽装备位文本 <ITEMBOX:5:$NEWOPUI.PAK$:67:137:219:40:40:31:253#四号魔兽位>
+#ELSEACT
+MOV S$四号魔兽装备位文本 <&ITEMSHOW:<$STR(L$已装备魔兽装备列表[3])>:0:142:223:0:0/@取下魔兽神佑(3)>
+
+#IF
+EQUAL L$已装备魔兽装备列表[4] 0
+#ACT
+MOV S$五号魔兽装备位文本 <ITEMBOX:6:$NEWOPUI.PAK$:67:456:54:40:40:31:253#五号魔兽位>
+#ELSEACT
+MOV S$五号魔兽装备位文本 <&ITEMSHOW:<$STR(L$已装备魔兽装备列表[4])>:0:461:58:0:0/@取下魔兽神佑(4)>
+
+#IF
+EQUAL L$已装备魔兽装备列表[5] 0
+#ACT
+MOV S$六号魔兽装备位文本 <ITEMBOX:7:$NEWOPUI.PAK$:67:456:109:40:40:31:253#六号魔兽位>
+#ELSEACT
+MOV S$六号魔兽装备位文本 <&ITEMSHOW:<$STR(L$已装备魔兽装备列表[5])>:0:461:113:0:0/@取下魔兽神佑(5)>
+
+#IF
+EQUAL L$已装备魔兽装备列表[6] 0
+#ACT
+MOV S$七号魔兽装备位文本 <ITEMBOX:8:$NEWOPUI.PAK$:67:456:164:40:40:31:253#七号魔兽位>
+#ELSEACT
+MOV S$七号魔兽装备位文本 <&ITEMSHOW:<$STR(L$已装备魔兽装备列表[6])>:0:461:168:0:0/@取下魔兽神佑(6)>
+
+#IF
+EQUAL L$已装备魔兽装备列表[7] 0
+#ACT
+MOV S$八号魔兽装备位文本 <ITEMBOX:9:$NEWOPUI.PAK$:67:456:219:40:40:31:253#八号魔兽位>
+#ELSEACT
+MOV S$八号魔兽装备位文本 <&ITEMSHOW:<$STR(L$已装备魔兽装备列表[7])>:0:461:223:0:0/@取下魔兽神佑(7)>
+
+#IF
+EQUAL L$已装备魔兽装备列表[8] 0
+#ACT
+MOV S$九号魔兽装备位文本 <ITEMBOX:10:$NEWOPUI.PAK$:67:214:237:40:40:31:253#九号魔兽位>
+#ELSEACT
+MOV S$九号魔兽装备位文本 <&ITEMSHOW:<$STR(L$已装备魔兽装备列表[8])>:0:219:241:0:0/@取下魔兽神佑(8)>
+
+#IF
+EQUAL L$已装备魔兽装备列表[9] 0
+#ACT
+MOV S$十号魔兽装备位文本 <ITEMBOX:11:$NEWOPUI.PAK$:67:269:237:40:40:31:253#十号魔兽位>
+#ELSEACT
+MOV S$十号魔兽装备位文本 <&ITEMSHOW:<$STR(L$已装备魔兽装备列表[9])>:0:274:241:0:0/@取下魔兽神佑(9)>
+
+#IF
+EQUAL L$已装备魔兽装备列表[10] 0
+#ACT
+MOV S$十一号魔兽装备位文本 <ITEMBOX:12:$NEWOPUI.PAK$:67:324:237:40:40:31:253#十一号魔兽位>
+#ELSEACT
+MOV S$十一号魔兽装备位文本 <&ITEMSHOW:<$STR(L$已装备魔兽装备列表[10])>:0:329:241:0:0/@取下魔兽神佑(10)>
+
+#IF
+EQUAL L$已装备魔兽装备列表[11] 0
+#ACT
+MOV S$十二号魔兽装备位文本 <ITEMBOX:13:$NEWOPUI.PAK$:67:379:237:40:40:31:253#十二号魔兽位>
+#ELSEACT
+MOV S$十二号魔兽装备位文本 <&ITEMSHOW:<$STR(L$已装备魔兽装备列表[11])>:0:384:241:0:0/@取下魔兽神佑(11)>
+
+[@ITEMINTOBOX2]
+#IF
+#ACT
+MOV N$当前放入框编号 2
+MOV N$当前放入数组编号 0
+MOV N$当前允许放入物品EXPAND3 1
+GOTO @_@开始放入魔兽神佑
+
+[@ITEMINTOBOX3]
+#IF
+#ACT
+MOV N$当前放入框编号 3
+MOV N$当前放入数组编号 1
+MOV N$当前允许放入物品EXPAND3 2
+GOTO @_@开始放入魔兽神佑
+
+[@ITEMINTOBOX4]
+#IF
+#ACT
+MOV N$当前放入框编号 4
+MOV N$当前放入数组编号 2
+MOV N$当前允许放入物品EXPAND3 3
+GOTO @_@开始放入魔兽神佑
+
+[@ITEMINTOBOX5]
+#IF
+#ACT
+MOV N$当前放入框编号 5
+MOV N$当前放入数组编号 3
+MOV N$当前允许放入物品EXPAND3 4
+GOTO @_@开始放入魔兽神佑
+
+[@ITEMINTOBOX6]
+#IF
+#ACT
+MOV N$当前放入框编号 6
+MOV N$当前放入数组编号 4
+MOV N$当前允许放入物品EXPAND3 5
+GOTO @_@开始放入魔兽神佑
+
+[@ITEMINTOBOX7]
+#IF
+#ACT
+MOV N$当前放入框编号 7
+MOV N$当前放入数组编号 5
+MOV N$当前允许放入物品EXPAND3 6
+GOTO @_@开始放入魔兽神佑
+
+[@ITEMINTOBOX8]
+#IF
+#ACT
+MOV N$当前放入框编号 8
+MOV N$当前放入数组编号 6
+MOV N$当前允许放入物品EXPAND3 7
+GOTO @_@开始放入魔兽神佑
+
+[@ITEMINTOBOX9]
+#IF
+#ACT
+MOV N$当前放入框编号 9
+MOV N$当前放入数组编号 7
+MOV N$当前允许放入物品EXPAND3 8
+GOTO @_@开始放入魔兽神佑
+
+[@ITEMINTOBOX10]
+#IF
+#ACT
+MOV N$当前放入框编号 10
+MOV N$当前放入数组编号 8
+MOV N$当前允许放入物品EXPAND3 9
+GOTO @_@开始放入魔兽神佑
+
+[@ITEMINTOBOX11]
+#IF
+#ACT
+MOV N$当前放入框编号 11
+MOV N$当前放入数组编号 9
+MOV N$当前允许放入物品EXPAND3 10
+GOTO @_@开始放入魔兽神佑
+
+[@ITEMINTOBOX12]
+#IF
+#ACT
+MOV N$当前放入框编号 12
+MOV N$当前放入数组编号 10
+MOV N$当前允许放入物品EXPAND3 11
+GOTO @_@开始放入魔兽神佑
+
+[@ITEMINTOBOX13]
+#IF
+#ACT
+MOV N$当前放入框编号 13
+MOV N$当前放入数组编号 11
+MOV N$当前允许放入物品EXPAND3 12
+GOTO @_@开始放入魔兽神佑
+
+[@_@开始放入魔兽神佑]
+#IF
+#ACT
+MOV S$当前放入物品IDX <$BOXITEM[<$STR(N$当前放入框编号)>].IDX>
+MOV S$当前放入物品EXPAND3 <$BOXITEM[<$STR(N$当前放入框编号)>].EXPAND3>
+GETDBITEMFIELDVALUE <$BOXITEM[<$STR(N$当前放入框编号)>].NAME> ANICOUNT S$当前放入物品ANICOUNT
+
+#IF
+NOT EQUAL S$当前放入物品ANICOUNT 21
+#ACT
+MESSAGEBOX 当前物品非魔兽装备！
+RETURNBOXITEM <$STR(N$当前放入框编号)>
+BREAK
+
+#IF
+NOT EQUAL <$STR(S$当前放入物品EXPAND3)> <$STR(N$当前允许放入物品EXPAND3)>
+NOT EQUAL <$STR(S$当前放入物品EXPAND3)> 13
+#ACT
+MESSAGEBOX 当前物品非魔兽装备或装备位置不正确！
+RETURNBOXITEM <$STR(N$当前放入框编号)>
+BREAK
+
+#IF
+#ACT
+MOV L$放入已装备魔兽神佑数组 <$STR(T2)>
+
+#IF
+NOT EQUAL L$放入已装备魔兽神佑数组[<$STR(N$当前放入数组编号)>] 0
+#ACT
+RETURNBOXITEM <$STR(N$当前放入框编号)>
+MESSAGEBOX 当前位置已装备其他魔兽装备,请先取下！
+BREAK
+
+#IF
+#ACT
+MOV L$放入已装备魔兽神佑数组[<$STR(N$当前放入数组编号)>] <$STR(S$当前放入物品IDX)>
+MOV T2 <$STR(L$放入已装备魔兽神佑数组)>
+DELBOXITEM <$STR(N$当前放入框编号)>
+GOTO @加载魔兽神佑
+#CALL [登陆功能\属性计算.TXT] @属性计算
+}

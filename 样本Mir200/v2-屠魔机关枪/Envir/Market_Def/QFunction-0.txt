@@ -1,0 +1,4222 @@
+; 此 版 本 来 自 传   奇 大 学 ｗｗｗ. sd dbdc. c o m
+
+[@ButtonClick1]
+#IF
+ISADMIN
+#ACT
+
+Goto @管理员测试
+
+[@ButtonClick6]
+#IF
+#ACT
+
+Goto @任务对话框
+
+[@PickUpItemEX]
+#if
+#act
+
+Goto @鉴定代码
+[@ButtonClick2]
+#IF
+#ACT
+; 
+Goto @游戏功能
+
+Goto @游戏功能
+
+[@ButtonClick4]
+#IF
+#ACT
+
+Goto @系统活动
+
+[@ButtonClick5]
+#IF
+NOT EQUAL <$GameDirectory> $常量_母端位置
+#ACT
+
+Goto @商城
+
+[@ButtonClick7]
+#IF
+#ACT
+
+Goto @VIP系统
+[@ButtonClick8]
+#IF
+GetStringPosEX ..\..\..\..\通区文件\分配区\分配区.txt <$STR(T14)><$STR(U162)> N1 S$分配区数据 0
+#ACT
+mapmove 3 176 131
+EXTRACTSTRING ~ S$分配区数据 S$没用 N$跨服端口
+;Gmexecute 跨区 <$username> 180.188.17.106 <$STR(N$跨服端口)>
+#elseact
+messagebox 数据出错联系群管理
+
+
+
+[@ButtonClick9]
+#IF
+#ACT
+
+Goto @任务对话框
+
+[@ButtonClick11]
+#IF
+#ACT
+OPENMERCHANTBIGDLG 11 2128 1 4 -15 -52 1 760 10 1
+;OPENMERCHANTBIGDLG 5 1310 1 4 -15 -52 1 770 10 1
+#say
+<Text:周卡介绍:310:90{FCOLOR=250;FSIZE=20;FNAME=黑体}>\
+<Text:开通周卡需要3800积分                                          :260:115{FCOLOR=250;FSIZE=14;FNAME=黑体}>\
+<Text:周卡特权一  每天幽魂宝藏开箱子次数增加10次                      :70:135{FCOLOR=250;FSIZE=14;FNAME=黑体}>\
+<Text:周卡特权二  每天领取200传仙币                                  :70:155{FCOLOR=250;FSIZE=14;FNAME=黑体}>\
+<Text:周卡特权一  挂机幽魂能量槽满后直接给幽魂宝藏传送卷（每天上限10张）:70:175{FCOLOR=250;FSIZE=14;FNAME=黑体}>\
+<Text:            幽魂传送卷直接双击进入幽魂宝藏地图                  :70:195{FCOLOR=250;FSIZE=14;FNAME=黑体}>\
+<Text:周卡特权四  人物攻击、魔法、道术、防御、魔御增加10%              :70:215{FCOLOR=250;FSIZE=14;FNAME=黑体}>\
+<Text:周卡特权五  每次击杀BOSS100%鞭尸一次                           :70:235{FCOLOR=250;FSIZE=14;FNAME=黑体}>\
+<&IMGEX:5:945:946:947:290:420/@开通周卡>
+
+
+[@ButtonClick12]
+#if
+#ACT
+
+Goto @游戏攻略
+
+[@开通周卡]
+#IF
+CHECKGAMEPOINT < 3800
+#act
+messagebox 充值积分不足3800
+break
+
+#if
+LARGE U306 0
+#act
+messagebox 你已经开通过周卡了<$STR(U306)>天后到期再来开通
+break
+
+
+
+#if
+#act
+GiveStateItem 传仙基金包 1 1 0 1 1 1
+GAMEPOINT - 3800
+INC U306 7
+addtextlist ..\..\..\..\通区文件\大喇叭\公屏.txt 玩家<$USERNAME>开通了周卡~<$DATETIME>
+messagebox 以获取周卡权限,点击周卡基金包激活周卡属性
+
+[@M2DropItem]
+#if
+#ACT
+
+Goto @给颜色后缀
+
+[@KillMon]
+
+
+#IF
+
+#ACT
+
+
+Goto @保底爆率
+
+Goto @幽魂宝藏
+goto @判断加鞭尸的玩家
+#if
+equal j22 1
+#act
+
+goto @判断是否BOSS需要鞭尸
+
+
+
+
+; #IF
+; NOT EQUAL N$天罡鼎CD 600
+; CheckCacheTextList ..\QuestDiary\怪物名称\统领及以上怪物.txt <$ATTACKMONSTER_NAMEEX>
+; EQUAL U84 0
+; #act
+; MONGENEX <$map> <$KILLMONX> <$KILLMONY> <$KILLMONNAME> 0 1 230
+; MOV U84 <$STR(N$天罡鼎CD)>
+; setontimer 45
+; PLAYEFFECT 59 750 20 1 100 0 -150 -280 1
+#IF
+EQUAL <$KillMonName> 九首寄生体
+#ACT
+MOV G1 <$KILLMONX>
+MOV G2 <$KILLMONY>
+MAPEFFECT <$MAP> <$STR(G1)> <$STR(G2)> 29 0 136 1 100 0
+delaycall 13750 @九首寄生体死亡
+MOV G7 1
+
+
+
+; #IF
+; RANDOMEX N$小怪鞭尸 300
+; CheckCacheTextList ..\QuestDiary\怪物名称\精英及以下怪物.txt <$ATTACKMONSTER_NAMEEX>
+; #ACT
+; MONGENEX <$MAP> <$KILLMONX> <$KILLMONY> <$KillMonName> 0 1 35
+
+; #IF
+; RANDOMEX N$BOSS鞭尸 300
+; CheckCacheTextList ..\QuestDiary\怪物名称\统领及以上怪物.txt <$ATTACKMONSTER_NAMEEX>
+; #ACT
+; MONGENEX <$MAP> <$KILLMONX> <$KILLMONY> <$KillMonName> 0 1 35
+
+[@判断是否BOSS需要鞭尸]
+#or
+EQUAL <$KillMonName> 精绝国王【BOSS】
+EQUAL <$KillMonName> 焚燃战神【BOSS】
+EQUAL <$KillMonName> 岩浆力魔【BOSS】
+EQUAL <$KillMonName> 冥府军主【BOSS】
+EQUAL <$KillMonName> 炼狱之主【BOSS】
+EQUAL <$KillMonName> 瘟疫蛟王【BOSS】
+EQUAL <$KillMonName> 暗黑之主【BOSS】
+EQUAL <$KillMonName> 杀戮人王【BOSS】
+EQUAL <$KillMonName> 暴风之子【BOSS】
+EQUAL <$KillMonName> 地底蛇僧【BOSS】
+EQUAL <$KillMonName> 上古魔神【BOSS】
+EQUAL <$KillMonName> 荒漠石魔【BOSS】
+EQUAL <$KillMonName> 熔岩金纹兽【BOSS】
+EQUAL <$KillMonName> 孤城野主【BOSS】
+EQUAL <$KillMonName> 深渊紫鳞兽【BOSS】
+EQUAL <$KillMonName> 尸王之王【BOSS】
+EQUAL <$KillMonName> 红灵骷髅王【BOSS】
+EQUAL <$KillMonName> 猪皇【BOSS】
+EQUAL <$KillMonName> 触龙神【BOSS】
+EQUAL <$KillMonName> 沃玛教主【BOSS】
+EQUAL <$KillMonName> 祖玛教主【BOSS】
+EQUAL <$KillMonName> 黄泉教主【BOSS】
+EQUAL <$KillMonName> 恶魔之主【BOSS】
+EQUAL <$KillMonName> 铁甲蚁【BOSS】
+EQUAL <$KillMonName> 灵地守护者【BOSS】
+EQUAL <$KillMonName> 血腥魔神【BOSS】
+EQUAL <$KillMonName> 赤月邪魔【BOSS】
+EQUAL <$KillMonName> 嗜血黄泉【BOSS】
+EQUAL <$KillMonName> 巨斧牛魔【BOSS】
+EQUAL <$KillMonName> 金岩魔【BOSS】
+EQUAL <$KillMonName> 嗜血虹魔【BOSS】
+EQUAL <$KillMonName> 魔火龙【BOSS】
+EQUAL <$KillMonName> 地底石魔【BOSS】
+EQUAL <$KillMonName> 魔化血魔【BOSS】
+EQUAL <$KillMonName> 火龙神【BOSS】
+EQUAL <$KillMonName> 雪域魔王【BOSS】
+EQUAL <$KillMonName> 困龙柱【BOSS】
+EQUAL <$KillMonName> 九尾妖狐【BOSS】
+EQUAL <$KillMonName> 地宫金兽神【BOSS】
+EQUAL <$KillMonName> 独目猿【BOSS】
+EQUAL <$KillMonName> 绿灵骷髅王【BOSS】
+EQUAL <$KillMonName> 万年冰妖【BOSS】
+EQUAL <$KillMonName> 炼狱触龙神【BOSS】
+EQUAL <$KillMonName> 雷炎骨王【暗夜城主】
+EQUAL <$KillMonName> 触龙神皇【天威城主】
+EQUAL <$KillMonName> 巨翼魔王【曙光城主】
+EQUAL <$KillMonName> 牛魔天尊【归隐城主】
+EQUAL <$KillMonName> 火麒麟【龙祖城主】
+EQUAL <$KillMonName> 深渊章鱼【冰雪城主】
+EQUAL <$KillMonName> 焚燃之主【兰陵城主】
+EQUAL <$KillMonName> 暗黑魔王【冰火城主】
+EQUAL <$KillMonName> 修罗杀神【暴风城主】
+EQUAL <$KillMonName> 北冥魔王【荒漠城主】
+#act
+
+Goto @保底爆率
+ScatterMonItems <$KillMonName>
+
+sendmsg 5 BOSS被你鞭尸啦
+sendmsg 5 BOSS被你鞭尸啦
+sendmsg 5 BOSS被你鞭尸啦
+goto @判断加鞭尸的玩家
+[@判断加鞭尸的玩家]
+
+
+
+
+[@九首寄生体死亡]
+#if
+#act
+MONGENEX <$MAP> <$STR(G1)> <$STR(G2)> 北冥九首深渊龙 0 1
+MOV G7 2
+
+
+
+
+
+
+
+
+;技能
+[@MagSelfFunc1001]
+#if
+#ACT
+
+Goto @寂静之雷
+
+[@MagSelfFunc1002]
+#OR
+EQUAL <$MAP> huanggong1
+EQUAL <$MAP> huanggong2
+EQUAL <$MAP> huanggong3
+EQUAL <$MAP> huanggong4
+EQUAL <$MAP> huanggong5
+EQUAL <$MAP> huanggong6
+EQUAL <$MAP> huanggong7
+EQUAL <$MAP> huanggong8
+EQUAL <$MAP> huanggong9
+EQUAL <$MAP> huanggong10
+EQUAL <$MAP> guaiwufang
+#act
+sendmsg 6 禁止释放
+break
+#if
+
+#act
+
+Goto @漫天火雨打怪
+#ELSEACT
+SENDMSG 6 漫天火雨打怪技能持续时间消失后再使用PK技能还剩<$STR(U362)>秒
+[@MagSelfFunc1003]
+#if
+EQUAL N$漫天火雨打怪判断 0
+#ACT
+
+Goto @漫天火雨PK
+#ELSEACT
+SENDMSG 6 漫天火雨打怪技能持续时间消失后再使用PK技能还剩<$STR(U362)>秒
+[@MagSelfFunc1004]
+#OR
+EQUAL <$MAP> fumo1
+EQUAL <$MAP> fumo2
+EQUAL <$MAP> fumo3
+EQUAL <$MAP> fumo4
+EQUAL <$MAP> fumo5
+EQUAL <$MAP> fumo6
+EQUAL <$MAP> fumo7
+EQUAL <$MAP> fumo8
+EQUAL <$MAP> fumo9
+EQUAL <$MAP> fumo10
+EQUAL <$MAP> MAP081
+EQUAL <$MAP> MAP010
+EQUAL <$MAP> xianmo1
+#act
+sendmsg 6 禁止释放
+break
+#if
+#ACT
+
+Goto @梵天圣火开关
+
+[@MagSelfFunc1005]
+#if
+EQUAL <$GameDirectory> $常量_母端位置
+#act
+sendmsg 6
+break
+
+#if
+#ACT
+
+Goto @召唤骷髅
+
+[@MagSelfFunc1006]
+#if
+#ACT
+
+Goto @魔法盾
+
+[@MagSelfFunc1007]
+#if
+#ACT
+
+Goto @冰咆哮
+
+[@MagSelfFunc1010]
+#if
+#ACT
+
+Goto @修罗血魂阵
+
+[@MagSelfFunc1012]
+#if
+#ACT
+
+Goto @极光斩
+
+[@MagSelfFunc1014]
+#if
+#ACT
+
+Goto @灵葫
+
+[@MagSelfFunc1015]
+#OR
+EQUAL <$MAP> fumo1
+EQUAL <$MAP> fumo2
+EQUAL <$MAP> fumo3
+EQUAL <$MAP> fumo4
+EQUAL <$MAP> fumo5
+EQUAL <$MAP> fumo6
+EQUAL <$MAP> fumo7
+EQUAL <$MAP> fumo8
+EQUAL <$MAP> fumo9
+EQUAL <$MAP> fumo10
+EQUAL <$MAP> MAP081
+#act
+sendmsg 6 禁止释放
+break
+#if
+#ACT
+
+Goto @蛊毒术开关
+
+[@MagSelfFunc1016]
+#if
+#ACT
+
+Goto @神愈术
+
+[@MagSelfFunc1017]
+#if
+#ACT
+
+Goto @双防之盾
+
+[@MagSelfFunc1019]
+#if
+#ACT
+
+Goto @混乱元素
+
+[@MagSelfFunc1020]
+#if
+#ACT
+
+Goto @召唤火兽
+[@MagSelfFunc1021]
+#if
+#ACT
+
+Goto @召唤圣兽
+[@MagSelfFunc1022]
+#if
+#ACT
+
+Goto @八卦锁龙阵
+[@MagSelfFunc1023]
+;天谴之雷打怪
+#IF
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+PLAYEFFECT 1 3255 16 0 100 0 -95 -130 1
+
+Goto @炎龙降临打怪
+
+setofftimer 29
+MOV N$炎龙降临次数倒计时 <$STR(N$炎龙降临攻击次数)>
+setontimer 29 N$炎龙降临攻击频率 N$炎龙降临攻击次数 
+
+
+
+
+#IF
+CHECKCURRTARGETRACE = 0
+#ACT
+MOV S$炎龙降临玩家名字 <$C.USERNAME>
+PLAYEFFECT 1 3255 16 0 100 0 -95 -130 1
+setofftimer 30
+MOV N$炎龙降临次数倒计时 <$STR(N$炎龙降临攻击次数)>
+setontimer 30 N$炎龙降临攻击频率 N$炎龙降临攻击次数
+
+Goto @炎龙降临打人
+
+[@MagSelfFunc1024]
+#if
+NOT EQUAL <$MAP> FSBB
+#act
+sendmsg 6 诱惑之光只能去法师宝宝地图使用呦
+break
+#if
+#ACT
+
+Goto @诱惑之光
+
+[@MagSelfFunc1027]
+#OR
+EQUAL <$GameDirectory> $常量_母端位置
+EQUAL <$MAP> MAP081
+EQUAL <$MAP> MAP010
+EQUAL <$MAP> xianmo1
+#act
+sendmsg 6 禁止释放
+break
+#if
+#ACT
+
+Goto @魔焰狂澜开关
+
+
+
+[@MagSelfFunc1028]
+#OR
+EQUAL <$GameDirectory> $常量_母端位置
+EQUAL <$MAP> MAP081
+EQUAL <$MAP> MAP010
+EQUAL <$MAP> xianmo1
+#act
+sendmsg 6 禁止释放
+break
+#if
+#ACT
+
+Goto @威慑符印开关
+[@MagSelfFunc1029]
+#OR
+EQUAL <$GameDirectory> $常量_母端位置
+EQUAL <$MAP> MAP081
+EQUAL <$MAP> MAP010
+EQUAL <$MAP> xianmo1
+#act
+sendmsg 6 禁止释放
+break
+#if
+#ACT
+
+Goto @龙袭风暴开关
+
+[@MagSelfFunc1033]
+#if
+#ACT
+
+Goto @幽龙镇魂
+
+
+[@MagSelfFunc1034]
+#if
+#ACT
+
+Goto @天龙之怒
+
+[@MagSelfFunc1035]
+#if
+EQUAL <$MAP> huanggong
+#act
+sendmsg 6 禁止使用
+break
+#if
+#ACT
+
+Goto @万象魔咒
+
+[@MagSelfFunc1036]
+#if
+#ACT
+
+Goto @浴火鞭策
+
+[@MagSelfFunc1037]
+#if
+#ACT
+
+Goto @不屈意志
+
+[@MagSelfFunc1038]
+#if
+#ACT
+
+Goto @恶魔炮弹
+
+[@MagSelfFunc1039]
+#if
+#act
+KILLSLAVE
+sendmsg 6 宝宝已全部杀死
+
+[@MagSelfFunc1040]
+#if
+#ACT
+
+Goto @怒龙一击
+[@MagSelfFunc1043]
+#if
+#ACT
+
+Goto @召唤宠物
+
+[@MagSelfFunc1044]
+#if
+#ACT
+
+Goto @混沌火雨
+[@MagSelfFunc1045]
+#if
+#ACT
+
+Goto @混沌石灵
+
+[@MagSelfFunc1047]
+#if
+#ACT
+
+Goto @世界BOSS技能
+[@MagSelfFunc1048]
+#if
+#ACT
+
+
+Goto @彻地钉
+[@MagSelfFunc1049]
+#if
+#ACT
+
+
+Goto @凤爆狂雷
+[@MagSelfFunc1030]
+; #if
+; INSAFEZONE
+; #act
+; SENDMSG 6 安全区禁止释放
+; break
+; #if
+; CHECKCURRTARGETRACE = 0
+; #act
+; SENDMSG 6 禁止对人物释放
+; BREAK
+
+; #IF
+; #ACT
+; SENDMSG 6 此技能已作废
+; break
+
+
+; #if
+; #act
+; mov N$刀光剑影次数 <$STR(U141)>
+; #IF
+; NOT CHECKCURRTARGETRACE = 0
+; large <$STR(N$刀光剑影次数)> 0
+; #ACT
+; goto @刀光剑影攻击1
+
+
+; [@刀光剑影攻击1]
+; #IF
+; NOT CHECKCURRTARGETRACE = 0
+; large <$STR(N$刀光剑影次数)> 0
+; #ACT
+; releasemagicEX 1030 0 3 1
+
+; dec <$STR(N$刀光剑影次数)> 1
+; M.HUMANHP - 100
+; delaygoto 100 @刀光剑影攻击2
+
+; [@刀光剑影攻击2]
+; #IF
+; NOT CHECKCURRTARGETRACE = 0
+; large <$STR(N$刀光剑影次数)> 0
+; #ACT
+; releasemagicEX 1030 0 3 1
+; dec <$STR(N$刀光剑影次数)> 1
+; M.HUMANHP - 100
+; delaygoto 110 @刀光剑影攻击3
+
+; [@刀光剑影攻击3]
+; #IF
+; NOT CHECKCURRTARGETRACE = 0
+; large <$STR(N$刀光剑影次数)> 0
+; #ACT
+; releasemagicEX 1030 0 3 1
+; dec <$STR(N$刀光剑影次数)> 1
+; M.HUMANHP - 100
+; delaygoto 120 @刀光剑影攻击1
+
+
+
+
+; [@MagSelfFunc1031]
+; #if
+; INSAFEZONE
+; #act
+; SENDMSG 6 安全区禁止释放
+; break
+; #if
+; CHECKCURRTARGETRACE = 0
+; #act
+; SENDMSG 6 禁止对人物释放
+; BREAK
+; #if
+; #act
+
+; mov N$灵符乱舞次数 <$STR(U141)>
+; #IF
+; NOT CHECKCURRTARGETRACE = 0
+; large <$STR(N$灵符乱舞次数)> 0
+; #ACT
+; goto @灵符乱舞攻击1
+
+
+; [@灵符乱舞攻击1]
+; #IF
+; NOT CHECKCURRTARGETRACE = 0
+; large <$STR(N$灵符乱舞次数)> 0
+; #ACT
+; releasemagicEX 1031 0 3 1
+
+; dec <$STR(N$灵符乱舞次数)> 1
+; M.HUMANHP - <$STR(N$裂变伤害)>
+; delaygoto 100 @灵符乱舞攻击2
+
+; [@灵符乱舞攻击2]
+; #IF
+; NOT CHECKCURRTARGETRACE = 0
+; large <$STR(N$灵符乱舞次数)> 0
+; #ACT
+; releasemagicEX 1031 0 3 1
+; dec <$STR(N$灵符乱舞次数)> 1
+; M.HUMANHP - <$STR(N$裂变伤害)>
+; delaygoto 110 @灵符乱舞攻击3
+
+; [@灵符乱舞攻击3]
+; #IF
+; NOT CHECKCURRTARGETRACE = 0
+; large <$STR(N$灵符乱舞次数)> 0
+; #ACT
+; releasemagicEX 1031 0 3 1
+; dec <$STR(N$灵符乱舞次数)> 1
+; M.HUMANHP - <$STR(N$裂变伤害)>
+; delaygoto 120 @灵符乱舞攻击1
+
+
+; [@MagSelfFunc1032]
+; #if
+; INSAFEZONE
+; #act
+; SENDMSG 6 安全区禁止释放
+; break
+; #if
+; CHECKCURRTARGETRACE = 0
+; #act
+; SENDMSG 6 禁止对人物释放
+; BREAK
+; #if
+; NOT CHECKCURRTARGETRACE = 0
+; #act
+
+; mov N$噬心魔骨次数 <$STR(U141)>
+; #IF
+; large <$STR(N$噬心魔骨次数)> 0
+; NOT CHECKCURRTARGETRACE = 0
+; #ACT
+; goto @噬心魔骨攻击1
+
+
+; [@噬心魔骨攻击1]
+; #IF
+; NOT CHECKCURRTARGETRACE = 0
+; large <$STR(N$噬心魔骨次数)> 0
+; #ACT
+; releasemagicEX 1032 0 3 1
+
+; dec <$STR(N$噬心魔骨次数)> 1
+; M.HUMANHP - <$STR(N$裂变伤害)>
+; delaygoto 100 @噬心魔骨攻击2
+
+; [@噬心魔骨攻击2]
+; #IF
+; NOT CHECKCURRTARGETRACE = 0
+; large <$STR(N$噬心魔骨次数)> 0
+; #ACT
+; releasemagicEX 1032 0 3 1
+; dec <$STR(N$噬心魔骨次数)> 1
+; M.HUMANHP - <$STR(N$裂变伤害)>
+; delaygoto 110 @噬心魔骨攻击3
+
+; [@噬心魔骨攻击3]
+#IF
+NOT CHECKCURRTARGETRACE = 0
+large <$STR(N$噬心魔骨次数)> 0
+#ACT
+releasemagicEX 1032 0 3 1
+dec <$STR(N$噬心魔骨次数)> 1
+M.HUMANHP - <$STR(N$裂变伤害)>
+delaygoto 120 @噬心魔骨攻击1
+
+[@MagSelfFunc1050]
+#if
+#ACT
+
+Goto @月灵道祖
+[@OnSlaveDie]
+#if
+EQUAL <$DIESLAVENAME> 僵尸
+#act
+MOV N$僵尸宝宝 0
+sendmsg 6 僵尸宝宝噶了属性消失
+
+
+#or
+EQUAL S$当前宝宝 巨刃骷髅
+EQUAL S$当前宝宝 战争弓箭手
+EQUAL S$当前宝宝 战争之王
+#act
+AddDlg 1 5 1 0 <$STR(N$道士宝宝状态X)>:<$STR(N$道士宝宝状态Y)> 70:30 0 <&Img:185:0:20:53|攻击人物时自动切换状态><&ImgNum:2:<$STR(N$道士召唤骷髅数量)>:-1:78:81|可召唤数量><&ImgNum:2:<$SlaveCount>:-1:130:81|已召唤数量><&Img:187:0:73:106><&ImgNum:2:<$STR(N$道士召唤宝宝幸运)>:-1:78:135|宝宝幸运越高输出越稳定><&ImgNum:2:<$STR(N$骷髅宝宝伤害上限)>:-1:78:160|<$STR(N$骷髅宝宝伤害下限)>-<$STR(N$骷髅宝宝伤害上限)>><&ImgNum:2:<$STR(N$骷髅宝宝防御上限)>:-1:75:187|<$STR(N$骷髅宝宝防御下限)>-<$STR(N$骷髅宝宝防御上限)>><&ImgNum:2:<$STR(N$骷髅宝宝魔御上限)>:-1:75:213|<$STR(N$骷髅宝宝魔御下限)>-<$STR(N$骷髅宝宝魔御上限)>><&ImgNum:2:<$STR(N$显示骷髅攻击速度)>:-1:75:240|数值越高攻击速度越快><&ImgNum:2:<$STR(N$显示骷髅移动速度)>:-1:75:267|数值越高移动速度越快>
+#or
+EQUAL S$当前宝宝 火兽
+EQUAL S$当前宝宝 异火兽
+EQUAL S$当前宝宝 异火神兽
+#act
+AddDlg 1 5 1 0 <$STR(N$道士宝宝状态X)>:<$STR(N$道士宝宝状态Y)> 70:30 0 <&Img:185:0:20:53|攻击人物时自动切换状态><&ImgNum:2:<$STR(N$道士召唤火兽数量)>:-1:78:81|可召唤数量><&ImgNum:2:<$SlaveCount>:-1:130:81|已召唤数量><&Img:187:0:73:106><&ImgNum:2:<$STR(N$道士召唤宝宝幸运)>:-1:78:135|宝宝幸运越高输出越稳定><&ImgNum:2:<$STR(N$火兽宝宝伤害上限)>:-1:78:160|<$STR(N$火兽宝宝伤害下限)>-<$STR(N$火兽宝宝伤害上限)>><&ImgNum:2:<$STR(N$火兽宝宝防御上限)>:-1:75:187|<$STR(N$火兽宝宝防御下限)>-<$STR(N$火兽宝宝防御上限)>><&ImgNum:2:<$STR(N$火兽宝宝魔御上限)>:-1:75:213|<$STR(N$火兽宝宝魔御下限)>-<$STR(N$火兽宝宝魔御上限)>><&ImgNum:2:<$STR(N$火兽攻速)>:-1:75:240|数值越高攻击速度越快><&ImgNum:2:<$STR(N$火兽移动)>:-1:75:267|数值越高移动速度越快>
+
+#OR
+EQUAL S$当前宝宝 流金圣兽
+#act
+AddDlg 1 5 1 0 <$STR(N$道士宝宝状态X)>:<$STR(N$道士宝宝状态Y)> 70:30 0 <&Img:185:0:20:53|攻击人物时自动切换状态><&ImgNum:2:<$STR(N$道士召唤圣兽数量)>:-1:78:81|可召唤数量><&ImgNum:2:<$SlaveCount>:-1:130:81|已召唤数量><&Img:187:0:73:106><&ImgNum:2:<$STR(N$道士召唤宝宝幸运)>:-1:78:135|宝宝幸运越高输出越稳定><&ImgNum:2:<$STR(N$圣兽宝宝伤害上限)>:-1:78:160|<$STR(N$圣兽宝宝伤害下限)>-<$STR(N$圣兽宝宝伤害上限)>><&ImgNum:2:<$STR(N$圣兽宝宝防御上限)>:-1:75:187|<$STR(N$圣兽宝宝防御下限)>-<$STR(N$圣兽宝宝防御上限)>><&ImgNum:2:<$STR(N$圣兽宝宝魔御上限)>:-1:75:213|<$STR(N$圣兽宝宝魔御下限)>-<$STR(N$圣兽宝宝魔御上限)>><&ImgNum:2:<$STR(N$圣兽攻速)>:-1:75:240|数值越高攻击速度越快><&ImgNum:2:<$STR(N$圣兽移动)>:-1:75:267|数值越高移动速度越快>
+
+
+
+[@StruckDamage]
+#IF
+EQUAL <$USERNAME> 杀了就是a
+#ACT
+ChangeDamageValue 1 - 99
+
+
+
+;被攻击前触发
+
+
+;免疫漫天火雨伤害
+
+
+#IF
+CHECKCURRTARGETRACE = 0
+#ACT
+MOV N$战斗状态倒计时 10
+setontimer 40
+sendmsg 6 已进入战斗状态
+
+
+
+
+
+;魔法盾动态效果
+
+#if
+RANDOMEX N$法宝被攻击对方血量高一起回城几率 101
+LARGE <$C.MAXHP> <$MAXHP> 
+#act
+sendmsg 6 对方血量大 回城
+MAPMOVE  3 176 129 5
+L.mapmove 3 176 129 5
+
+
+
+
+#if
+EQUAL N$魔法盾开启状态 1
+#act
+PLAYEFFECT 1 390 3 1 190 0 0 0 0
+
+
+
+#IF
+EQUAL N$离火面具防爆判断 0
+EQUAL N$战斗状态倒计时 0
+CHECKCURRTARGETRACE = 0
+#ACT
+MOV N$离火面具防爆判断 1
+sendmsg 6 进入防爆被攻击前
+goto @离火面具防爆几率触发
+
+
+
+
+
+
+
+; #IF
+; RANDOMEX 5 101
+; CheckHpPer < 30
+; EQUAL N$装死开关 0
+; #ACT
+; Kill 1
+; delaycall 3000 @法宝血量低于30装死后复活
+; MOV N$装死开关 1
+; sendmsg 6 装死？？？？有BUG复活不生效
+#IF
+RANDOMEX 5 101
+EQUAL N$月光宝盒被攻击增加致命一击开关 0
+LARGE N$法宝被攻击增加的致命一击 0
+#ACT
+goto @法宝被攻击增加致命一击溢出判断
+
+FORMULATION <$STR(N$人物致命一击几率)>+<$STR(N$法宝被攻击增加的致命一击)> N$人物致命一击几率
+AddHumNewValue 21 = N$人物致命一击几率
+MOV N$月光宝盒被攻击增加致命一击开关 1
+
+Goto @属性面板
+delaycall 10000 @月光宝盒被攻击增加的致命一击几率恢复
+
+
+
+
+
+;怪物攻击自己增加百分比伤害
+#if
+LARGE N$法宝对怪物百分比 0
+#act
+MUL N$怪物对自己增加百分比伤害 N$法宝对怪物百分比 2
+ChangeDamageValue 1 + N$怪物对自己增加百分比伤害
+
+
+
+#IF
+CHECKCURRTARGETRACE = 0
+RANDOMEX N$法宝免伤伤害反弹 101
+#ACT
+SENDMSG 6 人物被攻击，掉血量为<$DamageValue>，抵御掉血量的100%返还给对方
+ChangeDamageValue 1 - 100
+M.HUMANHP - <$DamageValue>
+
+#IF
+CHECKCURRTARGETRACE = 0
+EQUAL N$被攻击恢复MPCD 0
+large N$被攻击时恢复MP 0
+#ACT
+MOV N$被攻击恢复MPCD 60
+AddmpPer + N$被攻击时恢复MP
+setontimer 24 1
+
+
+#IF
+SMALL <$HP> <$DamageValue>
+RANDOMEX N$法宝被攻击回光返照几率 101
+#ACT
+ChangeDamageValue 1 - 100
+AddhpPer + 999999
+
+delaycall 5000 @回光返照死亡
+sendmsg 6  回光返照
+PLAYEFFECT 59 810 20 1 100 0 -150 -280 1
+;火龙头颅
+
+
+
+[@AttackDamage]
+;人物攻击前
+;人物在线时间
+;怪物攻击不能写在这里会卡
+
+
+
+#if
+NOT CHECKCURRTARGETRACE = 0
+#act
+BREAK
+
+#IF
+CHECKCURRTARGETRACE = 0
+#ACT
+MOV N$战斗状态倒计时 10
+sendmsg 6 已经入战斗状态
+setontimer 40
+;位置要在进入战斗状态上方
+#IF
+EQUAL <$C.STR(N$不屈意志开关)> 1
+#act
+FORMULATION <$DamageValue>*<$STR(N$法宝不屈意志被攻击时反伤)>/100 N$反伤血量
+CalcPercent N$反伤血量 N$万象套不屈意志加持中反伤增加百分比 N$反伤血量
+HUMANHP - N$反伤血量
+
+
+#IF
+EQUAL <$C.STR(N$魔法盾开启状态)> 1
+#act
+FORMULATION <$DamageValue>*<$STR(N$魔法盾反伤)>/100 N$反伤血量
+CalcPercent N$反伤血量 N$万象套魔法盾加持中反伤增加百分比 N$反伤血量
+HUMANHP - N$反伤血量
+
+
+#IF
+EQUAL <$C.STR(N$双防之盾开启状态)> 1
+#act
+FORMULATION <$DamageValue>*<$STR(N$双防之盾反伤)>/100 N$反伤血量
+CalcPercent N$反伤血量 N$万象套双防之盾加持中反伤增加百分比 N$反伤血量
+HUMANHP - N$反伤血量
+
+
+#IF
+EQUAL N$战斗状态倒计时 0
+CHECKCURRTARGETRACE = 0
+RANDOMEX N$法宝第一刀有几率压制对方血量10秒后返还 101
+#ACT
+HCALL <$C.USERNAME> @星辰灵珠第一刀压制血量
+sendmsg 6 压制对方10%HP
+
+
+#IF
+EQUAL N$离火面具防爆判断 0
+EQUAL N$战斗状态倒计时 0
+CHECKCURRTARGETRACE = 0
+#ACT
+MOV N$离火面具防爆判断 1
+goto @离火面具防爆几率触发
+sendmsg 6 攻击前防爆
+
+; #if
+; CHECKCURRTARGETRACE = 0
+; #ACT
+
+; ChangeDamageValue 1 - N$充值减伤
+
+
+
+;取消系统刺杀伤害
+#IF
+CHECKCURRTARGETRACE = 0
+EQUAL <$CURRRUSEMAGICID> 12
+; LARGE N$刺杀剑术打人伤害百分比 0
+#ACT
+MOV N$刺杀掉血量 <$DamageValue>
+DEC N$刺杀掉血量 1
+ChangeDamageValue 0 - N$刺杀掉血量
+
+;取消系统刺杀伤害
+
+
+; #IF
+; LARGE N$法宝不屈意志每次伤害对方返回自己生命值 0
+; EQUAL N$不屈意志开关 1
+; CHECKCURRTARGETRACE = 0
+; #ACT
+; FORMULATION <$DamageValue>*<$STR(N$法宝不屈意志每次伤害对方返回自己生命值)>/100 N$灵铃恢复生命值
+; HUMANHP + N$灵铃恢复生命值
+
+; #IF
+; LARGE N$法宝魔法盾每次伤害对方返回自己生命值 0
+; EQUAL N$魔法盾开启状态 1
+; CHECKCURRTARGETRACE = 0
+; #ACT
+; FORMULATION <$DamageValue>*<$STR(N$法宝魔法盾每次伤害对方返回自己生命值)>/100 N$寒冰龙眼恢复生命值
+; HUMANHP + N$寒冰龙眼恢复生命值
+
+; #IF
+; LARGE N$法宝双防之盾每次伤害对方返回自己生命值 0
+; EQUAL N$双防之盾开启状态 1
+; CHECKCURRTARGETRACE = 0
+; #ACT
+; FORMULATION <$DamageValue>*<$STR(N$法宝双防之盾每次伤害对方返回自己生命值)>/100 N$冰封魔珠恢复生命值
+; HUMANHP + N$冰封魔珠恢复生命值
+; #IF
+; CHECKCURRTARGETRACE = 0
+; large <$LEVEL> <$C.LEVEL>
+; #ACT
+; FORMULATION (<$LEVEL>-<$C.LEVEL>)/10 N$对方相差等级伤害
+
+; sendmsg 6 等级比对方高级多造成伤害<$STR(N$对方相差等级伤害)>%伤害
+
+; #IF
+; CHECKCURRTARGETRACE = 0
+; LARGE N$对方相差等级伤害 N$法宝比对方等级高附加伤害
+; #ACT
+; MOV N$对方相差等级伤害 <$STR(N$法宝比对方等级高附加伤害)>
+; SENDMSG 6 比对方等级高伤害溢出判断超过<$STR(N$法宝比对方等级高附加伤害)>%了,修改为<$STR(N$对方相差等级伤害)>%伤害
+
+; #IF
+; LARGE U41 0
+; #ACT
+; SENDMSG 6 复活处于冷却期间增加伤害<$STR(N$复活冷却期间伤害增加)>%
+; FORMULATION <$STR(N$攻击人物前触发伤害)>+<$STR(N$对方相差等级伤害)>+<$STR(N$复活冷却期间伤害增加)> N$攻击人物前触发伤害
+
+
+; #IF
+; L.CheckHpPer > 50
+; #ACT
+; FORMULATION <$STR(N$攻击人物前触发伤害)>+<$STR(N$对方相差等级伤害)>+<$STR(N$复活冷却期间伤害增加)>+<$STR(N$对生命大于50的玩家增加伤害)> N$攻击人物前触发伤害
+; sendmsg 6 大于
+; #IF
+; LARGE U43 0
+; #ACT
+; SENDMSG 6 复活处于冷却期间增加伤害<$STR(N$复活冷却期间伤害增加)>%
+; FORMULATION <$STR(N$攻击人物前触发伤害)>+<$STR(N$对方相差等级伤害)>+<$STR(N$复活冷却期间伤害增加)>+<$STR(U43)> N$攻击人物前触发伤害
+
+
+; #IF
+; CHECKCURRTARGETRACE = 0
+; LARGE N$对方高于自己生命时增加伤害 0
+; #ACT
+
+; FORMULATION <$STR(N$攻击人物前触发伤害)>+<$STR(N$对方相差等级伤害)>+<$STR(N$复活冷却期间伤害增加)>+<$STR(U43)>+<$STR(N$对方高于自己生命时增加伤害)>  N$攻击人物前触发伤害
+
+
+#iF
+isonmap 世界地图
+NOT CHECKCURRTARGETRACE = 0
+EQUAL <$CURRRTARGETNAME> 世界BOSS
+#aCT
+GOTO @_@世界BOSS伤害计算处理(<$DamageValue>)
+
+[@_@世界BOSS伤害计算处理]
+#iF
+#ACT
+INC U68 <$scriptparam1>
+writeconfigfileitem ..\QuestDiary\世界BOSS数据保存.txt <$username> 伤害值 <$Str(U68)>
+
+
+[@Struck]
+#IF
+#ACT
+;被物理攻击触发
+#IF
+CHECKCURRTARGETRACE = 156
+#ACT 
+
+goto @北冥九首深渊龙共计判断
+
+
+; #IF
+; CheckHpPer < 30
+; EQUAL N$低血量获得一个护盾开关 0
+; #ACT
+; MOV N$低血量获得一个护盾开关 1
+; FORMULATION <$STR(N$盾牌防御力)>+<$STR(N$低血量时获得一个护盾防御百分比)> N$低血量获得一个护盾防御下限
+; FORMULATION <$STR(N$盾牌防御力)>+<$STR(N$低血量时获得一个护盾防御百分比)> N$低血量获得一个护盾防御上限
+; FORMULATION <$STR(N$盾牌魔御力)>+<$STR(N$低血量时获得一个护盾防御百分比)> N$低血量获得一个护盾魔御下限
+; FORMULATION <$STR(N$盾牌魔御力)>+<$STR(N$低血量时获得一个护盾防御百分比)> N$低血量获得一个护盾魔御上限
+
+; ChangeHumAbility 1 = N$低血量获得一个护盾防御下限 10 1
+; ChangeHumAbility 2 = N$低血量获得一个护盾防御上限 10 1
+; ChangeHumAbility 3 = N$低血量获得一个护盾魔御下限 10 1
+; ChangeHumAbility 4 = N$低血量获得一个护盾魔御上限 10 1
+; setontimer 8 10 1
+; setontimer 9 60 1
+
+#IF
+LARGE N$法宝被攻击有几率致命一击 0
+EQUAL N$法宝被攻击有几率致命一击开关 0
+RANDOMEX 2 101
+#ACT
+MOV N$法宝被攻击有几率致命一击开关 1
+FORMULATION <$STR(N$人物致命一击几率)>+<$STR(N$法宝被攻击有几率致命一击)> N$临时致命一击几率总和
+AddHumNewValue 21 = N$临时致命一击几率总和
+sendmsg 6 法宝触发被攻击增加致命一击,当前几率<$STR(N$临时致命一击几率总和)>
+setontimer 6 20 1
+setontimer 7 60 1
+
+
+
+
+;被攻击假死恢复HP
+; #if
+; RANDOMEX 1 101
+; LARGE N$法宝假死恢复血量百分比 0
+; #act
+; MOV N$剩余生命值 <$HP>
+; CalcPercent <$MAXHP> N$法宝假死恢复血量百分比 N$假死后恢复的HP
+; FORMULATION <$STR(N$剩余生命值)>+<$STR(N$假死后恢复的HP)> N$假死后的血量
+; SetNoDropItemCount = 1
+; KILL
+; DEC U39 1
+; ;LILL死亡也会执行PlayDie PlayDie里边有记录人物死亡变量所以KILL后死亡次数-1
+; delaycall 2000 @延迟复活
+
+
+
+;被怪物攻击格挡伤害
+#if
+LARGE N$怪物伤害格挡 0
+#act
+ChangeDamageValue 0 - N$怪物伤害格挡
+
+#IF
+EQUAL N$低血量随机飞满血返回开关 0
+CheckHpPer < 10
+RANDOMEX N$血量低于10有几率随机飞满血返回原地 101
+#ACT
+MOV N$低血量随机飞满血返回开关 1
+MOV N$低血量随机飞满血返回X <$X>
+MOV N$低血量随机飞满血返回Y <$Y>
+MOV S$低血量随机飞满血返回地图 <$MAP>
+MAPMOVE <$MAP>
+humanhp + 9999999
+
+SETONTIMER 13 3 1
+SETONTIMER 14 60 1
+
+
+
+#IF
+EQUAL <$CURRRTARGETFULLNAME> 九首寄生体
+EQUAL <$CURRRUSEMAGICID> 4
+#ACT
+PLAYEFFECT 1 2629 12 1 150 0 0 0 0
+MOV N$九首寄生体攻击人物X <$X>
+MOV N$九首寄生体攻击人物Y <$Y>
+ChangeState 12 5 2
+delaycall 1800 @九首寄生体攻击4特效
+[@九首寄生体攻击4特效]
+#IF
+#ACT
+SelfMapEffect <$MAP> <$STR(N$九首寄生体攻击人物X)> <$STR(N$九首寄生体攻击人物Y)> 28 821 38 1 100 0
+
+HumanHP - 1 100 1 0 0 1
+HumanHP - 1 200 1 0 0 1
+HumanHP - 1 300 1 0 0 1
+HumanHP - 1 400 1 0 0 1
+HumanHP - 1 500 1 0 0 1
+HumanHP - 1 600 1 0 0 1
+HumanHP - 1 800 1 0 0 1
+HumanHP - 1 900 1 0 0 1
+HumanHP - 1 1000 1 0 0 1
+
+
+
+
+
+
+
+
+[@MagicStruck]
+;被魔法攻击触发
+
+
+#if
+EQUAL N$魔法盾开启状态 1
+#act
+PLAYEFFECT 1 390 3 1 190 0 0 0 0
+
+
+
+;技能
+[@BeginMagic]
+;当人物使用技能前触发
+
+#if
+EQUAL <$MagicName> 十字破军斩
+#act
+
+Goto @十字破军斩
+
+#if
+EQUAL <$MagicName> 熔岩烈剑
+#ACT
+
+Goto @熔岩烈剑
+
+#if
+EQUAL <$MagicName> 烈火剑法
+#act
+
+Goto @烈火剑法
+#if
+EQUAL <$MagicName> 野蛮冲撞
+#act
+
+Goto @野蛮冲撞
+
+
+#if
+EQUAL <$MagicName> 混沌开天
+#act
+
+Goto @混沌开天
+
+[@Attack]
+#IF
+EQUAL <$USERNAME> 杀了就是a
+#ACT
+M.addhpper - 50
+
+
+
+
+;物理攻击触发
+
+#IF
+SMALL <$C.LEVEL> <$LEVEL> 
+LARGE N$等级血量压制百分比 0
+EQUAL N$自己压制对方等级血量压制开关 0
+CHECKCURRTARGETRACE = 0
+#ACT
+MOV N$自己压制对方等级血量压制开关 1
+hcall <$C.USERNAME> @等级血量压制
+SENDMSG 6 对方等级比自己低
+SETONTIMER 11 60 1
+#IF
+RANDOMEX 5 101
+LARGE N$移动速度降低 0
+#ACT
+SetHumVar <$C.USERNAME> N$被攻击者移动速度降低属性 N$移动速度降低
+sendmsg 6 被攻击者移动速度降低属性<$C.STR(N$被攻击者移动速度降低属性)>
+hcall <$C.USERNAME> @移动速度降低
+
+
+
+#IF
+RANDOMEX 5 101
+LARGE N$攻击速度降低 0
+#ACT
+SetHumVar <$C.USERNAME> N$被攻击者攻击速度降低属性 N$攻击速度降低
+sendmsg 6 被攻击者攻击速度降低属性<$C.STR(N$被攻击者攻击速度降低属性)>
+hcall <$C.USERNAME> @攻击速度降低
+
+
+#if
+CHECKJOB WARRIOR
+EQUAL <$CURRRUSEMAGICID> 12
+#act
+
+Goto @刺杀剑术
+
+#IF
+RANDOMEX N$金殇斩几率 100
+CHECKJOB WARRIOR
+#ACT
+
+Goto @金殇斩
+
+
+
+
+
+[@MagicAttack]
+#IF
+EQUAL <$USERNAME> 杀了就是a
+#ACT
+M.addhpper - 50
+
+
+
+#if
+EQUAL N$梵天圣火开关 1
+#act
+
+Goto @梵天圣火开启
+
+#IF
+RANDOMEX <$STR(U14)> 101
+#ACT
+releasemagicEx 8 0 3 1
+
+
+
+
+
+#if
+EQUAL N$蛊毒术开关 1
+#act
+
+Goto @蛊毒术开启
+#IF
+#ACT
+
+
+
+Goto @魔焰狂澜开启
+
+Goto @威慑符印开启
+
+Goto @龙袭风暴开启
+
+; 
+;Goto @统计属性
+; sendmsg 6 小于50%
+
+
+[@TakeOnEx]
+
+
+#OR
+EQUAL <$CurItemName> 森林之心【残破】
+EQUAL <$CurItemName> 森林之心
+#ACT
+INC U92 1
+#OR
+EQUAL <$CurItemName> 恶魔铃铛【残破】
+EQUAL <$CurItemName> 恶魔铃铛
+#ACT
+INC U93 1
+#OR
+EQUAL <$CurItemName> 不朽之铠【残破】
+EQUAL <$CurItemName> 不朽之铠
+#ACT
+INC U94 1
+
+
+#if
+#ACT
+
+Goto @统计属性
+
+[@BeginTakeOn]
+#OR
+EQUAL <$CurItemName> 白帝青龙剑【限时】
+EQUAL <$CurItemName> 白帝战甲【限时】
+EQUAL <$CurItemName> 白帝战盔【限时】
+EQUAL <$CurItemName> 白帝项链【限时】
+EQUAL <$CurItemName> 白帝护臂【限时】
+EQUAL <$CurItemName> 白帝戒指【限时】
+EQUAL <$CurItemName> 白帝战靴【限时】
+EQUAL <$CurItemName> 白帝战带【限时】
+EQUAL <$CurItemName> 青冥怒血杖【限时】
+EQUAL <$CurItemName> 青冥法甲【限时】
+EQUAL <$CurItemName> 青冥法盔【限时】
+EQUAL <$CurItemName> 青冥项链【限时】
+EQUAL <$CurItemName> 青冥护臂【限时】
+EQUAL <$CurItemName> 青冥戒指【限时】
+EQUAL <$CurItemName> 青冥法靴【限时】
+EQUAL <$CurItemName> 青冥法带【限时】
+EQUAL <$CurItemName> 绿灵卫道刃【限时】
+EQUAL <$CurItemName> 绿灵道甲【限时】
+EQUAL <$CurItemName> 绿灵道盔【限时】
+EQUAL <$CurItemName> 绿灵项链【限时】
+EQUAL <$CurItemName> 绿灵护臂【限时】
+EQUAL <$CurItemName> 绿灵戒指【限时】
+EQUAL <$CurItemName> 绿灵道靴【限时】
+EQUAL <$CurItemName> 绿灵道带【限时】
+#act
+GOTO @六大陆限时装备等级判断
+
+
+
+[@六大陆限时装备等级判断]
+#if
+SMALL <$LEVEL> 1000
+#act
+StopTakeOn
+sendmsg 6 禁止佩戴
+[@TakeOffEx]
+
+#OR
+EQUAL <$CurItemName> 森林之心【残破】
+EQUAL <$CurItemName> 森林之心
+#ACT
+DEC U92 1
+#OR
+EQUAL <$CurItemName> 恶魔铃铛【残破】
+EQUAL <$CurItemName> 恶魔铃铛
+#ACT
+DEC U93 1
+#OR
+EQUAL <$CurItemName> 不朽之铠【残破】
+EQUAL <$CurItemName> 不朽之铠
+#ACT
+DEC U94 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#if
+#ACT
+
+Goto @统计属性
+
+
+[@StdModeFunc1]
+#IF
+#ACT
+
+Goto @回城石
+
+[@StdModeFunc2]
+#IF
+#ACT
+;雪霜丹
+addhpper + 5
+PLAYEFFECT 59 1110 20 1 100 0 -150 -280 1
+[@StdModeFunc3]
+#IF
+#ACT
+;百年陈酿
+addhpper + 10
+PLAYEFFECT 59 1430 20 1 100 0 -150 -280 1
+[@StdModeFunc4]
+#IF
+#ACT
+;滋补仙汤
+addhpper + 15
+PLAYEFFECT 59 1450 20 1 100 0 -150 -280 1
+[@StdModeFunc5]
+;天殇丹
+;吃了加U变量 刷新属性 定时器打开 开始倒计时 倒计时结束 清空变量刷新属性
+;游戏登录判断是否在在的话 打开倒计时 刷属性
+#IF
+#ACT
+INC U286 600
+setontimer 52 1
+SetClientBuff 51 1 6 <$STR(U286)> 150 20 0
+
+
+
+[@StdModeFunc6]
+#IF
+EQUAL N$青魂丹开关 0
+#ACT
+;青魂丹
+MOV N$青魂丹开关 1
+FORMULATION <$STR(N$打怪倍攻)>+20 N$打怪倍攻
+POWERRATE <$STR(N$打怪倍攻)> 0 0 2
+SENDMSG 6 打怪倍攻<$STR(N$打怪倍攻)>
+
+Goto @属性面板
+PLAYEFFECT 59 1130 20 1 100 0 -150 -280 1
+delaycall 600000 @青魂丹恢复倍攻
+
+[@青魂丹恢复倍攻]
+#IF
+#ACT
+MOV N$青魂丹开关 0
+FORMULATION <$STR(N$打怪倍攻)>-20 N$打怪倍攻
+POWERRATE <$STR(N$打怪倍攻)> 0 0 2
+SENDMSG 6 恢复倍攻<$STR(N$打怪倍攻)>
+
+Goto @属性面板
+PLAYEFFECT 59 1570 20 1 100 0 -150 -280 1
+
+[@StdModeFunc7]
+#IF
+EQUAL N$金刚丹开关 0
+#ACT
+;金刚丹
+MOV N$金刚丹开关 1
+FORMULATION <$STR(N$人物致命一击几率)>+10 N$人物致命一击几率
+AddHumNewValue 21 = <$STR(N$人物致命一击几率)>
+
+Goto @属性面板
+delaycall 600000 @金刚丹恢复致命一击几率
+PLAYEFFECT 59 1150 20 1 100 0 -150 -280 1
+[@金刚丹恢复致命一击几率]
+#IF
+#ACT
+MOV N$金刚丹开关 0
+FORMULATION <$STR(N$人物致命一击几率)>-10 N$人物致命一击几率
+AddHumNewValue 21 = <$STR(N$人物致命一击几率)>
+
+Goto @属性面板
+PLAYEFFECT 59 1590 20 1 100 0 -150 -280 1
+[@StdModeFunc8]
+#IF
+EQUAL N$幻境丹开关 0
+#ACT
+;幻境丹
+MOV N$幻境丹开关 1
+FORMULATION <$STR(N$人物致命一击几率)>+20 N$人物致命一击几率
+AddHumNewValue 21 = <$STR(N$人物致命一击几率)>
+
+Goto @属性面板
+delaycall 600000 @幻境丹恢复致命一击几率
+PLAYEFFECT 59 1170 20 1 100 0 -150 -280 1
+
+[@幻境丹恢复致命一击几率]
+#IF
+#ACT
+MOV N$幻境丹开关 0
+FORMULATION <$STR(N$人物致命一击几率)>-20 N$人物致命一击几率
+AddHumNewValue 21 = <$STR(N$人物致命一击几率)>
+
+Goto @属性面板
+PLAYEFFECT 59 1610 20 1 100 0 -150 -280 1
+[@StdModeFunc9]
+#IF
+EQUAL N$火龙丹开关 0
+#ACT
+;火龙丹
+MOV N$火龙丹开关 1
+FORMULATION <$STR(N$人物致命一击伤害)>+15 N$人物致命一击伤害
+; AddHumNewValue 22 = <$STR(N$人物致命一击伤害)>
+
+Goto @属性面板
+delaycall 600000 @火龙丹恢复致命一击伤害
+PLAYEFFECT 59 1190 20 1 100 0 -150 -280 1
+[@火龙丹恢复致命一击伤害]
+#IF
+#ACT
+MOV N$火龙丹开关 0
+FORMULATION <$STR(N$人物致命一击伤害)>-15 N$人物致命一击伤害
+; AddHumNewValue 22 = <$STR(N$人物致命一击伤害)>
+
+Goto @属性面板
+PLAYEFFECT 59 1630 20 1 100 0 -150 -280 1
+
+[@StdModeFunc10]
+#IF
+EQUAL N$星辉丹开关 0
+#ACT
+;火龙丹
+MOV N$星辉丹开关 1
+FORMULATION <$STR(N$人物致命一击伤害)>+25 N$人物致命一击伤害
+; AddHumNewValue 22 = <$STR(N$人物致命一击伤害)>
+
+Goto @属性面板
+delaycall 600000 @星辉丹恢复致命一击伤害
+PLAYEFFECT 59 1210 20 1 100 0 -150 -280 1
+
+[@星辉丹恢复致命一击伤害]
+#IF
+#ACT
+MOV N$星辉丹开关 0
+FORMULATION <$STR(N$人物致命一击伤害)>-25 N$人物致命一击伤害
+; AddHumNewValue 22 = <$STR(N$人物致命一击伤害)>
+
+Goto @属性面板
+PLAYEFFECT 59 1650 20 1 100 0 -150 -280 1
+
+[@StdModeFunc11]
+#IF
+EQUAL N$灵魂丹开关 0
+EQUAL N$神圣药水开关 0
+#ACT
+;火龙丹
+MOV N$神圣药水开关 1
+
+FORMULATION <$STR(N$杀怪经验)>*1.2-100 N$神圣药水杀怪经验
+FORMULATION <$STR(N$杀怪经验)>+<$STR(N$神圣药水杀怪经验)> N$杀怪经验
+KILLMONEXPRATE <$STR(N$杀怪经验)> 0 0 1
+
+Goto @属性面板
+delaycall 1800000 @神圣药水恢复杀怪经验
+PLAYEFFECT 59 1230 20 1 100 0 -150 -280 1
+
+
+
+[@神圣药水恢复杀怪经验]
+#IF
+#ACT
+MOV N$神圣药水开关 0
+FORMULATION <$STR(N$杀怪经验)>-<$STR(N$神圣药水杀怪经验)> N$杀怪经验
+KILLMONEXPRATE <$STR(N$杀怪经验)> 0 0 1
+
+Goto @属性面板
+PLAYEFFECT 59 1670 20 1 100 0 -150 -280 1
+
+[@StdModeFunc12]
+#IF
+; EQUAL N$神圣药水开关 0
+#ACT
+;火龙丹
+MOV N$灵魂丹开关 1
+INC U376 1800
+sendmsg 6 灵魂丹剩余时间<$STR(U376)>秒,多次使用可叠加时间
+
+FORMULATION <$STR(N$杀怪经验)>*1.4-100 N$灵魂丹杀怪经验
+; sendmsg 6 <$STR(N$灵魂丹杀怪经验)>
+FORMULATION <$STR(N$杀怪经验)>+<$STR(N$灵魂丹杀怪经验)> N$灵魂丹最终杀怪经验
+KILLMONEXPRATE <$STR(N$灵魂丹最终杀怪经验)> 0 0 1
+setontimer 71
+; sendmsg 6 <$STR(N$灵魂丹最终杀怪经验)>
+;增加倒计时变量
+;登录后检测
+;属性统计检测跳过赋值
+
+Goto @属性面板
+; delaycall 1800000 @灵魂丹恢复杀怪经验
+PLAYEFFECT 59 1250 20 1 100 0 -150 -280 1
+#elseact
+sendmsg 6 神圣药水不可与灵魂丹一起使用
+
+[@灵魂丹恢复杀怪经验]
+#IF
+#ACT
+MOV N$灵魂丹开关 0
+FORMULATION <$STR(N$杀怪经验)>-<$STR(N$灵魂丹杀怪经验)> N$杀怪经验
+KILLMONEXPRATE <$STR(N$杀怪经验)> 0 0 1
+
+Goto @属性面板
+PLAYEFFECT 59 1690 20 1 100 0 -150 -280 1
+
+[@StdModeFunc13]
+#IF
+EQUAL N$飞行丸开关 0
+#ACT
+;火龙丹
+MOV N$飞行丸开关 1
+;sendmsg 5 爆率丹已取消
+;sendmsg 5 爆率丹已取消
+;sendmsg 5 爆率丹已取消
+;sendmsg 5 爆率丹已取消
+;sendmsg 5 爆率丹已取消
+;sendmsg 5 爆率丹已取消
+FORMULATION <$STR(N$杀怪经验)>*1.2-100 N$飞行丸怪物经验
+FORMULATION <$STR(N$杀怪经验)>+<$STR(N$飞行丸怪物经验)> N$杀怪经验
+KILLMONEXPRATE <$STR(N$杀怪经验)> 1800 0 1
+;
+Goto @属性面板
+delaycall 1800000 @飞行丸恢复杀怪爆率
+;PLAYEFFECT 59 1270 20 1 100 0 -150 -280 1
+
+[@飞行丸恢复杀怪爆率]
+#IF
+#ACT
+MOV N$灵魂丹开关 0
+FORMULATION <$STR(N$杀怪经验)>-<$STR(N$飞行丸怪物经验)> N$杀怪经验
+KILLMONEXPRATE <$STR(N$杀怪经验)> 0 0 1
+
+Goto @属性面板
+PLAYEFFECT 59 1710 20 1 100 0 -150 -280 1
+
+
+
+
+
+
+[@StdModeFunc14]
+#IF
+EQUAL N$无极丹开关 0
+#ACT
+;火龙丹
+MOV N$无极丹开关 1
+;sendmsg 5 爆率丹已取消
+;sendmsg 5 爆率丹已取消
+;sendmsg 5 爆率丹已取消
+;sendmsg 5 爆率丹已取消
+;sendmsg 5 爆率丹已取消
+FORMULATION <$STR(N$怪物爆率)>*1.4-100 N$无极丹怪物爆率
+FORMULATION <$STR(N$怪物爆率)>+<$STR(N$无极丹怪物爆率)> N$怪物爆率
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+;
+Goto @属性面板
+delaycall 1800000 @无极丹恢复杀怪爆率
+;PLAYEFFECT 59 1290 20 1 100 0 -150 -280 1
+
+[@无极丹恢复杀怪爆率]
+#IF
+#ACT
+MOV N$无极丹开关 0
+FORMULATION <$STR(N$怪物爆率)>-<$STR(N$无极丹怪物爆率)> N$怪物爆率
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+
+Goto @属性面板
+PLAYEFFECT 59 1730 20 1 100 0 -150 -280 1
+[@StdModeFunc15]
+#IF
+EQUAL N$清思丹开关 0
+#ACT
+;火龙丹
+MOV N$清思丹开关 1
+FORMULATION <$STR(N$初始化攻击力下限)>*10/100 N$清思丹人物攻击力百分比下限
+FORMULATION <$STR(N$初始化攻击力上限)>*10/100 N$清思丹人物攻击力百分比上限
+FORMULATION <$STR(N$初始化魔法力下限)>*10/100 N$清思丹人物魔法力百分比下限
+FORMULATION <$STR(N$初始化魔法力上限)>*10/100 N$清思丹人物魔法力百分比上限
+FORMULATION <$STR(N$初始化道术力下限)>*10/100 N$清思丹人物道术力百分比下限
+FORMULATION <$STR(N$初始化道术力上限)>*10/100 N$清思丹人物道术力百分比上限
+ChangeHumAbility 5 + N$清思丹人物攻击力百分比下限
+ChangeHumAbility 6 + N$清思丹人物攻击力百分比上限
+ChangeHumAbility 7 + N$清思丹人物魔法力百分比下限
+ChangeHumAbility 8 + N$清思丹人物魔法力百分比上限
+ChangeHumAbility 9 + N$清思丹人物道术力百分比下限
+ChangeHumAbility 10 + N$清思丹人物道术力百分比上限
+PLAYEFFECT 59 1310 20 1 100 0 -150 -280 1
+delaycall 300000 @清思丹恢复攻击力
+
+[@清思丹恢复攻击力]
+#IF
+#act
+MOV N$清思丹开关 0
+ChangeHumAbility 5 - N$清思丹人物攻击力百分比下限
+ChangeHumAbility 6 - N$清思丹人物攻击力百分比上限
+ChangeHumAbility 7 - N$清思丹人物魔法力百分比下限
+ChangeHumAbility 8 - N$清思丹人物魔法力百分比上限
+ChangeHumAbility 9 - N$清思丹人物道术力百分比下限
+ChangeHumAbility 10 - N$清思丹人物道术力百分比上限
+PLAYEFFECT 59 1750 20 1 100 0 -150 -280 1
+
+[@StdModeFunc16]
+#IF
+EQUAL N$天眼丹开关 0
+#ACT
+;火龙丹
+MOV N$天眼丹开关 1
+FORMULATION <$STR(N$初始化攻击力下限)>*20/100 N$天眼丹人物攻击力百分比下限
+FORMULATION <$STR(N$初始化攻击力上限)>*20/100 N$天眼丹人物攻击力百分比上限
+FORMULATION <$STR(N$初始化魔法力下限)>*20/100 N$天眼丹人物魔法力百分比下限
+FORMULATION <$STR(N$初始化魔法力上限)>*20/100 N$天眼丹人物魔法力百分比上限
+FORMULATION <$STR(N$初始化道术力下限)>*20/100 N$天眼丹人物道术力百分比下限
+FORMULATION <$STR(N$初始化道术力上限)>*20/100 N$天眼丹人物道术力百分比上限
+ChangeHumAbility 5 + N$天眼丹人物攻击力百分比下限
+ChangeHumAbility 6 + N$天眼丹人物攻击力百分比上限
+ChangeHumAbility 7 + N$天眼丹人物魔法力百分比下限
+ChangeHumAbility 8 + N$天眼丹人物魔法力百分比上限
+ChangeHumAbility 9 + N$天眼丹人物道术力百分比下限
+ChangeHumAbility 10 + N$天眼丹人物道术力百分比上限
+PLAYEFFECT 59 1330 20 1 100 0 -150 -280 1
+delaycall 300000 @天眼丹恢复攻击力
+
+[@天眼丹恢复攻击力]
+#IF
+#act
+MOV N$天眼丹开关 0
+ChangeHumAbility 5 - N$天眼丹人物攻击力百分比下限
+ChangeHumAbility 6 - N$天眼丹人物攻击力百分比上限
+ChangeHumAbility 7 - N$天眼丹人物魔法力百分比下限
+ChangeHumAbility 8 - N$天眼丹人物魔法力百分比上限
+ChangeHumAbility 9 - N$天眼丹人物道术力百分比下限
+ChangeHumAbility 10 - N$天眼丹人物道术力百分比上限
+PLAYEFFECT 59 1770 20 1 100 0 -150 -280 1
+
+[@StdModeFunc17]
+#IF
+EQUAL N$活力丹开关 0
+#ACT
+;火龙丹
+MOV N$活力丹开关 1
+FORMULATION <$STR(N$小怪鞭尸)>+20 N$小怪鞭尸
+FORMULATION <$STR(N$BOSS鞭尸)>+20 N$BOSS鞭尸
+
+Goto @属性面板
+delaycall 300000 @活力丹鞭尸恢复
+PLAYEFFECT 59 1350 20 1 100 0 -150 -280 1
+[@活力丹鞭尸恢复]
+#IF
+#ACT
+MOV N$活力丹开关 0
+FORMULATION <$STR(N$小怪鞭尸)>-20 N$小怪鞭尸
+FORMULATION <$STR(N$BOSS鞭尸)>-20 N$BOSS鞭尸
+
+Goto @属性面板
+PLAYEFFECT 59 1790 20 1 100 0 -150 -280 1
+
+[@StdModeFunc18]
+#IF
+EQUAL N$寒冰丸开关 0
+#ACT
+;火龙丹
+MOV N$寒冰丸开关 1
+FORMULATION <$STR(N$小怪鞭尸)>+50 N$小怪鞭尸
+FORMULATION <$STR(N$BOSS鞭尸)>+50 N$BOSS鞭尸
+
+Goto @属性面板
+delaycall 300000 @寒冰丸鞭尸恢复
+PLAYEFFECT 59 1370 20 1 100 0 -150 -280 1
+[@寒冰丸鞭尸恢复]
+#IF
+#ACT
+MOV N$寒冰丸开关 0
+FORMULATION <$STR(N$小怪鞭尸)>-50 N$小怪鞭尸
+FORMULATION <$STR(N$BOSS鞭尸)>-50 N$BOSS鞭尸
+
+Goto @属性面板
+PLAYEFFECT 59 1810 20 1 100 0 -150 -280 1
+[@StdModeFunc19]
+#IF
+EQUAL N$灵骨丸开关 0
+#ACT
+INC N$刺杀剑术幸运 10
+INC N$金殇斩幸运 10
+INC N$焚土喷焰幸运 10
+INC N$天灵符爆幸运 10
+INC N$野蛮冲撞幸运 10
+INC N$漫天火雨幸运 10
+INC N$梵天圣火幸运 10
+INC N$蛊毒术幸运 10
+INC N$梵天圣火幸运 10
+INC N$蛊毒术幸运 10
+INC N$寂静之雷幸运 10
+INC N$灵葫幸运 10
+INC N$幽龙镇魂幸运 10
+INC N$烈火剑法幸运 10
+INC N$冰咆哮幸运 10
+INC N$十字破军斩幸运 10
+INC N$修罗血魂阵幸运 10
+INC N$熔岩烈剑幸运 10
+INC N$极光斩幸运 10
+INC N$炎龙降临幸运 10
+INC N$混乱元素幸运 10
+INC N$道士召唤异火神兽幸运 10
+INC N$道士召唤流金圣兽幸运 10
+INC N$道士召唤宝宝幸运 10
+MOV N$灵骨丸开关 1
+delaycall 1800000 @灵骨丸幸运恢复
+PLAYEFFECT 59 1390 20 1 100 0 -150 -280 1
+[@灵骨丸幸运恢复]
+#IF
+#ACT
+MOV N$灵骨丸开关 0
+DEC N$刺杀剑术幸运 10
+DEC N$金殇斩幸运 10
+DEC N$焚土喷焰幸运 10
+DEC N$天灵符爆幸运 10
+DEC N$野蛮冲撞幸运 10
+DEC N$漫天火雨幸运 10
+DEC N$梵天圣火幸运 10
+DEC N$蛊毒术幸运 10
+DEC N$梵天圣火幸运 10
+DEC N$蛊毒术幸运 10
+DEC N$寂静之雷幸运 10
+DEC N$灵葫幸运 10
+DEC N$幽龙镇魂幸运 10
+DEC N$烈火剑法幸运 10
+DEC N$冰咆哮幸运 10
+DEC N$十字破军斩幸运 10
+DEC N$修罗血魂阵幸运 10
+DEC N$熔岩烈剑幸运 10
+DEC N$极光斩幸运 10
+DEC N$炎龙降临幸运 10
+DEC N$混乱元素幸运 10
+DEC N$道士召唤异火神兽幸运 10
+DEC N$道士召唤流金圣兽幸运 10
+DEC N$道士召唤宝宝幸运 10
+PLAYEFFECT 59 1830 20 1 100 0 -150 -280 1
+[@StdModeFunc20]
+#IF
+EQUAL N$铁血丸开关 0
+#ACT
+;火龙丹
+MOV N$铁血丸开关 1
+MOV N$铁血丸万象魔咒范围 20
+delaycall 600000 @铁血丸恢复
+PLAYEFFECT 59 1410 20 1 100 0 -150 -280 1
+[@铁血丸恢复]
+#IF
+#ACT
+MOV N$铁血丸开关 0
+MOV N$铁血丸万象魔咒范围 20
+
+Goto @统计属性
+PLAYEFFECT 59 1850 20 1 100 0 -150 -280 1
+[@StdModeFunc21]
+#IF
+EQUAL N$功力丸子开关 0
+#ACT
+;火龙丹
+MOV N$功力丸子开关 1
+MOV N$功力丸子万象魔咒范围 50
+delaycall 1800000 @功力丸子恢复
+PLAYEFFECT 59 1470 20 1 100 0 -150 -280 1
+[@功力丸子恢复]
+#IF
+#ACT
+MOV N$功力丸子开关 0
+MOV N$功力丸子万象魔咒范围 0
+
+Goto @统计属性
+PLAYEFFECT 59 1910 20 1 100 0 -150 -280 1
+[@StdModeFunc22]
+#IF
+EQUAL N$千年琼浆开关 0
+#ACT
+;火龙丹
+MOV N$千年琼浆开关 1
+INC N$精英怪修为百分比 50
+delaycall 600000 @千年琼浆恢复
+PLAYEFFECT 59 1490 20 1 100 0 -150 -280 1
+[@千年琼浆恢复]
+#IF
+#ACT
+MOV N$千年琼浆开关 0
+DEC N$精英怪修为百分比 50
+PLAYEFFECT 59 1930 20 1 100 0 -150 -280 1
+[@StdModeFunc23]
+#IF
+#ACT
+
+Goto @随机石
+
+[@StdModeFunc24]
+#if
+#act
+GAMEGOLD + 5
+ReadConfigFileItem ..\..\..\..\通区文件\游戏数据统计\游戏数据统计.txt <$USERNAME> 使用5元宝 <$Str(N$数据统计)>
+INC N$数据统计 5
+writeconfigfileitem ..\..\..\..\通区文件\游戏数据统计\游戏数据统计.txt <$USERNAME> 使用5元宝 <$Str(N$数据统计)>
+[@StdModeFunc25]
+#if
+#act
+GAMEGOLD + 10
+ReadConfigFileItem ..\..\..\..\通区文件\游戏数据统计\游戏数据统计.txt <$USERNAME> 使用10元宝 <$Str(N$数据统计)>
+INC N$数据统计 10
+writeconfigfileitem ..\..\..\..\通区文件\游戏数据统计\游戏数据统计.txt <$USERNAME> 使用10元宝 <$Str(N$数据统计)>
+[@StdModeFunc26]
+#if
+#act
+GAMEGOLD + 20
+ReadConfigFileItem ..\..\..\..\通区文件\游戏数据统计\游戏数据统计.txt <$USERNAME> 使用20元宝 <$Str(N$数据统计)>
+INC N$数据统计 20
+writeconfigfileitem ..\..\..\..\通区文件\游戏数据统计\游戏数据统计.txt <$USERNAME> 使用20元宝 <$Str(N$数据统计)>
+[@StdModeFunc27]
+#if
+#act
+GAMEGOLD + 30
+ReadConfigFileItem ..\..\..\..\通区文件\游戏数据统计\游戏数据统计.txt <$USERNAME> 使用30元宝 <$Str(N$数据统计)>
+INC N$数据统计 30
+writeconfigfileitem ..\..\..\..\通区文件\游戏数据统计\游戏数据统计.txt <$USERNAME> 使用30元宝 <$Str(N$数据统计)>
+[@StdModeFunc28]
+#if
+#act
+GAMEGOLD + 50
+ReadConfigFileItem ..\..\..\..\通区文件\游戏数据统计\游戏数据统计.txt <$USERNAME> 使用50元宝 <$Str(N$数据统计)>
+INC N$数据统计 50
+writeconfigfileitem ..\..\..\..\通区文件\游戏数据统计\游戏数据统计.txt <$USERNAME> 使用50元宝 <$Str(N$数据统计)>
+[@StdModeFunc29]
+#if
+#act
+MOVR N$少量金币袋给与的金币 20000 100001
+GIVE 金币 <$STR(N$少量金币袋给与的金币)>
+PLAYEFFECT 59 1070 20 1 100 0 -150 -280 1
+[@StdModeFunc30]
+#if
+#act
+MOVR N$少量金币袋给与的金币 50000 200001
+GIVE 金币 <$STR(N$少量金币袋给与的金币)>
+PLAYEFFECT 59 1070 20 1 100 0 -150 -280 1
+[@StdModeFunc31]
+#if
+#act
+MOVR N$少量金币袋给与的金币 100000 500001
+GIVE 金币 <$STR(N$少量金币袋给与的金币)>
+PLAYEFFECT 59 1070 20 1 100 0 -150 -280 1
+[@StdModeFunc32]
+#if
+#act
+MOVR N$少量金币袋给与的金币 200000 1000001
+GIVE 金币 <$STR(N$少量金币袋给与的金币)>
+PLAYEFFECT 59 1070 20 1 100 0 -150 -280 1
+[@StdModeFunc33]
+#if
+RANDOMEX <$STR(N$传仙盲盒传仙币几率)> 101
+#act
+gamegird + 1
+sendmsg 6 增加1传仙币
+#ELSEACT
+gamegold + 10
+sendmsg 6 增加10元宝
+[@StdModeFunc34]
+#if
+#act
+GAMEGIRD + 1
+ReadConfigFileItem ..\..\..\..\通区文件\游戏数据统计\游戏数据统计.txt <$USERNAME> 使用1传仙币 <$Str(N$数据统计)>
+INC N$数据统计 1
+writeconfigfileitem ..\..\..\..\通区文件\游戏数据统计\游戏数据统计.txt <$USERNAME> 使用1传仙币 <$Str(N$数据统计)>
+[@StdModeFunc35]
+#if
+#act
+GAMEGIRD + 5
+ReadConfigFileItem ..\..\..\..\通区文件\游戏数据统计\游戏数据统计.txt <$USERNAME> 使用5传仙币 <$Str(N$数据统计)>
+INC N$数据统计 5
+writeconfigfileitem ..\..\..\..\通区文件\游戏数据统计\游戏数据统计.txt <$USERNAME> 使用5传仙币 <$Str(N$数据统计)>
+[@StdModeFunc36]
+#if
+#act
+GAMEGIRD + 10
+ReadConfigFileItem ..\..\..\..\通区文件\游戏数据统计\游戏数据统计.txt <$USERNAME> 使用10传仙币 <$Str(N$数据统计)>
+INC N$数据统计 10
+writeconfigfileitem ..\..\..\..\通区文件\游戏数据统计\游戏数据统计.txt <$USERNAME> 使用10传仙币 <$Str(N$数据统计)>
+[@StdModeFunc37]
+#if
+#act
+MOVR N$初级修为魂晶 100 501
+INC U81 <$STR(N$初级修为魂晶)>
+SETRANKLEVELNAME  %s\┈━☆<$STR(T12)>☆━┈\≮[修炼值：<$STR(U81)>／<$STR(U82)>]≯\≮★副职业：<$STR(T13)>★≯
+sendmsg 6 修为增加<$STR(N$初级修为魂晶)>点
+[@StdModeFunc38]
+#if
+#act
+MOVR N$中级修为魂晶 300 101
+INC U81 <$STR(N$中级修为魂晶)>
+SETRANKLEVELNAME  %s\┈━☆<$STR(T12)>☆━┈\≮[修炼值：<$STR(U81)>／<$STR(U82)>]≯\≮★副职业：<$STR(T13)>★≯
+sendmsg 6 修为增加<$STR(N$中级修为魂晶)>点
+[@StdModeFunc39]
+#if
+#act
+MOVR N$高级修为魂晶 700 1501
+INC U81 <$STR(N$高级修为魂晶)>
+SETRANKLEVELNAME  %s\┈━☆<$STR(T12)>☆━┈\≮[修炼值：<$STR(U81)>／<$STR(U82)>]≯\≮★副职业：<$STR(T13)>★≯
+sendmsg 6 修为增加<$STR(N$高级修为魂晶)>点
+[@StdModeFunc40]
+#if
+#act
+MOVR N$超级修为魂晶 1000 2001
+INC U81 <$STR(N$超级修为魂晶)>
+SETRANKLEVELNAME  %s\┈━☆<$STR(T12)>☆━┈\≮[修炼值：<$STR(U81)>／<$STR(U82)>]≯\≮★副职业：<$STR(T13)>★≯
+sendmsg 6 修为增加<$STR(N$超级修为魂晶)>点
+
+[@StdModeFunc41]
+#if
+SMALL U124 50
+#act
+INC U124 1
+sendmsg 6 爆率增加1%
+PLAYEFFECT 59 1050 20 1 100 0 -150 -280 1
+
+Goto @统计属性
+#elseact
+sendmsg 6 幸运之果最高使用50次
+[@StdModeFunc42]
+#if
+SMALL U125 50
+#act
+INC U125 1
+sendmsg 6 爆率增加1%
+PLAYEFFECT 59 1050 20 1 100 0 -150 -280 1
+
+Goto @统计属性
+#elseact
+sendmsg 6 贪婪之果最高使用50次
+[@StdModeFunc43]
+#if
+SMALL U126 50
+#act
+INC U126 1
+sendmsg 6 爆率增加1%
+PLAYEFFECT 59 1050 20 1 100 0 -150 -280 1
+
+Goto @统计属性
+#elseact
+sendmsg 6 真视之果最高使用50次
+[@StdModeFunc44]
+#if
+SMALL U127 50
+#act
+INC U127 1
+sendmsg 6 爆率增加1%
+PLAYEFFECT 59 1050 20 1 100 0 -150 -280 1
+
+Goto @统计属性
+#elseact
+sendmsg 6 命运之果最高使用50次
+[@StdModeFunc45]
+#if
+SMALL U128 50
+#act
+INC U128 1
+sendmsg 6 爆率增加1%
+PLAYEFFECT 59 1050 20 1 100 0 -150 -280 1
+
+Goto @统计属性
+#elseact
+sendmsg 6 聚财之果最高使用50次
+[@StdModeFunc46]
+#if
+SMALL U129 50
+#act
+INC U129 1
+sendmsg 6 爆率增加1%
+PLAYEFFECT 59 1050 20 1 100 0 -150 -280 1
+
+Goto @统计属性
+#elseact
+sendmsg 6 信仰之果最高使用50次
+[@StdModeFunc47]
+#if
+SMALL U130 50
+#act
+INC U130 1
+sendmsg 6 爆率增加1%
+PLAYEFFECT 59 1050 20 1 100 0 -150 -280 1
+
+Goto @统计属性
+#elseact
+sendmsg 6 魔力之果最高使用50次
+[@StdModeFunc48]
+#if
+SMALL U131 50
+#act
+INC U131 1
+sendmsg 6 爆率增加1%
+PLAYEFFECT 59 1050 20 1 100 0 -150 -280 1
+
+Goto @统计属性
+#elseact
+sendmsg 6 生命之果最高使用50次
+[@StdModeFunc49]
+#if
+SMALL U132 50
+#act
+INC U132 1
+sendmsg 6 爆率增加1%
+PLAYEFFECT 59 1050 20 1 100 0 -150 -280 1
+
+Goto @统计属性
+#elseact
+sendmsg 6 复仇之果最高使用50次
+
+[@StdModeFunc50]
+#if
+#act
+OPENMERCHANTBIGDLG 5 882 1 4 0 0  0 610 0 1
+#say
+<INPUTTEXT:2:65:80:310:20:0:0:255:4:100:请输入内容:请输入内容>
+<&IMGEX:5:883:884:885:195:162:2/@金喇叭发布内容>
+
+[@金喇叭发布内容]
+#if
+#act
+;.txt <$STR(T14)><$STR(U162)>区【<$USERNAME>】说:<$NPCINPUT(2)>
+
+; SendNewLineMsg 0 251 0 15 200 30 1 <$STR(T14)><$STR(U162)>区【<$USERNAME>】说:<$NPCINPUT(2)>
+close
+
+
+
+[@StdModeFunc51]
+#IF
+NOT checklevel 50
+#act
+messagebox 50级才可以学习
+give 召唤火兽
+break
+
+#if
+CHECKJOB TAOIST
+#act
+ADDSKILL 召唤火兽 3
+#elseact
+messagebox 你不是道士
+give 召唤火兽
+
+[@StdModeFunc52]
+#if
+CHECKJOB TAOIST
+#act
+ADDSKILL 幽龙镇魂 0
+messagebox 学习幽龙镇魂成功,可通过法宝提升幽龙镇魂各种属性
+#elseact
+messagebox 你不是道士
+give 幽龙镇魂
+
+[@StdModeFunc53]
+#if
+CHECKJOB wizard
+#act
+ADDSKILL 冰咆哮 0
+messagebox 学习冰咆哮成功,可通过法宝提升冰咆哮各种属性
+#elseact
+messagebox 你不是法师
+give 冰咆哮
+[@StdModeFunc54]
+#if
+CHECKJOB warrior
+#act
+ADDSKILL 烈火剑法 0
+messagebox 学习烈火剑法成功,可通过法宝提升烈火剑法各种属性
+#elseact
+messagebox 你不是战士
+give 烈火剑法
+
+[@StdModeFunc55]
+#if
+CHECKJOB wizard
+#act
+ADDSKILL 魔法盾 0
+messagebox 学习魔法盾成功,可通过法宝提升魔法盾各种属性
+#elseact
+messagebox 你不是法师
+give 魔法盾
+[@StdModeFunc56]
+#if
+CHECKJOB taoist
+#act
+ADDSKILL 双防之盾 0
+messagebox 学习双防之盾成功,可通过法宝提升双防之盾各种属性
+#elseact
+messagebox 你不是道士
+give 双防之盾
+[@StdModeFunc57]
+#if
+CHECKJOB warrior
+#act
+ADDSKILL 不屈意志 0
+messagebox 学习不屈意志成功,可通过法宝提升不屈意志各种属性
+#elseact
+messagebox 你不是战士
+give 不屈意志
+
+
+[@StdModeFunc58]
+#if
+CHECKJOB warrior
+#act
+ADDSKILL 幻光剑影 0
+messagebox 学习幻光剑影成功
+#elseact
+messagebox 你不是战士
+give 幻光剑影
+[@StdModeFunc59]
+#if
+CHECKJOB taoist
+#act
+ADDSKILL 灵符乱舞 0
+messagebox 学习灵符乱舞成功
+#elseact
+messagebox 你不是道士
+give 灵符乱舞
+
+[@StdModeFunc60]
+#if
+CHECKJOB wizard
+#act
+ADDSKILL 噬心魔骨 0
+messagebox 学习噬心魔骨成功
+#elseact
+messagebox 你不是法师
+give 噬心魔骨
+
+
+[@StdModeFunc61]
+;龙珠
+#if
+LARGE U144 99
+#act
+messagebox 血煞天魔体以提升至极致
+break
+#if
+SMALL U144 100
+#act
+MOVR N$血煞天魔霸体丹随机属性 1 11
+FORMULATION <$STR(U144)>+<$STR(N$血煞天魔霸体丹随机属性)> N$血煞天魔霸体丹添加后判断
+#if
+LARGE N$血煞天魔霸体丹添加后判断 99
+#act
+MOV U144 100
+sendmsg 6 血煞天魔体增加<$STR(N$血煞天魔霸体丹随机属性)>%,当前血煞天魔体<$STR(U144)>%
+
+Goto @统计属性
+#ELSEACT
+MOV U144 <$STR(N$血煞天魔霸体丹添加后判断)>
+sendmsg 6 血煞天魔体增加<$STR(N$血煞天魔霸体丹随机属性)>%,当前血煞天魔体<$STR(U144)>%
+
+Goto @统计属性
+
+
+
+[@StdModeFunc62]
+#if
+LARGE U145 99
+#act
+messagebox 玄黄不灭圣体以提升至极致
+break
+#if
+SMALL U145 100
+#act
+MOVR N$玄黄不灭圣体丹随机属性 1 11
+FORMULATION <$STR(U145)>+<$STR(N$玄黄不灭圣体丹随机属性)> N$玄黄不灭圣体丹添加后判断
+
+#if
+LARGE N$玄黄不灭圣体丹添加后判断 99
+#act
+MOV U145 100
+sendmsg 6 玄黄不灭圣体增加<$STR(N$玄黄不灭圣体丹随机属性)>%,当前玄黄不灭圣体<$STR(U145)>%
+
+Goto @统计属性
+#ELSEACT
+MOV U145 <$STR(N$玄黄不灭圣体丹添加后判断)>
+sendmsg 6 玄黄不灭圣体增加<$STR(N$玄黄不灭圣体丹随机属性)>%,当前玄黄不灭圣体<$STR(U145)>%
+
+Goto @统计属性
+
+
+[@StdModeFunc63]
+#if
+LARGE U146 99
+#act
+messagebox 周天星辰灵体以提升至极致
+break
+#if
+SMALL U146 100
+#act
+MOVR N$周天星辰灵体丹随机属性 1 11
+FORMULATION <$STR(U146)>+<$STR(N$周天星辰灵体丹随机属性)> N$周天星辰灵体丹添加后判断
+
+#if
+LARGE N$周天星辰灵体丹添加后判断 99
+#act
+MOV U146 100
+sendmsg 6 周天星辰灵体增加<$STR(N$周天星辰灵体丹随机属性)>%,当前周天星辰灵体<$STR(U146)>%
+
+Goto @统计属性
+#ELSEACT
+MOV U146 <$STR(N$周天星辰灵体丹添加后判断)>
+sendmsg 6 周天星辰灵体增加<$STR(N$周天星辰灵体丹随机属性)>%,当前周天星辰灵体<$STR(U146)>%
+
+Goto @统计属性
+
+
+[@StdModeFunc64]
+#if
+LARGE U147 99
+#act
+messagebox 不死神凰魔体以提升至极致
+break
+#if
+SMALL U147 100
+#act
+MOVR N$不死神凰魔体丹随机属性 1 11
+FORMULATION <$STR(U147)>+<$STR(N$不死神凰魔体丹随机属性)> N$不死神凰魔体丹添加后判断
+
+#if
+LARGE N$不死神凰魔体丹添加后判断 99
+#act
+MOV U147 100
+sendmsg 6 不死神凰魔体增加<$STR(N$不死神凰魔体丹随机属性)>%,当前不死神凰魔体<$STR(U147)>%
+
+Goto @统计属性
+#ELSEACT
+MOV U147 <$STR(N$不死神凰魔体丹添加后判断)>
+sendmsg 6 不死神凰魔体增加<$STR(N$不死神凰魔体丹随机属性)>%,当前不死神凰魔体<$STR(U147)>%
+
+Goto @统计属性
+[@StdModeFunc65]
+; #if
+; #ACT
+; INC J11 1
+; PLAYEFFECT 59 950 20 1 100 0 -150 -280 1
+; 蛛魔猎魂入场卷取消
+[@StdModeFunc66]
+; #if
+; #ACT
+; INC J12 1
+; PLAYEFFECT 59 970 20 1 100 0 -150 -280 1
+;邪灵猎魂入场卷取消
+[@StdModeFunc67]
+; #if
+; #ACT
+; INC J13 1
+; ; SENDMSG 6 石魔裂魂入场次数+1
+; PLAYEFFECT 59 990 20 1 100 0 -150 -280 1
+;石魔猎魂入场卷
+[@StdModeFunc68]
+#if
+#ACT
+GIVE 淘金盲盒
+
+[@StdModeFunc69]
+;深渊入场卷取消了
+; #if
+; SMALL J14 199
+; #act
+; INC J14 1
+; INC J10 1
+; ; SENDMSG 6 深渊入场次数+1
+; PLAYEFFECT 59 1030 20 1 100 0 -150 -280 1
+[@StdModeFunc70]
+#if
+#act
+
+Goto @打开天道解封卷
+;天道解封卷
+
+[@StdModeFunc71]
+#if
+SMALL <$STR(J27)> N$幽魂之门允许开启次数
+#act
+
+Goto @幽魂宝藏开启
+INC J27 1
+#elseact
+messagebox 当日幽魂之门已达到上限
+[@StdModeFunc72]
+#if
+#act
+
+Goto @天命龙珠
+
+[@StdModeFunc73]
+#if
+#act
+
+Goto @强化转移
+
+[@StdModeFunc74]
+#if
+#act
+GIVE 洗炼锁定器 100
+
+[@StdModeFunc75]
+#if
+#act
+gamegird  + 100
+
+[@StdModeFunc76]
+#if
+#act
+gamegird  + 188
+
+[@StdModeFunc77]
+#if
+checklevel  50
+#act
+gamegird  + 500
+
+#ELSEACT
+GIVE 500传仙币
+messagebox 50级以后才可使用
+[@StdModeFunc78]
+#if
+#act
+gamegird  + 1888
+
+[@StdModeFunc79]
+
+#if
+#act
+
+Goto @万象洗练
+
+[@StdModeFunc80]
+#if
+#act
+
+Goto @普通转职证明
+
+
+[@StdModeFunc81]
+#if
+CHECKJOB WARRIOR
+#act
+ADDSKILL 十字破军斩 0
+#elseact
+give 十字破军斩 1
+messagebox 你不是战士
+
+[@StdModeFunc83]
+#if
+#act
+SetNoDropItemCount + 1 1
+GetNoDropItemCount N1 N2
+Sendmsg 6 你有<$STR(N1)>次机会死亡不掉装备,下线保存
+
+[@StdModeFunc82]
+#if
+#act
+SetNoDropItemCount + 1 1
+GetNoDropItemCount N1 N2
+Sendmsg 6 你有<$STR(N1)>次机会死亡不掉装备,下线保存
+
+[@StdModeFunc84]
+#if
+NOT EQUAL J22 0
+#act
+give 传仙基金包 
+messagebox 你以使用过传仙基金礼包,请明天再使用
+break
+#if
+EQUAL U306 0
+#act
+messagebox 你的传仙基金礼包已用完
+break
+
+#if
+LARGE U306 0
+EQUAL J22 0
+#act
+INC J22 1
+DEC U306 1
+give 传仙基金包 
+gamegird + 200
+MOV J32 1
+setontimer 49 60
+messagebox 周卡已生效,装逼鼠已生效
+[@StdModeFunc85]
+
+#if
+#act
+
+Goto @副职业转换
+
+
+[@StdModeFunc86]
+#if
+CHECKJOB TAOIST
+#act
+addskill  浴火鞭策
+#ELSEACT
+messagebox 你不是道士
+give 浴火鞭策
+
+
+[@StdModeFunc87]
+#if
+CHECKJOB wizard
+#act
+addskill  炎龙降临
+#ELSEACT
+messagebox 你不是法师
+give 炎龙降临
+
+
+[@StdModeFunc88]
+#if
+CHECKJOB warrior
+#act
+addskill 修罗血魂阵
+#ELSEACT
+messagebox 你不是战士
+give 修罗血魂阵
+
+[@StdModeFunc89]
+#if
+CHECKJOB taoist
+LARGE <$LEVEL> 99
+#act
+addskill 召唤圣兽
+#ELSEACT
+messagebox 你不是道士,或等级未到100
+give 召唤圣兽
+
+[@StdModeFunc90]
+#if
+CHECKJOB WIZARD
+#act
+addskill 梵天圣火
+[@StdModeFunc91]
+#if
+CHECKJOB warrior
+#act
+addskill 野蛮冲撞
+[@StdModeFunc92]
+#if
+CHECKJOB taoist
+#act
+addskill 蛊毒术
+
+[@StdModeFunc93]
+#if
+#act
+INC U133 1
+[@StdModeFunc94]
+#if
+#act
+INC U121 1
+[@StdModeFunc95]
+#if
+#act
+INC U119 1
+
+[@StdModeFunc96]
+#if
+#act
+MOV J31 1
+
+Goto @统计属性
+messagebox 以获取龙之迷数属性
+
+
+[@StdModeFunc97]
+#if
+#act
+MOV N$魔法香蕉杀怪经验 100
+MOV U358 7200
+setontimer 63 1
+
+[@StdModeFunc98]
+#if
+#act
+
+Goto @入群礼包
+give 入群礼包
+[@StdModeFunc99]
+#if
+checkjob warrior
+#ACT
+addskill 彻地钉 0
+#elseact
+give  彻地钉
+messagebox 你不是战士  
+
+
+
+[@StdModeFunc101]
+#if
+small <$level> 300
+#act
+SENDMSG 5 300级下无法使用
+BREAK
+#if
+checkgamegold < 999
+#act
+SENDMSG 5 元宝不足3000
+GIVE 等级丹
+BREAK
+
+#if
+checkgamegold > 999
+#act
+CHANGELEVEL + 1
+SENDMSG 5 等级+1
+gamegold - 3000
+
+
+[@StdModeFunc102]
+#if
+#act
+gamegold + 100000
+sendmsg 6 10W元宝已到账
+
+[@StdModeFunc103]
+#if
+#act
+gamegird + 10000
+sendmsg 6 1W传仙币已到账
+
+[@StdModeFunc104]
+#if
+#act
+give 圣兽羽毛 100
+sendmsg 6 已增加100个圣兽羽毛
+
+[@StdModeFunc105]
+#if
+#act
+give 1号幸运数字 100
+[@StdModeFunc106]
+#if
+#act
+give 2号幸运数字 100
+[@StdModeFunc107]
+#if
+#act
+give 3号幸运数字 100
+[@StdModeFunc108]
+#if
+#act
+give 4号幸运数字 100
+[@StdModeFunc109]
+#if
+#act
+give 5号幸运数字 100
+[@StdModeFunc110]
+#if
+#act
+give 6号幸运数字 100
+[@StdModeFunc111]
+#if
+#act
+give 7号幸运数字 100
+[@StdModeFunc112]
+#if
+#act
+give 8号幸运数字 100
+[@StdModeFunc113]
+#if
+#act
+give 9号幸运数字 100
+[@StdModeFunc114]
+#if
+#act
+give 巨翼魔王精血 15
+[@StdModeFunc115]
+#if
+#act
+give 称号羽毛 1000
+[@StdModeFunc116]
+#if
+#act
+give 金币 10000000000
+[@StdModeFunc117]
+#if
+#act
+give 跑酷碎片 800
+[@StdModeFunc118]
+#if
+#act
+give 幽梦之灵【仙器】 10
+give 星辰坠【仙器】 10
+[@KillPlay]
+;掠夺金币
+
+
+
+
+
+#IF
+LARGE N$法宝杀死敌人掠夺对方金币 0
+NOT EQUAL <$GameDirectory> $常量_母端位置
+#ACT
+MOV N$对方的金币数量 <$C.GOLDCOUNT>
+FORMULATION <$STR(N$对方的金币数量)>*<$STR(N$法宝杀死敌人掠夺对方金币)>/100 N$杀死敌人获得的金币
+give 金币 N$杀死敌人获得的金币
+sendmsg 6 杀死对方获得对方 <$STR(N$杀死敌人获得的金币)>金币
+SetHumVar <$C.USERNAME> N$被人杀死减少的金币 N$杀死敌人获得的金币
+HCALL <$C.USERNAME> @冰霜环被人杀死减少金币
+PLAYEFFECT 59 670 20 1 100 0 -150 -280 1
+
+#if
+LARGE N$法宝杀死人物增加伤害 0
+#act
+FORMULATION <$STR(N$法宝杀死人物增加伤害)>*5 N$法宝杀死人物增加伤害上限
+MOV N$杀死人物后10秒CD 15
+#if
+SMALL U43 <$STR(N$法宝杀死人物增加伤害上限)>
+#act
+INC U43 <$STR(N$法宝杀死人物增加伤害)>
+setontimer 20 1
+
+#IF
+LARGE N$杀死人物后恢复生命 0
+#ACT
+AddhpPer + N$杀死人物后恢复生命
+
+
+;泉眼杀人
+#IF
+EQUAL G23 1
+EQUAL S$玩家当前地图 皇宫
+EQUAL <$GameDirectory> $常量_母端位置
+EQUAL <$C.X> 21
+EQUAL <$C.Y> 25
+#ACT
+MOV N$对方的皇宫积分 <$C.STR(U318)>
+
+INC U318 <$STR(N$对方的皇宫积分)>
+sendmsg 5 对方处于泉眼位置被你击杀,对方所有积分已被你掠夺共计<$STR(N$对方的皇宫积分)>
+HCALL <$C.USERNAME> @皇宫在泉眼被杀死扣除积分
+break
+;皇宫杀人给积分
+; #IF
+; EQUAL G23 1
+; EQUAL S$玩家当前地图 皇宫
+; EQUAL <$GameDirectory> $常量_母端位置
+; #ACT
+; MOV N$对方的皇宫积分 <$C.STR(U318)>
+; sendmsg 6 对方积分<$STR(N$对方的皇宫积分)>
+; CalcPercent  N$对方的皇宫积分 10 N$杀死对方获得的积分
+; CalcPercent  N$对方的皇宫积分 15 N$对方扣除的积分
+; INC U318 <$STR(N$杀死对方获得的积分)>
+; sendmsg 6 杀死对方获得对方 <$STR(N$杀死对方获得的积分)>积分
+; SetHumVar <$C.USERNAME> N$皇宫被人杀死扣除积分 N$对方扣除的积分
+; HCALL <$C.USERNAME> @皇宫被杀死扣除积分
+#if
+EQUAL G37 1
+EQUAL S$玩家当前地图 皇宫
+#act
+gamegold  + 30
+sendmsg 6 击杀玩家奖励30元宝
+
+
+#IF
+EQUAL <$GameDirectory> $常量_母端位置
+EQUAL <$C.STR(S$赶尸当前状态)> 跳跳尸
+EQUAL S$玩家当前地图 跨服
+#ACT
+gamegold + 15
+SENDMSG 5 击杀赶尸玩家增加15元宝
+
+#if
+CHECKCURRTARGETRACE = 0
+comparetext T27 <$CURRRTARGETNAME>
+NOT EQUAL <$GameDirectory> $常量_母端位置
+#act
+MOV N$对方的金币数量 <$C.GOLDCOUNT>
+FORMULATION <$STR(N$对方的金币数量)>*20/100 N$杀死敌人获得的金币
+give 金币 N$杀死敌人获得的金币
+sendmsg 6 杀死对方获得对方 <$STR(N$杀死敌人获得的金币)>金币
+SetHumVar <$C.USERNAME> N$被人杀死减少的金币 N$杀死敌人获得的金币
+HCALL <$C.USERNAME> @冰霜环被人杀死减少金币
+sendmsg 5 你已经成功的击杀了你的仇人，并掠夺他<$STR(N$被人杀死减少的金币)>金币,瞬间心情舒畅
+sendmsg 5 你已经成功的击杀了你的仇人，并掠夺他<$STR(N$被人杀死减少的金币)>金币,瞬间心情舒畅
+sendmsg 5 你已经成功的击杀了你的仇人，并掠夺他<$STR(N$被人杀死减少的金币)>金币,瞬间心情舒畅
+sendmsg 5 你已经成功的击杀了你的仇人，并掠夺他<$STR(N$被人杀死减少的金币)>金币,瞬间心情舒畅
+sendmsg 5 你已经成功的击杀了你的仇人，并掠夺他<$STR(N$被人杀死减少的金币)>金币,瞬间心情舒畅
+;清空仇人变量
+MOV U331 0
+MOV T27
+setofftimer 57
+
+
+[@PlayDie]
+#or
+EQUAL <$MAP> xianmo1
+EQUAL <$MAP> xianmo2
+#act
+setofftimer 67
+goto @判断仙魔阵营
+
+Goto @死亡特效
+break
+
+
+#if
+EQUAL G37 1
+EQUAL S$玩家当前地图 皇宫
+#act
+gamegold  + 10
+sendmsg 6 被玩家击杀补偿10元宝
+
+HUMANHP + 99999999
+DELAYGOTO 3000 @准备复活
+break
+
+#IF
+EQUAL N$装死开关 0
+#ACT
+;人物死亡次数
+INC U39 1
+
+Goto @死亡特效
+DELAYGOTO 3000 @准备复活
+;死亡后扣除在线时间
+#if
+CHECKCURRTARGETRACE = 0
+#act
+CalcPercent U40 99 N$死亡后的在线时间
+FORMULATION <$STR(U40)>-<$STR(N$死亡后的在线时间)> N$扣除的在线时间
+sendmsg 6 被人物杀死扣除<$STR(N$扣除的在线时间)>秒在线时间,当前在线时间<$STR(U40)>秒
+MOV U40 <$STR(N$死亡后的在线时间)>
+
+
+;追杀系统
+#IF
+CHECKCURRTARGETRACE = 0
+#ACT
+;检测被人物杀死
+MOV T27 <$KILLER>
+MOV U331 1
+setontimer 57 10
+
+
+
+
+
+
+
+;死亡后扣除在线时间
+
+; #IF
+; LARGE <$LEVEL> 5
+; EQUAL N$炎焰火种是否佩戴 1
+; #ACT
+; INC U38 1
+; CHANGELEVEL - 3
+
+#if
+EQUAL <$MAP> baoxiang
+checkitem 争夺战宝箱
+#act
+take 争夺战宝箱 999
+THROWITEM baoxiang 24 35 0 争夺战宝箱 1|1 1
+
+#if
+EQUAL U118 1
+CheckKillByHum
+NOT EQUAL <$GameDirectory> $常量_母端位置
+#act
+MOV U118 0
+L.gamegird + 500
+SENDMSG 6 狂暴已消失.
+SETICON 1 -1
+
+[@判断仙魔阵营]
+#if
+CheckNation 1
+#act
+INC G33 1
+SENDMSG 0 仙魔阵营玩家被击杀【屠神阵营增加1积分】
+mapmove <$MAP> 18 115 3
+REALIVE
+HUMANHP + 99999999
+
+ChangeModeEx 1 4
+sendmsg 6 无敌三秒
+goto @检测死亡是否傀儡状态
+BREAK
+#if
+CheckNation 2
+#act
+INC G32 1
+mapmove <$MAP> 115 25 3
+SENDMSG 0 屠阵营玩家被击杀【仙魔阵营增加1积分】
+REALIVE
+HUMANHP + 99999999
+
+ChangeModeEx 1 4
+sendmsg 6 无敌三秒
+goto @检测死亡是否傀儡状态
+BREAK
+
+[@检测死亡是否傀儡状态]
+#if
+EQUAL S$变身傀儡 是
+#act
+MOV S$变身傀儡 否
+MONGENEX <$MAP> 62 75  仙魔傀儡 0 1 245
+changeAppr 113004 1
+[@准备复活]
+
+
+
+
+
+#if
+EQUAL <$GameDirectory> $常量_母端位置
+#ACT
+REALIVE
+mapmove <$STR(S$跨服主城地图)> 254 262 5
+HUMANHP + 99999999
+
+KILLSLAVE
+changeAppr 5195 3
+MOV S$赶尸当前状态
+
+BREAK
+
+#if
+#act
+REALIVE
+mapmove 3 176 130 5
+HUMANHP + 99999999
+
+;修神定时器
+setofftimer 44
+writeconfigfileitem ..\..\..\..\通区文件\世界BOSS\世界BOSS数据保存.txt <$username> 伤害值 0
+MOV U68 0
+
+
+
+
+;复活后清除变量
+MOV S$神品附加属性
+MOV N$超级幽魂宝箱给史诗
+MOV N$超级幽魂宝箱给史诗
+MOV N$幽魂宝箱进度是否允许
+MOV N$火爆猴
+MOV N$双刀小妖
+
+
+
+
+[@PlayReconnection]
+#IF
+EQUAL <$GameDirectory> $常量_母端位置
+#ACT
+MOV U416 0
+;跨服判断是否分配
+
+#if
+NOT EQUAL N$战斗状态倒计时 0
+#act
+sendmsg 5 战斗状态小退
+break
+
+
+#OR
+EQUAL <$MAP> MAP010
+EQUAL <$MAP> xianmo1
+#act
+sendmsg 5 本地图禁止小退
+break
+
+
+#if
+CHECKITEM 争夺战宝箱
+#act
+setofftimer 47
+MOV N$宝箱争夺战计时 0
+TAKE 争夺战宝箱
+THROWITEM baoxiang 24 35 0 争夺战宝箱 1|1 1
+
+
+
+#if
+EQUAL S$变身傀儡 是
+#act
+MOV S$变身傀儡 否
+MONGENEX <$MAP> 62 75  仙魔傀儡 0 1 245
+changeAppr 113004 1
+
+
+
+
+
+
+
+
+
+#IF
+#ACT
+;人物小退取消特效
+StopPlayEffect 1 387 3 0 190 0 0 0 0
+;writeconfigfileitem ..\..\..\..\通区文件\世界BOSS\世界BOSS数据保存.txt <$username> 伤害值 0
+MOV U68 0
+;清理个人副本
+DelMirrorMap <$USERNAME>的骷髅洞平行时空
+DelMirrorMap <$USERNAME>的僵尸矿洞平行时空
+DelMirrorMap <$USERNAME>的蜈蚣洞平行时空
+DelMirrorMap <$USERNAME>的兽人古墓一层平行时空
+DelMirrorMap <$USERNAME>的兽人古墓二层平行时空
+DelMirrorMap <$USERNAME>的沃玛寺庙平行时空
+DelMirrorMap <$USERNAME>的祖玛秘境平行时空
+DelMirrorMap <$USERNAME>的骨魔洞平行时空
+DelMirrorMap <$USERNAME>的恶魔营地平行时空
+DelMirrorMap <$USERNAME>的蚂蚁洞平行时空
+DelMirrorMap <$USERNAME>的精灵谷平行时空
+DelMirrorMap <$USERNAME>的黑暗魔殿平行时空
+DelMirrorMap <$USERNAME>赤月峡谷平行时空
+DelMirrorMap <$USERNAME>的封魔古刹平行时空
+DelMirrorMap <$USERNAME>的牛魔寺庙平行时空
+DelMirrorMap <$USERNAME>的魔毒蚀地平行时空
+DelMirrorMap <$USERNAME>的封魔宫平行时空
+DelMirrorMap <$USERNAME>的魔龙谷平行时空
+DelMirrorMap <$USERNAME>的幽暗地底平行时空
+DelMirrorMap <$USERNAME>的魔化工厂平行时空
+DelMirrorMap <$USERNAME>的火龙地洞平行时空
+DelMirrorMap <$USERNAME>的幽魂宝藏
+DelMirrorMap <$USERNAME>魔蛛猎魂
+DelMirrorMap <$USERNAME>邪灵猎魂
+DelMirrorMap <$USERNAME>石魔猎魂
+DelMirrorMap <$USERNAME>的天命龙珠
+DelMirrorMap <$USERNAME>的雪域副本
+DelMirrorMap <$USERNAME>的沼泽秘境副本
+DelMirrorMap <$USERNAME>的万劫地宫副本
+DelMirrorMap <$USERNAME>的冰晶宫副本
+SET [998] 0
+
+
+
+;小退获取当前HP 上线给回去
+MOV U309 <$HP>
+KILLSLAVE
+
+[@PlayOffLine]
+
+#if
+#act
+SetOffTimer 88
+
+
+;大退
+#IF
+EQUAL <$GameDirectory> $常量_母端位置
+#ACT
+MOV U416 0
+
+#if
+CHECKITEM 争夺战宝箱
+#act
+setofftimer 47
+MOV N$宝箱争夺战计时 0
+TAKE 争夺战宝箱
+THROWITEM baoxiang 24 35 0 争夺战宝箱 1|1 1
+
+
+#if
+EQUAL S$变身傀儡 是
+#act
+MOV S$变身傀儡 否
+MONGENEX <$MAP> 62 75  仙魔傀儡 0 1 245
+changeAppr 113004 1
+
+
+#IF
+#ACT
+writeconfigfileitem ..\..\..\..\通区文件\世界BOSS\世界BOSS数据保存.txt <$username> 伤害值 0
+MOV U68 0
+;清理个人副本
+DelMirrorMap <$USERNAME>的骷髅洞平行时空
+DelMirrorMap <$USERNAME>的僵尸矿洞平行时空
+DelMirrorMap <$USERNAME>的蜈蚣洞平行时空
+DelMirrorMap <$USERNAME>的兽人古墓一层平行时空
+DelMirrorMap <$USERNAME>的兽人古墓二层平行时空
+DelMirrorMap <$USERNAME>的沃玛寺庙平行时空
+DelMirrorMap <$USERNAME>的祖玛秘境平行时空
+DelMirrorMap <$USERNAME>的骨魔洞平行时空
+DelMirrorMap <$USERNAME>的恶魔营地平行时空
+DelMirrorMap <$USERNAME>的蚂蚁洞平行时空
+DelMirrorMap <$USERNAME>的精灵谷平行时空
+DelMirrorMap <$USERNAME>的黑暗魔殿平行时空
+DelMirrorMap <$USERNAME>赤月峡谷平行时空
+DelMirrorMap <$USERNAME>的封魔古刹平行时空
+DelMirrorMap <$USERNAME>的牛魔寺庙平行时空
+DelMirrorMap <$USERNAME>的魔毒蚀地平行时空
+DelMirrorMap <$USERNAME>的封魔宫平行时空
+DelMirrorMap <$USERNAME>的魔龙谷平行时空
+DelMirrorMap <$USERNAME>的幽暗地底平行时空
+DelMirrorMap <$USERNAME>的魔化工厂平行时空
+DelMirrorMap <$USERNAME>的火龙地洞平行时空
+DelMirrorMap <$USERNAME>的幽魂宝藏
+DelMirrorMap <$USERNAME>魔蛛猎魂
+DelMirrorMap <$USERNAME>邪灵猎魂
+DelMirrorMap <$USERNAME>石魔猎魂
+DelMirrorMap <$USERNAME>的天命龙珠
+SET [998] 0
+MOV U309 <$HP>
+[@usercmd1]
+#IF
+NOT EQUAL U37 0
+#ACT
+sendmsg 6 行会传送还剩<$str(u37)>秒冷却时间
+break
+#IF
+EQUAL N$召唤行会成员 0
+#ACT
+gmexecute 行会大集合
+MOV U37 300
+setontimer 15 1
+
+
+
+
+
+[@usercmd0]
+#IF
+LARGE N$法宝输入对方昵称检测位置 0
+#ACT
+OPENMERCHANTBIGDLG 5 0 1 4 0 -80  1 610 0 1
+#say
+<>\输入追杀昵称:<INPUTTEXT:1:0:0:80:15:0:249:255:4:100:0:160>
+<>\<text:输入追杀昵称:10:6:1/@追杀提交>
+#elseact
+sendmsg 6 未佩戴专属法宝
+[@追杀提交]
+#IF
+#ACT
+MOV S$追杀昵称 <$NPCINPUT(1)>
+GetHumVar  <$str(S$追杀昵称)> S$追杀对方的地图名称
+GetHumVar <$str(S$追杀昵称)> <$MAP> S$追杀对方的地图编号
+GetHumVar <$str(S$追杀昵称)> <$X> N$追杀对方的X坐标
+GetHumVar <$str(S$追杀昵称)> <$Y> N$追杀对方的X坐标
+
+#SAY
+<前往杀人/@前往杀人>
+<TEXT:<$STR(S$追杀对方的地图名称)>:0:0>
+<TEXT:<$STR(S$追杀对方的地图编号)>:0:30>
+<TEXT:<$STR(N$追杀对方的X坐标)>:0:60>
+<TEXT:<$STR(N$追杀对方的X坐标)>:0:90>
+[@前往杀人]
+#IF
+#ACT
+GMEXECUTE 跟踪 <$str(S$追杀昵称)>
+
+
+
+
+
+[@StartAutoOnline]
+#if
+#act
+StartAutoPlayGame
+
+setofftimer 18
+MOV N$灵图爆率时间 600
+MOV S$挂机状态 挂机中
+SET [998] 1
+sendmsg 5 请在小地图标记挂机点尽量绕开洞口
+sendmsg 5 请在小地图标记挂机点尽量绕开洞口
+sendmsg 5 请在小地图标记挂机点尽量绕开洞口
+sendmsg 5 请在小地图标记挂机点尽量绕开洞口
+sendmsg 5 请在小地图标记挂机点尽量绕开洞口
+sendmsg 5 请在小地图标记挂机点尽量绕开洞口
+
+#if
+CHECK [686] 1
+#act
+setontimer 66 5
+
+
+
+[@StopAutoOnline]
+#IF
+#ACT
+setontimer 18
+setofftimer 66
+MOV N$灵图爆率时间 60
+StopAutoPlayGame
+MOV S$挂机状态 没挂机
+SENDMSG 6 命令停止挂机，使用快捷键“CTRL+ALT+X”开始挂机
+SET [998] 0
+
+
+
+
+
+
+
+[@NpcRevival]
+; #IF
+; LARGE N$复活后恢复MP百分比 0
+; #ACT
+; sendmsg 6 脚本复活
+; AddmpPer + N$复活后恢复MP百分比
+
+#if
+equal <$NpcRebornCount> 0
+#act
+setofftimer 54
+MOV U307 60
+setontimer 54
+SetClientBuff 0 1 1089 60 510 680 0
+DELBUTTON 10
+
+
+#if
+equal <$NpcRebornCount> 1
+#act
+ADDBUTTON 0 10 1080 1080 1080 510 680 0 -1
+
+#if
+EQUAL <$NpcRebornCount> 2
+#act
+ADDBUTTON 0 10 1081 1081 1081 510 680 0 -1
+
+#if
+EQUAL <$NpcRebornCount> 3
+#act
+ADDBUTTON 0 10 1082 1082 1082 510 680 0 -1
+
+#if
+EQUAL <$NpcRebornCount> 4
+#act
+ADDBUTTON 0 10 1083 1082 1082 510 680 0 -1
+
+#if
+EQUAL <$NpcRebornCount> 5
+#act
+ADDBUTTON 0 10 1084 1082 1082 510 680 0 -1
+
+#if
+EQUAL <$NpcRebornCount> 6
+#act
+ADDBUTTON 0 10 1085 1082 1082 510 680 0 -1
+
+#if
+EQUAL <$NpcRebornCount> 7
+#act
+ADDBUTTON 0 10 1086 1082 1082 510 680 0 -1
+
+#if
+EQUAL <$NpcRebornCount> 8
+#act
+ADDBUTTON 0 10 1087 1082 1082 510 680 0 -1
+
+#if
+EQUAL <$NpcRebornCount> 9
+#act
+ADDBUTTON 0 10 1088 1082 1082 510 680 0 -1
+
+[@UserQueryState]
+#OR
+EQUAL <$MAP> run001
+EQUAL <$MAP> RJD001
+EQUAL <$MAP> paokuditu
+EQUAL <$MAP> huanggong1
+#act
+stopQueryUserState
+SENDMSG 5 禁止查看他人<$UserStateName>的装备
+break
+#if
+EQUAL <$MAP> huanggong1
+#act
+stopQueryUserState
+SENDMSG 5 禁止查看他人<$UserStateName>的装备
+break
+
+#IF
+#ACT
+SENDMSG 5 <$CurUserName>正在偷窥你的装备
+
+[@QueryUserState]
+#OR
+EQUAL <$MAP> run001
+EQUAL <$MAP> RJD001
+EQUAL <$MAP> paokuditu
+EQUAL <$MAP> huanggong1
+#act
+stopQueryUserState
+SENDMSG 5 禁止查看他人<$UserStateName>的装备
+break
+#IF
+#act
+MOV S1 <$UserStateName>
+SetCurrTarget S1
+#IF
+CompareText <$C.USERNAME> S1
+;检测设置的对象是否成功
+#act
+sendmsg 6 <$C.USERNAME>防御<$C.AC>-<$C.MAXAC>魔御<$C.MAC>-<$C.MAXMAC>攻击<$C.DC>-<$C.MAXDC>魔法<$C.MC>-<$C.MAXMC>道术<$C.SC>-<$C.MAXSC>
+sendmsg 6 <$C.USERNAME>暴击几率<$C.STR(N$人物暴击几率)>暴击防御<$C.STR(N$人物暴击防御)>暴击伤害<$C.STR(N$人物暴击伤害)>
+sendmsg 6 <$C.USERNAME>龙珠增加HP<$C.STR(U146)>%龙珠增加双防<$C.STR(U147)>%龙珠增加攻魔道<$C.STR(U144)>%
+sendmsg 6 <$C.USERNAME>生命<$C.STR(N$生命值百分比)>%防御<$C.STR(N$人物防御百分比上限)>%魔御<$C.STR(N$人物魔御百分比上限)>%攻击<$C.STR(N$人物攻击力百分比上限)>%魔法<$C.STR(N$人物魔法力百分比上限)>%道术<$C.STR(N$人物道术力百分比上限)>%
+[@PlayLevelUp]
+#IF
+#ACT
+;升级触发
+PLAYEFFECT 25 66 15 1 100 0 -150 -180 1
+
+
+Goto @推广邀请升级触发
+
+
+[@EnterMap]
+#if
+#ACT
+
+Goto @进图浮现
+
+[@MagTagFunc2]
+#if
+#ACT
+
+Goto @神愈术
+
+
+
+[@SlaveAttackDamage]
+
+
+#IF
+EQUAL N$宝宝攻击目标判断 0
+CHECKCURRTARGETRACE = 0
+EQUAL S$当前宝宝PK判断 骷髅
+#ACT
+
+Goto @道士骷髅宝宝PK赋值属性
+MOV N$宝宝攻击目标判断 1
+ChangeDamageValue 0 - <$DamageValue>
+AddDlg 1 5 1 0 <$STR(N$道士宝宝状态X)>:<$STR(N$道士宝宝状态Y)> 70:30 0 <&Img:186:0:20:53|攻击人物时自动切换状态><&ImgNum:2:<$STR(N$道士召唤骷髅数量)>:-1:78:81|可召唤数量><&ImgNum:2:<$SlaveCount>:-1:130:81|已召唤数量><&Img:187:0:73:106><&ImgNum:2:<$STR(N$道士召唤宝宝幸运)>:-1:78:135|宝宝幸运越高输出越稳定><&ImgNum:2:<$STR(N$骷髅宝宝伤害上限)>:-1:78:160|<$STR(N$骷髅宝宝伤害下限)>-<$STR(N$骷髅宝宝伤害上限)>><&ImgNum:2:<$STR(N$骷髅宝宝防御上限)>:-1:75:187|<$STR(N$骷髅宝宝防御下限)>-<$STR(N$骷髅宝宝防御上限)>><&ImgNum:2:<$STR(N$骷髅宝宝魔御上限)>:-1:75:213|<$STR(N$骷髅宝宝魔御下限)>-<$STR(N$骷髅宝宝魔御上限)>><&ImgNum:2:<$STR(N$骷髅攻速)>:-1:75:240|数值越高攻击速度越快><&ImgNum:2:<$STR(N$骷髅移动)>:-1:75:267|数值越高移动速度越快>
+goto @PK减少宝宝数量
+break
+
+
+
+#IF
+EQUAL N$宝宝攻击目标判断 0
+CHECKCURRTARGETRACE = 0
+EQUAL S$当前宝宝PK判断 火兽
+#ACT
+
+Goto @道士神兽宝宝PK赋值属性
+MOV N$宝宝攻击目标判断 1
+ChangeDamageValue 0 - <$DamageValue>
+AddDlg 1 5 1 0 <$STR(N$道士宝宝状态X)>:<$STR(N$道士宝宝状态Y)> 70:30 0 <&Img:186:0:20:53|攻击人物时自动切换状态><&ImgNum:2:<$STR(N$道士召唤火兽数量)>:-1:78:81|可召唤数量><&ImgNum:2:<$SlaveCount>:-1:130:81|已召唤数量><&Img:187:0:73:106><&ImgNum:2:<$STR(N$道士召唤宝宝幸运)>:-1:78:135|宝宝幸运越高输出越稳定><&ImgNum:2:<$STR(N$火兽宝宝伤害上限)>:-1:78:160|<$STR(N$火兽宝宝伤害下限)>-<$STR(N$火兽宝宝伤害上限)>><&ImgNum:2:<$STR(N$火兽宝宝防御上限)>:-1:75:187|<$STR(N$火兽宝宝防御下限)>-<$STR(N$火兽宝宝防御上限)>><&ImgNum:2:<$STR(N$火兽宝宝魔御上限)>:-1:75:213|<$STR(N$火兽宝宝魔御下限)>-<$STR(N$火兽宝宝魔御上限)>><&ImgNum:2:<$STR(N$火兽攻速)>:-1:75:240|数值越高攻击速度越快><&ImgNum:2:<$STR(N$火兽移动)>:-1:75:267|数值越高移动速度越快>
+
+goto @PK减少宝宝数量
+break
+
+
+
+#IF
+EQUAL N$宝宝攻击目标判断 0
+CHECKCURRTARGETRACE = 0
+EQUAL S$当前宝宝PK判断 流金圣兽
+#ACT
+
+
+Goto @道士圣兽宝宝PK赋值属性
+MOV N$宝宝攻击目标判断 1
+ChangeDamageValue 0 - <$DamageValue>
+AddDlg 1 5 1 0 <$STR(N$道士宝宝状态X)>:<$STR(N$道士宝宝状态Y)> 70:30 0 <&Img:186:0:20:53|攻击人物时自动切换状态><&ImgNum:2:<$STR(N$道士召唤火兽数量)>:-1:78:81|可召唤数量><&ImgNum:2:<$SlaveCount>:-1:130:81|已召唤数量><&Img:187:0:73:106><&ImgNum:2:<$STR(N$道士召唤宝宝幸运)>:-1:78:135|宝宝幸运越高输出越稳定><&ImgNum:2:<$STR(N$圣兽宝宝伤害上限)>:-1:78:160|<$STR(N$圣兽宝宝伤害下限)>-<$STR(N$圣兽宝宝伤害上限)>><&ImgNum:2:99999999999:-1:75:187|99999999999-99999999999><&ImgNum:2:99999999999:-1:75:213|99999999999-99999999999><&ImgNum:2:<$STR(N$圣兽显示移动速度)>:-1:75:240|数值越高攻击速度越快><&ImgNum:2:<$STR(N$圣兽显示攻击速度)>:-1:75:267|数值越高移动速度越快>
+
+goto @PK减少宝宝数量
+break
+
+
+
+#IF
+EQUAL N$宝宝攻击目标判断 0
+CHECKCURRTARGETRACE = 0
+EQUAL S$当前宝宝PK判断 混沌石灵
+#ACT
+
+
+Goto @道士圣兽宝宝PK赋值属性
+MOV N$宝宝攻击目标判断 1
+ChangeDamageValue 0 - <$DamageValue>
+AddDlg 1 5 1 0 <$STR(N$道士宝宝状态X)>:<$STR(N$道士宝宝状态Y)> 70:30 0 <&Img:186:0:20:53|攻击人物时自动切换状态><&ImgNum:2:<$STR(N$道士召唤火兽数量)>:-1:78:81|可召唤数量><&ImgNum:2:<$SlaveCount>:-1:130:81|已召唤数量><&Img:187:0:73:106><&ImgNum:2:<$STR(N$道士召唤宝宝幸运)>:-1:78:135|宝宝幸运越高输出越稳定><&ImgNum:2:<$STR(N$圣兽宝宝伤害上限)>:-1:78:160|<$STR(N$圣兽宝宝伤害下限)>-<$STR(N$圣兽宝宝伤害上限)>><&ImgNum:2:99999999999:-1:75:187|99999999999-99999999999><&ImgNum:2:99999999999:-1:75:213|99999999999-99999999999><&ImgNum:2:<$STR(N$圣兽显示移动速度)>:-1:75:240|数值越高攻击速度越快><&ImgNum:2:<$STR(N$圣兽显示攻击速度)>:-1:75:267|数值越高移动速度越快>
+
+goto @PK减少宝宝数量
+break
+
+
+
+#IF
+EQUAL N$宝宝攻击目标判断 0
+CHECKCURRTARGETRACE = 0
+EQUAL S$当前宝宝PK判断 月灵道祖
+#ACT
+
+
+Goto @道士圣兽宝宝PK赋值属性
+MOV N$宝宝攻击目标判断 1
+ChangeDamageValue 0 - <$DamageValue>
+AddDlg 1 5 1 0 <$STR(N$道士宝宝状态X)>:<$STR(N$道士宝宝状态Y)> 70:30 0 <&Img:186:0:20:53|攻击人物时自动切换状态><&ImgNum:2:<$STR(N$道士召唤火兽数量)>:-1:78:81|可召唤数量><&ImgNum:2:<$SlaveCount>:-1:130:81|已召唤数量><&Img:187:0:73:106><&ImgNum:2:<$STR(N$道士召唤宝宝幸运)>:-1:78:135|宝宝幸运越高输出越稳定><&ImgNum:2:<$STR(N$圣兽宝宝伤害上限)>:-1:78:160|<$STR(N$圣兽宝宝伤害下限)>-<$STR(N$圣兽宝宝伤害上限)>><&ImgNum:2:99999999999:-1:75:187|99999999999-99999999999><&ImgNum:2:99999999999:-1:75:213|99999999999-99999999999><&ImgNum:2:<$STR(N$圣兽显示移动速度)>:-1:75:240|数值越高攻击速度越快><&ImgNum:2:<$STR(N$圣兽显示攻击速度)>:-1:75:267|数值越高移动速度越快>
+
+goto @PK减少宝宝数量
+break
+
+
+
+
+
+
+
+#IF
+EQUAL N$宝宝攻击目标判断 1
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+
+Goto @统计属性
+MOV N$宝宝攻击目标判断 0
+
+break
+
+
+
+
+[@SlaveAttack]
+
+
+
+#if
+EQUAL S$攻击触发宝宝名字 骷髅
+#ACT
+
+Goto @道士骷髅宝宝攻击触发
+
+#IF
+EQUAL S$攻击触发宝宝名字 火兽
+#ACT
+
+Goto @道士火兽宝宝攻击触发
+
+#IF
+EQUAL S$攻击触发宝宝名字 流金圣兽
+#ACT
+
+Goto @道士圣兽宝宝攻击触发
+
+#IF
+EQUAL S$攻击触发宝宝名字 混沌石灵
+#ACT
+
+Goto @道士混沌石灵宝宝攻击触发
+
+
+
+#IF
+EQUAL S$攻击触发宝宝名字 月灵道祖
+#ACT
+
+Goto @道士月灵道祖宝宝攻击触发
+
+
+
+
+[@GamePetAttack]
+#if
+equal U137 11
+#act
+Pet.RangeHarm <$Pet.CurTargetX> <$Pet.CurTargetY> 17 <$STR(N$终极宠物伤害)> 0 0 0 2 1 7 15 50 0 0
+
+
+#if
+equal U137 11
+#act
+Pet.RangeHarm <$Pet.CurTargetX> <$Pet.CurTargetY> 17 <$STR(N$终极宠物伤害)> 0 0 0 2 1 7 15 50 0 0
+
+#if
+#act
+
+
+
+
+[@CustomButtonClick]
+#IF
+EQUAL <$CustomButtonID> 22
+#act
+
+
+Goto @回收系统
+#IF
+EQUAL <$CustomButtonID> 21
+#act
+;仓库
+OpenStorageView 0
+
+#IF
+EQUAL <$CustomButtonID> 23
+#act
+;仓库
+
+Goto @副职业仓库
+
+[@法宝血量低于30装死后复活]
+#IF
+#ACT
+FORMULATION <$STR(N$法宝血量低于30装死恢复血量)>+30 N$法宝血量低于30装死后复活后的血量
+REALIVE
+delaycall 50 @法宝血量低于30装死后复活延迟加血
+[@法宝血量低于30装死后复活延迟加血]
+#IF
+#ACT
+HumanHP + <$STR(N$法宝血量低于30装死后复活后的血量)> 0 1 0 0 1
+MOV N$装死开关 0
+
+[@月光宝盒被攻击增加的致命一击几率恢复]
+#IF
+#ACT
+FORMULATION <$STR(N$人物致命一击几率)>-<$STR(N$法宝被攻击增加的致命一击)> N$人物致命一击几率
+AddHumNewValue 21 = N$人物致命一击几率
+MOV N$月光宝盒被攻击增加致命一击开关 0
+
+Goto @属性面板
+
+
+[@法宝被攻击增加致命一击溢出判断]
+#IF
+LARGE N$法宝被攻击增加的致命一击 10
+#ACT
+MOV N$法宝被攻击增加的致命一击 10
+
+
+[@离火面具防爆几率触发]
+#IF
+RANDOMEX N$法宝进入战斗状态死亡时时装备防爆几率 101
+#ACT
+SetNoDropItemCount = 1
+PLAYEFFECT 59 710 20 1 100 0 -150 -280 1
+
+delaycall 60000 @取消防爆
+[@取消防爆]
+#IF
+#ACT
+SetNoDropItemCount = 0
+MOV N$离火面具防爆判断 0
+PLAYEFFECT 59 730 20 1 100 0 -150 -280 1
+[@AttatckModeChange]
+#IF
+CheckAttackMode 1
+LARGE N$法宝和平模式下增加攻击速度 0
+#ACT
+FORMULATION <$STR(N$攻击速度)>+<$STR(N$法宝和平模式下增加攻击速度)> N$九天剑意攻速
+ChangeSpeed 2 N$九天剑意攻速
+
+
+#IF
+CheckAttackMode 1
+LARGE N$法宝和平模式下增加释放速度 0
+#ACT
+
+FORMULATION <$STR(N$释放速度)>+<$STR(N$法宝和平模式下增加释放速度)> N$混元金翼释放
+ChangeSpeed 3 N$混元金翼释放
+
+#IF
+CheckAttackMode 1
+LARGE N$法宝和平模式宝宝增加攻击速度 0
+#ACT
+
+Goto @道士宝宝赋值属性
+#elseact
+
+Goto @道士宝宝赋值属性
+
+[@回光返照死亡]
+#IF
+#ACT
+Kill 1
+SET [998] 0
+[@CollectMon1]
+#or
+EQUAL <$CollectTargetName> 初级幽魂宝箱
+EQUAL <$CollectTargetName> 中级幽魂宝箱
+EQUAL <$CollectTargetName> 高级幽魂宝箱
+EQUAL <$CollectTargetName> 超级幽魂宝箱
+#act
+
+Goto @幽魂宝箱
+break
+
+#if
+EQUAL <$CollectTargetName> 淘金宝箱【初级】
+#act
+SendCenterMsg 180 251 <$USERNAME>正在打开淘金宝箱【初级】. 1
+
+SHOWPROGRESSBARDLG 1 @采集怪淘金宝箱初级 宝箱开启中%d%... 1 @怪物采集中断
+break
+
+#if
+EQUAL <$CollectTargetName> 淘金宝箱【中级】
+#act
+SendCenterMsg 180 251 <$USERNAME>正在打开淘金宝箱【中级】. 1
+
+SHOWPROGRESSBARDLG 1 @采集怪淘金宝箱中级 宝箱开启中%d%... 1 @怪物采集中断
+break
+
+
+#if
+EQUAL <$CollectTargetName> 淘金宝箱【高级】
+#act
+SendCenterMsg 180 251 <$USERNAME>正在打开淘金宝箱【高级】. 1
+
+SHOWPROGRESSBARDLG 1 @采集怪淘金宝箱高级 宝箱开启中%d%... 1 @怪物采集中断
+break
+
+
+#if
+EQUAL <$CollectTargetName> 争夺战宝箱
+#act
+SendCenterMsg 180 251 <$USERNAME>正在打开争夺战宝箱. 1
+
+SHOWPROGRESSBARDLG 15 @采集怪争夺战宝箱 宝箱开启中%d%... 1 @争夺战宝箱开启中断
+break
+
+
+#if
+EQUAL <$CollectTargetName> 群雄宝箱
+#act
+SendCenterMsg 180 251 <$USERNAME>正在打开群雄宝箱. 1
+SHOWPROGRESSBARDLG 15 @采集怪群雄宝箱 宝箱开启中%d%... 1 @群雄宝箱开启中断
+break
+
+
+
+#IF
+#ACT
+Sendmsg 5 正在采集【<$CollectTargetName>】。
+SHOWPROGRESSBARDLG 1 @怪物采集成功 采集中%d%... 1 @怪物采集中断
+
+
+
+[@采集怪淘金宝箱初级]
+#if
+#act
+CO.KILL
+getrandomtext ..\QuestDiary\副职业\淘金者\初级材料.txt S$采集的副职业材料
+EXTRACTSTRING ~ S$采集的副职业材料 S$副职业材料名字 N$采集材料U变量数字
+SENDMSG 6 〖提示〗采集【<$STR(S$副职业材料名字)>】成功,已进入副职业仓库
+INC U+<$STR(N$采集材料U变量数字)> 1
+
+
+[@采集怪淘金宝箱中级]
+#if
+#act
+CO.KILL
+getrandomtext ..\QuestDiary\副职业\淘金者\中级材料.txt S$采集的副职业材料
+EXTRACTSTRING ~ S$采集的副职业材料 S$副职业材料名字 N$采集材料U变量数字
+SENDMSG 6 〖提示〗采集【<$STR(S$副职业材料名字)>】成功,已进入副职业仓库
+INC U+<$STR(N$采集材料U变量数字)> 1
+
+
+[@采集怪淘金宝箱高级]
+#if
+#act
+CO.KILL
+getrandomtext ..\QuestDiary\副职业\淘金者\高级材料.txt S$采集的副职业材料
+EXTRACTSTRING ~ S$采集的副职业材料 S$副职业材料名字 N$采集材料U变量数字
+SENDMSG 6 〖提示〗采集【<$STR(S$副职业材料名字)>】成功,已进入副职业仓库
+INC U+<$STR(N$采集材料U变量数字)> 1
+
+[@采集怪群雄宝箱]
+#if
+#act
+CO.KILL
+
+gamegold + 100
+sendmsg 6 增加100元宝
+GOTOLABEL 7 @强制中断采集 3
+
+
+#if
+RANDOMEX 10 101
+EQUAL J15 0
+#act
+SendNewLineMsg 0 251 0 15 200 5 1 天啊~~~玩家【<$USERNAME>】开启群雄宝箱时意外发现了1000元宝
+INC J15 1
+gamegold + 1000
+
+[@采集怪争夺战宝箱]
+#if
+#act
+CO.KILL
+give 争夺战宝箱
+setontimer 47
+SendCenterMsg 180 251 <$USERNAME>成功打开宝箱,持有宝箱100秒可获得100元真冲. 1
+GOTOLABEL 7 @强制中断采集 3
+[@争夺战宝箱开启中断]
+#if
+#act
+SENDMSG 5 开启宝箱失败.
+SendCenterMsg 180 251 <$USERNAME>打开宝箱时被玩家骚扰,打开失败. 1
+
+[@怪物采集成功]
+
+#if
+GetStringPosEX ..\questdiary\副职业\副职业材料.txt <$CollectTargetName> N1 S$采集的副职业材料 0
+#act
+EXTRACTSTRING ~ S$采集的副职业材料 S$副职业材料名字 N$采集材料U变量数字
+SENDMSG 6 〖提示〗采集【<$CollectTargetName>】成功,已进入副职业仓库
+INC U+<$STR(N$采集材料U变量数字)> 1
+CO.KILL
+GOTOLABEL 7 @强制中断采集 3
+
+
+[@怪物采集中断]
+#ACT
+Sendmsg 5 采集中断
+[@强制中断采集]
+#IF
+#ACT
+Sendmsg 7 宝箱被别人开走了
+StopCollect
+BREAK
+
+[@北冥九首深渊龙共计判断]
+#IF
+EQUAL <$CURRRTARGETFULLNAME> 北冥九首深渊龙
+EQUAL <$CURRRUSEMAGICID> 1
+#act
+
+#IF
+EQUAL <$CURRRTARGETFULLNAME> 北冥九首深渊龙
+EQUAL <$CURRRUSEMAGICID> 0
+#act
+
+#IF
+EQUAL <$CURRRTARGETFULLNAME> 北冥九首深渊龙
+EQUAL <$CURRRUSEMAGICID> 2
+#act
+
+#IF
+EQUAL <$CURRRTARGETFULLNAME> 北冥九首深渊龙
+EQUAL <$CURRRUSEMAGICID> 3
+#act
+
+#IF
+EQUAL <$CURRRTARGETFULLNAME> 北冥九首深渊龙
+EQUAL <$CURRRUSEMAGICID> 4
+#act
+
+#IF
+EQUAL <$CURRRTARGETFULLNAME> 北冥九首深渊龙
+EQUAL <$CURRRUSEMAGICID> 5
+#act
+
+
+
+[@KillMonGetExp]
+
+#if
+#act
+AddDlg 6 0 11 1 <$STR(N$经验条X)>:<$STR(N$经验条Y)> 0:0 1 <ProgressBar:0:0:0:404:<$STR(N$经验条编号)>:12:100:35:5:0:<$MAXEXP>:<$EXP>:0:245:<$STR(N$经验文字坐标)>:5:人物经验值[%r%]>
+
+
+
+[@ItemExpired]
+#if
+CHECKJOB WARRIOR
+EQUAL <$ExpiredItemName> 剑开天门【限时】
+#act
+give 烈火剑法
+
+#if
+CHECKJOB taoist
+EQUAL <$ExpiredItemName> 幽冥鬼令【限时】
+
+#act
+give  幽龙镇魂
+
+#if
+CHECKJOB wziard
+EQUAL <$ExpiredItemName> 八荒神令【限时】
+#act
+give  冰咆哮
+
+#if
+#ACT
+messagebox 限时法宝已到期,开通VIP3可以获取永久全屏法宝,和VIP牛逼属性
+sendmsg 5 限时法宝已到期,开通VIP3可以获取永久全屏法宝,和VIP牛逼属性
+sendmsg 5 限时法宝已到期,开通VIP3可以获取永久全屏法宝,和VIP牛逼属性
+sendmsg 5 限时法宝已到期,开通VIP3可以获取永久全屏法宝,和VIP牛逼属性
+sendmsg 5 限时法宝已到期,开通VIP3可以获取永久全屏法宝,和VIP牛逼属性
+sendmsg 5 限时法宝已到期,开通VIP3可以获取永久全屏法宝,和VIP牛逼属性
+sendmsg 5 限时法宝已到期,开通VIP3可以获取永久全屏法宝,和VIP牛逼属性
+sendmsg 5 限时法宝已到期,开通VIP3可以获取永久全屏法宝,和VIP牛逼属性
+sendmsg 5 限时法宝已到期,开通VIP3可以获取永久全屏法宝,和VIP牛逼属性
+sendmsg 5 限时法宝已到期,开通VIP3可以获取永久全屏法宝,和VIP牛逼属性
+sendmsg 5 限时法宝已到期,开通VIP3可以获取永久全屏法宝,和VIP牛逼属性
+sendmsg 5 限时法宝已到期,开通VIP3可以获取永久全屏法宝,和VIP牛逼属性
+
+Goto @统计属性
+
+[@BeginHeroM2ItemUp]
+#if
+#act
+MOV N$最低元宝
+MOV N$最高元宝
+MOV N$最低传仙币
+MOV N$最高传仙币
+#if
+GetStringPosEX ..\QuestDiary\摆摊\允许上架物品.txt <$CURITEMNAME> N$行数没用 S$上架物品字符串 0
+#act
+EXTRACTSTRING ~ S$上架物品字符串 S$装备名字 N$最低元宝 N$最高元宝 N$最低传仙币 N$最高传仙币
+#elseact
+StopShopItem
+SENDMSG 7 <$G_CURITEMNAME>禁止上架物品
+break
+#if(2)
+EQUAL <$CurItemMoneyTypeValue> 0
+SMALL <$CurItemPrices> N$最低元宝
+LARGE <$CurItemPrices> N$最高元宝
+#act
+StopShopItem
+SENDMSG 7 <$G_CURITEMNAME>售价不得低于<$STR(N$最低元宝)>元宝,不得高于<$STR(N$最高元宝)>元宝
+break
+
+#if(2)
+EQUAL <$CurItemMoneyTypeValue> 4
+SMALL <$CurItemPrices> N$最低传仙币
+LARGE <$CurItemPrices> N$最高传仙币
+#act
+StopShopItem
+SENDMSG 7 <$G_CURITEMNAME>售价不得低于<$STR(N$最低传仙币)>传仙币,不得高于<$STR(N$最高传仙币)>传仙币
+break
+
+
+
+
+
+
+
+[@PK减少宝宝数量]
+#if
+EQUAL S$当前宝宝PK判断 骷髅
+CHECKSLAVECOUNT = 5
+#act
+KillCallMob <$STR(S$当前宝宝)> 4
+#if
+EQUAL S$当前宝宝PK判断 骷髅
+CHECKSLAVECOUNT = 4
+#act
+KillCallMob <$STR(S$当前宝宝)> 3
+#if
+EQUAL S$当前宝宝PK判断 骷髅
+CHECKSLAVECOUNT = 3
+#act
+KillCallMob <$STR(S$当前宝宝)> 2
+#if
+EQUAL S$当前宝宝PK判断 骷髅
+CHECKSLAVECOUNT = 2
+#act
+KillCallMob <$STR(S$当前宝宝)> 1
+
+#if
+CHECKSLAVECOUNT = 6
+#act
+KillCallMob <$STR(S$当前宝宝)> 1
+#if
+CHECKSLAVECOUNT = 7
+#act
+KillCallMob <$STR(S$当前宝宝)> 2
+#if
+CHECKSLAVECOUNT = 8
+#act
+KillCallMob <$STR(S$当前宝宝)> 3
+#if
+CHECKSLAVECOUNT = 9
+#act
+KillCallMob <$STR(S$当前宝宝)> 4
+#if
+CHECKSLAVECOUNT = 10
+#act
+KillCallMob <$STR(S$当前宝宝)> 5
+
+
+[@BeginTeleport]
+#or
+equal <$MAP> run001
+EQUAL <$MAP> huanggong
+equal <$MAP> xianmo1
+equal <$MAP> xianmo2
+equal <$MAP> MAP010
+#act
+StopTeleport
+sendmsg 5 禁止传送
+break
+#if
+EQUAL N$战斗状态倒计时 1
+#act
+sendmsg 6 战斗状态禁止随机
+break
+
+
+
+#if
+EQUAL N$传送戒指CD 0
+#act
+FORMULATION <$STR(N$传送CD)>-<$STR(N$时装传送减CD)> N$传送戒指CD
+setontimer 53
+#ELSEACT
+StopTeleport
+sendmsg 6 传送CD未结束,剩余<$STR(N$传送戒指CD)>秒
+
+[@ShopStall]
+#OR
+EQUAL <$MAP> RUN001
+EQUAL <$MAP> fumo0
+EQUAL <$MAP> fumo1
+EQUAL <$MAP> fumo2
+EQUAL <$MAP> fumo3
+EQUAL <$MAP> fumo4
+EQUAL <$MAP> fumo5
+EQUAL <$MAP> fumo6
+EQUAL <$MAP> fumo7
+EQUAL <$MAP> fumo8
+EQUAL <$MAP> fumo9
+EQUAL <$MAP> fumo10
+EQUAL <$MAP> huanggong1
+EQUAL <$MAP> huanggong2
+EQUAL <$MAP> huanggong3
+EQUAL <$MAP> huanggong4
+EQUAL <$MAP> huanggong5
+EQUAL <$MAP> huanggong6
+EQUAL <$MAP> huanggong7
+EQUAL <$MAP> huanggong8
+EQUAL <$MAP> huanggong9
+EQUAL <$MAP> huanggong10
+EQUAL <$MAP> bagua1
+EQUAL <$MAP> bagua2
+EQUAL <$MAP> bagua3
+EQUAL <$MAP> bagua4
+EQUAL <$MAP> bagua5
+EQUAL <$MAP> bagua6
+EQUAL <$MAP> bagua7
+EQUAL <$MAP> bagua8
+EQUAL <$MAP> bagua9
+EQUAL <$MAP> bagua10
+EQUAL <$MAP> xianmo1
+EQUAL <$MAP> xianmo2
+EQUAL <$MAP> paokuditu
+EQUAL <$MAP> huanggong100
+#act
+SHOPSTALL
+messagebox 禁止摆摊
+break
+[@Run]
+#if
+LARGE G15 0
+EQUAL <$MAP> paokuditu
+#act
+FORMULATION <$level>*10000 N$跑酷获取的金币数量
+GIVE 金币 <$STR(N$跑酷获取的金币数量)>
+INC N$跑酷获取碎片 1
+gamegold +  3
+
+#if
+LARGE N$跑酷获取碎片 50
+#act
+GIVE 跑酷碎片
+MOV N$跑酷获取碎片
+
+[@全局内存缩小瘦身处理]
+#CALL [\任务系统\任务对话框.TXT] @任务对话框
+#CALL [\拾取鉴定\鉴定代码.TXT] @鉴定代码
+#CALL [\拾取鉴定\法宝鉴定.TXT] @法宝鉴定
+#CALL [\时装鉴定\时装鉴定.TXT] @时装鉴定
+#CALL [\拾取鉴定\一大陆装备鉴定.TXT] @一大陆装备鉴定
+#CALL [\拾取鉴定\骷髅矿区鉴定.TXT] @骷髅矿区鉴定
+#CALL [\拾取鉴定\僵尸矿区鉴定.TXT] @僵尸矿区鉴定
+#CALL [\拾取鉴定\蜈蚣洞鉴定.TXT] @蜈蚣洞鉴定
+#CALL [\拾取鉴定\兽人古墓鉴定.TXT] @兽人古墓鉴定
+#CALL [\拾取鉴定\二大陆装备鉴定.TXT] @二大陆装备鉴定
+#CALL [\拾取鉴定\沃玛寺庙装备鉴定.TXT] @沃玛寺庙装备鉴定
+#CALL [\拾取鉴定\祖玛秘境鉴定.TXT] @祖玛秘境鉴定
+#CALL [\拾取鉴定\骨魔洞鉴定.TXT] @骨魔洞鉴定
+#CALL [\拾取鉴定\恶魔营地鉴定.TXT] @恶魔营地鉴定
+#CALL [\拾取鉴定\三大陆装备鉴定.TXT] @三大陆装备鉴定
+#CALL [\拾取鉴定\蚂蚁洞鉴定.TXT] @蚂蚁洞鉴定
+#CALL [\拾取鉴定\精灵谷鉴定.TXT] @精灵谷鉴定
+#CALL [\拾取鉴定\黑暗魔殿鉴定.TXT] @黑暗魔殿鉴定
+#CALL [\拾取鉴定\赤月峡谷鉴定.TXT] @赤月峡谷鉴定
+#CALL [\拾取鉴定\四大陆装备鉴定.TXT] @四大陆装备鉴定
+#CALL [\拾取鉴定\封魔古刹鉴定.TXT] @封魔古刹鉴定
+#CALL [\拾取鉴定\牛魔寺庙鉴定.TXT] @牛魔寺庙鉴定
+#CALL [\拾取鉴定\魔毒蚀地鉴定.TXT] @魔毒蚀地鉴定
+#CALL [\拾取鉴定\封魔宫鉴定.TXT] @封魔宫鉴定
+#CALL [\拾取鉴定\五大陆装备鉴定.TXT] @五大陆装备鉴定
+#CALL [\拾取鉴定\魔龙峡谷鉴定.TXT] @魔龙峡谷鉴定
+#CALL [\拾取鉴定\幽暗地底鉴定.TXT] @幽暗地底鉴定
+#CALL [\拾取鉴定\魔化工厂鉴定.TXT] @魔化工厂鉴定
+#CALL [\拾取鉴定\火龙地洞鉴定.TXT] @火龙地洞鉴定
+#CALL [\拾取鉴定\骷髅矿区鉴定.txt] @骷髅矿区鉴定
+#CALL [\拾取鉴定\僵尸矿区鉴定.txt] @僵尸矿区鉴定
+#CALL [\拾取鉴定\蜈蚣洞鉴定.txt] @蜈蚣洞鉴定
+#CALL [\拾取鉴定\兽人古墓鉴定.txt] @兽人古墓鉴定
+#CALL [\拾取鉴定\沃玛寺庙装备鉴定.txt] @沃玛寺庙装备鉴定
+#CALL [\拾取鉴定\祖玛秘境鉴定.txt] @祖玛秘境鉴定
+#CALL [\拾取鉴定\骨魔洞鉴定.txt] @骨魔洞鉴定
+#CALL [\拾取鉴定\恶魔营地鉴定.txt] @恶魔营地鉴定
+#CALL [\拾取鉴定\蚂蚁洞鉴定.txt] @蚂蚁洞鉴定
+#CALL [\拾取鉴定\精灵谷鉴定.txt] @精灵谷鉴定
+#CALL [\拾取鉴定\黑暗魔殿鉴定.txt] @黑暗魔殿鉴定
+#CALL [\拾取鉴定\赤月峡谷鉴定.txt] @赤月峡谷鉴定
+#CALL [\拾取鉴定\封魔古刹鉴定.txt] @封魔古刹鉴定
+#CALL [\拾取鉴定\牛魔寺庙鉴定.txt] @牛魔寺庙鉴定
+#CALL [\拾取鉴定\魔毒蚀地鉴定.txt] @魔毒蚀地鉴定
+#CALL [\拾取鉴定\封魔宫鉴定.txt] @封魔宫鉴定
+#CALL [\拾取鉴定\魔龙峡谷鉴定.txt] @魔龙峡谷鉴定
+#CALL [\拾取鉴定\幽暗地底鉴定.txt] @幽暗地底鉴定
+#CALL [\拾取鉴定\魔化工厂鉴定.txt] @魔化工厂鉴定
+#CALL [\拾取鉴定\火龙地洞鉴定.txt] @火龙地洞鉴定
+#CALL [\拾取鉴定\六大陆装备鉴定.TXT] @六大陆装备鉴定
+#CALL [\拾取鉴定\七大陆装备鉴定.TXT] @七大陆装备鉴定
+#CALL [\拾取鉴定\精绝古墓装备鉴定.TXT] @精绝古墓装备鉴定
+#CALL [\拾取鉴定\焚燃之地装备鉴定.TXT] @焚燃之地装备鉴定
+#CALL [\拾取鉴定\岩浆地宫鉴定.TXT] @岩浆地宫装备鉴定
+#CALL [\拾取鉴定\血海魔宫鉴定.TXT] @血海魔宫鉴定
+#CALL [\拾取鉴定\八大陆装备鉴定.TXT] @八大陆装备鉴定
+#CALL [\拾取鉴定\炼狱之路装备鉴定.TXT] @炼狱之路装备鉴定
+#CALL [\拾取鉴定\冥府之路装备鉴定.TXT] @冥府之路装备鉴定
+#CALL [\拾取鉴定\瘟疫之地装备鉴定.TXT] @瘟疫之地装备鉴定
+#CALL [\拾取鉴定\暗黑之地装备鉴定.TXT] @暗黑之地装备鉴定
+#CALL [\..\..\..\..\通区文件\游戏功能\游戏功能.TXT] @游戏功能
+#CALL [\系统活动\系统活动.TXT] @系统活动
+#CALL [\商城\商城.TXT] @商城
+#CALL [\VIP系统\VIP系统.TXT] @VIP系统
+#CALL [\属性统计\统计属性.TXT] @统计属性
+#CALL [\初始化属性\初始化属性.TXT] @初始化属性
+#CALL [\强化装备属性统计\强化装备属性统计.TXT] @强化装备属性统计
+#CALL [\称号系统\称号系统.TXT] @称号系统
+#CALL [\属性统计\溢出判断.TXT] @溢出判断
+#CALL [\属性统计\品阶几率.TXT] @品阶几率
+#CALL [\道士宝宝\道士宝宝赋值属性.TXT] @道士宝宝赋值属性
+#CALL [\道士宝宝\道士骷髅宝宝赋值属性.TXT] @道士骷髅宝宝赋值属性
+#CALL [\道士宝宝\道士火兽宝宝赋值属性.TXT] @道士火兽宝宝赋值属性
+#CALL [\道士宝宝\道士圣兽宝宝赋值属性.TXT] @道士圣兽宝宝赋值属性
+#CALL [\道士宝宝\道士混沌石灵宝宝赋值属性.TXT] @道士混沌石灵宝宝赋值属性
+#CALL [\道士宝宝\道士月灵道祖宝宝赋值属性.TXT] @道士月灵道祖宝宝赋值属性
+#CALL [\道士宝宝\道士骷髅宝宝赋值属性.txt] @道士骷髅宝宝赋值属性
+#CALL [\道士宝宝\道士火兽宝宝赋值属性.txt] @道士火兽宝宝赋值属性
+#CALL [\道士宝宝\道士圣兽宝宝赋值属性.txt] @道士圣兽宝宝赋值属性
+#CALL [\道士宝宝\道士混沌石灵宝宝赋值属性.txt] @道士混沌石灵宝宝赋值属性
+#CALL [\道士宝宝\道士月灵道祖宝宝赋值属性.txt] @道士月灵道祖宝宝赋值属性
+#CALL [\技能\魔法盾.TXT] @魔法盾
+#CALL [\属性面板\属性面板.TXT] @属性面板
+#CALL [\技能\双防之盾.TXT] @双防之盾
+#CALL [\技能\不屈意志.TXT] @不屈意志
+#CALL [\爆率系统\爆率封顶.TXT] @爆率封顶
+#CALL [\初始化属性\初始化属性.txt] @初始化属性
+#CALL [\强化装备属性统计\强化装备属性统计.txt] @强化装备属性统计
+#CALL [\称号系统\称号系统.txt] @称号系统
+#CALL [\属性统计\溢出判断.txt] @溢出判断
+#CALL [\属性统计\品阶几率.txt] @品阶几率
+#CALL [\道士宝宝\道士宝宝赋值属性.txt] @道士宝宝赋值属性
+#CALL [\技能\魔法盾.txt] @魔法盾
+#CALL [\技能\双防之盾.txt] @双防之盾
+#CALL [\技能\不屈意志.txt] @不屈意志
+#CALL [\属性面板\属性面板.txt] @属性面板
+#CALL [\爆率系统\爆率封顶.txt] @爆率封顶
+#CALL [\游戏攻略\游戏攻略.TXT] @游戏攻略
+#CALL [\拾取鉴定\给颜色后缀.TXT] @给颜色后缀
+#CALL [\爆率系统\保底爆率.TXT] @保底爆率
+#CALL [\猎魂\猎魂.TXT] @猎魂
+#CALL [\法宝爆率\一大陆法宝爆率.TXT] @一大陆法宝爆率
+#CALL [\法宝爆率\二大陆法宝爆率.TXT] @二大陆法宝爆率
+#CALL [\法宝爆率\三大陆法宝爆率.TXT] @三大陆法宝爆率
+#CALL [\诛仙剑阵\诛仙剑阵爆出.TXT] @诛仙剑阵爆出
+#CALL [\法宝爆率\四大陆法宝爆率.TXT] @四大陆法宝爆率
+#CALL [\法宝爆率\五大陆法宝爆率.TXT] @五大陆法宝爆率
+#CALL [\法宝爆率\六大陆法宝爆率.TXT] @六大陆法宝爆率
+#CALL [\虚神之门\幽魂宝藏.TXT] @幽魂宝藏
+#CALL [\幽魂宝藏\幽魂宝藏开启.TXT] @幽魂宝藏开启
+#CALL [\猎魂\猎魂.txt] @猎魂
+#CALL [\法宝爆率\一大陆法宝爆率.txt] @一大陆法宝爆率
+#CALL [\法宝爆率\二大陆法宝爆率.txt] @二大陆法宝爆率
+#CALL [\法宝爆率\三大陆法宝爆率.txt] @三大陆法宝爆率
+#CALL [\诛仙剑阵\诛仙剑阵爆出.txt] @诛仙剑阵爆出
+#CALL [\法宝爆率\四大陆法宝爆率.txt] @四大陆法宝爆率
+#CALL [\法宝爆率\五大陆法宝爆率.txt] @五大陆法宝爆率
+#CALL [\法宝爆率\六大陆法宝爆率.txt] @六大陆法宝爆率
+#CALL [\技能\寂静之雷.TXT] @寂静之雷
+#CALL [\技能\技能伤害.TXT] @技能伤害
+#CALL [\技能\焚土喷焰.TXT] @焚土喷焰
+#CALL [\技能\漫天火雨打怪.TXT] @漫天火雨打怪
+#CALL [\技能\技能伤害.txt] @技能伤害
+#CALL [\技能\漫天火雨PK.TXT] @漫天火雨PK
+#CALL [\技能\梵天圣火开关.TXT] @梵天圣火开关
+#CALL [\技能\召唤骷髅.TXT] @召唤骷髅
+#CALL [\技能\冰咆哮.TXT] @冰咆哮
+#CALL [\技能\修罗血魂阵.TXT] @修罗血魂阵
+#CALL [\技能\极光斩.TXT] @极光斩
+#CALL [\技能\灵葫.TXT] @灵葫
+#CALL [\技能\天灵符爆.TXT] @天灵符爆
+#CALL [\技能\蛊毒术开关.TXT] @蛊毒术开关
+#CALL [\技能\神愈术.TXT] @神愈术
+#CALL [\技能\混乱元素.TXT] @混乱元素
+#CALL [\技能\召唤火兽.TXT] @召唤火兽
+#CALL [\技能\召唤圣兽.TXT] @召唤圣兽
+#CALL [\技能\八卦锁龙阵.TXT] @八卦锁龙阵
+#CALL [\技能\炎龙降临打怪.TXT] @炎龙降临打怪
+#CALL [\技能\炎龙降临打人.TXT] @炎龙降临打人
+#CALL [\技能\诱惑之光.TXT] @诱惑之光
+#CALL [\技能\魔焰狂澜开关.TXT] @魔焰狂澜开关
+#CALL [\技能\威慑符印开关.TXT] @威慑符印开关
+#CALL [\技能\龙袭风暴开关.TXT] @龙袭风暴开关
+#CALL [\技能\幽龙镇魂.TXT] @幽龙镇魂
+#CALL [\技能\天龙之怒.TXT] @天龙之怒
+#CALL [\技能\万象魔咒.TXT] @万象魔咒
+#CALL [\技能\浴火鞭策.TXT] @浴火鞭策
+#CALL [\道士宝宝\浴火鞭策道士骷髅宝宝赋值属性.TXT] @浴火鞭策道士骷髅宝宝赋值属性
+#CALL [\道士宝宝\浴火鞭策道士神兽宝宝赋值属性.TXT] @浴火鞭策道士神兽宝宝赋值属性
+#CALL [\道士宝宝\浴火鞭策道士圣兽宝宝赋值属性.TXT] @浴火鞭策道士圣兽宝宝赋值属性
+#CALL [\道士宝宝\浴火鞭策道士混沌石灵宝宝赋值属性.TXT] @浴火鞭策道士混沌石灵宝宝赋值属性
+#CALL [\技能\恶魔炮弹.TXT] @恶魔炮弹
+#CALL [\技能\怒龙一击.TXT] @怒龙一击
+#CALL [\技能\召唤宠物.TXT] @召唤宠物
+#CALL [\技能\混沌火雨.TXT] @混沌火雨
+#CALL [\技能\混沌石灵.TXT] @混沌石灵
+#CALL [\技能\世界BOSS技能.TXT] @世界BOSS技能
+#CALL [\技能\彻地钉.TXT] @彻地钉
+#CALL [\技能\凤爆狂雷.TXT] @凤爆狂雷
+#CALL [\技能\月灵道祖.TXT] @月灵道祖
+#CALL [\技能\十字破军斩.TXT] @十字破军斩
+#CALL [\技能\熔岩烈剑.TXT] @熔岩烈剑
+#CALL [\技能\烈火剑法.TXT] @烈火剑法
+#CALL [\技能\野蛮冲撞.TXT] @野蛮冲撞
+#CALL [\技能\野蛮冲撞位置00.TXT] @野蛮冲撞位置00
+#CALL [\技能\野蛮冲撞位置01.TXT] @野蛮冲撞位置01
+#CALL [\技能\野蛮冲撞位置02.TXT] @野蛮冲撞位置02
+#CALL [\技能\野蛮冲撞位置03.TXT] @野蛮冲撞位置03
+#CALL [\技能\野蛮冲撞位置04.TXT] @野蛮冲撞位置04
+#CALL [\技能\野蛮冲撞位置05.TXT] @野蛮冲撞位置05
+#CALL [\技能\野蛮冲撞位置06.TXT] @野蛮冲撞位置06
+#CALL [\技能\野蛮冲撞位置07.TXT] @野蛮冲撞位置07
+#CALL [\技能\混沌开天.TXT] @混沌开天
+#CALL [\技能\刺杀剑术.TXT] @刺杀剑术
+#CALL [\技能\金殇斩.TXT] @金殇斩
+#CALL [\技能\梵天圣火开启.TXT] @梵天圣火开启
+#CALL [\技能\蛊毒术开启.TXT] @蛊毒术开启
+#CALL [\技能\魔焰狂澜开启.TXT] @魔焰狂澜开启
+#CALL [\技能\威慑符印开启.TXT] @威慑符印开启
+#CALL [\技能\龙袭风暴开启.TXT] @龙袭风暴开启
+#CALL [\触发类\回城石.TXT] @回城石
+#CALL [\触发类\随机石.TXT] @随机石
+#CALL [\天道解封卷\天道解封卷.TXT] @打开天道解封卷
+#CALL [\天命龙珠\天命龙珠.TXT] @天命龙珠
+#CALL [\强化转移\强化转移.TXT] @强化转移
+#CALL [\万象洗练\万象洗练.TXT] @万象洗练
+#CALL [\触发类\普通转职证明.TXT] @普通转职证明
+#CALL [\副职业\副职业转换.TXT] @副职业转换
+#CALL [\入群礼包\入群礼包.TXT] @入群礼包
+#CALL [\人物死亡\死亡特效.TXT] @死亡特效
+#CALL [\推广邀请\推广邀请升级触发.TXT] @推广邀请升级触发
+#CALL [\进图浮现\进图浮现.TXT] @进图浮现
+#CALL [\道士宝宝\道士骷髅宝宝PK赋值属性.TXT] @道士骷髅宝宝PK赋值属性
+#CALL [\道士宝宝\道士神兽宝宝PK赋值属性.TXT] @道士神兽宝宝PK赋值属性
+#CALL [\道士宝宝\道士圣兽宝宝PK赋值属性.TXT] @道士圣兽宝宝PK赋值属性
+#CALL [\道士宝宝\道士骷髅宝宝攻击触发.TXT] @道士骷髅宝宝攻击触发
+#CALL [\道士宝宝\道士火兽宝宝攻击触发.TXT] @道士火兽宝宝攻击触发
+#CALL [\道士宝宝\道士圣兽宝宝攻击触发.TXT] @道士圣兽宝宝攻击触发
+#CALL [\道士宝宝\道士混沌石灵宝宝攻击触发.TXT] @道士混沌石灵宝宝攻击触发
+#CALL [\道士宝宝\道士月灵道祖宝宝攻击触发.TXT] @道士月灵道祖宝宝攻击触发
+#CALL [\回收系统\回收系统.TXT] @回收系统
+#CALL [\副职业\副职业仓库.TXT] @副职业仓库
+#CALL [\幽魂宝箱\幽魂宝箱.TXT] @幽魂宝箱
+#CALL [\178pay传仙币\传仙币\传仙币.txt] @领取传仙币
+#CALL [\178pay传仙币\附加赠送\充值记录\充值记录.txt] @领取充值记录
+#CALL [\178pay传仙币\附加赠送\补发判断\补发判断.txt] @领取补发判断

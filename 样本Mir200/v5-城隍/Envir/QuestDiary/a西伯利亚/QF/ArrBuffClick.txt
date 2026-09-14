@@ -1,0 +1,81 @@
+[@Body]
+{
+[@CloseArrBuff68]
+#ACT
+CloseArrBuff 68
+MOV N$元素点燃雷属性加成 0
+MOV N$元素点燃伤害加深 0
+MOV N$元素点燃汲取 0
+CloseArrBuff 71
+GOTO @开始计算元素属性
+
+GOTO @开始计算特殊属性
+
+
+[@CloseArrBuff69]
+#ACT
+CloseArrBuff 69
+MOV N$元素点燃火属性加成 0
+MOV N$元素点燃伤害加深 0
+MOV N$元素点燃汲取 0
+CloseArrBuff 71
+GOTO @开始计算元素属性
+
+GOTO @开始计算特殊属性
+
+
+[@CloseArrBuff70]
+#ACT
+CloseArrBuff 70
+MOV N$元素点燃冰属性加成 0
+MOV N$元素点燃伤害加深 0
+MOV N$元素点燃汲取 0
+CloseArrBuff 71
+GOTO @开始计算元素属性
+
+GOTO @开始计算特殊属性
+
+
+[@ArrBuffClick67]
+#ACT
+CloseArrBuff 67
+CHANGESTATE 6 0
+MOV N$锁链主属性加成 0
+MOV N$锁链攻击伤害加成 0
+GOTO @开始计算基础属性
+GOTO @开始计算元素属性
+
+
+[@ArrBuffClick61]
+#ACT
+CloseArrBuff 61
+MOV N$奥术智慧主属性加成数值 0
+MOV N$奥术智慧魔法加成数值 0
+GOTO @开始计算基础属性
+
+[@ArrBuffClick66]
+#ACT
+CloseArrBuff 66
+MOV N$格挡加成防御值 0
+MOV N$格挡加成双抗 0
+STOPPLAYEFFECT 38 175 10 <$STR(L$格挡增加防御时间数组[<$STR(N$格挡技能等级)>])> 100
+GOTO @开始计算基础属性
+GOTO @开始计算元素属性
+
+
+[@ArrBuffClick65]
+#ACT
+CloseArrBuff 65
+MOV N$疯魔剑法使用标识 0
+STOPPLAYEFFECT 78 170 15 0 30 0 132 144 1
+GOTO @开始计算基础属性
+
+[@ArrBuffClick64]
+#ACT
+CloseArrBuff 64
+STOPPLAYEFFECT 71 118 16 0 50
+MOV N$固本培源增加回生 0
+MOV N$固本培源增加冥想 0
+MOV N$固本培源持续时间 0
+GOTO @开始计算特殊属性
+}

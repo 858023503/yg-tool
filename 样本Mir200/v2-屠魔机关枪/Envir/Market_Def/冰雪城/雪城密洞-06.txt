@@ -1,0 +1,12 @@
+[@MAIN]
+#IF
+#act
+OPENMERCHANTBIGDLG 5 941 1 4 -15 -52 1 360 20 1
+#say
+<&Text:冰雪密洞为六大路最终地图:40:60{FCOLOR=250;FSIZE=12;FNAME=黑体}>
+<&Text:进入地图:50:185{FCOLOR=250;FSIZE=14;FNAME=黑体}/@进入冰晶密洞>
+
+[@进入冰晶密洞]
+#if
+#act
+mapmove MAP034

@@ -1,0 +1,52 @@
+[@main]
+#IF
+#ACT
+OPENMERCHANTBIGDLG 5 1163 1 4 -50 -80 1 600 5 1
+#SAY
+<&PlayImg:5:1164:24:80:24:115:0>
+<&PlayImg:28:970:6:150:180:280:0>
+<&PlayImg:5:1214:22:100:425:120:0>
+<&Text:混沌石灵:200:78{FCOLOR=245}>\
+<&ItemShow:134:0:495:90:0>\
+<&PlayImg:20:276:23:97:480:72:0>
+
+<&Text:继承圣兽百分比伤害|^初始默认伤害100%^可以通过法宝升级至1000%:490:315{FCOLOR=250}>\
+<&Text:每次攻击触发地狱火|地狱火默认范围5^可通过法宝提升:490:330{FCOLOR=250}>\
+<&Text:继承圣兽移动速度:490:345{FCOLOR=250}>\
+<&Text:默认属性圣兽10倍|:490:360{FCOLOR=250}>\
+; <&Text::490:375{FCOLOR=250}>\
+; <&Text::490:390{FCOLOR=250}>\
+<&Text:鼠标移动查看需求|混沌残页*100^500传仙币:490:410{FCOLOR=151}>\
+
+<&ImgEx:5:1211:1212:1213:460:428/@学习混沌石灵>
+
+[@学习混沌石灵]
+#if
+not CHECKITEM 混沌残页 100
+#act
+messagebox 混沌残页不够
+break
+
+#if
+checkgamegird < 500
+#act
+messagebox 传仙币不足
+break
+
+
+#if
+CHECKSKILL 召唤圣兽 = ?
+#act
+#elseact
+messagebox 你没有学习召唤圣兽无法获取石灵
+break
+
+#if
+checkjob taoist
+#act
+addskill 混沌石灵 
+take 混沌残页 100
+gamegird - 500
+messagebox 学习成功
+#elseact
+messagebox 你不是道士  

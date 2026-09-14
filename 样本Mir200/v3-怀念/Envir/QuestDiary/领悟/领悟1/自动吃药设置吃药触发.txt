@@ -1,0 +1,73 @@
+[@自动吃药设置吃药触发]
+{
+#IF
+CHECKLEVELEX > 0
+#ACT
+CALCVAR HUMAN zdcy-HP百分比值 = <$MAXHP>
+CALCVAR HUMAN zdcy-HP当前值 = <$HP>
+
+CALCVAR HUMAN zdcy-MP百分比值 = <$MAXMP>
+CALCVAR HUMAN zdcy-MP当前值 = <$MP>
+
+#IF
+CHECKVAR HUMAN zdcy-HP百分比值 < 10000000
+#ACT
+CALCVAR HUMAN zdcy-HP百分比值 * <$HUMAN(zdcy-吃药百分比)>
+CALCVAR HUMAN zdcy-HP百分比值 / 100
+#ELSEACT
+CALCVAR HUMAN zdcy-HP百分比值 / 100
+CALCVAR HUMAN zdcy-HP百分比值 * <$HUMAN(zdcy-吃药百分比)>
+
+
+#IF
+CHECKVAR HUMAN zdcy-MP百分比值 < 10000000
+#ACT
+CALCVAR HUMAN zdcy-MP百分比值 * <$HUMAN(zdcy-吃药百分比)>
+CALCVAR HUMAN zdcy-MP百分比值 / 100
+#ELSEACT
+CALCVAR HUMAN zdcy-MP百分比值 / 100
+CALCVAR HUMAN zdcy-MP百分比值 * <$HUMAN(zdcy-吃药百分比)>
+
+
+#IF
+CHECKVAR HUMAN zdcy-HP当前值 > <$HUMAN(zdcy-HP百分比值)>
+CHECKVAR HUMAN zdcy-MP当前值 > <$HUMAN(zdcy-MP百分比值)>
+#ACT
+BREAK
+#IF
+CHECKVAR HUMAN zdcy-每秒消耗 > 0
+#ACT
+CALCVAR HUMAN zdcy-每秒消耗 - 1
+#ELSEACT
+HumanHP + <$HUMAN(zdcy-HPMP增加值)>
+HumanMP + <$HUMAN(zdcy-HPMP增加值)>
+;SENDMSG 6 【自动吃药触发】:HPMP低于<$HUMAN(zdcy-吃药百分比)>%,[<$HUMAN(zdcy-药物选择)>]生效,HPMP+<$HUMAN(zdcy-HPMP增加值)>~！
+BREAK
+
+#IF
+CHECKGAMEGOLD > <$HUMAN(zdcy-每秒消耗)>
+#ACT
+CALCVAR HUMAN zdcy-每秒消耗 + 1
+GAMEGOLD - <$HUMAN(zdcy-每秒消耗)>
+HumanHP + <$HUMAN(zdcy-HPMP增加值)>
+HumanMP + <$HUMAN(zdcy-HPMP增加值)>
+;SENDMSG 6 【自动吃药触发】:HPMP低于<$HUMAN(zdcy-吃药百分比)>%,[<$HUMAN(zdcy-药物选择)>]生效,HPMP+<$HUMAN(zdcy-HPMP增加值)>~！消耗<$HUMAN(zdcy-每秒消耗)>金币！
+#ELSEACT
+CALCVAR HUMAN zdcy-HPMP增加值 = 0
+SAVEVAR HUMAN zdcy-HPMP增加值 ..\QuestDiary\领悟\领悟1\变量数据.txt
+CALCVAR HUMAN zdcy-每秒消耗 + 1
+SENDMSG 5 【自动吃药提示】:你的金币不足<$HUMAN(zdcy-每秒消耗)>个,[<$HUMAN(zdcy-药物选择)>]已停止！请重新设置~！
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

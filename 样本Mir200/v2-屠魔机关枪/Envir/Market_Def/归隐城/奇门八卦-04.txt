@@ -1,0 +1,219 @@
+[@main]
+#if
+LARGE U363 0
+#act
+MOV S$休门阵眼特效 <&IMG:1154:5:195:365>
+#if
+LARGE U363 1
+#act
+MOV S$驚门阵眼特效 <&IMG:1155:5:335:227>
+#if
+LARGE U363 2
+#act
+MOV S$死门阵眼特效 <&IMG:1156:5:292:129>
+
+#if
+LARGE U363 3
+#act
+MOV S$景门阵眼特效 <&IMG:1157:5:193:88>
+
+#if
+LARGE U363 4
+#act
+MOV S$杜门阵眼特效 <&IMG:1158:5:95:128>
+#if
+LARGE U363 5
+#act
+MOV S$伤门阵眼特效 <&IMG:1159:5:57:227>
+#if
+LARGE U363 6
+#act
+MOV S$生门阵眼特效 <&IMG:1160:5:97:325>
+#if
+LARGE U363 7
+#act
+MOV S$开门阵眼特效 <&IMG:1161:5:292:324>
+#if
+#act
+OPENMERCHANTBIGDLG 5 1153 1 4 0 -80  0 560 0 1
+#SAY
+<&IMGEX:5:1147:1148:1149:430:404:1|激活阵眼需要3000元宝/@激活八卦阵>
+<&IMGEX:5:1150:1151:1152:520:404:1|每次合成需要150元宝和500W金币/@合成八卦材料>
+<$STR(S$休门阵眼特效)>
+<$STR(S$驚门阵眼特效)>
+<$STR(S$死门阵眼特效)>
+<$STR(S$景门阵眼特效)>
+<$STR(S$杜门阵眼特效)>
+<$STR(S$伤门阵眼特效)>
+<$str(S$生门阵眼特效)>
+<$str(S$生门阵眼特效)>
+<$STR(S$开门阵眼特效)>
+[@激活八卦阵]
+#if
+checkgamegold < 3000
+#act
+messagebox 元宝数量不足3000
+break
+#if
+CHECKITEM 休门阵眼
+EQUAL U363 0
+#act
+gamegold - 3000
+take 休门阵眼
+MOV U363 1
+SENDMSG 6 你已激活休门阵眼
+goto @main
+break
+#if
+CHECKITEM 驚门阵眼
+EQUAL U363 1
+#act
+gamegold - 3000
+take 驚门阵眼
+MOV U363 2
+SENDMSG 6 你已激活驚门阵眼
+goto @main
+break
+#if
+CHECKITEM 死门阵眼
+EQUAL U363 2
+#act
+gamegold - 3000
+take 死门阵眼
+MOV U363 3
+SENDMSG 6 你已激活死门阵眼
+goto @main
+break
+#if
+CHECKITEM 景门阵眼
+EQUAL U363 3
+#act
+gamegold - 3000
+take 景门阵眼
+MOV U363 4
+SENDMSG 6 你已激活景门阵眼
+goto @main
+break
+#if
+CHECKITEM 杜门阵眼
+EQUAL U363 4
+#act
+gamegold - 3000
+take 杜门阵眼
+MOV U363 5
+SENDMSG 6 你已激活杜门阵眼
+goto @main
+break
+#if
+CHECKITEM 伤门阵眼
+EQUAL U363 5
+#act
+gamegold - 3000
+take 伤门阵眼
+MOV U363 6
+SENDMSG 6 你已激活伤门阵眼
+goto @main
+break
+#if
+CHECKITEM 生门阵眼
+EQUAL U363 6
+#act
+gamegold - 3000
+take 生门阵眼
+MOV U363 7
+SENDMSG 6 你已激活生门阵眼
+goto @main
+break
+#if
+CHECKITEM 开门阵眼
+EQUAL U363 7
+#act
+gamegold - 3000
+take 开门阵眼
+MOV U363 8
+SENDMSG 6 你已激活开门阵眼
+goto @main
+break
+[@合成八卦材料]
+#if
+checkgamegold < 150
+#act
+messagebox 你没有150元宝
+break
+#if
+not checkgold 5000000
+#act
+messagebox 你5000000金币
+break
+
+
+#or
+CHECKITEM 休门阵眼 2
+CHECKITEM 驚门阵眼 2
+CHECKITEM 死门阵眼 2
+CHECKITEM 景门阵眼 2
+CHECKITEM 杜门阵眼 2
+CHECKITEM 伤门阵眼 2
+CHECKITEM 生门阵眼 2
+CHECKITEM 开门阵眼 2
+#act
+gamegold - 150
+take 金币 5000000
+
+#if
+CHECKITEM 休门阵眼 2
+#act
+take 休门阵眼 2
+give 驚门阵眼 1
+sendmsg 6 获得一个驚门阵眼
+take 门阵眼 2
+; break
+#if
+CHECKITEM 驚门阵眼 2
+#act
+give 死门阵眼 1
+take 驚门阵眼 2
+sendmsg 6 获得一个死门阵眼
+; break
+#if
+CHECKITEM 死门阵眼 2
+#act
+take 死门阵眼 2
+give 景门阵眼 1
+sendmsg 6 获得一个景门阵眼
+; break
+#if
+CHECKITEM 景门阵眼 2
+#act
+take 景门阵眼 2
+give 杜门阵眼 1
+sendmsg 6 获得一个杜门阵眼
+; break
+#if
+CHECKITEM 杜门阵眼 2
+#act
+take 杜门阵眼 2
+give 伤门阵眼 1
+sendmsg 6 获得一个伤门阵眼
+; break
+#if
+CHECKITEM 伤门阵眼 2
+#act
+take 伤门阵眼 2
+give 生门阵眼 1
+sendmsg 6 获得一个生门阵眼
+; break
+#if
+CHECKITEM 生门阵眼 2
+#act
+take 生门阵眼 2
+give 开门阵眼 1
+sendmsg 6 获得一个开门阵眼
+; break
+#if
+CHECKITEM 开门阵眼 2
+#act
+take 开门阵眼 2
+give 八卦觉醒石 1
+sendmsg 6 获得一个八卦觉醒石
+; break

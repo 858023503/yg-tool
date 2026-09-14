@@ -1,0 +1,151 @@
+[@Body]
+{
+[@装备淬炼]
+#IF
+#ACT
+OPENMERCHANTBIGDLG 0 2010 1 4 0 0 0
+#SAY
+\ \
+<TEXT:熔炼:16:0{FCOLOR=251}/@随身工坊>
+<TEXT:升级:26:0{FCOLOR=251}/@装备升级>
+<TEXT:淬炼:36:0{FCOLOR=249}>
+<TEXT:置换:46:0{FCOLOR=251}/@装备置换>
+<TEXT:开孔:56:0{FCOLOR=251}/@装备开孔>
+<TEXT:强化:66:0{FCOLOR=251}/@装备升级强化>
+<TEXT:投保:76:0{FCOLOR=251}/@装备投保>
+
+\ \ \
+< ><淬炼说明：/SCOLOR=70>\
+< ><可以将你的/SCOLOR=251><【熔炼点数】/SCOLOR=250><用来淬炼装备，额外增加装备/SCOLOR=251>\
+< ><主属性点数，每次加点需要/SCOLOR=251><[50熔炼点数]/SCOLOR=250>,<项链幸运需/SCOLOR=251>\ 
+< ><要/SCOLOR=251><[1000熔炼点数]/SCOLOR=250>\
+< ><装备每升一级，额外增加一次淬炼次数/SCOLOR=253>\ \
+< ><淬炼属性：/SCOLOR=70>\
+< ><熔炼点数：/SCOLOR=250>< <$STR(U101)>/SCOLOR=249>\ \
+< ><人物装备淬炼：/SCOLOR=70>\
+< ><武器淬炼/@开始装备淬炼(1)>  <服装淬炼/@开始装备淬炼(0)>  <头盔淬炼/@开始装备淬炼(4)>  <项链淬炼/@开始装备淬炼(3)>  <左手淬炼/@开始装备淬炼(6)>\
+< ><右手淬炼/@开始装备淬炼(5)>  <左戒淬炼/@开始装备淬炼(8)>  <右戒淬炼/@开始装备淬炼(7)>  <腰带淬炼/@开始装备淬炼(10)>  <靴子淬炼/@开始装备淬炼(11)>\ 
+< ><项链幸运淬炼/@开始装备淬炼幸运>\ \
+<&IMGEX:0:246:245:247:420:24/@EXIT>
+
+[@开始装备淬炼幸运]
+#IF
+SMALL U101 1000
+#ACT
+SENDMSG 6 你的熔炼点数不足1000！
+BREAK
+
+#IF
+EQUAL <$NECKLACE>
+#ACT
+SENDMSG 6 <你没有佩戴项链！/SCOLOR=249>
+BREAK
+
+#IF
+#ACT
+GETDBITEMFIELDVALUE <$NECKLACE> STDMODE S$项链数据库类型
+
+#IF
+NOT EQUAL S$项链数据库类型 19
+#ACT
+MESSAGEBOX 当前项链不能淬炼幸运！
+BREAK
+
+#IF
+CheckCustomItemValue 3 9 > 2
+#ACT
+MESSAGEBOX 项链已经3点幸运了！
+BREAK
+
+#IF
+#ACT
+DEC U101 1000
+GetCustomItemValue 3 9 N$项链当前自定义幸运 N$无用变量
+INC N$项链当前自定义幸运 1
+GOTO @_@初始化随身工坊用默认自定义参数
+MOV L$添加用自定义属性参数数组[0] 3
+MOV L$添加用自定义属性参数数组[1] 9
+MOV L$添加用自定义属性参数数组[2] 253
+MOV L$添加用自定义属性参数数组[3] 30
+MOV L$添加用自定义属性参数数组[4] 9
+MOV L$添加用自定义属性参数数组[6] 10
+MOV L$添加用自定义属性参数数组[7] <$STR(N$项链当前自定义幸运)>
+GOTO @_@不带参赋予单条自定义属性
+UPDATEITEM 3
+CLEARLINKITEM
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{为他的|251:0}{[<$NECKLACE>]|254:0}{增加了|251:0}{[1点幸运]|254:0}
+GOTO @装备淬炼
+
+[@开始装备淬炼]
+#IF
+#ACT
+MOV S$装备淬炼装备位置 <$SCRIPTPARAM1>
+
+#IF
+NOT CheckVarInList L$装备升级可升级位置参数列表 <$STR(S$装备淬炼装备位置)>
+#ACT
+SENDMSG 6 请稍后再尝试！
+BREAK
+
+#IF
+SMALL U101 50
+#ACT
+SENDMSG 6 你的熔炼点数不足50！
+BREAK
+
+#IF
+CHECKUSEITEM <$STR(S$装备淬炼装备位置)>
+#ACT
+GetUserItemName <$STR(S$装备淬炼装备位置)> 1 1
+#ELSEACT
+MESSAGEBOX <请佩戴好装备再点击淬炼！/SCOLOR=251>
+BREAK
+
+#IF
+#ACT
+GETDBITEMFIELDVALUE <$STR(S1)> ZBFORGE S$数据库装备淬炼参数
+
+#IF
+EQUAL S$数据库装备淬炼参数
+#ACT
+SENDMSG 6 当前装备不允许淬炼！
+BREAK
+
+#IF
+#ACT
+MOV L$当前装备淬炼参数数组 <$STR(S$数据库装备淬炼参数)>
+MOV N$装备阶位额外附加 0
+GOTO @_@计算装备阶位附加值
+INC N$装备阶位额外附加 <$STR(L$当前装备淬炼参数数组[0])>
+
+#IF
+NOT CheckCustomItemValue <$STR(S$装备淬炼装备位置)> 6 < <$STR(N$装备阶位额外附加)>
+#ACT
+SENDMSG 6 当前装备附加点数已经达到最大值！
+BREAK
+
+#IF
+#ACT
+DEC U101 50
+GetCustomItemValue <$STR(S$装备淬炼装备位置)> 6 N$当前装备淬炼极品点数 N$当前装备淬炼极品百分比点数
+INC N$当前装备淬炼极品点数 <$STR(L$当前装备淬炼参数数组[0])>
+SetCustomItemAbil <$STR(S$装备淬炼装备位置)> 6 0 250
+SetCustomItemAbil <$STR(S$装备淬炼装备位置)> 6 1 <$STR(L$装备升级职业主属性条目列表[<$JOB>])>
+SetCustomItemAbil <$STR(S$装备淬炼装备位置)> 6 2 6
+SetCustomItemAbil <$STR(S$装备淬炼装备位置)> 6 3 0
+SetCustomItemAbil <$STR(S$装备淬炼装备位置)> 6 4 10
+SetCustomItemValueEX <$STR(S$装备淬炼装备位置)> 6 = <$STR(N$当前装备淬炼极品点数)> 0 0
+UPDATEITEM <$STR(S$装备淬炼装备位置)>
+CLEARLINKITEM
+SENDMSG 6 淬炼成功！装备增加<$STR(L$当前装备淬炼参数数组[0])>点主属性！
+GOTO @装备淬炼
+
+[@_@计算装备阶位附加值]
+#IF
+CheckCustomItemProgressBar <$STR(S$装备淬炼装备位置)> 0
+#ACT
+GETCUSTOMITEMPROGRESSBARVALUE <$STR(S$装备淬炼装备位置)> 0 1 N$淬炼装备当前阶位
+MUL N$淬炼装备当前阶位 <$STR(L$当前装备淬炼参数数组[1])>
+INC N$装备阶位额外附加 <$STR(N$淬炼装备当前阶位)>
+
+}

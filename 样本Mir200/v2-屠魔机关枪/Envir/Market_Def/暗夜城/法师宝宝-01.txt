@@ -1,0 +1,14 @@
+
+[@main]
+#IF
+#ACT
+OPENMERCHANTBIGDLG 42 3 1 4 0 -80 1 882 100 1
+
+#say
+<&ImgEx:42:2:0:1:774:363/@½øÍ¼>
+
+
+[@½øÍ¼]
+#IF
+#ACT
+map FSBB 

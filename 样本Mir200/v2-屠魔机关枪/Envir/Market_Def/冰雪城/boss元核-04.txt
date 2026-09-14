@@ -1,0 +1,547 @@
+[@main]
+#OR
+small U75 5
+small U76 5
+small U77 5
+small U78 5
+#act
+messagebox 请激活前边大陆的元核后再来
+break
+
+#IF
+EQUAL N$六大陆原核文字介绍判断 0
+#act
+GOTO @雪城旧址原核文字介绍判断
+#IF
+EQUAL N$六大陆原核文字介绍判断 1
+#act
+GOTO @冰晶宫原核文字介绍判断
+#IF
+EQUAL N$六大陆原核文字介绍判断 2
+#act
+GOTO @沼泽秘境原核文字介绍判断
+#IF
+EQUAL N$六大陆原核文字介绍判断 3
+#act
+GOTO @万劫地宫原核文字介绍判断
+
+#IF
+#act
+OPENMERCHANTBIGDLG 48 0 1 4 0 0 1 1130 30 1
+#say
+;放入框
+<ITEMBOX:13:5:125:887:305:63:63:*:95#放入BOSS元核>
+<&ImgEx:48:111:111:111:860:560>
+;点开NPC下方发光字
+<&PlayImgEx:48:40:20:100:1:238:724:0>
+<&PlayImgEx:48:86:20:100:1:742:127:0>
+;下方BOSS按钮
+<&ImgEx:48:<$STR(S$雪城旧址按钮)>:40:440/@雪城旧址原核按钮>
+<&ImgEx:48:<$STR(S$冰晶宫按钮)>:160:510/@冰晶宫原核按钮>
+<&ImgEx:48:<$STR(S$沼泽秘境按钮)>:340:480/@沼泽秘境原核按钮>
+<&ImgEx:48:<$STR(S$万劫地宫按钮)>:490:500/@万劫地宫原核按钮>
+;原核文字介绍
+<$STR(S$原核文字介绍)>
+<$STR(S$需要费用)>
+;文字介绍右侧怪物图片
+;激活按钮
+<&ImgEx:48:1:2:3:850:640/@BOSS原核激活>
+
+
+
+[@ItemIntoBox13]
+#IF
+LARGE U75 5
+EQUAL <$BOXITEM[13].NAME> 魔火龙的元核
+#ACT
+ReturnBoxItem 13
+messagebox 魔火龙的元核已激活
+break
+
+#IF
+LARGE U76 5
+EQUAL <$BOXITEM[13].NAME> 地底石魔的元核
+#ACT
+ReturnBoxItem 13
+messagebox 地底石魔的元核已激活
+break
+#IF
+LARGE U77 5
+EQUAL <$BOXITEM[13].NAME> 魔化血魔的元核
+#ACT
+ReturnBoxItem 13
+messagebox 魔化血魔的元核已激活
+break
+#IF
+LARGE U78 5
+EQUAL <$BOXITEM[13].NAME> 火龙神的元核
+#ACT
+ReturnBoxItem 13
+messagebox 火龙神的元核已激活
+break
+
+#OR
+EQUAL <$BOXITEM[13].NAME> 魔火龙的元核
+EQUAL <$BOXITEM[13].NAME> 地底石魔的元核
+EQUAL <$BOXITEM[13].NAME> 魔化血魔的元核
+EQUAL <$BOXITEM[13].NAME> 火龙神的元核
+
+#ACT
+goto @原核UI重载
+
+#elseact
+ReturnBoxItem 13
+messagebox 只能放入六大陆BOSS元核
+
+
+
+[@原核UI重载]
+
+#IF
+EQUAL <$BOXITEM[13].NAME> 魔火龙的元核
+#ACT
+MOV S$需要费用 <&Text:需要5000000000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 5000000000
+MOV S$原核文字介绍 <&Img:172:48:26:108>
+MOV S$雪城旧址按钮 165:165:165
+MOV S$冰晶宫按钮 166:167:166
+MOV S$沼泽秘境按钮 168:169:168
+MOV S$万劫地宫按钮 170:171:170
+
+#IF
+EQUAL <$BOXITEM[13].NAME> 地底石魔的元核
+#ACT
+MOV S$原核文字介绍 <&Img:174:48:26:108>
+MOV S$需要费用 <&Text:需要5000000000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 5000000000
+MOV S$雪城旧址按钮 164:165:164
+MOV S$冰晶宫按钮 167:167:167
+MOV S$沼泽秘境按钮 168:169:168
+MOV S$万劫地宫按钮 170:171:170
+
+#IF
+EQUAL <$BOXITEM[13].NAME> 魔化血魔的元核
+#ACT
+MOV S$原核文字介绍 <&Img:176:48:26:108>
+MOV S$需要费用 <&Text:需要5000000000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 5000000000
+MOV S$雪城旧址按钮 164:165:164
+MOV S$冰晶宫按钮 166:167:166
+MOV S$沼泽秘境按钮 169:169:169
+MOV S$万劫地宫按钮 170:171:170
+
+#IF
+EQUAL <$BOXITEM[13].NAME> 火龙神的元核
+#ACT
+MOV S$原核文字介绍 <&Img:178:48:26:108>
+MOV S$需要费用 <&Text:需要5000000000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 5000000000
+MOV S$雪城旧址按钮 164:165:164
+MOV S$冰晶宫按钮 166:167:166
+MOV S$沼泽秘境按钮 168:169:168
+MOV S$万劫地宫按钮 171:171:171
+
+#IF
+LARGE U75 5
+#act
+MOV S$雪城旧址按钮 165:165:165
+
+#IF
+LARGE U76 4
+#act
+MOV S$冰晶宫按钮 167:167:167
+
+#IF
+LARGE U77 4
+#act
+MOV S$沼泽秘境按钮 169:169:169
+
+#IF
+LARGE U78 4
+#act
+MOV S$万劫地宫按钮 171:171:171
+
+
+#IF
+#ACT
+#say
+;放入框
+<&ImgEx:48:111:111:111:860:560>
+<ITEMBOX:13:5:125:887:305:63:63:*:95#放入BOSS元核>
+;点开NPC下方发光字
+; <&PlayImgEx:48:39:17:100:1:0:545:0>
+;下方BOSS按钮
+
+<&ImgEx:48:<$STR(S$雪城旧址按钮)>:40:440/@雪城旧址原核按钮>
+<&ImgEx:48:<$STR(S$冰晶宫按钮)>:160:510/@冰晶宫原核按钮>
+<&ImgEx:48:<$STR(S$沼泽秘境按钮)>:340:480/@沼泽秘境原核按钮>
+<&ImgEx:48:<$STR(S$万劫地宫按钮)>:490:500/@万劫地宫原核按钮>
+
+;原核文字介绍
+<$STR(S$原核文字介绍)>
+<$STR(S$需要费用)>
+;文字介绍右侧怪物图片
+<&PlayImgEx:48:86:20:100:1:742:127:0>
+;激活按钮
+<&ImgEx:48:1:2:3:850:640/@BOSS原核激活>
+
+
+
+[@雪城旧址原核按钮]
+#IF
+#ACT
+MOV N$六大陆原核文字介绍判断 0
+GOTO @main
+
+[@冰晶宫原核按钮]
+#IF
+#ACT
+MOV N$六大陆原核文字介绍判断 1
+GOTO @main
+
+[@沼泽秘境原核按钮]
+#IF
+#ACT
+MOV N$六大陆原核文字介绍判断 2
+GOTO @main
+[@万劫地宫原核按钮]
+
+#IF
+#ACT
+MOV N$六大陆原核文字介绍判断 3
+GOTO @main
+
+
+
+[@雪城旧址原核文字介绍判断]
+#IF
+NOT EQUAL U75 5
+#ACT
+MOV S$原核文字介绍 <&Img:172:48:26:108>
+MOV S$需要费用 <&Text:需要5000000000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 5000000000
+MOV S$雪城旧址按钮 165:165:165
+MOV S$冰晶宫按钮 166:167:166
+MOV S$沼泽秘境按钮 168:169:168
+MOV S$万劫地宫按钮 170:171:170
+
+#ELSEACT
+MOV S$原核文字介绍 <&Img:173:48:26:108>
+MOV S$需要费用 <&Text:需要5000000000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 5000000000
+MOV S$雪城旧址按钮 165:165:165
+MOV S$冰晶宫按钮 166:167:166
+MOV S$沼泽秘境按钮 168:169:168
+MOV S$万劫地宫按钮 170:171:170
+
+#IF
+EQUAL U75 5
+#act
+MOV S$雪城旧址按钮 165:165:165
+
+#IF
+EQUAL U76 5
+#act
+MOV S$冰晶宫按钮 167:167:167
+
+#IF
+EQUAL U77 5
+#act
+MOV S$沼泽秘境按钮 169:169:169
+
+#IF
+EQUAL U78 5
+#act
+MOV S$万劫地宫按钮 171:171:171
+
+
+[@冰晶宫原核文字介绍判断]
+#IF
+SMALL  U76 5
+#ACT
+MOV S$原核文字介绍 <&Img:174:48:26:108>
+MOV S$需要费用 <&Text:需要5000000000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 5000000000
+MOV S$雪城旧址按钮 164:165:164
+MOV S$冰晶宫按钮 167:167:167
+MOV S$沼泽秘境按钮 168:169:168
+MOV S$万劫地宫按钮 170:171:170
+
+#ELSEACT
+MOV S$原核文字介绍 <&Img:175:48:26:108>
+MOV S$需要费用 <&Text:需要5000000000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 5000000000
+MOV S$雪城旧址按钮 164:165:164
+MOV S$冰晶宫按钮 167:167:167
+MOV S$沼泽秘境按钮 168:169:168
+MOV S$万劫地宫按钮 170:171:170
+
+
+#IF
+LARGE U75 5
+#act
+MOV S$雪城旧址按钮 165:165:165
+
+#IF
+LARGE U76 5
+#act
+MOV S$冰晶宫按钮 167:167:167
+
+#IF
+LARGE U77 5
+#act
+MOV S$沼泽秘境按钮 169:169:169
+
+#IF
+LARGE U78 5
+#act
+MOV S$万劫地宫按钮 171:171:171
+
+
+[@沼泽秘境原核文字介绍判断]
+#IF
+SMALL  U77 5
+#ACT
+MOV S$原核文字介绍 <&Img:176:48:26:108>
+MOV S$需要费用 <&Text:需要5000000000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 5000000000
+MOV S$雪城旧址按钮 164:165:164
+MOV S$冰晶宫按钮 166:167:166
+MOV S$沼泽秘境按钮 169:169:169
+MOV S$万劫地宫按钮 170:171:170
+
+#ELSEACT
+MOV S$原核文字介绍 <&Img:177:48:26:108>
+MOV S$需要费用 <&Text:需要5000000000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 5000000000
+MOV S$雪城旧址按钮 164:165:164
+MOV S$冰晶宫按钮 166:167:166
+MOV S$沼泽秘境按钮 169:169:169
+MOV S$万劫地宫按钮 170:171:170
+
+
+#IF
+LARGE U75 5
+#act
+MOV S$雪城旧址按钮 165:165:165
+
+#IF
+LARGE U76 5
+#act
+MOV S$冰晶宫按钮 167:167:167
+
+#IF
+LARGE U77 5
+#act
+MOV S$沼泽秘境按钮 169:169:169
+
+#IF
+LARGE U78 5
+#act
+MOV S$万劫地宫按钮 171:171:171
+
+[@万劫地宫原核文字介绍判断]
+
+#IF
+SMALL U78 5
+#ACT
+
+MOV S$原核文字介绍 <&Img:178:48:26:108>
+MOV S$需要费用 <&Text:需要5000000000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 5000000000
+MOV S$雪城旧址按钮 164:165:164
+MOV S$冰晶宫按钮 166:167:166
+MOV S$沼泽秘境按钮 168:169:168
+MOV S$万劫地宫按钮 171:171:171
+
+#ELSEACT
+
+MOV S$原核文字介绍 <&Img:179:48:26:108>
+MOV S$需要费用 <&Text:需要5000000000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 5000000000
+MOV S$雪城旧址按钮 164:165:164
+MOV S$冰晶宫按钮 166:167:166
+MOV S$沼泽秘境按钮 168:169:168
+MOV S$万劫地宫按钮 171:171:171
+
+
+#IF
+LARGE U75 5
+#act
+MOV S$雪城旧址按钮 165:165:165
+
+#IF
+LARGE U76 5
+#act
+MOV S$冰晶宫按钮 167:167:167
+
+#IF
+LARGE U77 5
+#act
+MOV S$沼泽秘境按钮 169:169:169
+
+#IF
+LARGE U78 5
+#act
+MOV S$万劫地宫按钮 171:171:171
+
+
+[@BOSS原核激活]
+
+; #IF
+; SMALL N$75 5
+; SMALL N$76 5
+; SMALL N$77 5
+; SMALL N$78 5
+; #act
+; messagebox 请先激活前面大陆的所有元核
+; break
+
+#IF
+EQUAL <$BOXITEM[13].NAME> 魔火龙的元核
+#act
+delaycall 1 @激活特效
+delaycall 3000 @一大陆原核成功几率1
+break
+
+#IF
+EQUAL <$BOXITEM[13].NAME> 地底石魔的元核
+#act
+delaycall 1 @激活特效
+delaycall 3000 @一大陆原核成功几率2
+break
+
+
+#IF
+EQUAL <$BOXITEM[13].NAME> 魔化血魔的元核
+#act
+delaycall 1 @激活特效
+delaycall 3000 @一大陆原核成功几率3
+break
+
+
+#IF
+EQUAL <$BOXITEM[13].NAME> 火龙神的元核
+#act
+delaycall 1 @激活特效
+delaycall 3000 @一大陆原核成功几率4
+break
+
+#OR
+EQUAL <$BOXITEM[13].NAME> 火龙神的元核
+EQUAL <$BOXITEM[13].NAME> 魔化血魔的元核
+EQUAL <$BOXITEM[13].NAME> 地底石魔的元核
+EQUAL <$BOXITEM[13].NAME> 魔火龙的元核
+#elseact
+messagebox 请放入第六大陆的BOOSS元核
+break
+
+[@一大陆原核成功几率1]
+#if
+NOT CHECKGOLD <$STR(N$元核激活需要费用)>
+#act
+messagebox 金币不够
+break
+#IF
+RANDOMEX 60 101
+#ACT
+DelBoxItem 13
+MOV U75 6
+take 金币 <$STR(N$元核激活需要费用)>
+MOV N$六大陆原核文字介绍判断 0
+SCREENEFFECT 684 120 48 180 20 1 100 0 0 1
+#CALL [\属性统计\统计属性.txt] @统计属性
+GOTO @main
+break
+#elseACT
+SCREENEFFECT 684 120 48 200 20 1 100 0 0 1
+break
+
+[@一大陆原核成功几率2]
+#if
+NOT CHECKGOLD <$STR(N$元核激活需要费用)>
+#act
+messagebox 金币不够
+break
+#IF
+RANDOMEX 60 101
+#ACT
+DelBoxItem 13
+take 金币 <$STR(N$元核激活需要费用)>
+MOV U76 6
+MOV N$六大陆原核文字介绍判断 1
+SCREENEFFECT 684 120 48 180 20 1 100 0 0 1
+#CALL [\属性统计\统计属性.txt] @统计属性
+GOTO @main
+break
+#elseACT
+SCREENEFFECT 684 120 48 200 20 1 100 0 0 1
+break
+
+[@一大陆原核成功几率3]
+#if
+NOT CHECKGOLD <$STR(N$元核激活需要费用)>
+#act
+messagebox 金币不够
+break
+#IF
+RANDOMEX 60 101
+#ACT
+MOV U77 6
+MOV N$六大陆原核文字介绍判断 2
+DelBoxItem 13
+take 金币 <$STR(N$元核激活需要费用)>
+SCREENEFFECT 684 120 48 180 20 1 100 0 0 1
+#CALL [\属性统计\统计属性.txt] @统计属性
+GOTO @main
+break
+#elseACT
+SCREENEFFECT 684 120 48 200 20 1 100 0 0 1
+break
+
+[@一大陆原核成功几率4]
+#if
+NOT CHECKGOLD <$STR(N$元核激活需要费用)>
+#act
+messagebox 金币不够
+break
+#IF
+RANDOMEX 60 101
+#ACT
+MOV U78 6
+DelBoxItem 13
+take 金币 <$STR(N$元核激活需要费用)>
+MOV N$六大陆原核文字介绍判断 3
+SCREENEFFECT 684 120 48 180 20 1 100 0 0 1
+#CALL [\属性统计\统计属性.txt] @统计属性
+GOTO @main
+break
+#elseACT
+SCREENEFFECT 684 120 48 200 20 1 100 0 0 1
+break
+
+
+[@激活特效]
+#IF
+#act
+#say
+<&ImgEx:48:113:113:113:860:560>
+;放入框
+<ITEMBOX:13:5:125:887:305:63:63:*:95#放入BOSS元核>
+;下方BOSS按钮
+
+<&ImgEx:48:<$STR(S$雪城旧址按钮)>:40:440/@雪城旧址原核按钮>
+<&ImgEx:48:<$STR(S$冰晶宫按钮)>:160:510/@冰晶宫原核按钮>
+<&ImgEx:48:<$STR(S$沼泽秘境按钮)>:340:480/@沼泽秘境原核按钮>
+<&ImgEx:48:<$STR(S$万劫地宫按钮)>:490:500/@万劫地宫原核按钮>
+
+;原核文字介绍
+<$STR(S$原核文字介绍)>
+<$STR(S$需要费用)>
+;激活按钮
+<&ImgEx:48:1:2:3:850:640/@BOSS原核激活>
+
+<&PlayImgEx:48:4:35:100:1:723:141:0>
+<&PlayImgEx:48:86:20:200:1:742:127:0>
+<&PlayImgEx:48:40:20:200:1:238:724:0>
+

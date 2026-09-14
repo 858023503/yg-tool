@@ -1,0 +1,443 @@
+[@main]
+#IF
+#ACT
+#SAY
+ \ 
+<------------------------/SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}<------------------------/SCOLOR=254>\
+<>[<$USERNAME>]<您好！/SCOLOR=254>\
+<>书页可以换取技能书,\
+<>提可以升技能等级，技能等级最高为<九级/SCOLOR=251>\
+<>技能书页<所有怪几率/SCOLOR=250>，<BODD必掉/SCOLOR=22>掉落,\ \
+<><强化战士技能/@战士>   <强化法师技能/@法师>    <强化道士技能/@道士>    <技能书页回收|254#每张回收5元宝^254#最低回收1000张/@回收>\ \
+<>\
+<>\
+
+
+[@战士]
+#IF
+CHECKJOB warrior
+#ACT
+goto @技能1
+#ELSEACT
+MESSAGEBOX  你不是战士，无法强化技能！
+break
+
+
+
+[@技能1]
+技能书页所有怪物可以爆出，此处只提供战士技能强化:\ \
+<基本剑术|254#需要100张书页^254#50000元宝/@基本剑术>　　<攻杀剑术|254#需要100张书页^254#50000元宝/@攻杀剑术>　　<刺杀剑术|254#需要200张书页^254#50000元宝/@刺杀剑术>　　<半月弯刀|254#需要200张书页^254#50000元宝/@半月弯刀>\ \
+<野蛮冲撞|254#需要300张书页^254#50000元宝/@野蛮冲撞>    <烈火剑法|254#需要500张书页^254#100000元宝/@烈火剑法>    <逐日剑法|254#需要800张书页^254#300000元宝/@逐日剑法>    <开天斩|254#需要800张书页^254#300000元宝/@开天斩>\　\　\
+<返回/@MAIN>
+
+
+
+
+[@基本剑术]
+#IF
+CHECKITEM 技能书页 100
+CHECKSKILL 基本剑术 < 9 1
+CHECKGameGold > 49999
+#ACT
+GameGold - 50000
+take 技能书页 100
+SKILLLEVEL 基本剑术 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+
+[@攻杀剑术]
+#IF
+CHECKITEM 技能书页 100
+CHECKSKILL 攻杀剑术 < 9 1
+CHECKGameGold > 49999
+#ACT
+GameGold - 50000
+take 技能书页 100
+SKILLLEVEL 攻杀剑术 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+
+[@刺杀剑术]
+#IF
+CHECKITEM 技能书页 200
+CHECKSKILL 刺杀剑术 < 9 1
+CHECKGameGold > 49999
+#ACT
+GameGold - 50000
+take 技能书页 200
+SKILLLEVEL 刺杀剑术 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+
+[@半月弯刀]
+#IF
+CHECKITEM 技能书页 200
+CHECKSKILL 半月弯刀 < 9 1
+CHECKGameGold > 49999
+#ACT
+GameGold - 50000
+take 技能书页 200
+SKILLLEVEL 半月弯刀 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+
+[@野蛮冲撞]
+#IF
+CHECKITEM 技能书页 300
+CHECKSKILL 野蛮冲撞 < 9 1
+CHECKGameGold > 49999
+#ACT
+GameGold - 50000
+take 技能书页 300
+SKILLLEVEL 野蛮冲撞 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+[@烈火剑法]
+#IF
+CHECKITEM 技能书页 500
+CHECKSKILL 烈火剑法 < 9 1
+CHECKGameGold > 99999
+#ACT
+GameGold - 100000
+take 技能书页 500
+SKILLLEVEL 烈火剑法 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+
+[@逐日剑法]
+#IF
+CHECKITEM 技能书页 1000
+CHECKSKILL 逐日剑法 < 9 1
+CHECKGameGold > 299999
+#ACT
+GameGold - 300000
+take 技能书页 1000
+SKILLLEVEL 逐日剑法 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+
+[@开天斩]
+#IF
+CHECKITEM 技能书页 1000
+CHECKSKILL 开天斩 < 9 1
+CHECKGameGold > 299999
+#ACT
+GameGold - 300000
+take 技能书页 1000
+SKILLLEVEL 开天斩 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+
+
+
+
+
+
+
+[@法师]
+#IF
+CHECKJOB Wizard
+#ACT
+goto @技能2
+#ELSEACT
+MESSAGEBOX  你不是法师，无法强化技能！
+break
+
+
+
+
+[@技能2]
+技能书页所有怪物可以爆出，此处只提供法师技能强化:\ \
+<大 火 球|254#需要100张书页^254#30000元宝/@大火球>　　<地 狱 火|254#需要100张书页^254#30000元宝/@地狱火>　　<群 体 雷 电 术|254#需要1000张书页^254#500000元宝/@群体雷电术>　　<爆裂火焰|254#需要100张书页^254#30000元宝/@爆裂火焰>\ \
+<火 墙 术|254#需要300张书页^254#100000元宝/@火墙术>　　<魔 法 盾|254#需要500张书页^254#500000元宝/@魔法盾>　　<冰 咆 哮|254#需要500张书页^254#300000元宝/@冰咆哮>　　<流星火雨|254#需要1000张书页^254#500000元宝/@流星火雨>\ \
+\ \
+<返回/@MAIN>
+
+
+[@大火球]
+#IF
+CHECKITEM 技能书页 100
+CHECKSKILL 大火球 < 9 1
+CHECKGameGold > 29999
+#ACT
+GameGold - 30000
+take 技能书页 100
+SKILLLEVEL 大火球 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+[@地狱火]
+#IF
+CHECKITEM 技能书页 100
+CHECKSKILL 地狱火 < 9 1
+CHECKGameGold > 29999
+#ACT
+GameGold - 30000
+take 技能书页 100
+SKILLLEVEL 地狱火 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+[@群体雷电术]
+#IF
+CHECKITEM 技能书页 1000
+CHECKSKILL 群体雷电术 < 9 1
+CHECKGameGold > 499999
+#ACT
+GameGold - 500000
+take 技能书页 1000
+SKILLLEVEL 群体雷电术 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+
+
+[@爆裂火焰]
+#IF
+CHECKITEM 技能书页 100
+CHECKSKILL 爆裂火焰 < 9 1
+CHECKGameGold > 29999
+#ACT
+GameGold - 30000
+take 技能书页 100
+SKILLLEVEL 爆裂火焰 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+[@火墙术]
+#IF
+CHECKITEM 技能书页 300
+CHECKSKILL 火墙 < 9 1
+CHECKGameGold > 99999
+#ACT
+GameGold - 100000
+take 技能书页 300
+SKILLLEVEL 火墙 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+[@魔法盾]
+#IF
+CHECKITEM 技能书页 500
+CHECKSKILL 魔法盾 < 9 1
+CHECKGameGold > 499990
+#ACT
+GameGold - 500000
+take 技能书页 500
+SKILLLEVEL 魔法盾 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+[@冰咆哮]
+#IF
+CHECKITEM 技能书页 500
+CHECKSKILL 冰咆哮 < 9 1
+CHECKGameGold > 299999
+#ACT
+GameGold - 300000
+take 技能书页 500
+SKILLLEVEL 冰咆哮 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+[@流星火雨]
+#IF
+CHECKITEM 技能书页 1000
+CHECKSKILL 流星火雨 < 9 1
+CHECKGameGold > 499999
+#ACT
+GameGold - 500000
+take 技能书页 1000
+SKILLLEVEL 流星火雨 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+
+
+
+[@道士]
+#IF
+CHECKJOB Taoist
+#ACT
+goto @技能3
+#ELSEACT
+MESSAGEBOX  你不是道士，无法强化技能！
+break
+
+
+
+
+
+[@技能3]
+技能书页所有怪物可以爆出，此处只提供道士技能强化:\ \
+<治 愈 术|254#需要100张书页^254#30000元宝/@治愈术>　　<精神力战法|254#需要100张书页^254#30000元宝/@精神力战法>　　<施 毒 术|254#需要100张书页^254#50000元宝/@施毒术>　　<灵魂火符|254#需要100张书页^254#50000元宝/@灵魂火符>\ \
+<群体治疗术|254#需要200张书页^254#30000元宝/@群体治疗术>    <金甲骷髅|254#需要300张书页^254#300000元宝/@金甲骷髅>　　<神圣麒麟|254#需要500张书页^254#500000元宝/@神圣麒麟>　　<裂神符|254#需要1000张书页^254#500000元宝/@裂神符>\ \
+\ \
+<返回/@MAIN>
+
+
+
+
+[@治愈术]
+#IF
+CHECKITEM 技能书页 100
+CHECKSKILL 治愈术 < 9 1
+CHECKGameGold > 29999
+#ACT
+GameGold - 30000
+take 技能书页 100
+SKILLLEVEL 治愈术 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+
+
+[@精神力战法]
+#IF
+CHECKITEM 技能书页 100
+CHECKSKILL 精神力战法 < 9 1
+CHECKGameGold > 29999
+#ACT
+GameGold - 30000
+take 技能书页 100
+SKILLLEVEL 精神力战法 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+
+
+[@施毒术]
+#IF
+CHECKITEM 技能书页 100
+CHECKSKILL 施毒术 < 9 1
+CHECKGameGold > 49999
+#ACT
+GameGold - 50000
+take 技能书页 100
+SKILLLEVEL 施毒术 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+
+
+[@灵魂火符]
+#IF
+CHECKITEM 技能书页 100
+CHECKSKILL 灵魂火符 < 9 1
+CHECKGameGold > 49999
+#ACT
+GameGold - 50000
+take 技能书页 100
+SKILLLEVEL 灵魂火符 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+
+
+[@群体治疗术]
+#IF
+CHECKITEM 技能书页 200
+CHECKSKILL 群体治疗术 < 9 1
+CHECKGameGold > 29999
+#ACT
+GameGold - 30000
+take 技能书页 200
+SKILLLEVEL 群体治疗术 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+
+
+[@金甲骷髅]
+#IF
+CHECKITEM 技能书页 300
+CHECKSKILL 金甲骷髅 < 9 1
+CHECKGameGold > 299999
+#ACT
+GameGold - 300000
+take 技能书页 300
+SKILLLEVEL 金甲骷髅 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+
+
+[@神圣麒麟]
+#IF
+CHECKITEM 技能书页 500
+CHECKSKILL 神圣麒麟 < 9 1
+CHECKGameGold > 499999
+#ACT
+GameGold - 500000
+take 技能书页 500
+SKILLLEVEL 神圣麒麟 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+[@裂神符]
+#IF
+CHECKITEM 技能书页 1000
+CHECKSKILL 裂神符 < 9 1
+CHECKGameGold > 499999
+#ACT
+GameGold - 500000
+take 技能书页 1000
+SKILLLEVEL 裂神符 + 1 1
+Messagebox  技能提升一级！
+#ELSEACT
+Messagebox  书页数量不够，无法兑换，或者技能以达到巅峰！
+
+
+
+
+
+
+
+
+
+[@回收]
+#IF
+CHECKITEM 技能书页 1000
+#ACT
+take 技能书页 1000
+GAMEGOLD + 5000
+#ELSEACT
+Messagebox  书页数量不够，无法回收！
+break
+
+
+
+
+
+

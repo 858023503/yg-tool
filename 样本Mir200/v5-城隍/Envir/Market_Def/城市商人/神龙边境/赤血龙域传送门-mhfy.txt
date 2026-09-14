@@ -1,0 +1,14 @@
+[@main]
+前面就是赤血龙域了，小心\
+
+<我要去赤血龙域/@去赤血龙域>  \ 
+
+
+[@去赤血龙域]
+#if
+CHECKLEVELEX > 64
+#act
+CLOSE
+MAPMOVE xc1  139 107
+#ELSESAY
+等级不足65级！

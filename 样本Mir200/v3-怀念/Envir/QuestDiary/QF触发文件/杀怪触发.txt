@@ -1,0 +1,83 @@
+[@杀怪触发]
+{
+#IF
+CheckKillMonName 散人恶魔1
+#ACT
+CHANGEEXP + 10000000
+GAMEGIRD + 100
+;MAPMOVE 3 330 330
+GuildNoticeMsg 249 151 ぐ恭喜{【<$USERNAME>】|250:0:1}成功挑战{(48级副本)|254:0:1}获得【1000万经验+100绑金】...
+messagebox 恭喜您获得1000万经验+100绑金。^_^ 
+BREAK
+#IF
+CheckKillMonName 散人恶魔2
+#ACT
+CHANGEEXP + 15000000
+GAMEGIRD + 200
+;MAPMOVE 3 330 330
+GuildNoticeMsg 249 151 ぐ恭喜{【<$USERNAME>】|250:0:1}成功挑战{(49级副本)|254:0:1}获得【1500万经验+200绑金】...
+messagebox 恭喜您获得1500万经验+200绑金。^_^ 
+BREAK
+#IF
+CheckKillMonName 散人恶魔3
+#ACT
+CHANGEEXP + 20000000
+GAMEGIRD + 300
+;MAPMOVE 3 330 330
+GuildNoticeMsg 249 151 ぐ恭喜{【<$USERNAME>】|250:0:1}成功挑战{(50级副本)|254:0:1}获得【2000万经验+300绑金】...
+messagebox 恭喜您获得2000万经验+300绑金。^_^ 
+BREAK
+
+#IF
+CheckKillMonName 散人恶魔4
+#ACT
+CHANGEEXP + 25000000
+GAMEGIRD + 400
+;MAPMOVE 3 330 330
+GuildNoticeMsg 249 151 ぐ恭喜{【<$USERNAME>】|250:0:1}成功挑战{(51级副本)|254:0:1}获得【2500万经验+400绑金】...
+messagebox 恭喜您获得2500万经验+400绑金。^_^ 
+BREAK
+
+#IF
+CheckKillMonName 散人恶魔5
+#ACT
+CHANGEEXP + 30000000
+GAMEGIRD + 500
+;MAPMOVE 3 330 330
+GuildNoticeMsg 249 151 ぐ恭喜{【<$USERNAME>】|250:0:1}成功挑战{(52级副本)|254:0:1}获得【3000万经验+500绑金】...
+messagebox 恭喜您获得3000万经验+500绑金。^_^ 
+BREAK
+
+#IF
+CheckKillMonName ＶＩＰ恶魔1
+#ACT
+GIVE 熔炼石 10
+GIVE 书页 10
+GAMEGIRD + 200
+;MAPMOVE 3 330 330
+GuildNoticeMsg 249 151 ぐ恭喜{【<$USERNAME>】|250:0:1}成功挑战{(Ｖip１副本)|254:0:1}获得【200绑金+书页*10+熔炼石*10】...
+messagebox 恭喜您获得200绑金+书页*10+熔炼石*10。^_^ 
+BREAK
+
+#IF
+CheckKillMonName ＶＩＰ恶魔2
+#ACT
+GIVE 熔炼石 20
+GIVE 书页 20
+GAMEGIRD + 500
+;MAPMOVE 3 330 330
+GuildNoticeMsg 249 151 ぐ恭喜{【<$USERNAME>】|250:0:1}成功挑战{(Ｖip２副本)|254:0:1}获得【500绑金+书页*20+熔炼石*20】...
+messagebox 恭喜您获得500绑金+书页*20+熔炼石*20。^_^ 
+BREAK
+
+#IF
+CheckKillMonName ＶＩＰ恶魔3
+#ACT
+GIVE 熔炼石 30
+GIVE 书页 30
+GAMEGIRD + 800
+;MAPMOVE 3 330 330
+GuildNoticeMsg 249 151 ぐ恭喜{【<$USERNAME>】|250:0:1}成功挑战{(Ｖip３副本)|254:0:1}获得【800绑金+书页*30+熔炼石*30】...
+messagebox 恭喜您获得800绑金+书页*30+熔炼石*30。^_^ 
+BREAK
+}

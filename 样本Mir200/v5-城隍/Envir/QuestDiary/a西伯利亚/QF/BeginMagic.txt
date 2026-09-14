@@ -1,0 +1,148 @@
+[@Body]
+{
+[@BeginMagic]
+#IF
+LARGE N$防加速允许人物10秒施法次数 0
+#ACT
+DEC N$防加速允许人物10秒施法次数 1
+
+#IF
+SMALL N$防加速允许人物10秒施法次数 1
+NOT EQUAL <$JOB> 0
+#ACT
+StopMagic
+BREAK
+
+#IF
+EQUAL <$MagicName> 灵魂火符
+LARGE N$式纸冷却时间 0
+EQUAL N$式纸激活标识 1
+#ACT
+SENDMSG 6 【灵魂火符-式纸】还未冷却！
+STOPMAGIC
+BREAK
+
+#IF
+CHECKMAGICNAME 元素点燃
+CheckVarInList L$雷属性技能编号 <$MagicID>
+#ACT
+GETMAGICINFO 元素点燃 0 N$元素点燃技能等级
+MOV N$元素点燃雷属性加成 <$STR(L$元素点燃元素数组[<$STR(N$元素点燃技能等级)>])>
+SetArrBuff 3 68 41 18 <$STR(L$元素点燃持续时间[<$STR(N$元素点燃技能等级)>])> 10 -1 0 {元素点燃·雷：|70}\{攻击伤害：|250}{<$STR(N$元素点燃雷属性加成)>%|253}\　\{点击可取消BUFF|249}
+GOTO @开始计算元素属性
+
+#IF
+CHECKMAGICNAME 元素点燃
+CheckVarInList L$火属性技能编号 <$MagicID>
+#ACT
+GETMAGICINFO 元素点燃 0 N$元素点燃技能等级
+MOV N$元素点燃火属性加成 <$STR(L$元素点燃元素数组[<$STR(N$元素点燃技能等级)>])>
+SetArrBuff 3 69 41 6 <$STR(L$元素点燃持续时间[<$STR(N$元素点燃技能等级)>])> 10 -1 0 {元素点燃·火：|70}\{攻击伤害：|250}{<$STR(N$元素点燃火属性加成)>%|253}\　\{点击可取消BUFF|249}
+GOTO @开始计算元素属性
+
+#IF
+CHECKMAGICNAME 元素点燃
+CheckVarInList L$冰属性技能编号 <$MagicID>
+#ACT
+GETMAGICINFO 元素点燃 0 N$元素点燃技能等级
+MOV N$元素点燃冰属性加成 <$STR(L$元素点燃元素数组[<$STR(N$元素点燃技能等级)>])>
+SetArrBuff 3 70 41 62 <$STR(L$元素点燃持续时间[<$STR(N$元素点燃技能等级)>])> 10 -1 0 {元素点燃·冰：|70}\{攻击伤害：|250}{<$STR(N$元素点燃冰属性加成)>%|253}\　\{点击可取消BUFF|249}
+GOTO @开始计算元素属性
+
+#IF
+CHECKMAGICNAME 元素点燃
+LARGE N$元素点燃冰属性加成 0
+LARGE N$元素点燃火属性加成 0
+LARGE N$元素点燃雷属性加成 0
+#ACT
+GETMAGICINFO 元素点燃 0 N$元素点燃技能等级
+MOV N$元素点燃伤害加深 <$STR(L$元素点燃加深数组[<$STR(N$元素点燃技能等级)>])>
+MOV N$元素点燃汲取 <$STR(L$元素点燃汲取数组[<$STR(N$元素点燃技能等级)>])>
+SetArrBuff 3 71 41 794 -1 10 -1 0 {元素点燃：|70}\{伤害加深：|250}{<$STR(N$元素点燃伤害加深)>%|253}\{法术汲取：|250}{<$STR(N$元素点燃汲取)>%|253}
+GOTO @开始计算特殊属性
+
+#IF(3)
+CHECKSKILL 元素点燃 < 3
+LARGE N$元素点燃伤害加深 0
+CheckVarInList L$火属性技能编号 <$MagicID>
+CheckVarInList L$雷属性技能编号 <$MagicID>
+CheckVarInList L$冰属性技能编号 <$MagicID>
+#ACT
+MOVR N$元素点燃增加经验值 1 11
+CHANGETRANPOINT 元素点燃 + <$STR(N$元素点燃增加经验值)>
+SendCenterMsg 180 251 元素点燃状态下使用技能,元素点燃技能经验增加:[<$STR(N$元素点燃增加经验值)>点]！ 0 2
+#IF
+EQUAL N$感染激活标识 1
+RANDOMEX 5 100
+#ACT
+PLAYEFFECT 38 110 10 30 100
+MOVR N$感染加成道术 5 11
+SetArrBuff 2 56 0 2127 20 0 0 0 感染：道术增加：<$STR(N$感染加成道术)>%
+GOTO @开始计算基础属性
+
+#IF
+EQUAL N$六道激活标识 1
+EQUAL <$MagicName> 灵魂火符
+#ACT
+INC N$六道累计次数 1
+
+#IF
+EQUAL N$三环激活标识 1
+SMALL N$三环火雨使用标识 3
+EQUAL <$MagicName> 流星火雨
+#ACT
+INC N$三环火雨使用标识 1
+
+#IF
+EQUAL N$三环激活标识 1
+LARGE N$三环火雨使用标识 2
+EQUAL <$MagicName> 流星火雨
+#ACT
+MOV N$三环火雨使用标识 0
+STOPMAGIC
+INC N$防加速允许人物10秒施法次数 1
+releasemagicEx 1022 0 3 1 1 0
+
+#IF
+EQUAL <$MagicName> 冰咆哮
+EQUAL N$冰雨激活标识 1
+#ACT
+INC N$冰雨使用标识 1
+
+#IF
+EQUAL N$冰雨激活标识 1
+LARGE N$冰雨使用标识 4
+EQUAL <$MagicName> 冰咆哮
+#ACT
+MOV N$冰雨使用标识 0
+STOPMAGIC
+INC N$防加速允许人物10秒施法次数 1
+releasemagicEx 1030 0 3 1 1 0
+
+#IF
+ISADMIN
+#ACT
+ADDSKILL 固本培元
+
+#IF
+EQUAL <$MagicName> 固本培元
+#ACT
+GetMagicInfo 固本培元 0 N$固本培元技能等级
+CalcPercent <$MAXSC> <$STR(L$固本培源增加回生比例[<$STR(N$固本培元技能等级)>])> N$固本培源回生数值
+CalcPercent <$MAXSC> <$STR(L$固本培源增加冥想比例[<$STR(N$固本培元技能等级)>])> N$固本培源冥想数值
+MOV S$固本培源传递参数 [<$STR(N$固本培源回生数值)>,<$STR(N$固本培源冥想数值)>,<$STR(L$固本培源持续时间[<$STR(N$固本培元技能等级)>])>]
+GOTOLABEL 8 @_@固本培元触发强化效果 <$X> <$Y> 5 0 S$固本培源传递参数 S$固本培源接收参数
+
+[@_@固本培元触发强化效果]
+#IF
+#ACT
+STOPPLAYEFFECT 71 118 16 0 50
+MOV L$固本培源参数数组 <$STR(S$固本培源接收参数)>
+MOV N$固本培源增加回生 <$STR(L$固本培源参数数组[0])>
+MOV N$固本培源增加冥想 <$STR(L$固本培源参数数组[1])>
+MUL N$固本培源持续时间 <$STR(L$固本培源参数数组[2])> 60
+PLAYEFFECT 71 118 16 0 50
+SetArrBuff 3 64 40 692 <$STR(N$固本培源持续时间)> 0 0 0 {固本培元：|70}\{回生加成：|250}{<$STR(N$固本培源增加回生)>|253}\{冥想加成：|250}{<$STR(N$固本培源增加冥想)>|253}\　\{点击可取消BUFF|249}
+GOTO @开始计算特殊属性
+
+}

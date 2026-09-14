@@ -1,0 +1,7 @@
+[@物理技能对怪触发开始]
+{
+#IF
+CheckVarInList L$允许物理触发技能编号 <$CURRRUSEMAGICID>
+#ACT
+GOTO @_@对怪物理技能编号<$CURRRUSEMAGICID>触发
+}

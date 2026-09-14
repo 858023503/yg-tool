@@ -1,0 +1,47 @@
+[@骷髅杀怪几率增加]
+{
+#IF
+LARGE N$法宝召唤骷髅弓箭手 0
+CHECKSLAVECOUNT = N$召唤战争之王数量 战争弓箭手
+SMALL N$战争之王数量 < 5
+#act
+KillSlave 1 战争弓箭手
+RECALLMOB 战争之王
+MOV S$攻击触发宝宝名字 骷髅
+#CALL [\属性统计\统计属性.txt] @统计属性
+
+; #IF
+; RANDOMEX N$道士宝宝攻击时怪物有几率召唤一只 101
+; #ACT
+; goto @骷髅宝宝攻击时怪物召唤骷髅
+
+; [@骷髅宝宝攻击时怪物召唤骷髅]
+; #IF
+; SMALL N$战争之王数量 < 5
+; LARGE N$法宝召唤骷髅弓箭手 0
+; CHECKSLAVECOUNT < 55
+; #act
+; INC N$宝宝数量数字 1
+; RECALLMOB 战争弓箭手 0 N$杀死怪物召唤骷髅时间
+; #CALL [\属性统计\统计属性.txt] @统计属性
+; #ELSEACT
+; goto @杀死怪物召唤骷髅宝宝
+
+
+; [@杀死怪物召唤骷髅宝宝]
+; #if
+; CHECKSLAVECOUNT < 51
+; #act
+; INC N$宝宝数量数字 1
+; RECALLMOB 骷髅召唤物 0 60
+; ChangeBmz 巨刃骷髅<$STR(N$宝宝数量数字)> 骷髅召唤物
+; ChangeSlaveAppr 3010 巨刃骷髅<$STR(N$宝宝数量数字)>
+; sendmsg 6 <$STR(N$宝宝数量数字)>
+; #CALL [\属性统计\统计属性.txt] @统计属性
+
+
+
+
+
+
+}

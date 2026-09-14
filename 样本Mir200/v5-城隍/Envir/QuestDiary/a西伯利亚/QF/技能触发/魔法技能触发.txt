@@ -1,0 +1,224 @@
+[@Body]
+{
+[@_@对怪魔法技能编号11触发]
+#IF
+#ACT
+MOV N$摄魂怪物等级 99999
+
+#IF
+EQUAL N$引雷诀激活标识 1
+RANDOMEX 50 100
+#ACT
+INC N$防加速允许人物10秒施法次数 1
+releasemagicEx 1007 0 3 1
+ADDMPPER - 5
+
+#IF
+EQUAL N$摄魂雷激活标识 1
+RANDOMEX 1 100
+SMALL <$SLAVECOUNT> 1
+NOT EQUAL <$ATTACKMONSTER_NAMEEX>
+#ACT
+GETDBMONSTERFIELDVALUE <$ATTACKMONSTER_NAMEEX> Lvl N$摄魂怪物等级
+
+#IF
+EQUAL N$摄魂雷激活标识 1
+LARGE <$LEVEL> <$STR(N$摄魂怪物等级)>
+#ACT
+RECALLMOB <$ATTACKMONSTER_NAMEEX>
+KillMapMon <$MAP> <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y> 1 <$ATTACKMONSTER_NAMEEX> 0
+SendCenterMsg 180 251 摄魂：你诱惑了【<$ATTACKMONSTER_NAMEEX>】作为宝宝！ 0 5
+
+#IF
+EQUAL N$灭魂雷激活标识 1
+#ACT
+CalcPercent <$PKPOWER> 50 N$攻击时额外切割值
+INC N$攻击时总切割值 <$STR(N$攻击时额外切割值)>
+
+#IF
+EQUAL N$麻痹雷激活标识 1
+RANDOMEX 15 100
+#ACT
+M.ChangeState 1 2
+
+#IF
+EQUAL N$麻痹雷激活标识 1
+M.CHECKSTATEVALUE 2
+#ACT
+INC N$攻击时总切割值 <$PKPOWER>
+
+#IF
+CHECKITEMW 妙尔尼尔
+RANDOMEX 50 100
+#ACT
+M.CHANGESTATE 1 1
+INC N$攻击时总切割值 10000
+
+[@_@对怪魔法技能编号5触发]
+#IF
+EQUAL N$多重火球激活标识 1
+RANDOMEX 30 100
+#ACT
+INC N$防加速允许人物10秒施法次数 1
+releasemagicEx 5 0 <$STR(N$大火球等级)> 1 1 1
+SendCenterMsg 180 251 多重火球：大火球触发一次连击！ 0 3 0 1 533
+
+#IF
+EQUAL N$多重火球激活标识 1
+RANDOMEX 15 100
+#ACT
+INC N$防加速允许人物10秒施法次数 2
+releasemagicEx 5 0 <$STR(N$大火球等级)> 1 1 1
+releasemagicEx 5 0 <$STR(N$大火球等级)> 1 1 1
+SendCenterMsg 180 251 多重火球：大火球触发一次二连击！ 0 3 0 1 533
+
+#IF
+EQUAL N$多重火球激活标识 1
+RANDOMEX 6 100
+#ACT
+INC N$防加速允许人物10秒施法次数 3
+releasemagicEx 5 0 <$STR(N$大火球等级)> 1 1 1
+releasemagicEx 5 0 <$STR(N$大火球等级)> 1 1 1
+releasemagicEx 5 0 <$STR(N$大火球等级)> 1 1 1
+SendCenterMsg 180 251 多重火球：大火球触发一次三连击！ 0 3 0 1 533
+
+#IF
+EQUAL N$死亡火球激活标识 1
+RANDOMEX 1 10000
+#ACT
+M.ADDHPPER - 100
+SendCenterMsg 180 251 死亡火球：秒杀！！！ 0 5
+
+#IF
+EQUAL N$点燃激活标识 1
+#ACT
+M.ChangeState 4 10
+
+[@_@对怪魔法技能编号22触发]
+#IF
+EQUAL N$蔓延激活标识 1
+#ACT
+INC N$蔓延攻击次数 1
+
+#IF
+LARGE N$蔓延攻击次数 9
+EQUAL N$蔓延激活标识 1
+#ACT
+MOV N$蔓延攻击次数 0
+INC N$防加速允许人物10秒施法次数 1
+releasemagicEx 1022 0 3 1 0 0
+
+#IF
+EQUAL N$轰燃激活标识 1
+#ACT
+M.ChangeState 4 10
+
+#IF
+EQUAL N$冰焰激活标识 1
+RANDOMEX 80 100
+#ACT
+M.ChangeState 3 5
+
+#IF
+EQUAL N$冰焰激活标识 1
+RANDOMEX 15 100
+#ACT
+M.ChangeState 2 2
+
+#IF
+EQUAL N$踏火激活标识 1
+RANDOMEX 1 100
+#ACT
+INC N$踏火增加抗性标识 10
+SetArrBuff 2 63 0 2111 20 0 0 0 踏火：双抗增加：10%
+GOTO @开始计算元素属性
+
+[@_@对怪魔法技能编号33触发]
+#IF
+EQUAL N$冰爆激活标识 1
+M.CHECKHPPER > 97
+#ACT
+M.ADDHPPER - 10
+
+#IF
+EQUAL N$急冻激活标识 1
+RANDOMEX 15 100
+#ACT
+M.ChangeState 2 2
+
+#IF
+EQUAL N$急冻激活标识 1
+M.CHECKSTATEVALUE 3
+#ACT
+INC N$攻击时总切割值 <$PKPOWER>
+
+#IF
+EQUAL N$冰魄激活标识 1
+#ACT
+CalcPercent <$PKPOWER> 5 N$攻击时额外回血值
+INC N$攻击时总回血值 <$STR(N$攻击时额外回血值)>
+
+#IF
+RANDOM 2
+CHECKITEMW 陨石戒指
+#ACT
+INC N$防加速允许人物10秒施法次数 1
+releasemagicEx 58 1 1 1 1 0
+
+[@_@对怪魔法技能编号13触发]
+#IF
+RANDOM 2
+CHECKITEMW 道圣信物
+#ACT
+INC N$防加速允许人物10秒施法次数 1
+releasemagicEx 52 1 1 1 1 0
+
+#IF
+EQUAL N$六道激活标识 1
+LARGE N$六道累计次数 2
+#ACT
+MOV N$六道累计次数 0
+MOVR N$六道随机技能编号 1016 1019
+INC N$防加速允许人物10秒施法次数 1
+releasemagicEx <$STR(N$六道随机技能编号)> 0 3 1 1 0
+
+#IF
+EQUAL N$神速激活标识 1
+RANDOMEX 30 100
+#ACT
+INC N$防加速允许人物10秒施法次数 1
+releasemagicEx 13 0 3 1 1 1
+SendCenterMsg 180 251 神速：灵魂火符触发一次连击！ 0 3 0 1 533
+
+#IF
+EQUAL N$神速激活标识 1
+RANDOMEX 15 100
+#ACT
+INC N$防加速允许人物10秒施法次数 2
+releasemagicEx 13 0 3 1 1 1
+releasemagicEx 13 0 3 1 1 1
+SendCenterMsg 180 251 神速：灵魂火符触发一次二连击！ 0 3 0 1 533
+
+
+
+
+#IF
+EQUAL N$神速激活标识 1
+RANDOMEX 6 100
+#ACT
+INC N$防加速允许人物10秒施法次数 3
+releasemagicEx 13 0 3 1 1 1
+releasemagicEx 13 0 3 1 1 1
+releasemagicEx 13 0 3 1 1 1
+SendCenterMsg 180 251 神速：灵魂火符触发一次三连击！ 0 3 0 1 533
+
+[@_@对怪魔法技能编号58触发]
+#IF
+EQUAL N$灼烧激活标识 1
+RANDOMEX 5 100
+#ACT
+CalcPercent <$PKPOWER> 20 N$火雨灼烧伤害
+M.CHANGESTATE 13 30 <$STR(N$火雨灼烧伤害)> 2
+M.PLAYEFFECT 38 110 10 30 100
+
+}

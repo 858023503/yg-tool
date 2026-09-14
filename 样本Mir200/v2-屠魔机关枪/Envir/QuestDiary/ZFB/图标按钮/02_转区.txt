@@ -1,0 +1,406 @@
+[@JZ_转区]
+
+#INCLUDE JZ常量.ini
+
+{
+#IF
+equal <$GamePromotionFlag> tq88666
+#ACT
+MOV S$会员站标识 tq88666
+
+#IF
+equal <$GamePromotionFlag> tq6868
+#ACT
+MOV S$会员站标识 tq6868
+
+#IF
+equal <$GamePromotionFlag> 9wwa
+#ACT
+MOV S$会员站标识 9wwa
+
+#IF
+equal <$GamePromotionFlag> 8jwl
+#ACT
+MOV S$会员站标识 8jwl
+
+
+#IF
+#act
+MOV S$补丁编号 76
+
+
+#if
+EQUAL $常量_微信OP 
+#act
+MESSAGEBOX 你还未绑定微信，不能进行此操作！
+BREAK
+
+#IF
+Large N$JZ_点击间隔 0
+#ACT
+messagebox 点击频繁!请稍候再试
+break
+
+#IF
+#ACT
+AddTextList ..\..\..\..\会员站\获取数据.txt <$STR(S$会员站标识)>:<$STR($常量_微信OP)>
+CreateFile ..\..\..\..\会员站\会员信息\<$STR($常量_微信OP)>.txt
+;SHOWPROGRESSBARDLG 2 @获取转区信息 正在更新数据,进度%d%... 0
+
+SHOWPROGRESSBARDLG 2 @无用跳转 正在更新数据,进度%d%... 0
+DELAYCALL 2000 @获取转区信息
+
+[@获取转区信息]
+#act
+MOV S$是否成功
+GetListString ..\..\..\..\会员站\会员信息\<$STR($常量_微信OP)>.txt 0 S$是否成功
+;判断一下数据是不是获取成功了
+
+#IF
+EQUAL S$是否成功 成功
+#act
+GetListString ..\..\..\..\会员站\会员信息\<$STR($常量_微信OP)>.txt 1 S$会员等级
+GetListString ..\..\..\..\会员站\会员信息\<$STR($常量_微信OP)>.txt 8 S$转区点
+sendmsg 7 等级:<$str(S$会员等级)>
+;获取数据
+CLEARNAMELIST ..\..\..\..\会员站\会员信息\<$STR($常量_微信OP)>.txt
+;删除文件里面的所有数据
+
+#ELSEACT
+DELAYGOTO 1000 @获取转区信息
+;数据还没获取到 等待1000ms再次获取
+break
+
+#if
+not equal S$登陆标示
+#act
+mov S$登陆标示
+;------------------------------------------------
+#CALL [\属性面板\属性面板.TXT] @属性面板
+
+#CALL [\属性统计\统计属性.txt] @统计属性
+
+;------------------------------------------------
+break
+#ELSEACT
+goto @显示转区界面
+BREAK
+
+[@显示转区界面]
+#IF
+Equal N$JZ_点击间隔 0
+#ACT
+MOV N$JZ_点击间隔 $常量_点击间隔
+DELAYGOTO <$STR(N$JZ_点击间隔)> @JZ_点击间隔
+OPENMERCHANTBIGDLG <$STR(S$补丁编号)> 202 0 4 0 -70 1 530 10 0
+#SAY
+;<ImgEx:<$STR(S$补丁编号)>:55:54:55:500:-12/@exit> \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+
+<>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+<&text:本区角色转区点：<$STR($常量_本区充值金额)>:100:350{fcolor=250;fname=微软雅黑;fsize=12;fbold=1}>
+
+<&text:剩余转区点：<$STR(S$转区点)>:300:350{fcolor=250;fname=微软雅黑;fsize=12;fbold=1}>
+
+<&text:[ 我要转区 ]:145:400{fcolor=150;fname=微软雅黑;fsize=12;fbold=1}/@转区_JZ转出>
+
+<&text:[ 领取转区 ]:300:400{fcolor=150;fname=微软雅黑;fsize=12;fbold=1}/@转区_JZ领取>
+
+
+
+;<>       <-------------------------------------------------------------------/SCOLOR=100> \  \ 
+
+[@转区_JZ转出]
+#IF
+Large N$JZ_点击间隔 0
+#ACT
+messagebox 点击频繁!请稍候再试
+break
+
+;#IF
+;Equal S$会员等级 0
+;#ACT
+;messagebox 你还没有加入网站会员!无法使用此功能\　\请进入官网,开通黄铜会员及以上会员即可
+;break
+
+#IF
+Equal $常量_本区充值金额 0
+#ACT
+messagebox 当前角色没有转区点!无法进行操作
+break
+
+#IF
+Large $常量_本区充值金额 0
+#ACT
+MOV N$JZ_点击间隔 $常量_点击间隔
+DELAYGOTO <$STR(N$JZ_点击间隔)> @JZ_点击间隔
+MOV N$JZ_点击间隔 $常量_点击间隔
+DELAYGOTO <$STR(N$JZ_点击间隔)> @JZ_点击间隔
+messagebox [转区功能介绍]：\　\比如角色拥有100转区点,确定转区成功后,当前角色将被删除锁定\100转区点会累计到微信转区点内,可咨询管理人员\之后在其他游戏任意版本充值100元，即可领取【等于充值翻倍】\　\　\请认真阅读规则!是否确定转区操作 @转区_JZ转出_确定 @取消_无用
+break
+
+
+[@转区_JZ转出_确定]
+#IF
+Large N$JZ_点击间隔 0
+#ACT
+messagebox 点击频繁!请稍候再试
+break
+
+#IF
+Large $常量_本区充值金额 0
+#ACT
+MOV N$JZ_点击间隔 $常量_点击间隔
+DELAYGOTO <$STR(N$JZ_点击间隔)> @JZ_点击间隔
+AddTextList ..\..\..\..\会员站\修改数据.txt <$STR(S$会员站标识)>:<$STR($常量_微信OP)>:zqd:1:<$STR($常量_本区充值金额)>
+AddTextListEX ..\QuestDiary\JZ\操作记录\02_转区转出.txt 时间：<$DATETIME>，微信ID：<$STR(S$会员站标识)>:<$STR($常量_微信OP)>，帐号：<$USERID>，转出：<$STR($常量_本区充值金额)> 0
+close
+;插入封号剔出下线
+MOV $常量_本区充值金额 0
+SET [$常量_转区标示] 1
+KICK
+messagebox 恭喜!转区操作成功，此角色将被锁定!
+break
+
+
+
+[@转区_JZ领取]
+#IF
+Large N$JZ_点击间隔 0
+#ACT
+messagebox 点击频繁!请稍候再试
+break
+
+;#IF
+;Equal S$会员等级 0
+;#ACT
+;messagebox 你还没有加入网站会员!无法使用此功能\　\请进入官网,开通黄铜会员及以上会员即可
+;break
+
+#IF
+Equal N$JZ_点击间隔 0
+#ACT
+GOTO @JZ_转区领取计算
+MOV N$JZ_点击间隔 $常量_点击间隔
+DELAYGOTO <$STR(N$JZ_点击间隔)> @JZ_点击间隔
+OPENMERCHANTBIGDLG <$STR(S$补丁编号)> 203  0 4 0 -70 1 530 10 0
+#SAY
+;<ImgEx:<$STR(S$补丁编号)>:55:54:55:500:-12/@exit>   \ \ \ \ \ \ \ \
+
+< >\ \ \ \ \ \ \ \
+<&text:<$STR(S$JZ_累计充值数量)>:180:180{fcolor=244;fname=微软雅黑;fsize=12;fbold=1}>
+
+<&text:<$STR(S$JZ_已经领取转区)>:180:220{fcolor=213;fname=微软雅黑;fsize=12;fbold=1}>
+
+<&text:<$STR(S$JZ_剩余可领转区)>:180:260{fcolor=68;fname=微软雅黑;fsize=12;fbold=1}>
+
+<&text:<$STR(S$JZ_剩余转区金额)>:180:300{fcolor=154;fname=微软雅黑;fsize=12;fbold=1}>
+
+
+
+
+;<>                        <[ 领取转区金额 ]→JZ游戏币/@转区_JZ领取_确定> \
+
+
+ <&text:[ 领取转区金额 ]:210:380{fcolor=150;fname=微软雅黑;fsize=12;fbold=1}/@@InPutInteger16(请输入需要领取的转区金额，微信剩余转区点必须大于转区金额。)> \
+
+
+
+
+
+;[@转区_JZ领取_确定]
+[@InPutInteger16]
+#IF
+Large N$JZ_点击间隔 0
+#ACT
+messagebox 点击频繁!请稍候再试
+break
+
+#IF
+#act
+GetListString ..\..\..\..\会员站\会员信息\<$STR($常量_微信OP)>.txt 8 S$转区点
+
+#IF
+#ACT
+GOTO @JZ_转区领取计算
+
+
+#IF
+small <$STR(S$转区点)> 1
+#ACT
+messagebox 失败!当前微信没有可用转区点
+break
+#IF
+small N$JZ_剩余可领转区 1
+#ACT
+messagebox 失败!当前角色没有剩余可领转区
+break
+#if
+large n16 <$str(N$JZ_剩余转区金额)>
+#act
+messagebox \提示：剩余转区点不足！
+break
+#if
+large n16 <$STR(N$JZ_剩余可领转区)>
+#act
+mov n$实际领取金额 <$STR(N$JZ_剩余可领转区)>
+#elseact
+mov n$实际领取金额 <$str(n16)>
+
+#IF
+#ACT
+MOV N$JZ_点击间隔 $常量_点击间隔
+DELAYGOTO <$STR(N$JZ_点击间隔)> @JZ_点击间隔
+
+;--------------------------------------------------------------------------
+;mov N$元宝倍率 10
+
+;FORMULATION <$str(n$实际领取金额)>*<$str(N$元宝倍率)> N$元宝数量
+;GameGold + <$str(N$元宝数量)>
+
+
+GAMEGIRD + <$STR(n$实际领取金额)>
+GAMEPOINT + <$STR(n$实际领取金额)>
+INC U95	 <$STR(n$实际领取金额)>
+
+;-------------------------------------------------------------------------------
+
+
+AddTextList ..\..\..\..\会员站\修改数据.txt <$STR(S$会员站标识)>:<$STR($常量_微信OP)>:zqd:2:<$str(n16)>
+INC $常量_JZ转区已领取 <$STR(n$实际领取金额)>
+MOV n$实际领取金额 
+MOV n$实际领取金额2 
+close
+messagebox 恭喜您成功领取[<$str(n16)>]JZ游戏币!
+break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@转区_JZ领取_确定123213]
+#IF
+Large S$JZ_剩余转区金额 <$STR(N$JZ_剩余可领转区)>
+#ACT
+MOV N$JZ_点击间隔 $常量_点击间隔
+DELAYGOTO <$STR(N$JZ_点击间隔)> @JZ_点击间隔
+AddTextList ..\..\..\..\会员站\修改数据.txt <$STR(S$会员站标识)>:<$STR($常量_微信OP)>:zqd:2:<$STR(N$JZ_剩余可领转区)>
+AddTextListEX ..\QuestDiary\JZ\操作记录\02_转区领取.txt 时间：<$DATETIME>，微信ID：<$STR(S$会员站标识)>:<$STR($常量_微信OP)>，帐号：<$USERID>，领取：<$STR(N$JZ_剩余可领转区)> 0
+INC $常量_JZ游戏币 <$STR(N$JZ_剩余可领转区)>
+INC $常量_JZ转区已领取 <$STR(N$JZ_剩余可领转区)>
+close
+messagebox 恭喜您成功领取[<$STR(N$JZ_剩余可领转区)>]JZ游戏币!\　\当前角色拥有JZ游戏币:<$STR($常量_JZ游戏币)>
+break
+
+#IF
+NOT Large N$JZ_剩余转区金额 <$STR(N$JZ_剩余可领转区)>
+#ACT
+MOV N$JZ_点击间隔 $常量_点击间隔
+DELAYGOTO <$STR(N$JZ_点击间隔)> @JZ_点击间隔
+AddTextList ..\..\..\..\会员站\修改数据.txt <$STR(S$会员站标识)>:<$STR($常量_微信OP)>:zqd:2:<$STR(N$JZ_剩余转区金额)>
+AddTextListEX ..\QuestDiary\JZ\操作记录\02_转区领取.txt 时间：<$DATETIME>，微信ID：<$STR(S$会员站标识)>:<$STR($常量_微信OP)>，帐号：<$USERID>，领取：<$STR(N$JZ_剩余转区金额)> 0
+INC $常量_JZ游戏币 <$STR(N$JZ_剩余转区金额)>
+INC $常量_JZ转区已领取 <$STR(N$JZ_剩余转区金额)>
+close
+messagebox 恭喜您成功领取[<$STR(N$JZ_剩余转区金额)>]JZ游戏币!\　\当前角色拥有JZ游戏币:<$STR($常量_JZ游戏币)>
+break
+
+
+[@JZ_转区领取计算]
+#IF
+#ACT
+AddTextList ..\..\..\..\会员站\获取数据.txt <$STR(S$会员站标识)>:<$STR($常量_微信OP)>
+CreateFile ..\..\..\..\会员站\会员信息\<$STR($常量_微信OP)>.txt
+
+#act
+MOV S$是否成功
+GetListString ..\..\..\..\会员站\会员信息\<$STR($常量_微信OP)>.txt 1 S$会员等级
+GetListString ..\..\..\..\会员站\会员信息\<$STR($常量_微信OP)>.txt 0 S$是否成功
+;判断一下数据是不是获取成功了
+
+#IF
+EQUAL S$是否成功 成功
+#act
+GetListString ..\..\..\..\会员站\会员信息\<$STR($常量_微信OP)>.txt 8 S$转区点
+;获取数据
+
+
+;#IF
+;#ACT
+;MOV S$JZ_剩余转区金额 <$STR(S$转区点)>
+;SetStringBlank <$STR(S$JZ_剩余转区金额)> 8 1
+;MOV S$JZ_累计充值数量 <$STR($常量_本区充值金额)>
+;SetStringBlank <$STR(S$JZ_累计充值数量)> 8 1
+;MOV S$JZ_已经领取转区 <$STR($常量_JZ转区已领取)>
+;SetStringBlank <$STR(S$JZ_已经领取转区)> 8 1
+;MOV N$JZ_剩余可领转区 <$STR($常量_本区充值金额)>
+;DEC N$JZ_剩余可领转区 <$STR($常量_JZ转区已领取)>
+;MOV S$JZ_剩余可领转区 <$STR(N$JZ_剩余可领转区)>
+;SetStringBlank <$STR(S$JZ_剩余可领转区)> 8 1
+
+#IF
+#ACT
+MOV S$JZ_剩余转区金额 <$STR(S$转区点)>
+
+#IF
+NOT LARGE $常量_本区充值金额 <$STR(S$JZ_剩余转区金额)>
+#ACT
+SetStringBlank <$STR(S$JZ_剩余转区金额)> 8 1
+MOV S$JZ_累计充值数量 <$STR($常量_本区充值金额)>
+SetStringBlank <$STR(S$JZ_累计充值数量)> 8 1
+MOV S$JZ_已经领取转区 <$STR($常量_JZ转区已领取)>
+SetStringBlank <$STR(S$JZ_已经领取转区)> 8 1
+MOV N$JZ_剩余可领转区 <$STR($常量_本区充值金额)>
+DEC N$JZ_剩余可领转区 <$STR($常量_JZ转区已领取)>
+MOV S$JZ_剩余可领转区 <$STR(N$JZ_剩余可领转区)>
+SetStringBlank <$STR(S$JZ_剩余可领转区)> 8 1
+mov N$JZ_剩余转区金额 <$str(N$JZ_剩余可领转区)>
+break
+
+#IF
+#ACT
+MOV S$JZ_剩余转区金额 <$STR(S$转区点)>
+SetStringBlank <$STR(S$JZ_剩余转区金额)> 8 1
+MOV S$JZ_累计充值数量 <$STR($常量_本区充值金额)>
+SetStringBlank <$STR(S$JZ_累计充值数量)> 8 1
+MOV S$JZ_已经领取转区 <$STR($常量_JZ转区已领取)>
+SetStringBlank <$STR(S$JZ_已经领取转区)> 8 1
+MOV N$JZ_剩余可领转区 <$STR($常量_本区充值金额)>
+DEC N$JZ_剩余可领转区 <$STR($常量_JZ转区已领取)>
+MOV S$JZ_剩余可领转区 <$STR(S$JZ_剩余转区金额)>
+SetStringBlank <$STR(S$JZ_剩余可领转区)> 8 1
+mov N$JZ_剩余转区金额 <$str(N$JZ_剩余可领转区)>
+break
+
+
+
+
+
+
+break
+
+[@JZ_点击间隔]
+#if
+#act
+MOV N$JZ_点击间隔 0
+break
+
+}

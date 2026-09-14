@@ -1,0 +1,258 @@
+;T3--开启状态  U5-7分别为三种模式回血设置百分比
+
+(@@InPutString @@InPutInteger)
+[@自动喝药]
+{
+#if
+Small U22 1
+#ACT
+MOV U22 0
+
+#if
+Small U23 1
+#ACT
+MOV U23 0
+
+#if
+small U19 1
+#ACT
+mov U19 5
+
+#if
+small U20 1
+#ACT
+mov U20 5
+
+#if
+small U21 1
+#ACT
+mov U21 5
+
+
+#if
+CHECKLEVELEX > 0
+#ACT
+OPENMERCHANTBIGDLG 2 2 1 4 0 -95 0 425 7 0
+#SAY
+<> \ \ \ \ \ \
+<>                     <Text:【<$STR(U22)>】|百分比:10:-7{FCOLOR=250}> \ \
+<>                     <Text:【<$STR(U23)>】|百分比:10:-9{FCOLOR=250}> \ \
+<>       <无需消耗/SCOLOR=250>  <免费使用/SCOLOR=230><回复/SCOLOR=250>< 1%/SCOLOR=230><生命值/SCOLOR=250>,< 1%/SCOLOR=230><魔法值/SCOLOR=250>\ \
+<>       <每次消耗/SCOLOR=250>   <100元宝/SCOLOR=249><回复/SCOLOR=250>< 2%/SCOLOR=230><生命值/SCOLOR=250>,< 2%/SCOLOR=230><魔法值/SCOLOR=250>\ \
+<>       <每次消耗/SCOLOR=250>   <500元宝/SCOLOR=249><回复/SCOLOR=250>< 3%/SCOLOR=230><生命值/SCOLOR=250>,< 3%/SCOLOR=230><魔法值/SCOLOR=250>\ \ \ \ \ \
+<温馨提示:发现外挂必定封号，请大家自重!>
+<Img:3:2:100:-339/@EXIT> \
+<Img:4:2:305:-250/@@InPutInteger22> \
+<Img:4:2:305:-237/@@InPutInteger23> \ \
+<Img:<$Str(U19)>:2:20:-230/@初级回血> \
+<Img:<$Str(U20)>:2:20:-213/@中级回血> \
+<Img:<$Str(U21)>:2:20:-197/@高级回血> \
+
+
+[@InPutInteger22]
+#if
+Large N22  0
+Small N22  90
+#ACT
+MOV U22 <$STR(N22)>
+goto @自动喝药
+#ELSEACT
+MessageBox 输入的值为1~90，请重新输入!
+Break
+
+[@InPutInteger23]
+#if
+Large N23  0
+Small N23  90
+#ACT
+MOV U23 <$STR(N23)>
+goto @自动喝药
+#ELSEACT
+MessageBox 输入的值为1~90，请重新输入!
+Break
+
+
+[@初级回血]
+#OR
+Small U22 1
+Large U22 90
+#ACT
+Messagebox 请设置回血生命值百分比，值范围1~90
+Break
+
+#OR
+Small U23 1
+Large U23 90
+#ACT
+Messagebox 请设置回血魔法值百分比，值范围1~90
+Break
+
+#if
+EQUAL T22 
+#ACT
+MOV T22 初级回血开启
+mov T23 中级回血关闭
+mov T24 高级回血关闭
+mov U19 6
+mov U20 5
+mov U21 5
+SetOnTimer 1 1
+SETOFFTIMER 2
+SETOFFTIMER 3
+goto @自动喝药
+break
+
+#if
+EQUAL T22 初级回血关闭
+#ACT
+MOV T22 初级回血开启
+mov T23 中级回血关闭
+mov T24 高级回血关闭
+mov U19 6
+mov U20 5
+mov U21 5
+SetOnTimer 1 1
+SETOFFTIMER 2
+SETOFFTIMER 3
+goto @自动喝药
+break
+
+#if
+EQUAL T22 初级回血开启
+#ACT
+mov T22 初级回血关闭
+mov T23 中级回血关闭
+mov T24 高级回血关闭
+mov U19 5
+mov U20 5
+mov U21 5
+SETOFFTIMER 1
+SETOFFTIMER 2
+SETOFFTIMER 3
+goto @自动喝药
+break
+
+[@中级回血]
+#OR
+Small U22 1
+Large U22 90
+#ACT
+Messagebox 请设置回血生命值百分比，值范围1~90
+Break
+
+#OR
+Small U23 1
+Large U23 90
+#ACT
+Messagebox 请设置回血魔法值百分比，值范围1~90
+Break
+
+#if
+EQUAL T23 
+#ACT
+MOV T22 初级回血关闭
+mov T23 中级回血开启
+mov T24 高级回血关闭
+mov U19 5
+mov U20 6
+mov U21 5
+SETOFFTIMER 1
+SetOnTimer 2 1
+SETOFFTIMER 3
+goto @自动喝药
+break
+
+#if
+EQUAL T23 中级回血关闭
+#ACT
+MOV T22 初级回血关闭
+mov T23 中级回血开启
+mov T24 高级回血关闭
+mov U19 5
+mov U20 6
+mov U21 5
+SETOFFTIMER 1
+SetOnTimer 2 1
+SETOFFTIMER 3
+goto @自动喝药
+break
+
+#if
+EQUAL T23 中级回血开启
+#ACT
+mov T22 初级回血关闭
+mov T23 中级回血关闭
+mov T24 高级回血关闭
+mov U19 5
+mov U20 5
+mov U21 5
+SETOFFTIMER 1
+SETOFFTIMER 2
+SETOFFTIMER 3
+goto @自动喝药
+break
+
+
+[@高级回血]
+#OR
+Small U22 1
+Large U22 90
+#ACT
+Messagebox 请设置回血生命值百分比，值范围1~90
+Break
+
+#OR
+Small U23 1
+Large U23 90
+#ACT
+Messagebox 请设置回血魔法值百分比，值范围1~90
+Break
+
+#if
+EQUAL T24 
+#ACT
+MOV T22 初级回血关闭
+mov T23 中级回血关闭
+mov T24 高级回血开启
+mov U19 5
+mov U20 5
+mov U21 6
+SETOFFTIMER 1
+SETOFFTIMER 2
+SetOnTimer 3 1
+goto @自动喝药
+break
+
+#if
+EQUAL T24 高级回血关闭
+#ACT
+MOV T22 初级回血关闭
+mov T23 中级回血关闭
+mov T24 高级回血开启
+mov U19 5
+mov U20 5
+mov U21 6
+SETOFFTIMER 1
+SETOFFTIMER 2
+SetOnTimer 3 1
+goto @自动喝药
+break
+
+#if
+EQUAL T24 高级回血开启
+#ACT
+mov T22 初级回血关闭
+mov T23 中级回血关闭
+mov T24 高级回血关闭
+mov U19 5
+mov U20 5
+mov U21 5
+SETOFFTIMER 1
+SETOFFTIMER 2
+SETOFFTIMER 3
+goto @自动喝药
+break
+
+
+
+}

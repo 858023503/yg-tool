@@ -1,0 +1,15 @@
+[@main]
+你好，前面就是要塞一层了\
+一定要小心。\\
+
+<进入要塞一层/@go>  \ 
+
+
+[@go]
+#if
+CHECKLEVELEX > 60
+#act
+CLOSE
+MAPMOVE hsdx1 22 18
+#ELSESAY
+等级不足60级！

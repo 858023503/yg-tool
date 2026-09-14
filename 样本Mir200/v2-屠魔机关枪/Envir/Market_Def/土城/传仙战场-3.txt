@@ -1,0 +1,92 @@
+[@main]
+#IF
+#act
+OPENMERCHANTBIGDLG 5 736 1 4 0 -50 0 0 0 0
+#say
+;暗夜专属
+<&playimg:5:739:10:100:90:506:0>
+<&playimg:5:749:10:100:-20:-17:0>
+<&playimg:5:759:10:100:740:-37:0>
+<&playimg:5:769:10:200:180:-55:0>
+<&playimg:5:813:20:200:315:-105:0>
+<&playimg:5:799:14:200:685:200:0>
+<&ImgEx:5:737:738:737:455:90/@进入跨服传仙>
+
+[@进入跨服传仙]
+
+#if
+;COMPARETEXT T14 第1统战
+#act
+MAPMOVE kuafu1 255 263 5
+;SHOWPROGRESSBARDLG 3 @进入跨服 正在传送,进度%d%... 1 @进入中断
+;delaycall 1500 @进入跨服
+break
+
+
+#if
+COMPARETEXT T14 第2统战
+#act
+MAPMOVE kuafu2 255 263 5
+delaycall 1500 @进入跨服
+break
+#if
+COMPARETEXT T14 第3统战
+#act
+MAPMOVE kuafu3 255 263 5
+delaycall 1500 @进入跨服
+break
+#if
+COMPARETEXT T14 第4统战
+#act
+MAPMOVE kuafu4 255 263 5
+delaycall 1500 @进入跨服
+break
+#if
+COMPARETEXT T14 第5统战
+#act
+MAPMOVE kuafu5 255 263 5
+delaycall 1500 @进入跨服
+break
+#if
+COMPARETEXT T14 第6统战
+#act
+MAPMOVE kuafu6 255 263 5
+delaycall 1500 @进入跨服
+break
+#if
+COMPARETEXT T14 第7统战
+#act
+MAPMOVE kuafu7 255 263 5
+delaycall 1500 @进入跨服
+break
+#if
+COMPARETEXT T14 第8统战
+#act
+MAPMOVE kuafu8 255 263 5
+delaycall 1500 @进入跨服
+break
+#if
+COMPARETEXT T14 第9统战
+#act
+MAPMOVE kuafu9 255 263 5
+delaycall 1500 @进入跨服
+break
+#if
+COMPARETEXT T14 第10统战
+#act
+MAPMOVE kuafu10 255 263 5
+delaycall 1500 @进入跨服
+break
+
+[@进入跨服]
+#if
+#ACT
+;mov U416 1
+;Gmexecute 跨区 <$username> 180.188.17.106 7200
+M2SpanRegion 0 kuafu1 255 263
+
+
+
+
+
+

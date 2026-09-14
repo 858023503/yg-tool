@@ -1,0 +1,86 @@
+
+[@main]
+#if
+CHECKLEVELEX > 0
+#ACT
+OPENMERCHANTBIGDLG 3 1794 1 0 0 0 1 390 5 0
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{舟/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {游/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {！/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+<地图介绍:/SCOLOR=254>击杀怪物有<几率/SCOLOR=70>召唤异界传送门,持续60s \
+<怪物等级:/SCOLOR=249>普通-<精英/SCOLOR=254>-<修罗/SCOLOR=251>-<魔化/SCOLOR=253>-<变异/SCOLOR=249>-<BOSS/SCOLOR=93>\
+<怪物刷新:/SCOLOR=251>普通,精英,修罗,魔化,变异随机刷新,小怪<10/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟 \
+<进入条件:/SCOLOR=70>本服<没有/SCOLOR=250>任何会员专属及隐藏地图 \
+<装备出处:/SCOLOR=253>所有装备全靠爆出，无任何合成\ \ 
+<╔┄╗/SCOLOR=254>\
+<┆四┆/SCOLOR=254>   <Text:圣兽青龙|^254#费用3000000金币:0:0{FCOLOR=70}/@青龙>        <Text:圣兽白虎|^254#费用3000000金币:0:0{FCOLOR=70}/@白虎>\
+<┆圣┆/SCOLOR=254> \
+<┆殿┆/SCOLOR=254> \
+<┆堂┆/SCOLOR=254>   <Text:圣兽玄武|^254#费用3000000金币:0:0{FCOLOR=70}/@玄武>        <Text:圣兽朱雀|^254#费用3000000金币:0:0{FCOLOR=70}/@朱雀>\
+<╚┄╝/SCOLOR=254>\
+\
+\
+
+
+
+[@朱雀]
+#if
+CheckGold 3000000
+#ACT
+take 金币 3000000
+MAPMOVE  ss2    39 42
+#elseact
+messagebox   你金币不足无法传送！~
+SendMsg 0 玩家{[%s]|249:255}前往{[朱雀禁地]|249:255}寻宝去了!,此地危险,新手勿进!
+break
+
+[@玄武]
+#if
+CheckGold 3000000
+#ACT
+take 金币 3000000
+MAPMOVE  ss3    39 42
+#elseact
+messagebox   你金币不足无法传送！~
+SendMsg 0 玩家{[%s]|249:255}前往{[玄武禁地]|249:255}寻宝去了!,此地危险,新手勿进!
+break
+
+
+[@白虎]
+#if
+CheckGold 3000000
+#ACT
+take 金币 3000000
+MAPMOVE  ss1    39 42
+#elseact
+messagebox   你金币不足无法传送！~
+SendMsg 0 玩家{[%s]|249:255}前往{[白虎禁地]|249:255}寻宝去了!,此地危险,新手勿进!
+break
+
+
+
+[@青龙]
+#if
+CheckGold 3000000
+#ACT
+take 金币 3000000
+MAPMOVE  ss4    39 42
+#elseact
+messagebox   你金币不足无法传送！~
+SendMsg 0 玩家{[%s]|249:255}前往{[青龙禁地]|249:255}寻宝去了!,此地危险,新手勿进!
+break
+
+
+
+
+
+
+
+
+
+;#if
+;#ACT
+;map 异界
+;Delnpc 异界之门 <$STR(T10)>
+;break
+

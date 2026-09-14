@@ -1,0 +1,27 @@
+[@main]
+#if
+check [61] 1
+#ACT
+MAPMOVE 雷泽 52 53
+#elseact
+MessageBox 您的称号不满足条件。请提升至龙神护体再来找我
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

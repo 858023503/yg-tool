@@ -1,0 +1,500 @@
+[@领取金刚石]
+{
+#IF
+#ACT
+;P0-P3 如果不需要计算充值金额和游戏币数量可以删除，否则不可更改
+;P0 充值金额
+;P1 获得游戏币数量
+;P2 充值总金额
+;P3 获得游戏币总数量
+
+MOV P0 0
+MOV P1 0
+MOV P2 0
+MOV P3 0
+
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\01.txt
+#ACT
+GAMEDIAMOND + 0
+INC P0 1
+INC P1 0
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\01.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\02.txt
+#ACT
+GAMEDIAMOND + 0
+INC P0 2
+INC P1 0
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\02.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\03.txt
+#ACT
+GAMEDIAMOND + 0
+INC P0 3
+INC P1 0
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\03.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\04.txt
+#ACT
+GAMEDIAMOND + 0
+INC P0 4
+INC P1 0
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\04.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\05.txt
+#ACT
+GAMEDIAMOND + 0
+INC P0 5
+INC P1 0
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\05.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\06.txt
+#ACT
+GAMEDIAMOND + 0
+INC P0 6
+INC P1 0
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\06.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\07.txt
+#ACT
+GAMEDIAMOND + 0
+INC P0 7
+INC P1 0
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\07.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\08.txt
+#ACT
+GAMEDIAMOND + 0
+INC P0 8
+INC P1 0
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\08.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\09.txt
+#ACT
+GAMEDIAMOND + 0
+INC P0 9
+INC P1 0
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\09.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\1.txt
+#ACT
+GAMEDIAMOND + 1
+INC P0 1
+INC P1 1
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\1.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\2.txt
+#ACT
+GAMEDIAMOND + 2
+INC P0 2
+INC P1 2
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\2.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\3.txt
+#ACT
+GAMEDIAMOND + 3
+INC P0 3
+INC P1 3
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\3.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\4.txt
+#ACT
+GAMEDIAMOND + 4
+INC P0 4
+INC P1 4
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\4.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\5.txt
+#ACT
+GAMEDIAMOND + 5
+INC P0 5
+INC P1 5
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\5.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\6.txt
+#ACT
+GAMEDIAMOND + 6
+INC P0 6
+INC P1 6
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\6.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\7.txt
+#ACT
+GAMEDIAMOND + 7
+INC P0 7
+INC P1 7
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\7.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\8.txt
+#ACT
+GAMEDIAMOND + 8
+INC P0 8
+INC P1 8
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\8.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\9.txt
+#ACT
+GAMEDIAMOND + 9
+INC P0 9
+INC P1 9
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\9.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\10.txt
+#ACT
+GAMEDIAMOND + 10
+INC P0 10
+INC P1 10
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\10.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\20.txt
+#ACT
+GAMEDIAMOND + 20
+INC P0 20
+INC P1 20
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\20.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\30.txt
+#ACT
+GAMEDIAMOND + 30
+INC P0 30
+INC P1 30
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\30.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\40.txt
+#ACT
+GAMEDIAMOND + 40
+INC P0 40
+INC P1 40
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\40.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\50.txt
+#ACT
+GAMEDIAMOND + 50
+INC P0 50
+INC P1 50
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\50.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\60.txt
+#ACT
+GAMEDIAMOND + 60
+INC P0 60
+INC P1 60
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\60.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\70.txt
+#ACT
+GAMEDIAMOND + 70
+INC P0 70
+INC P1 70
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\70.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\80.txt
+#ACT
+GAMEDIAMOND + 80
+INC P0 80
+INC P1 80
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\80.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\90.txt
+#ACT
+GAMEDIAMOND + 90
+INC P0 90
+INC P1 90
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\90.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\100.txt
+#ACT
+GAMEDIAMOND + 100
+INC P0 100
+INC P1 100
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\100.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\200.txt
+#ACT
+GAMEDIAMOND + 200
+INC P0 200
+INC P1 200
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\200.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\300.txt
+#ACT
+GAMEDIAMOND + 300
+INC P0 300
+INC P1 300
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\300.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\400.txt
+#ACT
+GAMEDIAMOND + 400
+INC P0 400
+INC P1 400
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\400.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\500.txt
+#ACT
+GAMEDIAMOND + 500
+INC P0 500
+INC P1 500
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\500.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\600.txt
+#ACT
+GAMEDIAMOND + 600
+INC P0 600
+INC P1 600
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\600.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\700.txt
+#ACT
+GAMEDIAMOND + 700
+INC P0 700
+INC P1 700
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\700.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\800.txt
+#ACT
+GAMEDIAMOND + 800
+INC P0 800
+INC P1 800
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\800.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\900.txt
+#ACT
+GAMEDIAMOND + 900
+INC P0 900
+INC P1 900
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\900.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\1000.txt
+#ACT
+GAMEDIAMOND + 1000
+INC P0 1000
+INC P1 1000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\1000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\2000.txt
+#ACT
+GAMEDIAMOND + 2000
+INC P0 2000
+INC P1 2000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\2000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\3000.txt
+#ACT
+GAMEDIAMOND + 3000
+INC P0 3000
+INC P1 3000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\3000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\4000.txt
+#ACT
+GAMEDIAMOND + 4000
+INC P0 4000
+INC P1 4000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\4000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\5000.txt
+#ACT
+GAMEDIAMOND + 5000
+INC P0 5000
+INC P1 5000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\5000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\6000.txt
+#ACT
+GAMEDIAMOND + 6000
+INC P0 6000
+INC P1 6000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\6000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\7000.txt
+#ACT
+GAMEDIAMOND + 7000
+INC P0 7000
+INC P1 7000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\7000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\8000.txt
+#ACT
+GAMEDIAMOND + 8000
+INC P0 8000
+INC P1 8000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\8000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\9000.txt
+#ACT
+GAMEDIAMOND + 9000
+INC P0 9000
+INC P1 9000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\9000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\10000.txt
+#ACT
+GAMEDIAMOND + 10000
+INC P0 10000
+INC P1 10000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\10000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\20000.txt
+#ACT
+GAMEDIAMOND + 20000
+INC P0 20000
+INC P1 20000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\20000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\30000.txt
+#ACT
+GAMEDIAMOND + 30000
+INC P0 30000
+INC P1 30000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\30000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\40000.txt
+#ACT
+GAMEDIAMOND + 40000
+INC P0 40000
+INC P1 40000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\40000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\50000.txt
+#ACT
+GAMEDIAMOND + 50000
+INC P0 50000
+INC P1 50000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\50000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\60000.txt
+#ACT
+GAMEDIAMOND + 60000
+INC P0 60000
+INC P1 60000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\60000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\70000.txt
+#ACT
+GAMEDIAMOND + 70000
+INC P0 70000
+INC P1 70000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\70000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\80000.txt
+#ACT
+GAMEDIAMOND + 80000
+INC P0 80000
+INC P1 80000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\80000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\90000.txt
+#ACT
+GAMEDIAMOND + 90000
+INC P0 90000
+INC P1 90000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\90000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\100000.txt
+#ACT
+GAMEDIAMOND + 100000
+INC P0 100000
+INC P1 100000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\100000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\200000.txt
+#ACT
+GAMEDIAMOND + 200000
+INC P0 200000
+INC P1 200000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\200000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\300000.txt
+#ACT
+GAMEDIAMOND + 300000
+INC P0 300000
+INC P1 300000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\300000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\400000.txt
+#ACT
+GAMEDIAMOND + 400000
+INC P0 400000
+INC P1 400000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\400000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\500000.txt
+#ACT
+GAMEDIAMOND + 500000
+INC P0 500000
+INC P1 500000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\500000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\600000.txt
+#ACT
+GAMEDIAMOND + 600000
+INC P0 600000
+INC P1 600000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\600000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\700000.txt
+#ACT
+GAMEDIAMOND + 700000
+INC P0 700000
+INC P1 700000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\700000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\800000.txt
+#ACT
+GAMEDIAMOND + 800000
+INC P0 800000
+INC P1 800000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\800000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\900000.txt
+#ACT
+GAMEDIAMOND + 900000
+INC P0 900000
+INC P1 900000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\900000.txt
+#IF
+CheckAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\1000000.txt
+#ACT
+GAMEDIAMOND + 1000000
+INC P0 1000000
+INC P1 1000000
+DelAccountList ..\QuestDiary\充值充值点\附加赠送\金刚石\1000000.txt
+
+
+#IF
+LARGE P0 0
+#ACT
+INC P2 <$STR(P0)>
+INC P3 <$STR(P1)>
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值<$STR(P2)>元获得<$STR(P3)>金刚石,如果您也想获得,请赶快充值吧!
+#ELSESAY
+\ \
+<>  [领取完成]:\ \
+<>      1. 请查看自己的充值数量。\ \
+<>      2. 如未充值请按提示充值。\ \
+<>      3. 如有疑问请联系客服。\ \
+<>   <退出/@exit>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,289 @@
+[@开始计算人物爆率]
+{
+#IF
+#ACT
+MOV N$人物实际爆率 100
+MOV N$王冠爆率 0
+MOV N$祸根苗爆率 0
+MOV N$最终爆率加成 100
+MUL N$会员增加爆率 <$STR(U109)> 10
+INC N$人物实际爆率 <$STR(N$会员增加爆率)>
+INC N$人物实际爆率 <$STR(N$福缘词缀取值)>
+INC N$人物实际爆率 <$STR(U144)>
+INC N$人物实际爆率 <$STR(N$咸鱼淬炼词条人物爆率加成)>
+
+#IF
+equal <$USERNAME> CC丶
+#ACT
+MOV N$人物实际爆率 600
+MOV N$王冠爆率 0
+MOV N$祸根苗爆率 0
+MOV N$最终爆率加成 500
+MUL N$会员增加爆率 <$STR(U109)> 10
+INC N$人物实际爆率 <$STR(N$会员增加爆率)>
+INC N$人物实际爆率 <$STR(N$福缘词缀取值)>
+INC N$人物实际爆率 <$STR(U144)>
+INC N$人物实际爆率 <$STR(N$咸鱼淬炼词条人物爆率加成)>
+#IF
+equal <$USERNAME> 落叶丶
+#ACT
+MOV N$人物实际爆率 600
+MOV N$王冠爆率 0
+MOV N$祸根苗爆率 0
+MOV N$最终爆率加成 500
+MUL N$会员增加爆率 <$STR(U109)> 10
+INC N$人物实际爆率 <$STR(N$会员增加爆率)>
+INC N$人物实际爆率 <$STR(N$福缘词缀取值)>
+INC N$人物实际爆率 <$STR(U144)>
+INC N$人物实际爆率 <$STR(N$咸鱼淬炼词条人物爆率加成)>
+#IF
+equal <$USERNAME> 茉莉清茶
+#ACT
+MOV N$人物实际爆率 600
+MOV N$王冠爆率 0
+MOV N$祸根苗爆率 0
+MOV N$最终爆率加成 500
+MUL N$会员增加爆率 <$STR(U109)> 10
+INC N$人物实际爆率 <$STR(N$会员增加爆率)>
+INC N$人物实际爆率 <$STR(N$福缘词缀取值)>
+INC N$人物实际爆率 <$STR(U144)>
+INC N$人物实际爆率 <$STR(N$咸鱼淬炼词条人物爆率加成)>
+
+#IF
+CHECKITEMW 酆都王冠
+ISGUILDMASTER
+#ACT
+GETGUILDMEMBERCOUNT <$GUILDNAME> N$王冠爆率行会在线人数 1
+MUL N$王冠爆率 <$STR(N$王冠爆率行会在线人数)> 5
+
+#IF
+CHECKITEMW 财是祸根苗
+#ACT
+MOV N$祸根苗爆率 100
+DIV N$祸根苗减少爆率 <$GOLDCOUNT> 100000000
+DEC N$祸根苗爆率 <$STR(N$祸根苗减少爆率)>
+
+#IF
+SMALL N$祸根苗爆率 0
+#ACT
+MOV N$祸根苗爆率 0
+
+#IF
+LARGE N$王冠爆率 100
+#ACT
+MOV N$王冠爆率 100
+
+#IF
+#ACT
+INC N$人物实际爆率 <$STR(N$王冠爆率)>
+INC N$人物实际爆率 <$STR(N$祸根苗爆率)>
+
+#IF
+LARGE <$HOUR> 5
+SMALL <$HOUR> 18
+CHECKITEMW 光明哨兵纹章
+#ACT
+INC N$人物实际爆率 50
+
+#IF
+CHECKITEM 魔龙教主的手信 1
+#ACT
+INC N$人物实际爆率 20
+
+#IF
+LARGE N$特殊爆率加成 0
+#ACT
+INC N$人物实际爆率 <$STR(N$特殊爆率加成)>
+
+#IF
+CHECKFENGHAO 白玉为堂金做马
+#ACT
+INC N$人物实际爆率 50
+
+#IF
+CHECKITEMW 至死不渝的爱
+#ACT
+INC N$人物实际爆率 30
+
+#IF
+CHECKFENGHAO 雁行零落悲秋风
+#ACT
+INC N$人物实际爆率 50
+
+#if
+CHECKFENGHAO 玛法主宰者
+#act
+INC N$人物实际爆率 20
+
+#IF
+CHECK [11] 1
+#ACT
+INC N$人物实际爆率 50
+
+#IF
+CHECKITEMW 圣战婚戒
+CHECKMARRY
+#ACT
+INC N$人物实际爆率 50
+
+#IF
+CHECKITEM 地藏菩萨本愿经-凡 1
+#ACT
+INC N$人物实际爆率 60
+
+#IF
+#ACT
+GetBagItemCount 地藏菩萨本愿经残页 N$额外爆率物品数量
+
+#IF
+LARGE N$额外爆率物品数量 10
+#ACT
+MOV N$额外爆率物品数量 10
+
+#IF
+#ACT
+INC N$人物实际爆率 <$STR(N$额外爆率物品数量)>
+
+#IF
+#ACT
+GetBagItemCount 地藏菩萨本愿经副本 N$额外爆率物品数量
+MUL N$额外爆率物品数量 3
+
+#IF
+LARGE N$额外爆率物品数量 30
+#ACT
+MOV N$额外爆率物品数量 30
+
+#IF
+#ACT
+INC N$人物实际爆率 <$STR(N$额外爆率物品数量)>
+
+#IF
+#ACT
+GetAllCustomItemValue 29 N$随身工坊爆率加成 N$无效
+INC N$人物实际爆率 <$STR(N$随身工坊爆率加成)>
+
+#IF
+CHECKFENGHAO 王之财宝
+#ACT
+INC N$人物实际爆率 200
+
+#IF
+CHECKITEMW 世界树叶
+#ACT
+INC N$人物实际爆率 30
+
+#IF
+CHECKITEMW 世界树叶 2
+#ACT
+INC N$人物实际爆率 70
+
+#IF
+CHECKITEM 跳动的心脏[完整] 1
+check [20] 1
+check [21] 1
+check [22] 1
+check [23] 1
+check [24] 1
+NOT CHECKITEM 干瘪的心脏[未激活]
+NOT CHECKITEM 跳动的心脏[未激活]
+#ACT
+INC N$人物实际爆率 1200
+
+
+
+#IF
+CHECKITEM 跳动的心脏[未激活] 1
+check [20] 1
+check [21] 1
+check [22] 1
+check [23] 1
+check [24] 1
+NOT CHECKITEM 干瘪的心脏[未激活]
+NOT CHECKITEM 跳动的心脏[完整]
+#ACT
+INC N$人物实际爆率 1000
+
+#IF
+CHECKITEM 干瘪的心脏[未激活] 1
+check [20] 1
+NOT CHECKITEM 跳动的心脏[未激活]
+NOT CHECKITEM 跳动的心脏[完整]
+#ACT
+INC N$人物实际爆率 200
+
+#IF
+CHECKITEM 干瘪的心脏[未激活] 1
+NOT CHECKITEM 跳动的心脏[未激活]
+NOT CHECKITEM 跳动的心脏[完整]
+check [21] 1
+#ACT
+INC N$人物实际爆率 200
+
+#IF
+CHECKITEM 干瘪的心脏[未激活] 1
+NOT CHECKITEM 跳动的心脏[未激活]
+NOT CHECKITEM 跳动的心脏[完整]
+check [22] 1
+#ACT
+INC N$人物实际爆率 200
+
+#IF
+CHECKITEM 干瘪的心脏[未激活] 1
+NOT CHECKITEM 跳动的心脏[未激活]
+NOT CHECKITEM 跳动的心脏[完整]
+check [23] 1
+#ACT
+INC N$人物实际爆率 200
+
+#IF
+CHECKITEM 干瘪的心脏[未激活] 1
+NOT CHECKITEM 跳动的心脏[未激活]
+NOT CHECKITEM 跳动的心脏[完整]
+check [24] 1
+#ACT
+INC N$人物实际爆率 200
+
+#IF
+CHECKITEMW 孽镜台
+LARGE <$PKPOINT> 199
+#ACT
+INC N$人物实际爆率 88
+
+#IF
+CHECKMARRY
+GENDER MAN
+CHECKONLINE <$DEARNAME>
+<$DEARNAME>.CHECKITEMW 寿夭生死册
+#ACT
+GetHumVar <$DEARNAME> <$STR(S$人物当前命格)> S$对方命格
+INC N$人物实际爆率 <$STR(N$<$STR(S$人物当前命格)>命格爆率加成)>
+
+#IF
+CHECKITEMW 寿夭生死册
+EQUAL S$人物当前命格 天煞孤星
+#ACT
+GetMapHumCount <$CONST(<$MAP>)> 0 N$天煞孤星地图人数
+INC N$人物实际爆率 <$STR(N$天煞孤星命格<$STR(N$天煞孤星地图人数)>人爆率加成)>
+
+#IF
+CHECKITEMW 怪力
+CHECKITEMW 科技
+#ACT
+INC N$最终爆率加成 10
+
+
+
+#IF
+#ACT
+CalcPercent <$STR(N$人物实际爆率)> <$STR(N$最终爆率加成)> N$人物实际爆率
+
+#IF
+NOT EQUAL N$人物实际爆率 <$STR(N$上次记录人物爆率)>
+#ACT
+MOV N$上次记录人物爆率 <$STR(N$人物实际爆率)>
+KILLMONBURSTRATE <$STR(N$人物实际爆率)> 0 0 1
+
+
+
+}

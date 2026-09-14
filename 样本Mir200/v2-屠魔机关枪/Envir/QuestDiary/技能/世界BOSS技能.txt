@@ -1,0 +1,20 @@
+[@世界BOSS技能]
+{
+#if
+SMALL J22 1
+#act
+sendmsg 6 未开通周卡攻击世界BOSS不记录伤害值
+break
+#IF(1)
+EQUAL <$CURRRTARGETFULLNAME> 九首寄生体
+EQUAL <$CURRRTARGETFULLNAME> 北冥九首深渊龙
+#ACT
+INC U68 9999
+; AddDlg 3 0 11 1 550:0 0:8 0 <&Img:243:0:6:-30><&ImgNum:9:<$STR(U68)>:-1:10:90>
+AddDlg 3 0 11 1 <$STR(N$世界BOSSX)>:<$STR(N$世界BOSSY)> 0:8 0 <&Img:243:0:6:-30><&ImgNum:9:<$STR(U68)>:-1:10:90>
+writeconfigfileitem ..\..\..\..\通区文件\世界BOSS\世界BOSS数据保存.txt <$username> 伤害值 <$Str(U68)>
+writeconfigfileitem ..\..\..\..\通区文件\世界BOSS\世界BOSS数据保存.txt <$username> 等级 <$LEVEL>
+RangeHarm <$STR(N998)> <$STR(N999)> 3 9999 0 0 0 2 0 0 0 0 0 0
+
+; RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> 14 100 0 0 0 2 
+}

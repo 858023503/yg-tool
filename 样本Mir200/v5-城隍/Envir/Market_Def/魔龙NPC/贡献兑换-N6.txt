@@ -1,0 +1,229 @@
+[@MAIN]
+#IF
+#ACT
+GOTO @_@计算魔龙城可兑换物品
+#SAY
+<感谢为魔龙城做出的卓越贡献,魔龙城必定不会亏待各位。/SCOLOR=251>\ \
+
+<ItemShow:844:<$STR(N$升级石可兑换数量)>:0:0:1:0:<$STR(N$升级石可兑换标识)>>  <ItemShow:845:<$STR(N$进阶石可兑换数量)>:0:0:1:0:<$STR(N$进阶石可兑换标识)>>  <ItemShow:891:<$STR(N$精铁石可兑换数量)>:0:0:1:0:<$STR(N$精铁石可兑换标识)>>  <ItemShow:892:<$STR(N$咸鱼进阶石可兑换数量)>:0:0:1:0:<$STR(N$咸鱼进阶石可兑换标识)>>  <ItemShow:893:<$STR(N$白玉可兑换数量)>:0:0:1:0:<$STR(N$白玉可兑换标识)>>  <ItemShow:894:<$STR(N$彩玉可兑换数量)>:0:0:1:0:<$STR(N$彩玉可兑换标识)>>\ \ \
+< ><兑换|70#魔龙贡献大于0W可兑换^-^250#兑换需要扣除100魔龙贡献+5金刚石/@兑换升级石>     <兑换|70#魔龙贡献大于0W可兑换^-^250#兑换需要扣除500魔龙贡献+8金刚石/@兑换进阶石>     <兑换|70#魔龙贡献大于0W可兑换^-^250#兑换需要扣除80魔龙贡献+5金刚石/@兑换精铁石>     <兑换|70#魔龙贡献大于0W可兑换^-^250#兑换需要扣除500魔龙贡献+10金刚石/@兑换咸鱼进阶石>     <兑换|70#魔龙贡献大于0W可兑换^-^250#兑换需要扣除1000魔龙贡献+20金刚石/@兑换白玉>     <兑换|70#魔龙贡献大于0W可兑换^-^250#兑换需要扣除10000魔龙贡献+200金刚石/@兑换彩玉>
+
+[@兑换彩玉]
+#IF
+SMALL U103 10000
+#ACT
+MESSAGEBOX 你的贡献点不足1W！
+BREAK
+
+#IF
+CHECKGAMEDIAMOND < 200
+#ACT
+MESSAGEBOX 你没有足够的金刚石！
+BREAK
+
+#IF
+LARGE J18 2
+#ACT
+MESSAGEBOX 你今日没有兑换次数了！
+BREAK
+
+#IF
+#ACT
+DEC U103 10000
+INC J18 1
+GIVE 彩玉 1
+SENDMSG 6 兑换成功！
+GOTO @MAIN
+
+[@兑换白玉]
+#IF
+SMALL U103 1000
+#ACT
+MESSAGEBOX 你的贡献点不足1000！
+BREAK
+
+#IF
+CHECKGAMEDIAMOND < 20
+#ACT
+MESSAGEBOX 你没有足够的金刚石！
+BREAK
+
+#IF
+LARGE J17 49
+#ACT
+MESSAGEBOX 你今日没有兑换次数了！
+BREAK
+
+#IF
+#ACT
+DEC U103 1000
+INC J17 1
+GIVE 白玉 1
+SENDMSG 6 兑换成功！
+GOTO @MAIN
+
+[@兑换咸鱼进阶石]
+#IF
+SMALL U103 500
+#ACT
+MESSAGEBOX 你的贡献点不足500！
+BREAK
+
+#IF
+CHECKGAMEDIAMOND < 10
+#ACT
+MESSAGEBOX 你没有足够的金刚石！
+BREAK
+
+#IF
+LARGE J16 99
+#ACT
+MESSAGEBOX 你今日没有兑换次数了！
+BREAK
+
+#IF
+#ACT
+DEC U103 500
+INC J16 1
+GIVE 进阶石 1
+SENDMSG 6 兑换成功！
+GOTO @MAIN
+
+[@兑换精铁石]
+#IF
+SMALL U103 80
+#ACT
+MESSAGEBOX 你的贡献点不足80！
+BREAK
+
+#IF
+CHECKGAMEDIAMOND < 5
+#ACT
+MESSAGEBOX 你没有足够的金刚石！
+BREAK
+
+#IF
+LARGE J15 499
+#ACT
+MESSAGEBOX 你今日没有兑换次数了！
+BREAK
+
+#IF
+#ACT
+DEC U103 80
+INC J15 1
+GIVE 精铁石 1
+SENDMSG 6 兑换成功！
+GOTO @MAIN
+
+[@兑换进阶石]
+#IF
+SMALL U103 500
+#ACT
+MESSAGEBOX 你的贡献点不足500！
+BREAK
+
+#IF
+CHECKGAMEDIAMOND < 8
+#ACT
+MESSAGEBOX 你没有足够的金刚石！
+BREAK
+
+#IF
+LARGE J12 19
+#ACT
+MESSAGEBOX 你今日没有兑换次数了！
+BREAK
+
+#IF
+#ACT
+DEC U103 500
+INC J12 1
+GIVE 装备进阶石 1
+SENDMSG 6 兑换成功！
+GOTO @MAIN
+
+[@兑换升级石]
+#IF
+SMALL U103 100
+#ACT
+MESSAGEBOX 你的贡献点不足100！
+BREAK
+
+#IF
+CHECKGAMEDIAMOND < 5
+#ACT
+MESSAGEBOX 你没有足够的金刚石！
+BREAK
+
+#IF
+LARGE J11 99
+#ACT
+MESSAGEBOX 你今日没有兑换次数了！
+BREAK
+
+#IF
+#ACT
+DEC U103 100
+INC J11 1
+GIVE 装备升级石 1
+SENDMSG 6 兑换成功！
+GOTO @MAIN
+
+[@_@计算魔龙城可兑换物品]
+#IF
+#ACT
+MOV N$升级石可兑换数量 100
+DEC N$升级石可兑换数量 <$STR(J11)>
+MOV N$进阶石可兑换数量 20
+DEC N$进阶石可兑换数量 <$STR(J12)>
+MOV N$精铁石可兑换数量 500
+DEC N$精铁石可兑换数量 <$STR(J15)>
+MOV N$咸鱼进阶石可兑换数量 100
+DEC N$咸鱼进阶石可兑换数量 <$STR(J16)>
+MOV N$白玉可兑换数量 50
+DEC N$白玉可兑换数量 <$STR(J17)>
+MOV N$彩玉可兑换数量 3
+DEC N$彩玉可兑换数量 <$STR(J18)>
+
+#IF
+LARGE J11 99
+#ACT
+MOV N$升级石可兑换标识 1
+#ELSEACT
+MOV N$升级石可兑换标识 0
+
+#IF
+LARGE J12 19
+#ACT
+MOV N$进阶石可兑换标识 1
+#ELSEACT
+MOV N$进阶石可兑换标识 0
+
+#IF
+LARGE J15 499
+#ACT
+MOV N$精铁石可兑换标识 1
+#ELSEACT
+MOV N$精铁石可兑换标识 0
+
+#IF
+LARGE J16 99
+#ACT
+MOV N$咸鱼进阶石可兑换标识 1
+#ELSEACT
+MOV N$咸鱼进阶石可兑换标识 0
+
+#IF
+LARGE J17 49
+#ACT
+MOV N$白玉可兑换标识 1
+#ELSEACT
+MOV N$白玉可兑换标识 0
+
+#IF
+LARGE J18 2
+#ACT
+MOV N$彩玉可兑换标识 1
+#ELSEACT
+MOV N$彩玉可兑换标识 0

@@ -1,0 +1,1002 @@
+[@初始化属性]
+{
+#if
+#act
+MOV N$金伤斩PK几率 5
+MOV N$万象CD 0
+MOV N$对人物真实伤害 0
+MOV N$传承无敌套CD 10
+MOV N$免疫对人物真实伤害 0
+MOV N$小怪鞭尸 0
+MOV N$BOSS鞭尸 0
+MOV N$勤奋套杀怪经验 0
+MOV N$幸运套怪物爆率 0
+MOV N$暴躁套暴击伤害 0
+MOV N$神之套暴击几率 0
+MOV N$壁垒套暴击防御 0
+MOV N$天殇套真实伤害 0
+MOV N$精英套对精英伤害 0
+MOV N$数字增加杀怪经验 0
+MOV N$幽魂宝藏开启数量 5000
+MOV N$日精月华开关 0
+MOV N$灵动风翼开关 0
+MOV N$八荒枪灵开关 0
+MOV N$诱惑之光几率 1
+MOV N$诱惑之光数量 1
+MOV N$天罡鼎CD 600
+MOV N$打怪倍攻 100
+MOV N$打人倍攻 100
+MOV N$传仙盲盒传仙币几率 20
+MOV N$挂机扣除金币减少百分比 100
+MOV N$狂暴鞭尸 0
+MOV N$狂暴致命一击和伤害 0
+MOV N$狂暴金币回收 0
+MOV N$狂暴技能倍攻 0
+MOV N$狂暴幸运
+MOV N$精英怪增加伤害 100
+MOV N$龙之迷数人物百分比属性 0
+MOV N$技能打人打怪伤害集合 0
+MOV N$BOSS降临打怪数量 20000
+MOV N$VIP拾取范围 0
+MOV N$VIP挂机金币减少 0
+MOV N$VIP技能幸运 0
+MOV N$VIP开盲盒几率 0
+MOV N$VIP金币回收 0
+MOV N$VIP杀怪经验 0
+MOV N$幸运集合 0
+MOV N$传送CD 10
+MOV N$幽魂之门允许开启次数 10
+MOV N$周卡三维属性 0
+MOV N$天殇丹青魂丹对怪物伤害 0
+MOV N$击杀BOSS可获取元宝数量 15000
+MOV N$仙器爆率 1
+MOV N$诛仙剑阵倍攻属性 0
+MOV N$挂机给幽魂卷上限 0
+MOV N$八卦石头爆率 10
+MOV N$对BOSS伤害增加 100
+MOV N$混沌火轮范围 1
+MOV N$混沌火轮数量 4
+MOV N$混沌开天范围 5
+MOV N$凤爆狂雷伤害 1000000000000000
+MOV N$混沌开天伤害 100
+
+
+
+MOV N$月灵道祖初始化范围 2
+
+
+MOV N$万象魔咒范围 300
+MOV N$自动拾取范围 4
+MOV N$刺杀降低防御开关 0
+MOV N$寂静之雷降低魔御开关 0
+MOV N$灵葫降低魔御开关 0
+MOV N$禁止吸血几率 0
+MOV N$禁止吸蓝几率 0
+MOV N$混沌火雨伤害 100
+
+MOV N$统领及以上怪物造成更多伤害 100
+
+MOV N$刺杀剑术幸运 0
+MOV N$刺杀打怪默认伤害 100
+MOV N$刺杀打人默认伤害 100
+MOV N$刺杀剑术打怪伤害百分比 100
+MOV N$刺杀剑术打人伤害百分比 100
+MOV N$刺杀剑术倍攻 100
+MOV N$刺杀范围 2
+MOV N$刺杀魔次 0
+MOV N$地刺突袭几率 0
+MOV N$地刺突袭伤害 100
+MOV N$五大陆反伤 100
+MOV N$混沌石灵范围 7
+MOV N$混沌石灵伤害 100
+MOV N$混沌石灵数量 1
+MOV N$宠物初始化攻击 1000000000000000000
+MOV N$麻痹戒指对怪物伤害 10
+MOV N$石化戒指对怪物伤害 10
+MOV N$冰冻戒指对怪物伤害 10
+
+
+MOV N$金殇斩幸运 0
+MOV N$金殇斩打怪默认伤害 100000
+MOV N$金殇斩打人默认伤害 50
+MOV N$金殇斩对怪物伤害百分比 100
+MOV N$金殇斩对人物伤害百分比 100
+MOV N$金殇斩倍攻 100
+MOV N$金殇斩范围 3
+MOV N$金殇斩几率 5
+MOV N$金殇斩非魔次百分比 100
+
+MOV N$野蛮冲撞幸运 0
+MOV N$野蛮冲撞倍攻 100
+MOV N$野蛮冲撞打怪默认伤害 50000
+MOV N$野蛮冲撞打人默认伤害 100
+MOV N$野蛮冲撞怪物伤害百分比 100
+MOV N$野蛮冲撞人物伤害百分比 100
+MOV N$野蛮冲撞攻击范围 2
+MOV N$野蛮冲撞CD 0
+MOV N$野蛮冲撞非魔次百分比 100
+
+MOV N$浴火鞭策攻击力 0
+MOV N$浴火鞭策持续时间 5
+
+
+MOV N$焚土喷焰幸运 0
+MOV N$焚土喷焰打怪默认伤害 100000
+MOV N$焚土喷焰打人默认伤害 150
+MOV N$焚土喷焰怪物伤害百分比 100
+MOV N$焚土喷焰人物伤害百分比 100
+MOV N$焚土喷焰倍攻 100
+MOV N$焚土喷焰范围 3
+MOV N$焚土喷焰几率 8
+MOV N$焚土喷焰非魔次百分比 100
+
+
+MOV N$天灵符爆幸运 0
+MOV N$天灵符爆打怪默认伤害 100000
+MOV N$天灵符爆打人默认伤害 150
+MOV N$天灵符爆对怪物伤害百分比 100
+MOV N$天灵符爆对人物伤害百分比 100
+MOV N$天灵符爆倍攻 100
+MOV N$天灵符爆几率 8
+MOV N$天灵符爆范围 3
+MOV N$天灵符爆非魔次百分比 100
+
+MOV N$漫天火雨等级 0
+MOV N$漫天火雨幸运 0
+MOV N$漫天火雨倍攻 100
+MOV N$漫天火雨默认打怪伤害 20000
+MOV N$漫天火雨默认打人伤害 65
+MOV N$漫天火雨怪物伤害百分比 100
+MOV N$漫天火雨人物伤害百分比 100
+MOV N$漫天火雨持续时间 30
+MOV N$漫天火雨非魔次百分比 100
+
+
+
+MOV N$凤爆狂雷范围 3
+
+
+
+
+
+MOV N$梵天圣火幸运 0
+MOV N$梵天圣火默认打怪伤害 2000
+MOV N$梵天圣火默认打人伤害 25
+MOV N$梵天圣火怪物伤害百分比 100
+MOV N$梵天圣火人物伤害百分比 100
+MOV N$梵天圣火伤害次数 55
+MOV N$梵天圣火伤害间隔 500
+MOV N$梵天圣火范围 3
+MOV N$梵天圣火倍攻 100
+MOV N$梵天圣火非魔次百分比 100
+
+
+MOV N$蛊毒术幸运 0
+MOV N$蛊毒术倍攻 100
+MOV N$蛊毒术默认打怪伤害 2000
+MOV N$蛊毒术默认打人伤害 25
+MOV N$蛊毒术怪物伤害百分比 100
+MOV N$蛊毒术人物伤害百分比 100
+MOV N$蛊毒术伤害次数 55
+MOV N$蛊毒术伤害间隔 500
+MOV N$蛊毒术范围 3
+MOV N$蛊毒术降低防御 15
+MOV N$蛊毒术降低魔御 10
+MOV N$蛊毒术非魔次百分比 100
+
+
+
+
+MOV N$寂静之雷幸运 0
+MOV N$寂静之雷打怪默认伤害 100
+MOV N$寂静之雷打人默认伤害 100
+MOV N$寂静之雷人物伤害百分比 100
+MOV N$寂静之雷怪物伤害百分比 100
+MOV N$寂静之雷倍攻 100
+MOV N$寂静之雷范围 1
+MOV N$寂静之雷魔次 0
+MOV N$九霄爆雷术几率 0
+MOV N$九霄爆雷术伤害 100
+MOV N$寂静之雷魔次次数百分比 0 
+
+
+
+MOV N$灵葫幸运 0
+MOV N$灵葫打怪默认伤害 100
+MOV N$灵葫打人默认伤害 100
+MOV N$灵葫人物伤害百分比 100
+MOV N$灵葫怪物伤害百分比 100
+MOV N$灵葫倍攻 100
+MOV N$灵葫范围 1
+MOV N$灵葫魔次 0
+MOV N$天罚之印几率 0
+MOV N$法宝天罚之印伤害 100
+
+
+
+
+
+
+
+MOV N$幽龙镇魂幸运 0
+MOV N$幽龙镇魂打怪默认伤害 300
+MOV N$幽龙镇魂打人默认伤害 150
+MOV N$幽龙镇魂对怪物伤害百分比 100
+MOV N$幽龙镇魂对人物伤害百分比 100
+MOV N$幽龙镇魂倍攻 100
+MOV N$幽龙镇魂魔次 0
+MOV N$幽龙镇魂范围 2
+MOV N$噬魂暗袭范围 2
+MOV N$幽龙镇魂CD减少 0
+MOV N$噬魂暗袭几率
+
+
+
+
+
+
+
+
+
+MOV N$烈火剑法幸运 0
+MOV N$烈火剑法打怪默认伤害 300
+MOV N$烈火剑法打人默认伤害 200
+MOV N$烈火剑法对怪物伤害百分比 100
+MOV N$烈火剑法对人物伤害百分比 100
+MOV N$烈火剑法倍攻 100
+MOV N$烈火剑法魔次 0
+MOV N$天神一击范围 2
+MOV N$烈火剑法CD减少 0
+MOV N$天神一击几率 0
+
+
+
+MOV N$冰咆哮幸运 0
+MOV N$冰咆哮打怪默认伤害 300
+MOV N$冰咆哮打人默认伤害 200
+MOV N$冰咆哮对人物伤害百分比 100
+MOV N$冰咆哮对怪物伤害百分比 100
+MOV N$冰咆哮倍攻 100
+MOV N$冰咆哮魔次 0
+MOV N$冰咆哮范围 2
+MOV N$寒渊冰刺范围 2
+MOV N$寒渊冰刺几率 0
+MOV N$冰咆哮CD减少 0
+
+
+
+
+
+
+
+
+
+MOV N$十字破军斩幸运 0
+MOV N$十字破军斩倍攻 100
+MOV N$十字破军斩打怪默认伤害 100000
+MOV N$十字破军斩打人默认伤害 100
+;十字破军斩存在时间最低500
+MOV N$十字破军斩存在时间 5000
+;十字破军斩伤害间隔 最低100
+MOV N$十字破军斩伤害间隔 1000
+MOV N$十字破军斩人物伤害百分比 60
+MOV N$十字破军斩怪物伤害百分比 100
+
+
+
+;50次伤害等于炎龙降临5次伤害
+
+MOV N$修罗血魂阵幸运 0
+MOV N$修罗血魂阵默认打怪伤害 10000
+MOV N$修罗血魂阵默认打人伤害 0
+MOV N$修罗血魂阵伤害次数 55
+MOV N$修罗血魂阵范围 2
+MOV N$修罗血魂阵人物伤害百分比 60
+MOV N$修罗血魂阵怪物伤害百分比 100
+MOV N$修罗血魂阵倍攻 100
+MOV N$修罗血魂阵非魔次百分比 100
+
+MOV N$熔岩烈剑幸运 0
+MOV N$熔岩烈剑默认打怪伤害 20000
+MOV N$熔岩烈剑默认打人伤害 40
+MOV N$熔岩烈剑人物伤害百分比 70
+MOV N$熔岩烈剑怪物伤害百分比 100
+MOV N$熔岩烈剑范围 1
+MOV N$熔岩烈剑倍攻 100
+MOV N$熔岩烈剑非魔次百分比 100
+
+MOV N$极光斩幸运 0
+MOV N$极光斩人物伤害百分比 85
+MOV N$极光斩怪物伤害百分比 100
+MOV N$极光斩次数 10
+
+;50次伤害等于炎龙降临5次伤害
+
+MOV N$炎龙降临幸运 0
+MOV N$炎龙降临默认打怪伤害 50000
+MOV N$炎龙降临默认打人伤害 50
+MOV N$炎龙降临攻击频率 5
+MOV N$炎龙降临打人百分比 70
+MOV N$炎龙降临打怪百分比 100
+;炎龙降临攻击次数默认1等于2次 就变加几就是多几次
+MOV N$炎龙降临攻击次数 4
+MOV N$炎龙降临攻击范围 1
+MOV N$炎龙降临倍攻 100
+MOV N$炎龙降临非魔次百分比 100
+;对人物伤害
+;对怪物倍率
+;攻击次数
+
+
+MOV N$混乱元素幸运 0
+MOV N$混乱元素时间 60
+MOV N$混乱元素对怪默认伤害 200000
+MOV N$混乱元素对人默认伤害 100
+MOV N$混乱元素对人伤害 100
+MOV N$混乱元素对怪伤害百分比 100
+MOV N$混乱元素元素球数量 0
+MOV N$混乱元素释放技能减少时间 2
+MOV N$混乱元素非魔次百分比 100
+MOV N$混乱元素倍攻 100
+
+
+
+
+MOV N$魔焰狂澜范围 4
+MOV N$威慑符印范围 4
+MOV N$龙袭风暴范围 4
+
+
+
+MOV N$魔焰狂澜伤害 10
+MOV N$威慑符印伤害 10
+MOV N$龙袭风暴伤害 10
+MOV N$机关枪伤害百分比 1000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MOV N$道士召唤异火神兽幸运 0
+MOV N$道士召唤流金圣兽幸运 0
+
+
+
+MOV N$宝宝攻击目标判断 0
+MOV N$凡品几率 0
+MOV N$精品几率 0
+MOV N$圣品几率 0
+MOV N$仙品几率 0
+MOV N$神品几率 0
+MOV N$怪物爆率 100
+MOV N$杀怪经验 100
+
+
+
+
+
+
+
+
+
+
+
+
+MOV N$道士召唤宝宝幸运 0
+MOV N$骷髅默认伤害 10000
+MOV N$骷髅伤害 100
+MOV N$骷髅宝宝杀怪召唤几率 0
+MOV N$骷髅伤害倍攻 100
+MOV N$道士召唤骷髅数量 5
+MOV N$骷髅PK伤害 100
+MOV N$骷髅HP 300
+MOV N$骷髅防御 150
+MOV N$骷髅魔御 150
+MOV N$骷髅移动 350
+MOV N$骷髅攻速 200
+MOV N$召唤战争之王数量 5
+MOV N$战争之王数量 5
+MOV N$骷髅伤害非魔次百分比 100
+MOV N$道士召唤圣兽数量 1
+MOV N$圣兽非魔次百分比 100
+
+
+MOV N$道士召唤火兽数量 2
+MOV N$火兽默认伤害 5000
+MOV N$火兽伤害 100
+MOV N$火兽伤害倍攻 100
+MOV N$火兽HP 400
+MOV N$火兽PK伤害 110
+MOV N$火兽防御 300
+MOV N$火兽魔御 250
+MOV N$火兽移动 400
+MOV N$火兽攻速 300
+MOV N$火兽伤害非魔次百分比 100
+MOV N$火兽攻击范围 4
+MOV N$异火兽攻击范围 6
+MOV N$异火神兽攻击范围 8
+
+MOV N$道士召唤圣兽数量 1
+MOV N$圣兽默认伤害 18000
+MOV N$圣兽伤害 100
+MOV N$圣兽伤害倍攻 100
+MOV N$圣兽HP 600
+MOV N$圣兽PK伤害 70
+MOV N$圣兽防御 350
+MOV N$圣兽魔御 300
+MOV N$圣兽移动 1000
+MOV N$圣兽攻速 350
+
+
+
+
+MOV N$魔法盾反伤 0
+MOV N$魔法盾持续时间 300000
+MOV N$魔法盾增加人物防御下限百分比 120
+MOV N$魔法盾增加人物防御上限百分比 120
+MOV N$魔法盾增加人物魔御下限百分比 120
+MOV N$魔法盾增加人物魔御上限百分比 120
+
+
+MOV N$双防之盾防御 140
+MOV N$双防之盾魔御 110
+
+MOV N$双防之盾持续时间 30000
+MOV N$双防之盾反伤 0
+
+MOV N$不屈意志防御 10
+MOV N$不屈意志持续时间 30000
+MOV N$不屈意志反伤 0
+
+
+MOV N$人物防御百分比下限 0
+MOV N$人物防御百分比上限 0
+MOV N$人物魔御百分比下限 0
+MOV N$人物魔御百分比上限 0
+MOV N$人物攻击力百分比下限 0
+MOV N$人物攻击力百分比上限 0
+MOV N$人物魔法力百分比下限 0
+MOV N$人物魔法力百分比上限 0
+MOV N$人物道术力百分比下限 0
+MOV N$人物道术力百分比上限 0
+
+
+
+MOV N$神愈术时间 10
+MOV N$神愈术每次治愈量 10
+
+
+
+MOV N$圣兽伤害总百分比 100
+MOV N$伤害反弹 0
+MOV N$怪物伤害格挡 0
+MOV N$生命值百分比 1
+MOV N$魔力值百分比 0
+MOV N$人物暴击几率 0
+MOV N$人物暴击防御 0
+MOV N$人物暴击伤害 100
+MOV N$攻击速度 200
+MOV N$释放速度 0
+MOV N$攻击前触发增加百分比伤害人物 0
+MOV N$复活倒计时 60
+MOV N$二次复活倒计时 120
+MOV N$生命低于10伤害增加赋值 0
+MOV N$攻击吸血百分比 100
+MOV N$攻击吸蓝百分比 100
+MOV N$攻击吸血值 0
+MOV N$攻击吸蓝值 0
+
+
+MOV N$仙器刺杀 0
+MOV N$仙器金殇斩 0
+MOV N$仙器野蛮冲撞 0
+MOV N$仙器龙袭风暴 0
+MOV N$仙器烈火剑法 0
+MOV N$仙器修罗血魂阵 0
+; MOV N$岩龙碑十字破军斩 666
+MOV N$仙器寂静之雷 0
+MOV N$仙器焚土喷焰 0
+MOV N$仙器梵天圣火 0
+; MOV N$岩龙碑漫天火雨 3100
+MOV N$仙器魔焰狂澜 0
+MOV N$仙器冰咆哮 0
+MOV N$仙器炎龙降临 0
+MOV N$仙器灵葫 0
+MOV N$仙器天灵符暴 0
+MOV N$仙器蛊毒术 0
+MOV N$仙器骷髅伤害 0
+MOV N$仙器威慑符印 0
+MOV N$仙器幽龙镇魂 0
+MOV N$仙器召唤火兽 0
+MOV N$仙器召唤圣兽 0
+
+
+
+MOV N$金币回收百分比 100
+
+
+MOV N$所有技能伤害降低倍数 1
+
+#if
+EQUAL N$降低移动速度开关 0
+#act
+MOV N$移动速度 0
+
+
+
+
+
+; #or
+; EQUAL <$MAP> 3201
+; EQUAL <$MAP> 3202
+; EQUAL <$MAP> 3203
+; EQUAL <$MAP> 3204
+; EQUAL <$MAP> 3301
+; EQUAL <$MAP> 3302
+; EQUAL <$MAP> 3303
+; EQUAL <$MAP> 3401
+; EQUAL <$MAP> 3402
+; EQUAL <$MAP> 3403
+; EQUAL <$MAP> 4101
+; EQUAL <$MAP> 4102
+; EQUAL <$MAP> 4103
+; EQUAL <$MAP> 04
+; EQUAL <$MAP> VIP4
+; #act
+; MOV N$所有技能伤害降低倍数 5
+
+; #or
+; EQUAL <$MAP> 4201
+; EQUAL <$MAP> 4202
+; EQUAL <$MAP> 4203
+; EQUAL <$MAP> 4204
+; EQUAL <$MAP> 4205
+; EQUAL <$MAP> 4206
+; EQUAL <$MAP> 4301
+; EQUAL <$MAP> 4302
+; EQUAL <$MAP> 4303
+; EQUAL <$MAP> 4304
+; EQUAL <$MAP> 4401
+; EQUAL <$MAP> 4402
+; EQUAL <$MAP> 4403
+; EQUAL <$MAP> 4404
+; EQUAL <$MAP> 5301
+; EQUAL <$MAP> 5302
+; EQUAL <$MAP> 5303
+; EQUAL <$MAP> 5304
+; EQUAL <$MAP> 05
+; #act
+; MOV N$所有技能伤害降低倍数 57
+
+; #or
+; EQUAL <$MAP> 5101
+; EQUAL <$MAP> 5102
+; EQUAL <$MAP> 5103
+; EQUAL <$MAP> 5104
+; EQUAL <$MAP> 5105
+; EQUAL <$MAP> 5106
+; EQUAL <$MAP> 5201
+; EQUAL <$MAP> 5202
+; EQUAL <$MAP> 5203
+; EQUAL <$MAP> 5204
+; EQUAL <$MAP> 5401
+; EQUAL <$MAP> 5402
+; EQUAL <$MAP> 5403
+; EQUAL <$MAP> 5404
+; EQUAL <$MAP> 5405
+; EQUAL <$MAP> 5406
+; EQUAL <$MAP> 06
+; #act
+; MOV N$所有技能伤害降低倍数 25662
+
+#if
+#act
+GetAllCustomItemValueByTextLine 8 -1 1  N$没用 N$装备寂静之雷魔次 N$没用
+GetAllCustomItemValueByTextLine 8 -1 2  N$没用 N$装备梵天圣火伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 3  N$没用 N$装备冰咆哮魔次 N$没用
+GetAllCustomItemValueByTextLine 8 -1 4  N$没用 N$装备漫天火雨伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 5  N$没用 N$装备刺杀魔次 N$没用
+GetAllCustomItemValueByTextLine 8 -1 6  N$没用 N$装备烈火魔次 N$没用
+GetAllCustomItemValueByTextLine 8 -1 7  N$没用 N$装备金殇斩伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 8  N$没用 N$装备野蛮冲撞伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 9  N$没用 N$装备灵葫魔次 N$没用
+GetAllCustomItemValueByTextLine 8 -1 10  N$没用 N$装备蛊毒术伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 11  N$没用 N$装备骷髅伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 12  N$没用 N$装备新手套装吸血 N$没用
+GetAllCustomItemValueByTextLine 8 -1 13 N$没用 N$装备道士新手套装吸血 N$没用
+GetAllCustomItemValueByTextLine 8 -1 14 N$没用 N$法宝刺杀怪物伤害百分比 N$没用
+GetAllCustomItemValueByTextLine 8 -1 15 N$没用 N$法宝寂静之雷怪物伤害百分比 N$没用
+GetAllCustomItemValueByTextLine 8 -1 16 N$没用 N$攻击法师时额外造成伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 17 N$没用 N$攻击战士时额外造成伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 18 N$没用 N$攻击道士时额外造成伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 19 N$没用 N$万象CD N$没用
+GetAllCustomItemValueByTextLine 8 -1 20 N$没用 N$法宝每秒恢复HPMP N$没用
+GetAllCustomItemValueByTextLine 8 -1 21 N$没用 N$法宝攻击吸血 N$没用
+GetAllCustomItemValueByTextLine 8 -1 22 N$没用 N$法宝攻击吸蓝 N$没用
+GetAllCustomItemValueByTextLine 8 -1 23 N$没用 N$法宝灵葫怪物伤害百分比 N$没用
+GetAllCustomItemValueByTextLine 8 -1 24 N$没用 N$法宝金殇斩释放几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 25 N$没用 N$法宝焚土喷焰释放几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 26 N$没用 N$法宝天灵符爆释放几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 27 N$没用 N$法宝刺杀降低防御 N$没用
+GetAllCustomItemValueByTextLine 8 -1 28 N$没用 N$法宝神罚之雷降低魔御 N$没用
+GetAllCustomItemValueByTextLine 8 -1 29 N$没用 N$法宝灵葫降低双防 N$没用
+GetAllCustomItemValueByTextLine 8 -1 30 N$没用 N$盾牌增加生命值百分比 N$没用
+GetAllCustomItemValueByTextLine 8 -1 31 N$没用 N$盾牌增加魔法值百分比 N$没用
+GetAllCustomItemValueByTextLine 8 -1 32 N$没用 N$盾牌防御力 N$没用
+GetAllCustomItemValueByTextLine 8 -1 33 N$没用 N$盾牌魔御力 N$没用
+GetAllCustomItemValueByTextLine 8 -1 34 N$没用 N$法宝增加刺杀范围  N$没用
+GetAllCustomItemValueByTextLine 8 -1 35 N$没用 N$法宝增加寂静之雷范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 36 N$没用 N$法宝增加灵葫范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 37 N$没用 N$法宝释放金殇斩后攻击力提升百分比 N$没用
+GetAllCustomItemValueByTextLine 8 -1 38 N$没用 N$法宝释放焚土喷焰后攻击力提升百分比 N$没用
+GetAllCustomItemValueByTextLine 8 -1 39 N$没用 N$法宝释放天灵符爆后攻击力提升百分比 N$没用
+GetAllCustomItemValueByTextLine 8 -1 40 N$没用 N$法宝召唤战争弓箭手数量 N$没用
+GetAllCustomItemValueByTextLine 8 -1 41 N$没用 N$法宝释放金殇斩有几率切割BOSS N$没用
+GetAllCustomItemValueByTextLine 8 -1 42 N$没用 N$法宝释放焚土喷焰有几率切割BOSS N$没用
+GetAllCustomItemValueByTextLine 8 -1 43 N$没用 N$法宝释放天灵符爆有几率切割BOSS N$没用
+GetAllCustomItemValueByTextLine 8 -1 44 N$没用 N$法宝战争弓箭手召唤几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 45 N$没用 N$法宝野蛮冲撞恢复生命值 N$没用
+GetAllCustomItemValueByTextLine 8 -1 46 N$没用 N$法宝梵天圣火伤害次数增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 47 N$没用 N$法宝蛊毒术伤害次数增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 48 N$没用 N$法宝野蛮冲撞攻击范围增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 49 N$没用 N$法宝梵天圣火范围增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 50 N$没用 N$法宝蛊毒术范围增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 51 N$没用 N$法宝对方当前生命高给自己加攻击力 N$没用
+GetAllCustomItemValueByTextLine 8 -1 52 N$没用 N$法宝干将莫邪剑比对方等级高 N$没用
+GetAllCustomItemValueByTextLine 8 -1 53 N$没用 N$法宝在线时间比对方长增加攻击力 N$没用
+GetAllCustomItemValueByTextLine 8 -1 54 N$没用 N$法宝天神一击几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 55 N$没用 N$法宝寒渊冰刺几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 56 N$没用 N$法宝噬魂暗袭几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 57 N$没用 N$法宝血量低于30装死恢复血量 N$没用
+GetAllCustomItemValueByTextLine 8 -1 58 N$没用 N$法宝被攻击增加的致命一击 N$没用
+GetAllCustomItemValueByTextLine 8 -1 59 N$没用 N$法宝攻击时降低致命伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 60 N$没用 N$法宝修罗血魂阵伤害增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 61 N$没用 N$法宝炎龙降临攻击次数 N$没用
+GetAllCustomItemValueByTextLine 8 -1 62 N$没用 N$法宝召唤战争之王 N$没用
+GetAllCustomItemValueByTextLine 8 -1 63 N$没用 N$装备魔焰狂澜伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 64 N$没用 N$装备威慑符印伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 65 N$没用 N$装备龙袭风暴伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 66 N$没用 N$装备焚土喷焰伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 67 N$没用 N$装备天灵符爆伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 68 N$没用 N$法宝地刺突袭几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 69 N$没用 N$法宝九霄爆雷术几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 70 N$没用 N$法宝天罚之印几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 71 N$没用 N$法宝地刺突袭伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 72 N$没用 N$法宝九霄爆雷术伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 73 N$没用 N$法宝天罚之印伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 74 N$没用 N$法宝地刺突袭切割怪物当前血量几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 75 N$没用 N$法宝九霄爆雷术切割怪物当前血量几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 76 N$没用 N$法宝天罚之印切割怪物当前血量几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 77 N$没用 N$法宝火兽伤害增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 78 N$没用 N$法宝漫天火雨范围增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 79 N$没用 N$法宝幽龙镇魂伤害增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 80 N$没用 N$法宝修罗血魂阵范围增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 81 N$没用 N$法宝炎龙降临频率增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 82 N$没用 N$法宝鞭策增加宝宝移动速度 N$没用
+GetAllCustomItemValueByTextLine 8 -1 83 N$没用 N$法宝全服死亡次数最多 N$没用
+GetAllCustomItemValueByTextLine 8 -1 84 N$没用 N$法宝进入战斗状态死亡时时装备防爆几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 85 N$没用 N$法宝生命低于10增加伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 86 N$没用 N$法宝十字破军斩间隔 N$没用
+GetAllCustomItemValueByTextLine 8 -1 87 N$没用 N$法宝诱惑之光数量 N$没用
+GetAllCustomItemValueByTextLine 8 -1 88 N$没用 N$法宝召唤火兽攻击范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 89 N$没用 N$法宝元宝翻倍 N$没用
+GetAllCustomItemValueByTextLine 8 -1 90 N$没用 N$法宝法师打怪增加伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 91 N$没用 N$法宝宝宝有几率继承致命一击几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 92 N$没用 N$法宝攻击时有几率禁止对方吸血 N$没用
+GetAllCustomItemValueByTextLine 8 -1 93 N$没用 N$法宝攻击时有几率禁止对方吸蓝 N$没用
+GetAllCustomItemValueByTextLine 8 -1 94 N$没用 N$法宝攻击统领及以上怪物造成更多伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 95 N$没用 N$法宝十字破军斩伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 96 N$没用 N$法宝炎龙降临范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 97 N$没用 N$法宝欲火鞭策CD N$没用
+GetAllCustomItemValueByTextLine 8 -1 98 N$没用 N$法宝野蛮冲撞有几率重置烈火CD N$没用
+GetAllCustomItemValueByTextLine 8 -1 99 N$没用 N$法宝炎龙降临每次攻击几率增加一次 N$没用
+GetAllCustomItemValueByTextLine 8 -1 100 N$没用 N$法宝召唤神兽时有几率召唤异火神兽没用了 N$没用
+GetAllCustomItemValueByTextLine 8 -1 101 N$没用 N$法宝钓鱼时增加泡点经验没用了 N$没用
+GetAllCustomItemValueByTextLine 8 -1 102 N$没用 N$法宝攻击时有几率增加幸运 N$没用
+GetAllCustomItemValueByTextLine 8 -1 103 N$没用 N$法宝金币回收 N$没用
+GetAllCustomItemValueByTextLine 8 -1 104 N$没用 N$法宝释放不屈意志时增加暴击防御 N$没用
+GetAllCustomItemValueByTextLine 8 -1 105 N$没用 N$法宝释放魔法盾时增加暴击防御 N$没用
+GetAllCustomItemValueByTextLine 8 -1 106 N$没用 N$法宝释放双防之盾时增加暴击防御 N$没用
+GetAllCustomItemValueByTextLine 8 -1 107 N$没用 N$法宝释放烈火剑法时有几率召唤神龙攻击 N$召唤神龙攻击倍数
+GetAllCustomItemValueByTextLine 8 -1 108 N$没用 N$法宝释放冰咆哮时有几率召陨石攻击 N$召唤陨石攻击倍数
+GetAllCustomItemValueByTextLine 8 -1 109 N$没用 N$法宝释放幽龙镇魂时有几率召毒鼎攻击 N$召唤毒鼎攻击倍数
+GetAllCustomItemValueByTextLine 8 -1 110 N$没用 N$法宝烈火CD减少 N$没用
+GetAllCustomItemValueByTextLine 8 -1 111 N$没用 N$法宝冰咆哮CD减少 N$没用
+GetAllCustomItemValueByTextLine 8 -1 112 N$没用 N$法宝幽龙镇魂CD减少 N$没用
+GetAllCustomItemValueByTextLine 8 -1 113 N$没用 N$法宝蛊毒术范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 114 N$没用 N$法宝释道士宝宝吸血 N$没用
+GetAllCustomItemValueByTextLine 8 -1 115 N$没用 N$法宝释放双防之盾时增加周围防御力 N$没用
+GetAllCustomItemValueByTextLine 8 -1 116 N$没用 N$法宝和平模式下增加攻击速度 N$没用
+GetAllCustomItemValueByTextLine 8 -1 117 N$没用 N$法宝和平模式下增加释放速度 N$没用
+GetAllCustomItemValueByTextLine 8 -1 118 N$没用 N$法宝和平模式宝宝增加攻击速度 N$没用
+GetAllCustomItemValueByTextLine 8 -1 119 N$没用 N$法宝降低转生费用 N$没用
+GetAllCustomItemValueByTextLine 8 -1 120 N$没用 N$法宝杀死敌人掠夺对方金币 N$没用
+GetAllCustomItemValueByTextLine 8 -1 121 N$没用 N$法宝击杀统领及以上BOSS获得双倍充值 N$没用
+GetAllCustomItemValueByTextLine 8 -1 122 N$没用 N$法宝不屈意志时减少对方防御 N$没用
+GetAllCustomItemValueByTextLine 8 -1 123 N$没用 N$法宝魔法盾时减少对方防御 N$没用
+GetAllCustomItemValueByTextLine 8 -1 124 N$没用 N$法宝双防之盾时减少对方防御 N$没用
+GetAllCustomItemValueByTextLine 8 -1 125 N$没用 N$法宝不屈意志每次伤害对方返回自己生命值 N$没用
+GetAllCustomItemValueByTextLine 8 -1 126 N$没用 N$法宝魔法盾每次伤害对方返回自己生命值 N$没用
+GetAllCustomItemValueByTextLine 8 -1 127 N$没用 N$法宝双防之盾每次伤害对方返回自己生命值 N$没用
+GetAllCustomItemValueByTextLine 8 -1 128 N$没用 N$法宝统领及以上怪物打掉百分比血量 N$没用
+GetAllCustomItemValueByTextLine 8 -1 129 N$没用 N$法宝精英及以下怪物打掉百分比血量 N$没用
+GetAllCustomItemValueByTextLine 8 -1 130 N$没用 N$法宝第一刀有几率压制对方血量10秒后返还 N$没用
+GetAllCustomItemValueByTextLine 8 -1 131 N$没用 N$法宝不屈意志被攻击时反伤 N$没用
+GetAllCustomItemValueByTextLine 8 -1 132 N$没用 N$法宝魔法盾被攻击时反伤 N$没用
+GetAllCustomItemValueByTextLine 8 -1 133 N$没用 N$法宝双防之盾被攻击时反伤 N$没用
+GetAllCustomItemValueByTextLine 8 -1 134 N$没用 N$法宝增加仙器爆率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 135 N$没用 N$法宝被攻击回光返照几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 136 N$没用 N$法宝攻击降低敌人移动速度 N$没用
+GetAllCustomItemValueByTextLine 8 -1 137 N$没用 N$法宝攻击降低敌人攻击速度 N$没用
+GetAllCustomItemValueByTextLine 8 -1 138 N$没用 N$法宝攻击降低敌人释放速度 N$没用
+GetAllCustomItemValueByTextLine 8 -1 139 N$没用 N$法宝被攻击对方血量高一起回城几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 140 N$没用 N$万象套刺杀魔次数量增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 141 N$没用 N$万象套刺杀范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 142 N$没用 N$万象套刺杀对人物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 143 N$没用 N$万象套寂静之雷魔次数量增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 144 N$没用 N$万象套寂静之雷范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 145 N$没用 N$万象套寂静之雷对人物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 146 N$没用 N$万象套梵天圣火次数 N$没用
+GetAllCustomItemValueByTextLine 8 -1 147 N$没用 N$万象套梵天圣火对人物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 148 N$没用 N$万象套冰咆哮魔次数量增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 149 N$没用 N$万象套冰咆哮对人物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 150 N$没用 N$万象套冰咆哮对怪物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 151 N$没用 N$万象套刺杀剑术对怪物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 152 N$没用 N$万象套寂静之雷对怪物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 153 N$没用 N$万象套漫天火雨等级 N$没用
+GetAllCustomItemValueByTextLine 8 -1 154 N$没用 N$万象套漫天火雨持续时间 N$没用
+GetAllCustomItemValueByTextLine 8 -1 155 N$没用 N$万象套烈火剑法魔次数量增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 156 N$没用 N$万象套烈火剑法对人物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 157 N$没用 N$万象套烈火剑法对怪物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 158 N$没用 N$万象套烈火剑法CD减少 N$没用
+GetAllCustomItemValueByTextLine 8 -1 159 N$没用 N$万象套冰咆哮CD减少 N$没用
+GetAllCustomItemValueByTextLine 8 -1 160 N$没用 N$万象套寒渊冰刺范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 161 N$没用 N$万象套寒渊冰刺几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 162 N$没用 N$万象套天神一击几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 163 N$没用 N$万象套天神一击范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 164 N$没用 N$万象套金殇斩几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 165 N$没用 N$万象套金殇斩对人物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 166 N$没用 N$万象套野蛮冲撞对人物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 167 N$没用 N$万象套野蛮冲撞CD减少 N$没用
+GetAllCustomItemValueByTextLine 8 -1 168 N$没用 N$万象套灵葫魔次数量增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 169 N$没用 N$万象套灵葫范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 170 N$没用 N$万象套灵葫对人物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 171 N$没用 N$万象套蛊毒术伤害次数 N$没用
+GetAllCustomItemValueByTextLine 8 -1 172 N$没用 N$万象套蛊毒术人物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 173 N$没用 N$万象套梵天圣火范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 174 N$没用 N$万象套蛊毒术范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 175 N$没用 N$万象套骷髅伤害倍数提升 N$没用
+GetAllCustomItemValueByTextLine 8 -1 176 N$没用 N$万象套骷髅对人物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 177 N$没用 N$万象套万象魔咒范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 178 N$没用 N$万象套梵天圣火伤害提升倍数 N$没用
+GetAllCustomItemValueByTextLine 8 -1 179 N$没用 N$万象套蛊毒术伤害提升倍数 N$没用
+GetAllCustomItemValueByTextLine 8 -1 180 N$没用 N$万象套漫天火雨伤害提升倍数 N$没用
+GetAllCustomItemValueByTextLine 8 -1 181 N$没用 N$万象套野蛮冲撞伤害提升倍数 N$没用
+GetAllCustomItemValueByTextLine 8 -1 182 N$没用 N$万象套金殇斩伤害提升倍数 N$没用
+GetAllCustomItemValueByTextLine 8 -1 183 N$没用 N$万象套焚土喷焰释放几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 184 N$没用 N$万象套焚土喷焰伤害提升倍数 N$没用
+GetAllCustomItemValueByTextLine 8 -1 185 N$没用 N$万象套焚土喷焰人物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 186 N$没用 N$万象套天灵符爆释放几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 187 N$没用 N$万象套天灵符爆伤害提升倍数 N$没用
+GetAllCustomItemValueByTextLine 8 -1 188 N$没用 N$万象套天灵符爆人物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 189 N$没用 N$万象套魔法盾持续时间 N$没用
+GetAllCustomItemValueByTextLine 8 -1 190 N$没用 N$万象套魔法盾加持中反伤增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 191 N$没用 N$万象套魔法盾给周围增加防御百分比 N$没用
+GetAllCustomItemValueByTextLine 8 -1 192 N$没用 N$万象套双防之盾持续时间 N$没用
+GetAllCustomItemValueByTextLine 8 -1 193 N$没用 N$万象套双防之盾加持中反伤增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 194 N$没用 N$万象套双防之盾给周围增加防御百分比 N$没用
+GetAllCustomItemValueByTextLine 8 -1 195 N$没用 N$万象套不屈意志持续时间 N$没用
+GetAllCustomItemValueByTextLine 8 -1 196 N$没用 N$万象套不屈意志加持中反伤增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 197 N$没用 N$万象套不屈意志给周围增加防御百分比 N$没用
+GetAllCustomItemValueByTextLine 8 -1 198 N$没用 N$万象套修罗血魂阵增加伤害次数 N$没用
+GetAllCustomItemValueByTextLine 8 -1 199 N$没用 N$万象套修罗血魂阵对人物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 200  N$没用 N$装备修罗血魂阵伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 201  N$没用 N$万象套天灵符爆伤害提升倍数 N$没用
+GetAllCustomItemValueByTextLine 8 -1 202  N$没用 N$万象套炎龙降临伤害提升倍数 N$没用
+GetAllCustomItemValueByTextLine 8 -1 203  N$没用 N$装备炎龙降临伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 204  N$没用 N$万象套炎龙降临对人物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 205  N$没用 N$万象套炎龙降临攻击次数 N$没用
+GetAllCustomItemValueByTextLine 8 -1 206  N$没用 N$装备幽龙镇魂魔次 N$没用
+GetAllCustomItemValueByTextLine 8 -1 207  N$没用 N$万象套幽龙镇魂CD N$没用
+GetAllCustomItemValueByTextLine 8 -1 208  N$没用 N$万象套幽龙镇魂魔次数量增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 209 N$没用 N$万象套幽龙镇魂对怪物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 210 N$没用 N$万象套幽龙镇魂对人物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 211 N$没用 N$万象套噬魂暗袭几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 212 N$没用 N$万象套噬魂暗袭范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 213 N$没用 N$万象套龙袭风暴伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 214 N$没用 N$万象套魔焰狂澜伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 215 N$没用 N$万象套威慑符印伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 216 N$没用 N$铭文刺杀范围增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 217 N$没用 N$铭文攻击力增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 218 N$没用 N$铭文魔法力增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 219 N$没用 N$铭文道术力增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 220 N$没用 N$铭文寂静之雷范围增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 221 N$没用 N$铭文灵葫范围增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 222 N$没用 N$铭文地刺突袭几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 223 N$没用 N$铭文九霄爆雷术几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 224 N$没用 N$铭文天罚之印几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 225 N$没用 N$铭文不屈意志加持中吸血百分比 N$没用
+GetAllCustomItemValueByTextLine 8 -1 226 N$没用 N$铭文魔法盾加持中吸血百分比 N$没用
+GetAllCustomItemValueByTextLine 8 -1 227 N$没用 N$铭文双防之盾加持中吸血百分比 N$没用
+GetAllCustomItemValueByTextLine 8 -1 228 N$没用 N$铭文野蛮冲撞增加致命几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 229 N$没用 N$铭文梵天圣火增加致命几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 230 N$没用 N$铭文蛊毒术增加致命几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 231 N$没用 N$铭文烈火剑法CD减少 N$没用
+GetAllCustomItemValueByTextLine 8 -1 232 N$没用 N$铭文冰咆哮CD减少 N$没用
+GetAllCustomItemValueByTextLine 8 -1 233 N$没用 N$铭文幽龙镇魂CD减少 N$没用
+GetAllCustomItemValueByTextLine 8 -1 234 N$没用 N$铭文天神一击范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 235 N$没用 N$铭文寒渊冰刺范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 236 N$没用 N$铭文噬魂暗袭范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 237 N$没用 N$铭文龙袭风暴范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 238 N$没用 N$铭文魔焰狂澜范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 239 N$没用 N$铭文威慑符印范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 240 N$没用 N$铭文万象魔咒范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 241 N$没用 N$万象套灵葫对怪物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 242 N$没用 N$城主神器对怪物技能伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 243 N$没用 N$城主神器杀怪经验增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 244 N$没用 N$城主神器回收金币增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 245  N$没用 N$万象套修罗血魂阵伤害提升倍数增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 246  N$没用 N$装备十字破军斩伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 247  N$没用 N$装备浴火鞭策持续时间 N$没用
+GetAllCustomItemValueByTextLine 8 -1 248  N$没用 N$装备火兽伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 249 N$没用 N$万象套火兽伤害倍数提升 N$没用
+GetAllCustomItemValueByTextLine 8 -1 250 N$没用 N$万象套火兽对人物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 251  N$没用 N$装备圣兽伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 252 N$没用 N$万象套圣兽伤害倍数提升 N$没用
+GetAllCustomItemValueByTextLine 8 -1 253 N$没用 N$万象套圣兽对人物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 254 N$没用 N$法宝鞭策增加攻击速度 N$没用
+GetAllCustomItemValueByTextLine 8 -1 255 N$没用 N$限时法宝所有技能幸运 N$没用
+GetAllCustomItemValueByTextLine 8 -1 256 N$没用 N$铭文击杀小怪触发刷新BOSS几率增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 257 N$没用 N$天道封印 N$没用
+GetAllCustomItemValueByTextLine 8 -1 258 N$没用 N$时装宝石增加HP N$没用
+GetAllCustomItemValueByTextLine 8 -1 259 N$没用 N$时装暴击几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 260 N$没用 N$时装暴击防御 N$没用
+GetAllCustomItemValueByTextLine 8 -1 261 N$没用 N$时装对怪物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 262 N$没用 N$时装金币回收 N$没用
+GetAllCustomItemValueByTextLine 8 -1 263 N$没用 N$时装小怪鞭尸 N$没用
+GetAllCustomItemValueByTextLine 8 -1 264 N$没用 N$时装BOSS鞭尸 N$没用
+GetAllCustomItemValueByTextLine 8 -1 265 N$没用 N$时装金币回收11 N$没用
+GetAllCustomItemValueByTextLine 8 -1 266 N$没用 N$时装增加宝石双防 N$没用
+GetAllCustomItemValueByTextLine 8 -1 267 N$没用 N$时装增加攻击速度 N$没用
+GetAllCustomItemValueByTextLine 8 -1 268 N$没用 N$时装增加释放速度 N$没用
+GetAllCustomItemValueByTextLine 8 -1 269 N$没用 N$时装增加移动速度 N$没用
+GetAllCustomItemValueByTextLine 8 -1 270 N$没用 N$时装套传送CD减少 N$没用
+GetAllCustomItemValueByTextLine 8 -1 271 N$没用 N$法宝天神一击范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 272 N$没用 N$法宝寒渊冰刺范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 273 N$没用 N$法宝噬魂暗袭范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 274 N$没用 N$卡片烈火倍攻 N$没用
+GetAllCustomItemValueByTextLine 8 -1 275 N$没用 N$图标 N$没用
+GetAllCustomItemValueByTextLine 8 -1 276 N$没用 N$卡片冰咆倍攻 N$没用
+GetAllCustomItemValueByTextLine 8 -1 277 N$没用 N$卡片圣兽倍攻 N$没用
+GetAllCustomItemValueByTextLine 8 -1 278 N$没用 N$卡片幽龙倍攻 N$没用
+GetAllCustomItemValueByTextLine 8 -1 279 N$没用 N$卡片火兽倍攻 N$没用
+GetAllCustomItemValueByTextLine 8 -1 280 N$没用 N$卡片灵葫倍攻 N$没用
+GetAllCustomItemValueByTextLine 8 -1 281 N$没用 N$卡片寂静之雷倍攻 N$没用
+GetAllCustomItemValueByTextLine 8 -1 282 N$没用 N$卡片刺杀倍攻 N$没用
+GetAllCustomItemValueByTextLine 8 -1 283 N$没用 N$卡片野蛮倍攻 N$没用
+GetAllCustomItemValueByTextLine 8 -1 284 N$没用 N$卡片金殇斩倍攻 N$没用
+GetAllCustomItemValueByTextLine 8 -1 285 N$没用 N$卡片修罗血魂阵倍攻 N$没用
+GetAllCustomItemValueByTextLine 8 -1 286 N$没用 N$卡片十字破军斩倍攻 N$没用
+GetAllCustomItemValueByTextLine 8 -1 287 N$没用 N$卡片蛊毒术倍攻 N$没用
+GetAllCustomItemValueByTextLine 8 -1 288 N$没用 N$卡片炎龙降临倍攻 N$没用
+GetAllCustomItemValueByTextLine 8 -1 289 N$没用 N$卡片焚土喷焰倍攻 N$没用
+GetAllCustomItemValueByTextLine 8 -1 290 N$没用 N$卡片天灵符暴倍攻 N$没用
+GetAllCustomItemValueByTextLine 8 -1 291 N$没用 N$卡片梵天圣火倍攻 N$没用
+GetAllCustomItemValueByTextLine 8 -1 292 N$没用 N$卡片漫天火雨倍攻 N$没用
+GetAllCustomItemValueByTextLine 8 -1 293 N$没用 N$法宝神秘斗篷圣兽重击 N$没用
+GetAllCustomItemValueByTextLine 8 -1 294 N$没用 N$法宝光明披风重击 N$没用
+GetAllCustomItemValueByTextLine 8 -1 295 N$没用 N$法宝霜寒披风炎龙降临共享冰咆伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 296 N$没用 N$麻痹戒指几率 N$麻痹戒指对怪物伤害
+GetAllCustomItemValueByTextLine 8 -1 297 N$没用 N$石化戒指几率 N$石化戒指对怪物伤害
+GetAllCustomItemValueByTextLine 8 -1 298 N$没用 N$冰冻戒指几率 N$冰冻戒指对怪物伤害
+GetAllCustomItemValueByTextLine 8 -1 299 N$没用 N$法宝炎黄鼎禁止释放技能 N$没用
+GetAllCustomItemValueByTextLine 8 -1 300 N$没用 N$没用 N$没用
+GetAllCustomItemValueByTextLine 8 -1 301 N$没用 N$极品防御 N$没用
+GetAllCustomItemValueByTextLine 8 -1 302 N$没用 N$极品魔御 N$没用
+GetAllCustomItemValueByTextLine 8 -1 303 N$没用 N$极品攻击 N$没用
+GetAllCustomItemValueByTextLine 8 -1 304 N$没用 N$极品魔法 N$没用
+GetAllCustomItemValueByTextLine 8 -1 305 N$没用 N$极品道术 N$没用
+GetAllCustomItemValueByTextLine 8 -1 306 N$没用 N$装备熔岩烈剑伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 307 N$没用 N$装备混乱元素伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 308 N$没用 N$法宝毅和神像增加刺杀伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 309 N$没用 N$法宝炎帝面罩增加群雷伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 310 N$没用 N$法宝恶魔之力增加灵葫伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 311 N$没用 N$魔坠减伤 N$没用
+GetAllCustomItemValueByTextLine 8 -1 312 N$没用 N$法宝蛊毒术CD N$没用
+GetAllCustomItemValueByTextLine 8 -1 313 N$没用 N$法宝梵天圣火CD N$没用
+GetAllCustomItemValueByTextLine 8 -1 314 N$没用 N$法宝诛仙剑倍攻属性 N$没用
+GetAllCustomItemValueByTextLine 8 -1 315 N$没用 N$战灵法相对怪物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 316 N$没用 N$战灵法相暴击几率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 317 N$没用 N$战灵法相暴击防御 N$没用
+GetAllCustomItemValueByTextLine 8 -1 318 N$没用 N$石灵怪物伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 319 N$没用 N$通天魔坠减伤 N$没用
+GetAllCustomItemValueByTextLine 8 -1 320 N$没用 N$法宝八卦石头爆率 N$没用
+GetAllCustomItemValueByTextLine 8 -1 321 N$没用 N$法宝混沌火轮范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 322 N$没用 N$法宝混沌火轮数量 N$没用
+GetAllCustomItemValueByTextLine 8 -1 323 N$没用 N$法宝混沌石灵范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 324 N$没用 N$法宝混沌火雨伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 325 N$没用 N$法宝混沌石灵伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 326 N$没用 N$法宝混沌开天范围 N$没用
+GetAllCustomItemValueByTextLine 8 -1 327 N$没用 N$法宝混沌开天伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 328 N$没用 N$法宝石灵数量 N$没用
+GetAllCustomItemValueByTextLine 8 -1 329 N$没用 N$法宝财神套倍数 N$没用
+GetAllCustomItemValueByTextLine 8 -1 330 N$没用 N$法宝勤奋套倍数 N$没用
+GetAllCustomItemValueByTextLine 8 -1 331 N$没用 N$法宝幸运套倍数 N$没用
+GetAllCustomItemValueByTextLine 8 -1 332 N$没用 N$法宝暴躁百分比 N$没用
+GetAllCustomItemValueByTextLine 8 -1 333 N$没用 N$法宝金元套获取元宝数量 N$没用
+GetAllCustomItemValueByTextLine 8 -1 334 N$没用 N$法宝天殇套对人物真实伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 335 N$没用 N$法宝无敌套无敌时间减少 N$没用
+GetAllCustomItemValueByTextLine 8 -1 336 N$没用 N$法宝免疫天殇套真实伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 337 N$没用 N$城主神器传承套真伤 N$没用
+GetAllCustomItemValueByTextLine 8 -1 338 N$没用 N$法宝释放混沌开天增加伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 339 N$没用 N$法宝召唤火兽数量 N$没用
+GetAllCustomItemValueByTextLine 8 -1 340 N$没用 N$城主神器释放攻击速度 N$没用
+GetAllCustomItemValueByTextLine 8 -1 341 N$没用 N$七大陆金殇斩伤害增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 342 N$没用 N$七大陆凤爆狂雷伤害增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 343 N$没用 N$七大陆月灵道祖伤害增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 344 N$没用 N$七大陆金殇斩范围增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 345 N$没用 N$七大陆凤爆狂雷范围增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 346 N$没用 N$七大陆月灵道祖范围增加 N$没用
+GetAllCustomItemValueByTextLine 8 -1 347 N$没用 N$八大路真伤法宝伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 348 N$没用 N$对方免疫对人物真实伤害 N$没用
+GetAllCustomItemValueByTextLine 8 -1 349 N$没用 N$战斗状态禁止小退 N$没用
+; 
+Goto @万象套属性
+
+
+
+#if
+CHECKJOB wizard
+#act
+FORMULATION <$STR(N$麻痹戒指几率)>/2 N$麻痹戒指几率
+FORMULATION <$STR(N$石化戒指几率)>/2 N$石化戒指几率
+FORMULATION <$STR(N$冰冻戒指几率)>/2 N$冰冻戒指几率
+
+#if
+CHECKJOB TAOIST
+#act
+FORMULATION <$STR(N$麻痹戒指几率)>/5 N$道士宝宝麻痹戒指几率
+FORMULATION <$STR(N$石化戒指几率)>/5 N$道士宝宝石化戒指几率
+FORMULATION <$STR(N$冰冻戒指几率)>/5 N$道士宝宝冰冻戒指几率
+
+
+FORMULATION <$STR(N$麻痹戒指几率)>/2 N$麻痹戒指几率
+FORMULATION <$STR(N$石化戒指几率)>/2 N$石化戒指几率
+FORMULATION <$STR(N$冰冻戒指几率)>/2 N$冰冻戒指几率
+
+
+
+#if
+EQUAL N$麻痹戒指对怪物伤害 0
+#act
+MOV N$麻痹戒指对怪物伤害 10
+#if
+EQUAL N$石化戒指对怪物伤害 0
+#act
+MOV N$石化戒指对怪物伤害 10
+
+#if
+EQUAL N$冰冻戒指对怪物伤害 0
+#act
+MOV N$冰冻戒指对怪物伤害 10
+
+
+}

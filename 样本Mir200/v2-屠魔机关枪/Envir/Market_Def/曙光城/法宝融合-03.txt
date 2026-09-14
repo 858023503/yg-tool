@@ -1,0 +1,196 @@
+[@main]
+#IF
+#act
+
+OPENMERCHANTBIGDLG 5 546 1 4 -15 -52 1 560 0 1
+#say
+<ITEMBOX:11:5:125:397:243:63:63:*:95#放入法宝>
+<ITEMBOX:12:5:125:486:243:63:63:*:95#放入法宝>
+<&img:536:5:380:55><&TEXT:????:460:57{FCOLOR=95}>
+<&img:538:5:380:75><&TEXT:????:460:77{FCOLOR=95}>
+<&img:538:5:380:95><&TEXT:????:460:97{FCOLOR=95}>
+<&img:537:5:380:115><&TEXT:????:460:117{FCOLOR=95}>
+<&img:539:5:385:135>
+<&img:547:5:440:140>
+
+
+; <&playimg:7:2437:8:130:-50:-20:0>
+<&IMGEX:5:548:549:550:395:320/@融合法宝>
+
+
+[@ItemIntoBox11]
+#if
+checkcontainstext <$BOXITEM[11].NAME> 自然之怒号角
+EQUAL U410 0
+#act
+messagebox 你没有激活号角权限
+goto @main
+break
+
+
+
+
+
+#IF
+checkcontainstext <$BOXITEM[11].NAME> 【残破】
+#ACT
+messagebox 残破的法宝禁止融合
+goto @main
+break
+#if
+CheckCacheTextList ..\QuestDiary\法宝鉴定\正常法宝.txt <$BOXITEM[11].NAME>
+#act
+SetUpgradeItem 11
+GetCustomItemValueEx -1 1 <$STR(N$没用)>  <$STR(N$左边法宝第一条属性对应编号)> <$str(N$左边属性值)> <$str(N$左边属性上限一)> <$STR(N$没用)>
+
+ReadConfigFileItem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$BOXITEM[11].NAME>    融合属性上限      N$法宝融合属性上限
+ReadConfigFileItem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$BOXITEM[11].NAME>    鉴定条目      N$左边法宝编号
+ReadConfigFileItem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$BOXITEM[11].NAME>    需要材料数量      N$左边法宝需要材料
+ReadConfigFileItem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$BOXITEM[11].NAME>    需要费用      N$左边法宝需要费用
+ReadConfigFileItem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$BOXITEM[11].NAME>    后缀      S$法宝融合后缀
+ReadConfigFileItem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$BOXITEM[11].NAME>    几率     N$法宝融合几率
+ReadConfigFileItem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$BOXITEM[11].NAME>    元宝费用     N$法宝融合元宝费用
+ReadConfigFileItem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$BOXITEM[11].NAME>    法宝动态效果     S$法宝动态效果
+#elseact
+messagebox 不可融合的物品
+goto @main
+break
+
+#IF
+#act
+#say
+<ITEMBOX:11:5:125:397:243:63:63:*:95#放入需要融合的法宝>
+<ITEMBOX:12:5:125:486:243:63:63:*:95#放入需要融合的法宝>
+<&img:536:5:380:55><&TEXT:能量核心<$STR(N$左边法宝需要材料)>个:460:57{FCOLOR=95}>
+<&img:538:5:380:75><&TEXT:<$STR(N$左边法宝需要费用)>金币:460:77{FCOLOR=95}>
+<&img:538:5:380:95><&TEXT:<$STR(N$法宝融合元宝费用)>个元宝:460:97{FCOLOR=95}>
+<&img:537:5:380:115><&TEXT:<$STR(N$法宝融合几率)>%:460:117{FCOLOR=95}>
+<&img:539:5:385:135>
+<&img:547:5:440:140>
+
+<&img:540:5:380:155><&TEXT:<$str(N$左边属性值)><$STR(S$法宝融合后缀)>:460:159{FCOLOR=151}>
+<&img:540:5:380:170><&TEXT:在右侧放入同样的法宝:460:174{FCOLOR=151}>
+<&img:574:5:380:185><&TEXT:在右侧放入同样的法宝:459:189{FCOLOR=151}>
+<$STR(S$法宝动态效果)>
+; <&playimg:7:2437:8:130:-50:-20:0>
+<&IMGEX:5:548:549:550:395:320/@融合法宝>
+
+
+[@ItemIntoBox12]
+#if
+EQUAL <$BOXITEM[11].NAME>
+#act
+messagebox 请先把法宝放入左边装备框
+goto @main
+break
+#if
+EQUAL  <$BOXITEM[11].NAME> <$BOXITEM[12].NAME>
+#act
+SetUpgradeItem 12
+GetCustomItemValueEx -1 1 <$STR(N$没用)>  <$STR(N$右边法宝第一条属性对应编号)> <$str(N$右边属性值)> <$str(N$右边属性上限一)> <$STR(N$没用)>
+formulation min(<$str(N$左边属性值)>+<$str(N$右边属性值)>,<$STR(N$法宝融合属性上限)>) N$法宝融合后的属性
+sendmsg 6 <$str(N$左边属性值)>+<$str(N$右边属性值)>
+#elseact
+messagebox 法宝融合时两个对话框的法宝需要一样
+ReturnBoxItem 12
+break
+
+
+
+#IF
+#act
+#say
+<ITEMBOX:11:5:125:397:243:63:63:*:95#放入需要融合的法宝>
+<ITEMBOX:12:5:125:486:243:63:63:*:95#放入需要融合的法宝>
+<&img:536:5:380:55><&TEXT:能量核心<$STR(N$左边法宝需要材料)>个:460:57{FCOLOR=95}>
+<&img:538:5:380:75><&TEXT:<$STR(N$左边法宝需要费用)>金币:460:77{FCOLOR=95}>
+<&img:538:5:380:95><&TEXT:<$STR(N$法宝融合元宝费用)>个元宝:460:97{FCOLOR=95}>
+<&img:537:5:380:115><&TEXT:<$STR(N$法宝融合几率)>%:460:117{FCOLOR=95}>
+<&img:539:5:385:135>
+<&img:547:5:440:140>
+
+<&img:540:5:380:155><&TEXT:<$str(N$左边属性值)><$STR(S$法宝融合后缀)>:460:159{FCOLOR=151}>
+<&img:540:5:380:170><&TEXT:<$STR(N$右边属性值)><$STR(S$法宝融合后缀)>:460:174{FCOLOR=151}>
+<&img:574:5:380:185><&TEXT:融合后属性<$STR(N$法宝融合后的属性)><$STR(S$法宝融合后缀)>:459:189{FCOLOR=151}>
+<$STR(S$法宝动态效果)>
+; <&playimg:7:2437:8:130:-50:-20:0>
+<&IMGEX:5:548:549:550:395:320/@融合法宝>
+
+
+
+[@融合法宝]
+#if
+EQUAL <$BOXITEM[12].NAME>
+#act
+messagebox 放入法宝啊老兄
+goto @main
+break
+#if
+not checkgold <$STR(N$左边法宝需要费用)>
+#act
+messagebox 金币费用不够
+break
+
+#if
+CHECKGAMEGOLD < <$STR(N$法宝融合元宝费用)>
+#act
+messagebox 元宝数量不够
+break
+#if
+NOT CHECKITEM 能量核心 <$STR(N$左边法宝需要材料)>
+#act
+messagebox 能量核心数量不够
+BREAK
+
+
+
+#if
+randomex <$STR(N$法宝融合几率)> 100
+#act
+;成功
+DelBoxItem 12
+SetUpgradeItem 11
+
+SetCustomItemAbil -1 1 0 151
+SetCustomItemAbil -1 1 1 8
+SetCustomItemAbil -1 1 2 1
+SetCustomItemAbil -1 1 3 0
+SetCustomItemValueEX -1 1 = N$左边法宝编号 N$法宝融合后的属性 <$STR(N$左边属性上限一)>
+UpdateItem boxitem11
+SENDMSG 6 融合成功
+take 能量核心 <$STR(N$左边法宝需要材料)>
+take 金币 <$STR(N$左边法宝需要费用)>
+gamegold - <$STR(N$法宝融合元宝费用)>
+MOV N$左边法宝编号
+MOV N$法宝融合后的属性
+MOV N$左边属性上限一
+MOV N$右边法宝第一条属性对应编号
+MOV N$右边属性值
+MOV N$右边属性上限一
+MOV N$法宝融合属性上限
+MOV N$左边法宝编号
+MOV N$左边法宝需要材料
+MOV N$左边法宝需要费用
+MOV  S$法宝融合后缀
+MOV N$法宝融合几率
+MOV N$法宝融合元宝费用
+MOV  S$法宝动态效果
+ReturnBoxItem 11
+goto @main
+
+#elseact
+DelBoxItem 12
+;失败
+SENDMSG 6 融合失败
+
+
+
+
+[@ItemOutBox11]
+#if
+#act
+goto @main
+[@ItemOutBox12]
+#if
+#act
+goto @main

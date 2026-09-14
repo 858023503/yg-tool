@@ -1,0 +1,10 @@
+[@дожњЯЕЭГ]
+{
+
+#IF
+#ACT
+OpenStorageView 1
+
+
+}
+

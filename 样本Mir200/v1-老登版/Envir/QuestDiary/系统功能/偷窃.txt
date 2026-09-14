@@ -1,0 +1,193 @@
+[@偷窃_比奇]
+{
+#IF
+#ACT
+
+MOV S$偷窃来源 沃玛教主
+MOV L$偷窃装备 [炼狱,魔杖,银蛇,幽灵项链,生命项链,天珠项链]
+;SENDMSG 6 进入偷窃2<$STR(S$偷窃来源)>，：<$str(L$偷窃装备)>
+GOTO @偷窃_入口
+
+
+[@偷窃_盟重]
+
+#IF
+#ACT
+MOV S$偷窃来源 祖玛教主
+MOV L$偷窃装备 [裁决之杖,骨玉权杖,龙纹剑,绿色项链,力量戒指,泰坦戒指]
+;SENDMSG 6 进入偷窃2<$STR(S$偷窃来源)>，：<$str(L$偷窃装备)>
+GOTO @偷窃_入口
+
+
+
+[@偷窃_白日门]
+
+#IF
+#ACT
+MOV S$偷窃来源 赤月恶魔
+MOV L$偷窃装备 [天尊头盔,天尊项链,天尊戒指,天尊手镯,屠龙,嗜魂法杖]
+GOTO @偷窃_入口
+
+
+[@偷窃_封魔]
+
+#IF
+#ACT
+MOV S$偷窃来源 虹魔教主
+MOV L$偷窃装备 [虹魔项链,虹魔手镯,虹魔戒指,裁决之杖,骨玉权杖,龙纹剑]
+GOTO @偷窃_入口
+
+
+[@偷窃_苍月]
+
+#IF
+#ACT
+MOV S$偷窃来源 牛魔王
+MOV L$偷窃装备 [怒斩,龙牙,逍遥扇,钢盔甲(男),圣龙魔袍(男),泰坦战衣(男)]
+GOTO @偷窃_入口
+
+
+[@偷窃_魔龙]
+
+#IF
+#ACT
+MOV S$偷窃来源 魔龙教主
+MOV L$偷窃装备 [战神项链,圣魔项链,真魂项链,开天,镇天,玄天]
+GOTO @偷窃_入口
+
+
+[@偷窃_入口]
+
+#IF
+CHECK [69] 1
+#ACT
+GOTO @偷窃_已学会
+BREAK
+#ELSEACT
+MESSAGEBOX 你的手法太稚嫩，请勿出手！
+BREAK
+
+[@偷窃_已学会]
+
+#IF
+#ACT
+INC U35 1
+Mov N$红名PK值 200
+Mov N$黄名PK值 160
+Mov N$一次PK值 40
+GetNpcName S1
+SENDMSG 6 记录偷窃一次，总共<$STR(U35)>次！
+
+
+#IF
+CHECKPKPOINTEX > <$STR(N$黄名PK值)>
+#ACT
+CHANGEPKPOINT = <$STR(N$红名PK值)>
+MESSAGEBOX 偷窃失败，你已经罪行累累，将被押送到红名村。
+GOTO @偷窃_犯罪检查
+BREAK
+
+#IF
+#ACT
+MOVR N$偷窃随机 1 100
+GOTO @偷窃_判定
+BREAK
+
+[@偷窃_判定]
+
+#IF
+LARGE N$偷窃随机 39
+#ACT
+GOTO @偷窃_罚款
+BREAK
+
+#IF
+LARGE N$偷窃随机 19
+#ACT
+GOTO @偷窃_金币奖励
+BREAK
+
+#IF
+LARGE N$偷窃随机 2
+#ACT
+GOTO @偷窃_逮捕
+BREAK
+
+#IF
+#ACT
+GOTO @偷窃_奖励
+BREAK
+
+
+[@偷窃_罚款]
+
+#IF
+CHECKGOLD 5000
+#ACT
+GOLDCOUNT - 5000
+CHANGEPKPOINT + <$STR(N$一次PK值)>
+MESSAGEBOX 小贼！罚你5000金币，罪证已经记录了。
+GOTO @偷窃_犯罪检查
+BREAK
+#ELSEACT
+CHANGEPKPOINT + <$STR(N$黄名PK值)>
+MESSAGEBOX 你身上连5000金币都不够赔，罪证被加重！
+GOTO @偷窃_犯罪检查
+BREAK
+
+
+[@偷窃_金币奖励]
+
+#IF
+#ACT
+MOVR N$偷窃金币 100 5000
+GOLDCOUNT + <$STR(N$偷窃金币)>
+SENDMSG 6 你顺手摸到<$STR(N$偷窃金币)>金币。
+BREAK
+
+[@偷窃_逮捕]
+
+#IF
+#ACT
+CHANGEPKPOINT + <$STR(N$红名PK值)>
+MESSAGEBOX 你刚伸手就被当场抓住，罪证已经无可饶恕。
+GOTO @偷窃_犯罪检查
+BREAK
+
+[@偷窃_奖励]
+
+#IF
+CHECKBAGSIZE 1
+#ACT
+MOVR N$偷窃装备 0 5
+GIVE <$STR(L$偷窃装备[<$STR(N$偷窃装备)>])> 1
+LINKGIVEITEM
+;修改偷窃装备来源
+SetItemFrom -1 0 7
+SetItemFrom -1 3 <$STR(S1)>
+updateitem -1
+;刷新到客户端
+clearLinkItem
+SENDMSG 6 你偷到了<$STR(S1)>的装备：<$STR(L$偷窃装备[<$STR(N$偷窃装备)>])>。
+BREAK
+#ELSEACT
+MESSAGEBOX 偷窃失败！背包至少留一个空格再偷装备。
+BREAK
+
+
+[@偷窃_犯罪检查]
+
+#or
+CHECKPKPOINTEX = <$STR(N$红名PK值)>
+CHECKPKPOINTEX > <$STR(N$红名PK值)>
+#ACT
+MESSAGEBOX 你已经严重犯罪，将被押送到红名村。
+SET [66] 0
+mapmove 3 830 650
+BREAK
+
+#IF
+#ACT
+BREAK
+
+}

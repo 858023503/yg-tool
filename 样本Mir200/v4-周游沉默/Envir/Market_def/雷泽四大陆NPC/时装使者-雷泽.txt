@@ -1,0 +1,156 @@
+[@main]
+#if
+#ACT
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+<>[<$USERNAME>]<您好！/SCOLOR=254>\
+<我这里可以为你量身打造时装剑甲！/SCOLOR=254>\ 
+<我本沉默，传奇永恒，再续经典/SCOLOR=254>\ \
+<><ITEMSHOW:1108:0:0:-0:1/@时装武器>  <ITEMSHOW:1109:0:0:-0:1/@时装衣服1>  <ITEMSHOW:1110:0:0:-0:1/@时装衣服2>  <ITEMSHOW:1111:0:0:-0:1/@时装1>  <ITEMSHOW:1112:0:0:-0:1/@时装2>  <ITEMSHOW:1113:0:0:-0:1/@时装3>  <ITEMSHOW:1114:0:0:-0:1/@时装4>\ \ \
+<>\
+<>\
+
+
+[@时装武器]
+#ACT
+MessageBox 合成:<[风雷剑]/FCOLOR=253>\\<时装羽毛*800+100W*元宝+精灵战刀/FCOLOR=251>\\点击确认开始合成   @兑换武器  @取消兑换
+
+[@兑换武器]
+#if
+CheckItem 精灵战刀 1
+CheckItem 时装羽毛 800
+CheckGameGold > 999999
+#ACT
+GameGold  - 1000000
+Take 时装羽毛 800
+Take 精灵战刀 1
+Give 风雷剑 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@时装衣服1]
+#ACT
+MessageBox 合成:<[天龙羽衣(男)]/FCOLOR=253>\\<时装羽毛*800+100W*元宝+精灵圣甲/FCOLOR=251>\\点击确认开始合成   @兑换1  @取消兑换
+
+[@兑换1]
+#if
+CheckItem 精灵圣甲 1
+CheckItem 时装羽毛 800
+CheckGameGold > 999999
+#ACT
+GameGold  - 1000000
+Take 时装羽毛 800
+Take 精灵圣甲 1
+Give 天龙羽衣(男) 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+[@时装衣服2]
+#ACT
+MessageBox 合成:<[天龙羽衣(女)]/FCOLOR=253>\\<时装羽毛*800+100W*元宝+精灵圣袍/FCOLOR=251>\\点击确认开始合成   @兑换2  @取消兑换
+
+[@兑换2]
+#if
+CheckItem 精灵圣袍 1
+CheckItem 时装羽毛 800
+CheckGameGold > 999999
+#ACT
+GameGold  - 1000000
+Take 时装羽毛 800
+Take 精灵圣袍 1
+Give 天龙羽衣(女) 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+;------------------------------------------------------------------------------------------------------------------------------------------
+
+[@时装1]
+#ACT
+MessageBox 合成:<[蓝色妖姬]/FCOLOR=253>\\<时装羽毛*400+30W*元宝+太阳神盔/FCOLOR=251>\\点击确认开始合成   @兑换3  @取消兑换
+
+[@兑换3]
+#if
+CheckItem 太阳神盔 1
+CheckItem 时装羽毛 400
+CheckGameGold > 299999
+#ACT
+GameGold  - 300000
+Take 时装羽毛 400
+Take 太阳神盔 1
+Give 蓝色妖姬 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@时装2]
+#ACT
+MessageBox 合成:<[珠宝]/FCOLOR=253>\\<时装羽毛*400+30W*元宝+金子拳/FCOLOR=251>\\点击确认开始合成   @兑换4  @取消兑换
+
+[@兑换4]
+#if
+CheckItem 金子拳 1
+CheckItem 时装羽毛 400
+CheckGameGold > 299999
+#ACT
+GameGold  - 300000
+Take 时装羽毛 400
+Take 金子拳 1
+Give 珠宝 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+
+[@时装3]
+#ACT
+MessageBox 合成:<[力量指环]/FCOLOR=253>\\<时装羽毛*400+30W*元宝+星辰/FCOLOR=251>\\点击确认开始合成   @兑换5  @取消兑换
+
+[@兑换5]
+#if
+CheckItem 星辰 1
+CheckItem 时装羽毛 400
+CheckGameGold > 299999
+#ACT
+GameGold  - 300000
+Take 时装羽毛 400
+Take 星辰 1
+Give 力量指环 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@时装4]
+#ACT
+MessageBox 合成:<[醉意玲珑]/FCOLOR=253>\\<时装羽毛*400+30W*元宝+天神链/FCOLOR=251>\\点击确认开始合成   @兑换6  @取消兑换
+
+[@兑换6]
+#if
+CheckItem 天神链 1
+CheckItem 时装羽毛 400
+CheckGameGold > 299999
+#ACT
+GameGold  - 300000
+Take 时装羽毛 400
+Take 天神链 1
+Give 醉意玲珑 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@取消兑换]
+#ACT
+Sendmsg 7 取消合成
+Break
+
+
+
+

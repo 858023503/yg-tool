@@ -1,0 +1,411 @@
+[@MAIN]
+<结晶/SCOLOR=254>可以使用来给装备<升星>\
+<10W元宝可以兑换500结晶/@买够>  每次强化需要结晶<30颗/SCOLOR=253>\ 
+<汇集天地灵气 可以使装备提升到/SCOLOR=22><10星/SCOLOR=254>\ \
+<全身星数量达到100颗/SCOLOR=254>: 获取称号 <天下无双/SCOLOR=70>\
+<全身星数量达到120颗/SCOLOR=254>: 获取称号 <荒古圣体/SCOLOR=70>\
+\<ITEMBOX:1:26:417:250:75:42:42:5,6,10,11,15,19,20,21,22,23,24,26,30,62,64,:254#升星装备> \ \ \ \
+\<text:开始升星:210:-48/@开始强化> <text:装备转星:230:-48/@转星>\
+
+
+
+
+[@买够]
+#if
+CHECKGameGold > 99999
+#ACT
+GameGold - 100000
+give 结晶 500
+#ELSEACT
+MESSAGEBOX 你没有100000元宝！
+break
+
+
+[@装备洗星]
+#if
+#ACT
+OPENUPGRADEDLG 放入要洗星的装备
+
+
+
+[@ItemIntoBox1]
+
+#if
+CheckUpgradeCount boxitem1  > 10
+#ACT
+ReturnBoxItem 1
+MESSAGEBOX 星星数量已达到最高，无法洗练！
+break
+
+
+#if
+CheckTextList ..\QuestDiary\不可升星装备.txt  <$BoxItem[1].Name>
+#ACT
+ReturnBoxItem 1
+MESSAGEBOX  此装备不允许升星！
+break
+
+
+[@开始强化]
+#if
+checkitem 结晶  30
+#ACT
+#elseact
+RECLAIMITEM 1
+MESSAGEBOX  你没有<30>个结晶！
+break
+
+#if
+not CheckBoxItemCount 1
+#act
+MESSAGEBOX  没有放入物品无法强化
+break
+
+#if
+CheckUpgradeCount boxitem1 = 0
+#ACT
+Mov N$几率 1
+
+#if
+CheckUpgradeCount boxitem1 = 1
+#ACT
+Mov N$几率 3
+
+#if
+CheckUpgradeCount boxitem1 = 2
+#ACT
+Mov N$几率 5
+
+#if
+CheckUpgradeCount boxitem1 = 3
+#ACT
+Mov N$几率 7
+
+#if
+CheckUpgradeCount boxitem1 = 4
+#ACT
+Mov N$几率 10
+
+#if
+CheckUpgradeCount boxitem1 = 5
+#ACT
+Mov N$几率 12
+
+#if
+CheckUpgradeCount boxitem1 = 6
+#ACT
+Mov N$几率 15
+
+#if
+CheckUpgradeCount boxitem1 = 7
+#ACT
+Mov N$几率 17
+
+
+#if
+CheckUpgradeCount boxitem1 = 8
+#ACT
+Mov N$几率 20
+
+
+#if
+CheckUpgradeCount boxitem1 = 9
+#ACT
+Mov N$几率 25
+
+
+#if
+CheckUpgradeCount boxitem1 = 10
+#ACT
+Mov N$几率 30
+
+
+
+
+#if
+CheckUpgradeCount boxitem1 = 10
+#ACT
+ReturnBoxItem 1
+MESSAGEBOX 星星数量已达到最高，无法洗练！
+break
+
+#if
+CheckUpgradeCount boxitem1 > 10
+#ACT
+ReturnBoxItem 1
+MESSAGEBOX 星星数量已达到最高，无法洗练！
+
+
+#if
+RANDOMEX  1  <$STR(N$几率)>
+#ACT
+TAKE 结晶 30
+ChangeItemUpgradeCount boxitem1 + 1
+SENDMSG 6 {恭喜升星成功|254:0}{请注意装备星数变化|253:0}
+break
+
+#if
+#ACT
+TAKE 结晶 30
+SENDMSG 6 升星失败，降星保护已开启，装备无星变化
+break
+
+
+[@转星]
+#if
+#ACT
+#SAY
+<------------------------ /SCOLOR=254>{{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+<>[<$USERNAME>]<您好！/SCOLOR=254>\
+<><我能帮你把装备星星进行转移/SCOLOR=251>\
+<><温馨提示:/SCOLOR=249>\
+<><装备转移只转星星数量不转移属性/SCOLOR=254>\
+<>装备进行转移收取 <50W元宝/SCOLOR=251> 一次\
+<><ITEMBOX:14:26:417:210:80:42:42:5,6,10,11,15,19,20,21,22,23,24,25,26,28,30,62,64,65,90:254#转移装备>\ 
+<><ITEMBOX:15:26:417:290:80:42:42:5,6,10,11,15,19,20,21,22,23,24,26,30,62,64:254#被转移装备>\ 
+<><text:开始转移:245:-10/@转移>\
+
+
+
+[@ItemIntoBox14]
+#if
+CheckUpgradeCount boxitem14 = 0
+#act
+MessageBox 装备尚未评星，无法转移！
+ReturnBoxItem 14
+break
+
+[@ItemIntoBox15]
+#if
+CheckTextList ..\QuestDiary\不可升星装备.txt  <$BoxItem[15].Name>
+#ACT
+ReturnBoxItem 15
+MESSAGEBOX 此装备不允许转星！！！
+break
+
+[@转移]
+#if
+NOT CheckBoxItemCount 14
+#act
+MessageBox 请放入转移的装备
+break
+
+#if
+NOT CheckBoxItemCount 15
+#act
+MessageBox 请放被转移的目标装备
+break
+
+
+
+#if
+CheckGAMEGold > 499999
+#act
+GAMEGOLD  - 500000
+#elseact
+messagebox 费用不足...
+break
+
+#if
+equal <$BOXITEM[14].UPGRADECOUNT> 12
+small  <$BOXITEM[15].UPGRADECOUNT> 12
+#act
+ChangeItemUpgradeCount boxitem14 = 0
+ChangeItemUpgradeCount boxitem15 = 12
+UpdateItem boxitem14
+UpdateItem boxitem15
+MessageBox 转移成功...
+break
+
+
+#if
+equal <$BOXITEM[14].UPGRADECOUNT> 11
+small  <$BOXITEM[15].UPGRADECOUNT> 11
+#act
+ChangeItemUpgradeCount boxitem14 = 0
+ChangeItemUpgradeCount boxitem15 = 11
+UpdateItem boxitem14
+UpdateItem boxitem15
+MessageBox 转移成功...
+break
+
+
+
+#if
+equal <$BOXITEM[14].UPGRADECOUNT> 10
+small  <$BOXITEM[15].UPGRADECOUNT> 10
+#act
+ChangeItemUpgradeCount boxitem14 = 0
+ChangeItemUpgradeCount boxitem15 = 10
+UpdateItem boxitem14
+UpdateItem boxitem15
+MessageBox 转移成功...
+break
+
+
+
+#if
+equal <$BOXITEM[14].UPGRADECOUNT> 9
+small  <$BOXITEM[15].UPGRADECOUNT> 9
+#act
+ChangeItemUpgradeCount boxitem14 = 0
+ChangeItemUpgradeCount boxitem15 = 9
+UpdateItem boxitem14
+UpdateItem boxitem15
+MessageBox 转移成功...
+break
+
+
+
+#if
+equal <$BOXITEM[14].UPGRADECOUNT> 8
+small  <$BOXITEM[15].UPGRADECOUNT> 8
+#act
+ChangeItemUpgradeCount boxitem14 = 0
+ChangeItemUpgradeCount boxitem15 = 8
+UpdateItem boxitem14
+UpdateItem boxitem15
+MessageBox 转移成功...
+break
+
+
+
+#if
+equal <$BOXITEM[14].UPGRADECOUNT> 7
+small  <$BOXITEM[15].UPGRADECOUNT> 7
+#act
+ChangeItemUpgradeCount boxitem14 = 0
+ChangeItemUpgradeCount boxitem15 = 7
+UpdateItem boxitem14
+UpdateItem boxitem15
+MessageBox 转移成功...
+break
+
+
+#if
+equal <$BOXITEM[14].UPGRADECOUNT> 6
+small  <$BOXITEM[15].UPGRADECOUNT> 6
+#act
+ChangeItemUpgradeCount boxitem14 = 0
+ChangeItemUpgradeCount boxitem15 = 6
+UpdateItem boxitem14
+UpdateItem boxitem15
+MessageBox 转移成功...
+break
+
+
+#if
+equal <$BOXITEM[14].UPGRADECOUNT> 5
+small  <$BOXITEM[15].UPGRADECOUNT> 5
+#act
+ChangeItemUpgradeCount boxitem14 = 0
+ChangeItemUpgradeCount boxitem15 = 5
+UpdateItem boxitem14
+UpdateItem boxitem15
+;ReturnBoxItem 14
+MessageBox 转移成功...
+break
+
+
+#if
+equal <$BOXITEM[14].UPGRADECOUNT> 4
+small  <$BOXITEM[15].UPGRADECOUNT> 4
+#act
+ChangeItemUpgradeCount boxitem14 = 0
+ChangeItemUpgradeCount boxitem15 = 4
+UpdateItem boxitem14
+UpdateItem boxitem15
+;ReturnBoxItem 14
+MessageBox 转移成功...
+break
+
+
+#if
+equal <$BOXITEM[14].UPGRADECOUNT> 3
+small  <$BOXITEM[15].UPGRADECOUNT> 3
+#act
+ChangeItemUpgradeCount boxitem14 = 0
+ChangeItemUpgradeCount boxitem15 = 3
+UpdateItem boxitem14
+UpdateItem boxitem15
+;ReturnBoxItem 14
+MessageBox 转移成功...
+break
+
+
+#if
+equal <$BOXITEM[14].UPGRADECOUNT> 2
+small  <$BOXITEM[15].UPGRADECOUNT> 2
+#act
+ChangeItemUpgradeCount boxitem14 = 0
+ChangeItemUpgradeCount boxitem15 = 2
+UpdateItem boxitem14
+UpdateItem boxitem15
+;ReturnBoxItem 14
+MessageBox 转移成功...
+break
+
+
+#if
+equal <$BOXITEM[14].UPGRADECOUNT> 1
+small  <$BOXITEM[15].UPGRADECOUNT> 1
+#act
+ChangeItemUpgradeCount boxitem14 = 0
+ChangeItemUpgradeCount boxitem15 = 1
+UpdateItem boxitem14
+UpdateItem boxitem15
+;ReturnBoxItem 14
+MessageBox 转移成功...
+break
+
+#if
+#act
+MessageBox 1.倍转移装备星数超过转移装备\2.转移装备没有星星！
+break
+
+
+
+
+
+
+
+
+
+;#if
+;large <$BOXITEM[14].UPGRADECOUNT> 0
+;#act
+;ChangeItemUpgradeCount boxitem14 = 0
+;ChangeItemUpgradeCount boxitem15 = 7
+;SetNewItemValue boxitem14 0 = 0
+;SetNewItemValue boxitem14 1 = 1
+;SetNewItemValue boxitem14 2 = 2
+;SetNewItemValue boxitem14 3 = 3
+;SetNewItemValue boxitem14 4 = 4
+;SetNewItemValue boxitem14 5 = 5
+;SetNewItemValue boxitem14 6 = 6
+;SetNewItemValue boxitem14 7 = 7
+;SetNewItemValue boxitem14 8 = 8
+;SetNewItemValue boxitem14 12 = 12
+;UpdateItem boxitem14
+;UpdateItem boxitem15
+;ReturnBoxItem 14
+;MessageBox 转移成功...
+;break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

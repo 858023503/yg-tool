@@ -1,0 +1,44 @@
+[@MAIN]
+当你在凝视深渊时,深渊也在凝视着你\
+魔龙城自从那位自称破碎而来的【天师孙恩】\
+来了之后，形式便愈发的诡谲了\
+如果你有能力,希望能帮我去探一探他的底\
+
+<组队进入狐月深渊|70#至少需要二名以上的玩家组队进入/@组队进入深渊狐月>   <单人进入狐月深渊|70#需要缴纳5亿金币+500份魔龙信物/@单人进入深渊狐月>
+
+
+[@组队进入深渊狐月]
+#IF
+SMALL <$GROUPMEMBERCOUNT> 2
+#ACT
+MESSAGEBOX 请组满2人再来！
+BREAK
+
+#IF
+CheckMapHumanCount fakeFox3 < 2
+#ACT
+MESSAGEBOX 你的队友与你不在同一地图！
+BREAK
+
+#IF
+#ACT
+GROUPMAPMOVE realFox1 32 67
+
+[@单人进入深渊狐月]
+#IF
+NOT CHECKITEM 魔龙信物-消耗 150
+#ACT
+MESSAGEBOX 你没有150个【魔龙信物】
+BREAK
+
+#IF
+SMALL <$GOLDCOUNT> 150000000
+#ACT
+MESSAGEBOX 你没有【1.5亿金币】！
+BREAK
+
+#IF
+#ACT
+TAKE 魔龙信物-消耗 150
+TAKE 金币 150000000
+MAPMOVE realFox1 32 67

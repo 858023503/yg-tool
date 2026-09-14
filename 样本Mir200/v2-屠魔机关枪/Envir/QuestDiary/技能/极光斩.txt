@@ -1,0 +1,67 @@
+[@极光斩]
+{
+#IF
+#ACT
+GetHumVar <$ATTACKMONSTER_NAMEEX> <$STR(T11)> S$当前攻击的人物职业
+
+Goto @技能伤害
+#if
+LARGE N$极光斩幸运 0
+#ACT
+FORMULATION <$DC>+((<$MAXDC>-<$DC>)/10)*<$STR(N$极光斩幸运)> N$极光斩人物幸运攻击下限
+DEC N$极光斩人物幸运攻击下限 1
+#elseact
+MOV N$极光斩人物幸运攻击下限 <$DC>
+
+#IF
+#ACT
+MOVR N$极光斩最终伤害 <$STR(N$极光斩人物幸运攻击下限)> <$MAXDC>
+
+
+#IF
+EQUAL S$当前攻击的人物职业 法师
+#ACT
+FORMULATION <$STR(N$极光斩最终伤害)>*<$STR(N$攻击法师时额外造成伤害)>/100+<$STR(N$极光斩最终伤害)> N$极光斩打人最终伤害
+
+#IF
+#ACT
+CalcPercent N$极光斩打人最终伤害 N$极光斩人物伤害百分比 N$极光斩人物伤害
+
+CalcPercent N$极光斩最终伤害 N$极光斩怪物伤害百分比 N$极光斩怪物伤害
+
+
+
+
+
+
+
+
+
+PLAYEFFECT 1 1297 7 1 150 0 0 0 1
+
+MOV N$极光斩后续伤害次数 <$STR(N$极光斩次数)>
+
+
+
+#IF
+#ACT
+delaycall 10 @极光斩延迟伤害
+HCALL <$C.USERNAME> @麻痹自己
+
+[@极光斩后续特效开始]
+#IF
+NOT EQUAL N$极光斩后续伤害次数 0
+#ACT
+releasemagicEX 1012 0 0 1
+
+RangeHarm <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y> 0 <$STR(N$极光斩怪物伤害百分比)> 0 0 0 2 0 0 0 0 0 1
+RangeHarm <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y> 0 <$STR(N$极光斩人物伤害百分比)> 0 0 0 1 0 0 0 0 0 1
+DEC N$极光斩后续伤害次数 1
+GOTO @极光斩延迟伤害
+
+[@极光斩延迟伤害]
+#IF
+#ACT
+delaycall 700 @极光斩后续特效开始
+
+}

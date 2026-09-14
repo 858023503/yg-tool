@@ -1,0 +1,248 @@
+[@main]
+
+#IF
+LARGE <$LEVEL> 209
+#ACT
+MOV S$大陆传送地图一 <&IMG:20:52:627:225><&IMG:71:52:694:275>
+MOV S$传送卷轴地图一 <&IMGEX:52:8:16:8:790:240|146#可直接传送到雪城旧址/@雪城旧址>
+#ELSEACT
+MOV S$大陆传送地图一 <&IMG:21:52:627:225|249#修仙等级【210级】自动解锁><&IMG:72:52:694:275>
+MOV S$传送卷轴地图一 <&IMGEX:52:12:12:12:790:240|^249#等级达到{【210级】|243}方可进入^243#可直接传送至雪城旧址>
+#IF
+LARGE <$LEVEL> 219
+#ACT
+MOV S$传送卷轴地图二 <&IMGEX:52:8:16:8:790:358|146#可直接传送到冰晶宫/@冰晶宫>
+MOV S$大陆传送地图二 <&IMG:22:52:627:347><&IMG:71:52:694:390>
+#ELSEACT
+MOV S$大陆传送地图二 <&IMG:23:52:627:347|249#修仙等级【220级】自动解锁><&IMG:72:52:694:390>
+MOV S$传送卷轴地图二 <&IMGEX:52:13:13:13:790:358|^249#等级达到{【220级】|243}方可进入^243#可直接传送至冰晶宫>
+#IF
+LARGE <$LEVEL> 229
+#ACT
+
+MOV S$传送卷轴地图三 <&IMGEX:52:10:18:10:790:473|146#可直接传送到沼泽秘境/@沼泽秘境>
+MOV S$大陆传送地图三 <&IMG:24:52:627:460><&IMG:71:52:694:505>
+#ELSEACT
+MOV S$大陆传送地图三 <&IMG:25:52:627:460|249#修仙等级【230级】自动解锁><&IMG:72:52:694:505>
+MOV S$传送卷轴地图三 <&IMGEX:52:14:14:14:790:473|^249#等级达到{【230级】|243}方可进入^243#可直接传送至沼泽秘境>
+#IF
+LARGE <$LEVEL> 239
+#ACT
+
+MOV S$传送卷轴地图四 <&IMGEX:52:11:19:11:790:587|146#可直接传送到万劫地宫/@万劫地宫>
+MOV S$大陆传送地图四 <&IMG:26:52:620:585><&IMG:71:52:694:620>
+#ELSEACT
+MOV S$大陆传送地图四 <&IMG:27:52:620:585|249#修仙等级【240级】自动解锁><&IMG:72:52:694:620>
+MOV S$传送卷轴地图四 <&IMGEX:52:15:15:15:790:587|^249#等级达到{【240级】|243}方可进入^243#可直接传送至万劫地宫>
+
+; #if
+; CHECKITEM 传送卷轴 1
+; #act
+; #ELSEACT
+; MOV S$传送卷轴地图一 <&IMGEX:52:12:12:12:790:240|需要1个传送卷轴>
+; MOV S$传送卷轴地图二 <&IMGEX:52:13:13:13:790:358|需要1个传送卷轴>
+; MOV S$传送卷轴地图三 <&IMGEX:52:14:14:14:790:473|需要1个传送卷轴>
+; MOV S$传送卷轴地图四 <&IMGEX:52:15:15:15:790:587|需要1个传送卷轴>
+#if
+LARGE <$LEVEL> 189
+#act
+MOV S$主城传送 <&IMGEX:52:5:6:7:610:103|进入冰雪城/@冰雪城>
+SCREENEFFECT <$STR(N$NPC主城特效X)> <$STR(N$NPC主城特效Y)> 59 156 10 1 100 0 0 1
+#ELSEACT
+MOV S$主城传送 <&IMGEX:52:51:51:51:610:103|249#进入条件：190级>
+#if
+checkitem 六大陆时空卷轴 2
+#act
+MOV S$时空卷轴一 <&IMGEX:52:28:29:30:880:245/@雪城旧址副本>
+MOV S$时空卷轴二 <&IMGEX:52:31:32:33:880:362/@冰晶宫副本>
+MOV S$时空卷轴三 <&IMGEX:52:34:35:36:880:478/@沼泽秘境副本>
+MOV S$时空卷轴四 <&IMGEX:52:37:38:39:880:590/@万劫地宫副本>
+#ELSEACT
+MOV S$时空卷轴一 <&IMG:44:52:880:245|需要2个六大陆时空卷轴^地图内提供200%攻击伤害>
+MOV S$时空卷轴二 <&IMG:42:52:880:362|需要2个六大陆时空卷轴^地图内提供200%攻击伤害>
+MOV S$时空卷轴三 <&IMG:44:52:880:478|需要2个六大陆时空卷轴^地图内提供200%攻击伤害>
+MOV S$时空卷轴四 <&IMG:46:52:885:595|需要2个六大陆时空卷轴^地图内提供200%攻击伤害>
+
+
+#IF
+#ACT
+OPENMERCHANTBIGDLG 52 0 1 4 0 -80 0
+#say
+<&IMG:207:52:7:115>
+;归隐城
+<&IMG:152:52:200:180>
+;封魔
+<&IMG:89:52:43:310>
+<&IMG:125:52:700:250>
+<&PlayImg:52:53:10:100:60:200:0>
+;牛魔
+<&IMG:111:52:305:328>
+<&IMG:169:52:700:365>
+<&PlayImg:52:53:10:100:320:220:0>
+;暗夜城
+<&IMG:161:52:280:500>
+<&PlayImg:52:53:10:100:330:400:0>
+;魔毒蚀地
+<&IMG:90:52:107:560>
+<&IMG:126:52:700:480>
+<&PlayImg:52:53:10:100:126:450:0>
+;封魔宫
+<&IMG:91:52:395:620>
+<&IMG:127:52:700:595>
+<&PlayImg:52:53:10:100:410:510:0>
+
+
+
+
+
+
+
+
+<$STR(S$主城传送)>
+<&IMGEX:52:2:3:4:970:20/@关闭对话框>
+
+
+<$STR(S$大陆传送地图一)>
+<$STR(S$大陆传送地图二)>
+<$STR(S$大陆传送地图三)>
+<$STR(S$大陆传送地图四)>
+
+<$STR(S$时空卷轴一)>
+<$STR(S$时空卷轴二)>
+<$STR(S$时空卷轴三)>
+<$STR(S$时空卷轴四)>
+
+<$STR(S$传送卷轴地图一)>
+<$STR(S$传送卷轴地图二)>
+<$STR(S$传送卷轴地图三)>
+<$STR(S$传送卷轴地图四)>
+[@关闭对话框]
+#if
+#ACT
+close
+[@冰雪城]
+
+#if
+LARGE U379 4999
+#act
+MAPMOVE 06 109 53 5
+#ELSEACT
+messagebox 五大陆神之眷顾NPC点满再来
+
+
+
+
+
+[@雪城旧址]
+#if
+LARGE U379 4999
+#act
+MAPMOVE 5101 93 95
+#ELSEACT
+messagebox 五大陆神之眷顾NPC点满再来
+[@冰晶宫]
+#if
+LARGE U379 4999
+#act
+MAPMOVE 5104 87 106
+#ELSEACT
+messagebox 五大陆神之眷顾NPC点满再来
+[@沼泽秘境]
+#if
+LARGE U379 4999
+#act
+MAPMOVE 5201 17 115
+#ELSEACT
+messagebox 五大陆神之眷顾NPC点满再来
+[@万劫地宫]
+#if
+LARGE U379 4999
+#act
+MAPMOVE 5401 15 55
+#ELSEACT
+messagebox 五大陆神之眷顾NPC点满再来
+[@雪城旧址副本]
+#if
+CHECKITEM 六大陆时空卷轴 2
+#act
+take 六大陆时空卷轴 2
+AddMirrorMap xuechengjiuzhi003 <$USERNAME>的雪域副本 雪域副本 3600 3 187 N$深渊地图创建成功 1
+MONGENEX <$USERNAME>的雪域副本 42 52  雪域野人 500 300 255
+MONGENEX <$USERNAME>的雪域副本 42 52  雪域羊人 500 300 255
+MONGENEX <$USERNAME>的雪域副本 42 52  雪域冰甲虫 500 300 255
+MONGENEX <$USERNAME>的雪域副本 42 52  雪域冰狼 500 300 255
+MONGENEX <$USERNAME>的雪域副本 42 52  雪域力士 500 300 255
+MONGENEX <$USERNAME>的雪域副本 42 52  雪域卫士 500 300 255
+MONGENEX <$USERNAME>的雪域副本 42 52  雪域毛人 500 300 255
+MONGENEX <$USERNAME>的雪域副本 42 52  雪域冰狼【精英】 500 300 251
+MONGENEX <$USERNAME>的雪域副本 42 52  雪域力士【精英】 500 300 251
+MONGENEX <$USERNAME>的雪域副本 42 52  雪域卫士【精英】 500 300 251
+MONGENEX <$USERNAME>的雪域副本 54 60  雪域魔王【BOSS】 500 1 146 
+MONGENEX <$USERNAME>的雪域副本 54 60  雪域魔王【领主】 500 1 253 
+MONGENEX <$USERNAME>的雪域副本 54 60  雪域魔王【统领】 500 1 249
+MAPMOVE <$USERNAME>的雪域副本 25 25
+; 
+
+
+[@冰晶宫副本]
+#if
+CHECKITEM 六大陆时空卷轴 2
+#act
+take 六大陆时空卷轴 2
+AddMirrorMap shuijinggong03 <$USERNAME>的冰晶宫副本 冰晶宫副本 3600 3 84 N$深渊地图创建成功 1
+MONGENEX <$USERNAME>的冰晶宫副本 42 52  北境战将【精英】 500 300 251
+MONGENEX <$USERNAME>的冰晶宫副本 42 52  北境狂人【精英】 500 300 251
+MONGENEX <$USERNAME>的冰晶宫副本 42 52  北境将军【精英】 500 300 251
+MONGENEX <$USERNAME>的冰晶宫副本 42 52  北境军主【精英】 500 300 251
+MONGENEX <$USERNAME>的冰晶宫副本 42 52  北境斧王【精英】 500 300 251
+MONGENEX <$USERNAME>的冰晶宫副本 42 52  北境刺客【精英】 500 300 251
+MONGENEX <$USERNAME>的冰晶宫副本 42 52  雪域毛人 500 300 255
+MONGENEX <$USERNAME>的冰晶宫副本 42 52  雪域冰狼【精英】 500 300 251
+MONGENEX <$USERNAME>的冰晶宫副本 42 52  雪域力士【精英】 500 300 251
+MONGENEX <$USERNAME>的冰晶宫副本 42 52  雪域卫士【精英】 500 300 251
+MONGENEX <$USERNAME>的冰晶宫副本 54 60  困龙柱【BOSS】 500 1 146 
+MONGENEX <$USERNAME>的冰晶宫副本 54 60  寒冰龙【领主】 500 1 253 
+MONGENEX <$USERNAME>的冰晶宫副本 54 60  冰锤猿魔【统领】 500 1 249
+MAPMOVE <$USERNAME>的冰晶宫副本 25 25
+
+
+
+
+[@沼泽秘境副本]
+#IF
+CHECKITEM 六大陆时空卷轴 2
+#act
+take 六大陆时空卷轴 2
+AddMirrorMap zaozemijing004 <$USERNAME>的沼泽秘境副本 沼泽秘境副本 3600 3 84 N$深渊地图创建成功 1
+MONGENEX <$USERNAME>的沼泽秘境副本 42 52  火尾黑狐王【精英】 500 5 251
+MONGENEX <$USERNAME>的沼泽秘境副本 42 52   黑狐【精英】 500 5 251
+MONGENEX <$USERNAME>的沼泽秘境副本 42 52 金爪赤狐王【精英】 500 5 251
+MONGENEX <$USERNAME>的沼泽秘境副本 42 52  赤狐【精英】 500 5 251
+MONGENEX <$USERNAME>的沼泽秘境副本 42 52  玉面素狐王【精英】 500 5 251
+MONGENEX <$USERNAME>的沼泽秘境副本 42 52  素狐【精英】 500 5 251
+MONGENEX <$USERNAME>的沼泽秘境副本 42 52  狐月魔眼【精英】 500 5 251
+MONGENEX <$USERNAME>的沼泽秘境副本 42 52  道狐【精英】 500 5 251
+MONGENEX <$USERNAME>的沼泽秘境副本 42 52  法狐【精英】 500 5 251
+MONGENEX <$USERNAME>的沼泽秘境副本 42 52  战狐【精英】 500 5 251
+MONGENEX <$USERNAME>的沼泽秘境副本 54 60  九尾妖狐【BOSS】 500 1 146 
+MONGENEX <$USERNAME>的沼泽秘境副本 54 60  法狐【领主】 500 1 253 
+MONGENEX <$USERNAME>的沼泽秘境副本 54 60  战狐【统领】 500 1 249
+MAPMOVE <$USERNAME>的沼泽秘境副本 25 25
+
+
+
+[@万劫地宫副本]
+#IF
+CHECKITEM 六大陆时空卷轴 2
+#act
+take 六大陆时空卷轴 2
+AddMirrorMap youludiyu006 <$USERNAME>的万劫地宫副本 万劫地宫副本 3600 3 135 N$深渊地图创建成功 1
+MONGENEX <$USERNAME>的万劫地宫副本 42 52  绿刀【精英】 500 200 251
+MONGENEX <$USERNAME>的万劫地宫副本 42 52   冰巫【精英】 500 200 251
+MONGENEX <$USERNAME>的万劫地宫副本 42 52  地宫守护者【精英】 500 200 251
+MONGENEX <$USERNAME>的万劫地宫副本 42 52  地宫火法【精英】 500 200 251
+MONGENEX <$USERNAME>的万劫地宫副本 42 52  地宫女法【精英】 500 200 251
+MONGENEX <$USERNAME>的万劫地宫副本 54 60  地宫金兽神【BOSS】 500 1 146 
+MONGENEX <$USERNAME>的万劫地宫副本 54 60  地宫金锤【领主】 500 1 253 
+MONGENEX <$USERNAME>的万劫地宫副本 54 60  地宫紫锤【统领】 500 1 249
+MAPMOVE <$USERNAME>的万劫地宫副本 25 25

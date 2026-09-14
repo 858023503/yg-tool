@@ -1,0 +1,533 @@
+[@新手奖励]
+{
+#IF
+CHECKJOB WIZARD
+#act
+GOTO @给法师新手装备
+
+break
+#IF
+CHECKJOB TAOIST
+#act
+GOTO @给道士新手装备
+
+break
+
+#IF
+CHECKJOB WARRIOR
+#act
+GOTO @给战士新手装备
+
+break
+[@给道士新手装备]
+#IF
+#act
+MOV U0 1
+MOV U45 1
+GIVE 城主装备胚胎
+; LINKGIVEITEM
+; SetCustomItemText -1 <IMG:112:0>
+; ;1
+; SetCustomItemAbil -1 0 0 100
+; SetCustomItemAbil -1 0 1 8
+; SetCustomItemAbil -1 0 2 0
+; SetCustomItemAbil -1 0 3 0
+; SetCustomItemValueEX -1 0 = 21 10
+
+; SetCustomItemAbil -1 1 0 100
+; SetCustomItemAbil -1 1 1 8
+; SetCustomItemAbil -1 1 2 1
+; SetCustomItemAbil -1 1 3 0
+; SetCustomItemValueEX -1 1 = 22 10
+; updateitem -1
+; clearLinkItem
+
+GIVE 元神内丹.Lv1
+LINKGIVEITEM
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 311 1
+updateitem -1
+clearLinkItem
+
+GIVE 战灵法相.Lv1
+LINKGIVEITEM
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 19 5
+updateitem -1
+clearLinkItem
+
+GIVE 魔环之器
+LINKGIVEITEM
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 20 20
+
+
+
+GIVE 命运之刃
+LINKGIVEITEM
+SetCustomItemText -1 <IMG:6:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 9 35 35
+
+;2
+SetCustomItemAbil -1 1 0 100
+SetCustomItemAbil -1 1 1 8
+SetCustomItemAbil -1 1 2 1
+SetCustomItemAbil -1 1 3 0
+SetCustomItemValueEX -1 1 = 10 10 10
+
+;3
+SetCustomItemAbil -1 2 0 100
+SetCustomItemAbil -1 2 1 8
+SetCustomItemAbil -1 2 2 2
+SetCustomItemAbil -1 2 3 0
+SetCustomItemValueEX -1 2 = 11 10 10
+
+
+SetCustomItemAbil -1 3 0 70
+SetCustomItemAbil -1 3 1 8
+SetCustomItemAbil -1 3 2 3
+SetCustomItemAbil -1 3 3 0
+SetCustomItemValueEX -1 3 = 13 1
+
+updateitem -1
+clearLinkItem
+
+GIVE 轻型道甲
+LINKGIVEITEM
+SetCustomItemText -1 <IMG:6:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 9 35 35
+
+;2
+SetCustomItemAbil -1 1 0 100
+SetCustomItemAbil -1 1 1 8
+SetCustomItemAbil -1 1 2 1
+SetCustomItemAbil -1 1 3 0
+SetCustomItemValueEX -1 1 = 10 10 10
+
+;3
+SetCustomItemAbil -1 2 0 100
+SetCustomItemAbil -1 2 1 8
+SetCustomItemAbil -1 2 2 2
+SetCustomItemAbil -1 2 3 0
+SetCustomItemValueEX -1 2 = 11 10 10
+
+SetCustomItemAbil -1 3 0 70
+SetCustomItemAbil -1 3 1 8
+SetCustomItemAbil -1 3 2 3
+SetCustomItemAbil -1 3 3 0
+SetCustomItemValueEX -1 3 = 13 1 
+
+updateitem -1
+clearLinkItem
+
+
+give 雷霆战斧【限时】 1
+LINKGIVEITEM
+SetItemState -1 0 1
+SetItemState -1 1 1
+SetItemState -1 4 1
+SetItemState -1 5 1
+SETITEMEFFECT -1 2003
+updateitem -1
+clearLinkItem
+
+
+
+
+
+GIVE 青铜头盔
+GIVE 琥珀项链
+GIVE 道士手镯 2
+GIVE 珍珠戒指 2
+GIVE 骷髅道靴
+GIVE 骷髅道带
+GIVE 木质盾牌
+GIVE 回城石
+GIVE 随机传送石
+set [555] 1
+set [556] 1
+set [500] 1
+
+set [549] 1
+;强化装备默认不回收勾选
+SET [558] 1
+;有新任务
+;有新任务动态效果
+
+
+;有新任务
+MAPMOVE 3 175 130
+;自动回收
+
+
+
+SetOnTimer 37 2
+messagebox 已开启【战士】【法师】装备自动回收
+close
+
+[@给法师新手装备]
+#if
+#act
+MOV U0 1
+MOV U45 1
+GIVE 城主装备胚胎
+; LINKGIVEITEM
+; SetCustomItemText -1 <IMG:6:0>
+; ;1
+; ; SetCustomItemAbil -1 0 0 100
+; ; SetCustomItemAbil -1 0 1 8
+; ; SetCustomItemAbil -1 0 2 0
+; ; SetCustomItemAbil -1 0 3 0
+; ; SetCustomItemValueEX -1 0 = 21 10
+
+; ; SetCustomItemAbil -1 1 0 100
+; ; SetCustomItemAbil -1 1 1 8
+; ; SetCustomItemAbil -1 1 2 1
+; ; SetCustomItemAbil -1 1 3 0
+; ; SetCustomItemValueEX -1 1 = 22 10
+; updateitem -1
+; clearLinkItem
+
+GIVE 元神内丹.Lv1
+LINKGIVEITEM
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 311 1
+updateitem -1
+clearLinkItem
+
+GIVE 战灵法相.Lv1
+LINKGIVEITEM
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 19 5
+updateitem -1
+clearLinkItem
+
+GIVE 魔环之器
+LINKGIVEITEM
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 20 20
+
+
+GIVE 海魂
+LINKGIVEITEM
+SetCustomItemText -1 <IMG:6:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 1 30 30
+
+;2
+SetCustomItemAbil -1 1 0 100
+SetCustomItemAbil -1 1 1 8
+SetCustomItemAbil -1 1 2 1
+SetCustomItemAbil -1 1 3 0
+SetCustomItemValueEX -1 1 = 2 2 2
+
+;3
+SetCustomItemAbil -1 2 0 100
+SetCustomItemAbil -1 2 1 8
+SetCustomItemAbil -1 2 2 2
+SetCustomItemAbil -1 2 3 0
+SetCustomItemValueEX -1 2 = 3 2 2
+
+
+SetCustomItemAbil -1 3 0 70
+SetCustomItemAbil -1 3 1 8
+SetCustomItemAbil -1 3 2 3
+SetCustomItemAbil -1 3 3 0
+SetCustomItemValueEX -1 3 = 12 1
+
+updateitem -1
+clearLinkItem
+
+GIVE 轻型法甲
+LINKGIVEITEM
+SetCustomItemText -1 <IMG:6:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 1 30 30
+
+;2
+SetCustomItemAbil -1 1 0 100
+SetCustomItemAbil -1 1 1 8
+SetCustomItemAbil -1 1 2 1
+SetCustomItemAbil -1 1 3 0
+SetCustomItemValueEX -1 1 = 2 2 2
+
+;3
+SetCustomItemAbil -1 2 0 100
+SetCustomItemAbil -1 2 1 8
+SetCustomItemAbil -1 2 2 2
+SetCustomItemAbil -1 2 3 0
+SetCustomItemValueEX -1 2 = 3 2 2
+
+SetCustomItemAbil -1 3 0 70
+SetCustomItemAbil -1 3 1 8
+SetCustomItemAbil -1 3 2 3
+SetCustomItemAbil -1 3 3 0
+SetCustomItemValueEX -1 3 = 12 1
+updateitem -1
+clearLinkItem
+
+
+
+give 狂暴战斧【限时】 1
+LINKGIVEITEM
+SetItemState -1 0 1
+SetItemState -1 1 1
+SetItemState -1 4 1
+SetItemState -1 5 1
+SETITEMEFFECT -1 2003
+updateitem -1
+clearLinkItem
+
+
+
+
+GIVE 祈祷头盔
+GIVE 魔鬼项链
+GIVE 夏普儿手镯 2
+GIVE 蛇眼戒指 2
+GIVE 骷髅法靴 
+GIVE 骷髅法带
+GIVE 木质盾牌
+GIVE 回城石
+GIVE 随机传送石
+;有新任务
+;有新任务动态效果
+
+
+MAPMOVE 3 175 130
+set [555] 1
+set [557] 1
+set [500] 1
+
+set [549] 1
+
+;强化装备默认不回收勾选
+SET [558] 1
+SetOnTimer 37 2
+messagebox 已开启【战士】【道士】装备自动回收
+close
+#ELSEACT
+messagebox 提示：请输入正确的兑换码!
+BREAK
+
+
+
+
+
+
+
+
+
+
+[@给战士新手装备]
+#if
+#act
+MOV U0 1
+MOV U45 1
+GIVE 城主装备胚胎
+; LINKGIVEITEM
+; SetCustomItemText -1 <IMG:112:0>
+; ;1
+; SetCustomItemAbil -1 0 0 100
+; SetCustomItemAbil -1 0 1 8
+; SetCustomItemAbil -1 0 2 0
+; SetCustomItemAbil -1 0 3 0
+; SetCustomItemValueEX -1 0 = 21 10
+
+; SetCustomItemAbil -1 1 0 100
+; SetCustomItemAbil -1 1 1 8
+; SetCustomItemAbil -1 1 2 1
+; SetCustomItemAbil -1 1 3 0
+; SetCustomItemValueEX -1 1 = 22 10
+updateitem -1
+clearLinkItem
+
+GIVE 元神内丹.Lv1
+LINKGIVEITEM
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 311 1
+updateitem -1
+clearLinkItem
+
+GIVE 战灵法相.Lv1
+LINKGIVEITEM
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 19 5
+updateitem -1
+clearLinkItem
+
+GIVE 魔环之器
+LINKGIVEITEM
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 20 20
+
+GIVE 轻型战甲
+LINKGIVEITEM
+SetCustomItemText -1 <IMG:6:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 5 10 10
+
+;2
+SetCustomItemAbil -1 1 0 100
+SetCustomItemAbil -1 1 1 8
+SetCustomItemAbil -1 1 2 1
+SetCustomItemAbil -1 1 3 0
+SetCustomItemValueEX -1 1 = 6 2 2
+
+;3
+SetCustomItemAbil -1 2 0 100
+SetCustomItemAbil -1 2 1 8
+SetCustomItemAbil -1 2 2 2
+SetCustomItemAbil -1 2 3 0
+SetCustomItemValueEX -1 2 = 7 5 5
+
+
+SetCustomItemAbil -1 3 0 70
+SetCustomItemAbil -1 3 1 8
+SetCustomItemAbil -1 3 2 3
+SetCustomItemAbil -1 3 3 0
+SetCustomItemValueEX -1 3 = 12 1
+
+
+
+updateitem -1
+clearLinkItem
+
+GIVE 斩马刀
+LINKGIVEITEM
+SetCustomItemText -1 <IMG:6:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 5 10 10
+
+;2
+SetCustomItemAbil -1 1 0 100
+SetCustomItemAbil -1 1 1 8
+SetCustomItemAbil -1 1 2 1
+SetCustomItemAbil -1 1 3 0
+SetCustomItemValueEX -1 1 = 6 2 2
+
+;3
+SetCustomItemAbil -1 2 0 100
+SetCustomItemAbil -1 2 1 8
+SetCustomItemAbil -1 2 2 2
+SetCustomItemAbil -1 2 3 0
+SetCustomItemValueEX -1 2 = 7 5 5
+
+SetCustomItemAbil -1 3 0 70
+SetCustomItemAbil -1 3 1 8
+SetCustomItemAbil -1 3 2 3
+SetCustomItemAbil -1 3 3 0
+SetCustomItemValueEX -1 3 = 12 1
+updateitem -1
+clearLinkItem
+
+
+give 玄鸟天机伞【限时】 1
+LINKGIVEITEM
+SetItemState -1 0 1
+SetItemState -1 1 1
+SetItemState -1 4 1
+SetItemState -1 5 1
+SETITEMEFFECT -1 2003
+updateitem -1
+clearLinkItem
+
+
+GIVE 骷髅头盔
+GIVE 灯笼项链
+GIVE 金手镯 2
+GIVE 金戒指 2
+GIVE 骷髅战靴
+GIVE 骷髅战带
+GIVE 木质盾牌
+GIVE 回城石
+GIVE 随机传送石
+;有新任务
+;有新任务动态效果
+
+;接受任务
+
+;有新任务
+MAPMOVE 3 175 130
+set [556] 1
+set [557] 1
+set [500] 1
+
+set [549] 1
+;强化装备默认不回收勾选
+SET [558] 1
+SetOnTimer 37 2
+messagebox 已开启【法师】【道士】装备自动回收
+close
+}

@@ -1,0 +1,7 @@
+#AutoRun NPC MIN 10 @幻7刷怪
+#AutoRun NPC MIN 50 @蜈蚣刷怪房BOSS刷新
+#AutoRun NPC runonDAY 20:00 @晚上八点活动BOSS
+#AutoRun NPC HOUR 3 @封魔谷怪物攻城
+#AutoRun NPC HOUR 3 @幻境怪物攻城
+
+#AutoRun NPC HOUR 1 @1小时触发脚本

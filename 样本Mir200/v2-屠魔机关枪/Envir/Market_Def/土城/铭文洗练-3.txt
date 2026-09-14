@@ -1,0 +1,1656 @@
+[@main]
+#if
+#act
+MOV S$铭文洗练第二条 <&img:342:5:114:252>
+MOV S$铭文洗练第三条 <&IMG:342:5:114:384>
+MOV S$铭文洗练第一个图标
+MOV S$铭文洗练第一条 <&TEXT:请先在界面右侧放入“带铭文”类物品:230:150/FCOLOR=10>
+MOV S$第一条洗练费用说明 <&text:淬炼费用：:240:183/fcolor=243>
+OPENMERCHANTBIGDLG 5 341 1 0 -1 86 1 771 22 1
+;铭文洗练使用石中火精 
+;洗练带几率
+;烧仙草 增加洗练几率
+;星炼草 可以洗练铭文属性
+#say
+<&IMG:340:5:0:0>\
+\ \
+<ITEMBOX:9:5:125:595:88:62:62:*:95#放入带铭文的装备>\ \ \ \ \ \ \
+<ITEMBOX:10:5:125:691:88:62:62:*:95#可放入烧仙草或星炼草^烧仙草可以增加淬炼铭文几率^星炼草可以洗练铭文属性^两种材料可通过副职业[丹药师]制作>\ \ \ \ \ \ \
+<$STR(S$铭文洗练第一条)>\
+\                   \ \ \ \
+<$STR(S$铭文洗练第二条)>\ \
+\                  \ \ \ \ \ \ \ \
+<$STR(S$铭文洗练第三条)>\ \ \ \
+<&text:淬炼几率：100%:635:307/FCOLOR=245>\
+<&text:淬炼几率说明：:635:339/FCOLOR=70>\
+<&img:132:5:712:331|95#装备等级越高淬炼几率越低^可以使用烧仙草增加淬炼几率>\ \
+
+<&ImgEx:5:344:345:346:618:165/@淬炼铭文>
+<&ImgEx:5:347:348:349:618:205/@淬炼铭文属性>
+[@ItemOutBox9]
+#IF
+#ACT
+GOTO @MAIN
+[@ItemIntoBox9]
+#IF
+#ACT
+MOV N$铭文洗练词条位置 0
+MOV N$铭文洗练判断条数 0
+MOV N$铭文洗练万象套位置 0
+SetUpgradeItem 9
+MOV N$铭文对应数字 0
+GetCustomItemValueEx -1 1 <$STR(N$没用)>  <$STR(N$左边第一条属性对应编号)> <$str(N$左边属性值一)> <$str(N$左边属性上限一)> <$STR(N$没用)>
+GetCustomItemValueEx -1 2 <$STR(N$没用)>  <$STR(N$左边第二条属性对应编号)> <$str(N$左边属性值二)> <$str(N$左边属性上限二)> <$STR(N$没用)>
+GetCustomItemValueEx -1 3 <$STR(N$没用)>  <$STR(N$左边第三条属性对应编号)> <$str(N$左边属性值三)> <$str(N$左边属性上限三)> <$STR(N$没用)>
+GetCustomItemValueEx -1 4 <$STR(N$没用)>  <$STR(N$左边第四条属性对应编号)> <$str(N$左边属性值四)> <$str(N$左边属性上限四)> <$STR(N$没用)>
+GetCustomItemValueEx -1 5 <$STR(N$没用)>  <$STR(N$左边第五条属性对应编号)> <$str(N$左边属性值五)> <$str(N$左边属性上限五)> <$STR(N$没用)>
+GetCustomItemValueEx -1 6 <$STR(N$没用)>  <$STR(N$左边第六条属性对应编号)> <$str(N$左边属性值六)> <$str(N$左边属性上限六)> <$STR(N$没用)>
+GetCustomItemValueEx -1 7 <$STR(N$没用)>  <$STR(N$左边第七条属性对应编号)> <$str(N$左边属性值七)> <$str(N$左边属性上限七)> <$STR(N$没用)>
+GetCustomItemValueEx -1 8 <$STR(N$没用)>  <$STR(N$左边第八条属性对应编号)> <$str(N$左边属性值八)> <$str(N$左边属性上限八)> <$STR(N$没用)>
+GetCustomItemValueEx -1 9 <$STR(N$没用)>  <$STR(N$左边第九条属性对应编号)> <$str(N$左边属性值九)> <$str(N$左边属性上限九)> <$STR(N$没用)>
+GetCustomItemValueEx -1 10 <$STR(N$没用)>  <$STR(N$左边第十条属性对应编号)> <$str(N$左边属性值十)> <$str(N$左边属性上限十)> <$STR(N$没用)>
+
+#if
+GetStringPosEX ..\QuestDiary\铭文洗练\洗练费用几率.txt <$BOXITEM[9].NAME> N$没用 S$铭文洗练费用几率 0
+#ACT
+
+EXTRACTSTRING ~ S$铭文洗练费用几率 S$没用 N$铭文洗练金币 N$铭文需要洗炼锁定器数量 N$铭文洗练几率
+
+
+
+
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第一条属性对应编号
+#ACT
+MOV N$铭文对应数字 <$STR(N$左边第一条属性对应编号)>
+MOV N$铭文对应的属性 <$STR(N$左边属性值一)>
+INC N$铭文洗练判断条数 1
+goto @整理铭文属性显示
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第二条属性对应编号
+#ACT
+INC N$铭文洗练判断条数 1
+MOV N$铭文对应数字 <$STR(N$左边第二条属性对应编号)>
+MOV N$铭文对应的属性 <$STR(N$左边属性值二)>
+goto @整理铭文属性显示
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第三条属性对应编号
+#ACT
+INC N$铭文洗练判断条数 1
+MOV N$铭文对应数字 <$STR(N$左边第三条属性对应编号)>
+MOV N$铭文对应的属性 <$STR(N$左边属性值三)>
+goto @整理铭文属性显示
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第四条属性对应编号
+#ACT
+INC N$铭文洗练判断条数 1
+MOV N$铭文对应数字 <$STR(N$左边第四条属性对应编号)>
+MOV N$铭文对应的属性 <$STR(N$左边属性值四)>
+goto @整理铭文属性显示
+
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第五条属性对应编号
+#ACT
+INC N$铭文洗练判断条数 1
+MOV N$铭文对应数字 <$STR(N$左边第五条属性对应编号)>
+MOV N$铭文对应的属性 <$STR(N$左边属性值五)>
+goto @整理铭文属性显示
+
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第六条属性对应编号
+#ACT
+INC N$铭文洗练判断条数 1
+MOV N$铭文对应数字 <$STR(N$左边第六条属性对应编号)>
+MOV N$铭文对应的属性 <$STR(N$左边属性值六)>
+goto @整理铭文属性显示
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第七条属性对应编号
+#ACT
+INC N$铭文洗练判断条数 1
+MOV N$铭文对应数字 <$STR(N$左边第七条属性对应编号)>
+MOV N$铭文对应的属性 <$STR(N$左边属性值七)>
+goto @整理铭文属性显示
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第八条属性对应编号
+#ACT
+INC N$铭文洗练判断条数 1
+MOV N$铭文对应数字 <$STR(N$左边第八条属性对应编号)>
+MOV N$铭文对应的属性 <$STR(N$左边属性值八)>
+
+goto @整理铭文属性显示
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第九条属性对应编号
+#ACT
+INC N$铭文洗练判断条数 1
+MOV N$铭文对应数字 <$STR(N$左边第九条属性对应编号)>
+MOV N$铭文对应的属性 <$STR(N$左边属性值九)>
+goto @整理铭文属性显示
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第十条属性对应编号
+#ACT
+INC N$铭文洗练判断条数 1
+MOV N$铭文对应数字 <$STR(N$左边第十条属性对应编号)>
+MOV N$铭文对应的属性 <$STR(N$左边属性值十)>
+goto @整理铭文属性显示
+
+
+
+;判断最后一条是否是万象套
+#IF
+CheckCacheTextList ..\QuestDiary\拾取鉴定\赋值属性\一大陆万象套属性.txt N$左边第一条属性对应编号
+#ACT
+MOV N$铭文洗练万象套位置 1
+
+#IF
+CheckCacheTextList ..\QuestDiary\拾取鉴定\赋值属性\一大陆万象套属性.txt N$左边第二条属性对应编号
+#ACT
+MOV N$铭文洗练万象套位置 2
+
+#IF
+CheckCacheTextList ..\QuestDiary\拾取鉴定\赋值属性\一大陆万象套属性.txt N$左边第三条属性对应编号
+#ACT
+MOV N$铭文洗练万象套位置 3
+
+#IF
+CheckCacheTextList ..\QuestDiary\拾取鉴定\赋值属性\一大陆万象套属性.txt N$左边第四条属性对应编号
+#ACT
+MOV N$铭文洗练万象套位置 4
+
+#IF
+CheckCacheTextList ..\QuestDiary\拾取鉴定\赋值属性\一大陆万象套属性.txt N$左边第五条属性对应编号
+#ACT
+MOV N$铭文洗练万象套位置 5
+
+#IF
+CheckCacheTextList ..\QuestDiary\拾取鉴定\赋值属性\一大陆万象套属性.txt N$左边第六条属性对应编号
+#ACT
+MOV N$铭文洗练万象套位置 6
+
+#IF
+CheckCacheTextList ..\QuestDiary\拾取鉴定\赋值属性\一大陆万象套属性.txt N$左边第七条属性对应编号
+#ACT
+MOV N$铭文洗练万象套位置 7
+
+#IF
+CheckCacheTextList ..\QuestDiary\拾取鉴定\赋值属性\一大陆万象套属性.txt N$左边第八条属性对应编号
+#ACT
+MOV N$铭文洗练万象套位置 8
+
+#IF
+CheckCacheTextList ..\QuestDiary\拾取鉴定\赋值属性\一大陆万象套属性.txt N$左边第九条属性对应编号
+#ACT
+MOV N$铭文洗练万象套位置 9
+
+#IF
+CheckCacheTextList ..\QuestDiary\拾取鉴定\赋值属性\一大陆万象套属性.txt N$左边第十条属性对应编号
+#ACT
+MOV N$铭文洗练万象套位置 10
+
+
+#if
+EQUAL N$铭文对应数字 0
+#act
+MESSAGEBOX 当前装备没有铭文属性
+goto @main
+break
+
+
+
+
+
+
+
+
+
+
+
+
+
+#if
+#act
+GOTO @铭文洗练内容重载
+
+
+
+
+
+
+[@铭文洗练内容重载]
+#if
+#act
+;铭文洗练使用石中火精 
+;洗练带几率
+;烧仙草 增加洗练几率
+;星炼草 可以洗练铭文属性
+#say
+<&IMG:340:5:0:0>\
+\ \
+<ITEMBOX:9:5:125:595:88:62:62:*:95#放入带铭文的装备>\ \ \ \ \ \ \
+<ITEMBOX:10:5:125:691:88:62:62:*:95#可放入烧仙草或星炼草^烧仙草可以增加淬炼铭文几率^星炼草可以洗练铭文属性^两种材料可通过副职业[丹药师]制作>\ \ \ \ \ \ \
+<$STR(S$铭文洗练第一条)>\
+\                   \ \ \ \
+<$STR(S$铭文洗练第二条)>\ \
+\                  \ \ \ \ \ \ \ \
+<$STR(S$铭文洗练第三条)>\ \ \ \
+<&text:淬炼几率：100%:635:307/FCOLOR=245>\
+<&text:淬炼几率说明：:635:339/FCOLOR=70>\
+<&img:132:5:712:331|95#装备等级越高淬炼几率越低^可以使用烧仙草增加淬炼几率>\ \
+
+<&ImgEx:5:344:345:346:618:165/@淬炼铭文>
+<&ImgEx:5:347:348:349:618:205/@淬炼铭文属性>
+
+[@整理铭文属性显示]
+
+#IF
+EQUAL N$铭文对应数字 216
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条刺杀剑术范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了刺杀范围
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 217
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条人物攻击力增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了人物攻击力
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 218
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条人物魔法力增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了人物魔法力
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 219
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条人物道术力增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了人物道术力
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 220
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条寂静之雷范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了寂静之雷范围
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 221
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条灵葫范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了灵葫范围
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 222
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条地刺突袭几率增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了地刺突袭几率
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 223
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条九霄爆雷术几率增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了九霄爆雷术几率
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 224
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条天罚之印几率增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了天罚之印几率
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 225
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条不屈意志加持中增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了不屈意志吸血
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 226
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条魔法盾加持中增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了魔法盾吸血
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 227
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条防御之盾加持中增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了防御之盾吸血
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 228
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条使用野蛮冲撞后增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了野蛮冲撞后增加致命几率
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 229
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条使用梵天圣火后增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了梵天圣火后增加致命几率
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 230
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条使用蛊毒术后增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了蛊毒术后增加致命几率
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 231
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条烈火剑法CD减 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了烈火-CD
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 232
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条冰咆哮CD减 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了冰咆哮-CD
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 233
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条幽龙镇魂CD减 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了幽龙镇魂-CD
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 234
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条天神一击范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了天神一击范围
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 235
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条寒渊冰刺范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了寒渊冰刺范围
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 236
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条噬魂暗袭范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了噬魂暗袭范围
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 237
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条龙袭风暴范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了龙袭风暴范围
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 238
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条魔焰狂澜范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了魔焰狂澜范围
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 239
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条威慑符印范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了威慑符印范围
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 240
+EQUAL N$铭文洗练判断条数 1
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第一条万象魔咒范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第一条
+MOV S$第一条铭文说明
+MOV N$第一条铭文的属性 <$STR(N$铭文对应的属性)>
+sendmsg 6 洗出了万象魔咒范围
+GOTO @铭文洗练内容重载
+
+
+
+
+#IF
+EQUAL N$铭文对应数字 216
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条刺杀剑术范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 217
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条人物攻击力增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 218
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条人物魔法力增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 219
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条人物道术力增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 220
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条寂静之雷范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 221
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条灵葫范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 222
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条地刺突袭几率增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 223
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条九霄爆雷术几率增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 224
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条天罚之印几率增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 225
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条不屈意志加持中增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 226
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条魔法盾加持中增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 227
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条防御之盾加持中增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 228
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条使用野蛮冲撞后增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 229
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条使用梵天圣火后增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 230
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条使用蛊毒术后增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 231
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条烈火剑法CD减 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 232
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条冰咆哮CD减 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 233
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条幽龙镇魂CD减 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 234
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条天神一击范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 235
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条寒渊冰刺范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 236
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条噬魂暗袭范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 237
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条龙袭风暴范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 238
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条魔焰狂澜范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 239
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条威慑符印范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 240
+EQUAL N$铭文洗练判断条数 2
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第二条万象魔咒范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第二条
+MOV S$第二条铭文说明
+MOV N$第二条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+
+
+
+
+
+#IF
+EQUAL N$铭文对应数字 216
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条刺杀剑术范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 217
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条人物攻击力增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 218
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条人物魔法力增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 219
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条人物道术力增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 220
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条寂静之雷范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 221
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条灵葫范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 222
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条地刺突袭几率增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 223
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条九霄爆雷术几率增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 224
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条天罚之印几率增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 225
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条不屈意志加持中增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 226
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条魔法盾加持中增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 227
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条防御之盾加持中增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 228
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条使用野蛮冲撞后增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 229
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条使用梵天圣火后增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 230
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条使用蛊毒术后增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 231
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条烈火剑法CD减 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+
+#IF
+EQUAL N$铭文对应数字 232
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条冰咆哮CD减 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 233
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条幽龙镇魂CD减 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 234
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条天神一击范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 235
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条寒渊冰刺范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 236
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条噬魂暗袭范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 237
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条龙袭风暴范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 238
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条魔焰狂澜范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 239
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条威慑符印范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+#IF
+EQUAL N$铭文对应数字 240
+EQUAL N$铭文洗练判断条数 3
+GetStringPosEX ..\QuestDiary\铭文洗练\铭文显示内容.txt 第三条万象魔咒范围增加 N$没用 S$铭文字符串 0
+#ACT
+EXTRACTSTRING ~ S$铭文字符串 S$没用 S$铭文洗练第三条
+MOV S$第三条铭文说明
+MOV N$第三条铭文的属性 <$STR(N$铭文对应的属性)>
+GOTO @铭文洗练内容重载
+
+
+
+[@淬炼铭文]
+#if
+NOT CHECKGOLD <$STR(N$铭文洗练金币)>
+#act
+messagebox 金币不够
+break
+
+#if
+NOT checkitem 洗炼锁定器 <$STR(N$铭文需要洗炼锁定器数量)>
+#act
+messagebox 洗炼锁定器不够
+break
+
+
+
+
+#IF
+#ACT
+GetCustomItemValueEx -1 1 <$STR(N$没用)>  <$STR(N$左边第一条属性对应编号)> <$str(N$左边属性值一)> <$str(N$左边属性上限一)> <$STR(N$没用)>
+GetCustomItemValueEx -1 2 <$STR(N$没用)>  <$STR(N$左边第二条属性对应编号)> <$str(N$左边属性值二)> <$str(N$左边属性上限二)> <$STR(N$没用)>
+GetCustomItemValueEx -1 3 <$STR(N$没用)>  <$STR(N$左边第三条属性对应编号)> <$str(N$左边属性值三)> <$str(N$左边属性上限三)> <$STR(N$没用)>
+GetCustomItemValueEx -1 4 <$STR(N$没用)>  <$STR(N$左边第四条属性对应编号)> <$str(N$左边属性值四)> <$str(N$左边属性上限四)> <$STR(N$没用)>
+GetCustomItemValueEx -1 5 <$STR(N$没用)>  <$STR(N$左边第五条属性对应编号)> <$str(N$左边属性值五)> <$str(N$左边属性上限五)> <$STR(N$没用)>
+GetCustomItemValueEx -1 6 <$STR(N$没用)>  <$STR(N$左边第六条属性对应编号)> <$str(N$左边属性值六)> <$str(N$左边属性上限六)> <$STR(N$没用)>
+GetCustomItemValueEx -1 7 <$STR(N$没用)>  <$STR(N$左边第七条属性对应编号)> <$str(N$左边属性值七)> <$str(N$左边属性上限七)> <$STR(N$没用)>
+GetCustomItemValueEx -1 8 <$STR(N$没用)>  <$STR(N$左边第八条属性对应编号)> <$str(N$左边属性值八)> <$str(N$左边属性上限八)> <$STR(N$没用)>
+GetCustomItemValueEx -1 9 <$STR(N$没用)>  <$STR(N$左边第九条属性对应编号)> <$str(N$左边属性值九)> <$str(N$左边属性上限九)> <$STR(N$没用)>
+GetCustomItemValueEx -1 10 <$STR(N$没用)>  <$STR(N$左边第十条属性对应编号)> <$str(N$左边属性值十)> <$str(N$左边属性上限十)> <$STR(N$没用)>
+
+TAKE 金币 <$STR(N$铭文洗练金币)>
+TAKE 洗炼锁定器 <$STR(N$铭文需要洗炼锁定器数量)>
+
+#IF
+NOT EQUAL N$左边属性值一 0
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第一条属性对应编号
+#ACT
+MOV N$铭文洗练词条位置 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 N$铭文洗练词条位置 0 70
+SetCustomItemAbil -1 N$铭文洗练词条位置 1 8
+SetCustomItemAbil -1 N$铭文洗练词条位置 2 N$铭文洗练词条位置
+SetCustomItemAbil -1 N$铭文洗练词条位置 3 0
+SetCustomItemValueEX -1 N$铭文洗练词条位置 = N$仙品词条 N$仙品属性 N$仙品上限
+
+
+
+#IF
+NOT EQUAL N$左边属性值二 0
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第二条属性对应编号
+#ACT
+MOV N$铭文洗练词条位置 2
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 N$铭文洗练词条位置 0 70
+SetCustomItemAbil -1 N$铭文洗练词条位置 1 8
+SetCustomItemAbil -1 N$铭文洗练词条位置 2 N$铭文洗练词条位置
+SetCustomItemAbil -1 N$铭文洗练词条位置 3 0
+SetCustomItemValueEX -1 N$铭文洗练词条位置 = N$仙品词条 N$仙品属性 N$仙品上限
+
+
+
+
+#IF
+NOT EQUAL N$左边属性值三 0
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第三条属性对应编号
+#ACT
+MOV N$铭文洗练词条位置 3
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 N$铭文洗练词条位置 0 70
+SetCustomItemAbil -1 N$铭文洗练词条位置 1 8
+SetCustomItemAbil -1 N$铭文洗练词条位置 2 N$铭文洗练词条位置
+SetCustomItemAbil -1 N$铭文洗练词条位置 3 0
+SetCustomItemValueEX -1 N$铭文洗练词条位置 = N$仙品词条 N$仙品属性 N$仙品上限
+
+
+
+#IF
+NOT EQUAL N$左边属性值四 0
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第四条属性对应编号
+#ACT
+MOV N$铭文洗练词条位置 4
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 N$铭文洗练词条位置 0 70
+SetCustomItemAbil -1 N$铭文洗练词条位置 1 8
+SetCustomItemAbil -1 N$铭文洗练词条位置 2 N$铭文洗练词条位置
+SetCustomItemAbil -1 N$铭文洗练词条位置 3 0
+SetCustomItemValueEX -1 N$铭文洗练词条位置 = N$仙品词条 N$仙品属性 N$仙品上限
+
+
+#IF
+NOT EQUAL N$左边属性值五 0
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第五条属性对应编号
+#ACT
+MOV N$铭文洗练词条位置 5
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 N$铭文洗练词条位置 0 70
+SetCustomItemAbil -1 N$铭文洗练词条位置 1 8
+SetCustomItemAbil -1 N$铭文洗练词条位置 2 N$铭文洗练词条位置
+SetCustomItemAbil -1 N$铭文洗练词条位置 3 0
+SetCustomItemValueEX -1 N$铭文洗练词条位置 = N$仙品词条 N$仙品属性 N$仙品上限
+
+
+#IF
+NOT EQUAL N$左边属性值六 0
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第六条属性对应编号
+#ACT
+MOV N$铭文洗练词条位置 6
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 N$铭文洗练词条位置 0 70
+SetCustomItemAbil -1 N$铭文洗练词条位置 1 8
+SetCustomItemAbil -1 N$铭文洗练词条位置 2 N$铭文洗练词条位置
+SetCustomItemAbil -1 N$铭文洗练词条位置 3 0
+SetCustomItemValueEX -1 N$铭文洗练词条位置 = N$仙品词条 N$仙品属性 N$仙品上限
+
+
+
+#IF
+NOT EQUAL N$左边属性值七 0
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第七条属性对应编号
+#ACT
+MOV N$铭文洗练词条位置 7
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 N$铭文洗练词条位置 0 70
+SetCustomItemAbil -1 N$铭文洗练词条位置 1 8
+SetCustomItemAbil -1 N$铭文洗练词条位置 2 N$铭文洗练词条位置
+SetCustomItemAbil -1 N$铭文洗练词条位置 3 0
+SetCustomItemValueEX -1 N$铭文洗练词条位置 = N$仙品词条 N$仙品属性 N$仙品上限
+
+
+#IF
+NOT EQUAL N$左边属性值八 0
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第八条属性对应编号
+#ACT
+MOV N$铭文洗练词条位置 8
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 N$铭文洗练词条位置 0 70
+SetCustomItemAbil -1 N$铭文洗练词条位置 1 8
+SetCustomItemAbil -1 N$铭文洗练词条位置 2 N$铭文洗练词条位置
+SetCustomItemAbil -1 N$铭文洗练词条位置 3 0
+SetCustomItemValueEX -1 N$铭文洗练词条位置 = N$仙品词条 N$仙品属性 N$仙品上限
+
+
+#IF
+NOT EQUAL N$左边属性值九 0
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第九条属性对应编号
+#ACT
+MOV N$铭文洗练词条位置 9
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 N$铭文洗练词条位置 0 70
+SetCustomItemAbil -1 N$铭文洗练词条位置 1 8
+SetCustomItemAbil -1 N$铭文洗练词条位置 2 N$铭文洗练词条位置
+SetCustomItemAbil -1 N$铭文洗练词条位置 3 0
+SetCustomItemValueEX -1 N$铭文洗练词条位置 = N$仙品词条 N$仙品属性 N$仙品上限
+
+
+#IF
+NOT EQUAL N$左边属性值十 0
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第十条属性对应编号
+#ACT
+MOV N$铭文洗练词条位置 10
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 N$铭文洗练词条位置 0 70
+SetCustomItemAbil -1 N$铭文洗练词条位置 1 8
+SetCustomItemAbil -1 N$铭文洗练词条位置 2 N$铭文洗练词条位置
+SetCustomItemAbil -1 N$铭文洗练词条位置 3 0
+SetCustomItemValueEX -1 N$铭文洗练词条位置 = N$仙品词条 N$仙品属性 N$仙品上限
+
+
+
+
+#IF
+random 1000
+SMALL N$铭文洗练判断条数 3
+#ACT
+goto @增加铭文
+#elseact
+UpdateItem boxitem9
+goto @ItemIntoBox9
+
+
+#IF
+EQUAL N$铭文洗练万象套位置 1
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 1 0 70
+SetCustomItemAbil -1 1 1 8
+SetCustomItemAbil -1 1 2 1
+SetCustomItemAbil -1 1 3 0
+SetCustomItemValueEX -1 1 = N$仙品词条 N$仙品属性 N$仙品上限
+;下边是万象套
+SetCustomItemAbil -1 2 0 70
+SetCustomItemAbil -1 2 1 8
+SetCustomItemAbil -1 2 2 2
+SetCustomItemAbil -1 2 3 0
+SetCustomItemValueEX -1 2 = N$左边第一条属性对应编号 1
+
+
+
+
+
+;万象套
+[@增加铭文]
+#IF
+EQUAL N$左边第六条属性对应编号 0
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 6 0 70
+SetCustomItemAbil -1 6 1 8
+SetCustomItemAbil -1 6 2 6
+SetCustomItemAbil -1 6 3 0
+SetCustomItemValueEX -1 6 = N$仙品词条 N$仙品属性 N$仙品上限
+UpdateItem boxitem9
+goto @ItemIntoBox9
+break
+
+#IF
+EQUAL N$左边第七条属性对应编号 0
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 7 0 70
+SetCustomItemAbil -1 7 1 8
+SetCustomItemAbil -1 7 2 7
+SetCustomItemAbil -1 7 3 0
+SetCustomItemValueEX -1 7 = N$仙品词条 N$仙品属性 N$仙品上限
+UpdateItem boxitem9
+goto @ItemIntoBox9
+break
+
+
+
+
+#IF
+EQUAL N$铭文洗练万象套位置 1
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 1 0 70
+SetCustomItemAbil -1 1 1 8
+SetCustomItemAbil -1 1 2 1
+SetCustomItemAbil -1 1 3 0
+SetCustomItemValueEX -1 1 = N$仙品词条 N$仙品属性 N$仙品上限
+;下边是万象套
+SetCustomItemAbil -1 2 0 70
+SetCustomItemAbil -1 2 1 8
+SetCustomItemAbil -1 2 2 2
+SetCustomItemAbil -1 2 3 0
+SetCustomItemValueEX -1 2 = N$左边第一条属性对应编号 1
+
+
+#IF
+EQUAL N$铭文洗练万象套位置 2
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 2 0 70
+SetCustomItemAbil -1 2 1 8
+SetCustomItemAbil -1 2 2 2
+SetCustomItemAbil -1 2 3 0
+SetCustomItemValueEX -1 2 = N$仙品词条 N$仙品属性 N$仙品上限
+
+SetCustomItemAbil -1 3 0 70
+SetCustomItemAbil -1 3 1 8
+SetCustomItemAbil -1 3 2 3
+SetCustomItemAbil -1 3 3 0
+SetCustomItemValueEX -1 3 = N$左边第二条属性对应编号 1
+
+
+
+#IF
+EQUAL N$铭文洗练万象套位置 3
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 3 0 70
+SetCustomItemAbil -1 3 1 8
+SetCustomItemAbil -1 3 2 3
+SetCustomItemAbil -1 3 3 0
+SetCustomItemValueEX -1 3 = N$仙品词条 N$仙品属性 N$仙品上限
+
+SetCustomItemAbil -1 4 0 70
+SetCustomItemAbil -1 4 1 8
+SetCustomItemAbil -1 4 2 4
+SetCustomItemAbil -1 4 3 0
+SetCustomItemValueEX -1 4 = N$左边第三条属性对应编号 1
+
+
+
+#IF
+EQUAL N$铭文洗练万象套位置 4
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 4 0 70
+SetCustomItemAbil -1 4 1 8
+SetCustomItemAbil -1 4 2 4
+SetCustomItemAbil -1 4 3 0
+SetCustomItemValueEX -1 4 = N$仙品词条 N$仙品属性 N$仙品上限
+
+SetCustomItemAbil -1 5 0 70
+SetCustomItemAbil -1 5 1 8
+SetCustomItemAbil -1 5 2 5
+SetCustomItemAbil -1 5 3 0
+SetCustomItemValueEX -1 5 = N$左边第四条属性对应编号 1
+
+#IF
+EQUAL N$铭文洗练万象套位置 5
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 5 0 70
+SetCustomItemAbil -1 5 1 8
+SetCustomItemAbil -1 5 2 5
+SetCustomItemAbil -1 5 3 0
+SetCustomItemValueEX -1 5 = N$仙品词条 N$仙品属性 N$仙品上限
+
+SetCustomItemAbil -1 6 0 70
+SetCustomItemAbil -1 6 1 8
+SetCustomItemAbil -1 6 2 6
+SetCustomItemAbil -1 6 3 0
+SetCustomItemValueEX -1 6 = N$左边第五条属性对应编号 1
+
+
+#IF
+EQUAL N$铭文洗练万象套位置 6
+#ACT
+
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 6 0 70
+SetCustomItemAbil -1 6 1 8
+SetCustomItemAbil -1 6 2 6
+SetCustomItemAbil -1 6 3 0
+SetCustomItemValueEX -1 6 = N$仙品词条 N$仙品属性 N$仙品上限
+
+SetCustomItemAbil -1 7 0 70
+SetCustomItemAbil -1 7 1 8
+SetCustomItemAbil -1 7 2 7
+SetCustomItemAbil -1 7 3 0
+SetCustomItemValueEX -1 7 = N$左边第六条属性对应编号 1
+
+
+#IF
+EQUAL N$铭文洗练万象套位置 7
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 7 0 70
+SetCustomItemAbil -1 7 1 8
+SetCustomItemAbil -1 7 2 7
+SetCustomItemAbil -1 7 3 0
+SetCustomItemValueEX -1 7 = N$仙品词条 N$仙品属性 N$仙品上限
+
+SetCustomItemAbil -1 8 0 70
+SetCustomItemAbil -1 8 1 8
+SetCustomItemAbil -1 8 2 8
+SetCustomItemAbil -1 8 3 0
+SetCustomItemValueEX -1 8 = N$左边第七条属性对应编号 1
+
+
+
+#IF
+EQUAL N$铭文洗练万象套位置 8
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 8 0 70
+SetCustomItemAbil -1 8 1 8
+SetCustomItemAbil -1 8 2 8
+SetCustomItemAbil -1 8 3 0
+SetCustomItemValueEX -1 8 = N$仙品词条 N$仙品属性 N$仙品上限
+
+SetCustomItemAbil -1 9 0 70
+SetCustomItemAbil -1 9 1 8
+SetCustomItemAbil -1 9 2 9
+SetCustomItemAbil -1 9 3 0
+SetCustomItemValueEX -1 9 = N$左边第八条属性对应编号 1
+
+
+#IF
+EQUAL N$铭文洗练万象套位置 9
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\赋值属性\一大陆仙品属性.txt S$一大陆仙品属性
+EXTRACTSTRING ~ S$一大陆仙品属性 N$仙品词条 N$随机仙品上限 N$仙品上限
+MOVR N$仙品属性 1 N$随机仙品上限
+SetCustomItemAbil -1 9 0 70
+SetCustomItemAbil -1 9 1 8
+SetCustomItemAbil -1 9 2 9
+SetCustomItemAbil -1 9 3 0
+SetCustomItemValueEX -1 9 = N$仙品词条 N$仙品属性 N$仙品上限
+
+SetCustomItemAbil -1 10 0 70
+SetCustomItemAbil -1 10 1 8
+SetCustomItemAbil -1 10 2 10
+SetCustomItemAbil -1 10 3 0
+SetCustomItemValueEX -1 10 = N$左边第九条属性对应编号 1
+
+#if
+#act
+UpdateItem boxitem9
+goto @ItemIntoBox9
+
+
+
+
+
+
+
+
+
+
+[@淬炼铭文属性]
+#if
+#ACT
+messagebox 功能已取消
+break
+#IF
+#ACT
+GetCustomItemValueEx -1 1 <$STR(N$没用)>  <$STR(N$左边第一条属性对应编号)> <$str(N$左边属性值一)> <$str(N$洗练铭文属性上限一)> <$STR(N$没用)>
+GetCustomItemValueEx -1 2 <$STR(N$没用)>  <$STR(N$左边第二条属性对应编号)> <$str(N$左边属性值二)> <$str(N$洗练铭文属性上限二)> <$STR(N$没用)>
+GetCustomItemValueEx -1 3 <$STR(N$没用)>  <$STR(N$左边第三条属性对应编号)> <$str(N$左边属性值三)> <$str(N$洗练铭文属性上限三)> <$STR(N$没用)>
+GetCustomItemValueEx -1 4 <$STR(N$没用)>  <$STR(N$左边第四条属性对应编号)> <$str(N$左边属性值四)> <$str(N$洗练铭文属性上限四)> <$STR(N$没用)>
+GetCustomItemValueEx -1 5 <$STR(N$没用)>  <$STR(N$左边第五条属性对应编号)> <$str(N$左边属性值五)> <$str(N$洗练铭文属性上限五)> <$STR(N$没用)>
+GetCustomItemValueEx -1 6 <$STR(N$没用)>  <$STR(N$左边第六条属性对应编号)> <$str(N$左边属性值六)> <$str(N$洗练铭文属性上限六)> <$STR(N$没用)>
+GetCustomItemValueEx -1 7 <$STR(N$没用)>  <$STR(N$左边第七条属性对应编号)> <$str(N$左边属性值七)> <$str(N$洗练铭文属性上限七)> <$STR(N$没用)>
+GetCustomItemValueEx -1 8 <$STR(N$没用)>  <$STR(N$左边第八条属性对应编号)> <$str(N$左边属性值八)> <$str(N$洗练铭文属性上限八)> <$STR(N$没用)>
+GetCustomItemValueEx -1 9 <$STR(N$没用)>  <$STR(N$左边第九条属性对应编号)> <$str(N$左边属性值九)> <$str(N$洗练铭文属性上限九)> <$STR(N$没用)>
+GetCustomItemValueEx -1 10 <$STR(N$没用)>  <$STR(N$左边第十条属性对应编号)> <$str(N$左边属性值十)> <$str(N$洗练铭文属性上限十)> <$STR(N$没用)>
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第一条属性对应编号
+#ACT
+
+MOVR N$神品属性 1 N$洗练铭文属性上限一
+SetCustomItemAbil -1 1 0 70
+SetCustomItemAbil -1 1 1 8
+SetCustomItemAbil -1 1 2 1
+SetCustomItemAbil -1 1 3 0
+SetCustomItemValueEX -1 1 = N$左边第一条属性对应编号 N$神品属性 N$洗练铭文属性上限一
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第二条属性对应编号
+#ACT
+
+MOVR N$神品属性 1 N$洗练铭文属性上限二
+SetCustomItemAbil -1 2 0 70
+SetCustomItemAbil -1 2 1 8
+SetCustomItemAbil -1 2 2 2
+SetCustomItemAbil -1 2 3 0
+SetCustomItemValueEX -1 2 = N$左边第二条属性对应编号 N$神品属性 N$洗练铭文属性上限二
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第三条属性对应编号
+#ACT
+
+MOVR N$神品属性 1 N$洗练铭文属性上限三
+SetCustomItemAbil -1 3 0 70
+SetCustomItemAbil -1 3 1 8
+SetCustomItemAbil -1 3 2 3
+SetCustomItemAbil -1 3 3 0
+SetCustomItemValueEX -1 3 = N$左边第三条属性对应编号 N$神品属性 N$洗练铭文属性上限三
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第四条属性对应编号
+#ACT
+
+MOVR N$神品属性 1 N$洗练铭文属性上限四
+SetCustomItemAbil -1 4 0 70
+SetCustomItemAbil -1 4 1 8
+SetCustomItemAbil -1 4 2 4
+SetCustomItemAbil -1 4 3 0
+SetCustomItemValueEX -1 4 = N$左边第四条属性对应编号 N$神品属性 N$洗练铭文属性上限四
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第五条属性对应编号
+#ACT
+
+MOVR N$神品属性 1 N$洗练铭文属性上限五
+SetCustomItemAbil -1 5 0 70
+SetCustomItemAbil -1 5 1 8
+SetCustomItemAbil -1 5 2 5
+SetCustomItemAbil -1 5 3 0
+SetCustomItemValueEX -1 5 = N$左边第五条属性对应编号 N$神品属性 N$洗练铭文属性上限五
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第六条属性对应编号
+#ACT
+
+MOVR N$神品属性 1 N$洗练铭文属性上限六
+
+SetCustomItemAbil -1 6 0 70
+SetCustomItemAbil -1 6 1 8
+SetCustomItemAbil -1 6 2 6
+SetCustomItemAbil -1 6 3 0
+SetCustomItemValueEX -1 6 = N$左边第六条属性对应编号 N$神品属性 N$洗练铭文属性上限六
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第七条属性对应编号
+#ACT
+
+MOVR N$神品属性 1 N$洗练铭文属性上限七
+SetCustomItemAbil -1 7 0 70
+SetCustomItemAbil -1 7 1 8
+SetCustomItemAbil -1 7 2 7
+SetCustomItemAbil -1 7 3 0
+SetCustomItemValueEX -1 7 = N$左边第七条属性对应编号 N$神品属性 N$洗练铭文属性上限七
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第八条属性对应编号
+#ACT
+
+MOVR N$神品属性 1 N$洗练铭文属性上限八
+SetCustomItemAbil -1 8 0 70
+SetCustomItemAbil -1 8 1 8
+SetCustomItemAbil -1 8 2 8
+SetCustomItemAbil -1 8 3 0
+SetCustomItemValueEX -1 8 = N$左边第八条属性对应编号 N$神品属性 N$洗练铭文属性上限八
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第九条属性对应编号
+#ACT
+
+MOVR N$神品属性 1 N$洗练铭文属性上限九
+SetCustomItemAbil -1 9 0 70
+SetCustomItemAbil -1 9 1 8
+SetCustomItemAbil -1 9 2 9
+SetCustomItemAbil -1 9 3 0
+SetCustomItemValueEX -1 9 = N$左边第九条属性对应编号 N$神品属性 N$洗练铭文属性上限九
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文洗练\铭文对应数字.txt N$左边第十条属性对应编号
+#ACT
+
+MOVR N$神品属性 1 N$洗练铭文属性上限十
+SetCustomItemAbil -1 10 0 70
+SetCustomItemAbil -1 10 1 8
+SetCustomItemAbil -1 10 2 10
+SetCustomItemAbil -1 10 3 0
+SetCustomItemValueEX -1 10 = N$左边第十条属性对应编号 N$神品属性 N$洗练铭文属性上限十
+
+
+#IF
+#ACT
+UpdateItem boxitem9
+goto @ItemIntoBox9

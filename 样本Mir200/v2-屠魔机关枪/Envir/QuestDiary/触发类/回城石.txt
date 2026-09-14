@@ -1,0 +1,269 @@
+[@回城石]
+{
+#if
+EQUAL S$变身傀儡 是
+#act
+SENDMSG 6 变身傀儡禁止回城
+break
+#if
+NOT EQUAL N$战斗状态倒计时 0
+#act
+sendmsg 5 战斗状态禁止回城
+break
+#if
+#act
+ChangeState 1 0
+;清理个人副本
+DelMirrorMap <$USERNAME>的天命龙珠
+DelMirrorMap <$USERNAME>的幽魂宝藏
+DelMirrorMap <$USERNAME>的幽魂宝藏
+DelMirrorMap <$USERNAME>的幽魂宝藏
+DelMirrorMap <$USERNAME>的骷髅洞平行时空
+DelMirrorMap <$USERNAME>的僵尸矿洞平行时空
+DelMirrorMap <$USERNAME>的蜈蚣洞平行时空
+DelMirrorMap <$USERNAME>的兽人古墓一层平行时空
+DelMirrorMap <$USERNAME>的兽人古墓二层平行时空
+DelMirrorMap <$USERNAME>的沃玛寺庙平行时空
+DelMirrorMap <$USERNAME>的祖玛秘境平行时空
+DelMirrorMap <$USERNAME>的骨魔洞平行时空
+DelMirrorMap <$USERNAME>的恶魔营地平行时空
+DelMirrorMap <$USERNAME>的蚂蚁洞平行时空
+DelMirrorMap <$USERNAME>的精灵谷平行时空
+DelMirrorMap <$USERNAME>的黑暗魔殿平行时空
+DelMirrorMap <$USERNAME>赤月峡谷平行时空
+DelMirrorMap <$USERNAME>的封魔古刹平行时空
+DelMirrorMap <$USERNAME>的牛魔寺庙平行时空
+DelMirrorMap <$USERNAME>的魔毒蚀地平行时空
+DelMirrorMap <$USERNAME>的封魔宫平行时空
+DelMirrorMap <$USERNAME>的魔龙谷平行时空
+DelMirrorMap <$USERNAME>的幽暗地底平行时空
+DelMirrorMap <$USERNAME>的魔化工厂平行时空
+DelMirrorMap <$USERNAME>的火龙地洞平行时空
+DelMirrorMap <$USERNAME>魔蛛猎魂
+DelMirrorMap <$USERNAME>邪灵猎魂
+DelMirrorMap <$USERNAME>石魔猎魂
+DelMirrorMap <$USERNAME>的雪域副本
+DelMirrorMap <$USERNAME>的沼泽秘境副本
+DelMirrorMap <$USERNAME>的万劫地宫副本
+DelMirrorMap <$USERNAME>的冰晶宫副本
+DelMirrorMap <$USERNAME>的深渊挑战
+MOV S$初级幽魂宝箱
+MOV S$中级幽魂宝箱
+MOV S$高级幽魂宝箱
+MOV N$开幽魂宝箱数量
+MOV S$神品附加属性
+MOV N$超级幽魂宝箱给史诗
+MOV N$幽魂宝箱地图给神品
+MOV N$幽魂宝箱进度是否允许
+setofftimer 74
+;挂机进图标识
+set [998] 0
+;深渊战场爆颜色装备没办法鉴定 给个值去判断 这里是开关
+MOV N$深渊战场 0
+#if
+EQUAL <$MAP> <$USERNAME>的幽魂宝藏
+#act
+MAPMOVE <$STR(S$幽魂宝藏返回地图)> <$STR(N$幽魂宝藏返回原地图坐标X)> <$STR(N$幽魂宝藏返回原地图坐标Y)>
+AddFunItemDura 1000
+RepairAll
+BREAK
+
+
+
+
+
+#if
+CHECKITEM 争夺战宝箱
+#act
+setofftimer 47
+MOV N$宝箱争夺战计时 0
+TAKE 争夺战宝箱
+THROWITEM baoxiang 24 35 0 争夺战宝箱 1|1 1
+
+
+#if
+EQUAL <$GameDirectory> $常量_母端位置
+#act
+AddFunItemDura 1000
+RepairAll
+
+writeconfigfileitem ..\..\..\..\通区文件\世界BOSS\世界BOSS数据保存.txt <$username> 伤害值 0
+MOV U68 0
+;世界BOSS显示伤害
+DelDlg 3
+KILLSLAVE
+;深渊之主爆天道装备清零
+MOV N$深渊之主天道 0
+
+
+
+;死亡赛道活动定时器
+setofftimer 48
+goto @跨服回城
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+#if
+#act
+AddFunItemDura 1000
+RepairAll
+mapmove 3 176 131
+writeconfigfileitem ..\..\..\..\通区文件\世界BOSS\世界BOSS数据保存.txt <$username> 伤害值 0
+MOV U68 0
+;世界BOSS显示伤害
+DelDlg 3
+
+;深渊之主爆天道装备清零
+MOV N$深渊之主天道 0
+
+humanhp + 999999
+
+;死亡赛道活动定时器
+setofftimer 48
+
+Goto @统计属性
+
+
+[@跨服回城]
+
+#or
+COMPARETEXT T14 第1统战
+#act
+MAPMOVE kuafu1 255 263 5
+break
+#or
+
+COMPARETEXT T14 第2统战
+#act
+MAPMOVE kuafu2 255 263 5
+
+break
+#or
+
+COMPARETEXT T14 第3统战
+#act
+MAPMOVE kuafu3 255 263 5
+
+break
+#if
+COMPARETEXT T14 第4统战
+#act
+MAPMOVE kuafu4 255 263 5
+
+break
+
+#if
+COMPARETEXT T14 第5统战
+#act
+MAPMOVE kuafu5 255 263 5
+
+break
+#if
+COMPARETEXT T14 第6统战
+#act
+MAPMOVE kuafu6 255 263 5
+
+break
+#if
+COMPARETEXT T14 第7统战
+#act
+MAPMOVE kuafu7 255 263
+
+break
+#if
+COMPARETEXT T14 第8统战
+#act
+MAPMOVE kuafu8 255 263
+
+break
+#if
+COMPARETEXT T14 第9统战
+#act
+MAPMOVE kuafu9 255 263
+
+break
+#OR
+COMPARETEXT T14 第10统战
+#act
+MAPMOVE kuafu10 255 263
+
+break
+#IF
+COMPARETEXT T14 第三十一统战
+#act
+MAPMOVE kuafu11 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十二统战
+#act
+MAPMOVE kuafu12 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十三统战
+#act
+MAPMOVE kuafu13 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十四统战
+#act
+MAPMOVE kuafu14 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十五统战
+#act
+MAPMOVE kuafu15 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十六统战
+#act
+MAPMOVE kuafu16 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十七统战
+#act
+MAPMOVE kuafu17 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十八统战
+#act
+MAPMOVE kuafu18 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十九统战
+#act
+MAPMOVE kuafu19 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第四十统战
+#act
+MAPMOVE kuafu20 255 263 5
+
+break
+}

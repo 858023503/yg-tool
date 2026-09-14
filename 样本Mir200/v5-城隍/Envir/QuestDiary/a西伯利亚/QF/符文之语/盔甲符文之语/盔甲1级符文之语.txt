@@ -1,0 +1,357 @@
+[@载入盔甲1级符文之语]
+{
+#IF
+CheckItemHasStone 0 符文Tal(7) 1
+CheckItemHasStone 0 符文Eth(5) 1
+CheckFluteCount 0 = 2
+#ACT
+SetCustomItemText 0 潜行(Tal+Eth)
+SetCustomItemTextColor 0 102
+GOTO @_@初始化符文之语衣服默认自定义参数0
+MOV L$添加用自定义属性参数数组[7] 6
+MOV L$添加用自定义属性参数数组[9] 26
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 8
+MOV L$添加用自定义属性参数数组[9] 27
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 0 符文Ort(9) 1
+CheckItemHasStone 0 符文Sol(12) 1
+CheckFluteCount 0 = 2
+#ACT
+SetCustomItemText 0 知识(Ort+Sol)
+SetCustomItemTextColor 0 102
+GOTO @_@初始化符文之语衣服默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 7
+MOV L$添加用自定义属性参数数组[5] 2
+MOV L$添加用自定义属性参数数组[7] 35
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 150
+MOV L$添加用自定义属性参数数组[9] 31
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 0 符文Ral(8) 1
+CheckItemHasStone 0 符文Ort(9) 1
+CheckItemHasStone 0 符文Tal(7) 1
+CheckFluteCount 0 = 3
+#ACT
+SetCustomItemText 0 远古誓言(Ral+Ort+Tal)
+SetCustomItemTextColor 0 102
+GOTO @_@初始化符文之语衣服默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 1
+MOV L$添加用自定义属性参数数组[7] 15
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数1
+MOV L$添加用自定义属性参数数组[3] 2
+MOV L$添加用自定义属性参数数组[7] 12
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数2
+MOV L$添加用自定义属性参数数组[3] 2
+MOV L$添加用自定义属性参数数组[7] 6
+MOV L$添加用自定义属性参数数组[9] 25
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 0 符文Nef(4) 1
+CheckItemHasStone 0 符文Sol(12) 1
+CheckItemHasStone 0 符文Ith(6) 1
+CheckFluteCount 0 = 3
+#ACT
+SetCustomItemText 0 韵律(Nef+Sol+Ith)
+SetCustomItemTextColor 0 102
+GOTO @_@初始化符文之语衣服默认自定义参数0
+MOV L$添加用自定义属性参数数组[7] 15
+MOV L$添加用自定义属性参数数组[9] 36
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 30
+MOV L$添加用自定义属性参数数组[9] 39
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 8
+MOV L$添加用自定义属性参数数组[9] 44
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 0 符文Hel(15) 1
+CheckItemHasStone 0 符文Thul(10) 1
+CheckItemHasStone 0 符文Amn(11) 1
+CheckItemHasStone 0 符文Dol(14) 1
+CheckFluteCount 0 = 4
+#ACT
+SetCustomItemText 0 辉煌(Hel+Thul+Amn+Dol)
+SetCustomItemTextColor 0 102
+GOTO @_@初始化符文之语衣服默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 4
+MOV L$添加用自定义属性参数数组[7] 12
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 10
+MOV L$添加用自定义属性参数数组[9] 42
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 50
+MOV L$添加用自定义属性参数数组[9] 31
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数3
+MOV L$添加用自定义属性参数数组[7] 12
+MOV L$添加用自定义属性参数数组[9] 37
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 0 符文Shael(13) 1
+CheckItemHasStone 0 符文Sol(12) 1
+CheckItemHasStone 0 符文Amn(11) 1
+CheckItemHasStone 0 符文Thul(10) 1
+CheckFluteCount 0 = 4
+#ACT
+SetCustomItemText 0 瑟尔萨拉斯(Shael+Sol+Amn+Thul)
+SetCustomItemTextColor 0 102
+GOTO @_@初始化符文之语衣服默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 4
+MOV L$添加用自定义属性参数数组[7] 12
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 10
+MOV L$添加用自定义属性参数数组[9] 42
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 25
+MOV L$添加用自定义属性参数数组[9] 34
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数3
+MOV L$添加用自定义属性参数数组[7] 10
+MOV L$添加用自定义属性参数数组[9] 36
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 0 符文Ort(9) 1
+CheckItemHasStone 0 符文Amn(11) 1
+CheckItemHasStone 0 符文Shael(13) 1
+CheckItemHasStone 0 符文Hel(15) 1
+CheckFluteCount 0 = 4
+#ACT
+SetCustomItemText 0 烟尘(Ort+Amn+Shael+Hel)
+SetCustomItemTextColor 0 102
+GOTO @_@初始化符文之语衣服默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 5
+MOV L$添加用自定义属性参数数组[7] 15
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 12
+MOV L$添加用自定义属性参数数组[9] 42
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 10
+MOV L$添加用自定义属性参数数组[9] 36
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数3
+MOV L$添加用自定义属性参数数组[7] 10
+MOV L$添加用自定义属性参数数组[9] 37
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 0 符文Eth(5) 1
+CheckItemHasStone 0 符文Lum(17) 1
+CheckFluteCount 0 = 2
+#ACT
+SetCustomItemText 0 灿烂(Eth+Lum)
+SetCustomItemTextColor 0 102
+GOTO @_@初始化符文之语衣服默认自定义参数0
+MOV L$添加用自定义属性参数数组[7] 8
+MOV L$添加用自定义属性参数数组[9] 32
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 10
+MOV L$添加用自定义属性参数数组[9] 33
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 0 符文Hel(15) 1
+CheckItemHasStone 0 符文Lum(17) 1
+CheckItemHasStone 0 符文Fal(19) 1
+CheckFluteCount 0 = 3
+#ACT
+SetCustomItemText 0 狮心(Hel+Lum+Fal)
+SetCustomItemTextColor 0 102
+GOTO @_@初始化符文之语衣服默认自定义参数0
+MOV L$添加用自定义属性参数数组[7] 15
+MOV L$添加用自定义属性参数数组[9] 36
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 18
+MOV L$添加用自定义属性参数数组[9] 41
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 12
+MOV L$添加用自定义属性参数数组[9] 36
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 0 符文Lem(20) 1
+CheckItemHasStone 0 符文Ko(18) 1
+CheckItemHasStone 0 符文Tir(3) 1
+CheckFluteCount 0 = 3
+#ACT
+SetCustomItemText 0 财富(Lem+Ko+Tir)
+SetCustomItemTextColor 0 102
+GOTO @_@初始化符文之语衣服默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 6
+MOV L$添加用自定义属性参数数组[5] 2
+MOV L$添加用自定义属性参数数组[7] 20
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数1
+MOV L$添加用自定义属性参数数组[3] 7
+MOV L$添加用自定义属性参数数组[5] 2
+MOV L$添加用自定义属性参数数组[7] 25
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 18
+MOV L$添加用自定义属性参数数组[9] 43
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 0 符文Lem(20) 1
+CheckItemHasStone 0 符文Ist(24) 1
+CheckItemHasStone 0 符文Io(16) 1
+CheckFluteCount 0 = 3
+#ACT
+SetCustomItemText 0 谵妄(Lem+Ist+Io)
+SetCustomItemTextColor 0 102
+GOTO @_@初始化符文之语衣服默认自定义参数0
+MOV L$添加用自定义属性参数数组[7] 12
+MOV L$添加用自定义属性参数数组[9] 27
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 18
+MOV L$添加用自定义属性参数数组[9] 35
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 80
+MOV L$添加用自定义属性参数数组[9] 39
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 0 符文Fal(19) 1
+CheckItemHasStone 0 符文Um(22) 1
+CheckItemHasStone 0 符文Pul(21) 1
+CheckFluteCount 0 = 3
+#ACT
+SetCustomItemText 0 幽暗(Fal+Um+Pul)
+SetCustomItemTextColor 0 102
+GOTO @_@初始化符文之语衣服默认自定义参数0
+MOV L$添加用自定义属性参数数组[7] 20
+MOV L$添加用自定义属性参数数组[9] 28
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 18
+MOV L$添加用自定义属性参数数组[9] 35
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 15
+MOV L$添加用自定义属性参数数组[9] 37
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 0 符文Shael(13) 1
+CheckItemHasStone 0 符文Um(22) 1
+CheckItemHasStone 0 符文Thul(10) 1
+CheckFluteCount 0 = 3
+#ACT
+SetCustomItemText 0 强制(Shael+Um+Thul)
+SetCustomItemTextColor 0 102
+GOTO @_@初始化符文之语衣服默认自定义参数0
+MOV L$添加用自定义属性参数数组[7] 20
+MOV L$添加用自定义属性参数数组[9] 42
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 50
+MOV L$添加用自定义属性参数数组[9] 40
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数2
+MOV L$添加用自定义属性参数数组[5] 1
+MOV L$添加用自定义属性参数数组[7] 6
+MOV L$添加用自定义属性参数数组[9] 40
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 0 符文Shael(13) 1
+CheckItemHasStone 0 符文Um(22) 1
+CheckItemHasStone 0 符文Pul(21) 1
+CheckItemHasStone 0 符文Lum(17) 1
+CheckFluteCount 0 = 4
+#ACT
+SetCustomItemText 0 石块(Shael+Um+Pul+Lum)
+SetCustomItemTextColor 0 102
+GOTO @_@初始化符文之语衣服默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 1
+MOV L$添加用自定义属性参数数组[7] 20
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数1
+MOV L$添加用自定义属性参数数组[3] 2
+MOV L$添加用自定义属性参数数组[7] 18
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 16
+MOV L$添加用自定义属性参数数组[9] 41
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数3
+MOV L$添加用自定义属性参数数组[7] 15
+MOV L$添加用自定义属性参数数组[9] 44
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 0 符文Jah(31) 1
+CheckItemHasStone 0 符文Gul(25) 1
+CheckItemHasStone 0 符文Fal(19) 1
+CheckFluteCount 0 = 3
+#ACT
+SetCustomItemText 0 肉山(Jah+Gul+Fal)
+SetCustomItemTextColor 0 102
+GOTO @_@初始化符文之语衣服默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 1
+MOV L$添加用自定义属性参数数组[7] 50
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数1
+MOV L$添加用自定义属性参数数组[3] 2
+MOV L$添加用自定义属性参数数组[7] 50
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语衣服默认自定义参数2
+MOV L$添加用自定义属性参数数组[3] 6
+MOV L$添加用自定义属性参数数组[7] 666
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+}

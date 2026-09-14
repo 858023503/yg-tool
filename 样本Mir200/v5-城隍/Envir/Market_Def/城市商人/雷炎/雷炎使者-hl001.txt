@@ -1,0 +1,10 @@
+
+[@MAIN] 
+<$USERNAME>,来到这里也不容易。\
+<我要去下一层/@huitc1> \
+
+[@huitc1]
+#IF
+#ACT
+mapmove nhl002 135 174
+

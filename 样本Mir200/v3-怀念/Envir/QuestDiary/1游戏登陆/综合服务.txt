@@ -1,0 +1,428 @@
+(@storage @getback )
+%100
+[@服务]
+{
+#IF
+#ACT
+CLOSEMERCHANTBIGDLG
+#SAY
+<------------------------------------------------------------/SCOLOR=83>\
+< 欢迎来到怀念沉默第二季！>\
+<------------------------------------------------------------/SCOLOR=83>\ \
+
+<>      <新手攻略/@III>   <转职变性/@FFF>    <改名服务/@EEE>    <狂暴之力/@狂暴之力a>  \ \
+<>      <每日活动/@DDD>   <自动吃药/@自动吃药>    <装备回收/@装备回收>    <爆率查询/@查询啊>\
+
+
+[@查询啊]
+#IF
+#ACT
+
+
+
+[@InPutInteger34]
+#if
+small N34 1
+#act
+messagebox 最少兑换1个
+break
+
+#if
+	CHECKGAMEGIRD ?  <$STR(N34)>
+#elseact
+	messagebox 错误!\\\你没有<$STR(N34)>个灵符!
+break
+
+#if
+#act
+	GAMEGIRD -  <$STR(N34)>
+	GAMEGOLD + <$STR(N34)>000
+	GAMEGOLD + <$STR(N34)>000
+	GAMEGOLD + <$STR(N34)>000
+	messagebox 兑换成功!
+break
+[@狂暴之力a]
+#IF
+#ACT
+#CALL [\1游戏登陆\狂暴之力.txt] @狂暴之力
+break
+
+[@CCC]
+#IF
+#ACT
+#CALL [\1游戏登陆\召唤宝宝.txt] @召唤宝宝
+break
+
+
+[@自动吃药]
+#IF
+CHECKLEVELEX > 0
+#ACT
+;;;;;;在这里修改相关数据,其他地方就无须修改了
+
+#DEFINE  ($zdcy-1号药HPMP)    60              ;;;;;;1号药增加的HPMP值 
+#DEFINE  ($zdcy-1号药名称)    强效太阳水         ;;;;;;1号药的名称
+#DEFINE  ($zdcy-1号药消耗)    0                ;;;;;;1号药触发时消耗的元宝/次
+
+#DEFINE  ($zdcy-2号药HPMP)    180              ;;;;;;2号药增加的HPMP值 
+#DEFINE  ($zdcy-2号药名称)    万年雪霜         ;;;;;;2号药的名称
+#DEFINE  ($zdcy-2号药消耗)    2               ;;;;;;2号药触发时消耗的元宝/次
+
+#DEFINE  ($zdcy-3号药HPMP)    200              ;;;;;;3号药增加的HPMP值 
+#DEFINE  ($zdcy-3号药名称)    雪莲         ;;;;;;3号药的名称
+#DEFINE  ($zdcy-3号药消耗)    3000               ;;;;;;3号药触发时消耗的元宝/次
+
+#DEFINE  ($zdcy-4号药HPMP)    1000             ;;;;;;4号药增加的HPMP值 
+#DEFINE  ($zdcy-4号药名称)    超级药物         ;;;;;;4号药的名称
+#DEFINE  ($zdcy-4号药消耗)    100              ;;;;;;4号药触发时消耗的元宝/次
+
+#DEFINE  ($zdcy-默认百分比)    50              ;;;;;;药物设置的百分比默认值,不要设置0
+#DEFINE  ($zdcy-最低百分比)    1               ;;;;;;药物设置的百分比最低值,不要设置0
+#DEFINE  ($zdcy-最高百分比)    95              ;;;;;;药物设置的百分比最高值,不要设置100
+
+GOTO @数据显示记录
+
+
+#IF
+CHECKLEVELEX > 0
+#ACT
+CloseBigDialogBox
+#SAY
+　　　【自动吃药设置】<(死亡后会停止吃药,复活后要重新开启)>\
+<………………………………………………………………………………/SCOLOR=231>\
+1.<$HUMAN(zdcy-勾选显示11)><$HUMAN(zdcy-勾选显示21)> <太阳水/SCOLOR=243> <[HPMP+/SCOLOR=242>:<($zdcy-1号药HPMP)]/SCOLOR=250>　  <[消耗($zdcy-1号药消耗)元宝]>     <设置数值%/@@InPutInteger81> <$HUMAN(zdcy-药百分比显示1)>%\
+<………………………………………………………………………………/SCOLOR=231>\
+2.<$HUMAN(zdcy-勾选显示12)><$HUMAN(zdcy-勾选显示22)> <疗伤药/SCOLOR=243> <[HPMP+/SCOLOR=242>:<($zdcy-2号药HPMP)]/SCOLOR=250>　 <[消耗($zdcy-2号药消耗)元宝]>     <设置数值%/@@InPutInteger82> <$HUMAN(zdcy-药百分比显示2)>%\
+<………………………………………………………………………………/SCOLOR=231>\
+
+;<………………………………………………………………………………/SCOLOR=231>\
+<设置方法:/SCOLOR=253><先设置吃药百分比,最高($zdcy-最高百分比)%(默认($zdcy-默认百分比)%)然后选择勾选！>\
+<≮取消自动吃药≯/@取消自动吃药>                 <建议PK使用(疗伤药)/SCOLOR=249>
+
+
+
+
+
+
+[@取消自动吃药]
+#ACT
+CALCVAR HUMAN zdcy-HPMP增加值 = 0
+SAVEVAR HUMAN zdcy-HPMP增加值 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SENDMSG 6 【自动吃药设置】:自动吃药已取消！
+GOTO @自动吃药
+
+
+
+[@勾选1]
+#ACT
+CALCVAR HUMAN zdcy-药物选择 = ($zdcy-1号药名称)
+CALCVAR HUMAN zdcy-HPMP增加值 = ($zdcy-1号药HPMP)
+CALCVAR HUMAN zdcy-每秒消耗 = ($zdcy-1号药消耗)
+CALCVAR HUMAN zdcy-吃药百分比 = <$HUMAN(zdcy-药百分比显示1)>
+
+SAVEVAR HUMAN zdcy-药物选择 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SAVEVAR HUMAN zdcy-HPMP增加值 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SAVEVAR HUMAN zdcy-吃药百分比 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SAVEVAR HUMAN zdcy-每秒消耗 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SENDMSG 6 【自动吃药设置】:你开启了[<$HUMAN(zdcy-药物选择)>]自动吃药功能,每秒($zdcy-1号药HPMP)HPMP，($zdcy-1号药消耗)消耗！当前吃药百分比:<$HUMAN(zdcy-药百分比显示1)>%!
+GOTO @自动吃药
+[@勾选2]
+#ACT
+CALCVAR HUMAN zdcy-药物选择 = ($zdcy-2号药名称)
+CALCVAR HUMAN zdcy-HPMP增加值 = ($zdcy-2号药HPMP)
+CALCVAR HUMAN zdcy-每秒消耗 = ($zdcy-2号药消耗)
+CALCVAR HUMAN zdcy-吃药百分比 = <$HUMAN(zdcy-药百分比显示2)>
+
+SAVEVAR HUMAN zdcy-药物选择 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SAVEVAR HUMAN zdcy-HPMP增加值 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SAVEVAR HUMAN zdcy-吃药百分比 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SAVEVAR HUMAN zdcy-每秒消耗 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SENDMSG 6 【自动吃药设置】:你开启了[<$HUMAN(zdcy-药物选择)>]自动吃药功能,每秒+($zdcy-2号药HPMP)HPMP，消耗($zdcy-2号药消耗)金币！当前吃药百分比:<$HUMAN(zdcy-药百分比显示2)>%!
+GOTO @自动吃药
+[@勾选3]
+#ACT
+CALCVAR HUMAN zdcy-药物选择 = ($zdcy-3号药名称)
+CALCVAR HUMAN zdcy-HPMP增加值 = ($zdcy-3号药HPMP)
+CALCVAR HUMAN zdcy-每秒消耗 = ($zdcy-3号药消耗)
+CALCVAR HUMAN zdcy-吃药百分比 = <$HUMAN(zdcy-药百分比显示3)>
+
+SAVEVAR HUMAN zdcy-药物选择 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SAVEVAR HUMAN zdcy-HPMP增加值 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SAVEVAR HUMAN zdcy-吃药百分比 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SAVEVAR HUMAN zdcy-每秒消耗 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SENDMSG 6 【自动吃药设置】:你开启了[<$HUMAN(zdcy-药物选择)>]自动吃药功能,每秒+($zdcy-3号药HPMP)HPMP，消耗($zdcy-3号药消耗)金币！当前吃药百分比:<$HUMAN(zdcy-药百分比显示3)>%!
+GOTO @自动吃药
+[@勾选4]
+#ACT
+CALCVAR HUMAN zdcy-药物选择 = ($zdcy-4号药名称)
+CALCVAR HUMAN zdcy-HPMP增加值 = ($zdcy-4号药HPMP)
+CALCVAR HUMAN zdcy-每秒消耗 = ($zdcy-4号药消耗)
+CALCVAR HUMAN zdcy-吃药百分比 = <$HUMAN(zdcy-药百分比显示4)>
+
+SAVEVAR HUMAN zdcy-药物选择 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SAVEVAR HUMAN zdcy-HPMP增加值 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SAVEVAR HUMAN zdcy-吃药百分比 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SAVEVAR HUMAN zdcy-每秒消耗 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SENDMSG 6 【自动吃药设置】:你开启了[<$HUMAN(zdcy-药物选择)>]自动吃药功能,每秒+($zdcy-4号药HPMP)HPMP，消耗($zdcy-4号药消耗)金币！当前吃药百分比:<$HUMAN(zdcy-药百分比显示4)>%!
+GOTO @自动吃药
+
+
+
+
+
+
+
+
+
+[@InPutInteger81]
+#IF
+LARGE N81 ($zdcy-*最低百分比)
+SMALL N81 ($zdcy-*最高百分比)
+#ACT
+CALCVAR HUMAN zdcy-药百分比显示1 = <$STR(N81)>
+SAVEVAR HUMAN zdcy-药百分比显示1 ..\QuestDiary\领悟\领悟1\变量数据.txt
+GOTO @自动吃药
+MOV N81 0
+#ELSEACT
+MOV N81 0
+messagebox 请设置($zdcy-最低百分比)-($zdcy-最高百分比)之间的数值！
+BREAK
+#IF
+CHECKVAR HUMAN zdcy-HPMP增加值 = ($zdcy-1号药HPMP)
+#ACT
+CALCVAR HUMAN zdcy-吃药百分比 = <$HUMAN(zdcy-药百分比显示1)>
+SAVEVAR HUMAN zdcy-吃药百分比 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SENDMSG 6 【自动吃药设置】:你将[($zdcy-1号药HPMP)]自动吃药的百分比修改为了:<$HUMAN(zdcy-药百分比显示1)>%!
+
+
+[@InPutInteger82]
+#IF
+LARGE N82 ($zdcy-*最低百分比)
+SMALL N82 ($zdcy-*最高百分比)
+#ACT
+CALCVAR HUMAN zdcy-药百分比显示2 = <$STR(N82)>
+SAVEVAR HUMAN zdcy-药百分比显示2 ..\QuestDiary\领悟\领悟1\变量数据.txt
+GOTO @自动吃药
+MOV N82 0
+#ELSEACT
+MOV N82 0
+messagebox 请设置($zdcy-最低百分比)-($zdcy-最高百分比)之间的数值！
+BREAK
+#IF
+CHECKVAR HUMAN zdcy-HPMP增加值 = ($zdcy-2号药HPMP)
+#ACT
+CALCVAR HUMAN zdcy-吃药百分比 = <$HUMAN(zdcy-药百分比显示2)>
+SAVEVAR HUMAN zdcy-吃药百分比 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SENDMSG 6 【自动吃药设置】:你将[($zdcy-2号药HPMP)]自动吃药的百分比修改为了:<$HUMAN(zdcy-药百分比显示2)>%!
+
+
+[@InPutInteger83]
+#IF
+LARGE N83 ($zdcy-*最低百分比)
+SMALL N83 ($zdcy-*最高百分比)
+#ACT
+CALCVAR HUMAN zdcy-药百分比显示3 = <$STR(N83)>
+SAVEVAR HUMAN zdcy-药百分比显示3 ..\QuestDiary\领悟\领悟1\变量数据.txt
+GOTO @自动吃药
+MOV N83 0
+#ELSEACT
+MOV N83 0
+messagebox 请设置($zdcy-最低百分比)-($zdcy-最高百分比)之间的数值！
+BREAK
+#IF
+CHECKVAR HUMAN zdcy-HPMP增加值 = ($zdcy-3号药HPMP)
+#ACT
+CALCVAR HUMAN zdcy-吃药百分比 = <$HUMAN(zdcy-药百分比显示3)>
+SAVEVAR HUMAN zdcy-吃药百分比 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SENDMSG 6 【自动吃药设置】:你将[($zdcy-3号药HPMP)]自动吃药的百分比修改为了:<$HUMAN(zdcy-药百分比显示3)>%!
+
+
+[@InPutInteger84]
+#IF
+LARGE N84 ($zdcy-*最低百分比)
+SMALL N84 ($zdcy-*最高百分比)
+#ACT
+CALCVAR HUMAN zdcy-药百分比显示4 = <$STR(N84)>
+SAVEVAR HUMAN zdcy-药百分比显示4 ..\QuestDiary\领悟\领悟1\变量数据.txt
+GOTO @自动吃药
+MOV N84 0
+#ELSEACT
+MOV N84 0
+messagebox 请设置($zdcy-最低百分比)-($zdcy-最高百分比)之间的数值！
+BREAK
+#IF
+CHECKVAR HUMAN zdcy-HPMP增加值 = ($zdcy-4号药HPMP)
+#ACT
+CALCVAR HUMAN zdcy-吃药百分比 = <$HUMAN(zdcy-药百分比显示4)>
+SAVEVAR HUMAN zdcy-吃药百分比 ..\QuestDiary\领悟\领悟1\变量数据.txt
+SENDMSG 6 【自动吃药设置】:你将[($zdcy-4号药HPMP)]自动吃药的百分比修改为了:<$HUMAN(zdcy-药百分比显示4)>%!
+
+
+
+
+
+[@数据显示记录]
+#IF
+CHECKVAR HUMAN zdcy-HPMP增加值 = ($zdcy-1号药HPMP)
+#ACT
+CALCVAR HUMAN zdcy-勾选显示11 = √
+CALCVAR HUMAN zdcy-勾选显示21 = <已勾选/SCOLOR=254>
+#ELSEACT
+CALCVAR HUMAN zdcy-勾选显示11 = <□/@勾选1>
+CALCVAR HUMAN zdcy-勾选显示21 = <未勾选/SCOLOR=230>
+
+
+#IF
+CHECKVAR HUMAN zdcy-HPMP增加值 = ($zdcy-2号药HPMP)
+#ACT
+CALCVAR HUMAN zdcy-勾选显示12 = √
+CALCVAR HUMAN zdcy-勾选显示22 = <已勾选/SCOLOR=254>
+#ELSEACT
+CALCVAR HUMAN zdcy-勾选显示12 = <□/@勾选2>
+CALCVAR HUMAN zdcy-勾选显示22 = <未勾选/SCOLOR=230>
+
+
+#IF
+CHECKVAR HUMAN zdcy-HPMP增加值 = ($zdcy-3号药HPMP)
+#ACT
+CALCVAR HUMAN zdcy-勾选显示13 = √
+CALCVAR HUMAN zdcy-勾选显示23 = <已勾选/SCOLOR=254>
+#ELSEACT
+CALCVAR HUMAN zdcy-勾选显示13 = <□/@勾选3>
+CALCVAR HUMAN zdcy-勾选显示23 = <未勾选/SCOLOR=230>
+
+
+#IF
+CHECKVAR HUMAN zdcy-HPMP增加值 = ($zdcy-4号药HPMP)
+#ACT
+CALCVAR HUMAN zdcy-勾选显示14 = √
+CALCVAR HUMAN zdcy-勾选显示24 = <已勾选/SCOLOR=254>
+#ELSEACT
+CALCVAR HUMAN zdcy-勾选显示14 = <□/@勾选4>
+CALCVAR HUMAN zdcy-勾选显示24 = <未勾选/SCOLOR=230>
+
+#IF
+CHECKVAR HUMAN zdcy-药百分比显示1 > 0
+#ELSEACT
+CALCVAR HUMAN zdcy-药百分比显示1 = ($zdcy-默认百分比)
+SAVEVAR HUMAN zdcy-药百分比显示1 ..\QuestDiary\领悟\领悟1\变量数据.txt
+
+#IF
+CHECKVAR HUMAN zdcy-药百分比显示2 > 0
+#ELSEACT
+CALCVAR HUMAN zdcy-药百分比显示2 = ($zdcy-默认百分比)
+SAVEVAR HUMAN zdcy-药百分比显示2 ..\QuestDiary\领悟\领悟1\变量数据.txt
+
+#IF
+CHECKVAR HUMAN zdcy-药百分比显示3 > 0
+#ELSEACT
+CALCVAR HUMAN zdcy-药百分比显示3 = ($zdcy-默认百分比)
+SAVEVAR HUMAN zdcy-药百分比显示3 ..\QuestDiary\领悟\领悟1\变量数据.txt
+
+#IF
+CHECKVAR HUMAN zdcy-药百分比显示4 > 0
+#ELSEACT
+CALCVAR HUMAN zdcy-药百分比显示4 = ($zdcy-默认百分比)
+SAVEVAR HUMAN zdcy-药百分比显示4 ..\QuestDiary\领悟\领悟1\变量数据.txt
+
+
+#IF
+CHECKLEVELEX > 0
+#ACT
+MOV N97 ($zdcy-最低百分比)
+DEC N97 1
+#DEFINE ($zdcy-*最低百分比)   <$STR(N97)> 
+
+MOV N98 ($zdcy-最高百分比)
+INC N98 1
+#DEFINE ($zdcy-*最高百分比)   <$STR(N98)> 
+
+
+[@装备回收]
+#IF
+#ACT
+#CALL [\商人\在线回收.txt] @回收
+
+[@攻击]
+#IF
+#ACT
+#SAY
+最高攻击： \ 
+<$HIGHDCINFO> \ \ \
+<返回/@查询>\ 
+[@魔法]
+#IF
+#ACT
+#SAY
+最高魔法： \
+<$HIGHMCINFO> \ \ \
+<返回/@查询>\
+[@道术]
+#IF
+#ACT
+#SAY
+最高道术： \ 
+<$HIGHSCINFO> \ \ \ 
+<返回/@查询>\ 
+[@PK]
+#IF
+#ACT
+#SAY
+最高PK值： \
+<$HIGHPKINFO> \ \ \
+<返回/@查询>\ 
+[@等级]
+#IF
+#ACT
+#SAY
+最高等级： \
+<$HIGHLEVELINFO> \ \ \
+<返回/@查询>\
+
+
+[@III]
+#IF
+#ACT
+#CALL [\商人\新手攻略.txt] @新手攻略
+break
+
+
+[@HHH]
+#IF
+#ACT
+#CALL [\商人\仓库.txt] @仓库
+break
+
+
+
+
+[@FFF]
+#IF
+#ACT
+#CALL [\商人\转职变性.txt] @转职变性
+break
+
+
+[@EEE]
+#IF
+#ACT
+#CALL [\商人\自助改名.txt] @自助改名
+break
+
+[@DDD]
+#IF
+#ACT
+#CALL [\商人\每日活动.txt] @每日活动
+break
+
+
+
+[@BBB]
+#IF
+#ACT
+#CALL [\商人\在线回收.txt] @回收
+break
+
+
+}
+

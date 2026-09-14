@@ -1,0 +1,265 @@
+[@MAIN]
+#IF
+#ACT
+#SAY
+\ 
+<合成全部免费，/AUTOCOLOR=150><配件全部打怪爆出，/AUTOCOLOR=70><BOSS有几率会爆出成品！/AUTOCOLOR=22>\ 
+<ITEMSHOW:908:0:0:0:1/@灼热之剑1><ITEMSHOW:919:0:0:0:1/@王者风范1><ITEMSHOW:913:0:0:0:1/@不死徽章1><ITEMSHOW:922:0:0:0:1/@敏捷之弓1>
+<ITEMSHOW:926:0:0:0:1/@魔力银瓶1><ITEMSHOW:901:0:0:0:1/@生命血瓶1><ITEMSHOW:904:0:0:0:1/@自然的祝福1><ITEMSHOW:932:0:0:0:1/@腐蚀头盔1>\ \ \
+<ITEMSHOW:937:0:0:0:1/@龙甲1><ITEMSHOW:943:0:0:0:1/@大魔法师巫杖1><ITEMSHOW:949:0:0:0:1/@光之套装1><ITEMSHOW:953:0:0:0:1/@邪恶头盔1> 
+<ITEMSHOW:956:0:0:0:1/@勇士徽章1><ITEMSHOW:960:0:0:0:1/@雷电战锤1><ITEMSHOW:964:0:0:0:1/@不屈之铠1><ITEMSHOW:965:0:0:0:1/@光之圣翼1>\ \ \
+<成就点数越高,天灾装备爆率越高！/SCOLOR=249>
+
+[@光之圣翼1]
+#IF
+CHECKITEM 王者风范 1
+CHECKITEM 光之套装 1
+CHECKITEM 魔力银瓶 1
+CHECKITEM 腐蚀头盔 1
+#ACT
+TAKE 王者风范 1
+TAKE 光之套装 1
+TAKE 魔力银瓶 1
+TAKE 腐蚀头盔 1
+GIVE 光之圣翼 1
+SENDMSG 0 【合成使者】:恭喜{[<$USERNAME>]|250:0:1}合成天灾装备,实力得到了极大的提升！ 251 0
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 条件不足，无法为您服务！
+
+[@不屈之铠1]
+#IF
+CHECKITEM 坚韧的腰带 1
+CHECKITEM 剑刃护甲 1
+CHECKITEM 抗性头巾 1
+#ACT
+TAKE 坚韧的腰带 1
+TAKE 剑刃护甲 1
+TAKE 抗性头巾 1
+GIVE 不屈之铠 1
+SENDMSG 0 【合成使者】:恭喜{[<$USERNAME>]|250:0:1}合成天灾装备,实力得到了极大的提升！ 251 0
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 条件不足，无法为您服务！
+
+[@雷电战锤1]
+#IF
+CHECKITEM 玄铁锤 1
+CHECKITEM 闪电之球 1
+CHECKITEM 急速拳套 1
+#ACT
+TAKE 玄铁锤 1
+TAKE 闪电之球 1
+TAKE 急速拳套 1
+GIVE 雷电战锤 1
+SENDMSG 0 【合成使者】:恭喜{[<$USERNAME>]|250:0:1}合成天灾装备,实力得到了极大的提升！ 251 0
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 条件不足，无法为您服务！
+
+[@勇士徽章1]
+#IF
+CHECKITEM 生命徽章 1
+CHECKITEM 魔法徽章 1
+#ACT
+TAKE 生命徽章 1
+TAKE 魔法徽章 1
+GIVE 勇士徽章 1
+SENDMSG 0 【合成使者】:恭喜{[<$USERNAME>]|250:0:1}合成天灾装备,实力得到了极大的提升！ 251 0
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 条件不足，无法为您服务！
+
+[@邪恶头盔1]
+#IF
+CHECKITEM 银锋斧 1
+CHECKITEM 死亡面罩 1
+CHECKITEM 力量斧头 1
+#ACT
+TAKE 银锋斧 1
+TAKE 死亡面罩 1
+TAKE 力量斧头 1
+GIVE 邪恶头盔 1
+SENDMSG 0 【合成使者】:恭喜{[<$USERNAME>]|250:0:1}合成天灾装备,实力得到了极大的提升！ 251 0
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 条件不足，无法为您服务！
+
+[@光之套装1]
+#IF
+CHECKITEM 光之戒 1
+CHECKITEM 光之铠 1
+CHECKITEM 光之腰 1
+CHECKITEM 光之矛 1
+CHECKITEM 光之链 1
+#ACT
+TAKE 光之戒 1
+TAKE 光之铠 1
+TAKE 光之腰 1
+TAKE 光之矛 1
+TAKE 光之链 1
+GIVE 光之套装 1
+SENDMSG 0 【合成使者】:恭喜{[<$USERNAME>]|250:0:1}合成天灾装备,实力得到了极大的提升！ 251 0
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 条件不足，无法为您服务！
+
+[@大魔法师巫杖1]
+#IF
+CHECKITEM 小法杖 1
+CHECKITEM 心灵权杖 1
+CHECKITEM 法师长袍 1
+CHECKITEM 麦迪文的魔法草纸 1
+CHECKITEM 灵魂之珠 1
+#ACT
+TAKE 小法杖 1
+TAKE 心灵权杖 1
+TAKE 法师长袍 1
+TAKE 麦迪文的魔法草纸 1
+TAKE 灵魂之珠 1
+GIVE 大魔法师巫杖 1
+SENDMSG 0 【合成使者】:恭喜{[<$USERNAME>]|250:0:1}合成天灾装备,实力得到了极大的提升！ 251 0
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 条件不足，无法为您服务！
+
+[@龙甲1]
+#IF
+CHECKITEM 乌木号角 1
+CHECKITEM 硬皮甲 1
+CHECKITEM 龙鳞甲 1
+CHECKITEM 龙之心 1
+#ACT
+TAKE 乌木号角 1
+TAKE 硬皮甲 1
+TAKE 龙鳞甲 1
+TAKE 龙之心 1
+GIVE 龙甲 1
+SENDMSG 0 【合成使者】:恭喜{[<$USERNAME>]|250:0:1}合成天灾装备,实力得到了极大的提升！ 251 0
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 条件不足，无法为您服务！
+
+[@腐蚀头盔1]
+#IF
+CHECKITEM 铁杆剑 1
+CHECKITEM 蓝色斗篷 1
+CHECKITEM 破盾 1
+#ACT
+TAKE 铁杆剑 1
+TAKE 蓝色斗篷 1
+TAKE 破盾 1
+GIVE 腐蚀头盔 1
+SENDMSG 0 【合成使者】:恭喜{[<$USERNAME>]|250:0:1}合成天灾装备,实力得到了极大的提升！ 251 0
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 条件不足，无法为您服务！
+
+[@自然的祝福1]
+#IF
+CHECKITEM 生命之草 1
+CHECKITEM 铁树枝干 1
+CHECKITEM 木之灵杖 1
+#ACT
+TAKE 生命之草 1
+TAKE 铁树枝干 1
+TAKE 木之灵杖 1
+GIVE 自然的祝福 1
+SENDMSG 0 【合成使者】:恭喜{[<$USERNAME>]|250:0:1}合成天灾装备,实力得到了极大的提升！ 251 0
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 条件不足，无法为您服务！
+
+[@生命血瓶1]
+#IF
+CHECKITEM 小木盾 1
+CHECKITEM 生命之戒 1
+CHECKITEM 治疗之戒 1
+#ACT
+TAKE 小木盾 1
+TAKE 生命之戒 1
+TAKE 治疗之戒 1
+GIVE 生命血瓶 1
+SENDMSG 0 【合成使者】:恭喜{[<$USERNAME>]|250:0:1}合成天灾装备,实力得到了极大的提升！ 251 0
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 条件不足，无法为您服务！
+
+[@魔力银瓶1]
+#IF
+CHECKITEM 魔法球 1
+CHECKITEM 魔法护符 1
+CHECKITEM 魔法面罩 1
+#ACT
+TAKE 魔法球 1
+TAKE 魔法护符 1
+TAKE 魔法面罩 1
+GIVE 魔力银瓶 1
+SENDMSG 0 【合成使者】:恭喜{[<$USERNAME>]|250:0:1}合成天灾装备,实力得到了极大的提升！ 251 0
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 条件不足，无法为您服务！
+
+[@敏捷之弓1]
+#IF
+CHECKITEM 硬木弓 1
+CHECKITEM 敏捷之鞋 1
+#ACT
+TAKE 硬木弓 1
+TAKE 敏捷之鞋 1
+GIVE 敏捷之弓 1
+SENDMSG 0 【合成使者】:恭喜{[<$USERNAME>]|250:0:1}合成天灾装备,实力得到了极大的提升！ 251 0
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 条件不足，无法为您服务！
+
+[@不死徽章1]
+#IF
+CHECKITEM 骷髅盾 1
+CHECKITEM 骷髅之杖 1
+CHECKITEM 野兽之爪 1
+CHECKITEM 骨质胸甲 1
+#ACT
+TAKE 骷髅盾 1
+TAKE 骷髅之杖 1
+TAKE 野兽之爪 1
+TAKE 骨质胸甲 1
+GIVE 不死徽章 1
+SENDMSG 0 【合成使者】:恭喜{[<$USERNAME>]|250:0:1}合成天灾装备,实力得到了极大的提升！ 251 0
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 条件不足，无法为您服务！
+
+[@王者风范1]
+#IF
+CHECKITEM 国王之剑 1
+CHECKITEM 国王之冠 1
+CHECKITEM 国王之鞋 1
+CHECKITEM 国王之盾 1
+CHECKITEM 国王战甲 1
+#ACT
+TAKE 国王之剑 1
+TAKE 国王之冠 1
+TAKE 国王之鞋 1
+TAKE 国王之盾 1
+TAKE 国王战甲 1
+GIVE 王者风范 1
+SENDMSG 0 【合成使者】:恭喜{[<$USERNAME>]|250:0:1}合成天灾装备,实力得到了极大的提升！ 251 0
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 条件不足，无法为您服务！
+
+[@灼热之剑1]
+#IF
+CHECKITEM 攻击之爪 1
+CHECKITEM 火焰之球 1
+CHECKITEM 火焰之爪 1
+#ACT
+TAKE 攻击之爪 1
+TAKE 火焰之球 1
+TAKE 火焰之爪 1
+GIVE 灼热之剑 1
+SENDMSG 0 【合成使者】:恭喜{[<$USERNAME>]|250:0:1}合成天灾装备,实力得到了极大的提升！ 251 0
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 条件不足，无法为您服务！

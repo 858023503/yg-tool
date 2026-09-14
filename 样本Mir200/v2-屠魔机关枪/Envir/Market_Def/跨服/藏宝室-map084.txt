@@ -1,0 +1,5 @@
+[@main]
+#if
+#act
+ChangeState 1 9999999
+mapmove RJD001

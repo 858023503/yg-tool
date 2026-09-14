@@ -1,0 +1,44 @@
+[@狂暴之力]
+{
+
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+　\ \
+<状态永久有效，小退保留。只有被人人物杀死的时候才会失去状态/AUTOCOLOR=255>\
+<击杀拥有狂暴状态的玩家获得1000元宝。/AUTOCOLOR=246>\ \
+<狂暴之力：/AUTOCOLOR=255><[狂暴之力属性查询]|250#1.HPMP加10%^250#2.回收加10%^250#3.爆率+50%^250#4.经验+50%> 需要2000元宝 <开启狂暴之力/@开启狂暴之力>\ \
+
+<&Img:-1:-1:182:160:*/@Label>\ \ \ \
+<Text:文本标签|提示:0:0{FCOLOR=250;FSIZE=14;FNAME=黑体}/@测试>
+<&Img:-1:-1:182:160:*/@Label>
+[@开启狂暴之力]
+#IF
+CHECK [3] 1
+#ACT
+MESSAGEBOX \[提示]你已经开启了狂暴之力！请勿重复开启！
+break
+#IF
+CHECKGameGold < 2000
+#ACT
+MESSAGEBOX \[提示]元宝不足，无法开启狂暴之力！
+BREAK
+
+
+
+#IF
+CHECKGameGold > 1999
+CHECK [3] 0
+#ACT
+GameGold - 2000
+GiveFenghao 狂暴之力
+SET [3] 1
+#CALL [\1游戏登陆\属性加成.txt] @属性加成
+SendCenterMsg 249 0 【<$username>】开启狂暴之力,快去砍死他,砍死奖励1000元宝，兄弟们快来吧!!! 1 5
+SendCenterMsg 249 0 【<$username>】开启狂暴之力,快去砍死他,砍死奖励1000元宝，兄弟们快来吧!!! 1 5
+SendCenterMsg 249 0 【<$username>】开启狂暴之力,快去砍死他,砍死奖励1000元宝，兄弟们快来吧!!! 1 5
+MESSAGEBOX \[提示]狂暴之力开启成功！
+break
+
+}

@@ -1,0 +1,118 @@
+[@Body]
+{
+[@装备升级强化]
+#IF
+#ACT
+OPENMERCHANTBIGDLG 0 2010 1 4 0 0 0
+#SAY
+\ \
+<TEXT:熔炼:16:0{FCOLOR=251}/@随身工坊>
+<TEXT:升级:26:0{FCOLOR=251}/@装备升级>
+<TEXT:淬炼:36:0{FCOLOR=251}/@装备淬炼>
+<TEXT:置换:46:0{FCOLOR=251}/@装备置换>
+<TEXT:开孔:56:0{FCOLOR=251}/@装备开孔>
+<TEXT:强化:66:0{FCOLOR=249}>
+<TEXT:投保:76:0{FCOLOR=251}/@装备投保>
+\ \ \
+< ><装备强化说明：/SCOLOR=70>\
+< ><付出/SCOLOR=251><【50000*装备等级+50000+装备升级石*1】/SCOLOR=250><可以给装备强化，/SCOLOR=251>\
+< ><每级增加装备的/SCOLOR=251><[1%主属性]/SCOLOR=250><，每件装备最多强化100级。/SCOLOR=251>\ 
+< ><所有装备强化到指定级别可获得/SCOLOR=251><[额外加成]/SCOLOR=250>\ 
+< ><额外加成可在人物面板处查看。/SCOLOR=251>\
+< ><升级时有10%概率暴击,提升3-10级。/SCOLOR=254>\ \
+< ><人物装备升级：/SCOLOR=70>\
+< ><武器升级/@开始装备升级(1)>  <服装升级/@开始装备升级(0)>  <头盔升级/@开始装备升级(4)>  <项链升级/@开始装备升级(3)>  <左手升级/@开始装备升级(6)>\
+< ><右手升级/@开始装备升级(5)>  <左戒升级/@开始装备升级(8)>  <右戒升级/@开始装备升级(7)>  <腰带升级/@开始装备升级(10)>  <靴子升级/@开始装备升级(11)>\
+<&IMGEX:0:246:245:247:420:24/@EXIT>
+
+[@开始装备升级]
+#IF
+#ACT
+MOV S$装备升星装备位置 <$SCRIPTPARAM1>
+
+#IF
+NOT CheckVarInList L$装备升级可升级位置参数列表 <$STR(S$装备升星装备位置)>
+#ACT
+SENDMSG 6 请稍后再尝试！
+BREAK
+
+#IF
+NOT CHECKUSEITEM <$STR(S$装备升星装备位置)>
+#ACT
+MESSAGEBOX <请佩戴好装备再点击升星！/SCOLOR=251>
+BREAK
+
+#IF
+NOT CHECKITEM 装备升级石 1
+#ACT
+MESSAGEBOX 你没有装备升级石1个！
+BREAK
+
+#IF
+#ACT
+MOV N$装备加星数量 1
+GetUserItemName <$STR(S$装备升星装备位置)> 1 0
+GetUserItemName <$STR(S$装备升星装备位置)> 2 1
+MOV S$装备升级时装备改名 <$STR(S1)>
+MOV S$装备升级时装备真名 <$STR(S2)>
+
+#IF
+CheckContainsText <$STR(S$装备升级时装备改名)> 　+　
+#ACT
+DEC S$装备升级时装备改名 <$STR(S$装备升级时装备真名)>
+DEC S$装备升级时装备改名 　+　
+MOV N$当前装备总星星数 <$STR(S$装备升级时装备改名)>
+FORMULATION <$STR(N$当前装备总星星数)>*50000+50000 N$当前升星石需求数量
+#ELSEACT
+MOV N$当前升星石需求数量 50000
+MOV N$当前装备总星星数 0
+
+#IF
+LARGE N$当前装备总星星数 99
+#ACT
+MESSAGEBOX <该装备已经满级了！/SCOLOR=251>
+BREAK
+
+#IF
+SMALL <$GOLDCOUNT> <$STR(N$当前升星石需求数量)>
+#ACT
+MESSAGEBOX <你没有/SCOLOR=251><【<$STR(N$当前升星石需求数量)>金币】/SCOLOR=249>
+BREAK
+
+#if
+EQUAL <$USERNAME> 豆腐
+#act
+mov N$装备加星数量 100
+
+#IF
+RANDOMEX 10 100
+#ACT
+MOVR N$装备加星数量 3 11
+SendCenterMsg 180 70 人品大爆发，本次装备直升<$STR(N$装备加星数量)>级！ 0 8
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{在装备强化时人品爆发,强化级别提升了|251:0}{[<$STR(N$装备加星数量)>]|254:0}{级。|251:0}
+
+#IF
+#ACT
+FORMULATION <$STR(N$当前装备总星星数)>+<$STR(N$装备加星数量)> N$升星属性实际加成数值
+
+#IF
+LARGE N$升星属性实际加成数值 100
+#ACT
+MOV N$升星属性实际加成数值 100
+
+#IF
+#ACT
+TAKE 金币 <$STR(N$当前升星石需求数量)>
+TAKE 装备升级石 1
+ChangeItemName <$STR(S$装备升星装备位置)> <$STR(S$装备升级时装备真名)>　+　<$STR(N$升星属性实际加成数值)>
+SetCustomItemAbil <$STR(S$装备升星装备位置)> 7 0 250
+SetCustomItemAbil <$STR(S$装备升星装备位置)> 7 1 <$STR(L$装备升级职业主属性条目列表[<$JOB>])>
+SetCustomItemAbil <$STR(S$装备升星装备位置)> 7 2 7
+SetCustomItemAbil <$STR(S$装备升星装备位置)> 7 3 1
+SetCustomItemAbil <$STR(S$装备升星装备位置)> 7 4 10
+SetCustomItemValueEX <$STR(S$装备升星装备位置)> 7 =  <$STR(N$升星属性实际加成数值)> 0 0
+UPDATEITEM <$STR(S$装备升星装备位置)>
+CLEARLINKITEM
+SENDMSG 6 你的装备升级成功！级别增加+<$STR(N$装备加星数量)>!本次消耗金币：<$STR(N$当前升星石需求数量)>
+GOTO @装备升级强化
+}

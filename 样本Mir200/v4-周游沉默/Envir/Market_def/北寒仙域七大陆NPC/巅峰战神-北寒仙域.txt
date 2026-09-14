@@ -1,0 +1,203 @@
+[@main]
+#if
+#ACT
+OPENMERCHANTBIGDLG 3 1794 1 4 0 -150 1 390 5 0
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+
+<><勇士，你已经达到了身体极限了吗，为了突破身体极限/SCOLOR=254>\
+<><我准备了三个进阶技能只能选择一个技能，选择技能请慎重考虑！/SCOLOR=254>\
+<><进阶条件:1000W*元宝+500*洗髓丹/SCOLOR=70>\ \
+
+<>             <奥义·九天玄功/@技能11>:<攻击速度移动速度大幅提升（CD15s）/SCOLOR=254>\
+<>【真·战神】 <神技·梵经八杀/@技能22>:<施放技能对目标造成八次持续伤害（CD15s）/SCOLOR=253>\
+<>             <禁技·破天一击/@技能33>:<引天地灵气，凝聚刀中释放破天一击（CD20s）/SCOLOR=70>\
+<>             <奥义·冰雪精灵/@技能44>:<领悟冰雪奥义 对其召唤冰之精灵（CD1s）/SCOLOR=254>\
+<>【真·法神】 <神技·九天神雷/@技能55>:<神技雷系法术对目标造成灭神之威 （CD3s）/SCOLOR=253>\
+<>             <禁技·天火三玄变/@技能66>:<领悟火系法则 对火控制操纵自如 持续10秒（CD20s）/SCOLOR=70>\
+<>             <神技·奇门遁甲/@技能77>:<道家真解 持续10秒（CD20s）/SCOLOR=254>\
+<>【真·天尊】 <奥义·修罗血煞阵/@技能88>:<释放阵法对目标造成大量伤害（CD3s）/SCOLOR=253>\
+<>             <禁技·太阴尸经/@技能99>:<召唤？？？？/SCOLOR=70>\  
+
+<>                                <技能重置/@重置11> <条件:200W元宝+200洗髓丹>
+[@重置11]
+#IF
+check [2] 1
+CheckGAMEGold ? 2000000
+CheckItem  洗髓丹 200
+#ACT
+GAMEGOLD - 2000000
+Take 洗髓丹 200
+DELSKILL 奥义·九天玄功
+DELSKILL 神技·梵经八杀
+DELSKILL 禁技·破天一击
+DELSKILL 禁技·天火三玄变
+DELSKILL 神技·九天神雷
+DELSKILL 奥义·冰雪精灵
+DELSKILL 神技·奇门遁甲
+DELSKILL 奥义·修罗血煞阵
+DELSKILL 禁技·太阴尸经
+SET [2] 0
+#CALL [\登陆脚本\转职称号读取.txt] @转职称号读取
+#ELSEACT
+MESSAGEBOX 条件不足.无法重置...
+break
+
+[@技能11]
+#if
+checkjob warrior
+CHECKGameGold ? 10000000
+CheckItem  洗髓丹 500
+CHECK [2] 0
+#ACT
+SET [2] 1
+GameGold - 10000000
+Take 洗髓丹 500
+ADDSKILL 奥义·九天玄功
+#CALL [\登陆脚本\转职称号读取.txt] @转职称号读取
+#ELSEACT
+MESSAGEBOX  材料不足，或者已经进阶成功！
+break
+
+
+[@技能22]
+#if
+checkjob warrior
+CHECKGameGold ? 10000000
+CheckItem  洗髓丹 500
+CHECK [2] 0
+#ACT
+SET [2] 1
+GameGold - 10000000
+Take 洗髓丹 500
+ADDSKILL 神技·梵经八杀
+#CALL [\登陆脚本\转职称号读取.txt] @转职称号读取
+#ELSEACT
+MESSAGEBOX  材料不足，或者已经进阶成功！
+break
+
+
+[@技能33]
+#if
+checkjob warrior
+CHECKGameGold ? 10000000
+CheckItem  洗髓丹 500
+CHECK [2] 0
+#ACT
+SET [2] 1
+GameGold - 10000000
+Take 洗髓丹 500
+ADDSKILL 禁技·破天一击
+#CALL [\登陆脚本\转职称号读取.txt] @转职称号读取
+#ELSEACT
+MESSAGEBOX  材料不足，或者已经进阶成功！
+break
+
+[@技能44]
+#if
+checkjob wizard
+CHECKGameGold ? 10000000
+CheckItem  洗髓丹 500
+CHECK [2] 0
+#ACT
+SET [2] 1
+GameGold - 10000000
+Take 洗髓丹 500
+ADDSKILL 奥义·冰雪精灵
+#CALL [\登陆脚本\转职称号读取.txt] @转职称号读取
+#ELSEACT
+MESSAGEBOX  材料不足，或者已经进阶成功！
+break
+
+[@技能55]
+#if
+checkjob wizard
+CHECKGameGold ? 10000000
+CheckItem  洗髓丹 500
+CHECK [2] 0
+#ACT
+SET [2] 1
+GameGold - 10000000
+Take 洗髓丹 500
+ADDSKILL 神技·九天神雷
+#CALL [\登陆脚本\转职称号读取.txt] @转职称号读取
+#ELSEACT
+MESSAGEBOX  材料不足，或者已经进阶成功！
+break
+
+[@技能66]
+#if
+checkjob wizard
+CHECKGameGold ? 10000000
+CheckItem  洗髓丹 500
+CHECK [2] 0
+#ACT
+SET [2] 1
+GameGold - 10000000
+Take 洗髓丹 500
+ADDSKILL 禁技·天火三玄变
+#CALL [\登陆脚本\转职称号读取.txt] @转职称号读取
+#ELSEACT
+MESSAGEBOX  材料不足，或者已经进阶成功！
+break
+
+
+
+
+
+[@技能77]
+#if
+checkjob taoist
+CHECKGameGold ? 10000000
+CheckItem  洗髓丹 500
+CHECK [2] 0
+#ACT
+SET [2] 1
+GameGold - 10000000
+Take 洗髓丹 500
+ADDSKILL 神技·奇门遁甲
+#CALL [\登陆脚本\转职称号读取.txt] @转职称号读取
+#ELSEACT
+MESSAGEBOX  材料不足，或者已经进阶成功！
+break
+
+
+
+[@技能88]
+#if
+checkjob taoist
+CHECKGameGold ? 10000000
+CheckItem  洗髓丹 500
+CHECK [2] 0
+#ACT
+SET [2] 1
+GameGold - 10000000
+Take 洗髓丹 500
+ADDSKILL 奥义·修罗血煞阵
+#CALL [\登陆脚本\转职称号读取.txt] @转职称号读取
+#ELSEACT
+MESSAGEBOX  材料不足，或者已经进阶成功！
+break
+
+
+[@技能99]
+#if
+checkjob taoist
+CHECKGameGold ? 10000000
+CheckItem  洗髓丹 500
+CHECK [2] 0
+#ACT
+SET [2] 1
+GameGold - 10000000
+Take 洗髓丹 500
+ADDSKILL 禁技·太阴尸经
+#CALL [\登陆脚本\转职称号读取.txt] @转职称号读取
+#ELSEACT
+MESSAGEBOX  材料不足，或者已经进阶成功！
+break
+
+;-----------------------------------------------------------------------
+
+
+

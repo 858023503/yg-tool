@@ -1,0 +1,29 @@
+[@推广邀请]
+{
+;判断被邀请人信息集合里是否存在已经被邀请过的玩家openid
+#if
+checktextlist ..\..\..\..\通区文件\推广\被邀请人信息\被邀请人Openid集合.txt <$STR(T29)>
+#act
+AddTextListEx  ..\..\..\..\通区文件\推广\推广人信息\<$GamePromotionFlag>\邀请失败列表.txt <$USERID>~<$USERNAME>~<$LEVEL>~<$STR(U162)>~<$MACHINEID>~<$STR(T3)>~<$STR(T29)>~<$Date>~Openid相同
+break
+#if
+checktextlist ..\..\..\..\通区文件\推广\被邀请人信息\被邀请人IP集合.txt <$STR(T3)>
+#act
+AddTextListEx  ..\..\..\..\通区文件\推广\推广人信息\<$GamePromotionFlag>\邀请失败列表.txt <$USERID>~<$USERNAME>~<$LEVEL>~<$STR(U162)>~<$MACHINEID>~<$STR(T3)>~<$STR(T29)>~<$Date>~IP相同
+break
+#if
+checktextlist ..\..\..\..\通区文件\推广\被邀请人信息\被邀请人机器码集合.txt <$MACHINEID>
+#act
+AddTextListEx  ..\..\..\..\通区文件\推广\推广人信息\<$GamePromotionFlag>\邀请失败列表.txt <$USERID>~<$USERNAME>~<$LEVEL>~<$STR(U162)>~<$MACHINEID>~<$STR(T3)>~<$STR(T29)>~<$Date>~机器码相同
+break
+;如果没有重复邀请
+#if
+#act
+;添加被邀请人的信息
+AddTextListEx ..\..\..\..\通区文件\推广\被邀请人信息\被邀请人IP集合.txt <$STR(S1)>
+AddTextListEx ..\..\..\..\通区文件\推广\被邀请人信息\被邀请人Openid集合.txt <$STR(T29)>
+AddTextListEx ..\..\..\..\通区文件\推广\被邀请人信息\被邀请人机器码集合.txt <$MACHINEID>
+AddTextListEx ..\..\..\..\通区文件\推广\推广人信息\<$GamePromotionFlag>\推广列表.txt <$STR(T29)>~<$USERNAME>~已达到<$LEVEL>级~传仙第<$STR(U162)>区~<$USERID>~人物达到50级~5元现金~0元
+AddTextListEx ..\..\..\..\通区文件\推广\推广人信息\<$GamePromotionFlag>\推广列表.txt <$STR(T29)>~<$USERNAME>~已达到<$LEVEL>级~传仙第<$STR(U162)>区~<$USERID>~人物达到50级~5元现金~0元
+
+}

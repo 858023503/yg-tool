@@ -1,0 +1,59 @@
+[@main]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \
+<>     ======================<月 河 渊>====================== \ \
+<    怪物等级:/SCOLOR=249>普通-<首领/SCOLOR=254>-<专属BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<    怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<    地图爆率:/SCOLOR=251><英雄系列/SCOLOR=254>,<霸者系列/SCOLOR=249>,<火龙系列/SCOLOR=253>,<一层秒减20YB.二层秒减25YB/SCOLOR=250> \
+<    进图条件:/SCOLOR=251><佩戴起源之心免费传送/SCOLOR=254> \
+<>             <否则自己跑或随机或消耗5000元宝/SCOLOR=249> \
+<>                        <ITEMSHOW:1076:0:0:-0:1:9>\ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                                 <进入地图/@月河渊>           
+
+[@月河渊]
+#IF
+CHECKITEMW 起源の之心
+#ACT
+MAPMOVE 雷泽 208 138
+BREAK
+#IF
+CHECKGAMEGOLD ? 5000
+#ACT
+GAMEGOLD - 5000
+MAPMOVE 雷泽 208 138
+BREAK
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

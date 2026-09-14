@@ -1,0 +1,24 @@
+[@main]
+
+#if
+#act
+OPENMERCHANTBIGDLG 5 941 1 4 0 0  0 360 15 1
+#say
+<&Text:诛仙剑冢异常凶险,需要有强大的意志才能进入:30:55{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:每次进入收费200元宝,1小时刷新一次:55:85{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:可爆出诛仙宝剑爆率是外边的三倍:70:115{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:没有传送戒指可以打普通地图BOSS爆出:55:140{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&IMGEX:5:730:731:732:145:178:1/@进入剑冢>
+
+[@进入剑冢]
+
+
+#IF
+checkgamegold < 200
+#ACT
+messagebox 你没有200元宝
+break
+#if
+#act
+MAPMOVE MAP067 92 101
+gamegold - 200

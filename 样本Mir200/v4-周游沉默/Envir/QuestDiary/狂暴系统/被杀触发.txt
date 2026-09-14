@@ -1,0 +1,30 @@
+[@被杀]
+{
+
+
+#if
+equal U35 1
+not checkitemw 狂暴之心 1
+#act
+mov U35  0
+SETICON 1 -1
+RECYCFENGHAO 狂暴之力 
+sendmsg 6 您的狂暴消失了...
+break
+
+
+#if
+equal U35 1
+not checkitemw 完美の世界 1
+#act
+mov U35  0
+SETICON 1 -1
+RECYCFENGHAO 狂暴之力 
+sendmsg 6 您的狂暴消失了...
+break
+
+
+
+
+
+}

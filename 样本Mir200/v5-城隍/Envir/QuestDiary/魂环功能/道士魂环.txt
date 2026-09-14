@@ -1,0 +1,2266 @@
+[@道士魂环]
+
+{
+
+#IF
+#ACT
+goto @道士魂环临时
+
+
+[@道士魂环临时]
+#IF
+EQUAL U59 0
+#ACT
+MOV N$灵剑临时状态 2060
+MOV S$灵剑临时状态 未激活
+MOV S$灵剑点击 未激活
+MOV N$灵剑点击颜色 230
+MOV S$灵剑描述一 
+MOV S$灵剑描述二 
+
+#IF
+EQUAL U59 1
+#ACT
+MOV N$灵剑临时状态 2059
+MOV S$灵剑临时状态 已激活,点击切换
+MOV S$灵剑点击 未生效
+MOV N$灵剑点击颜色 232
+MOV S$灵剑描述一 灵剑：将精神注入武器，在攻击时对目标造成额:180:67    
+MOV S$灵剑描述二 外真实伤害，伤害值受精神力影响:180:81
+
+#IF
+EQUAL U59 2
+#ACT
+MOV N$灵剑临时状态 2059
+MOV S$灵剑临时状态 已激活,点击切换
+MOV S$灵剑点击 已生效
+MOV N$灵剑点击颜色 224
+MOV S$灵剑描述一 灵剑：将精神注入武器，在攻击时对目标造成额:180:67    
+MOV S$灵剑描述二 外真实伤害，伤害值受精神力影响:180:81
+
+#IF
+EQUAL U60 0
+#ACT
+MOV N$明神临时状态 2166
+MOV S$明神临时状态 未激活
+MOV S$明神点击 未激活
+MOV N$明神点击颜色 230
+MOV S$明神描述一 
+MOV S$明神描述二一 
+MOV S$明神描述二 
+MOV S$明神描述三 
+
+#IF
+EQUAL U60 1
+#ACT
+MOV N$明神临时状态 2165
+MOV S$明神临时状态 已激活,点击切换
+MOV S$明神点击 未生效
+MOV N$明神点击颜色 232
+MOV S$明神描述一 明神：用自身强大的精神力维护神识，使自己对:180:97
+MOV S$明神描述二 毒物免疫，并且减少
+MOV S$明神描述二一 的魔法伤害:180:111
+MOV S$明神描述三 20%:291:111
+
+#IF
+EQUAL U60 2
+#ACT
+MOV N$明神临时状态 2165
+MOV S$明神临时状态 已激活,点击切换
+MOV S$明神点击 已生效
+MOV N$明神点击颜色 224
+MOV S$明神描述一 明神：用自身强大的精神力维护神识，使自己对:180:97
+MOV S$明神描述二 毒物免疫，并且减少
+MOV S$明神描述二一 的魔法伤害:180:111
+MOV S$明神描述三 20%:291:111
+
+#IF
+EQUAL U61 0
+#ACT
+MOV N$天罡临时状态 2088
+MOV S$天罡临时状态 未激活
+MOV S$天罡点击 未激活
+MOV N$天罡点击颜色 230
+MOV S$天罡描述一 
+MOV S$天罡描述二 
+
+#IF
+EQUAL U61 1
+#ACT
+MOV N$天罡临时状态 2087
+MOV S$天罡临时状态 已激活,点击切换
+MOV S$天罡点击 未生效
+MOV N$天罡点击颜色 232
+MOV S$天罡描述一 天罡：用自身强大的精神力形成护盾，减少怪物:180:127
+MOV S$天罡描述二 对自身的伤害:180:141
+
+#IF
+EQUAL U61 2
+#ACT
+MOV N$天罡临时状态 2087
+MOV S$天罡临时状态 已激活,点击切换
+MOV S$天罡点击 已生效
+MOV N$天罡点击颜色 224
+MOV S$天罡描述一 天罡：用自身强大的精神力形成护盾，减少怪物:180:127
+MOV S$天罡描述二 对自身的伤害:180:141
+
+#IF
+EQUAL U62 0
+#ACT
+MOV N$疯魔剑法临时状态 2150
+MOV S$疯魔剑法临时状态 未激活
+MOV S$疯魔剑法点击 未激活
+MOV N$疯魔剑法点击颜色 230
+MOV S$疯魔剑法描述一 
+MOV S$疯魔剑法描述二 
+
+#IF
+EQUAL U62 1
+#ACT
+MOV N$疯魔剑法临时状态 2149
+MOV S$疯魔剑法临时状态 已激活,点击切换
+MOV S$疯魔剑法点击 未生效
+MOV N$疯魔剑法点击颜色 232
+MOV S$疯魔剑法描述一 疯魔剑法：习得疯魔剑法。:180:157
+MOV S$疯魔剑法描述二 使用解除异常状态并牺牲所有攻击叠加10%至道术:180:171
+
+#IF
+EQUAL U62 2
+#ACT
+MOV N$疯魔剑法临时状态 2149
+MOV S$疯魔剑法临时状态 已激活,点击切换
+MOV S$疯魔剑法点击 已生效
+MOV N$疯魔剑法点击颜色 224
+MOV S$疯魔剑法描述一 疯魔剑法：习得疯魔剑法。:180:157
+MOV S$疯魔剑法描述二 使用解除异常状态并牺牲所有攻击叠加10%至道术:180:171
+
+#IF
+EQUAL U63 0
+#ACT
+MOV N$六道临时状态 2148
+MOV S$六道临时状态 未激活
+MOV S$六道点击 未激活
+MOV N$六道点击颜色 230
+MOV S$六道描述一 
+MOV S$六道描述一一 
+MOV S$六道描述二 
+MOV S$六道描述三 
+
+#IF
+EQUAL U63 1
+#ACT
+MOV N$六道临时状态 2147
+MOV S$六道临时状态 已激活,点击切换
+MOV S$六道点击 未生效
+MOV N$六道点击颜色 232
+MOV S$六道描述一 六道：将六道之力注入神符，每
+MOV S$六道描述一一 次释放灵魂:180:207
+MOV S$六道描述二 火符将随机触发一道六道符纸(爆炎、冰霜、神威):180:221
+MOV S$六道描述三 3:355:207
+
+#IF
+EQUAL U63 2
+#ACT
+MOV N$六道临时状态 2147
+MOV S$六道临时状态 已激活,点击切换
+MOV S$六道点击 已生效
+MOV N$六道点击颜色 224
+MOV S$六道描述一 六道：将六道之力注入神符，每
+MOV S$六道描述一一 次释放灵魂:180:207
+MOV S$六道描述二 火符将随机触发一道六道符纸(爆炎、冰霜、神威):180:221
+MOV S$六道描述三 3:355:207
+
+#IF
+EQUAL U64 0
+#ACT
+MOV N$式纸临时状态 2138
+MOV S$式纸临时状态 未激活
+MOV S$式纸点击 未激活
+MOV N$式纸点击颜色 230
+MOV S$式纸描述一 
+MOV S$式纸描述二 
+
+#IF
+EQUAL U64 1
+#ACT
+MOV N$式纸临时状态 2137
+MOV S$式纸临时状态 已激活,点击切换
+MOV S$式纸点击 未生效
+MOV N$式纸点击颜色 232
+MOV S$式纸描述一 式纸：灵魂火符不再造成伤害并拥有10秒冷却，对:180:237
+MOV S$式纸描述二 宝宝使用可使其增加20%攻击力:180:251
+
+#IF
+EQUAL U64 2
+#ACT
+MOV N$式纸临时状态 2137
+MOV S$式纸临时状态 已激活,点击切换
+MOV S$式纸点击 已生效
+MOV N$式纸点击颜色 224
+MOV S$式纸描述一 式纸：灵魂火符不再造成伤害并拥有10秒冷却，对:180:237
+MOV S$式纸描述二 宝宝使用可使其增加20%攻击力:180:251
+
+#IF
+EQUAL U65 0
+#ACT
+MOV N$裂神临时状态 2104
+MOV S$裂神临时状态 未激活
+MOV S$裂神点击 未激活
+MOV N$裂神点击颜色 230
+MOV S$裂神描述一 
+MOV S$裂神描述二 
+
+#IF
+EQUAL U65 1
+#ACT
+MOV N$裂神临时状态 2103
+MOV S$裂神临时状态 已激活,点击切换
+MOV S$裂神点击 未生效
+MOV N$裂神点击颜色 232
+MOV S$裂神描述一 裂神：将精神力注入神符使其在对目标进行打击后:180:267
+MOV S$裂神描述二 继续弹射至周围目标进行打击:180:281
+
+#IF
+EQUAL U65 2
+#ACT
+MOV N$裂神临时状态 2103
+MOV S$裂神临时状态 已激活,点击切换
+MOV S$裂神点击 已生效
+MOV N$裂神点击颜色 224
+MOV S$裂神描述一 裂神：将精神力注入神符使其在对目标进行打击后:180:267
+MOV S$裂神描述二 继续弹射至周围目标进行打击:180:281
+
+#IF
+EQUAL U66 0
+#ACT
+MOV N$神速临时状态 2114
+MOV S$神速临时状态 未激活
+MOV S$神速点击 未激活
+MOV N$神速点击颜色 230
+MOV S$神速描述一 
+MOV S$神速描述二 
+
+#IF
+EQUAL U66 1
+#ACT
+MOV N$神速临时状态 2113
+MOV S$神速临时状态 已激活,点击切换
+MOV S$神速点击 未生效
+MOV N$神速点击颜色 232
+MOV S$神速描述一 神速：灵魂火符30%连击，10%二连，5%三连:180:304
+MOV S$神速描述二 　:180:311
+
+#IF
+EQUAL U66 2
+#ACT
+MOV N$神速临时状态 2113
+MOV S$神速临时状态 已激活,点击切换
+MOV S$神速点击 已生效
+MOV N$神速点击颜色 224
+MOV S$神速描述一 神速：灵魂火符30%连击，10%二连，5%三连:180:304
+MOV S$神速描述二 　:180:311
+
+#IF
+EQUAL U67 0
+#ACT
+MOV N$并列临时状态 2116
+MOV S$并列临时状态 未激活
+MOV S$并列点击 未激活
+MOV N$并列点击颜色 230
+MOV S$并列描述一 
+MOV S$并列描述二 
+MOV S$并列描述二一 
+MOV S$并列描述三 
+
+#IF
+EQUAL U67 1
+#ACT
+MOV N$并列临时状态 2115
+MOV S$并列临时状态 已激活,点击切换
+MOV S$并列点击 未生效
+MOV N$并列点击颜色 232
+MOV S$并列描述一 并列：强大的精神力使你能同时操控更多的骷髅，:180:347
+MOV S$并列描述二 可以同时召唤
+MOV S$并列描述二一 个骷髅:180:361
+MOV S$并列描述三 3:257:361
+
+#IF
+EQUAL U67 2
+#ACT
+MOV N$并列临时状态 2115
+MOV S$并列临时状态 已激活,点击切换
+MOV S$并列点击 已生效
+MOV N$并列点击颜色 224
+MOV S$并列描述一 并列：强大的精神力使你能同时操控更多的骷髅，:180:347
+MOV S$并列描述二 可以同时召唤
+MOV S$并列描述二一 个骷髅:180:361
+MOV S$并列描述三 3:257:361
+
+#IF
+EQUAL U68 0
+#ACT
+MOV N$傀儡术临时状态 2018
+MOV S$傀儡术临时状态 未激活
+MOV S$傀儡术点击 未激活
+MOV N$傀儡术点击颜色 230
+MOV S$傀儡术描述一 
+MOV S$傀儡术描述二 
+
+#IF
+EQUAL U68 1
+#ACT
+MOV N$傀儡术临时状态 2017
+MOV S$傀儡术临时状态 已激活,点击切换
+MOV S$傀儡术点击 未生效
+MOV N$傀儡术点击颜色 232
+MOV S$傀儡术描述一 傀儡术：使你的骷髅将会额外继承本体的属性，:180:377
+MOV S$傀儡术描述二 额外继承50%:180:391
+
+#IF
+EQUAL U68 2
+#ACT
+MOV N$傀儡术临时状态 2017
+MOV S$傀儡术临时状态 已激活,点击切换
+MOV S$傀儡术点击 已生效
+MOV N$傀儡术点击颜色 224
+MOV S$傀儡术描述一 傀儡术：使你的骷髅将会额外继承本体的属性，:180:377
+MOV S$傀儡术描述二 额外继承50%:180:391
+
+#IF
+EQUAL U69 0
+#ACT
+MOV N$骷髅武士临时状态 2056
+MOV S$骷髅武士临时状态 未激活
+MOV S$骷髅武士点击 未激活
+MOV N$骷髅武士点击颜色 230
+MOV S$骷髅武士描述一 
+MOV S$骷髅武士描述二 
+
+#IF
+EQUAL U69 1
+#ACT
+MOV N$骷髅武士临时状态 2055
+MOV S$骷髅武士临时状态 已激活,点击切换
+MOV S$骷髅武士点击 未生效
+MOV N$骷髅武士点击颜色 232
+MOV S$骷髅武士描述一 骷髅武士：将古代武士的魂魄融入骷髅，使其化身:180:407
+MOV S$骷髅武士描述二 成骷髅武士:180:421
+
+#IF
+EQUAL U69 2
+#ACT
+MOV N$骷髅武士临时状态 2055
+MOV S$骷髅武士临时状态 已激活,点击切换
+MOV S$骷髅武士点击 已生效
+MOV N$骷髅武士点击颜色 224
+MOV S$骷髅武士描述一 骷髅武士：将古代武士的魂魄融入骷髅，使其化身:180:407
+MOV S$骷髅武士描述二 成骷髅武士:180:421
+
+#IF
+EQUAL U70 0
+#ACT
+MOV N$骷髅法师临时状态 2046
+MOV S$骷髅法师临时状态 未激活
+MOV S$骷髅法师点击 未激活
+MOV N$骷髅法师点击颜色 230
+MOV S$骷髅法师描述一 
+MOV S$骷髅法师描述二 
+
+#IF
+EQUAL U70 1
+#ACT
+MOV N$骷髅法师临时状态 2045
+MOV S$骷髅法师临时状态 已激活,点击切换
+MOV S$骷髅法师点击 未生效
+MOV N$骷髅法师点击颜色 232
+MOV S$骷髅法师描述一 骷髅法师：将古代巫师的魂魄融入骷髅，使其化身:180:437
+MOV S$骷髅法师描述二 成骷髅法师:180:451
+
+#IF
+EQUAL U70 2
+#ACT
+MOV N$骷髅法师临时状态 2045
+MOV S$骷髅法师临时状态 已激活,点击切换
+MOV S$骷髅法师点击 已生效
+MOV N$骷髅法师点击颜色 224
+MOV S$骷髅法师描述一 骷髅法师：将古代巫师的魂魄融入骷髅，使其化身:180:437
+MOV S$骷髅法师描述二 成骷髅法师:180:451
+
+#IF
+#ACT
+MOV N$精神力战法标记0 59
+MOV N$精神力战法标记1 60
+MOV N$精神力战法标记2 61
+MOV N$精神力战法标记3 62
+MOV L$精神力战法激活状态 [<$Str(U<$str(N$精神力战法标记0)>)>,<$Str(U<$str(N$精神力战法标记1)>)>,<$Str(U<$str(N$精神力战法标记2)>)>,<$Str(U<$str(N$精神力战法标记3)>)>]
+#IF
+CheckVarInList L$精神力战法激活状态 2
+#ACT 
+GetListVarIndex L$精神力战法激活状态 2 N$精神力战法第几个激活
+#IF
+not CheckVarInList L$精神力战法激活状态 2
+#ACT
+MOV  N$精神力战法第几个激活 100
+
+#IF
+#ACT
+MOV N$灵魂火符标记0 63
+MOV N$灵魂火符标记1 64
+MOV N$灵魂火符标记2 65
+MOV N$灵魂火符标记3 66
+MOV L$灵魂火符激活状态 [<$Str(U<$str(N$灵魂火符标记0)>)>,<$Str(U<$str(N$灵魂火符标记1)>)>,<$Str(U<$str(N$灵魂火符标记2)>)>,<$Str(U<$str(N$灵魂火符标记3)>)>]
+#IF
+CheckVarInList L$灵魂火符激活状态 2
+#ACT 
+GetListVarIndex L$灵魂火符激活状态 2 N$灵魂火符第几个激活
+#IF
+not CheckVarInList L$灵魂火符激活状态 2
+#ACT
+MOV  N$灵魂火符第几个激活 100
+
+#IF
+#ACT
+MOV N$召唤骷髅标记0 67
+MOV N$召唤骷髅标记1 68
+MOV N$召唤骷髅标记2 69
+MOV N$召唤骷髅标记3 70
+MOV L$召唤骷髅激活状态 [<$Str(U<$str(N$召唤骷髅标记0)>)>,<$Str(U<$str(N$召唤骷髅标记1)>)>,<$Str(U<$str(N$召唤骷髅标记2)>)>,<$Str(U<$str(N$召唤骷髅标记3)>)>]
+#IF
+CheckVarInList L$召唤骷髅激活状态 2
+#ACT 
+GetListVarIndex L$召唤骷髅激活状态 2 N$召唤骷髅第几个激活
+#IF
+not CheckVarInList L$召唤骷髅激活状态 2
+#ACT
+MOV  N$召唤骷髅第几个激活 100
+
+#IF
+#ACT
+OpenBigDialogBox 0 2010 1 4 0 0 1 440 24
+#SAY
+<&Text:<$Str(S$灵剑点击)>:130:74{FCOLOR=<$Str(N$灵剑点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$明神点击)>:130:104{FCOLOR=<$Str(N$明神点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$天罡点击)>:130:134{FCOLOR=<$Str(N$天罡点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$疯魔剑法点击)>:130:164{FCOLOR=<$Str(N$疯魔剑法点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$明神描述三)>{FCOLOR=154;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$灵剑描述一)>{FCOLOR=<$Str(N$灵剑点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$灵剑描述二)>{FCOLOR=<$Str(N$灵剑点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$明神描述一)>{FCOLOR=<$Str(N$明神点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$明神描述二)>    <$Str(S$明神描述二一)>{FCOLOR=<$Str(N$明神点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$天罡描述一)>{FCOLOR=<$Str(N$天罡点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$天罡描述二)>{FCOLOR=<$Str(N$天罡点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$疯魔剑法描述一)>{FCOLOR=<$Str(N$疯魔剑法点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$疯魔剑法描述二)>{FCOLOR=<$Str(N$疯魔剑法点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:精:43:75{FCOLOR=204;FSIZE=20;FNAME=黑体}> 
+<&Text:神:43:100{FCOLOR=204;FSIZE=20;FNAME=黑体}>
+<&Text:战:43:125{FCOLOR=204;FSIZE=20;FNAME=黑体}>
+<&Text:法:43:150{FCOLOR=204;FSIZE=20;FNAME=黑体}>
+<&ImgEX:0:<$STR(N$灵剑临时状态)>:<$STR(N$灵剑临时状态)>:<$STR(N$灵剑临时状态)>:100:70|254#<$STR(S$灵剑临时状态)>/@灵剑1>
+<&ImgEX:0:<$STR(N$明神临时状态)>:<$STR(N$明神临时状态)>:<$STR(N$明神临时状态)>:100:100|254#<$STR(S$明神临时状态)>/@明神1>
+<&ImgEX:0:<$STR(N$天罡临时状态)>:<$STR(N$天罡临时状态)>:<$STR(N$天罡临时状态)>:100:130|254#<$STR(S$天罡临时状态)>/@天罡1>
+<&ImgEX:0:<$STR(N$疯魔剑法临时状态)>:<$STR(N$疯魔剑法临时状态)>:<$STR(N$疯魔剑法临时状态)>:100:160|254#<$STR(S$疯魔剑法临时状态)>/@疯魔剑法1>
+
+
+<&Text:<$Str(S$六道点击)>:130:214{FCOLOR=<$Str(N$六道点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$式纸点击)>:130:244{FCOLOR=<$Str(N$式纸点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$裂神点击)>:130:274{FCOLOR=<$Str(N$裂神点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$神速点击)>:130:304{FCOLOR=<$Str(N$神速点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$六道描述三)>{FCOLOR=154;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$六道描述一)>    <$Str(S$六道描述一一)>{FCOLOR=<$Str(N$六道点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$六道描述二)>{FCOLOR=<$Str(N$六道点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$式纸描述一)>{FCOLOR=<$Str(N$式纸点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$式纸描述二)>{FCOLOR=<$Str(N$式纸点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$裂神描述一)>{FCOLOR=<$Str(N$裂神点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$裂神描述二)>{FCOLOR=<$Str(N$裂神点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$神速描述一)>{FCOLOR=<$Str(N$神速点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$神速描述二)>{FCOLOR=<$Str(N$神速点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:灵:43:215{FCOLOR=204;FSIZE=20;FNAME=黑体}> 
+<&Text:魂:43:240{FCOLOR=204;FSIZE=20;FNAME=黑体}>
+<&Text:火:43:265{FCOLOR=204;FSIZE=20;FNAME=黑体}>
+<&Text:符:43:290{FCOLOR=204;FSIZE=20;FNAME=黑体}>
+<&ImgEX:0:<$STR(N$六道临时状态)>:<$STR(N$六道临时状态)>:<$STR(N$六道临时状态)>:100:210|254#<$STR(S$六道临时状态)>/@六道1>
+<&ImgEX:0:<$STR(N$式纸临时状态)>:<$STR(N$式纸临时状态)>:<$STR(N$式纸临时状态)>:100:240|254#<$STR(S$式纸临时状态)>/@式纸1>
+<&ImgEX:0:<$STR(N$裂神临时状态)>:<$STR(N$裂神临时状态)>:<$STR(N$裂神临时状态)>:100:270|254#<$STR(S$裂神临时状态)>/@裂神1>
+<&ImgEX:0:<$STR(N$神速临时状态)>:<$STR(N$神速临时状态)>:<$STR(N$神速临时状态)>:100:300|254#<$STR(S$神速临时状态)>/@神速1>
+
+
+
+<&Text:<$Str(S$并列点击)>:130:354{FCOLOR=<$Str(N$并列点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$傀儡术点击)>:130:384{FCOLOR=<$Str(N$傀儡术点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$骷髅武士点击)>:130:414{FCOLOR=<$Str(N$骷髅武士点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$骷髅法师点击)>:130:444{FCOLOR=<$Str(N$骷髅法师点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$并列描述三)>{FCOLOR=154;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$并列描述一)>{FCOLOR=<$Str(N$并列点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$并列描述二)>   <$Str(S$并列描述二一)>{FCOLOR=<$Str(N$并列点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$傀儡术描述一)>{FCOLOR=<$Str(N$傀儡术点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$傀儡术描述二)>{FCOLOR=<$Str(N$傀儡术点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$骷髅武士描述一)>{FCOLOR=<$Str(N$骷髅武士点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$骷髅武士描述二)>{FCOLOR=<$Str(N$骷髅武士点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$骷髅法师描述一)>{FCOLOR=<$Str(N$骷髅法师点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$骷髅法师描述二)>{FCOLOR=<$Str(N$骷髅法师点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:召:43:355{FCOLOR=204;FSIZE=20;FNAME=黑体}> 
+<&Text:唤:43:380{FCOLOR=204;FSIZE=20;FNAME=黑体}>
+<&Text:骷:43:405{FCOLOR=204;FSIZE=20;FNAME=黑体}>
+<&Text:髅:43:430{FCOLOR=204;FSIZE=20;FNAME=黑体}>
+<&ImgEX:0:<$STR(N$并列临时状态)>:<$STR(N$并列临时状态)>:<$STR(N$并列临时状态)>:100:350|254#<$STR(S$并列临时状态)>/@并列1>
+<&ImgEX:0:<$STR(N$傀儡术临时状态)>:<$STR(N$傀儡术临时状态)>:<$STR(N$傀儡术临时状态)>:100:380|254#<$STR(S$傀儡术临时状态)>/@傀儡术1>
+<&ImgEX:0:<$STR(N$骷髅武士临时状态)>:<$STR(N$骷髅武士临时状态)>:<$STR(N$骷髅武士临时状态)>:100:410|254#<$STR(S$骷髅武士临时状态)>/@骷髅武士1>
+<&ImgEX:0:<$STR(N$骷髅法师临时状态)>:<$STR(N$骷髅法师临时状态)>:<$STR(N$骷髅法师临时状态)>:100:440|254#<$STR(S$骷髅法师临时状态)>/@骷髅法师1>
+
+<&Text:下一页:370:480{FCOLOR=149;FSIZE=12;FNAME=黑体}/@道士魂环第二页>
+
+\ \ \ 
+;<测试按钮123/@测123试道>
+
+[@道士魂环第二页]
+
+#IF
+EQUAL U71 0
+#ACT
+MOV N$吝啬临时状态 2140
+MOV S$吝啬临时状态 未激活
+MOV S$吝啬点击 未激活
+MOV N$吝啬点击颜色 230
+MOV S$吝啬描述一 
+MOV S$吝啬描述二 
+
+#IF
+EQUAL U71 1
+#ACT
+MOV N$吝啬临时状态 2139
+MOV S$吝啬临时状态 已激活,点击切换
+MOV S$吝啬点击 未生效
+MOV N$吝啬点击颜色 232
+MOV S$吝啬描述一 吝啬：习得群体施毒术:180:74
+MOV S$吝啬描述二 　:180:81
+
+#IF
+EQUAL U71 2
+#ACT
+MOV N$吝啬临时状态 2139
+MOV S$吝啬临时状态 已激活,点击切换
+MOV S$吝啬点击 已生效
+MOV N$吝啬点击颜色 224
+MOV S$吝啬描述一 吝啬：习得群体施毒术:180:74
+MOV S$吝啬描述二 　:180:81
+
+#IF
+EQUAL U72 0
+#ACT
+MOV N$厄难毒体临时状态 2020
+MOV S$厄难毒体临时状态 未激活
+MOV S$厄难毒体点击 未激活
+MOV N$厄难毒体点击颜色 230
+MOV S$厄难毒体描述一 
+MOV S$厄难毒体描述一一 
+MOV S$厄难毒体描述二 
+MOV S$厄难毒体描述三 
+
+#IF
+EQUAL U72 1
+#ACT
+MOV N$厄难毒体临时状态 2019
+MOV S$厄难毒体临时状态 已激活,点击切换
+MOV S$厄难毒体点击 未生效
+MOV N$厄难毒体点击颜色 232
+MOV S$厄难毒体描述一 厄难毒体：用毒药炼体，当收到攻击时有
+MOV S$厄难毒体描述一一 的概率:180:97
+MOV S$厄难毒体描述二 引发毒气爆炸，对周围造成范围伤害和红毒效果:180:111
+MOV S$厄难毒体描述三 10%:397:97
+
+#IF
+EQUAL U72 2
+#ACT
+MOV N$厄难毒体临时状态 2019
+MOV S$厄难毒体临时状态 已激活,点击切换
+MOV S$厄难毒体点击 已生效
+MOV N$厄难毒体点击颜色 224
+MOV S$厄难毒体描述一 厄难毒体：用毒药炼体，当收到攻击时有
+MOV S$厄难毒体描述一一 的概率:180:97
+MOV S$厄难毒体描述二 引发毒气爆炸，对周围造成范围伤害和红毒效果:180:111
+MOV S$厄难毒体描述三 10%:397:97
+
+#IF
+EQUAL U73 0
+#ACT
+MOV N$感染临时状态 2128
+MOV S$感染临时状态 未激活
+MOV S$感染点击 未激活
+MOV N$感染点击颜色 230
+MOV S$感染描述一 
+MOV S$感染描述二 
+
+#IF
+EQUAL U73 1
+#ACT
+MOV N$感染临时状态 2127
+MOV S$感染临时状态 已激活,点击切换
+MOV S$感染点击 未生效
+MOV N$感染点击颜色 232
+MOV S$感染描述一 感染：释放施毒术5%使自身中毒20秒，每2秒掉血1%，:180:127
+MOV S$感染描述二 中毒期间道术增加5%~10%:180:141
+
+#IF
+EQUAL U73 2
+#ACT
+MOV N$感染临时状态 2127
+MOV S$感染临时状态 已激活,点击切换
+MOV S$感染点击 已生效
+MOV N$感染点击颜色 224
+MOV S$感染描述一 感染：释放施毒术5%使自身中毒20秒，每2秒掉血1%，:180:127
+MOV S$感染描述二 中毒期间道术增加5%~10%:180:141
+
+#IF
+EQUAL U74 0
+#ACT
+MOV N$七步断肠临时状态 2084
+MOV S$七步断肠临时状态 未激活
+MOV S$七步断肠点击 未激活
+MOV N$七步断肠点击颜色 230
+MOV S$七步断肠描述一 
+MOV S$七步断肠描述二 
+
+#IF
+EQUAL U74 1
+#ACT
+MOV N$七步断肠临时状态 2083
+MOV S$七步断肠临时状态 已激活,点击切换
+MOV S$七步断肠点击 未生效
+MOV N$七步断肠点击颜色 232
+MOV S$七步断肠描述一 七步断肠：攻击中毒的敌人附加30%伤害:180:164
+MOV S$七步断肠描述二 　:180:171
+
+#IF
+EQUAL U74 2
+#ACT
+MOV N$七步断肠临时状态 2083
+MOV S$七步断肠临时状态 已激活,点击切换
+MOV S$七步断肠点击 已生效
+MOV N$七步断肠点击颜色 224
+MOV S$七步断肠描述一 七步断肠：攻击中毒的敌人附加30%伤害:180:164
+MOV S$七步断肠描述二 　:180:171
+
+#IF
+EQUAL U75 0
+#ACT
+MOV N$固化临时状态 2100
+MOV S$固化临时状态 未激活
+MOV S$固化点击 未激活
+MOV N$固化点击颜色 230
+MOV S$固化描述一 
+MOV S$固化描述二 
+
+#IF
+EQUAL U75 1
+#ACT
+MOV N$固化临时状态 2099
+MOV S$固化临时状态 已激活,点击切换
+MOV S$固化点击 未生效
+MOV N$固化点击颜色 232
+MOV S$固化描述一 固化：释放神圣战甲术时会固化人物躯体，额外增加:180:207
+MOV S$固化描述二 10%物理防御:180:221
+
+#IF
+EQUAL U75 2
+#ACT
+MOV N$固化临时状态 2099
+MOV S$固化临时状态 已激活,点击切换
+MOV S$固化点击 已生效
+MOV N$固化点击颜色 224
+MOV S$固化描述一 固化：释放神圣战甲术时会固化人物躯体，额外增加:180:207
+MOV S$固化描述二 10%物理防御:180:221
+
+#IF
+EQUAL U76 0
+#ACT
+MOV N$强化临时状态 2016
+MOV S$强化临时状态 未激活
+MOV S$强化点击 未激活
+MOV N$强化点击颜色 230
+MOV S$强化描述一 
+MOV S$强化描述二 
+
+#IF
+EQUAL U76 1
+#ACT
+MOV N$强化临时状态 2015
+MOV S$强化临时状态 已激活,点击切换
+MOV S$强化点击 未生效
+MOV N$强化点击颜色 232
+MOV S$强化描述一 强化：释放神圣战甲术时会强化人物力量，额外增加:180:237
+MOV S$强化描述二 10%物理攻击:180:251
+
+#IF
+EQUAL U76 2
+#ACT
+MOV N$强化临时状态 2015
+MOV S$强化临时状态 已激活,点击切换
+MOV S$强化点击 已生效
+MOV N$强化点击颜色 224
+MOV S$强化描述一 强化：释放神圣战甲术时会强化人物力量，额外增加:180:237
+MOV S$强化描述二 10%物理攻击:180:251
+
+#IF
+EQUAL U77 0
+#ACT
+MOV N$祈福临时状态 2090
+MOV S$祈福临时状态 未激活
+MOV S$祈福点击 未激活
+MOV N$祈福点击颜色 230
+MOV S$祈福描述一 
+MOV S$祈福描述二 
+
+#IF
+EQUAL U77 1
+#ACT
+MOV N$祈福临时状态 2089
+MOV S$祈福临时状态 已激活,点击切换
+MOV S$祈福点击 未生效
+MOV N$祈福点击颜色 232
+MOV S$祈福描述一 祈福：释放幽灵盾时会对人物祈福，额外增加人物:180:267
+MOV S$祈福描述二 10%魔法防御:180:281
+
+#IF
+EQUAL U77 2
+#ACT
+MOV N$祈福临时状态 2089
+MOV S$祈福临时状态 已激活,点击切换
+MOV S$祈福点击 已生效
+MOV N$祈福点击颜色 224
+MOV S$祈福描述一 祈福：释放幽灵盾时会对人物祈福，额外增加人物:180:267
+MOV S$祈福描述二 10%魔法防御:180:281
+
+#IF
+EQUAL U78 0
+#ACT
+MOV N$祝福临时状态 2080
+MOV S$祝福临时状态 未激活
+MOV S$祝福点击 未激活
+MOV N$祝福点击颜色 230
+MOV S$祝福描述一 
+MOV S$祝福描述二 
+
+#IF
+EQUAL U78 1
+#ACT
+MOV N$祝福临时状态 2079
+MOV S$祝福临时状态 已激活,点击切换
+MOV S$祝福点击 未生效
+MOV N$祝福点击颜色 232
+MOV S$祝福描述一 祝福：释放幽灵盾时会对人物祝福，额外增加人物:180:297
+MOV S$祝福描述二 10%魔法和道术:180:311
+
+#IF
+EQUAL U78 2
+#ACT
+MOV N$祝福临时状态 2079
+MOV S$祝福临时状态 已激活,点击切换
+MOV S$祝福点击 已生效
+MOV N$祝福点击颜色 224
+MOV S$祝福描述一 祝福：释放幽灵盾时会对人物祝福，额外增加人物:180:297
+MOV S$祝福描述二 10%魔法和道术:180:311
+
+#IF
+EQUAL U79 0
+#ACT
+MOV N$道士技能六号甲临时状态 2112
+MOV S$道士技能六号甲临时状态 未激活
+MOV S$道士技能六号甲点击 未激活
+MOV N$道士技能六号甲点击颜色 230
+MOV S$道士技能六号甲描述一 
+MOV S$道士技能六号甲描述一一 
+MOV S$道士技能六号甲描述二 
+MOV S$道士技能六号甲描述三 
+
+#IF
+EQUAL U79 1
+#ACT
+MOV N$道士技能六号甲临时状态 2111
+MOV S$道士技能六号甲临时状态 已激活,点击切换
+MOV S$道士技能六号甲点击 未生效
+MOV N$道士技能六号甲点击颜色 232
+MOV S$道士技能六号甲描述一 迅捷：召唤神兽时速度增加
+MOV S$道士技能六号甲描述一一 　:180:354
+MOV S$道士技能六号甲描述二 　:180:368
+MOV S$道士技能六号甲描述三 30%:329:354
+
+#IF
+EQUAL U79 2
+#ACT
+MOV N$道士技能六号甲临时状态 2111
+MOV S$道士技能六号甲临时状态 已激活,点击切换
+MOV S$道士技能六号甲点击 已生效
+MOV N$道士技能六号甲点击颜色 224
+MOV S$道士技能六号甲描述一 迅捷：召唤神兽时速度增加
+MOV S$道士技能六号甲描述一一 　:180:354
+MOV S$道士技能六号甲描述二 　:180:368
+MOV S$道士技能六号甲描述三 30%:329:354
+
+#IF
+EQUAL U80 0
+#ACT
+MOV N$道士技能六号乙临时状态 2116
+MOV S$道士技能六号乙临时状态 未激活
+MOV S$道士技能六号乙点击 未激活
+MOV N$道士技能六号乙点击颜色 230
+MOV S$道士技能六号乙描述一 
+MOV S$道士技能六号乙描述一一 
+MOV S$道士技能六号乙描述二 
+MOV S$道士技能六号乙描述三 
+
+#IF
+EQUAL U80 1
+#ACT
+MOV N$道士技能六号乙临时状态 2115
+MOV S$道士技能六号乙临时状态 已激活,点击切换
+MOV S$道士技能六号乙点击 未生效
+MOV N$道士技能六号乙点击颜色 232
+MOV S$道士技能六号乙描述一 双生暗影：额外生成一只
+MOV S$道士技能六号乙描述一一 属性的暗影分身:180:384
+MOV S$道士技能六号乙描述二 　:180:391
+MOV S$道士技能六号乙描述三 50%:313:384
+
+#IF
+EQUAL U80 2
+#ACT
+MOV N$道士技能六号乙临时状态 2115
+MOV S$道士技能六号乙临时状态 已激活,点击切换
+MOV S$道士技能六号乙点击 已生效
+MOV N$道士技能六号乙点击颜色 224
+MOV S$道士技能六号乙描述一 双生暗影：额外生成一只
+MOV S$道士技能六号乙描述一一 属性的暗影分身:180:384
+MOV S$道士技能六号乙描述二 　:180:391
+MOV S$道士技能六号乙描述三 50%:313:384
+
+#IF
+EQUAL U81 0
+#ACT
+MOV N$道士技能六号丙临时状态 2118
+MOV S$道士技能六号丙临时状态 未激活
+MOV S$道士技能六号丙点击 未激活
+MOV N$道士技能六号丙点击颜色 230
+MOV S$道士技能六号丙描述一 
+MOV S$道士技能六号丙描述二 
+MOV S$道士技能六号丙描述二一 
+MOV S$道士技能六号丙描述三 
+
+#IF
+EQUAL U81 1
+#ACT
+MOV N$道士技能六号丙临时状态 2117
+MOV S$道士技能六号丙临时状态 已激活,点击切换
+MOV S$道士技能六号丙点击 未生效
+MOV N$道士技能六号丙点击颜色 232
+MOV S$道士技能六号丙描述一 攻击姿态：宝宝享受人物攻击伤害全额加成:180:414
+MOV S$道士技能六号丙描述二 
+MOV S$道士技能六号丙描述二一 　:180:421
+MOV S$道士技能六号丙描述三 　:259:421
+
+#IF
+EQUAL U81 2
+#ACT
+MOV N$道士技能六号丙临时状态 2117
+MOV S$道士技能六号丙临时状态 已激活,点击切换
+MOV S$道士技能六号丙点击 已生效
+MOV N$道士技能六号丙点击颜色 224
+MOV S$道士技能六号丙描述一 攻击姿态：宝宝享受人物攻击伤害全额加成:180:414
+MOV S$道士技能六号丙描述二 
+MOV S$道士技能六号丙描述二一 　:180:421
+MOV S$道士技能六号丙描述三 　:259:421
+
+#IF
+EQUAL U82 0
+#ACT
+MOV N$道士技能六号丁临时状态 2106
+MOV S$道士技能六号丁临时状态 未激活
+MOV S$道士技能六号丁点击 未激活
+MOV N$道士技能六号丁点击颜色 230
+MOV S$道士技能六号丁描述一 
+MOV S$道士技能六号丁描述二 
+
+#IF
+EQUAL U82 1
+#ACT
+MOV N$道士技能六号丁临时状态 2105
+MOV S$道士技能六号丁临时状态 已激活,点击切换
+MOV S$道士技能六号丁点击 未生效
+MOV N$道士技能六号丁点击颜色 232
+MOV S$道士技能六号丁描述一 巨大化：宝宝体型增加20%,生命值增加200%:180:444
+MOV S$道士技能六号丁描述二 　:180:451
+
+#IF
+EQUAL U82 2
+#ACT
+MOV N$道士技能六号丁临时状态 2105
+MOV S$道士技能六号丁临时状态 已激活,点击切换
+MOV S$道士技能六号丁点击 已生效
+MOV N$道士技能六号丁点击颜色 224
+MOV S$道士技能六号丁描述一 巨大化：宝宝体型增加20%,生命值增加200%:180:444
+MOV S$道士技能六号丁描述二 　:180:451
+
+#IF
+#ACT
+MOV N$施毒术标记0 71
+MOV N$施毒术标记1 72
+MOV N$施毒术标记2 73
+MOV N$施毒术标记3 74
+MOV L$施毒术激活状态 [<$Str(U<$str(N$施毒术标记0)>)>,<$Str(U<$str(N$施毒术标记1)>)>,<$Str(U<$str(N$施毒术标记2)>)>,<$Str(U<$str(N$施毒术标记3)>)>]
+#IF
+CheckVarInList L$施毒术激活状态 2
+#ACT 
+GetListVarIndex L$施毒术激活状态 2 N$施毒术第几个激活
+#IF
+not CheckVarInList L$施毒术激活状态 2
+#ACT
+MOV  N$施毒术第几个激活 100
+
+
+#IF
+#ACT
+MOV N$幽灵战甲术标记0 75
+MOV N$幽灵战甲术标记1 76
+MOV N$幽灵战甲术标记2 77
+MOV N$幽灵战甲术标记3 78
+MOV L$幽灵战甲术激活状态 [<$Str(U<$str(N$幽灵战甲术标记0)>)>,<$Str(U<$str(N$幽灵战甲术标记1)>)>,<$Str(U<$str(N$幽灵战甲术标记2)>)>,<$Str(U<$str(N$幽灵战甲术标记3)>)>]
+#IF
+CheckVarInList L$幽灵战甲术激活状态 2
+#ACT 
+GetListVarIndex L$幽灵战甲术激活状态 2 N$幽灵战甲术第几个激活
+#IF
+not CheckVarInList L$幽灵战甲术激活状态 2
+#ACT
+MOV  N$幽灵战甲术第几个激活 100
+
+
+#IF
+#ACT
+MOV N$道士技能六号标记0 79
+MOV N$道士技能六号标记1 80
+MOV N$道士技能六号标记2 81
+MOV N$道士技能六号标记3 82
+MOV L$道士技能六号激活状态 [<$Str(U<$str(N$道士技能六号标记0)>)>,<$Str(U<$str(N$道士技能六号标记1)>)>,<$Str(U<$str(N$道士技能六号标记2)>)>,<$Str(U<$str(N$道士技能六号标记3)>)>]
+#IF
+CheckVarInList L$道士技能六号激活状态 2
+#ACT 
+GetListVarIndex L$道士技能六号激活状态 2 N$道士技能六号第几个激活
+#IF
+not CheckVarInList L$道士技能六号激活状态 2
+#ACT
+MOV  N$道士技能六号第几个激活 100
+
+#IF
+#ACT
+OpenBigDialogBox 0 2010 1 4 0 0 1 440 24
+#SAY
+
+
+
+<&Text:<$Str(S$吝啬点击)>:130:74{FCOLOR=<$Str(N$吝啬点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$厄难毒体点击)>:130:104{FCOLOR=<$Str(N$厄难毒体点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$感染点击)>:130:134{FCOLOR=<$Str(N$感染点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$七步断肠点击)>:130:164{FCOLOR=<$Str(N$七步断肠点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$吝啬描述三)>{FCOLOR=154;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$厄难毒体描述三)>{FCOLOR=154;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$吝啬描述一)>{FCOLOR=<$Str(N$吝啬点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$吝啬描述二)>{FCOLOR=<$Str(N$吝啬点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$厄难毒体描述一)>    <$Str(S$厄难毒体描述一一)>{FCOLOR=<$Str(N$厄难毒体点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$厄难毒体描述二)>{FCOLOR=<$Str(N$厄难毒体点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$感染描述一)>{FCOLOR=<$Str(N$感染点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$感染描述二)>{FCOLOR=<$Str(N$感染点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$七步断肠描述一)>{FCOLOR=<$Str(N$七步断肠点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$七步断肠描述二)>{FCOLOR=<$Str(N$七步断肠点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:施:40:75{FCOLOR=204;FSIZE=26;FNAME=黑体}> 
+<&Text:毒:40:113{FCOLOR=204;FSIZE=26;FNAME=黑体}>
+<&Text:术:40:150{FCOLOR=204;FSIZE=26;FNAME=黑体}>
+<&ImgEX:0:<$STR(N$吝啬临时状态)>:<$STR(N$吝啬临时状态)>:<$STR(N$吝啬临时状态)>:100:70|254#<$STR(S$吝啬临时状态)>/@吝啬1>
+<&ImgEX:0:<$STR(N$厄难毒体临时状态)>:<$STR(N$厄难毒体临时状态)>:<$STR(N$厄难毒体临时状态)>:100:100|254#<$STR(S$厄难毒体临时状态)>/@厄难毒体1>
+<&ImgEX:0:<$STR(N$感染临时状态)>:<$STR(N$感染临时状态)>:<$STR(N$感染临时状态)>:100:130|254#<$STR(S$感染临时状态)>/@感染1>
+<&ImgEX:0:<$STR(N$七步断肠临时状态)>:<$STR(N$七步断肠临时状态)>:<$STR(N$七步断肠临时状态)>:100:160|254#<$STR(S$七步断肠临时状态)>/@七步断肠1>
+
+
+<&Text:<$Str(S$固化点击)>:130:214{FCOLOR=<$Str(N$固化点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$强化点击)>:130:244{FCOLOR=<$Str(N$强化点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$祈福点击)>:130:274{FCOLOR=<$Str(N$祈福点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$祝福点击)>:130:304{FCOLOR=<$Str(N$祝福点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$固化描述一)>{FCOLOR=<$Str(N$固化点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$固化描述二)>{FCOLOR=<$Str(N$固化点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$强化描述一)>{FCOLOR=<$Str(N$强化点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$强化描述二)>{FCOLOR=<$Str(N$强化点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$祈福描述一)>{FCOLOR=<$Str(N$祈福点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$祈福描述二)>{FCOLOR=<$Str(N$祈福点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$祝福描述一)>{FCOLOR=<$Str(N$祝福点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$祝福描述二)>{FCOLOR=<$Str(N$祝福点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:辅:40:215{FCOLOR=151;FSIZE=26;FNAME=黑体}> 
+<&Text:助:40:248{FCOLOR=151;FSIZE=26;FNAME=黑体}>
+<&Text:技:40:281{FCOLOR=151;FSIZE=26;FNAME=黑体}>
+<&ImgEX:0:<$STR(N$固化临时状态)>:<$STR(N$固化临时状态)>:<$STR(N$固化临时状态)>:100:210|254#<$STR(S$固化临时状态)>/@固化1>
+<&ImgEX:0:<$STR(N$强化临时状态)>:<$STR(N$强化临时状态)>:<$STR(N$强化临时状态)>:100:240|254#<$STR(S$强化临时状态)>/@强化1>
+<&ImgEX:0:<$STR(N$祈福临时状态)>:<$STR(N$祈福临时状态)>:<$STR(N$祈福临时状态)>:100:270|254#<$STR(S$祈福临时状态)>/@祈福1>
+<&ImgEX:0:<$STR(N$祝福临时状态)>:<$STR(N$祝福临时状态)>:<$STR(N$祝福临时状态)>:100:300|254#<$STR(S$祝福临时状态)>/@祝福1>
+
+
+
+
+<&Text:<$Str(S$道士技能六号甲点击)>:130:354{FCOLOR=<$Str(N$道士技能六号甲点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$道士技能六号乙点击)>:130:384{FCOLOR=<$Str(N$道士技能六号乙点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$道士技能六号丙点击)>:130:414{FCOLOR=<$Str(N$道士技能六号丙点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$道士技能六号丁点击)>:130:444{FCOLOR=<$Str(N$道士技能六号丁点击颜色)>;FSIZE=10;FNAME=黑体}>
+
+<&Text:<$Str(S$道士技能六号甲描述三)>{FCOLOR=154;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$道士技能六号乙描述三)>{FCOLOR=154;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$道士技能六号丙描述三)>{FCOLOR=154;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$道士技能六号甲描述一)>    <$Str(S$道士技能六号甲描述一一)>{FCOLOR=<$Str(N$道士技能六号甲点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$道士技能六号甲描述二)>{FCOLOR=<$Str(N$道士技能六号甲点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$道士技能六号乙描述一)>    <$Str(S$道士技能六号乙描述一一)>{FCOLOR=<$Str(N$道士技能六号乙点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$道士技能六号乙描述二)>{FCOLOR=<$Str(N$道士技能六号乙点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$道士技能六号丙描述一)>{FCOLOR=<$Str(N$道士技能六号丙点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$道士技能六号丙描述二)>    <$Str(S$道士技能六号丙描述二一)>{FCOLOR=<$Str(N$道士技能六号丙点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$道士技能六号丁描述一)>{FCOLOR=<$Str(N$道士技能六号丁点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$道士技能六号丁描述二)>{FCOLOR=<$Str(N$道士技能六号丁点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:召:40:355{FCOLOR=252;FSIZE=26;FNAME=黑体}> 
+<&Text:神:40:388{FCOLOR=252;FSIZE=26;FNAME=黑体}>
+<&Text:兽:40:421{FCOLOR=252;FSIZE=26;FNAME=黑体}>
+<&ImgEX:0:<$STR(N$道士技能六号甲临时状态)>:<$STR(N$道士技能六号甲临时状态)>:<$STR(N$道士技能六号甲临时状态)>:100:350|254#<$STR(S$道士技能六号甲临时状态)>/@道士技能六号甲1>
+<&ImgEX:0:<$STR(N$道士技能六号乙临时状态)>:<$STR(N$道士技能六号乙临时状态)>:<$STR(N$道士技能六号乙临时状态)>:100:380|254#<$STR(S$道士技能六号乙临时状态)>/@道士技能六号乙1>
+<&ImgEX:0:<$STR(N$道士技能六号丙临时状态)>:<$STR(N$道士技能六号丙临时状态)>:<$STR(N$道士技能六号丙临时状态)>:100:410|254#<$STR(S$道士技能六号丙临时状态)>/@道士技能六号丙1>
+<&ImgEX:0:<$STR(N$道士技能六号丁临时状态)>:<$STR(N$道士技能六号丁临时状态)>:<$STR(N$道士技能六号丁临时状态)>:100:440|254#<$STR(S$道士技能六号丁临时状态)>/@道士技能六号丁1>
+<&Text:上一页:270:480{FCOLOR=149;FSIZE=12;FNAME=黑体}/@道士魂环临时><&Text:下一页:370:480{FCOLOR=149;FSIZE=12;FNAME=黑体}/@道士魂环界面3>
+
+[@测123试道]
+#ACT
+MOV U59 0
+MOV U60 0
+MOV U61 0
+MOV U62 0
+MOV U63 0
+MOV U64 0
+MOV U65 0
+MOV U66 0
+MOV U67 0
+MOV U68 0
+MOV U69 0
+MOV U70 0
+MOV U71 0
+MOV U72 0
+MOV U73 0
+MOV U74 0
+MOV U75 0
+MOV U76 0
+MOV U77 0
+MOV U78 0
+MOV U79 0
+MOV U80 0
+MOV U81 0
+MOV U82 0
+
+[@灵剑1]
+#IF
+EQUAL U59 0
+not CheckItem 精神力战法-灵剑 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U59 0
+checkgold 50000
+CheckItem 精神力战法-灵剑 1
+#ACT
+MOV U59 2
+take 金币 50000
+take 精神力战法-灵剑 1
+MOV U<$Str(N$精神力战法标记<$str(N$精神力战法第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+break
+
+
+#IF
+EQUAL U59 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U59 2
+MOV U<$Str(N$精神力战法标记<$str(N$精神力战法第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+break
+#IF
+EQUAL U59 2
+#ACT
+GOTO @属性计算
+goto @道士魂环临时
+break
+
+#ElseAct
+sendmsg 5 金币不足,解封需要5W金币，切换需要20W金币
+
+[@明神1]
+#IF
+EQUAL U60 0
+not CheckItem 精神力战法-明神 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U60 0
+checkgold 50000
+CheckItem 精神力战法-明神 1
+#ACT
+MOV U60 2
+take 金币 50000
+take 精神力战法-明神 1
+MOV U<$Str(N$精神力战法标记<$str(N$精神力战法第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+break
+
+
+#IF
+EQUAL U60 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U60 2
+MOV U<$Str(N$精神力战法标记<$str(N$精神力战法第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+break
+#IF
+EQUAL U60 2
+#ACT
+GOTO @属性计算
+goto @道士魂环临时
+break
+#ElseAct
+sendmsg 5 金币不足,解封需要5W金币，切换需要20W金币
+
+[@天罡1]
+#IF
+EQUAL U61 0
+not CheckItem 精神力战法-天罡 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U61 0
+checkgold 50000
+CheckItem 精神力战法-天罡 1
+#ACT
+MOV U61 2
+take 金币 50000
+take 精神力战法-天罡 1
+MOV U<$Str(N$精神力战法标记<$str(N$精神力战法第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+break
+
+
+#IF
+EQUAL U61 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U61 2
+MOV U<$Str(N$精神力战法标记<$str(N$精神力战法第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+break
+#IF
+EQUAL U61 2
+#ACT
+GOTO @属性计算
+goto @道士魂环临时
+break
+#ElseAct
+sendmsg 5 金币不足,解封需要5W金币，切换需要20W金币
+
+[@疯魔剑法1]
+#IF
+EQUAL U62 0
+not CheckItem 精神力战法-疯魔剑法 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U62 0
+checkgold 50000
+CheckItem 精神力战法-疯魔剑法 1
+#ACT
+MOV U62 2
+take 金币 50000
+take 精神力战法-疯魔剑法 1
+MOV U<$Str(N$精神力战法标记<$str(N$精神力战法第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+break
+
+
+#IF
+EQUAL U62 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U62 2
+MOV U<$Str(N$精神力战法标记<$str(N$精神力战法第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+break
+#IF
+EQUAL U62 2
+#ACT
+GOTO @属性计算
+goto @道士魂环临时
+break
+
+#ElseAct
+sendmsg 5 金币不足,解封需要5W金币，切换需要20W金币
+
+
+[@六道1]
+#IF
+EQUAL U63 0
+not CheckItem 灵魂火符-六道 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U63 0
+checkgold 100000
+CheckItem 灵魂火符-六道 1
+#ACT
+MOV U63 2
+take 金币 100000
+take 灵魂火符-六道 1
+MOV U<$Str(N$灵魂火符标记<$str(N$灵魂火符第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+break
+
+
+#IF
+EQUAL U63 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U63 2
+MOV U<$Str(N$灵魂火符标记<$str(N$灵魂火符第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+break
+#IF
+EQUAL U63 2
+#ACT
+GOTO @属性计算
+goto @道士魂环临时
+break
+
+#ElseAct
+sendmsg 5 金币不足,解封需要10W金币，切换需要20W金币
+
+[@式纸1]
+#IF
+EQUAL U64 0
+not CheckItem 灵魂火符-式纸 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U64 0
+checkgold 100000
+CheckItem 灵魂火符-式纸 1
+#ACT
+MOV U64 2
+take 金币 100000
+take 灵魂火符-式纸 1
+MOV U<$Str(N$灵魂火符标记<$str(N$灵魂火符第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+break
+
+
+#IF
+EQUAL U64 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U64 2
+MOV U<$Str(N$灵魂火符标记<$str(N$灵魂火符第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+break
+#IF
+EQUAL U64 2
+#ACT
+GOTO @属性计算
+goto @道士魂环临时
+break
+#ElseAct
+sendmsg 5 金币不足,解封需要10W金币，切换需要20W金币
+
+[@裂神1]
+#IF
+EQUAL U65 0
+not CheckItem 灵魂火符-裂神 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U65 0
+checkgold 100000
+CheckItem 灵魂火符-裂神 1
+#ACT
+MOV U65 2
+take 金币 100000
+take 灵魂火符-裂神 1
+MOV U<$Str(N$灵魂火符标记<$str(N$灵魂火符第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+break
+
+
+#IF
+EQUAL U65 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U65 2
+MOV U<$Str(N$灵魂火符标记<$str(N$灵魂火符第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+break
+#IF
+EQUAL U65 2
+#ACT
+GOTO @属性计算
+goto @道士魂环临时
+break
+#ElseAct
+sendmsg 5 金币不足,解封需要10W金币，切换需要20W金币
+
+[@神速1]
+#IF
+EQUAL U66 0
+not CheckItem 灵魂火符-神速 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U66 0
+checkgold 100000
+CheckItem 灵魂火符-神速 1
+#ACT
+MOV U66 2
+take 金币 100000
+take 灵魂火符-神速 1
+MOV U<$Str(N$灵魂火符标记<$str(N$灵魂火符第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+break
+
+
+#IF
+EQUAL U66 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U66 2
+MOV U<$Str(N$灵魂火符标记<$str(N$灵魂火符第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+break
+#IF
+EQUAL U66 2
+#ACT
+GOTO @属性计算
+goto @道士魂环临时
+break
+
+#ElseAct
+sendmsg 5 金币不足,解封需要10W金币，切换需要20W金币
+
+[@并列1]
+#IF
+EQUAL U67 0
+not CheckItem 召唤骷髅-并列 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U67 0
+checkgold 500000
+CheckItem 召唤骷髅-并列 1
+#ACT
+KILLSLAVE 
+MOV U67 2
+take 金币 500000
+take 召唤骷髅-并列 1
+MOV U<$Str(N$召唤骷髅标记<$str(N$召唤骷髅第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+break
+
+
+#IF
+EQUAL U67 1
+checkgold 200000
+#ACT
+take 金币 200000
+KILLSLAVE 
+MOV U67 2
+MOV U<$Str(N$召唤骷髅标记<$str(N$召唤骷髅第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+break
+#IF
+EQUAL U67 2
+#ACT
+GOTO @属性计算
+goto @道士魂环临时
+break
+#ElseAct
+sendmsg 5 金币不足,解封需要50W金币，切换需要20W金币
+
+
+[@傀儡术1]
+#IF
+EQUAL U68 0
+not CheckItem 召唤骷髅-傀儡术 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U68 0
+checkgold 500000
+CheckItem 召唤骷髅-傀儡术 1
+#ACT
+KILLSLAVE 
+MOV U68 2
+take 金币 500000
+take 召唤骷髅-傀儡术 1
+MOV U<$Str(N$召唤骷髅标记<$str(N$召唤骷髅第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+break
+
+
+#IF
+EQUAL U68 1
+checkgold 200000
+#ACT
+take 金币 200000
+KILLSLAVE 
+MOV U68 2
+MOV U<$Str(N$召唤骷髅标记<$str(N$召唤骷髅第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+
+break
+#IF
+EQUAL U68 2
+#ACT
+GOTO @属性计算
+goto @道士魂环临时
+
+break
+#ElseAct
+sendmsg 5 金币不足,解封需要50W金币，切换需要20W金币
+
+[@骷髅武士1]
+#IF
+EQUAL U69 0
+not CheckItem 召唤骷髅-骷髅武士 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U69 0
+checkgold 500000
+CheckItem 召唤骷髅-骷髅武士 1
+#ACT
+KILLSLAVE 
+MOV U69 2
+take 金币 500000
+take 召唤骷髅-骷髅武士 1
+MOV U<$Str(N$召唤骷髅标记<$str(N$召唤骷髅第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+
+break
+
+
+#IF
+EQUAL U69 1
+checkgold 200000
+#ACT
+take 金币 200000
+KILLSLAVE 
+MOV U69 2
+MOV U<$Str(N$召唤骷髅标记<$str(N$召唤骷髅第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+
+break
+#IF
+EQUAL U69 2
+#ACT
+GOTO @属性计算
+goto @道士魂环临时
+
+break
+#ElseAct
+sendmsg 5 金币不足,解封需要50W金币，切换需要20W金币
+
+[@骷髅法师1]
+#IF
+EQUAL U70 0
+not CheckItem 召唤骷髅-骷髅法师 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U70 0
+checkgold 500000
+CheckItem 召唤骷髅-骷髅法师 1
+#ACT
+KILLSLAVE 
+MOV U70 2
+take 金币 500000
+take 召唤骷髅-骷髅法师 1
+MOV U<$Str(N$召唤骷髅标记<$str(N$召唤骷髅第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+
+break
+
+
+#IF
+EQUAL U70 1
+checkgold 200000
+#ACT
+take 金币 200000
+KILLSLAVE 
+MOV U70 2
+MOV U<$Str(N$召唤骷髅标记<$str(N$召唤骷髅第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环临时
+
+break
+#IF
+EQUAL U70 2
+#ACT
+GOTO @属性计算
+goto @道士魂环临时
+
+break
+
+
+
+
+
+
+
+#ElseAct
+sendmsg 5 金币不足,解封需要50W金币，切换需要20W金币
+
+[@吝啬1]
+#IF
+EQUAL U71 0
+not CheckItem 施毒术-吝啬 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U71 0
+checkgold 200000
+CheckItem 施毒术-吝啬 1
+#ACT
+MOV U71 2
+take 金币 200000
+take 施毒术-吝啬 1
+MOV U<$Str(N$施毒术标记<$str(N$施毒术第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+
+
+#IF
+EQUAL U71 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U71 2
+MOV U<$Str(N$施毒术标记<$str(N$施毒术第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+#IF
+EQUAL U71 2
+#ACT
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+
+#ElseAct
+sendmsg 5 金币不足,解封需要20W金币，切换需要20W金币
+
+[@厄难毒体1]
+#IF
+EQUAL U72 0
+not CheckItem 施毒术-厄难毒体 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U72 0
+checkgold 200000
+CheckItem 施毒术-厄难毒体 1
+#ACT
+MOV U72 2
+take 金币 200000
+take 施毒术-厄难毒体 1
+MOV U<$Str(N$施毒术标记<$str(N$施毒术第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+
+
+#IF
+EQUAL U72 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U72 2
+MOV U<$Str(N$施毒术标记<$str(N$施毒术第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+#IF
+EQUAL U72 2
+#ACT
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+#ElseAct
+sendmsg 5 金币不足,解封需要20W金币，切换需要20W金币
+
+[@感染1]
+#IF
+EQUAL U73 0
+not CheckItem 施毒术-感染 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U73 0
+checkgold 200000
+CheckItem 施毒术-感染 1
+#ACT
+MOV U73 2
+take 金币 200000
+take 施毒术-感染 1
+MOV U<$Str(N$施毒术标记<$str(N$施毒术第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+
+
+#IF
+EQUAL U73 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U73 2
+MOV U<$Str(N$施毒术标记<$str(N$施毒术第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+#IF
+EQUAL U73 2
+#ACT
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+#ElseAct
+sendmsg 5 金币不足,解封需要20W金币，切换需要20W金币
+
+[@七步断肠1]
+#IF
+EQUAL U74 0
+not CheckItem 施毒术-七步断肠 1
+#ACT
+sendmsg 6 材料不够！
+
+break
+
+#IF
+EQUAL U74 0
+checkgold 200000
+CheckItem 施毒术-七步断肠 1
+#ACT
+MOV U74 2
+take 金币 200000
+take 施毒术-七步断肠 1
+MOV U<$Str(N$施毒术标记<$str(N$施毒术第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+
+
+#IF
+EQUAL U74 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U74 2
+MOV U<$Str(N$施毒术标记<$str(N$施毒术第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+#IF
+EQUAL U74 2
+#ACT
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+#ElseAct
+sendmsg 5 金币不足,解封需要20W金币，切换需要20W金币
+
+
+[@固化1]
+#IF
+EQUAL U75 0
+not CheckItem 神圣战甲术-固化 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U75 0
+checkgold 500000
+CheckItem 神圣战甲术-固化 1
+#ACT
+MOV U75 2
+take 金币 500000
+take 神圣战甲术-固化 1
+MOV U<$Str(N$幽灵战甲术标记<$str(N$幽灵战甲术第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+
+
+#IF
+EQUAL U75 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U75 2
+MOV U<$Str(N$幽灵战甲术标记<$str(N$幽灵战甲术第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+#IF
+EQUAL U75 2
+#ACT
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+
+#ElseAct
+sendmsg 5 金币不足,解封需要50W金币，切换需要20W金币
+
+[@强化1]
+#IF
+EQUAL U76 0
+not CheckItem 神圣战甲术-强化 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U76 0
+checkgold 500000
+CheckItem 神圣战甲术-强化 1
+#ACT
+MOV U76 2
+take 金币 500000
+take 神圣战甲术-强化 1
+MOV U<$Str(N$幽灵战甲术标记<$str(N$幽灵战甲术第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+
+
+#IF
+EQUAL U76 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U76 2
+MOV U<$Str(N$幽灵战甲术标记<$str(N$幽灵战甲术第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+#IF
+EQUAL U76 2
+#ACT
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+#ElseAct
+sendmsg 5 金币不足,解封需要50W金币，切换需要20W金币
+
+[@祈福1]
+#IF
+EQUAL U77 0
+not CheckItem 幽灵盾-祈福 1
+#ACT
+sendmsg 6 材料不够！
+
+break
+
+#IF
+EQUAL U77 0
+checkgold 500000
+CheckItem 幽灵盾-祈福 1
+#ACT
+MOV U77 2
+take 金币 500000
+take 幽灵盾-祈福 1
+MOV U<$Str(N$幽灵战甲术标记<$str(N$幽灵战甲术第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+
+
+#IF
+EQUAL U77 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U77 2
+MOV U<$Str(N$幽灵战甲术标记<$str(N$幽灵战甲术第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+break
+#IF
+EQUAL U77 2
+#ACT
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+#ElseAct
+sendmsg 5 金币不足,解封需要50W金币，切换需要20W金币
+
+[@祝福1]
+#IF
+EQUAL U78 0
+not CheckItem 幽灵盾-祝福 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U78 0
+checkgold 500000
+CheckItem 幽灵盾-祝福 1
+#ACT
+MOV U78 2
+take 金币 500000
+take 幽灵盾-祝福 1
+MOV U<$Str(N$幽灵战甲术标记<$str(N$幽灵战甲术第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+
+
+#IF
+EQUAL U78 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U78 2
+MOV U<$Str(N$幽灵战甲术标记<$str(N$幽灵战甲术第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+
+#IF
+EQUAL U78 2
+#ACT
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+
+#ElseAct
+sendmsg 5 金币不足,解封需要50W金币，切换需要20W金币
+
+
+[@道士技能六号甲1]
+#IF
+EQUAL U79 0
+not CheckItem 召唤神兽-迅捷 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U79 0
+checkgold 500000
+#ACT
+MOV U79 2
+take 金币 500000
+take 召唤神兽-迅捷 1
+MOV U<$Str(N$道士技能六号标记<$str(N$道士技能六号第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+
+
+#IF
+EQUAL U79 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U79 2
+MOV U<$Str(N$道士技能六号标记<$str(N$道士技能六号第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+#IF
+EQUAL U79 2
+#ACT
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+#ElseAct
+sendmsg 5 金币不足,解封需要50W金币，切换需要20W金币
+
+
+[@道士技能六号乙1]
+#IF
+EQUAL U80 0
+not CheckItem 召唤神兽-双生暗影 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U80 0
+checkgold 500000
+#ACT
+MOV U80 2
+take 金币 500000
+take 召唤神兽-双生暗影 1
+MOV U<$Str(N$道士技能六号标记<$str(N$道士技能六号第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+
+
+#IF
+EQUAL U80 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U80 2
+MOV U<$Str(N$道士技能六号标记<$str(N$道士技能六号第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+#IF
+EQUAL U80 2
+#ACT
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+#ElseAct
+sendmsg 5 金币不足,解封需要50W金币，切换需要20W金币
+
+[@道士技能六号丙1]
+#IF
+EQUAL U81 0
+not CheckItem 召唤神兽-攻击姿态 1
+#ACT
+sendmsg 6 材料不够！
+
+break
+
+#IF
+EQUAL U81 0
+checkgold 500000
+#ACT
+MOV U81 2
+take 金币 500000
+take 召唤神兽-攻击姿态 1
+MOV U<$Str(N$道士技能六号标记<$str(N$道士技能六号第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+
+
+#IF
+EQUAL U81 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U81 2
+MOV U<$Str(N$道士技能六号标记<$str(N$道士技能六号第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+break
+#IF
+EQUAL U81 2
+#ACT
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+#ElseAct
+sendmsg 5 金币不足,解封需要50W金币，切换需要20W金币
+
+[@道士技能六号丁1]
+#IF
+EQUAL U82 0
+not CheckItem 召唤神兽-巨大化 1
+#ACT
+sendmsg 6 材料不够！
+break
+
+#IF
+EQUAL U82 0
+checkgold 500000
+#ACT
+MOV U82 2
+take 金币 500000
+take 召唤神兽-巨大化 1
+MOV U<$Str(N$道士技能六号标记<$str(N$道士技能六号第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+
+
+#IF
+EQUAL U82 1
+checkgold 200000
+#ACT
+take 金币 200000
+
+MOV U82 2
+MOV U<$Str(N$道士技能六号标记<$str(N$道士技能六号第几个激活)>)> 1
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+
+#IF
+EQUAL U82 2
+#ACT
+GOTO @属性计算
+goto @道士魂环第二页
+
+break
+#ElseAct
+sendmsg 5 金币不足,解封需要50W金币，切换需要20W金币
+
+
+[@道士魂环界面3]
+#IF
+#ACT
+GOTO @_@计算花心魂环设置
+OpenBigDialogBox 0 2010 1 4 0 0 1 440 24
+#SAY
+<&Text:<$Str(S$暴躁点击)>:130:74{FCOLOR=<$Str(N$暴躁点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$妻妾成群点击)>:130:104{FCOLOR=<$Str(N$妻妾成群点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$不死于徒手点击)>:130:134{FCOLOR=<$Str(N$不死于徒手点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$不稳定发挥点击)>:130:164{FCOLOR=<$Str(N$不稳定发挥点击颜色)>;FSIZE=10;FNAME=黑体}>
+<&Text:<$Str(S$暴躁描述一)>{FCOLOR=<$Str(N$暴躁点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$妻妾成群描述一)>{FCOLOR=<$Str(N$妻妾成群点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$不死于徒手描述一)>{FCOLOR=<$Str(N$不死于徒手点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:<$Str(S$不稳定发挥描述一)>{FCOLOR=<$Str(N$不稳定发挥点击颜色)>;FSIZE=9;FNAME=宋体}>
+<&Text:花:40:85{FCOLOR=249;FSIZE=30;FNAME=黑体}> 
+<&Text:心:40:131{FCOLOR=249;FSIZE=30;FNAME=黑体}>
+<&ImgEX:0:<$STR(N$暴躁临时状态)>:<$STR(N$暴躁临时状态)>:<$STR(N$暴躁临时状态)>:100:70|254#<$STR(S$暴躁临时状态)>/@道士花心魂环(0)>
+<&ImgEX:0:<$STR(N$妻妾成群临时状态)>:<$STR(N$妻妾成群临时状态)>:<$STR(N$妻妾成群临时状态)>:100:100|254#<$STR(S$妻妾成群临时状态)>/@道士花心魂环(1)>
+<&ImgEX:0:<$STR(N$不死于徒手临时状态)>:<$STR(N$不死于徒手临时状态)>:<$STR(N$不死于徒手临时状态)>:100:130|254#<$STR(S$不死于徒手临时状态)>/@道士花心魂环(2)>
+<&ImgEX:0:<$STR(N$不稳定发挥临时状态)>:<$STR(N$不稳定发挥临时状态)>:<$STR(N$不稳定发挥临时状态)>:100:160|254#<$STR(S$不稳定发挥临时状态)>/@道士花心魂环(3)>
+
+<&Text:上一页:370:480{FCOLOR=149;FSIZE=12;FNAME=黑体}/@道士魂环第二页>
+
+[@道士花心魂环]
+#IF
+#ACT
+MOV S$当前魂环标识 <$SCRIPTPARAM1>
+
+#IF
+SMALL S$当前魂环标识 0
+LARGE S$当前魂环标识 4
+#ACT
+BREAK
+
+#IF
+#ACT
+MOV L$花心魂环激活数组 <$STR(T102)>
+
+#IF
+EQUAL L$花心魂环激活数组[<$STR(S$当前魂环标识)>] 2
+#ACT
+BREAK
+
+#IF
+EQUAL L$花心魂环激活数组[<$STR(S$当前魂环标识)>] 0
+#ACT
+GOTO @_@花心魂环激活
+BREAK
+
+#IF
+SMALL <$GOLDCOUNT> 100000000
+#ACT
+SENDMSG 6 金币不足1亿！
+BREAK
+
+#IF
+CHECKGAMEDIAMOND < 50
+#ACT
+SENDMSG 6 金刚石不足50点！
+BREAK
+
+#IF
+#ACT
+TAKE 金币 100000000
+GAMEDIAMOND - 50
+MOV N$魂环处理循环标识 0
+LOOPGOTO @_@花心其他魂环处理 4
+MOV T102 <$STR(L$花心魂环激活数组)>
+GOTO @属性计算
+GOTO @道士魂环界面3
+
+[@_@花心魂环激活]
+#OR
+NOT CHECKITEM <$STR(L$花心魂环材料需求数组[<$STR(S$当前魂环标识)>])> 1
+SMALL <$GOLDCOUNT> 500000
+#ACT
+SENDMSG 6 材料不够！
+BREAK
+
+#IF
+#ACT
+TAKE 金币 500000
+TAKE <$STR(L$花心魂环材料需求数组[<$STR(S$当前魂环标识)>])> 1
+MOV N$魂环处理循环标识 0
+LOOPGOTO @_@花心其他魂环处理 4
+MOV T102 <$STR(L$花心魂环激活数组)>
+GOTO @属性计算
+GOTO @道士魂环界面3
+
+[@_@花心其他魂环处理]
+#IF
+EQUAL N$魂环处理循环标识 <$STR(S$当前魂环标识)>
+#ACT
+MOV L$花心魂环激活数组[<$STR(N$魂环处理循环标识)>] 2
+INC N$魂环处理循环标识 1
+BREAK
+
+#IF
+EQUAL L$花心魂环激活数组[<$STR(N$魂环处理循环标识)>] 2
+#ACT
+MOV L$花心魂环激活数组[<$STR(N$魂环处理循环标识)>] 1
+
+
+#IF
+#ACT
+INC N$魂环处理循环标识 1
+
+[@_@计算花心魂环设置]
+#IF
+#ACT
+MOV L$花心魂环选择标识 <$STR(T102)>
+MOV S$暴躁点击 <$STR(L$魂环点击描述[<$STR(L$花心魂环选择标识[0])>])>
+MOV N$暴躁点击颜色 <$STR(L$魂环点击描述颜色[<$STR(L$花心魂环选择标识[0])>])>
+MOV N$暴躁临时状态 <$STR(L$暴躁图标编号数组[<$STR(L$花心魂环选择标识[0])>])>
+MOV S$暴躁临时状态 <$STR(L$高级魂环临时状态[<$STR(L$花心魂环选择标识[0])>])>
+MOV S$暴躁描述一 <$STR(L$暴躁魂环描述[<$STR(L$花心魂环选择标识[0])>])>
+
+MOV S$妻妾成群点击 <$STR(L$魂环点击描述[<$STR(L$花心魂环选择标识[1])>])>
+MOV N$妻妾成群点击颜色 <$STR(L$魂环点击描述颜色[<$STR(L$花心魂环选择标识[1])>])>
+MOV N$妻妾成群临时状态 <$STR(L$妻妾成群图标编号数组[<$STR(L$花心魂环选择标识[1])>])>
+MOV S$妻妾成群临时状态 <$STR(L$高级魂环临时状态[<$STR(L$花心魂环选择标识[1])>])>
+MOV S$妻妾成群描述一 <$STR(L$妻妾成群魂环描述[<$STR(L$花心魂环选择标识[1])>])>
+
+MOV S$不死于徒手点击 <$STR(L$魂环点击描述[<$STR(L$花心魂环选择标识[2])>])>
+MOV N$不死于徒手点击颜色 <$STR(L$魂环点击描述颜色[<$STR(L$花心魂环选择标识[2])>])>
+MOV N$不死于徒手临时状态 <$STR(L$不死于徒手图标编号数组[<$STR(L$花心魂环选择标识[2])>])>
+MOV S$不死于徒手临时状态 <$STR(L$高级魂环临时状态[<$STR(L$花心魂环选择标识[2])>])>
+MOV S$不死于徒手描述一 <$STR(L$不死于徒手魂环描述[<$STR(L$花心魂环选择标识[2])>])>
+
+MOV S$不稳定发挥点击 <$STR(L$魂环点击描述[<$STR(L$花心魂环选择标识[3])>])>
+MOV N$不稳定发挥点击颜色 <$STR(L$魂环点击描述颜色[<$STR(L$花心魂环选择标识[3])>])>
+MOV N$不稳定发挥临时状态 <$STR(L$不稳定发挥图标编号数组[<$STR(L$花心魂环选择标识[3])>])>
+MOV S$不稳定发挥临时状态 <$STR(L$高级魂环临时状态[<$STR(L$花心魂环选择标识[3])>])>
+MOV S$不稳定发挥描述一 <$STR(L$不稳定发挥魂环描述[<$STR(L$花心魂环选择标识[3])>])>
+
+}

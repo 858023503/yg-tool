@@ -1,0 +1,278 @@
+[@幽龙镇魂]
+{
+#if
+EQUAL N$幽龙镇魂魔次 0
+#act
+sendmsg 6 没有幽龙镇魂魔次
+break
+#if
+EQUAL S$玩家当前大陆 五大陆
+#act
+AddHpPer - N$五大陆反伤
+#IF
+#ACT
+
+Goto @技能伤害
+#IF
+#ACT
+PLAYEFFECT 1 2260 6 1 50 0 0 0 1
+PLAYEFFECT 1 4553 8 1 100 0 0 0 1
+
+MOV N$幽龙镇魂特效编号 1
+MOV N$幽龙镇魂特效播放编号 2267
+MOV N$幽龙镇魂特效播放数量 14
+
+
+
+#if
+CHECKCURRTARGETRACE = 0
+#act
+goto @幽龙镇魂对人物伤害计算
+break
+#if
+NOT CHECKCURRTARGETRACE = 0
+
+#act
+goto @幽龙镇魂魔次开始
+break
+
+
+
+[@幽龙镇魂魔次开始]
+
+
+#if
+LARGE N$幽龙镇魂幸运 0
+#ACT
+;计算人物幸运攻击伤害下限
+FORMULATION <$SC>+(((<$MAXSC>-<$SC>)/10)*<$STR(N$幽龙镇魂幸运)>) N$幽龙镇魂人物幸运攻击下限
+
+DEC N$幽龙镇魂人物幸运攻击下限 1
+#elseact
+MOV N$幽龙镇魂人物幸运攻击下限 <$SC>
+
+#if
+#act
+MOV N$幽龙镇魂循环次数 <$STR(N$幽龙镇魂魔次)>
+MOVR N$幽龙镇魂最终伤害 <$STR(N$幽龙镇魂人物幸运攻击下限)> <$MAXSC>
+CalcPercent N$幽龙镇魂最终伤害 N$幽龙镇魂打怪默认伤害 N$幽龙镇魂最终伤害
+CalcPercent N$幽龙镇魂最终伤害 N$幽龙镇魂对怪物伤害百分比 N$幽龙镇魂最终伤害
+CalcPercent N$幽龙镇魂最终伤害 N$幽龙镇魂倍攻 N$幽龙镇魂最终伤害
+FORMULATION <$STR(N$幽龙镇魂最终伤害)>/<$STR(N$所有技能伤害降低倍数)> N$幽龙镇魂最终伤害
+
+#IF
+RANDOMEX N$人物暴击几率 100
+#ACT
+PLAYEFFECT 73 0 12 1 80 0 -125 -170 1
+FORMULATION (<$STR(N$人物暴击伤害)>+100)/100*<$STR(N$幽龙镇魂最终伤害)> N$幽龙镇魂最终伤害
+
+#if
+CheckCacheTextList ..\QuestDiary\怪物名称\精英及以下怪物.txt <$ATTACKMONSTER_NAMEEX>
+LARGE N$精英怪增加伤害 100
+#act
+CalcPercent N$幽龙镇魂最终伤害 N$精英怪增加伤害 N$幽龙镇魂最终伤害
+
+#if
+CheckCacheTextList ..\QuestDiary\怪物名称\统领及以上怪物.txt <$ATTACKMONSTER_NAMEEX>
+LARGE N$对BOSS伤害增加 100
+#act
+CalcPercent N$幽龙镇魂最终伤害 N$对BOSS伤害增加 N$幽龙镇魂最终伤害
+
+#if
+LARGE N$幽龙镇魂魔次 10
+large <$LEVEL> 99
+#act
+FORMULATION <$STR(N$幽龙镇魂最终伤害)>*<$STR(N$幽龙镇魂魔次)> N$幽龙镇魂最终伤害
+MOV N$幽龙镇魂循环次数 1
+delaycall 50 @幽龙镇魂噬魂暗袭判断打怪
+break
+
+#if
+LARGE N$幽龙镇魂魔次 10
+LARGE <$LEVEL> 79
+#act
+FORMULATION <$STR(N$幽龙镇魂最终伤害)>*<$STR(N$幽龙镇魂魔次)>/2 N$幽龙镇魂最终伤害
+MOV N$幽龙镇魂循环次数 2
+delaycall 50 @幽龙镇魂噬魂暗袭判断打怪
+break
+
+
+
+#if
+LARGE N$幽龙镇魂魔次 10
+LARGE <$LEVEL> 59
+#act
+FORMULATION <$STR(N$幽龙镇魂最终伤害)>*<$STR(N$幽龙镇魂魔次)>/3 N$幽龙镇魂最终伤害
+MOV N$幽龙镇魂循环次数 3
+delaycall 50 @幽龙镇魂噬魂暗袭判断打怪
+break
+
+#if
+LARGE N$幽龙镇魂魔次 10
+LARGE <$LEVEL> 29
+#act
+FORMULATION <$STR(N$幽龙镇魂最终伤害)>*<$STR(N$幽龙镇魂魔次)>/4 N$幽龙镇魂最终伤害
+MOV N$幽龙镇魂循环次数 4
+delaycall 50 @幽龙镇魂噬魂暗袭判断打怪
+break
+
+#if
+LARGE N$幽龙镇魂魔次 10
+LARGE <$LEVEL> 9
+#act
+FORMULATION <$STR(N$幽龙镇魂最终伤害)>*<$STR(N$幽龙镇魂魔次)>/5 N$幽龙镇魂最终伤害
+MOV N$幽龙镇魂循环次数 5
+delaycall 50 @幽龙镇魂噬魂暗袭判断打怪
+break
+
+
+
+#if
+LARGE N$幽龙镇魂魔次 10
+LARGE <$LEVEL> 9
+#act
+FORMULATION <$STR(N$幽龙镇魂最终伤害)>*<$STR(N$幽龙镇魂魔次)>/9 N$幽龙镇魂最终伤害
+MOV N$幽龙镇魂循环次数 9
+delaycall 50 @幽龙镇魂噬魂暗袭判断打怪
+break
+
+[@幽龙镇魂噬魂暗袭判断打怪]
+#IF
+RANDOMEX N$法宝噬魂暗袭几率 101
+#ACT
+delaycall 200 @噬魂暗袭触发
+
+#elseact
+delaycall 200 @幽龙镇魂开始打怪
+
+
+
+
+; #IF
+; RANDOMEX N$法宝释放幽龙镇魂时有几率召毒鼎攻击 101
+; #ACT
+
+; FORMULATION <$STR(N$幽龙镇魂最终伤害)>*<$STR(N$召唤毒鼎攻击倍数)> N$法宝火龙珠伤害
+; RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> <$STR(N$幽龙镇魂范围)> <$STR(N$法宝火龙珠伤害)> 0 0 0 2 1 4845 15 100 0 1
+
+
+
+
+
+
+
+#if
+randomex N$法宝战争弓箭手召唤几率 101
+CheckCacheTextList ..\questdiary\怪物名称\统领及以上怪物.txt  <$ATTACKMONSTER_NAME>
+#ACT
+RECALLMOB 战争弓箭手 7 1
+
+Goto @统计属性
+
+[@幽龙镇魂开始打怪]
+#if
+#ACT
+FORMULATION <$STR(N$幽龙镇魂最终伤害)>+<$STR(N$天殇套真实伤害)> N$幽龙镇魂最终伤害
+MAPEFFECT <$MAP> <$STR(N998)> <$STR(N999)> 1 <$STR(N$幽龙镇魂特效播放编号)> <$STR(N$幽龙镇魂特效播放数量)> 1 100 0
+; RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> 0 1 0 0 0 2 <$STR(N$幽龙镇魂特效编号)> <$STR(N$幽龙镇魂特效播放编号)> <$STR(N$幽龙镇魂特效播放数量)> 50 0 0
+
+while 0 < N$幽龙镇魂循环次数
+RangeHarm <$STR(N998)> <$STR(N999)> <$STR(N$幽龙镇魂范围)> <$STR(N$幽龙镇魂最终伤害)> 0 0 0 2 0 0 0 0 0 0
+DEC N$幽龙镇魂循环次数 1
+endwhile
+
+
+
+[@幽龙镇魂对人物伤害计算]
+
+#if
+LARGE N$幽龙镇魂幸运 0
+#ACT
+FORMULATION <$SC>+((<$MAXSC>-<$SC>)/10)*<$STR(N$幽龙镇魂幸运)> N$幽龙镇魂人物幸运攻击下限
+DEC N$幽龙镇魂人物幸运攻击下限 1
+#elseact
+MOV N$幽龙镇魂人物幸运攻击下限 <$SC>
+#if
+#act
+MOV N$幽龙镇魂打人暴击几率 0
+GetHumVar <$C.USERNAME> <$STR(N$人物暴击防御)> N$对方暴击防御
+GetHumVar <$C.USERNAME> <$STR(N$免疫对人物真实伤害)> N$对方免疫对人物真实伤害
+FORMULATION <$STR(N$对人物真实伤害)>-<$STR(N$对方免疫对人物真实伤害)> N$对人物造成的真实伤害
+MOVR N$幽龙镇魂打人最终伤害 <$STR(N$幽龙镇魂人物幸运攻击下限)> <$MAXSC>
+; sendmsg 6 随机<$STR(N$幽龙镇魂打人最终伤害)>
+CalcPercent N$幽龙镇魂打人最终伤害 N$幽龙镇魂打人默认伤害 N$幽龙镇魂打人最终伤害
+; sendmsg 6 默认<$STR(N$幽龙镇魂打人最终伤害)>
+CalcPercent N$幽龙镇魂打人最终伤害 N$幽龙镇魂对人物伤害百分比 N$幽龙镇魂打人最终伤害
+
+; sendmsg 6 百分比<$STR(N$幽龙镇魂打人最终伤害)>
+#if
+LARGE N$人物暴击几率 <$STR(N$对方暴击防御)>
+#ACT
+FORMULATION <$STR(N$人物暴击几率)>-<$STR(N$对方暴击防御)> N$幽龙镇魂打人暴击几率
+
+#IF
+LARGE N$幽龙镇魂打人暴击几率 0
+RANDOMEX N$幽龙镇魂打人暴击几率 101
+#ACT
+PLAYEFFECT 73 0 12 1 80 0 -125 -170 1
+FORMULATION (<$STR(N$人物暴击伤害)>+100)/100*<$STR(N$幽龙镇魂打人最终伤害)> N$幽龙镇魂打人最终伤害
+
+; sendmsg 6 暴击伤害<$STR(N$幽龙镇魂打人最终伤害)>
+#IF
+#ACT
+delaycall 200 @幽龙镇魂对人物伤害
+[@幽龙镇魂对人物伤害]
+#if
+#ACT
+
+RangeHarm <$STR(N998)> <$STR(N999)> 3 <$STR(N$幽龙镇魂打人最终伤害)> 0 0 0 1 1 <$STR(N$幽龙镇魂特效播放编号)> <$STR(N$幽龙镇魂特效播放数量)> 50 1 0
+
+RangeHarm <$STR(N998)> <$STR(N999)> 3 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 1 <$STR(N$幽龙镇魂特效播放编号)> <$STR(N$幽龙镇魂特效播放数量)> 50 1 0
+
+SENDMSG 6 <$STR(N$对人物造成的真实伤害)>
+
+#if
+EQUAL U156 10
+#act
+MOV U156 0
+RangeHarm <$STR(N998)> <$STR(N999)> 2 0 3 2 0 1 1 1446 19 100 1 0
+StopPlayEffect 1 1472 13 0 100 1 0 0 1
+
+Goto @统计属性
+
+
+
+
+
+
+
+
+[@噬魂暗袭触发]
+#IF
+#ACT
+MAPEFFECT <$MAP> <$STR(N998)> <$STR(N999)> 1 <$STR(N$幽龙镇魂特效播放编号)> <$STR(N$幽龙镇魂特效播放数量)> 1 100 0
+delaycall  800 @噬魂暗袭伤害
+[@噬魂暗袭伤害]
+#IF
+#ACT
+FORMULATION <$STR(N$幽龙镇魂最终伤害)>+<$STR(N$天殇套真实伤害)> N$幽龙镇魂最终伤害
+while 0 < N$幽龙镇魂循环次数
+RangeHarm <$STR(N998)> <$STR(N999)> <$STR(N$噬魂暗袭范围)> <$STR(N$幽龙镇魂最终伤害)> 0 0 0 2 1 4561 15 80 0 0
+DEC N$幽龙镇魂循环次数 1
+endwhile
+
+#if
+RANDOMEX N$天灵符爆几率 101
+#act
+DELAYCALL 500 @天灵符爆几率触发
+
+[@噬魂暗袭打人触发]
+#IF
+#ACT
+
+RangeHarm <$STR(N998)> <$STR(N999)> 0 <$STR(N$幽龙镇魂打人最终伤害)> 0 0 0 1 1 4561 15 80 0 0
+
+
+
+
+}

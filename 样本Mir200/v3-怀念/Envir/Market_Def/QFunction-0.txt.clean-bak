@@ -1,0 +1,2052 @@
+(@storage @getback @offlinemsg @@INPUTINTEGER @@INPUTSTRING @GetExp)
+
+[@USERCMD4]
+#IF
+ISADMIN
+#ACT
+GOTO @SAA
+BREAK
+
+[@SAA]
+\ \ \
+
+<>       < ┄┈━≡★装备指定人物爆出发射系统★≡━┈┄/AUTOCOLOR=254,251,168,191,250,70,245,249,253>\ \
+　<请输入玩家名字/@@InPutString34>：<$STR(S34)>　\ \
+　<请输入装备名字/@@InPutString35>：<$STR(S35)>　\ \
+　<请输入怪物名字/@@InPutString36>：<$STR(S36)>　\ \
+　<确定发射/@确定爆率>　\ \
+
+[@InPutString34]
+#if
+checkonline <$STR(S34)>
+#ACT
+GOTO @SAA
+BREAK
+#ELSEACT
+MESSAGEBOX 对方不在线
+BREAK
+
+[@InPutString35]
+#if
+NOT EQUAL S35
+#ACT
+GOTO @SAA
+BREAK
+#ELSEACT
+MESSAGEBOX 设置装备不能为空
+BREAK
+
+[@InPutString36]
+#if
+NOT EQUAL S36
+#ACT
+GOTO @SAA
+BREAK
+#ELSEACT
+MESSAGEBOX 怪物装备不能为空
+BREAK
+
+[@确定爆率]
+#if
+checkonline <$STR(S34)>
+#ACT
+;MOV  A99 <$STR(S34)>
+;MOV  A100 <$STR(S35)>
+;MOV  A101 <$STR(S36)>
+SetHumVar <$STR(S34)> S$指定名字 <$STR(S34)> 
+SetHumVar <$STR(S34)> S$指定装备 <$STR(S35)> 
+SetHumVar <$STR(S34)> S$指定怪物 <$STR(S36)> 
+MESSAGEBOX 设置给玩家【<$STR(S34)>】必爆【<$STR(S35)>】完毕！
+GOTO @SAA
+BREAK
+#ELSEACT
+MESSAGEBOX 对方不在线
+BREAK
+[@DummyStop]
+#IF  
+ISDUMMY
+NOT ISONMAP <$GLOBAL(假人_盟重地图号)>
+CHECKLEVELEX > 35
+#ACT
+setontimer 255 55
+SetOnTimer 201 20
+SetOnTimer 203 30
+movr N$X <$GLOBAL(假人_回城坐标X左)> <$GLOBAL(假人_回城坐标X右)>
+movr N$Y <$GLOBAL(假人_回城坐标Y左)> <$GLOBAL(假人_回城坐标Y右)>
+mapmove <$GLOBAL(假人_盟重地图号)> <$str(N$X)> <$str(N$Y)>
+DUMMYSTOP
+ChangeAttatckMode 6
+movr N$XX <$GLOBAL(假人_回城坐标X左)> <$GLOBAL(假人_回城坐标X右)>
+movr N$YY <$GLOBAL(假人_回城坐标Y左)> <$GLOBAL(假人_回城坐标Y右)>
+GOTONOW <$str(N$XX)> <$str(N$YY)>
+HUMANHP = <$MAXHP>
+HUMANMP = <$MAXMP>
+MOVR N$下图 3 8
+MOVR N$频率 5 9
+SETONTIMER 202 <$STR(N$频率)>
+break
+
+[@SlaveAttack]
+#IF  
+EQUAL <$CurSlaveName> 武兽
+RANDOM 30
+#ACT
+ChangeState 5 3 50
+
+#IF
+EQUAL <$CurSlaveName> 武兽1
+RANDOM 30
+#ACT
+ChangeState 5 3 50
+
+#IF
+EQUAL <$CurSlaveName> 武兽2
+RANDOM 30
+#ACT
+ChangeState 5 3 50
+
+#IF
+EQUAL <$CurSlaveName> 武兽3
+RANDOM 30
+#ACT
+ChangeState 5 3 50
+
+#IF
+EQUAL <$CurSlaveName> 法兽
+RANDOM 30
+#ACT
+ChangeState 5 3 50
+
+#IF
+RANDOMEX 2 100
+CheckItem 高级货币收割者 1
+#ACT
+M.ADDHPPER - 5
+SendCenterMsg 249 0 宝宝重击BUFF触发成功，切割怪物[5%]的最大生命值！ 0 3
+
+#IF
+CheckItem 高级货币收割者 1
+RANDOMEX 3 100
+#ACT
+div N$宝宝吸血1 <$MAXHP> 20
+humanhp + <$STR(N$宝宝吸血1)>
+humanMp + <$STR(N$宝宝吸血1)>
+SendCenterMsg 249 0 宝宝回血BUFF触发成功，宝宝攻击为你恢复了5%血量和蓝量！ 0
+
+[@UserCmd3]
+#if
+Equal  <$PARAM(1)>
+#ACT
+Sendmsg 6 请输入你要探测的人物名 格式：@探索 人物名
+break
+
+#if
+CHECKGAMEGIRD < 2
+#ACT
+SENDMSG 5 积分不足2点无法使用此功能!
+break
+
+#if
+checkitemw 金域令
+#ACT
+GAMEGIRD - 2
+GMEXECUTE sdsdewe <$PARAM(1)>
+#ELSEACT
+SENDMSG 5 你身上没有佩戴金域令!
+break
+
+[@Revival]
+;#IF
+;#act
+;SetOnTimer 1 1
+;MOV S$复活BUFF描述 250/复活CD冷却中.\251/小退登陆无效.
+;Mov N$图标复活时间_Y <$ClientHeight>
+;Dec N$图标复活时间_Y 186
+;SetClientBuff 0 1 133 <$RevivalTime> 32 2 <$STR(S$复活BUFF描述)>
+;break
+
+[@MagicAttack]
+#IF
+#ACT
+#CALL [\BUFF触发\魔法BUFF触发.txt] @魔法BUFF触发
+
+#IF
+CheckContainsText <$STR(S$LR挂机)> GJ:
+#ACT
+MOV N$LR攻击秒 0
+#IF
+CheckContainsText <$STR(S$LR挂机)> CX:
+#ACT
+DEC S$LR挂机 CX:
+
+#IF
+CHECKFENGHAO 马年月卡
+NOT CHECKFENGHAO 马年年卡
+NOT CHECKCURRTARGETRACE = 0
+RANDOMEX 2 100
+#ACT
+M.AddHPPer  -  1
+SendCenterMsg 249 0 [月卡会员]触发成功，切割怪物[1%]的最大生命值！ 0 3
+
+#IF
+NOT CHECKFENGHAO 马年月卡
+CHECKFENGHAO 马年年卡
+NOT CHECKCURRTARGETRACE = 0
+RANDOMEX 2 100
+#ACT
+M.AddHPPer  -  2
+SendCenterMsg 249 0 [年卡会员]触发成功，切割怪物[2%]的最大生命值！ 0 3
+
+#IF
+CHECKFENGHAO 马年月卡
+CHECKFENGHAO 马年年卡
+NOT CHECKCURRTARGETRACE = 0
+RANDOMEX 2 100
+#ACT
+M.AddHPPer  -  2
+SendCenterMsg 249 0 [年卡会员]触发成功，切割怪物[2%]的最大生命值！ 0 3
+
+#IF
+CheckItem 高级货币收割者 1
+RandomEx 5 100
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+M.MAKEPOSION 0 5
+M.MAKEPOSION 1 5
+SendCenterMsg 69 0 恭喜你的【★赞助玫瑰★】触发了[怪物克星]BUFF，怪物身中红绿毒5秒 ！
+
+#IF
+RANDOMEX 5 100
+CheckItem 高级货币收割者 1
+#ACT
+M.ADDHPPER - 5
+SendCenterMsg 249 0 重击BUFF触发成功，切割怪物[5%]的最大生命值！ 0 3
+
+[@Attack]
+#IF
+#ACT
+#CALL [\BUFF触发\BUFF触发.txt] @攻击BUFF触发
+
+#IF
+CheckContainsText <$STR(S$LR挂机)> GJ:
+#ACT
+MOV N$LR攻击秒 0
+#IF
+CheckContainsText <$STR(S$LR挂机)> CX:
+#ACT
+DEC S$LR挂机 CX:
+
+#IF
+CHECKFENGHAO 马年月卡
+NOT CHECKFENGHAO 马年年卡
+NOT CHECKCURRTARGETRACE = 0
+RANDOMEX 5 100
+#ACT
+M.AddHPPer  -  1
+SendCenterMsg 249 0 [月卡会员]触发成功，切割怪物[1%]的最大生命值！ 0 3
+
+#IF
+NOT CHECKFENGHAO 马年月卡
+CHECKFENGHAO 马年年卡
+NOT CHECKCURRTARGETRACE = 0
+RANDOMEX 5 100
+#ACT
+M.AddHPPer  -  2
+SendCenterMsg 249 0 [年卡会员]触发成功，切割怪物[2%]的最大生命值！ 0 3
+
+#IF
+CHECKFENGHAO 马年月卡
+CHECKFENGHAO 马年年卡
+NOT CHECKCURRTARGETRACE = 0
+RANDOMEX 5 100
+#ACT
+M.AddHPPer  -  2
+SendCenterMsg 249 0 [年卡会员]触发成功，切割怪物[2%]的最大生命值！ 0 3
+
+#IF
+CheckItem 高级货币收割者 1
+RandomEx 2 100
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+M.MAKEPOSION 0 5
+M.MAKEPOSION 1 5
+SendCenterMsg 69 0 恭喜你的【★赞助玫瑰★】触发了[怪物克星]BUFF，怪物身中红绿毒5秒 ！
+
+#IF
+RANDOMEX 2 100
+CheckItem 高级货币收割者 1
+#ACT
+M.ADDHPPER - 5
+SendCenterMsg 249 0 重击BUFF触发成功，切割怪物[5%]的最大生命值！ 0 3
+
+[@PickUpItemEX]
+
+#IF
+#act
+LINKPICKUPITEM
+
+#IF
+GetStringPosEX ..\QuestDiary\游戏功能\首爆配置.txt <$PICKDROPITEMNAME> N$物品位置 S$物品奖励 0
+#ACT
+
+#IF
+NOT EQUAL <$STR(S$物品奖励)>
+#ACT
+#CALL [\游戏功能\首爆奖励.txt] @首爆奖励
+
+;======================物理攻击触发==========================
+[@MagicStruck]
+
+#IF
+#ACT
+#CALL [\BUFF触发\BUFF触发.txt] @被攻击触发
+#IF
+small <$HP> 1000
+LARGE U16 0
+#ACT
+MOV N$神佑几率 30
+MOV N$神佑血量 50
+DEC N$神佑几率 <$STR(U16)>
+
+#IF
+small <$HP> 1
+LARGE U16 0
+CHECKFENGHAO 独霸一方
+#ACT
+DEC N$神佑几率 3
+INC N$神佑血量 30
+
+#IF
+small <$HP> 1000
+LARGE U16 0
+RANDOM <$STR(N$神佑几率)>
+#ACT
+Setreborn 1 1
+AddhpPer + <$STR(N$神佑血量)>
+BREAK
+
+[@Struck]
+
+#IF
+#ACT
+#CALL [\BUFF触发\BUFF触发.txt] @被攻击触发
+
+#IF
+small <$HP> 1000
+LARGE U16 0
+#ACT
+MOV N$神佑几率 30
+MOV N$神佑血量 50
+DEC N$神佑几率 <$STR(U16)>
+
+#IF
+small <$HP> 1
+LARGE U16 0
+CHECKFENGHAO 独霸一方
+#ACT
+DEC N$神佑几率 3
+INC N$神佑血量 30
+
+#IF
+small <$HP> 1000
+LARGE U16 0
+RANDOM <$STR(N$神佑几率)>
+#ACT
+Setreborn 1 1
+AddhpPer + <$STR(N$神佑血量)>
+BREAK
+
+[@OpenStoratge2]
+#IF
+	not CheckStorageOpen 2
+#ACT
+MESSAGEBOX 仓库二未解锁，单击确认后永久开启（需消耗2000元宝） @开启仓库二 
+[@开启仓库二]
+#IF
+checkgamegold > 1999
+#ACT
+gamegold - 2000
+	OpenStoratge 2 1
+;开启仓库二命令
+MESSAGEBOX 仓库二已解锁 
+#ELSEACT
+MESSAGEBOX 元宝不够2000个，无法解锁仓库二！
+
+[@OpenStoratge3]
+#IF
+	not CheckStorageOpen 3
+#ACT
+MESSAGEBOX 仓库三未解锁,单击确认后永久开启（需消耗3000元宝） @开启仓库三
+[@开启仓库三] 
+#IF
+checkgamegold > 2999
+#ACT
+gamegold - 3000
+	OpenStoratge 3 1
+;开启仓库三命令
+MESSAGEBOX 仓库三已解锁
+#ELSEACT 
+MESSAGEBOX 元宝不够3000个，无法解锁仓库三！
+
+[@OpenStoratge4]
+#IF
+	not CheckStorageOpen 4
+#ACT
+MESSAGEBOX 仓库三未解锁,单击确认后永久开启（需消耗3000元宝） @开启仓库四
+[@开启仓库四] 
+#IF
+checkgamegold > 3999
+#ACT
+gamegold - 4000
+	OpenStoratge 4 1
+;开启仓库三命令
+MESSAGEBOX 仓库三已解锁
+#ELSEACT 
+MESSAGEBOX 元宝不够3000个，无法解锁仓库三！
+
+[@StdModeFunc31]
+#IF
+checkitem 疗伤药 6
+#ACT
+take 疗伤药 6
+give 疗伤药包 1
+close
+#ELSEACT 
+MESSAGEBOX 你都没有足够的疗伤药需要打捆
+
+[@KILLPLAY]
+#if
+#act
+INC U40 1
+#CALL [\登陆\封号脚本.txt] @封号设置
+break
+
+;------------------------------------------------------
+[@PlayDie]
+
+#IF
+CheckContainsText <$STR(S$LR挂机)> GJ:
+#ACT
+SENDDELAYMSG 复活CD%s 3 255 0 @LR挂机复活
+break
+
+#if
+ISDUMMY
+#act
+GMexecute TestStatus 0 0 
+GMexecute TestStatus 1 0
+DELAYGOTO 3000 @假人复活回城
+
+#IF
+ISDUMMY
+RANDOM 3
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+break
+;------------------------------------------------------
+
+#IF
+large u6 1
+NOT CHECKUNDERWAR 沙巴克
+CheckKillByHum
+#ACT
+dec u6 1
+GOTO @给与称号
+GuildNoticeMsg 255 0 {战报|250:0:1}：玩家「{%s|254:0:1}」在[%m]被{[<$KILLER>]|254:0:1}残忍的杀害了,五行之力掉落一重！
+
+#IF
+check [3] 1
+NOT CHECKUNDERWAR 沙巴克
+CheckKillByHum
+#ACT
+set [3] 0
+RECYCFENGHAO 狂暴之力
+SETICON 1 -1
+<$KILLER>.GameGold + 1000
+<$KILLER>.SENDMSG 7 提示:元宝+1000.
+#CALL [\1游戏登陆\属性加成.txt] @属性加成
+CHANGENAMECOLOR 255
+goto @死亡复活1
+CloseAutoPickItem
+SENDMSG 7 提示:狂暴之力消失!
+SetOffTimer 17
+GuildNoticeMsg 255 0 {战报|250:0:1}：玩家「{%s|254:0:1}」在[%m]被{[<$KILLER>]|254:0:1}残忍的杀害了！
+GuildNoticeMsg 251 10 {【斩杀奖励】|250:0:1}玩家{【<$KILLER>】|255:241:1}成功击杀拥有狂暴之力的{【<$USERNAME>】|249:0:1},获得了1000元宝奖励！
+goto @擂台死亡
+
+#If
+KillByHum
+#Act
+INC U41 1
+GuildNoticeMsg 255 0 {战报|250:0:1}：玩家「{%s|254:0:1}」在[%m]被{[<$KILLER>]|254:0:1}残忍的杀害了！
+#CALL [\登陆\封号脚本.txt] @封号设置
+goto @死亡复活1
+SetOffTimer 17
+break
+
+#If
+NOT KillByHum
+#Act
+goto @死亡复活2
+GuildNoticeMsg 255 0 {战报|250:0:1}：玩家「{%s|254:0:1}」在[%m]被怪物{[<$MONKILLER>]|254:0:1}给分尸了！
+SetOffTimer 17
+break
+
+;----------------------------------------------------------------------------------------------
+[@擂台死亡]
+#IF
+Equal A6 <$USERNAME>
+large G6 0
+#ACT
+MOV G9 <$STR(G6)>
+DIV G9 G9 2
+A7.gamegold + <$STR(G6)>
+A7.SENDMSG 6 提示：元宝增加<$STR(G6)>
+SendCenterMsg 249 0 【挑战擂台】：玩家“<$STR(A7)>”在擂台打败了“<$STR(A6)>”赢得了<$STR(G9)>元宝... 1 10
+A7.SendCenterMsg 251 249 恭喜你赢得本次比赛，%d后退出比赛场地！ 0 8 @退出比赛
+mov G6 0
+mov A8 正在结算
+mov G7 10
+mov A10 [擂台结算](<$STR(G7)>)\裁判
+SetHumAttackMode 0 1
+A7.SetHumAttackMode 0 1
+
+#IF
+Equal A7 <$USERNAME>
+large G6 0
+#ACT
+MOV G9 <$STR(G6)>
+DIV G9 G9 2
+A6.gamegold + <$STR(G6)>
+A6.SENDMSG 6 提示：元宝增加<$STR(G6)>
+SendCenterMsg 249 0 【挑战擂台】：玩家“<$STR(A6)>”在擂台打败了“<$STR(A7)>”赢得了<$STR(G9)>元宝... 1 10
+A6.SendCenterMsg 251 249 恭喜你赢得本次比赛，%d后退出比赛场地！ 0 8 @退出比赛
+mov G6 0
+mov A8 正在结算
+mov G7 10
+mov A10 [擂台结算](<$STR(G7)>)\裁判
+SetHumAttackMode 0 1
+A6.SetHumAttackMode 0 1
+;----------------------------------------------------------------------------------------------
+
+;----------------------------------------------------------------------------------------------
+[@死亡复活1]
+#IF
+checkcastlewar 0
+ISCASTLEGUILD
+#ACT
+MOV S$人或怪 人物
+MOV S$击杀者 <$CURRRTARGETNAME>
+mov S$杀时间 <$HOUR>:<$MINUTE>:<$SECOND>
+BREAK 
+#SAY
+　\
+　　　{你于,<$STR(S$杀时间)>被<$STR(S$人或怪)>「<$STR(S$击杀者)>」杀死！/SCOLOR=249}\
+　\
+　\　\
+　　　{沙成员无法回城复活，请小退重新登录！/SCOLOR=251}
+
+#IF
+#ACT
+MOV S$人或怪 人物
+MOV S$击杀者 <$CURRRTARGETNAME>
+MOV N$断开秒 30
+mov S$杀时间 <$HOUR>:<$MINUTE>:<$SECOND>
+SETONTIMER 9 1
+BREAK 
+
+[@死亡复活2]
+#IF
+checkcastlewar 0
+ISCASTLEGUILD
+#ACT
+MOV S$人或怪 怪物
+MOV S$击杀者 <$CURRRTARGETNAME>
+mov S$杀时间 <$HOUR>:<$MINUTE>:<$SECOND>
+BREAK 
+#SAY
+　\
+　　　{你于,<$STR(S$杀时间)>被<$STR(S$人或怪)>「<$STR(S$击杀者)>」杀死！/SCOLOR=249}\
+　　　              {<$STR(N$断开秒)>秒后断开连接./SCOLOR=250}\
+　\　\
+　　　{沙成员无法回城复活，请小退重新登录！/SCOLOR=251}
+
+#IF
+#ACT
+MOV S$人或怪 怪物
+MOV S$击杀者 <$CURRRTARGETNAME>
+MOV N$断开秒 30
+mov S$杀时间 <$HOUR>:<$MINUTE>:<$SECOND>
+SETONTIMER 9 1
+BREAK 
+
+[@回城复活QF]
+#IF
+CHECKPKPOINTEX  > 199
+#ACT
+SETOFFTIMER 9
+mapmove 3 849 674
+MOV S$人或怪
+MOV S$击杀者
+MOV N$断开秒
+MOV S$杀时间
+REALIVE
+SETONTIMER 17 1
+Gmexecute TestStatus 0
+Gmexecute TestStatus 1
+#CALL [\登陆\封号脚本.txt] @封号设置
+#CALL [\1游戏登陆\属性加成.txt] @属性加成
+CloseClientBuff 1
+BREAK
+
+#IF
+CHECKPKPOINTEX  < 200
+#ACT
+SETOFFTIMER 9
+mapmove 3 330 330
+MOV S$人或怪
+MOV S$击杀者
+MOV N$断开秒
+MOV S$杀时间
+REALIVE
+SETONTIMER 17 1
+;HUMANHP = 800
+CLEARDELAYGOTO 1
+Gmexecute TestStatus 0
+Gmexecute TestStatus 1
+#CALL [\登陆\封号脚本.txt] @封号设置
+#CALL [\1游戏登陆\属性加成.txt] @属性加成
+CloseClientBuff 1
+BREAK
+
+[@安全复活]
+#SAY
+\　
+\　
+\　
+\<你阵亡了！！！/FCOLOR=249>\
+\<你阵亡了！！！/FCOLOR=249>\
+\<你阵亡了！！！/FCOLOR=249>\
+\　
+\　　　<【/SCOLOR=254><安全回城复活/@安全回城><】/SCOLOR=254>
+
+[@安全回城]
+#IF
+CHECKUNDERWAR 沙巴克
+ISCASTLEMASTER
+#ACT
+BREAK
+#IF
+CHECKUNDERWAR 沙巴克
+ISCASTLEGUILD
+#ACT
+BREAK
+
+#if
+#act
+Relive
+movR n$XX 322 339
+movR n$yy 323 339
+CLEARDELAYGOTO 1
+MAPMOVE 3 <$STR(n$XX)> <$STR(n$yy)>
+HUManHP + 88888888
+HUManHP + 88888888
+CloseClientBuff 1
+BREAK
+
+[@死亡回城]
+#IF
+CHECKUNDERWAR 沙巴克
+ISCASTLEMASTER
+#ACT
+BREAK
+#IF
+CHECKUNDERWAR 沙巴克
+ISCASTLEGUILD
+#ACT
+BREAK
+
+#if
+#act
+CLEARDELAYGOTO 1
+movR n$XX 322 339
+movR n$yy 323 339
+MAPMOVE 3 <$STR(n$XX)> <$STR(n$yy)>
+CloseClientBuff 1
+BREAK
+
+;----------------------------------------------------------------小退触发
+[@PlayReconnection]
+#IF
+#ACT
+MOV G9 <$STR(G6)>
+DIV G9 G9 2
+
+#IF
+Equal A6 <$USERNAME>
+Equal A7
+#ACT
+mov G6 0
+mov A6
+mov A7
+mov A8
+mov G7 0
+mov G9 0
+
+#IF
+Equal A6 <$USERNAME>
+NOT Equal A7
+#ACT
+set [3] 0
+A7.gamegold + <$STR(G6)>
+A7.SENDMSG 6 提示：元宝增加<$STR(G6)>
+SendCenterMsg 249 0 【挑战擂台】：玩家“<$STR(A7)>”在擂台打败了“<$STR(A6)>”赢得了<$STR(G9)>元宝... 1 10
+A7.SendCenterMsg 251 249 恭喜你赢得本次比赛，%d后退出比赛场地！ 0 8 @退出比赛
+mov A8 正在结算
+mov G7 10
+mov A10 [擂台结算](<$STR(G7)>)\裁判
+
+#IF
+Equal A7 <$USERNAME>
+#ACT
+set [3] 0
+A6.gamegold + <$STR(G6)>
+A6.SENDMSG 6 提示：元宝增加<$STR(G6)>
+SendCenterMsg 249 0 【挑战擂台】：玩家“<$STR(A6)>”在擂台打败了“<$STR(A7)>”赢得了<$STR(G9)>元宝... 1 10
+A6.SendCenterMsg 251 249 恭喜你赢得本次比赛，%d后退出比赛场地！ 0 8 @退出比赛
+mov A8 正在结算
+mov G7 10
+mov A10 [擂台结算](<$STR(G7)>)\裁判
+
+;----------------------------------------------------------------小退触发
+
+;----------------------------------------------------------------小退触发
+
+[@StdModeFunc16]
+#ACT
+GMEXECUTE SHOWEFFECT 79
+SENDMSG 0 <$USERNAME>在[%M:%x:%y]燃放了<心心相印>烟花!
+break
+
+[@StdModeFunc21]
+#ACT
+GMEXECUTE SHOWEFFECT 82
+SENDMSG 0 <$USERNAME>在[%M:%x:%y]燃放了<如梦似雾>烟花!
+break
+
+[@StdModeFunc22]
+#IF
+gender woman
+#ACT
+HAIRSTYLE 0
+SENDMSG 6 发型已经变更! 
+break
+#IF
+gender man
+#ACT
+HAIRSTYLE 0
+SENDMSG 6 发型已经变更! 
+break
+
+[@StdModeFunc23]
+#IF
+gender woman
+#ACT
+HAIRSTYLE 1
+SENDMSG 6 发型已经变更! 
+break
+#IF
+gender man
+#ACT
+HAIRSTYLE 1
+SENDMSG 6 发型已经变更! 
+break
+
+[@StdModeFuncEx1311]
+#ACT
+KILLMONEXPRATE 400 10800
+SENDMSG 5 ぐ恭喜您使用了四倍经验卷轴,获得180分钟四倍打怪经验!
+
+[@StdModeFunc26]
+#ACT
+KILLMONEXPRATE 200 3600
+SENDMSG 5 ぐ恭喜您使用了双倍经验卷轴,获得60分钟双倍打怪经验!
+
+[@StdModeFunc27]
+#IF
+#ACT
+GAMEDIAMOND + 50
+SENDMSG 7 ぐ充值增加50点，您当前充值为：<$GAMEDIAMOND> 
+close
+
+[@StdModeFunc33]
+#IF
+CHECK [31] 0
+#ACT
+SET [31] 1
+messagebox 你已经成功加入到会员贵族，会员贵族命令为：@会员\你已经成功加入到会员贵族，会员贵族命令为：@会员\你已经成功加入到会员贵族，会员贵族命令为：@会员\你已经成功加入到会员贵族，会员贵族命令为：@会员\
+SendMsg 6 你已经成功加入到会员贵族，会员贵族命令为：@会员
+SendMsg 6 你已经成功加入到会员贵族，会员贵族命令为：@会员
+SendMsg 6 你已经成功加入到会员贵族，会员贵族命令为：@会员
+SendMsg 6 你已经成功加入到会员贵族，会员贵族命令为：@会员
+BREAK
+
+[@StdModeFunc41]
+#IF
+  small M3 60
+#Act
+  INC M3 2
+  Gmexecute showeffect 78
+  Gmexecute showeffect 79
+  Gmexecute showeffect 80
+  SENDMSG 0 [%s]在:%m%x:%y处放庆典蛋糕、大家快去欣赏哦。
+  DelayCall 2000 @庆典蛋糕1
+#ELSEAct
+  MOV M3 0
+  ClearDelayGoto
+
+[@庆典蛋糕1]
+#IF
+  small M3 60
+#Act
+  INC M3 2
+  Gmexecute showeffect 79
+  Gmexecute showeffect 80
+  Gmexecute showeffect 81
+  DelayCall 2000 @庆典蛋糕2
+#ELSEAct
+  MOV M3 0
+  ClearDelayGoto
+
+[@庆典蛋糕2]
+#IF
+  small M3 60
+#Act
+  INC M3 2
+  Gmexecute showeffect 80
+  Gmexecute showeffect 81
+  Gmexecute showeffect 82
+  DelayCall 2000 @庆典蛋糕3
+#ELSEAct
+  MOV M3 0
+  ClearDelayGoto
+
+[@庆典蛋糕3]
+#IF
+  small M3 60
+#Act
+  INC M3 2
+  Gmexecute showeffect 81
+  Gmexecute showeffect 82
+  Gmexecute showeffect 83
+  DelayCall 2000 @庆典蛋糕4
+#ELSEAct
+  MOV M3 0
+  ClearDelayGoto
+
+[@庆典蛋糕4]
+#IF
+  small M3 60
+#Act
+  INC M3 2
+  Gmexecute showeffect 82
+  Gmexecute showeffect 83
+  Gmexecute showeffect 82
+  DelayCall 2000 @庆典蛋糕5
+#ELSEAct
+  MOV M3 0
+  ClearDelayGoto
+
+[@庆典蛋糕5]
+#IF
+  small M3 60
+#Act
+  INC M3 2
+  Gmexecute showeffect 78
+  Gmexecute showeffect 83
+  Gmexecute showeffect 82
+  DelayCall 2000 @庆典蛋糕6
+#ELSEAct
+  MOV M3 0
+  ClearDelayGoto
+
+[@庆典蛋糕6]
+#IF
+  small M3 60
+#Act
+  INC M3 2
+  Gmexecute showeffect 78
+  Gmexecute showeffect 79
+  Gmexecute showeffect 82
+  DelayCall 2000 @庆典蛋糕
+#ELSEAct
+  MOV M3 0
+  ClearDelayGoto
+
+[@StdModeFunc46]
+#If
+#Act
+give 祝福油 1
+
+[@StdModeFunc47]
+#If
+#Act
+give 金币 1000000
+
+[@StdModeFunc227]
+#If
+CheckBagSize	6
+#Act
+give 金条 5
+Sendmsg 7 金砖兑换成功.
+#ELSEACT
+GIVE 金砖 1
+SENDMSG 7 请在背包留出5个空格
+
+[@StdModeFunc100]
+#IF
+#ACT
+#SAY
+　　您好。我是仓库保管员。为了您的仓库又<方便>又<安全>。\
+　　我为您提供以下仓库服务功能： \  \ 
+　　<存放物品/@storage>\ \ 
+　　<取回物品/@getback>\ \ 
+
+　　<离开/@关闭>
+
+[@storage]
+#IF
+#ACT
+#SAY
+　　您好。我是仓库保管员。为了您的仓库又<方便>又<安全>。\
+　　需要保管什么东西?\ \ 
+　　<存放物品/@storage>\ \ 
+　　<取回物品/@getback>\ \  
+　　<离开/@关闭>
+
+[@getback]
+#IF
+#ACT
+#SAY
+　　您好。我是仓库保管员。为了您的仓库又<方便>又<安全>。\
+　　请看目录决定找什么东西.\ \
+　　<存放物品/@storage>\ \ 
+　　<取回物品/@getback>\ \ 
+　　<离开/@关闭> 
+
+[@StdModeFunc101]
+#IF
+ISONMAP 宝箱活动
+#ACT
+movR n$XX 322 339
+movR n$yy 323 339
+MAPMOVE 3 <$STR(n$XX)> <$STR(n$yy)>
+CloseClientBuff 1
+CLEARDELAYGOTO 1
+;#CALL [\登陆\新手登陆.txt] @游戏上线登录
+break
+
+;#IF
+;#ACT
+;movR n$XX 322 339
+;movR n$yy 323 339
+CLEARDELAYGOTO 1
+;MAPMOVE 3 <$STR(n$XX)> <$STR(n$yy)>
+;CloseClientBuff 1
+;break
+
+#if
+#act
+MAP 3
+CLEARDELAYGOTO 1
+;messageBox 为了防止飞尸，已先飞往盟重：<$X>,<$Y>后，再回城！
+DELAYGOTO 300 @飞尸回城
+CloseClientBuff 1
+break
+
+[@飞尸回城]
+#if
+#act
+movR n$XX 322 339
+movR n$yy 323 339
+MAPMOVE 3 <$STR(n$XX)> <$STR(n$yy)>
+goto @奔跑犯规
+break
+
+[@StdModeFunc54]
+#ACT
+GAMEDIAMOND + 100
+GuildNoticeMsg 0 223 ぐ恭喜[%s]打开了[100积分]获得：100积分
+BREAK
+
+[@StdModeFunc53]
+#ACT
+GAMEDIAMOND + 10
+GuildNoticeMsg 0 223 ぐ恭喜[%s]打开了[10积分]获得：10积分
+BREAK
+
+[@StdModeFunc52]
+#ACT
+GAMEDIAMOND + 1
+GuildNoticeMsg 0 223 ぐ恭喜[%s]打开了[１积分]获得：１积分
+BREAK
+
+[@StdModeFunc103]
+#ACT
+GAMEGOLD + 10
+SENDMSG 6 提示:增加10个元宝!
+
+[@StdModeFunc104]
+#ACT
+GAMEGOLD + 20
+SENDMSG 6 提示:增加20个元宝!
+
+[@StdModeFunc105]
+#ACT
+GAMEGOLD + 50
+SENDMSG 6 提示:增加50个元宝!
+
+[@StdModeFunc106]
+#ACT
+GAMEGOLD + 100
+SENDMSG 6 提示:增加100个元宝!
+
+[@StdModeFunc107]
+#ACT
+GAMEGOLD + 500
+SENDMSG 6 提示:增加500个元宝!
+
+[@StdModeFunc108]
+#ACT
+GAMEGOLD + 1000
+SENDMSG 6 提示:增加1000个元宝!
+
+[@StdModeFunc109]
+#ACT
+GAMEGOLD + 5000
+SENDMSG 6 提示:增加5000个元宝!
+
+[@StdModeFunc110]
+#ACT
+GAMEGOLD + 10000
+SENDMSG 6 提示:增加10000个元宝!
+
+[@StdModeFunc111]
+#ACT
+GAMEGOLD + 50000
+SENDMSG 6 提示:增加50000个元宝!
+
+[@StdModeFunc112]
+#ACT
+GAMEGOLD + 100000
+SENDMSG 6 提示:增加100000个元宝!
+
+[@StdModeFunc137]
+#ACT
+GAMEGOLD + 500000
+SENDMSG 6 提示:增加500000个元宝!
+
+[@StdModeFunc131]
+#ACT
+CHANGEPKPOINT = 0
+SENDMSG 6 你的PK值已清洗! 
+
+[@StdModeFunc132]
+#ACT
+GAMEGIRD + 5
+SENDMSG 6 提示:增加5个积分!
+
+[@StdModeFunc133]
+#ACT
+GAMEGIRD + 10
+SENDMSG 6 提示:增加10个积分!
+
+[@StdModeFunc134]
+#ACT
+GAMEGIRD + 50
+SENDMSG 6 提示:增加50个积分!
+
+[@StdModeFunc135]
+#ACT
+GAMEGIRD + 100
+SENDMSG 6 提示:增加100个积分!
+
+[@StdModeFunc138]
+#ACT
+GAMEGIRD + 1
+SENDMSG 6 提示:增加1个积分!
+
+[@StdModeFunc139]
+#ACT
+GAMEGIRD + 2
+SENDMSG 6 提示:增加2个积分!
+
+[@StdModeFunc140]
+#ACT
+GAMEGIRD + 3
+SENDMSG 6 提示:增加3个积分!
+
+[@StdModeFunc75]
+#If 
+CheckItemAddValue 1 3 > 6
+#Act 
+GIVE 超级祝福油 1
+SendMsg 5 [提示]:你的武器已经幸运值已经+7以上点了,系统无法给你增加了. 
+BREAK 
+#IF 
+CHECKUSEITEM 1 
+#ACT 
+UPGRADEITEMEX 1 3 0 1 0
+SendMsg 5 [提示]:你的武器已经幸运值增加1点. 
+break 
+#ELSEACT 
+GIVE 超级祝福油 1 
+messagebox [失败]:你当前手上没有任何武器。 
+break 
+
+[@StartMyShop]
+#IF
+NOT IsOnMap 3
+#ACT
+CloseBigDialogBox
+#SAY
+此地图禁止使用摆摊功能！摆摊请前往盟重省\
+#ACT
+ForbidMyShop
+BREAK
+
+#if
+ISDUPMODE
+#say
+请找一个空位置，不能与别人站在一起。
+#ACT
+ForbidMyShop
+BREAK
+
+#IF
+checklevelex < 26
+#ACT
+ForbidMyShop
+messagebox 为防止小号捣乱，26级以上才能摆摊..
+BREAK
+
+#IF
+NOT INSAFEZONE
+#ACT
+CloseBigDialogBox
+#SAY
+\ \
+此地图禁止使用摆摊功能！摆摊请前往盟重省\
+#ACT
+ForbidMyShop
+BREAK
+
+;==============================================================================================================
+
+[@ButtonClick6]
+#IF
+ISONMAP jianyu
+#ACT
+MESSAGEBOX 监狱区域禁止使用此服务！
+break
+#IF
+iSONMAP 密码验证室
+#ACT
+MESSAGEBOX 密码验证区域禁止使用此服务！
+BREAK
+
+#IF
+#ACT
+MOV S$我的仓库按钮 <移动仓库/@ckfw>
+#CALL [\商人\在线回收.txt] @回收
+break
+
+[@ButtonClick3]
+#IF
+ISONMAP jianyu
+#ACT
+MESSAGEBOX 监狱区域禁止使用此服务！
+break
+#IF
+iSONMAP 密码验证室
+#ACT
+MESSAGEBOX 密码验证区域禁止使用此服务！
+BREAK
+#IF
+#ACT
+#CALL [\商人\每日活动.txt] @每日活动
+break
+
+;==========================================================================
+
+[@UserCmd2]
+#IF
+ISONMAP jianyu
+#ACT
+MESSAGEBOX 监狱区域禁止使用此服务！
+break
+#IF
+iSONMAP 密码验证室
+#ACT
+MESSAGEBOX 密码验证区域禁止使用此服务！
+BREAK
+#elseact
+goto @回收开始A
+BREAK
+
+[@回收开始A]
+#IF
+#act
+#CALL [\商人\在线回收.txt] @回收
+break
+
+;-----------------------------------------------------------------------------
+;QFunction-0.txt脚本相关触发
+[@ChangeingHumName]
+\ \
+正在查询请稍后。。。\ \
+<关闭/@exit>\
+
+[@ChangeHumNameOK]
+#ACT
+;这个命令是用来修改，你的变量保存文件和人物名称列表文件里面的人物名称的，如果没有这些可以不使用这个命令
+;这个命令也只能放在这个地方，放其他地方无效
+;CHANGEHUMNAMEFILE ..\QuestDiary\数据文件\HQCQASave.txt
+;CHANGEHUMNAMEFILE ..\QuestDiary\数据文件\会员名称.txt
+GAMEGOLD - 50000
+GuildNoticeMsg 249 151 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(综合服务处)|254:0:1}成功修改了{【自己名字】|253:0:1}..
+GuildNoticeMsg 249 151 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(综合服务处)|254:0:1}成功修改了{【自己名字】|253:0:1}..
+GuildNoticeMsg 249 151 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(综合服务处)|254:0:1}成功修改了{【自己名字】|253:0:1}..
+#SAY
+\ \ \ \
+　　你的名字修改成功\ \
+　　旧名称：<$USERNAME>\ \
+　　新名称：<$USERNEWNAME>\ \
+　　<关闭/@exit>\
+
+[@NameLengthFail]
+\ \ \ \
+　　名字长度不允许超过20个字符！\ \
+　　<关闭/@exit>\
+[@HumNameFilter]
+\ \ \ \
+　　该名字存在非法字符！\ \
+　　<关闭/@exit>\
+[@HumNameExists]
+\ \ \ \
+　　该名字已经被其他玩家占用，请选择其他名字\ \
+　　<关闭/@exit>\
+[@ChangeHumNameFail]
+\ \ \ \
+　　改名失败！\ \
+　　<关闭/@exit>\
+
+[@StdModeFunc18]
+#IF
+#Act 
+#CALL [\QF触发文件\在线触发.txt] @在线触发
+BREAK
+
+[@shaz]
+#IF
+#ACT
+#CALL [\QF触发文件\杀猪触发.txt] @杀猪触发
+BREAK
+
+[@OnKillMob]
+
+#if
+RANDOMEX 10 100
+CheckContainsTextList ..\QuestDiary\QF触发文件\奇遇怪物.txt <$KILLMONNAME>
+#act
+MOV N$断开秒 60
+SETONTIMER 10 1
+BREAK 
+
+#if
+CheckContainsTextList ..\QuestDiary\QF触发文件\商店怪物.txt <$KILLMONNAME>
+ISONMAP <$USERNAME>HNBG1
+#act
+#CALL [\QF触发文件\神秘商店.txt] @神秘商店
+
+#if
+CheckContainsTextList ..\QuestDiary\QF触发文件\商店怪物.txt <$KILLMONNAME>
+ISONMAP <$USERNAME>HNBG2
+#act
+#CALL [\QF触发文件\神秘商店.txt] @神秘商店
+
+#if
+CheckContainsTextList ..\QuestDiary\QF触发文件\商店怪物.txt <$KILLMONNAME>
+ISONMAP <$USERNAME>HNBG3
+#act
+#CALL [\QF触发文件\神秘商店.txt] @神秘商店
+
+#if
+CheckContainsTextList ..\QuestDiary\QF触发文件\商店怪物.txt <$KILLMONNAME>
+ISONMAP <$USERNAME>HNBG4
+#act
+#CALL [\QF触发文件\神秘商店.txt] @神秘商店
+
+#if
+CheckContainsTextList ..\QuestDiary\QF触发文件\商店怪物.txt <$KILLMONNAME>
+ISONMAP <$USERNAME>HNBG5
+#act
+#CALL [\QF触发文件\神秘商店.txt] @神秘商店
+
+#if
+CheckContainsTextList ..\QuestDiary\QF触发文件\沉默之巅地图.txt <$MAP>
+#act
+#CALL [\QF触发文件\沉默之巅.txt] @沉默之巅称号
+
+#IF
+CheckKillMonName <$STR(S$指定怪物)>
+EQUAL <$USERNAME> <$STR(S$指定名字)>
+NOT EQUAL <$STR(S$指定装备)>
+#Act
+MonDropItems <$STR(S$指定怪物)> <$STR(S$指定装备)> 1 1
+mov S$指定怪物
+mov S$指定名字
+mov S$指定装备
+#IF
+#act
+#CALL [\QF触发文件\成长法宝.txt] @成长法宝主入口
+
+#IF
+CheckKillMonName 财神树
+#ACT
+ThrowItem 3 355 340 3 10000元宝 5|60 
+ThrowItem 3 355 340 3 100元宝 7|60
+ThrowItem 3 355 340 3 1000元宝 5|60 
+ThrowItem 3 355 340 3 书页 3|60 
+ThrowItem 3 355 340 3 四倍经验卷轴 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\材料1.txt S10
+ThrowItem 3 355 340 3 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\木域财神树1.txt S10
+ThrowItem 3 355 340 3 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\木域财神树2.txt S10
+ThrowItem 3 355 340 3 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\藤域财神树1.txt S10
+ThrowItem 3 355 340 3 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\藤域财神树2.txt S10
+ThrowItem 3 355 340 3 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\神域财神树1.txt S10
+ThrowItem 3 355 340 3 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\神域财神树2.txt S10
+ThrowItem 3 355 340 3 <$STR(S10)> 1|60 
+
+#IF
+CheckKillMonName 必爆技能
+#ACT
+ThrowItem BBJN 20 22 3 解毒术 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\必爆技能藤域.txt S10
+ThrowItem BBJN 20 22 3 <$STR(S10)> 5|60 
+GetRandomText ..\QuestDiary\5抽取数据\必爆技能木域.txt S10
+ThrowItem BBJN 20 22 3 <$STR(S10)> 2|60 
+GetRandomText ..\QuestDiary\5抽取数据\必爆技能藤域三格.txt S10
+ThrowItem BBJN 20 22 3 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\必爆技能木域三格.txt S10
+ThrowItem BBJN 20 22 3 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\必爆技能蓝灵.txt S10
+ThrowItem BBJN 20 22 3 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\必爆技能绿玉.txt S10
+ThrowItem BBJN 20 22 3 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\必爆技能骑士.txt S10
+ThrowItem BBJN 20 22 3 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\必爆技能恶魔.txt S10
+ThrowItem BBJN 20 22 3 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\必爆技能碎片.txt S10
+ThrowItem BBJN 20 22 3 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\必爆技能项链.txt S10
+ThrowItem BBJN 20 22 3 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\必爆技能轩辕.txt S10
+ThrowItem BBJN 20 22 3 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\必爆技能武器.txt S10
+ThrowItem BBJN 20 22 3 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\必爆技能诅咒.txt S10
+ThrowItem BBJN 20 22 3 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\必爆技能天书.txt S10
+ThrowItem BBJN 20 22 3 <$STR(S10)> 1|60 
+
+#IF
+CheckKillMonName 世界火龙教主
+#ACT
+GetRandomText ..\QuestDiary\5抽取数据\世界材料.txt S10
+ThrowItem CLHD 19 25 5 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\世界首饰1.txt S10
+ThrowItem CLHD 19 25 5 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\世界首饰2.txt S10
+ThrowItem CLHD 19 25 5 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\世界武器1.txt S10
+ThrowItem CLHD 19 25 5 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\世界首饰3.txt S10
+ThrowItem CLHD 19 25 5 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\世界剑甲1.txt S10
+ThrowItem CLHD 19 25 5 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\世界轩辕.txt S10
+ThrowItem CLHD 19 25 5 <$STR(S10)> 1|60 
+GetRandomText ..\QuestDiary\5抽取数据\世界诅咒.txt S10
+ThrowItem CLHD 19 25 5 <$STR(S10)> 1|60 
+#IF
+#ACT
+#CALL [\QF触发文件\杀怪触发.txt] @杀怪触发
+#CALL [\QF触发文件\BOSS计算.txt] @BOSS计算
+BREAK
+
+[@PlayLevelUp]
+
+#IF
+#Act 
+#CALL [\QF触发文件\升级触发测试.txt] @升级触发
+BREAK
+
+[@PlayOffline]
+#IF
+#ACT
+MOV G9 <$STR(G6)>
+DIV G9 G9 2
+
+#IF
+Equal A6 <$USERNAME>
+Equal A7
+#ACT
+mov G6 0
+mov A6
+mov A7
+mov A8
+mov G7 0
+mov G9 0
+
+#IF
+Equal A6 <$USERNAME>
+NOT Equal A7
+#ACT
+set [3] 0
+A7.gamegold + <$STR(G6)>
+A7.SENDMSG 6 提示：元宝增加<$STR(G6)>
+SendCenterMsg 249 0 【挑战擂台】：玩家“<$STR(A7)>”在擂台打败了“<$STR(A6)>”赢得了<$STR(G9)>元宝... 1 10
+A7.SendCenterMsg 251 249 恭喜你赢得本次比赛，%d后退出比赛场地！ 0 8 @退出比赛
+mov A8 正在结算
+mov G7 10
+mov A10 [擂台结算](<$STR(G7)>)\裁判
+
+#IF
+Equal A7 <$USERNAME>
+#ACT
+set [3] 0
+A6.gamegold + <$STR(G6)>
+A6.SENDMSG 6 提示：元宝增加<$STR(G6)>
+SendCenterMsg 249 0 【挑战擂台】：玩家“<$STR(A6)>”在擂台打败了“<$STR(A7)>”赢得了<$STR(G9)>元宝... 1 10
+A6.SendCenterMsg 251 249 恭喜你赢得本次比赛，%d后退出比赛场地！ 0 8 @退出比赛
+mov A8 正在结算
+mov G7 10
+mov A10 [擂台结算](<$STR(G7)>)\裁判
+#IF
+#Act 
+#CALL [\QF触发文件\离线挂机.txt] @离线挂机
+BREAK
+
+;-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[@退出比赛]
+#IF
+#ACT
+humanhp + 10000
+humanmp + 10000
+ChangeModeEx 9 999999
+mapmove 擂台 49 42
+MESSAGEBOX \本次比赛已结束！恭喜你赢得本次比赛！
+
+;==================================================================================  移动仓库
+[@StdModeFunc231]
+#IF
+check [2] 0
+#ACT
+AddFunItemDura 1000
+MESSAGEBOX \　　抱歉，只有沙城捐献后才能使用！\\　　捐献获得永久[攻魔道]10-10，回收宝箱+远程仓库！
+BREAK
+
+#IF
+check [2] 1
+#ACT
+AddFunItemDura 1000
+#SAY
+　　您好。我是仓库保管员。为了您的仓库又<方便>又<安全>。\
+　　我为您提供以下仓库服务功能： \  \ 
+　　<存放物品/@storage>\ \ 
+　　<取回物品/@getback>\ \ 
+
+　　<离开/@关闭>
+
+;==================================================================================  千里传音
+[@usercmd5]
+#IF
+checkitem 千里传音 1
+#ACT
+GOTO @字符过滤
+#ELSEACT
+SENDMSG 7 提示：需要千里传音才能使用！
+BREAK
+
+[@字符过滤]
+#IF
+CheckStringlength <$PARAM(1)> > 80
+#ACT
+SENDMSG 7 提示：发送信息不能超过30个字！
+BREAK
+
+#IF
+#ACT
+TAKE 千里传音 1
+SENDTOPCHATBOARDMSG 0 252 255 30 <$PARAM(1)>{[千里传音]|250:0:1} 0
+;SENDMOVEMSG 0 250 252 350 1 全服喇叭[<$USERNAME>]：<$PARAM(1)>
+BREAK
+
+[@杀死镖车]
+#IF
+#ACT
+KILLCALLMOB 超级镖车 1 1
+KILLCALLMOB 高级镖车 1 1
+KILLCALLMOB 普通镖车 1 1
+
+[@KillSlave]
+#IF
+CheckKillSlaveName 无敌镖车
+#ACT
+CLEARDELAYGOTO
+GAMEGOLD + 100
+SENDMSG 6 你成功劫持了一辆‘无敌镖车’，获得100元宝
+SENDMSG 0 [<$USERNAME>]成功劫持了一辆‘无敌镖车’，获得100元宝！
+
+#IF
+CheckKillSlaveName 白银镖车
+#ACT
+CLEARDELAYGOTO @杀死镖车
+GAMEGOLD + 100
+SENDMSG 6 你成功劫持了一辆‘白银镖车’，获得100元宝
+SENDMSG 0 [<$USERNAME>]成功劫持了一辆‘白银镖车’，获得100元宝！
+
+#IF
+CheckKillSlaveName 黄金镖车
+#ACT
+CLEARDELAYGOTO @杀死镖车
+GAMEGOLD + 100
+SENDMSG 6 你成功劫持了一辆‘黄金镖车’，获得100元宝
+SENDMSG 0 [<$USERNAME>]成功劫持了一辆‘黄金镖车’，获得100元宝！
+
+;---------------------------------------------------------------------------------
+;时间到，传出地图
+[@CloseClientBuff1]
+#IF
+#ACT
+Close
+MAPMOVE 3 330 330
+CLEARDELAYGOTO 1
+
+[@衣服HP上限A]
+#IF
+CHECKLEVELEX > 0
+#ACT
+USEBONUSPOINT 6 = 0
+
+#if
+CHECKUSEITEM 0
+#ACT
+GETITEMADDVALUE 0 2 <$STR(N$衣服攻击)>
+GETITEMADDVALUE 0 3 <$STR(N$衣服魔法)>
+GETITEMADDVALUE 0 4 <$STR(N$衣服道术)>
+
+#OR
+equal N$衣服攻击 6
+equal N$衣服魔法 6
+equal N$衣服道术 6
+#ACT
+MOV N$衣服血量 5
+DIV N$衣服HP上限 <$MAXHP> 100
+MUL N$衣服HP上限 5
+USEBONUSPOINT 6 + N$衣服HP上限
+SENDMSG 6  恭喜你的获得1.05倍的血量加成 
+
+#OR
+large N$衣服攻击 6
+large N$衣服魔法 6
+large N$衣服道术 6
+#ACT
+MOV N$衣服血量 10
+DIV N$衣服HP上限 <$MAXHP> 100
+MUL N$衣服HP上限 10
+USEBONUSPOINT 6 + N$衣服HP上限
+SENDMSG 6  恭喜你的获得1.10倍的血量加成 
+;---------------------------------------------------------------------------------
+;=============================================================
+;===========================穿戴触发==========================
+;=============================================================
+
+[@TakeOnEX]
+#if
+#act
+HCALL <$USERNAME> @更新自身属性
+
+[@TakeOffEX]
+#if
+#act
+HCALL <$USERNAME> @更新自身属性
+
+[@BeginTakeOff]
+#if
+equal <$CurItemPos> 1
+#act
+#CALL [\游戏功能\熔炼属性.txt] @清理熔炼属性武器
+#CALL [\装备加星\加星属性.txt] @清理加星属性武器
+
+#if
+equal <$CurItemPos> 0
+#act
+#CALL [\游戏功能\熔炼属性.txt] @清理熔炼属性衣服
+#CALL [\装备加星\加星属性.txt] @清理加星属性衣服
+
+#if
+equal <$CurItemPos> 9
+#act
+#CALL [\游戏功能\熔炼属性.txt] @清理熔炼属性虎符
+#CALL [\装备加星\加星属性.txt] @清理加星属性虎符
+
+#if
+equal <$CurItemPos> 2
+#act
+#CALL [\游戏功能\熔炼属性.txt] @清理熔炼属性勋章
+#CALL [\装备加星\加星属性.txt] @清理加星属性勋章
+
+#if
+equal <$CurItemPos> 4
+#act
+#CALL [\游戏功能\熔炼属性.txt] @清理熔炼属性头盔
+#CALL [\装备加星\加星属性.txt] @清理加星属性头盔
+
+#if
+equal <$CurItemPos> 3
+#act
+#CALL [\游戏功能\熔炼属性.txt] @清理熔炼属性项链
+#CALL [\装备加星\加星属性.txt] @清理加星属性项链
+
+#if
+equal <$CurItemPos> 6
+#act
+#CALL [\游戏功能\熔炼属性.txt] @清理熔炼属性左手
+#CALL [\装备加星\加星属性.txt] @清理加星属性左手
+
+#if
+equal <$CurItemPos> 5
+#act
+#CALL [\游戏功能\熔炼属性.txt] @清理熔炼属性右手
+#CALL [\装备加星\加星属性.txt] @清理加星属性右手
+
+#if
+equal <$CurItemPos> 8
+#act
+#CALL [\游戏功能\熔炼属性.txt] @清理熔炼属性左戒
+#CALL [\装备加星\加星属性.txt] @清理加星属性左戒
+
+#if
+equal <$CurItemPos> 7
+#act
+#CALL [\游戏功能\熔炼属性.txt] @清理熔炼属性右戒
+#CALL [\装备加星\加星属性.txt] @清理加星属性右戒
+
+#if
+equal <$CurItemPos> 10
+#act
+#CALL [\游戏功能\熔炼属性.txt] @清理熔炼属性腰带
+#CALL [\装备加星\加星属性.txt] @清理加星属性腰带
+
+#if
+equal <$CurItemPos> 11
+#act
+#CALL [\游戏功能\熔炼属性.txt] @清理熔炼属性靴子
+#CALL [\装备加星\加星属性.txt] @清理加星属性靴子
+
+#if
+equal <$CurItemPos> 12
+#act
+#CALL [\装备加星\加星属性.txt] @清理加星属性宝石
+
+[@TAKEON1]
+#act
+#CALL [\游戏功能\熔炼属性.txt] @熔炼属性武器
+#CALL [\装备加星\加星属性.txt] @加星属性武器
+
+[@TAKEON0]
+#act
+#CALL [\游戏功能\熔炼属性.txt] @熔炼属性衣服
+#CALL [\装备加星\加星属性.txt] @加星属性衣服
+
+[@TAKEON2]
+#act
+#CALL [\游戏功能\熔炼属性.txt] @熔炼属性勋章
+#CALL [\装备加星\加星属性.txt] @加星属性勋章
+
+[@TAKEON4]
+#act
+#CALL [\游戏功能\熔炼属性.txt] @熔炼属性头盔
+#CALL [\装备加星\加星属性.txt] @加星属性头盔
+
+[@TAKEON3]
+#act
+#CALL [\游戏功能\熔炼属性.txt] @熔炼属性项链
+#CALL [\装备加星\加星属性.txt] @加星属性项链
+
+[@TAKEON6]
+#act
+#CALL [\游戏功能\熔炼属性.txt] @熔炼属性左手
+#CALL [\装备加星\加星属性.txt] @加星属性左手
+
+[@TAKEON5]
+#act
+#CALL [\游戏功能\熔炼属性.txt] @熔炼属性右手
+#CALL [\装备加星\加星属性.txt] @加星属性右手
+
+[@TAKEON8]
+#act
+#CALL [\游戏功能\熔炼属性.txt] @熔炼属性左戒
+#CALL [\装备加星\加星属性.txt] @加星属性左戒
+
+[@TAKEON7]
+#act
+#CALL [\游戏功能\熔炼属性.txt] @熔炼属性右戒
+#CALL [\装备加星\加星属性.txt] @加星属性右戒
+
+[@TAKEON9]
+#act
+#CALL [\游戏功能\熔炼属性.txt] @熔炼属性虎符
+#CALL [\装备加星\加星属性.txt] @加星属性虎符
+
+[@TAKEON10]
+#act
+#CALL [\游戏功能\熔炼属性.txt] @熔炼属性腰带
+#CALL [\装备加星\加星属性.txt] @加星属性腰带
+
+[@TAKEON11]
+#act
+#CALL [\游戏功能\熔炼属性.txt] @熔炼属性靴子
+#CALL [\装备加星\加星属性.txt] @加星属性靴子
+
+[@TAKEON12]
+#act
+#CALL [\装备加星\加星属性.txt] @加星属性宝石
+
+[@CustomButtonClick]
+
+#IF
+equal <$CustomButtonID> 20
+
+#ACT
+#CALL [\1游戏登陆\综合服务.txt] @服务
+
+[@StartAutoOnline]
+#IF
+
+#act
+StartAutoPlayGame
+
+[@StopAutoOnline]
+#act
+StopAutoPlayGame
+sendmsg 6 停止成功！
+
+[@沙城魔君1]
+#if
+#ACT
+mapmove zzdt 23 14
+SENDMSG 0 [<$USERNAME>]--进入了沙城地宫,让我们祝福他吧!!!
+break
+
+[@沙城魔君2]
+#if
+#ACT
+mapmove fmdt 23 14
+SENDMSG 0 [<$USERNAME>]--进入了沙城地宫,让我们祝福他吧!!!
+break
+
+[@沙城魔君3]
+#if
+#ACT
+mapmove dzdt 23 14
+SENDMSG 0 [<$USERNAME>]--进入了沙城地宫,让我们祝福他吧!!!
+break
+
+[@StdModeFunc89]
+#IF
+#ACT
+ADDSKILL 心灵召唤 3
+
+[@给与称号]
+#IF
+#ACT
+RECYCFENGHAO 怀念精英
+RECYCFENGHAO 怀念侠士
+RECYCFENGHAO 怀念大师
+RECYCFENGHAO 怀念至尊
+RECYCFENGHAO 怀念神话
+#IF
+equal U6 1
+#ACT
+GiveFenghao 怀念精英
+#IF
+equal U6 2
+#ACT
+GiveFenghao 怀念精英
+GiveFenghao 怀念侠士
+#IF
+equal U6 3
+#ACT
+GiveFenghao 怀念精英
+GiveFenghao 怀念侠士
+GiveFenghao 怀念大师
+
+#IF
+equal U6 4
+#ACT
+GiveFenghao 怀念精英
+GiveFenghao 怀念侠士
+GiveFenghao 怀念大师
+GiveFenghao 怀念至尊
+#IF
+equal U6 5
+#ACT
+GiveFenghao 怀念精英
+GiveFenghao 怀念侠士
+GiveFenghao 怀念大师
+GiveFenghao 怀念至尊
+GiveFenghao 怀念神话
+
+[@MagSelfFunc76]
+#IF
+CHECKLEVELEX < 26
+#ACT
+MESSAGEBOX 26级才能使用此技能。
+Break
+
+#IF
+CHECKLEVELEX < 48
+NOT CHECKSLAVENAME 武兽1
+#ACT
+KILLCALLMOB 武兽2 999
+KILLCALLMOB 武兽3 999
+RECALLMOB 武兽1 1 65535 0
+BREAK
+
+#IF
+CHECKLEVELEX > 47
+CHECKLEVELEX < 52
+NOT CHECKSLAVENAME 武兽2
+NOT CHECKSLAVENAME 武兽3
+#ACT
+KILLCALLMOB 武兽1 999
+RECALLMOB 武兽2 1 65535 0
+BREAK
+
+#IF
+CHECKLEVELEX > 51
+NOT CHECKSLAVENAME 武兽3
+#ACT
+KILLCALLMOB 武兽1 999
+KILLCALLMOB 武兽2 999
+RECALLMOB 武兽3 1 65535 0
+BREAK
+
+[@MagSelfFunc888]
+#IF
+CHECKLEVELEX < 26
+#ACT
+MESSAGEBOX 26级才能使用此技能。
+Break
+
+#IF
+CHECKSLAVECOUNT < 5
+CHECKLEVELEX > 49
+#ACT
+KILLCALLMOB 法兽 10 
+RECALLMOB 法兽 1  65535 0
+Break
+
+#IF
+CHECKSLAVECOUNT < 5
+CHECKLEVELEX < 50
+#ACT
+KILLCALLMOB 法兽 10 
+RECALLMOB 法兽 1  65535 0
+Break
+[@StdModeFunc136]
+#IF
+#ACT
+RESTBONUSPOINT
+SENDMSG 6 提示：您的属性点已经还原！
+
+[@StdModeFunc141]
+#IF
+gender man
+#ACT
+GIVE 梦幻之刃[副装] 1
+GIVE 梦幻戒指[副装] 2
+GIVE 梦幻头盔[副装] 1
+GIVE 梦幻项链[副装] 1
+GIVE 梦幻手镯[副装] 2
+GIVE 梦幻战甲[副装] 1
+MessageBox [系统]：\　\　　　　　恭喜你兑换成功
+Break
+#IF
+gender woman
+#ACT
+GIVE 梦幻之刃[副装] 1
+GIVE 梦幻戒指[副装] 2
+GIVE 梦幻头盔[副装] 1
+GIVE 梦幻项链[副装] 1
+GIVE 梦幻手镯[副装] 2
+GIVE 梦幻战袍[副装] 1
+MessageBox [系统]：\　\　　　　　恭喜你兑换成功
+Break
+
+[@KILLMON]
+
+#IF
+CheckItem 高级货币收割者 1
+randomex 5 100
+#act
+ScatterMonItems <$KILLMONNAME>
+SENDMOVEMSG 0 253 0 150 1  玩家【<$USERNAME>】的【顶赞玫瑰】成功启动，又将[<$KILLMONNAME>]原地大爆了1次！！ 10 2 0
+
+#IF
+CheckItem 高级货币收割者 1
+#ACT
+MOV N19 <$GetExp>
+MUL N19 2
+CHANGEEXP + <$STR(N19)>
+
+#IF
+CHECKFENGHAO 狂暴之力 1
+#ACT
+MOV N18 <$GetExp>
+MUL N18 3
+DIV N18 2
+CHANGEEXP + <$STR(N18)>
+
+[@ButtonClick17]
+
+#if
+CheckItem 高级货币收割者 1
+#act
+#CALL [\挂机\智能挂机.txt] @LR智能挂机界面
+#elseact 
+MESSAGEBOX \您不是顶赞玩家,无法使用智能挂机!
+
+[@QueryMyShopFail]
+#ACT
+MESSAGEBOX 你还没有个人商店，是否创建你的个人商店？\\点击确定创建个人商店。 @创建个人商店 @取消
+
+[@创建个人商店]
+亲爱的玩家你好。这里可以申请开店。\
+你可以把你的物品放到你的店铺里出售，\
+游戏中的玩家可以查询到你要出售的物品。\
+也可以把不用的物品放到店铺的仓库里。\
+点击客户端中“店”就可以进入到你的店铺中,\
+也可以查询其他用户的店铺和物品，\
+可以很方便的把仓库物品和出售的物品相互转移。\
+还可以进行摆摊操作。\ 
+
+<我要开店(点击输入你喜欢的店铺名称)/@@InputString3>\
+
+[@InputString3]
+#IF
+CHECKMYSHOP
+#ACT
+MESSAGEBOX 你已经有店铺了
+BREAK
+
+#IF
+CHECKSHOPNAME <$STR(S3)>
+#ACT
+MESSAGEBOX <$STR(S3)>店铺名称已经存在，请重新选择一个
+BREAK
+
+#IF
+#ACT
+CREATEMYSHOP <$STR(S3)>
+
+[@CreateMyShopOK]
+#SAY
+你的店铺创建成功
+
+[@CreateMyShopFail]
+#SAY
+你的店铺创建失败
+
+;======装备掉落检测开始======
+[@掉落前检测]
+#IF
+EQUAL S$用户数据存储地址 ""
+#ACT
+MOV S$用户数据存储地址 ..\..\..\..\通区文件\测试1区\<$USERID>_<$USERNAME>.ini
+
+#IF
+#ACT
+ForceDirectories ..\..\..\..\通区文件\测试1区\
+MOV S$仓库索引文件 ..\..\..\..\通区文件\测试1区\仓库索引_<$USERID>_<$USERNAME>.txt
+MOV S$仓库数量文件 ..\..\..\..\通区文件\测试1区\仓库数量_<$USERID>_<$USERNAME>.txt
+CreateFile S$用户数据存储地址
+CreateFile S$仓库索引文件
+CreateFile S$仓库数量文件
+
+#IF
+#ACT
+MOV S$掉落物品名 <$CURITEMNAME>
+
+#IF
+EQUAL S$掉落物品名 ""
+#ACT
+MOV S$掉落物品名 <$CurItemName>
+#IF
+EQUAL S$掉落物品名 ""
+#ACT
+break
+
+#IF
+#ACT
+MOV N$是否过滤 0
+MOV N$是否存储 0
+MOV N$仓库存储数量 0
+ReadConfigFileItem S$用户数据存储地址 过滤物品 <$STR(S$掉落物品名)> <$STR(N$是否过滤)>
+ReadConfigFileItem S$用户数据存储地址 存储物品 <$STR(S$掉落物品名)> <$STR(N$是否存储)>
+
+#if
+EQUAL N$是否过滤 88
+#ACT
+Sendmsg 7 【咕咕鸡过滤】：物品【<$STR(S$掉落物品名)>】已经被过滤掉了
+StopDropItem
+break
+
+#if
+EQUAL N$是否存储 88
+#ACT
+ReadConfigFileItem S$仓库数量文件 仓库数量 <$STR(S$掉落物品名)> <$STR(N$仓库存储数量)>
+INC N$仓库存储数量 1
+WriteConfigFileItem S$仓库数量文件 仓库数量 <$STR(S$掉落物品名)> <$STR(N$仓库存储数量)>
+
+#IF
+EQUAL N$是否存储 88
+NOT CheckTextList <$STR(S$仓库索引文件)> <$STR(S$掉落物品名)>
+#ACT
+AddTextListEx <$STR(S$仓库索引文件)> <$STR(S$掉落物品名)> 0
+
+#IF
+EQUAL N$是否存储 88
+#ACT
+Sendmsg 7 【咕咕鸡存储】：物品【<$STR(S$掉落物品名)>】已经为您存入仓库，当前数量：<$STR(N$仓库存储数量)>个
+WriteConfigFileItem S$用户数据存储地址 仓库刷新 标记 1
+StopDropItem
+break
+;======装备掉落检测结束======
+;======按钮触发开始======
+[@ButtonClick200]
+#IF
+#ACT
+#CALL [\商店功能\咕咕鸡过滤.txt] @咕咕鸡过滤
+;======按钮触发结束======

@@ -1,0 +1,28 @@
+[@main]
+#if
+CheckMapSameMonCount 荒原 【世界BOSS】荒漠之王 < 1
+#act
+MESSAGEBOX 世界BOSS暂时并未刷新。请关注系统通告
+break
+
+#if
+FindMonPoint 荒原 【世界BOSS】荒漠之王 N558 N559
+#ACT
+OPENMERCHANTBIGDLG 3 1794 1 4 0 -150 1 390 5 0
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+
+<>  <当前地图荒原/FCOLOR=70>  <【世界BOSS】荒漠之王/FCOLOR=249>身在<荒原/SCOLOR=254><$STR(N558)>,<$STR(N559)>\ \
+<>             <【世界BOSS】/FCOLOR=70> <每240分钟刷新/FCOLOR=250> 必报好东西 \ \
+<>                     <荒原世界BOSS直传|需要开启狂暴之力/@传荒原世界>
+
+
+[@传荒原世界]
+#if
+CHECKFENGHAO 狂暴之力
+#act
+MAPMOVE 荒原 <$STR(N558)> <$STR(N559)>
+MESSAGEBOX 请小心行事，世界BOSS很危险
+#elseact
+MESSAGEBOX 直传必须开通狂暴之力

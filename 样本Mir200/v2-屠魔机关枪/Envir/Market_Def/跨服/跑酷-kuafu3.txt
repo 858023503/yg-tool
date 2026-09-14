@@ -1,0 +1,8 @@
+[@main]
+#IF
+#ACT
+
+Goto @跑酷活动NPC
+
+[@全局内存缩小瘦身处理]
+#CALL [\跨服NPC\跑酷活动NPC.TXT] @跑酷活动NPC

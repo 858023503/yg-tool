@@ -1,0 +1,105 @@
+[@爆率加成]
+{
+#IF
+CheckLevelEx > 0
+#ACT
+MOV N$爆率 100
+MOV N$爆率提示 100
+
+
+#or
+ISCASTLEGUILD
+ISCASTLEMASTER
+#ACT
+INC N$爆率 10
+INC N$爆率提示 30
+SENDMSG 6 当前沙巴克成员爆率加成30%
+SENDMSG 6 当前沙巴克成员回收加成30%
+
+
+#IF
+EQUAL <$STR(A21)> <$USERNAME>
+LARGE <$HUMAN(BOSS数量)> 0
+#ACT
+INC N$爆率 10
+INC N$爆率提示 30
+
+#IF
+EQUAL <$STR(A22)> <$USERNAME>
+LARGE <$HUMAN(BOSS数量)> 0
+#ACT
+INC N$爆率 7
+INC N$爆率提示 20
+
+#IF
+EQUAL <$STR(A23)> <$USERNAME>
+LARGE <$HUMAN(BOSS数量)> 0
+#ACT
+INC N$爆率 5
+INC N$爆率提示 15
+
+#IF
+EQUAL <$STR(A24)> <$USERNAME>
+LARGE <$HUMAN(BOSS数量)> 0
+#ACT
+INC N$爆率 4
+INC N$爆率提示 10
+
+#IF
+EQUAL <$STR(A25)> <$USERNAME>
+LARGE <$HUMAN(BOSS数量)> 0
+#ACT
+INC N$爆率 2
+INC N$爆率提示 5
+
+
+
+#IF
+CHECKFENGHAO 马年年卡
+#ACT
+INC N$爆率 18
+INC N$爆率提示 50
+
+
+
+
+
+#IF
+CheckItem 高级货币收割者 1
+#ACT
+INC N$爆率 30
+INC N$爆率提示 100
+
+#IF
+checkGamePoint > 1
+#act
+MOV N$爆率倍数计算H <$GamePoint>
+MOV N$爆率倍数计算D <$GamePoint>
+DIV N$爆率倍数计算H 2
+DIV N$爆率倍数计算D 5
+
+
+#IF
+checkGamePoint > 999
+#act
+MOV N$爆率倍数计算H 500
+MOV N$爆率倍数计算D 200
+
+#IF
+#act
+INC N$爆率 <$STR(N$爆率倍数计算D)>
+INC N$爆率提示 <$STR(N$爆率倍数计算H)>
+
+#IF
+checkFenghao 狂暴之力
+#act
+INC N$爆率 50
+INC N$爆率提示 10
+
+;VIP爆率------------------------------------------------------
+
+;#IF
+;#ACT
+;KILLMONBURSTRATE <$STR(N$爆率)> 0 0 1
+;SENDMSG 6 当前杀怪爆率<$STR(N$爆率提示)>%
+}

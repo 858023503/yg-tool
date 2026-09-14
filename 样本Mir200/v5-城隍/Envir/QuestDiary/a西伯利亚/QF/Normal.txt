@@ -1,0 +1,11 @@
+[@Body]
+{
+[@Help]
+#IF
+#ACT
+OpenAuctionView
+
+[@计时地图返回]
+#ACT
+MAPMOVE N3 330 330 5
+}

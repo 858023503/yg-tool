@@ -1,0 +1,11 @@
+[@∑‚∫≈…Ë÷√]
+{
+
+#if
+CHECKLEVELEX > 0
+#act
+SETRANKLEVELNAME %s\’∂…±£∫[<$STR(U40)>]»À
+BREAK
+
+
+}

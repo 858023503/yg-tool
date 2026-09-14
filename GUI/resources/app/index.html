@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>元歌工具箱</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Microsoft YaHei", sans-serif; background: #eef1f6; color: #333; display: flex; min-height: 100vh; font-size: 14.5px; }
+
+  /* ===== 左侧导航栏 ===== */
+  .sidebar {
+    width: 232px; min-width: 232px; background: linear-gradient(180deg, #f6f8fc 0%, #e9eef7 100%);
+    color: #34405a; display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    border-right: 1px solid #dbe2ee;
+  }
+  .sidebar .logo { padding: 22px 20px 16px; border-bottom: 1px solid #dbe2ee; }
+  .sidebar .logo h1 { font-size: 17px; color: #1b2a45; letter-spacing: 1px; }
+  .sidebar .logo .sub { font-size: 11px; color: #6b7c9b; margin-top: 4px; }
+  .sidebar nav { flex: 1; padding: 10px 0; }
+  .sidebar nav .nav-group { font-size: 11px; color: #8a97b0; padding: 12px 20px 4px; letter-spacing: 2px; }
+  .sidebar nav button {
+    display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 20px; border: none; background: none;
+    color: #3d4b66; font-size: 13.5px; cursor: pointer; text-align: left; border-left: 3px solid transparent;
+    transition: all .15s;
+  }
+  .sidebar nav button .ic { font-size: 15px; width: 22px; text-align: center; }
+  .sidebar nav button:hover { background: rgba(22,119,255,.08); color: #1677ff; }
+  .sidebar nav button.active { background: #1677ff; color: #fff; border-left-color: #0d5fc7; }
+  .sidebar .footer { padding: 14px 20px; font-size: 11px; color: #5c6b84; border-top: 1px solid rgba(255,255,255,.07); }
+
+  /* ===== 右侧内容区 ===== */
+  .content { flex: 1; padding: 20px 26px; min-width: 0; }
+  .topbar { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+  .topbar h2 { font-size: 19px; color: #1f2d3d; }
+  .topbar .root-box { display: flex; align-items: center; gap: 8px; margin-left: auto; flex-wrap: wrap; }
+  .topbar .root-box input { width: 320px; max-width: 40vw; }
+
+  .card { background: #fff; border-radius: 10px; padding: 18px 20px; box-shadow: 0 2px 8px rgba(30,50,90,.06); border: 1px solid #e8ecf2; }
+  .card h4 { font-size: 13.5px; color: #445; margin: 6px 0 12px; }
+  .card hr { border: none; border-top: 1px solid #eef1f5; margin: 14px 0; }
+  .row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+  label { min-width: 90px; font-size: 15px; color: #445; }
+  .hint { font-size: 13px !important; }
+  .hint { font-size: 13px !important; }
+  input[type=text], input[type=number] {
+    flex: 1; min-width: 120px; padding: 8px 11px; border: 1px solid #d8dee8; border-radius: 6px; font-size: 14px; background: #fafbfd; transition: border .15s;
+  }
+  select { min-width: 90px; padding: 8px 11px; border: 1px solid #d8dee8; border-radius: 6px; font-size: 14px; background: #fafbfd; transition: border .15s; }
+  input:focus, select:focus { outline: none; border-color: #1677ff; background: #fff; box-shadow: 0 0 0 3px rgba(22,119,255,.1); }
+  input[type=number] { max-width: 110px; }
+  button { padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; transition: all .15s; }
+  .btn-primary { background: #1677ff; color: #fff; }
+  .btn-primary:hover { background: #3c8cff; }
+  .btn-default { background: #fff; color: #333; border: 1px solid #d8dee8; }
+  .btn-default:hover { border-color: #1677ff; color: #1677ff; }
+  .btn-danger { background: #dc3545; color: #fff; }
+  .btn-danger:hover { background: #e5535f; }
+  .btn-warn { background: #fa8c16; color: #fff; }
+  .btn-warn:hover { background: #ffa940; }
+
+  .seg { display: flex; gap: 0; border: 1px solid #d8dee8; border-radius: 6px; overflow: hidden; background: #f4f6fa; }
+  .seg button { border: none; background: transparent; padding: 7px 14px; font-size: 13px; border-radius: 0; }
+  .seg button.active { background: #1677ff; color: #fff; }
+  .seg button:not(.active):hover { background: #e8edf6; }
+
+  .hint { font-size: 12px; color: #9aa4b5; margin-top: 4px; }
+  .box { background: #1b2230; color: #d4d9e2; border-radius: 8px; padding: 12px; font-family: Consolas, monospace; font-size: 12.5px; max-height: 300px; overflow: auto; white-space: pre-wrap; margin-top: 4px; }
+
+  .panel { display: none; }
+  .panel.active { display: block; animation: fadein .18s ease; }
+  @keyframes fadein { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+  .content { flex: 1; padding: 16px 26px 8px; min-width: 0; display: flex; flex-direction: column; min-height: 0; }
+  .panels-wrap { flex: 1; overflow-y: auto; min-height: 0; padding-right: 6px; padding-bottom: 200px; }
+  #log { background: #1b2230; color: #d4d9e2; border-radius: 8px; padding: 8px 10px; font-family: Consolas, monospace; font-size: 12.5px; white-space: pre-wrap; }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-thumb { background: #c4ccd8; border-radius: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  /* 变量查询选中高亮（色差） */
+  .vq-type:hover, .vq-var:hover, .vq-ref:hover { background: #eef3ff; }
+  .vq-type.active, .vq-var.active { background: #1677ff !important; color: #fff !important; }
+  .vq-type.active span, .vq-var.active span { color: #fff !important; }
+  .vq-ref.active { background: #e6f4ff !important; color: #1677ff !important; }
+  /* placeholder 显示不全优化（全局） */
+  input::placeholder { font-size: 12px; color: #8a93a6; opacity: 1; }
+  .hint { white-space: normal; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<!-- ===== 左侧导航 ===== -->
+<aside class="sidebar">
+  <div class="logo">
+    <h1>⚙ 元歌工具箱</h1>
+    <div class="sub">传奇服务端工具箱</div>
+  </div>
+  <nav>
+    <div class="nav-group">⚡ 快捷操作</div>
+    <button data-nav="npctool"><span class="ic">⚡</span>快捷操作</button>
+    <div class="nav-group">💎 爆率系统</div>
+    <button data-nav="adjust"><span class="ic">📦</span>爆率调整</button>
+    <button data-nav="bulk"><span class="ic">📊</span>批量调整</button>
+    <button data-nav="random"><span class="ic">🎲</span>随机转换</button>
+    <button data-nav="mapview"><span class="ic">🗺️</span>按地图查看</button>
+    
+    <div class="nav-group">👹 刷怪系统</div>
+    <button data-nav="mongen"><span class="ic">👹</span>刷怪配置</button>
+    <button data-nav="robot"><span class="ic">🤖</span>机器人脚本</button>
+    <div class="nav-group">💰 货币系统</div>
+    <button data-nav="currency"><span class="ic">💰</span>货币消耗</button>
+    <button data-nav="exchange"><span class="ic">🔄</span>货币兑换</button>
+    <button data-nav="recycle"><span class="ic">♻️</span>回收NPC</button>
+    <div class="nav-group">🛠 服务端工具</div>
+    <button data-nav="search"><span class="ic">📝</span>脚本搜索</button>
+    <button data-nav="inject"><span class="ic">📥</span>脚本注入</button>
+    <button data-nav="sync"><span class="ic">📡</span>目录同步</button>
+    <button data-nav="login"><span class="ic">🔧</span>登录器配置</button>
+    <button data-nav="varquery"><span class="ic">🔎</span>变量查询</button>
+    <div class="nav-group">🗂 存销系统</div>
+    <button data-nav="sales"><span class="ic">🗂️</span>存销系统</button>
+    <div class="nav-group">⚙️ 服务端配置</div>
+    <button data-nav="portcfg"><span class="ic">🔧</span>端口配置</button>
+    <button data-nav="itemcfg"><span class="ic">🎒</span>物品管理</button>
+    <button data-nav="mapcfg"><span class="ic">🗺️</span>地图配置</button>
+    <div class="nav-group">🩺 诊断检查</div>
+    <button data-nav="engineck"><span class="ic">🔍</span>引擎健检</button>
+    <button data-nav="compare"><span class="ic">🔀</span>文件对比</button>
+    <button data-nav="health"><span class="ic">🏥</span>一键体检</button>
+    <div class="nav-group">🚀 开区部署</div>
+    <button data-nav="site"><span class="ic">🌐</span>开区网站</button>
+  </nav>
+  <div class="footer">GBK/ANSI 编码自动识别</div>
+</aside>
+
+<!-- ===== 右侧内容 ===== -->
+<main class="content">
+  <div class="topbar">
+    <h2 id="page-title">快捷操作</h2>
+    <div class="root-box">
+      <input type="text" id="root" placeholder="服务端根 / Mir200 / Envir 任一层，如 D:\Mirserver">
+      <button class="btn-default" id="btn-dir">📁 浏览…</button>
+      <select id="root-hist" title="历史引擎根目录（记住上次选择）" style="max-width:200px;"><option value="">历史版本…</option></select>
+      <button class="btn-default" id="btn-root-del" title="删除选中的历史项">🗑</button>
+      <button class="btn-warn" id="btn-backup">备份 MonItems</button>
+    </div>
+  </div>
+  <div class="panels-wrap">
+
+  <!-- ① 爆率调整 -->
+  
+
+<div class="panel" id="panel-adjust">
+    <div class="card">
+      <div class="row">
+        <label>操作范围</label>
+        <div class="seg" id="scope-seg">
+          <button data-scope="all" class="active">全服</button>
+          <button data-scope="mon">指定怪物</button>
+          <button data-scope="map">按地图</button>
+          <button data-scope="goods">按物品(加在物品后)</button>
+        </div>
+      </div>
+      <div class="row" id="row-mon" style="display:none;">
+        <label>怪物名</label>
+        <input type="text" id="mon" placeholder="例如 白野猪 / 祖玛教主">
+      </div>
+      <div class="row" id="row-map" style="display:none;">
+        <label>地图代码</label>
+        <input type="text" id="map" placeholder="MonGen.txt 地图代码，如 shuai209 / Q004">
+        <span class="hint">从 MonGen.txt 查该地图刷的怪</span>
+      </div>
+      <div class="row" id="row-gitem" style="display:none;">
+        <label>目标物品</label>
+        <input type="text" id="gitem" placeholder="加在哪个物品后（全服查找）">
+        <label style="min-width:auto;">追加物品</label>
+        <input type="text" id="gnew" placeholder="追加什么物品">
+      </div>
+      <div class="row">
+        <label>操作类型</label>
+        <div class="seg" id="op-seg">
+          <button data-op="add" class="active">追加爆率</button>
+          <button data-op="del">删除爆率</button>
+        </div>
+      </div>
+      <div class="row" id="row-item">
+        <label>物品名</label>
+        <input type="text" id="item" placeholder="例如 屠龙 / 裁决之杖">
+      </div>
+      <div class="row">
+        <label>爆率类型</label>
+        <div class="seg" id="cat-seg">
+          <button data-cat="normal" class="active">普通爆率 1/N</button>
+          <button data-cat="child">随机 #CHILD 1/N</button>
+          <button data-cat="range">#CHILD 区间</button>
+        </div>
+      </div>
+      <div class="row" id="row-rate">
+        <label>爆率</label>
+        <input type="number" id="rate" value="100" min="1" placeholder="每 N 只掉 1 个">
+        <label style="min-width:auto;">数量</label>
+        <input type="number" id="count" value="1" min="1" placeholder="最多掉几个">
+      </div>
+      <div class="row" id="row-range" style="display:none;">
+        <label>随机区间</label>
+        <input type="number" id="range-start" placeholder="开始(如10)">
+        <label style="min-width:auto;">~</label>
+        <input type="number" id="range-end" placeholder="结束(如100)">
+        <span class="hint">N 在区间内随机，生成 #CHILD 1/N</span>
+      </div>
+      <div class="row">
+        <button class="btn-primary" id="btn-run" style="margin-left:84px;">执行修改</button>
+      </div>
+      <div class="hint">追加 = 在爆率文件末尾加一行；删除 = 移除所有该物品条目。操作前建议先备份。</div>
+      <div class="card" style="margin-top:16px;">
+        <h4>⚡ 整体爆率优化（还原自虾米：筛选目标 + 范围匹配 + 运算）</h4>
+        <div class="row">
+          <label>目标</label>
+          <select id="oo-method" style="width:110px;">
+            <option value="all">全服</option>
+            <option value="monster">按怪物</option>
+            <option value="map">按地图</option>
+            <option value="item">按物品</option>
+          </select>
+          <input type="text" id="oo-target" placeholder="目标名（逗号分隔；全服留空）" style="flex:1;">
+        </div>
+        <div class="row">
+          <label>范围筛选</label>
+          <select id="oo-range-op" style="width:80px;"><option value="">不过滤</option><option value=">">大于</option><option value="<">小于</option><option value="=">等于</option></select>
+          <input type="number" id="oo-range-val" placeholder="分母阈值（如 50）" style="width:180px;">
+        </div>
+        <div class="row">
+          <label>运算</label>
+          <select id="oo-op" style="width:80px;"><option value="mul">乘</option><option value="add">加</option><option value="sub">减</option><option value="div">除</option><option value="set">设</option></select>
+          <input type="number" id="oo-op-val" placeholder="数值（如 2）" style="width:180px;">
+          <button class="btn-primary" id="oo-run">执行整体优化</button>
+        </div>
+        <div class="row">
+          <label>备份/还原</label>
+          <button class="btn" id="oo-backup">📦 备份爆率</button>
+          <select id="oo-restore" style="flex:1;"><option value="">选择备份还原…</option></select>
+          <button class="btn" id="oo-restore-btn">↩ 还原</button>
+        </div>
+        <div class="hint">执行前自动备份到 MonItems\@backup\；处理时自动跳过备份目录（还原自虾米）。范围/运算作用于爆率分母（1/x 的 x）。</div>
+      </div>
+      <div class="card" style="margin-top:16px;">
+        <h4>📥 批量新增爆率（还原自虾米：物品列表一次加到全服/指定怪）</h4>
+        <div class="row">
+          <label>物品</label>
+          <input type="text" id="ar-items" placeholder="物品名，逗号分隔，如: 屠龙,裁决之杖" style="flex:1;">
+          <input type="number" id="ar-rate" placeholder="分母 1/x" style="width:90px;" value="100">
+        </div>
+        <div class="row">
+          <label>目标</label>
+          <select id="ar-method" style="width:90px;"><option value="all">全服</option><option value="monster">指定怪</option></select>
+          <input type="text" id="ar-monsters" placeholder="怪名（逗号分隔，全服留空）" style="flex:1;">
+          <button class="btn-primary" id="ar-run">批量新增</button>
+        </div>
+        <div class="hint">自动备份到 @backup\；新增格式 1/{分母}\t{物品名}</div>
+      </div>
+      <div class="card" style="margin-top:16px;">
+        <h4>🔗 #CALL 还原（还原自虾米：解析 MonItems 里的 #CALL 引用，防目录穿越/防备份）</h4>
+        <div class="row">
+          <button class="btn" id="cr-scan">🔍 扫描 #CALL</button>
+          <button class="btn-primary" id="cr-apply">↩ 展开 #CALL</button>
+          <div class="hint" id="cr-result" style="flex:1;">扫描 MonItems 中 #CALL 引用（防穿越/防备份校验）</div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px;">
+        <h4>🗑 指定删除（还原自虾米：按内容全服删除，自动备份）</h4>
+        <div class="row">
+          <input type="text" id="dr-content" placeholder="物品名（完全匹配）/ 片段 / 正则" style="flex:1;">
+          <select id="dr-method" style="width:90px;"><option value="item">完全匹配</option><option value="contain">包含</option><option value="regex">正则</option></select>
+          <button class="btn-primary" id="dr-run">指定删除</button>
+        </div>
+        <div class="hint">删除所有怪物爆率中匹配的物品条目；操作前自动备份</div>
+      </div>
+      <div class="card" style="margin-top:16px;">
+        <h4>🗂 普通爆率分组（还原自虾米：按组大小合并成 #CHILD RANDOM 组）</h4>
+        <div class="row">
+          <label>每组</label>
+          <input type="number" id="gr-size" value="5" min="2" style="width:70px;">
+          <label>条</label>
+          <button class="btn-primary" id="gr-run">执行分组</button>
+          <div class="hint" style="flex:1;">散落普通爆率按 N 条一组包成 #CHILD 1/1 RANDOM（不改变概率）</div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px;">
+        <h4>✨ 二级爆率优化（还原自虾米：整理 #CHILD 结构——去重/清空组）</h4>
+        <div class="row">
+          <button class="btn-primary" id="op-run">执行优化</button>
+          <div class="hint" style="flex:1;">合并重复物品、删除空 #CHILD 组、展平未闭合括号</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ② 批量调整 -->
+  <div class="panel" id="panel-bulk">
+    <div class="card">
+      <div class="row">
+        <label>调整范围</label>
+        <div class="seg" id="bulk-scope-seg">
+          <button data-bs="all" class="active">全服调整</button>
+          <button data-bs="mon">按怪物名称</button>
+          <button data-bs="map">按地图</button>
+        </div>
+      </div>
+      <div class="row" id="row-bmon" style="display:none;">
+        <label>怪物名</label>
+        <input type="text" id="bmon" placeholder="例如 白野猪">
+      </div>
+      <div class="row" id="row-bmap" style="display:none;">
+        <label>地图代码</label>
+        <input type="text" id="bmap" placeholder="MonGen.txt 地图代码">
+      </div>
+      <div class="row">
+        <label>调整类型</label>
+        <div class="seg" id="bulk-type-seg">
+          <button data-bt="normal" class="active">普通爆率 1/*</button>
+          <button data-bt="child">随机爆率 #CHILD 1/*</button>
+        </div>
+      </div>
+      <div class="row">
+        <label>倍率</label>
+        <input type="number" id="b-rate" value="0.5" step="0.1" placeholder="如 0.5：1/100→1/50">
+      </div>
+      <div class="row">
+        <label>最小爆率</label>
+        <input type="number" id="b-min" placeholder="≥多少才调整（留空=不限）">
+        <label style="min-width:auto;">最大爆率</label>
+        <input type="number" id="b-max" placeholder="≤多少才调整（留空=不限）">
+      </div>
+      <div class="row">
+        <label>上限限定</label>
+        <input type="number" id="b-limit" placeholder="超出此值的限定为此值（留空=不限）">
+      </div>
+      <div class="row">
+        <button class="btn-primary" id="btn-bulk" style="margin-left:84px;">开始调整爆率</button>
+      </div>
+      <div class="hint">如输入 0.5，原爆率 1/100 计算结果 100×0.5=50，调整后为 1/50。最小值限定 1，最大值限定 90000000。</div>
+    </div>
+  </div>
+
+  <!-- ③ 随机转换 -->
+  <div class="panel" id="panel-random">
+    <div class="card">
+      <div class="row">
+        <label>转换范围</label>
+        <div class="seg" id="rnd-scope-seg">
+          <button data-rs="all" class="active">全服转换</button>
+          <button data-rs="mon">按怪物名称</button>
+          <button data-rs="map">按地图</button>
+        </div>
+      </div>
+      <div class="row" id="row-rmon" style="display:none;">
+        <label>怪物名</label>
+        <input type="text" id="rmon" placeholder="例如 白野猪">
+      </div>
+      <div class="row" id="row-rmap" style="display:none;">
+        <label>地图代码</label>
+        <input type="text" id="rmap" placeholder="MonGen.txt 地图代码">
+      </div>
+      <div class="row">
+        <label>优化范围</label>
+        <div class="seg" id="rnd-filter-seg">
+          <button data-rf="all" class="active">全部普通爆率</button>
+          <button data-rf="ge100">只优化 ≥100 爆率</button>
+          <button data-rf="le1000">只优化 ≤1000 爆率</button>
+        </div>
+      </div>
+      <div class="row">
+        <button class="btn-primary" id="btn-random" style="margin-left:84px;">转换为随机爆率（#CHILD）</button>
+      </div>
+      <div class="hint">把符合条件的普通爆率（如 屠龙 1/100 1）转换为随机子项格式（#CHILD 1/100 1），用于减少垃圾爆率。</div>
+    </div>
+  </div>
+
+  <!-- ④ 按地图查看 -->
+  <div class="panel" id="panel-mapview">
+    <div class="card">
+      <div class="row">
+        <label>地图代码</label>
+        <input type="text" id="mv-map" placeholder="MonGen.txt 地图代码，如 shuai209 / Q004 / 3">
+        <button class="btn-primary" id="btn-mapview">查询地图刷怪</button>
+      </div>
+      <div class="hint">从 MonGen.txt 查该地图刷哪些怪，并显示每个怪的爆率概况（动态刷怪脚本的怪无法获取）。</div>
+    </div>
+    <div class="card" style="margin-top:10px;">
+      <div class="row">
+        <label>物品产出查询</label>
+        <input type="text" id="if-item" placeholder="如 金币 / 裁决之杖" style="min-width:220px;">
+        <button class="btn-primary" id="btn-itemfind">全服查询产出</button>
+      </div>
+      <div class="hint">扫描全部爆率文件，找出哪些怪掉该物品及其爆率。</div>
+    </div>
+  </div>
+
+
+  <!-- ⑥ 刷怪配置（MonGen.txt） -->
+  <div class="panel" id="panel-mongen">
+    <div class="card">
+      <div class="row">
+        <label>地图代码</label>
+        <input type="text" id="m-map" placeholder="留空=全部，如 shuai209 / Q004">
+        <button class="btn-primary" id="m-list">查看刷怪</button>
+        <button class="btn-primary" id="m-table" style="margin-left:8px;">📊 刷怪表格</button>
+        <label style="min-width:auto;margin-left:8px;">怪物过滤</label>
+        <input type="text" id="m-mon" placeholder="怪物名" style="width:110px;">
+      </div>
+      <div id="m-tablebox" style="display:none;margin-top:8px;max-height:320px;overflow:auto;">
+        <table id="m-tableview" style="width:100%;border-collapse:collapse;font-size:12px;">
+          <thead><tr><th style="text-align:left;padding:4px;border:1px solid #444;">地图</th><th style="text-align:left;padding:4px;border:1px solid #444;">地图名</th><th style="padding:4px;border:1px solid #444;">X</th><th style="padding:4px;border:1px solid #444;">Y</th><th style="text-align:left;padding:4px;border:1px solid #444;">怪物</th><th style="padding:4px;border:1px solid #444;">数量</th><th style="padding:4px;border:1px solid #444;">范围</th><th style="padding:4px;border:1px solid #444;">间隔(分)</th><th style="text-align:left;padding:4px;border:1px solid #444;">附加</th></tr></thead>
+          <tbody id="m-tablebody"></tbody>
+        </table>
+      </div>
+      <hr>
+      <h4>追加刷怪行</h4>
+      <div class="row">
+        <label>地图</label><input type="text" id="m-amap" placeholder="地图代码" style="width:90px;">
+        <label style="min-width:auto;">X</label><input type="number" id="m-ax" style="width:60px;">
+        <label style="min-width:auto;">Y</label><input type="number" id="m-ay" style="width:60px;">
+        <label style="min-width:auto;">怪物</label><input type="text" id="m-amon" placeholder="怪物名">
+      </div>
+      <div class="row">
+        <label>数量</label><input type="number" id="m-acount" value="1" style="width:60px;">
+        <label style="min-width:auto;">范围</label><input type="number" id="m-arange" value="0" style="width:60px;">
+        <label style="min-width:auto;">间隔(秒)</label><input type="number" id="m-ainterval" value="0" style="width:80px;">
+        <label style="min-width:auto;">时间</label><input type="number" id="m-atime" value="0" style="width:60px;">
+        <label style="min-width:auto;">触发</label><input type="number" id="m-atrigger" value="0" style="width:60px;">
+        <button class="btn-primary" id="m-add">追加</button>
+      </div>
+      <hr>
+      <h4>删除刷怪行</h4>
+      <div class="row">
+        <label>地图</label><input type="text" id="m-dmap" placeholder="地图代码" style="width:90px;">
+        <label style="min-width:auto;">怪物</label><input type="text" id="m-dmon" placeholder="怪物名">
+        <button class="btn-danger" id="m-del">删除</button>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px;">
+      <h4>原刷怪调整（MonGen.txt 批量修改）</h4>
+      <div class="row">
+        <label>修改类型</label>
+        <div class="seg" id="mg-type-seg">
+          <button data-mgt="all" class="active">全服调整</button>
+          <button data-mgt="map">按地图</button>
+          <button data-mgt="mongen">按怪物</button>
+        </div>
+        <input type="text" id="mg-name" placeholder="地图代码/怪物名" style="display:none;width:120px;">
+      </div>
+      <div class="row">
+        <label>刷新数量</label>
+        <input type="number" id="mg-count" value="1" step="0.1" style="width:90px;">
+        <span class="hint">倍（原100只×2=200只）</span>
+        <label style="min-width:auto;">刷新时间</label>
+        <input type="number" id="mg-time" value="1" step="0.1" style="width:90px;">
+        <span class="hint">倍（原60分×0.5=30分）</span>
+      </div>
+      <div class="row">
+        <label>排除刷新时间</label>
+        <select id="mg-exd-op" style="width:80px;"><option value="<=">≤</option><option value=">=">≥</option></select>
+        <input type="number" id="mg-exd" placeholder="留空=不排除" style="width:100px;">
+        <label style="min-width:auto;">排除刷新数量</label>
+        <select id="mg-exm-op" style="width:80px;"><option value=">=">≥</option><option value="<=">≤</option></select>
+        <input type="number" id="mg-exm" placeholder="留空=不排除" style="width:100px;">
+        <button class="btn-primary" id="mg-adjust" style="margin-left:12px;">执行调整</button>
+      </div>
+      </div>
+    <div class="card" style="margin-top:16px;">
+      <h4>动态刷怪配置（有人有怪，无人清怪，性能节约、稳定不卡）</h4>
+      <div class="row">
+        <label>触发百分比</label><input type="number" id="dy-pro" value="50" style="width:80px;"><span class="hint">% 怪低于此值触发刷怪</span>
+        <label style="min-width:auto;">触发人数</label><input type="number" id="dy-count" value="1" style="width:70px;"><span class="hint">人</span>
+        <label style="min-width:auto;">刷怪百分比</label><input type="number" id="dy-moncount" value="100" style="width:80px;"><span class="hint">%</span>
+      </div>
+      <div class="row">
+        <label>刷怪间隔</label><input type="number" id="dy-intervaled" value="60" style="width:80px;"><span class="hint">秒</span>
+        <label style="min-width:auto;">清怪间隔</label><input type="number" id="dy-interval" value="60" style="width:80px;"><span class="hint">秒</span>
+        <label style="min-width:auto;">排除地图</label><input type="text" id="dy-exmap" placeholder="逗号分隔" style="width:150px;">
+        <label style="min-width:auto;">排除怪物</label><input type="text" id="dy-exmon" placeholder="逗号分隔" style="width:150px;">
+      </div>
+      <div class="row">
+        <label>排除刷新时间</label>
+        <input type="number" id="dy-starttime" placeholder="≥分钟" title="排除刷新间隔 ≥ 该值（分钟）" style="width:80px;">
+        <input type="number" id="dy-endtime" placeholder="数量≤" title="排除刷新数量 ≤ 该值" style="width:70px;">
+        <label style="min-width:auto;">引擎</label>
+        <select id="dy-engine" style="width:90px;"><option value="LFM2">LFM2</option><option value="GXXM2">GXXM2</option></select>
+        <label style="min-width:auto;">怪阈值</label><input type="number" id="dy-tcpct" value="50" title="地图怪低于原始多少%时触发补怪" style="width:60px;"><span class="hint">%</span>
+        <label style="min-width:auto;"><input type="checkbox" id="dy-qm" checked> 注入 QManage</label>
+        <button class="btn-warn" id="dy-run" style="margin-left:12px;">生成动态刷怪</button>
+      <span class="hint">会修改 MonGen.txt 并写入 Robot_def，写前自动备份</span>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px;">
+      <h4>个人刷怪（QuestDiary\元歌个人刷怪，还原自虾米 _generate_personal_spawn）</h4>
+      <div class="row">
+        <label>地图代码</label><input type="text" id="ps-map" placeholder="如 3" style="width:90px;">
+        <label style="min-width:auto;">怪物</label><input type="text" id="ps-mon" placeholder="怪物名">
+        <label style="min-width:auto;">数量</label><input type="number" id="ps-count" value="2" style="width:70px;">
+        <label style="min-width:auto;">范围</label><input type="number" id="ps-range" value="5" style="width:70px;">
+        <label style="min-width:auto;"><input type="checkbox" id="ps-qm" checked> 注入QManage</label>
+        <button class="btn-warn" id="ps-run" style="margin-left:12px;">生成个人刷怪</button>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px;">
+      <h4>副本刷怪（QuestDiary\元歌副本刷怪 + 地图实例复制，还原自虾米 _generate_instance_spawn）</h4>
+      <div class="row">
+        <label>副本地图</label>
+        <select id="is-map" style="width:200px;"><option value="">先点"加载副本"</option></select>
+        <button class="btn-primary" id="is-load" style="margin-left:8px;">加载副本</button>
+        <label style="min-width:auto;">怪物</label><input type="text" id="is-mon" placeholder="怪物名">
+        <label style="min-width:auto;">数量</label><input type="number" id="is-count" value="1" style="width:70px;">
+        <label style="min-width:auto;">范围</label><input type="number" id="is-range" value="3" style="width:70px;">
+        <label style="min-width:auto;"><input type="checkbox" id="is-qm" checked> 注入QManage</label>
+        <button class="btn-warn" id="is-run" style="margin-left:12px;">生成副本刷怪</button>
+      </div>
+      <div class="row"><span class="hint" id="is-hint">副本地图 = MapInfo.txt 里 [实例|主图 名称] 格式的地图，缺少 .map 时自动从主图复制</span></div>
+    </div>
+  </div>
+
+  <!-- ⑦ 版本货币消耗分析 -->
+  <div class="panel" id="panel-currency">
+    <div class="card">
+      <div class="row">
+        <label>过滤</label>
+        <label style="min-width:auto;"><input type="checkbox" id="c-drop-qf"> 丢弃 QFunction 消耗</label>
+        <label style="min-width:auto;"><input type="checkbox" id="c-drop-qm"> 丢弃 QManage 消耗</label>
+        <button class="btn-primary" id="c-run" style="margin-left:auto;">开始分析</button>
+      </div>
+      </div>
+  </div>
+
+  <!-- ⑧ 脚本搜索替换 -->
+  <div class="panel" id="panel-search">
+    <div class="card">
+      <div class="row">
+        <label>搜索目录</label>
+        <input type="text" id="s-dir" placeholder="默认 Envir，如 D:\Mirserver\Mir200\Envir">
+        <button class="btn-default" id="s-browse">选择</button>
+      </div>
+      <div class="row">
+        <label>搜索内容</label>
+        <input type="text" id="s-search" placeholder="请输入或选择搜索内容">
+      <div class="row">
+        <label>常用搜索</label>
+        <select id="sr-preset" style="width:220px;">
+          <option value="">-- 选择预设 --</option>
+          <option value="@Reload">重载命令 @Reload</option>
+          <option value="@reloadnpc">重载NPC @reloadnpc</option>
+          <option value="@ReloadMonItems">重载爆率 @ReloadMonItems</option>
+          <option value="N$">变量 N$</option>
+          <option value="S$">变量 S$</option>
+          <option value="<$STR(">变量 <$STR(</option>
+          <option value="CHECKGOLD">CHECKGOLD</option>
+          <option value="TAKE 金币">TAKE 金币</option>
+          <option value="QuestDiary">QuestDiary 调用</option>
+          <option value="Market_Def">Market_Def 商人</option>
+          <option value="CHECKMAPMONCOUNT">CHECKMAPMONCOUNT</option>
+          <option value="GIVE 元宝">GIVE 元宝</option>
+        </select>
+        <span class="hint">还原自快捷助手"搜索0-30"预设：点击填入搜索框</span>
+      </div>
+      </div>
+      <div class="row">
+        <label>替换为</label>
+        <input type="text" id="s-replace" placeholder="留空=删除匹配内容（替换模式）">
+      <div class="row">
+        <label>匹配方式</label>
+        <select id="sr-mode" style="width:140px;">
+          <option value="contains">包含</option>
+          <option value="exact">完全匹配</option>
+          <option value="regex">正则</option>
+          <option value="prefix">前缀</option>
+          <option value="suffix">后缀</option>
+        </select>
+        <span class="hint">还原自虾米文本搜索：包含/完全/正则/前缀/后缀匹配</span>
+      </div>
+        <label style="min-width:auto;"><input type="checkbox" id="s-case" checked> 区分大小写</label>
+        <label style="min-width:auto;"><input type="checkbox" id="s-child" checked> 包含子目录</label>
+        <label style="min-width:auto;">类型</label>
+        <input type="text" id="s-type" value=".txt" style="width:70px;">
+      </div>
+      <div class="row">
+        <button class="btn-primary" id="s-run">搜索</button>
+        <button class="btn-danger" id="s-replace-btn">替换</button>
+        <span class="hint" style="margin-left:12px;">替换会写回文件，建议先备份</span>
+      </div>
+      </div>
+  </div>
+
+  <!-- ⑨ 货币兑换 NPC -->
+      <div class="panel" id="panel-exchange">
+    <div class="card">
+      <h4>兑换 NPC 位置</h4>
+      <div class="row">
+        <label>地图</label><input type="text" id="x-map" list="x-maplist" placeholder="代码或名称，如 3" style="width:130px;">
+        <datalist id="x-maplist"></datalist>
+        <select id="x-maplist-sel" style="width:180px;max-height:220px;" title="地图下拉（可滚动，选后填入左侧）">
+          <option value="">-- 选地图(可滚动) --</option>
+        </select>
+        <button class="btn-default" id="x-loadmap" title="从 MapInfo.txt 加载地图（对齐虾米地图下拉+自动补全）">🗺 地图</button>
+        <label style="min-width:auto;">X</label><input type="number" id="x-x" style="width:70px;">
+        <label style="min-width:auto;">Y</label><input type="number" id="x-y" style="width:70px;">
+        <label style="min-width:auto;">NPC名</label><input type="text" id="x-npc" placeholder="显示名" style="width:120px;">
+        <label style="min-width:auto;">重复次数</label>
+        <input type="number" id="x-count" style="width:60px;" value="2" min="1" max="5">
+        <span class="hint">如输入2：每项生成 ×10、×100 两档兑换</span>
+        <label style="min-width:auto;"><input type="checkbox" id="x-genonly"> 只生成不写入</label>
+      </div>
+      <div class="row">
+        <button class="btn-default" id="x-extract">🔍 一键提取全服货币</button>
+        <span class="hint">提取的货币会加入下方下拉（各版本货币命名不同）</span>
+      </div>
+      <h4>兑换项（每行：用多少 货币A → 兑换 多少 货币B）</h4>
+      <div id="x-list"></div>
+      <div class="row">
+        <button class="btn-default" id="x-add">＋ 新增兑换项</button>
+      </div>
+      <div class="row">
+        <button class="btn-primary" id="x-run">一键生成兑换 NPC</button>
+      </div>
+      </div>
+  </div>
+
+  <!-- ⑪ 脚本注入 -->
+  <div class="panel" id="panel-inject">
+    <div class="card">
+      <div class="row">
+        <label>模板库</label>
+        <select id="ij-tpl" style="width:220px;"><option value="">-- 无模板 --</option></select>
+        <button class="btn-default" id="ij-load" title="载入选中模板到表单">📂 载入</button>
+        <button class="btn-default" id="ij-save" title="把当前表单存为模板（对齐虾米模板库）">💾 存为模板</button>
+        <button class="btn-danger" id="ij-del" title="删除选中模板">🗑 删除</button>
+        <span class="hint" id="ij-st">模板 = 名称/目标/模式/变量替换/内容</span>
+      </div>
+      <div class="row">
+        <label>注入名称</label>
+        <input type="text" id="i-name" placeholder="注入项名称（用于防重复检测）">
+      </div>
+      <div class="row">
+        <label>注入目标</label>
+        <select id="i-target" style="width:180px;">
+          <option value="QF">QFunction-0.txt（Market_Def）</option>
+          <option value="QM">QManage.txt（MapQuest_Def）</option>
+          <option value="EffectImageList">EffectImageList.txt（素材列表）</option>
+          <option value="GroupItemList">GroupItemList.txt（物品分组）</option>
+          <option value="ItemRuleList">ItemRuleList.txt（物品规则）</option>
+          <option value="ItemDescList">ItemDescList.txt（物品描述）</option>
+          <option value="custom">自定义路径</option>
+        </select>
+        <input type="text" id="i-target-file" placeholder="自定义相对路径，如 QuestDiary\我的脚本.txt" style="display:none;">
+      </div>
+      <div class="row">
+        <label>注入模式</label>
+        <div class="seg" id="i-mode-seg">
+          <button data-im="append" class="active">追加注入</button>
+          <button data-im="overwrite">覆盖注入</button>
+          <button data-im="cancel">已注入则取消</button>
+        </div>
+      </div>
+      <div class="row">
+        <label>变量替换</label>
+        <label style="min-width:auto;"><input type="checkbox" id="i-vars"> 替换注入脚本内占用变量（N$/S$/U 等冲突时自动换名）</label>
+      </div>
+      <div class="row" style="align-items:flex-start;">
+        <label>脚本内容</label>
+        <textarea id="i-content" rows="10" placeholder="要注入的脚本段，如：&#10;[@我的功能]&#10;#IF&#10;CHECKGOLD 1000&#10;#ACT&#10;TAKE 金币 1000&#10;GIVE 元宝 1" style="flex:1;font-family:Consolas,monospace;font-size:13px;padding:8px;border:1px solid #d8dee8;border-radius:6px;background:#fafbfd;"></textarea>
+      </div>
+      <div class="row">
+        <button class="btn-primary" id="i-run" style="margin-left:84px;">执行注入</button>
+        <span class="hint">重复注入检测：内容前后自动加标记，已注入过会按模式处理</span>
+      </div>
+      </div>
+  </div>
+
+
+  <!-- ⑫ 机器人脚本 -->
+  <div class="panel" id="panel-robot">
+    <div class="card">
+      <div class="row">
+        <button class="btn-primary" id="rb-list">查看机器人配置</button>
+        <span class="hint">读取 AutoRunRobot.txt（定时行）+ RobotManage.txt（脚本段）</span>
+      </div>
+      <hr>
+      <h4>新增定时机器人</h4>
+      <div class="row">
+        <label>名称</label><input type="text" id="rb-name" placeholder="如 全图清怪 / BOSS刷怪" style="width:150px;">
+        <label style="min-width:auto;">间隔</label><input type="number" id="rb-interval" value="60" style="width:70px;">
+        <select id="rb-unit" style="width:90px;">
+          <option value="SEC">秒</option>
+          <option value="MIN">分钟</option>
+          <option value="HOUR">小时</option>
+        </select>
+        <label style="min-width:auto;">类型</label>
+        <div class="seg" id="rb-type-seg">
+          <button data-rt="clear" class="active">清怪</button>
+          <button data-rt="spawn">刷怪</button>
+        </div>
+      </div>
+      <div class="row" id="rb-row-clear">
+        <label>清怪地图</label>
+        <input type="text" id="rb-maps" placeholder="多个地图用逗号分隔，如 D717,shuai209,Q004">
+        <span class="hint">生成 CLEARMAPMON 命令</span>
+      </div>
+      <div class="row" id="rb-row-spawn" style="display:none;">
+        <label>刷怪地图</label><input type="text" id="rb-map" placeholder="地图代码" style="width:100px;">
+        <label style="min-width:auto;">怪物</label><input type="text" id="rb-mon" placeholder="怪物名" style="width:120px;">
+        <label style="min-width:auto;">数量</label><input type="number" id="rb-count" value="1" style="width:60px;">
+      </div>
+      <div class="row">
+        <button class="btn-primary" id="rb-add" style="margin-left:84px;">新增机器人</button>
+      </div>
+      <hr>
+      <h4>删除机器人</h4>
+      <div class="row">
+        <label>名称</label>
+        <input type="text" id="rb-dname" placeholder="机器人名称" style="width:150px;">
+        <button class="btn-danger" id="rb-del">删除</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑬ 目录同步（FTP） -->
+  <div class="panel" id="panel-login">
+
+    <div class="card">
+      <h4>登录器配置（换版本一键替换路径前缀）</h4>
+      <div class="row">
+        <label>登录器目录</label>
+        <input type="text" id="lg-dir" placeholder="如 D:\cqzs\...\登录器怀念" style="flex:1;">
+        <button class="btn-default" id="lg-browse">选择目录</button>
+      </div>
+      <div class="row">
+        <label>传奇客户端目录</label>
+        <input type="text" id="lg-client" placeholder="如 D:\cqkhd（含盘符）" style="flex:1;">
+      </div>
+      <div class="row">
+        <label>新补丁目录</label>
+        <input type="text" id="lg-patch" placeholder="如 D:\cqkhd\CGR（完整路径）或 CGR（补丁名，留空=仅换客户端根）" style="flex:1;">
+      </div>
+      <div class="row">
+        <span class="hint">自动替换 pak/Map/Wav/Wil/Wzl 路径前缀：旧客户端根目录名→新客户端根；根名后的补丁层（如 HlCqDj/yszz/神剑录补丁）→新补丁目录；标准目录（Data/Map/Graphics 等）挂客户端根；Wzl 统一到 客户端\data；改前自动备份到 登录器目录\@backup\时间戳\</span>
+      </div>
+      <div class="row">
+        <button class="btn-primary" id="lg-run">一键替换路径</button>
+      </div>
+    </div>
+  </div>
+  <div class="panel" id="panel-sync">
+    <div class="card">
+      <h4>FTP 服务器</h4>
+      <div class="row">
+        <label>主机</label><input type="text" id="sy-host" placeholder="如 192.168.1.100" style="width:150px;">
+        <label style="min-width:auto;">端口</label><input type="number" id="sy-port" value="21" style="width:70px;">
+        <label style="min-width:auto;">用户</label><input type="text" id="sy-user" style="width:130px;">
+        <label style="min-width:auto;">密码</label><input type="password" id="sy-pass" style="width:130px;">
+      </div>
+      <div class="row">
+        <label>同步规则</label>
+        <input type="text" id="sy-rule" placeholder="本地目录=远程目录，如 Mir200/Envir=/Envir" style="flex:1;">
+        <span class="hint">多条规则用 ; 分隔</span>
+      </div>
+      <div class="row">
+        <button class="btn-primary" id="sy-run">开始同步</button>
+        <button class="btn-default" id="sy-save">保存配置</button>
+        <span class="hint">配置保存在工具目录 sync-config.json</span>
+      </div>
+      </div>
+  </div>
+
+  <!-- ⑭ 回收 NPC 生成器 -->
+  <div class="panel" id="panel-recycle">
+    <div class="card">
+      <h4>NPC 位置</h4>
+      <div class="row">
+        <label>地图代码</label><input type="text" id="rc-map" placeholder="如 3" style="width:100px;">
+        <label style="min-width:auto;">X</label><input type="number" id="rc-posx" style="width:70px;">
+        <label style="min-width:auto;">Y</label><input type="number" id="rc-posy" style="width:70px;">
+        <label style="min-width:auto;">NPC名</label><input type="text" id="rc-npc" placeholder="NPC 名称" style="width:140px;">
+      </div>
+      <h4>界面设置</h4>
+      <div class="row">
+        <label>素材模式</label>
+        <select id="rc-sc" style="width:130px;">
+          <option value="str">无素材（纯文本）</option>
+          <option value="this">版本素材</option>
+        </select>
+        <span id="rc-mat" style="display:none;">
+          wil <input type="number" id="rc-wil" style="width:55px;" value="0">
+          背景图 <input type="number" id="rc-npcimg" style="width:55px;" value="0">
+          勾选图 <input type="number" id="rc-checked" style="width:55px;" value="1">
+          未选图 <input type="number" id="rc-nochecked" style="width:55px;" value="2">
+        </span>
+        <label style="min-width:auto;">每行列</label>
+        <input type="number" id="rc-col" style="width:60px;" value="4">
+      </div>
+      <h4>回收分类（原版风格：勾选界面 + 总开关 + 全选/反选 + 一键回收）</h4>
+      <div id="rc-cats"></div>
+      <div class="row">
+        <button class="btn-default" id="rc-addcat">＋ 新增分类</button>
+        <span class="hint">每个分类可设置 金币/元宝/金刚石/灵符/自定义货币 给予，不填则不给</span>
+      </div>
+      <div class="row">
+        <button class="btn-primary" id="rc-run" style="margin-left:84px;">生成回收 NPC</button>
+        <button class="btn-default" id="rc-copy" disabled>📋 复制脚本</button>
+        <button class="btn-default" id="rc-save">💾 保存配置</button>
+        <button class="btn-default" id="rc-load">📂 加载配置</button>
+        <button class="btn-default" id="rc-reset">↺ 恢复默认</button>
+        <span class="hint" id="rc-st">自动分配空闲个人标识（勾选状态）+ MerChant 注册 + Market_Def 脚本</span>
+      </div>
+      </div>
+  </div>
+
+  <!-- ⑮ 快捷操作 -->
+  <div class="panel active" id="panel-npctool">
+    <div class="card">
+      <h4>⚡ 快捷操作（还原自原版：一键打开常用文件/目录 + NPC 列表）</h4>
+      <div class="row">
+        <button class="btn-primary" id="qk-refresh">刷新 NPC 列表</button>
+        <span class="hint">从 MerChant.txt 读取 NPC（地图名/NPC名/坐标），点击"打开"直接查看该 NPC 脚本</span>
+      </div>
+      <div style="display:flex;gap:12px;margin-top:10px;">
+        <div style="width:270px;min-width:270px;">
+          <div style="font-size:12px;color:#6b7c9b;margin-bottom:4px;">📂 快捷文件（点击打开）</div>
+          <div id="qk-paths" style="border:1px solid #d8dee8;border-radius:8px;padding:8px;max-height:300px;overflow-y:auto;background:#fff;"></div>
+          <div style="font-size:12px;color:#6b7c9b;margin:10px 0 4px;">⭐ 我的快捷</div>
+          <div class="row">
+            <input type="text" id="qk-custom" placeholder="自定义文件/目录路径（引擎根下）" style="flex:1;min-width:120px;">
+            <button class="btn-default" id="qk-add">添加</button>
+          </div>
+          <div id="qk-mine" style="border:1px solid #d8dee8;border-radius:8px;padding:8px;max-height:180px;overflow-y:auto;background:#fff;"></div>
+        </div>
+        <div style="flex:1;min-width:0;">
+          <div class="row">
+            <label>地图：</label><input type="text" id="qk-mapfilter" placeholder="输入地图名过滤" style="width:160px;min-width:160px;">
+            <label style="min-width:auto;">NPC：</label><input type="text" id="qk-namefilter" placeholder="输入NPC名过滤" style="width:160px;min-width:160px;">
+            <span class="hint" id="qk-count">共 0 个 NPC</span>
+          </div>
+          <div id="qk-table" style="border:1px solid #d8dee8;border-radius:8px;max-height:480px;overflow-y:auto;background:#fff;"></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <h4>🔄 M2 重载（移入快捷操作，原独立面板）</h4>
+        <div class="row">
+          <label>重载项目</label>
+          <select id="mr-item" style="width:260px;">
+            <option value="物品数据库">物品数据库</option>
+            <option value="技能数据库">技能数据库</option>
+            <option value="怪物数据库">怪物数据库</option>
+            <option value="怪物说话设置">怪物说话设置</option>
+            <option value="怪物大血条">怪物大血条</option>
+            <option value="宝箱数据">宝箱数据</option>
+            <option value="数据列表">数据列表</option>
+            <option value="地图安全区">地图安全区</option>
+            <option value="参数设置">参数设置</option>
+            <option value="物品掉落规则">物品掉落规则</option>
+            <option value="QManage 登录脚本">QManage 登录脚本</option>
+            <option value="QFunction 功能脚本">QFunction 功能脚本</option>
+            <option value="QMission 任务脚本">QMission 任务脚本</option>
+            <option value="QChatbox 聊天框脚本">QChatbox 聊天框脚本</option>
+            <option value="Robot 机器人脚本">Robot 机器人脚本</option>
+            <option value="所有NPC">所有NPC</option>
+            <option value="地图事件触发">地图事件触发</option>
+            <option value="怪物爆率">怪物爆率</option>
+            <option value="摆摊物品最低售价">摆摊物品最低售价</option>
+            <option value="出售角色其他信息">出售角色其他信息</option>
+            <option value="假人列表">假人列表</option>
+            <option value="授权RunGate网关IP文件">授权RunGate网关IP文件</option>
+          </select>
+        </div>
+        <div class="row">
+          <label>引擎过滤</label>
+          <input type="text" id="mr-filter" placeholder="留空=所有 M2，可填 M2 窗口标题关键字" style="flex:1;">
+        </div>
+        <div class="row">
+          <button class="btn-primary" id="mr-run">执行重载</button>
+          <button class="btn" id="mr-list">列出 M2 菜单</button>
+          <span class="hint">需先打开 M2 主窗口（从托盘恢复），否则找不到菜单</span>
+        </div>
+      </div>
+
+      </div>
+  </div>
+
+  <div class="panel" id="panel-sales">
+    <div class="card">
+      <h4>存销系统（服务端数据打包）</h4>
+      <div class="row">
+        <label>生成路径</label>
+        <input type="text" id="sl-out" placeholder="如 D:\存销数据（多区建议 D 盘根目录）">
+        <button class="btn-default" id="sl-browse">选择</button>
+      </div>
+      <div class="row">
+        <label>数据目录名</label>
+        <input type="text" id="sl-name" placeholder="默认同服名，避免有空格">
+      </div>
+      <div class="row">
+        <label>爆率格式</label>
+        <select id="sl-format" style="width:120px;">
+          <option value="new">新爆率格式</option>
+          <option value="old">原版爆率</option>
+        </select>
+        <label style="min-width:auto;">分组数</label>
+        <input type="number" id="sl-group" value="100" style="width:80px;">
+        <span class="hint">个/组</span>
+        <label style="min-width:auto;">用户编号</label>
+        <select id="sl-uid" style="width:120px;">
+          <option value="数字">数字</option>
+          <option value="字母">字母</option>
+          <option value="数字+字母">数字+字母</option>
+        </select>
+        <span class="hint">玩家多，请用数字+字母防止重复编号</span>
+      </div>
+      <div class="row">
+        <button class="btn-primary" id="sl-run" style="margin-left:84px;">生成存销数据</button>
+        <button class="btn-default" id="sl-timers" title="读 QManage 查看已用定时器（对齐虾米 _choose_unused_store_timer_id）">⏱ 检查定时器占用</button>
+        <span class="hint" id="sl-timer-st"></span>
+      </div>
+      </div>
+    <div class="card" style="margin-top:14px;">
+      <h4>📦 存销脚本生成（移植自虾米 1.3.6：咕咕鸡通区存储/仓库模板）</h4>
+      <div class="row">
+        <label>功能文件夹</label><input type="text" id="ss-folder" placeholder="如 商店功能" style="width:140px;">
+        <label>脚本名</label><input type="text" id="ss-script" placeholder="如 商店" style="width:110px;">
+        <label>方法名</label><input type="text" id="ss-method" placeholder="如 购买分类" style="width:110px;">
+        <label>分类目录</label><input type="text" id="ss-category" placeholder="如 武器" style="width:100px;">
+        <label>过滤提示</label><input type="text" id="ss-ftip" value="咕咕鸡过滤" title="掉落被过滤时的 Sendmsg 提示（对齐 1.4.3 filter_tip）" style="width:100px;">
+        <label>存储提示</label><input type="text" id="ss-stip" value="咕咕鸡存储" title="掉落存入仓库时的 Sendmsg 提示（对齐 1.4.3 store_tip）" style="width:100px;">
+      </div>
+      <div class="row">
+        <label>通区目录</label><input type="text" id="ss-common" value="通区文件" style="width:120px;">
+        <label>区服名称</label><input type="text" id="ss-zone" placeholder="如 翎风01（实际区名）" title="实际区名（如 翎风01），生成时自动写死进脚本；勿用 <$SERVERNAME> 占位（含 &lt;&gt; 在文件路径命令里不被解析，会导致数据目录不一致）" style="width:130px;">
+        <label>U 变量</label><input type="text" id="ss-uvar" value="U335" title="兼容保留（当前数据文件已改按账号_角色名固定命名，不再依赖 U335 编号存档）" style="width:70px;">
+        <label>间隔(秒)</label><input type="number" id="ss-interval" value="60" style="width:70px;">
+        <label>QR 序号</label><input type="text" id="ss-btn" value="200" title="按钮触发序号（虾米默认 200）" style="width:55px;">
+        <label>资源编号</label><input type="number" id="ss-rid" value="0" title="0=自动咕咕鸡素材（EffectImageList.txt 自动注册取行号）；填 N=自定义第 N 个素材（>0 时自动 -1）" style="width:60px;">
+        <label>掉落检测</label><input type="text" id="ss-qr" value="掉落前检测" title="QF 掉落拦截段名（虾米存销标准段名）；MonDropItem 为 GEE/LF 系标准段。你端若两段都不触发，需在 QF [@OnKillMob] 里手动 #CALL 该段" style="width:90px;">
+      </div>
+      <div class="row">
+        <button class="btn-primary" id="ss-run">生成存销脚本</button>
+        <button class="btn-default" id="ss-clean" title="还原 1.3.6 跨文件清理：剥 QManage/QF 标记块 + 删 QuestDiary 功能目录">🧹 清理存销</button>
+        <button class="btn-default" id="ss-timers" title="全 Envir 扫描 SETONTIMER 占用（对齐 1.3.6 _choose_unused_store_timer_id）">⏱ 选定时器</button>
+        <span class="hint" id="ss-timer-st"></span>
+      </div>
+      </div>
+  </div>
+
+
+  
+  <!-- 变量查询（还原自虾米 1.4.3 _VarQueryPage：类型树 + 变量列表 + 详情 + 打开定位；类型上限对齐 _var_types） -->
+  <div class="panel" id="panel-varquery">
+    <div class="card">
+      <div class="row">
+        <button class="btn-primary" id="vq-run">🔍 扫描变量占用</button>
+        <span class="hint" id="vq-sum">扫描 Mir200\Envir 全部脚本，统计变量占用（对齐虾米 1.4.3 _VarQueryPage）</span>
+      </div>
+      <div style="display:flex;gap:14px;margin-top:10px;min-height:52vh;">
+        <div style="width:300px;flex-shrink:0;display:flex;flex-direction:column;">
+          <div class="row"><span class="hint" id="vq-varcount">未扫描</span></div>
+          <div id="vq-types" style="flex:1;overflow:auto;border:1px solid #e3e8f0;border-radius:6px;background:#fafbfd;max-height:46vh;"></div>
+        </div>
+        <div style="width:340px;flex-shrink:0;display:flex;flex-direction:column;">
+          <div class="row"><span class="hint" id="vq-varlist-st">选类型后显示变量</span></div>
+          <div id="vq-varlist" style="flex:1;overflow:auto;border:1px solid #e3e8f0;border-radius:6px;background:#fafbfd;max-height:46vh;"></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;min-width:0;">
+          <div class="row">
+            <span class="hint" id="vq-detail-st">使用详情：先选类型，再点左侧变量</span>
+            <button class="btn-default" id="vq-open" disabled style="margin-left:auto;">📂 打开文件</button>
+          </div>
+          <div id="vq-detail" style="flex:1;overflow:auto;border:1px solid #e3e8f0;border-radius:6px;background:#f7f9fc;max-height:46vh;font-size:12px;font-family:Consolas,monospace;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="panel" id="panel-portcfg">
+    <div class="card">
+      <div class="row">
+        <label>端口配置</label>
+        <button class="btn-primary" id="pc-list">读取全部端口</button>
+        <button class="btn" id="pc-check">检测占用</button>
+        <span class="hint">读取 !Setup / 网关 / DBServer 全部端口配置（三家融合）</span>
+      </div>
+      <div class="row">
+        <label>修改单键</label>
+        <input type="text" id="pc-file" placeholder="相对路径，如 Mir200/!setup.txt" style="width:220px;">
+        <input type="text" id="pc-key" placeholder="键名，如 DBPort" style="width:120px;">
+        <input type="text" id="pc-port" placeholder="新端口" style="width:80px;">
+        <button class="btn" id="pc-write">修改</button>
+      </div>
+      <div class="row">
+        <label>一致性</label>
+        <button class="btn" id="pc-dup">检查重复端口</button>
+        <input type="text" id="pc-preset" placeholder="预设名称" style="width:120px;">
+        <button class="btn" id="pc-psave">保存预设</button>
+        <button class="btn" id="pc-papply">应用预设</button>
+        <span class="hint">还原自虾米(一致性检查)+快捷助手(端口预设3组)</span>
+      </div>
+      <div class="row">
+        <label>一键替换</label>
+        <input type="text" id="pc-from" placeholder="旧端口" style="width:80px;">
+        <input type="text" id="pc-to" placeholder="新端口" style="width:80px;">
+        <button class="btn" id="pc-replace">全部替换</button>
+        <span class="hint">冲突检测报红后，一键把所有配置文件的旧端口换成新端口</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 物品管理 -->
+  <div class="panel" id="panel-itemcfg">
+    <div class="card">
+      <div class="row">
+        <label>物品管理</label>
+        <div class="seg" id="ic-mode-seg">
+          <button data-im="desc" class="active">备注(下)</button>
+          <button data-im="desctop">备注(上)</button>
+          <button data-im="unbind">解包</button>
+          <button data-im="shop">商铺</button>
+          <button data-im="group">套装</button>
+        </div>
+        <button class="btn-primary" id="ic-list">加载列表</button>
+        <span class="hint">还原自快捷助手：物品备注/解包/商铺/套装</span>
+      </div>
+      <div class="row">
+        <label>添加</label>
+        <input type="text" id="ic-name" placeholder="物品名 或 解包ID" style="width:180px;">
+        <input type="text" id="ic-color" placeholder="颜色(243/249/251)" style="width:110px;">
+        <input type="text" id="ic-text" placeholder="备注文本 或 解包物品名" style="flex:1;">
+        <button class="btn" id="ic-add">添加</button>
+      </div>
+      <div class="row">
+        <label>扩展配置</label>
+        <select id="ic-file" style="width:200px;">
+          <option value="">-- 通用配置 --</option>
+          <option value="RevivalItemList.txt">复活戒指</option>
+          <option value="ParalysisItemList.txt">麻痹戒指</option>
+          <option value="MagicShieldItemList.txt">护身戒指</option>
+          <option value="GuardList.txt">大刀卫士</option>
+          <option value="MonSayMsg.txt">怪物说话</option>
+          <option value="MonSpAbilList.txt">怪物元素</option>
+        </select>
+        <button class="btn" id="ic-filelist">加载</button>
+        <span class="hint">还原自快捷助手清单：通用配置行文件</span>
+      </div>
+      <div class="row">
+        <label>删除</label>
+        <input type="text" id="ic-del" placeholder="物品名 或 解包ID" style="flex:1;">
+        <button class="btn" id="ic-delbtn">删除</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 地图配置 -->
+  <div class="panel" id="panel-mapcfg">
+    <div class="card">
+      <div class="row">
+        <label>地图配置</label>
+        <div class="seg" id="mc-mode-seg">
+          <button data-im="start" class="active">安全区</button>
+          <button data-im="mapinfo">地图属性</button>
+          <button data-im="minimap">小地图</button>
+          <button data-im="mapevent">地图事件</button>
+        </div>
+        <button class="btn-primary" id="mc-list">加载</button>
+        <span class="hint">还原自快捷助手：安全区 StartPoint / 地图 MapInfo / 小地图 MiniMap</span>
+      </div>
+      <div class="row">
+        <label>添加</label>
+        <input type="text" id="mc-a" placeholder="地图代码" style="width:100px;">
+        <input type="text" id="mc-b" placeholder="X" style="width:60px;">
+        <input type="text" id="mc-c" placeholder="Y" style="width:60px;">
+        <input type="text" id="mc-d" placeholder="禁止说话" style="width:80px;">
+        <input type="text" id="mc-e" placeholder="大小范围" style="width:80px;">
+        <input type="text" id="mc-f" placeholder="光环类型" style="width:80px;">
+        <button class="btn" id="mc-add">添加</button>
+        <span class="hint">安全区模式：地图 X Y 禁止说话 大小范围 光环类型（列序对齐 StartPoint.txt；PKZONE/PKFIRE 默认 0；光环 1-11 主流 2/4/5）</span>
+      </div>
+      <div class="row">
+        <label>删除/过滤</label>
+        <input type="text" id="mc-del" placeholder="地图代码 或 搜索关键字" style="flex:1;">
+        <button class="btn" id="mc-delbtn">删除</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 引擎健检 -->
+  <div class="panel" id="panel-engineck">
+    <div class="card">
+      <div class="row">
+        <label>引擎健检</label>
+        <button class="btn-primary" id="ec-run">运行检查</button>
+        <button class="btn-default" id="ec-fixdirs" title="扫描 !setup.txt 目录键，一键校正残留路径（自动备份）">🔧 目录键校正</button>
+        <span class="hint">还原自虾米：识别引擎类型 + 检查目录键/端口一致性（健检 !setup.txt）</span>
+      </div>
+      <div class="row">
+        <label>检查项</label>
+        <span id="ec-result" style="flex:1;font-family:Consolas,monospace;font-size:13px;white-space:pre-wrap;color:#c0392b;"></span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 文件对比 -->
+  <div class="panel" id="panel-compare">
+    <div class="card">
+      <div class="row">
+        <label>目录A</label>
+        <input type="text" id="cm-a" placeholder="如 D:\版本1\Mir200" style="flex:1;">
+        <button class="btn" id="cm-ba">浏览</button>
+      </div>
+      <div class="row">
+        <label>目录B</label>
+        <input type="text" id="cm-b" placeholder="如 D:\版本2\Mir200" style="flex:1;">
+        <button class="btn" id="cm-bb">浏览</button>
+      </div>
+      <div class="row">
+        <button class="btn-primary" id="cm-run">开始对比</button>
+        <span class="hint">还原自虾米"文件对比"：仅A/仅B/相同/差异文件+行级对比</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 一键体检 -->
+  <div class="panel" id="panel-health">
+    <div class="card">
+      <div class="row">
+        <label>一键体检</label>
+        <button class="btn-primary" id="ht-run">运行体检</button>
+        <span class="hint">整合引擎识别+核心文件+目录键+端口一致性+DB端口（一键发现问题）</span>
+      </div>
+      <div class="row">
+        <span id="ht-result" style="flex:1;font-family:Consolas,monospace;font-size:13px;white-space:pre-wrap;color:#c0392b;"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 开区网站 -->
+  <div class="panel" id="panel-site">
+    <div class="card">
+      <div class="row">
+        <label>网站标题</label>
+        <input type="text" id="st-title" placeholder="留空自动读游戏名" style="flex:1;">
+      </div>
+      <div class="row">
+        <label>皮肤</label>
+        <select id="st-skin" style="width:160px;">
+          <option value="dark">暗夜(红)</option>
+          <option value="gold">金色</option>
+          <option value="blue">蓝色</option>
+          <option value="green">绿色</option>
+          <option value="light">明亮</option>
+        </select>
+      </div>
+      <div class="row">
+        <label>新区</label>
+        <input type="text" id="st-new" placeholder="用逗号分隔，如: 新区1,新区2" style="flex:1;">
+      </div>
+      <div class="row">
+        <label>快餐服</label>
+        <input type="text" id="st-fast" placeholder="用逗号分隔" style="flex:1;">
+      </div>
+      <div class="row">
+        <label>单职业</label>
+        <input type="text" id="st-solo" placeholder="用逗号分隔" style="flex:1;">
+      </div>
+      <div class="row">
+        <label>站点简介</label>
+        <input type="text" id="st-desc" placeholder="开区简介，如: 经典怀旧 长期稳定" style="flex:1;">
+      </div>
+      <div class="row">
+        <label>下载地址</label>
+        <input type="text" id="st-dl" placeholder="登录器下载链接（留空不显示下载按钮）" style="flex:1;">
+      </div>
+      <div class="row">
+        <label>QQ群</label>
+        <input type="text" id="st-qq" placeholder="多个群号用逗号分隔，如: 123456,789012（自动生成一键加群）" style="flex:1;">
+      </div>
+      <div class="row">
+        <label>开区版本</label>
+        <input type="text" id="st-versions" placeholder="逗号分隔，如: 新区1,新区2" style="flex:1;">
+      </div>
+      <div class="row">
+        <label>公告</label>
+        <input type="text" id="st-announce" placeholder="逗号分隔的公告内容" style="flex:1;">
+      </div>
+      <div class="row">
+        <label>维护模式</label>
+        <label class="check"><input type="checkbox" id="st-maint"> 开启维护（首页横幅 + 独立维护页）</label>
+      </div>
+      <div class="row">
+        <label>维护提示</label>
+        <input type="text" id="st-maintmsg" placeholder="维护提示文字（可空）" style="flex:1;">
+      </div>
+      <div class="row">
+        <label>后台管理</label>
+        <label class="check"><input type="checkbox" id="st-admin"> 生成后台页（admin.html 编辑→导出配置→发布）</label>
+      </div>
+      <div class="row">
+        <button class="btn-primary" id="st-run">生成网站</button>
+        <button class="btn-outline" id="st-apply">🚀 从后台配置发布</button>
+        <button class="btn-outline" id="st-preview">👁 预览站点</button>
+        <span class="hint">还原自虾米"网站管理"：多页面 + 爆率查询 + 地图走法 + 后台发布 + 维护页</span>
+      </div>
+      </div>
+    <div class="card" style="margin-top:14px;">
+      <h4>📡 远端同步（移植自虾米 1.3.6：工具箱间同步爆率查询数据）</h4>
+      <div class="row">
+        <label>本机接口</label>
+        <input type="text" id="sr-local-port" value="8000" style="width:90px;" title="本机接收端口（需开外网访问）">
+        <label>本机密钥</label>
+        <input type="text" id="sr-local-token" placeholder="接收端校验用（建议设置）" style="width:160px;">
+        <button class="btn-default" id="sr-listen">▶ 启动接收</button>
+        <button class="btn-default" id="sr-stop">⏹ 停止</button>
+        <span class="hint" id="sr-status"></span>
+      </div>
+      <div class="row">
+        <label>远端地址</label>
+        <input type="text" id="sr-peer-url" placeholder="如 http://192.168.1.6:8000" style="flex:1;">
+        <label>远端密钥</label>
+        <input type="text" id="sr-peer-token" placeholder="对方工具箱的本机密钥" style="width:160px;">
+        <button class="btn-primary" id="sr-push">📤 同步到远端</button>
+        <span class="hint">对方需已启动接收服务</span>
+      </div>
+    </div>
+  </div>
+
+
+    </div>
+  </div>
+
+
+
+</div>
+</div>
+</main>
+
+<div id="log-wrap" style="position:fixed;bottom:10px;right:22px;left:236px;z-index:9999;border:1px solid #33405a;border-radius:8px;box-shadow:0 -2px 12px rgba(20,30,60,.18);">
+    <div id="log-handle" style="background:#1b2230;color:#d4d9e2;border-radius:7px 7px 0 0;padding:6px 12px;font-size:12px;cursor:move;user-select:none;display:flex;justify-content:space-between;border-bottom:1px solid #33405a;">
+      <span>📋 操作日志（按住拖动位置 / 右下角拉伸大小）</span>
+      <span id="log-min" style="cursor:pointer;">— 收起</span>
+    </div>
+    <div id="log" style="resize:both;overflow:auto;min-height:100px;max-height:60vh;padding:8px 10px;background:#1b2230;color:#d4d9e2;font-family:Consolas,monospace;font-size:12.5px;white-space:pre-wrap;border-radius:0 0 7px 7px;">== 操作日志 ==
+所有功能执行结果都会显示在这里</div>
+    <script src="renderer.js"></script>
+  <!-- 自定义确认模态框（替代 window.confirm：Electron confirm 弹窗后焦点/输入法不恢复会卡输入框，自绘模态无此问题） -->
+  <div id="confirm-mask" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(15,23,42,.45);z-index:9999;align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:12px;padding:20px 24px;width:min(440px,90vw);box-shadow:0 12px 40px rgba(0,0,0,.28);">
+      <div id="confirm-title" style="font-size:15px;font-weight:600;color:#1b2a45;margin-bottom:10px;">⚠️ 请确认</div>
+      <div id="confirm-msg" style="font-size:13px;color:#3d4b66;line-height:1.7;white-space:pre-wrap;max-height:280px;overflow-y:auto;margin-bottom:18px;"></div>
+      <div style="display:flex;justify-content:flex-end;gap:10px;">
+        <button id="confirm-cancel" style="padding:7px 18px;border:1px solid #d0d7e5;border-radius:6px;background:#fff;color:#3d4b66;cursor:pointer;font-size:13px;">取消</button>
+        <button id="confirm-ok" style="padding:7px 18px;border:none;border-radius:6px;background:#1677ff;color:#fff;cursor:pointer;font-size:13px;">确认</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

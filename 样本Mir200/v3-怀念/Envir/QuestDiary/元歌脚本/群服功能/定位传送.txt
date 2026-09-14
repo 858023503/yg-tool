@@ -1,0 +1,216 @@
+[@定位传送啊]
+{
+#IF
+#ACT
+;声明变量信息
+MOV S$记忆地图名1
+MOV S$记忆地图名2
+MOV S$记忆地图名3
+MOV S$记忆地图名4
+MOV S$记忆地图名5
+MOV S$记忆地图名6
+MOV S$记忆地图名7
+MOV S$记忆地图名8
+MOV S$记忆地图名9
+MOV S$记忆地图名10
+MOV S$记忆地图编号1
+MOV S$记忆地图编号2
+MOV S$记忆地图编号3
+MOV S$记忆地图编号4
+MOV S$记忆地图编号5
+MOV S$记忆地图编号6
+MOV S$记忆地图编号7
+MOV S$记忆地图编号8
+MOV S$记忆地图编号9
+MOV S$记忆地图编号10
+MOV S$记忆X1
+MOV S$记忆X2
+MOV S$记忆X3
+MOV S$记忆X4
+MOV S$记忆X5
+MOV S$记忆X6
+MOV S$记忆X7
+MOV S$记忆X8
+MOV S$记忆X9
+MOV S$记忆X10
+MOV S$记忆Y1
+MOV S$记忆Y2
+MOV S$记忆Y3
+MOV S$记忆Y4
+MOV S$记忆Y5
+MOV S$记忆Y6
+MOV S$记忆Y7
+MOV S$记忆Y8
+MOV S$记忆Y9
+MOV S$记忆Y10
+;读取变量信息
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名1 <$STR(S$记忆地图名1)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名2 <$STR(S$记忆地图名2)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名3 <$STR(S$记忆地图名3)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名4 <$STR(S$记忆地图名4)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名5 <$STR(S$记忆地图名5)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名6 <$STR(S$记忆地图名6)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名7 <$STR(S$记忆地图名7)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名8 <$STR(S$记忆地图名8)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名9 <$STR(S$记忆地图名9)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名10 <$STR(S$记忆地图名10)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号1 <$STR(S$记忆地图编号1)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号2 <$STR(S$记忆地图编号2)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号3 <$STR(S$记忆地图编号3)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号4 <$STR(S$记忆地图编号4)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号5 <$STR(S$记忆地图编号5)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号6 <$STR(S$记忆地图编号6)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号7 <$STR(S$记忆地图编号7)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号8 <$STR(S$记忆地图编号8)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号9 <$STR(S$记忆地图编号9)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号10 <$STR(S$记忆地图编号10)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X1 <$STR(S$记忆X1)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X2 <$STR(S$记忆X2)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X3 <$STR(S$记忆X3)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X4 <$STR(S$记忆X4)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X5 <$STR(S$记忆X5)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X6 <$STR(S$记忆X6)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X7 <$STR(S$记忆X7)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X8 <$STR(S$记忆X8)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X9 <$STR(S$记忆X9)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X10 <$STR(S$记忆X10)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y1 <$STR(S$记忆Y1)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y2 <$STR(S$记忆Y2)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y3 <$STR(S$记忆Y3)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y4 <$STR(S$记忆Y4)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y5 <$STR(S$记忆Y5)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y6 <$STR(S$记忆Y6)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y7 <$STR(S$记忆Y7)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y8 <$STR(S$记忆Y8)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y9 <$STR(S$记忆Y9)>
+ReadConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y10 <$STR(S$记忆Y10)>
+#if
+#ACT
+#say
+\ \ \
+\<---------------------------------------------------------------------------------------------------------/FCOLOR=89>
+\ \
+\     <><$STR(S$NPC排版空格占用)> 一： <记录当前坐标/@JldqzbO1> <移动到/@YdMap1> -> <$STR(S$记忆地图名1)> <$STR(S$记忆X1)> <$STR(S$记忆Y1)>
+\ \
+\     <><$STR(S$NPC排版空格占用)> 二： <记录当前坐标/@JldqzbO2> <移动到/@YdMap2> -> <$STR(S$记忆地图名2)> <$STR(S$记忆X2)> <$STR(S$记忆Y2)>
+\ \
+\     <><$STR(S$NPC排版空格占用)> 三： <记录当前坐标/@JldqzbO3> <移动到/@YdMap3> -> <$STR(S$记忆地图名3)> <$STR(S$记忆X3)> <$STR(S$记忆Y3)>
+\ \
+\     <><$STR(S$NPC排版空格占用)> 四： <记录当前坐标/@JldqzbO4> <移动到/@YdMap4> -> <$STR(S$记忆地图名4)> <$STR(S$记忆X4)> <$STR(S$记忆Y4)>
+\ \
+\     <><$STR(S$NPC排版空格占用)> 五： <记录当前坐标/@JldqzbO5> <移动到/@YdMap5> -> <$STR(S$记忆地图名5)> <$STR(S$记忆X5)> <$STR(S$记忆Y5)>
+\ \
+\     <><$STR(S$NPC排版空格占用)> 六： <记录当前坐标/@JldqzbO6> <移动到/@YdMap6> -> <$STR(S$记忆地图名6)> <$STR(S$记忆X6)> <$STR(S$记忆Y6)>
+\ \
+\     <><$STR(S$NPC排版空格占用)> 七： <记录当前坐标/@JldqzbO7> <移动到/@YdMap7> -> <$STR(S$记忆地图名7)> <$STR(S$记忆X7)> <$STR(S$记忆Y7)>
+\ \
+\     <><$STR(S$NPC排版空格占用)> 八： <记录当前坐标/@JldqzbO8> <移动到/@YdMap8> -> <$STR(S$记忆地图名8)> <$STR(S$记忆X8)> <$STR(S$记忆Y8)>
+\ \
+\     <><$STR(S$NPC排版空格占用)> 九： <记录当前坐标/@JldqzbO9> <移动到/@YdMap9> -> <$STR(S$记忆地图名9)> <$STR(S$记忆X9)> <$STR(S$记忆Y9)>
+\ \
+\     <><$STR(S$NPC排版空格占用)> 十： <记录当前坐标/@JldqzbO10> <移动到/@YdMap10> -> <$STR(S$记忆地图名10)> <$STR(S$记忆X10)> <$STR(S$记忆Y10)>
+
+;移动到记录坐标
+[@YdMap1]
+#ACT
+mapmove <$STR(S$记忆地图编号1)> <$STR(S$记忆X1)> <$STR(S$记忆Y1)>
+[@YdMap2]
+#ACT
+mapmove <$STR(S$记忆地图编号2)> <$STR(S$记忆X2)> <$STR(S$记忆Y2)>
+[@YdMap3]
+#ACT
+mapmove <$STR(S$记忆地图编号3)> <$STR(S$记忆X3)> <$STR(S$记忆Y3)>
+[@YdMap4]
+#ACT
+mapmove <$STR(S$记忆地图编号4)> <$STR(S$记忆X4)> <$STR(S$记忆Y4)>
+[@YdMap5]
+#ACT
+mapmove <$STR(S$记忆地图编号5)> <$STR(S$记忆X5)> <$STR(S$记忆Y5)>
+[@YdMap6]
+#ACT
+mapmove <$STR(S$记忆地图编号6)> <$STR(S$记忆X6)> <$STR(S$记忆Y6)>
+[@YdMap7]
+#ACT
+mapmove <$STR(S$记忆地图编号7)> <$STR(S$记忆X7)> <$STR(S$记忆Y7)>
+[@YdMap8]
+#ACT
+mapmove <$STR(S$记忆地图编号8)> <$STR(S$记忆X8)> <$STR(S$记忆Y8)>
+[@YdMap9]
+#ACT
+mapmove <$STR(S$记忆地图编号9)> <$STR(S$记忆X9)> <$STR(S$记忆Y9)>
+[@YdMap10]
+#ACT
+mapmove <$STR(S$记忆地图编号10)> <$STR(S$记忆X10)> <$STR(S$记忆Y10)>
+
+;记录地图坐标
+[@JldqzbO1]
+#ACT
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名1 <$MapTitle>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号1 <$MAP>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X1 <$X>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y1 <$Y>
+GOTO @定位传送啊
+[@JldqzbO2]
+#ACT
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名2 <$MapTitle>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号2 <$MAP>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X2 <$X>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y2 <$Y>
+GOTO @定位传送啊
+[@JldqzbO3]
+#ACT
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名3 <$MapTitle>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号3 <$MAP>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X3 <$X>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y3 <$Y>
+GOTO @定位传送啊
+[@JldqzbO4]
+#ACT
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名4 <$MapTitle>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号4 <$MAP>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X4 <$X>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y4 <$Y>
+GOTO @定位传送啊
+[@JldqzbO5]
+#ACT
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名5 <$MapTitle>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号5 <$MAP>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X5 <$X>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y5 <$Y>
+GOTO @定位传送啊
+[@JldqzbO6]
+#ACT
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名6 <$MapTitle>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号6 <$MAP>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X6 <$X>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y6 <$Y>
+GOTO @定位传送啊
+[@JldqzbO7]
+#ACT
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名7 <$MapTitle>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号7 <$MAP>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X7 <$X>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y7 <$Y>
+GOTO @定位传送啊
+[@JldqzbO8]
+#ACT
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名8 <$MapTitle>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号8 <$MAP>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X8 <$X>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y8 <$Y>
+GOTO @定位传送啊
+[@JldqzbO9]
+#ACT
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名9 <$MapTitle>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号9 <$MAP>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X9 <$X>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y9 <$Y>
+GOTO @定位传送啊
+[@JldqzbO10]
+#ACT
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图名10 <$MapTitle>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆地图编号10 <$MAP>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆X10 <$X>
+WriteConfigFileItem ..\QuestDiary\元歌脚本\群服功能\记忆石数据.txt <$USERNAME> 记忆Y10 <$Y>
+GOTO @定位传送啊
+}

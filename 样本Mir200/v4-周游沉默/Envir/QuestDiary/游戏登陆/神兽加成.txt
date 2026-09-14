@@ -1,0 +1,1124 @@
+[@神兽属性]
+{
+#if
+CHECKCREDITPOINT = 1
+#act
+MOV N$神兽防御下 0
+MOV N$神兽防御上 0
+MOV N$神兽魔御下 0
+MOV N$神兽魔御上 0
+MOV N$神兽攻击下 1
+MOV N$神兽攻击上 1
+MOV N$神兽魔法下 1
+MOV N$神兽魔法上 1
+MOV N$神兽道术下 1
+MOV N$神兽道术上 1
+BREAK
+#if
+CHECKCREDITPOINT = 2
+#act
+MOV N$神兽攻击下 1
+MOV N$神兽攻击上 1
+MOV N$神兽魔法下 1
+MOV N$神兽魔法上 1
+MOV N$神兽道术下 1
+MOV N$神兽道术上 1
+MOV N$神兽防御下 1
+MOV N$神兽防御上 1
+MOV N$神兽魔御下 1
+MOV N$神兽魔御上 1
+BREAK
+
+#if
+CHECKCREDITPOINT = 3
+#act
+MOV N$神兽攻击下 1
+MOV N$神兽攻击上 1
+MOV N$神兽魔法下 1
+MOV N$神兽魔法上 1
+MOV N$神兽道术下 1
+MOV N$神兽道术上 1
+MOV N$神兽防御下 1
+MOV N$神兽防御上 1
+MOV N$神兽魔御下 1
+MOV N$神兽魔御上 1
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 4
+#act
+MOV N$神兽攻击下 2
+MOV N$神兽攻击上 2
+MOV N$神兽魔法下 2
+MOV N$神兽魔法上 2
+MOV N$神兽道术下 2
+MOV N$神兽道术上 2
+MOV N$神兽防御下 1
+MOV N$神兽防御上 1
+MOV N$神兽魔御下 1
+MOV N$神兽魔御上 1
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 5
+#act
+MOV N$神兽攻击下 2
+MOV N$神兽攻击上 2
+MOV N$神兽魔法下 2
+MOV N$神兽魔法上 2
+MOV N$神兽道术下 2
+MOV N$神兽道术上 2
+MOV N$神兽防御下 2
+MOV N$神兽防御上 2
+MOV N$神兽魔御下 2
+MOV N$神兽魔御上 2
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 6
+#act
+MOV N$神兽攻击下 2
+MOV N$神兽攻击上 2
+MOV N$神兽魔法下 2
+MOV N$神兽魔法上 2
+MOV N$神兽道术下 2
+MOV N$神兽道术上 2
+MOV N$神兽防御下 2
+MOV N$神兽防御上 2
+MOV N$神兽魔御下 2
+MOV N$神兽魔御上 2
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 7
+#act
+MOV N$神兽攻击下 3
+MOV N$神兽攻击上 3
+MOV N$神兽魔法下 3
+MOV N$神兽魔法上 3
+MOV N$神兽道术下 3
+MOV N$神兽道术上 3
+MOV N$神兽防御下 2
+MOV N$神兽防御上 2
+MOV N$神兽魔御下 2
+MOV N$神兽魔御上 2
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 8
+#act
+MOV N$神兽攻击下 3
+MOV N$神兽攻击上 3
+MOV N$神兽魔法下 3
+MOV N$神兽魔法上 3
+MOV N$神兽道术下 3
+MOV N$神兽道术上 3
+MOV N$神兽防御下 3
+MOV N$神兽防御上 3
+MOV N$神兽魔御下 3
+MOV N$神兽魔御上 3
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 9
+#act
+MOV N$神兽攻击下 3
+MOV N$神兽攻击上 3
+MOV N$神兽魔法下 3
+MOV N$神兽魔法上 3
+MOV N$神兽道术下 3
+MOV N$神兽道术上 3
+MOV N$神兽防御下 3
+MOV N$神兽防御上 3
+MOV N$神兽魔御下 3
+MOV N$神兽魔御上 3
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 10
+#act
+MOV N$神兽攻击下 4
+MOV N$神兽攻击上 4
+MOV N$神兽魔法下 4
+MOV N$神兽魔法上 4
+MOV N$神兽道术下 4
+MOV N$神兽道术上 4
+MOV N$神兽防御下 3
+MOV N$神兽防御上 3
+MOV N$神兽魔御下 3
+MOV N$神兽魔御上 3
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 11
+#act
+MOV N$神兽攻击下 4
+MOV N$神兽攻击上 4
+MOV N$神兽魔法下 4
+MOV N$神兽魔法上 4
+MOV N$神兽道术下 4
+MOV N$神兽道术上 4
+MOV N$神兽防御下 4
+MOV N$神兽防御上 4
+MOV N$神兽魔御下 4
+MOV N$神兽魔御上 4
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 12
+#act
+MOV N$神兽攻击下 4
+MOV N$神兽攻击上 4
+MOV N$神兽魔法下 4
+MOV N$神兽魔法上 4
+MOV N$神兽道术下 4
+MOV N$神兽道术上 4
+MOV N$神兽防御下 4
+MOV N$神兽防御上 4
+MOV N$神兽魔御下 4
+MOV N$神兽魔御上 4
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 13
+#act
+MOV N$神兽攻击下 5
+MOV N$神兽攻击上 5
+MOV N$神兽魔法下 5
+MOV N$神兽魔法上 5
+MOV N$神兽道术下 5
+MOV N$神兽道术上 5
+MOV N$神兽防御下 4
+MOV N$神兽防御上 4
+MOV N$神兽魔御下 4
+MOV N$神兽魔御上 4
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 14
+#act
+MOV N$神兽攻击下 5
+MOV N$神兽攻击上 5
+MOV N$神兽魔法下 5
+MOV N$神兽魔法上 5
+MOV N$神兽道术下 5
+MOV N$神兽道术上 5
+MOV N$神兽防御下 5
+MOV N$神兽防御上 5
+MOV N$神兽魔御下 5
+MOV N$神兽魔御上 5
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 15
+#act
+MOV N$神兽攻击下 5
+MOV N$神兽攻击上 5
+MOV N$神兽魔法下 5
+MOV N$神兽魔法上 5
+MOV N$神兽道术下 5
+MOV N$神兽道术上 5
+MOV N$神兽防御下 5
+MOV N$神兽防御上 5
+MOV N$神兽魔御下 5
+MOV N$神兽魔御上 5
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 16
+#act
+MOV N$神兽攻击下 6
+MOV N$神兽攻击上 6
+MOV N$神兽魔法下 6
+MOV N$神兽魔法上 6
+MOV N$神兽道术下 6
+MOV N$神兽道术上 6
+MOV N$神兽防御下 5
+MOV N$神兽防御上 5
+MOV N$神兽魔御下 5
+MOV N$神兽魔御上 5
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 17
+#act
+MOV N$神兽攻击下 6
+MOV N$神兽攻击上 6
+MOV N$神兽魔法下 6
+MOV N$神兽魔法上 6
+MOV N$神兽道术下 6
+MOV N$神兽道术上 6
+MOV N$神兽防御下 6
+MOV N$神兽防御上 6
+MOV N$神兽魔御下 6
+MOV N$神兽魔御上 6
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 18
+#act
+MOV N$神兽攻击下 6
+MOV N$神兽攻击上 6
+MOV N$神兽魔法下 6
+MOV N$神兽魔法上 6
+MOV N$神兽道术下 6
+MOV N$神兽道术上 6
+MOV N$神兽防御下 6
+MOV N$神兽防御上 6
+MOV N$神兽魔御下 6
+MOV N$神兽魔御上 6
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 19
+#act
+MOV N$神兽攻击下 7
+MOV N$神兽攻击上 7
+MOV N$神兽魔法下 7
+MOV N$神兽魔法上 7
+MOV N$神兽道术下 7
+MOV N$神兽道术上 7
+MOV N$神兽防御下 6
+MOV N$神兽防御上 6
+MOV N$神兽魔御下 6
+MOV N$神兽魔御上 6
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 20
+#act
+MOV N$神兽攻击下 7
+MOV N$神兽攻击上 7
+MOV N$神兽魔法下 7
+MOV N$神兽魔法上 7
+MOV N$神兽道术下 7
+MOV N$神兽道术上 7
+MOV N$神兽防御下 7
+MOV N$神兽防御上 7
+MOV N$神兽魔御下 7
+MOV N$神兽魔御上 7
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 21
+#act
+MOV N$神兽攻击下 7
+MOV N$神兽攻击上 7
+MOV N$神兽魔法下 7
+MOV N$神兽魔法上 7
+MOV N$神兽道术下 7
+MOV N$神兽道术上 7
+MOV N$神兽防御下 7
+MOV N$神兽防御上 7
+MOV N$神兽魔御下 7
+MOV N$神兽魔御上 7
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 22
+#act
+MOV N$神兽攻击下 8
+MOV N$神兽攻击上 8
+MOV N$神兽魔法下 8
+MOV N$神兽魔法上 8
+MOV N$神兽道术下 8
+MOV N$神兽道术上 8
+MOV N$神兽防御下 7
+MOV N$神兽防御上 7
+MOV N$神兽魔御下 7
+MOV N$神兽魔御上 7
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 23
+#act
+MOV N$神兽攻击下 8
+MOV N$神兽攻击上 8
+MOV N$神兽魔法下 8
+MOV N$神兽魔法上 8
+MOV N$神兽道术下 8
+MOV N$神兽道术上 8
+MOV N$神兽防御下 8
+MOV N$神兽防御上 8
+MOV N$神兽魔御下 8
+MOV N$神兽魔御上 8
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 24
+#act
+MOV N$神兽攻击下 8
+MOV N$神兽攻击上 8
+MOV N$神兽魔法下 8
+MOV N$神兽魔法上 8
+MOV N$神兽道术下 8
+MOV N$神兽道术上 8
+MOV N$神兽防御下 8
+MOV N$神兽防御上 8
+MOV N$神兽魔御下 8
+MOV N$神兽魔御上 8
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 25
+#act
+MOV N$神兽攻击下 9
+MOV N$神兽攻击上 9
+MOV N$神兽魔法下 9
+MOV N$神兽魔法上 9
+MOV N$神兽道术下 9
+MOV N$神兽道术上 9
+MOV N$神兽防御下 8
+MOV N$神兽防御上 8
+MOV N$神兽魔御下 8
+MOV N$神兽魔御上 8
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 26
+#act
+MOV N$神兽攻击下 9
+MOV N$神兽攻击上 9
+MOV N$神兽魔法下 9
+MOV N$神兽魔法上 9
+MOV N$神兽道术下 9
+MOV N$神兽道术上 9
+MOV N$神兽防御下 9
+MOV N$神兽防御上 9
+MOV N$神兽魔御下 9
+MOV N$神兽魔御上 9
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 27
+#act
+MOV N$神兽攻击下 9
+MOV N$神兽攻击上 9
+MOV N$神兽魔法下 9
+MOV N$神兽魔法上 9
+MOV N$神兽道术下 9
+MOV N$神兽道术上 9
+MOV N$神兽防御下 9
+MOV N$神兽防御上 9
+MOV N$神兽魔御下 9
+MOV N$神兽魔御上 9
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 28
+#act
+MOV N$神兽攻击下 10
+MOV N$神兽攻击上 10
+MOV N$神兽魔法下 10
+MOV N$神兽魔法上 10
+MOV N$神兽道术下 10
+MOV N$神兽道术上 10
+MOV N$神兽防御下 9
+MOV N$神兽防御上 9
+MOV N$神兽魔御下 9
+MOV N$神兽魔御上 9
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 29
+#act
+MOV N$神兽攻击下 10
+MOV N$神兽攻击上 10
+MOV N$神兽魔法下 10
+MOV N$神兽魔法上 10
+MOV N$神兽道术下 10
+MOV N$神兽道术上 10
+MOV N$神兽防御下 10
+MOV N$神兽防御上 10
+MOV N$神兽魔御下 10
+MOV N$神兽魔御上 10
+BREAK
+
+#if
+CHECKCREDITPOINT = 30
+#act
+MOV N$神兽攻击下 10
+MOV N$神兽攻击上 10
+MOV N$神兽魔法下 10
+MOV N$神兽魔法上 10
+MOV N$神兽道术下 10
+MOV N$神兽道术上 10
+MOV N$神兽防御下 10
+MOV N$神兽防御上 10
+MOV N$神兽魔御下 10
+MOV N$神兽魔御上 10
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 31
+#act
+MOV N$神兽攻击下 11
+MOV N$神兽攻击上 11
+MOV N$神兽魔法下 11
+MOV N$神兽魔法上 11
+MOV N$神兽道术下 11
+MOV N$神兽道术上 11
+MOV N$神兽防御下 10
+MOV N$神兽防御上 10
+MOV N$神兽魔御下 10
+MOV N$神兽魔御上 10
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 32
+#act
+MOV N$神兽攻击下 11
+MOV N$神兽攻击上 11
+MOV N$神兽魔法下 11
+MOV N$神兽魔法上 11
+MOV N$神兽道术下 11
+MOV N$神兽道术上 11
+MOV N$神兽防御下 11
+MOV N$神兽防御上 11
+MOV N$神兽魔御下 11
+MOV N$神兽魔御上 11
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 33
+#act
+MOV N$神兽攻击下 11
+MOV N$神兽攻击上 11
+MOV N$神兽魔法下 11
+MOV N$神兽魔法上 11
+MOV N$神兽道术下 11
+MOV N$神兽道术上 11
+MOV N$神兽防御下 11
+MOV N$神兽防御上 11
+MOV N$神兽魔御下 11
+MOV N$神兽魔御上 11
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 34
+#act
+MOV N$神兽攻击下 12
+MOV N$神兽攻击上 12
+MOV N$神兽魔法下 12
+MOV N$神兽魔法上 12
+MOV N$神兽道术下 12
+MOV N$神兽道术上 12
+MOV N$神兽防御下 11
+MOV N$神兽防御上 11
+MOV N$神兽魔御下 11
+MOV N$神兽魔御上 11
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 35
+#act
+MOV N$神兽攻击下 12
+MOV N$神兽攻击上 12
+MOV N$神兽魔法下 12
+MOV N$神兽魔法上 12
+MOV N$神兽道术下 12
+MOV N$神兽道术上 12
+MOV N$神兽防御下 12
+MOV N$神兽防御上 12
+MOV N$神兽魔御下 12
+MOV N$神兽魔御上 12
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 36
+#act
+MOV N$神兽攻击下 12
+MOV N$神兽攻击上 12
+MOV N$神兽魔法下 12
+MOV N$神兽魔法上 12
+MOV N$神兽道术下 12
+MOV N$神兽道术上 12
+MOV N$神兽防御下 12
+MOV N$神兽防御上 12
+MOV N$神兽魔御下 12
+MOV N$神兽魔御上 12
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 37
+#act
+MOV N$神兽攻击下 13
+MOV N$神兽攻击上 13
+MOV N$神兽魔法下 13
+MOV N$神兽魔法上 13
+MOV N$神兽道术下 13
+MOV N$神兽道术上 13
+MOV N$神兽防御下 12
+MOV N$神兽防御上 12
+MOV N$神兽魔御下 12
+MOV N$神兽魔御上 12
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 38
+#act
+MOV N$神兽攻击下 13
+MOV N$神兽攻击上 13
+MOV N$神兽魔法下 13
+MOV N$神兽魔法上 13
+MOV N$神兽道术下 13
+MOV N$神兽道术上 13
+MOV N$神兽防御下 13
+MOV N$神兽防御上 13
+MOV N$神兽魔御下 13
+MOV N$神兽魔御上 13
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 39
+#act
+MOV N$神兽攻击下 13
+MOV N$神兽攻击上 13
+MOV N$神兽魔法下 13
+MOV N$神兽魔法上 13
+MOV N$神兽道术下 13
+MOV N$神兽道术上 13
+MOV N$神兽防御下 13
+MOV N$神兽防御上 13
+MOV N$神兽魔御下 13
+MOV N$神兽魔御上 13
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 40
+#act
+MOV N$神兽攻击下 14
+MOV N$神兽攻击上 14
+MOV N$神兽魔法下 14
+MOV N$神兽魔法上 14
+MOV N$神兽道术下 14
+MOV N$神兽道术上 14
+MOV N$神兽防御下 13
+MOV N$神兽防御上 13
+MOV N$神兽魔御下 13
+MOV N$神兽魔御上 13
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 41
+#act
+MOV N$神兽攻击下 14
+MOV N$神兽攻击上 14
+MOV N$神兽魔法下 14
+MOV N$神兽魔法上 14
+MOV N$神兽道术下 14
+MOV N$神兽道术上 14
+MOV N$神兽防御下 14
+MOV N$神兽防御上 14
+MOV N$神兽魔御下 14
+MOV N$神兽魔御上 14
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 42
+#act
+MOV N$神兽攻击下 14
+MOV N$神兽攻击上 14
+MOV N$神兽魔法下 14
+MOV N$神兽魔法上 14
+MOV N$神兽道术下 14
+MOV N$神兽道术上 14
+MOV N$神兽防御下 14
+MOV N$神兽防御上 14
+MOV N$神兽魔御下 14
+MOV N$神兽魔御上 14
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 43
+#act
+MOV N$神兽攻击下 15
+MOV N$神兽攻击上 15
+MOV N$神兽魔法下 15
+MOV N$神兽魔法上 15
+MOV N$神兽道术下 15
+MOV N$神兽道术上 15
+MOV N$神兽防御下 14
+MOV N$神兽防御上 14
+MOV N$神兽魔御下 14
+MOV N$神兽魔御上 14
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 44
+#act
+MOV N$神兽攻击下 15
+MOV N$神兽攻击上 15
+MOV N$神兽魔法下 15
+MOV N$神兽魔法上 15
+MOV N$神兽道术下 15
+MOV N$神兽道术上 15
+MOV N$神兽防御下 15
+MOV N$神兽防御上 15
+MOV N$神兽魔御下 15
+MOV N$神兽魔御上 15
+BREAK
+
+#if
+CHECKCREDITPOINT = 45
+#act
+MOV N$神兽攻击下 15
+MOV N$神兽攻击上 15
+MOV N$神兽魔法下 15
+MOV N$神兽魔法上 15
+MOV N$神兽道术下 15
+MOV N$神兽道术上 15
+MOV N$神兽防御下 15
+MOV N$神兽防御上 15
+MOV N$神兽魔御下 15
+MOV N$神兽魔御上 15
+BREAK
+
+#if
+CHECKCREDITPOINT = 46
+#act
+MOV N$神兽攻击下 16
+MOV N$神兽攻击上 16
+MOV N$神兽魔法下 16
+MOV N$神兽魔法上 16
+MOV N$神兽道术下 16
+MOV N$神兽道术上 16
+MOV N$神兽防御下 15
+MOV N$神兽防御上 15
+MOV N$神兽魔御下 15
+MOV N$神兽魔御上 15
+BREAK
+
+#if
+CHECKCREDITPOINT = 47
+#act
+MOV N$神兽攻击下 16
+MOV N$神兽攻击上 16
+MOV N$神兽魔法下 16
+MOV N$神兽魔法上 16
+MOV N$神兽道术下 16
+MOV N$神兽道术上 16
+MOV N$神兽防御下 16
+MOV N$神兽防御上 16
+MOV N$神兽魔御下 16
+MOV N$神兽魔御上 16
+BREAK
+
+#if
+CHECKCREDITPOINT = 48
+#act
+MOV N$神兽攻击下 16
+MOV N$神兽攻击上 16
+MOV N$神兽魔法下 16
+MOV N$神兽魔法上 16
+MOV N$神兽道术下 16
+MOV N$神兽道术上 16
+MOV N$神兽防御下 16
+MOV N$神兽防御上 16
+MOV N$神兽魔御下 16
+MOV N$神兽魔御上 16
+BREAK
+
+
+#if
+CHECKCREDITPOINT = 49
+#act
+MOV N$神兽攻击下 17
+MOV N$神兽攻击上 17
+MOV N$神兽魔法下 17
+MOV N$神兽魔法上 17
+MOV N$神兽道术下 17
+MOV N$神兽道术上 17
+MOV N$神兽防御下 16
+MOV N$神兽防御上 16
+MOV N$神兽魔御下 16
+MOV N$神兽魔御上 16
+BREAK
+
+#if
+CHECKCREDITPOINT = 50
+#act
+MOV N$神兽攻击下 17
+MOV N$神兽攻击上 17
+MOV N$神兽魔法下 17
+MOV N$神兽魔法上 17
+MOV N$神兽道术下 17
+MOV N$神兽道术上 17
+MOV N$神兽防御下 17
+MOV N$神兽防御上 17
+MOV N$神兽魔御下 17
+MOV N$神兽魔御上 17
+BREAK
+
+#if
+CHECKCREDITPOINT = 51
+#act
+MOV N$神兽攻击下 17
+MOV N$神兽攻击上 17
+MOV N$神兽魔法下 17
+MOV N$神兽魔法上 17
+MOV N$神兽道术下 17
+MOV N$神兽道术上 17
+MOV N$神兽防御下 17
+MOV N$神兽防御上 17
+MOV N$神兽魔御下 17
+MOV N$神兽魔御上 17
+BREAK
+
+#if
+CHECKCREDITPOINT = 52
+#act
+MOV N$神兽攻击下 18
+MOV N$神兽攻击上 18
+MOV N$神兽魔法下 18
+MOV N$神兽魔法上 18
+MOV N$神兽道术下 18
+MOV N$神兽道术上 18
+MOV N$神兽防御下 17
+MOV N$神兽防御上 17
+MOV N$神兽魔御下 17
+MOV N$神兽魔御上 17
+BREAK
+
+#if
+CHECKCREDITPOINT = 53
+#act
+MOV N$神兽攻击下 18
+MOV N$神兽攻击上 18
+MOV N$神兽魔法下 18
+MOV N$神兽魔法上 18
+MOV N$神兽道术下 18
+MOV N$神兽道术上 18
+MOV N$神兽防御下 18
+MOV N$神兽防御上 18
+MOV N$神兽魔御下 18
+MOV N$神兽魔御上 18
+BREAK
+
+#if
+CHECKCREDITPOINT = 54
+#act
+MOV N$神兽攻击下 18
+MOV N$神兽攻击上 18
+MOV N$神兽魔法下 18
+MOV N$神兽魔法上 18
+MOV N$神兽道术下 18
+MOV N$神兽道术上 18
+MOV N$神兽防御下 18
+MOV N$神兽防御上 18
+MOV N$神兽魔御下 18
+MOV N$神兽魔御上 18
+BREAK
+
+#if
+CHECKCREDITPOINT = 55
+#act
+MOV N$神兽攻击下 19
+MOV N$神兽攻击上 19
+MOV N$神兽魔法下 19
+MOV N$神兽魔法上 19
+MOV N$神兽道术下 19
+MOV N$神兽道术上 19
+MOV N$神兽防御下 18
+MOV N$神兽防御上 18
+MOV N$神兽魔御下 18
+MOV N$神兽魔御上 18
+BREAK
+
+#if
+CHECKCREDITPOINT = 56
+#act
+MOV N$神兽攻击下 19
+MOV N$神兽攻击上 19
+MOV N$神兽魔法下 19
+MOV N$神兽魔法上 19
+MOV N$神兽道术下 19
+MOV N$神兽道术上 19
+MOV N$神兽防御下 19
+MOV N$神兽防御上 19
+MOV N$神兽魔御下 19
+MOV N$神兽魔御上 19
+BREAK
+
+#if
+CHECKCREDITPOINT = 57
+#act
+MOV N$神兽攻击下 19
+MOV N$神兽攻击上 19
+MOV N$神兽魔法下 19
+MOV N$神兽魔法上 19
+MOV N$神兽道术下 19
+MOV N$神兽道术上 19
+MOV N$神兽防御下 19
+MOV N$神兽防御上 19
+MOV N$神兽魔御下 19
+MOV N$神兽魔御上 19
+BREAK
+
+#if
+CHECKCREDITPOINT = 58
+#act
+MOV N$神兽攻击下 20
+MOV N$神兽攻击上 20
+MOV N$神兽魔法下 20
+MOV N$神兽魔法上 20
+MOV N$神兽道术下 20
+MOV N$神兽道术上 20
+MOV N$神兽防御下 19
+MOV N$神兽防御上 19
+MOV N$神兽魔御下 19
+MOV N$神兽魔御上 19
+BREAK
+
+#if
+CHECKCREDITPOINT = 59
+#act
+MOV N$神兽攻击下 20
+MOV N$神兽攻击上 20
+MOV N$神兽魔法下 20
+MOV N$神兽魔法上 20
+MOV N$神兽道术下 20
+MOV N$神兽道术上 20
+MOV N$神兽防御下 20
+MOV N$神兽防御上 20
+MOV N$神兽魔御下 20
+MOV N$神兽魔御上 20
+BREAK
+
+#if
+CHECKCREDITPOINT = 60
+#act
+MOV N$神兽攻击下 20
+MOV N$神兽攻击上 20
+MOV N$神兽魔法下 20
+MOV N$神兽魔法上 20
+MOV N$神兽道术下 20
+MOV N$神兽道术上 20
+MOV N$神兽防御下 20
+MOV N$神兽防御上 20
+MOV N$神兽魔御下 20
+MOV N$神兽魔御上 20
+BREAK
+
+#if
+CHECKCREDITPOINT = 61
+#act
+MOV N$神兽攻击下 21
+MOV N$神兽攻击上 21
+MOV N$神兽魔法下 21
+MOV N$神兽魔法上 21
+MOV N$神兽道术下 21
+MOV N$神兽道术上 21
+MOV N$神兽防御下 20
+MOV N$神兽防御上 20
+MOV N$神兽魔御下 20
+MOV N$神兽魔御上 20
+BREAK
+
+#if
+CHECKCREDITPOINT = 62
+#act
+MOV N$神兽攻击下 21
+MOV N$神兽攻击上 21
+MOV N$神兽魔法下 21
+MOV N$神兽魔法上 21
+MOV N$神兽道术下 21
+MOV N$神兽道术上 21
+MOV N$神兽防御下 21
+MOV N$神兽防御上 21
+MOV N$神兽魔御下 21
+MOV N$神兽魔御上 21
+BREAK
+
+#if
+CHECKCREDITPOINT = 63
+#act
+MOV N$神兽攻击下 21
+MOV N$神兽攻击上 21
+MOV N$神兽魔法下 21
+MOV N$神兽魔法上 21
+MOV N$神兽道术下 21
+MOV N$神兽道术上 21
+MOV N$神兽防御下 21
+MOV N$神兽防御上 21
+MOV N$神兽魔御下 21
+MOV N$神兽魔御上 21
+BREAK
+
+#if
+CHECKCREDITPOINT = 64
+#act
+MOV N$神兽攻击下 22
+MOV N$神兽攻击上 22
+MOV N$神兽魔法下 22
+MOV N$神兽魔法上 22
+MOV N$神兽道术下 22
+MOV N$神兽道术上 22
+MOV N$神兽防御下 21
+MOV N$神兽防御上 21
+MOV N$神兽魔御下 21
+MOV N$神兽魔御上 21
+BREAK
+
+#if
+CHECKCREDITPOINT = 65
+#act
+MOV N$神兽攻击下 22
+MOV N$神兽攻击上 22
+MOV N$神兽魔法下 22
+MOV N$神兽魔法上 22
+MOV N$神兽道术下 22
+MOV N$神兽道术上 22
+MOV N$神兽防御下 22
+MOV N$神兽防御上 22
+MOV N$神兽魔御下 22
+MOV N$神兽魔御上 22
+BREAK
+
+#if
+CHECKCREDITPOINT = 66
+#act
+MOV N$神兽攻击下 22
+MOV N$神兽攻击上 22
+MOV N$神兽魔法下 22
+MOV N$神兽魔法上 22
+MOV N$神兽道术下 22
+MOV N$神兽道术上 22
+MOV N$神兽防御下 22
+MOV N$神兽防御上 22
+MOV N$神兽魔御下 22
+MOV N$神兽魔御上 22
+BREAK
+
+#if
+CHECKCREDITPOINT = 67
+#act
+MOV N$神兽攻击下 23
+MOV N$神兽攻击上 23
+MOV N$神兽魔法下 23
+MOV N$神兽魔法上 23
+MOV N$神兽道术下 23
+MOV N$神兽道术上 23
+MOV N$神兽防御下 22
+MOV N$神兽防御上 22
+MOV N$神兽魔御下 22
+MOV N$神兽魔御上 22
+BREAK
+
+#if
+CHECKCREDITPOINT = 68
+#act
+MOV N$神兽攻击下 23
+MOV N$神兽攻击上 23
+MOV N$神兽魔法下 23
+MOV N$神兽魔法上 23
+MOV N$神兽道术下 23
+MOV N$神兽道术上 23
+MOV N$神兽防御下 23
+MOV N$神兽防御上 23
+MOV N$神兽魔御下 23
+MOV N$神兽魔御上 23
+BREAK
+
+#if
+CHECKCREDITPOINT = 69
+#act
+MOV N$神兽攻击下 23
+MOV N$神兽攻击上 23
+MOV N$神兽魔法下 23
+MOV N$神兽魔法上 23
+MOV N$神兽道术下 23
+MOV N$神兽道术上 23
+MOV N$神兽防御下 23
+MOV N$神兽防御上 23
+MOV N$神兽魔御下 23
+MOV N$神兽魔御上 23
+BREAK
+
+#if
+CHECKCREDITPOINT = 70
+#act
+MOV N$神兽攻击下 25
+MOV N$神兽攻击上 25
+MOV N$神兽魔法下 25
+MOV N$神兽魔法上 25
+MOV N$神兽道术下 25
+MOV N$神兽道术上 25
+MOV N$神兽防御下 23
+MOV N$神兽防御上 23
+MOV N$神兽魔御下 23
+MOV N$神兽魔御上 23
+BREAK
+
+#if
+CHECKCREDITPOINT = 71
+#act
+MOV N$神兽攻击下 25
+MOV N$神兽攻击上 25
+MOV N$神兽魔法下 25
+MOV N$神兽魔法上 25
+MOV N$神兽道术下 25
+MOV N$神兽道术上 25
+MOV N$神兽防御下 25
+MOV N$神兽防御上 25
+MOV N$神兽魔御下 25
+MOV N$神兽魔御上 25
+BREAK
+
+#if
+CHECKCREDITPOINT = 72
+#act
+MOV N$神兽攻击下 25
+MOV N$神兽攻击上 25
+MOV N$神兽魔法下 25
+MOV N$神兽魔法上 25
+MOV N$神兽道术下 25
+MOV N$神兽道术上 25
+MOV N$神兽防御下 25
+MOV N$神兽防御上 25
+MOV N$神兽魔御下 25
+MOV N$神兽魔御上 25
+BREAK
+
+
+}

@@ -1,0 +1,23 @@
+[@Body]
+{
+[@PickUpItemEX]
+#IF
+#ACT
+LINKPICKUPITEM
+MOV N$本次熔炼结果 0
+
+#IF
+LARGE U100 0
+#ACT
+GOTO @_@拾取熔炼
+
+#IF
+#ACT
+MOV N$本次熔炼结果 0
+
+#IF
+EQUAL N$本次熔炼结果 1
+#ACT
+UpdateItem -1
+BREAK
+}

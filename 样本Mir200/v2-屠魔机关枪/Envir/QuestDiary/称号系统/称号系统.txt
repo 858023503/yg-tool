@@ -1,0 +1,315 @@
+[@称号系统]
+{
+#IF
+#ACT
+
+goto @称号属性
+#if
+NOT EQUAL <$GameDirectory> $常量_母端位置
+#act
+GOTO @称号显示
+
+
+[@称号显示]
+#IF
+EQUAL U67 1
+#ACT
+PLAYEFFECT 18 1102 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 2
+#ACT
+PLAYEFFECT 18 1113 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 3
+#ACT
+PLAYEFFECT 18 1124 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 4
+#ACT
+PLAYEFFECT 18 1135 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 5
+#ACT
+PLAYEFFECT 18 1146 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 6
+#ACT
+PLAYEFFECT 18 1157 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 7
+#ACT
+PLAYEFFECT 18 1168 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 8
+#ACT
+PLAYEFFECT 18 1179 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 9
+#ACT
+PLAYEFFECT 18 1190 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 10
+#ACT
+PLAYEFFECT 18 1201 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 11
+#ACT
+PLAYEFFECT 18 1212 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 12
+#ACT
+PLAYEFFECT 18 1223 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 13
+#ACT
+PLAYEFFECT 18 1234 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 14
+#ACT
+PLAYEFFECT 18 1245 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 15
+#ACT
+PLAYEFFECT 18 1256 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 16
+#ACT
+PLAYEFFECT 18 1267 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 17
+#ACT
+PLAYEFFECT 18 1278 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 18
+#ACT
+PLAYEFFECT 18 1289 11 0 100 0 -77 -165 1
+BREAK
+
+
+#IF
+EQUAL U67 19
+#ACT
+PLAYEFFECT 18 1300 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 20
+#ACT
+PLAYEFFECT 18 1311 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 21
+#ACT
+PLAYEFFECT 18 1322 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 22
+#ACT
+PLAYEFFECT 18 1333 11 0 100 0 -77 -165 1
+BREAK
+
+#IF
+EQUAL U67 23
+#ACT
+PLAYEFFECT 18 1344 11 0 100 0 -77 -165 1
+BREAK
+
+[@称号属性]
+#if
+LARGE U65 22
+#ACT
+MOV N$称号暴击几率 23
+MOV N$称号攻魔道百分比 115
+break
+
+#if
+LARGE U65 21
+#ACT
+MOV N$称号暴击几率 22
+MOV N$称号攻魔道百分比 110
+break
+
+#if
+LARGE U65 20
+#ACT
+MOV N$称号暴击几率 21
+MOV N$称号攻魔道百分比 105
+break
+
+#if
+LARGE U65 19
+#ACT
+MOV N$称号暴击几率 20
+MOV N$称号攻魔道百分比 100
+break
+
+#if
+LARGE U65 18
+#ACT
+MOV N$称号暴击几率 19
+MOV N$称号攻魔道百分比 95
+break
+
+#if
+LARGE U65 17
+#ACT
+MOV N$称号暴击几率 18
+MOV N$称号攻魔道百分比 90
+break
+
+#if
+LARGE U65 16
+#ACT
+MOV N$称号暴击几率 17
+MOV N$称号攻魔道百分比 85
+break
+
+#if
+LARGE U65 15
+#ACT
+MOV N$称号暴击几率 16
+MOV N$称号攻魔道百分比 80
+break
+
+#if
+LARGE U65 14
+#ACT
+MOV N$称号暴击几率 15
+MOV N$称号攻魔道百分比 75
+break
+
+#if
+LARGE U65 13
+#ACT
+MOV N$称号暴击几率 14
+MOV N$称号攻魔道百分比 70
+break
+
+#if
+LARGE U65 12
+#ACT
+MOV N$称号暴击几率 13
+MOV N$称号攻魔道百分比 65
+break
+
+#if
+LARGE U65 11
+#ACT
+MOV N$称号暴击几率 12
+MOV N$称号攻魔道百分比 60
+break
+
+#if
+LARGE U65 10
+#ACT
+MOV N$称号暴击几率 11
+MOV N$称号攻魔道百分比 55
+break
+
+#if
+LARGE U65 9
+#ACT
+MOV N$称号暴击几率 10
+MOV N$称号攻魔道百分比 50
+break
+
+#if
+LARGE U65 8
+#ACT
+MOV N$称号暴击几率 9
+MOV N$称号攻魔道百分比 45
+break
+
+#if
+LARGE U65 7
+#ACT
+MOV N$称号暴击几率 8
+MOV N$称号攻魔道百分比 40
+break
+
+#if
+LARGE U65 6
+#ACT
+MOV N$称号暴击几率 7
+MOV N$称号攻魔道百分比 35
+break
+
+#if
+LARGE U65 5
+#ACT
+MOV N$称号暴击几率 6
+MOV N$称号攻魔道百分比 30
+break
+
+#if
+LARGE U65 4
+#ACT
+MOV N$称号暴击几率 5
+MOV N$称号攻魔道百分比 25
+break
+
+#if
+LARGE U65 3
+#ACT
+MOV N$称号暴击几率 4
+MOV N$称号攻魔道百分比 20
+break
+
+#if
+LARGE U65 2 
+#ACT
+MOV N$称号暴击几率 3
+MOV N$称号攻魔道百分比 15
+break
+
+#if
+LARGE U65 1 
+#ACT
+MOV N$称号暴击几率 2
+MOV N$称号攻魔道百分比 10
+break
+
+#if
+LARGE U65 0 
+#ACT
+MOV N$称号暴击几率 1
+MOV N$称号攻魔道百分比 5
+break
+
+}

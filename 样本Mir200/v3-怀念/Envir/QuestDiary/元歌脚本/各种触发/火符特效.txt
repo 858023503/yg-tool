@@ -1,0 +1,11 @@
+[@»ð·ûÌØÐ§´¥·¢]
+{
+#IF
+NOT CHECKCURRTARGETRACE = 0
+EQUAL <$CURRRUSEMAGICID> 13
+#ACT
+MOV N$·û·¶Î§ 3
+INC N$·û·¶Î§ <$HUMAN(Ôª¸èÌì¸³·û·¶Î§)>
+RangeHarmEx <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y> <$STR(N$·û·¶Î§)> 0 6 <$MAXSC> 0 2 1 0 92 927 10 100 0 0
+BREAK
+}

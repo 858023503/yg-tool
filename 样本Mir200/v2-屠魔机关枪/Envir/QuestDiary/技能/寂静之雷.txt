@@ -1,0 +1,286 @@
+[@寂静之雷]
+{
+
+#IF
+#ACT
+
+Goto @技能伤害
+#if
+EQUAL S$玩家当前大陆 五大陆
+#act
+AddHpPer - N$五大陆反伤
+#IF
+#ACT
+
+MOV N$寂静之雷特效播放编号 7
+MOV N$寂静之雷特效播放数量 15
+
+
+#if
+CHECKCURRTARGETRACE = 0
+#act
+MOV N$寂静之雷打人暴击几率 0
+goto @寂静之雷对人物伤害计算
+break
+#if
+NOT CHECKCURRTARGETRACE = 0
+#act
+goto @寂静之雷开启
+break
+
+
+
+
+[@寂静之雷开启]
+;计算幸运
+#if
+LARGE N$寂静之雷幸运 0
+#ACT
+;计算人物幸运攻击伤害下限
+FORMULATION <$MC>+(((<$MAXMC>-<$MC>)/10)*<$STR(N$寂静之雷幸运)>) N$寂静之雷人物幸运攻击下限
+
+DEC N$寂静之雷人物幸运攻击下限 1
+#elseact
+MOV N$寂静之雷人物幸运攻击下限 <$MC>
+;计算幸运
+
+
+#if
+#act
+MOVR N$寂静之雷随机基础伤害 <$STR(N$寂静之雷人物幸运攻击下限)> <$MAXMC>
+
+CalcPercent N$寂静之雷随机基础伤害 N$寂静之雷打怪默认伤害 N$寂静之雷随机基础伤害
+
+;降低系数
+MOV N$寂静之雷循环次数 <$STR(N$寂静之雷魔次)>
+;百分比计算
+CalcPercent N$寂静之雷随机基础伤害 N$寂静之雷怪物伤害百分比 N$寂静之雷随机基础伤害
+
+CalcPercent N$寂静之雷随机基础伤害 N$寂静之雷倍攻 N$寂静之雷随机基础伤害
+
+FORMULATION <$STR(N$寂静之雷随机基础伤害)>/<$STR(N$所有技能伤害降低倍数)> N$寂静之雷随机基础伤害
+
+
+
+
+
+#IF
+RANDOMEX N$人物暴击几率 100
+#ACT
+PLAYEFFECT 73 0 12 1 80 0 -125 -170 1
+FORMULATION (<$STR(N$人物暴击伤害)>+100)/100*<$STR(N$寂静之雷随机基础伤害)> N$寂静之雷随机基础伤害
+
+
+#if
+CheckCacheTextList ..\QuestDiary\怪物名称\精英及以下怪物.txt <$ATTACKMONSTER_NAMEEX>
+LARGE N$精英怪增加伤害 100
+#act
+CalcPercent N$寂静之雷随机基础伤害 N$精英怪增加伤害 N$寂静之雷随机基础伤害
+
+
+
+#if
+LARGE N$寂静之雷魔次 10
+large <$LEVEL> 99
+#act
+FORMULATION <$STR(N$寂静之雷随机基础伤害)>*<$STR(N$寂静之雷魔次)> N$寂静之雷随机基础伤害
+MOV N$寂静之雷循环次数 1
+delaycall 200 @寂静之雷开始打怪
+break
+
+#if
+LARGE N$寂静之雷魔次 10
+LARGE <$LEVEL> 79
+#act
+FORMULATION <$STR(N$寂静之雷随机基础伤害)>*<$STR(N$寂静之雷魔次)>/2 N$寂静之雷随机基础伤害
+MOV N$寂静之雷循环次数 2
+delaycall 200 @寂静之雷开始打怪
+break
+
+
+
+#if
+LARGE N$寂静之雷魔次 10
+LARGE <$LEVEL> 59
+#act
+FORMULATION <$STR(N$寂静之雷随机基础伤害)>*<$STR(N$寂静之雷魔次)>/3 N$寂静之雷随机基础伤害
+MOV N$寂静之雷循环次数 3
+delaycall 200 @寂静之雷开始打怪
+break
+
+#if
+LARGE N$寂静之雷魔次 10
+LARGE <$LEVEL> 29
+#act
+FORMULATION <$STR(N$寂静之雷随机基础伤害)>*<$STR(N$寂静之雷魔次)>/4 N$寂静之雷随机基础伤害
+MOV N$寂静之雷循环次数 4
+delaycall 200 @寂静之雷开始打怪
+break
+
+#if
+LARGE N$寂静之雷魔次 10
+LARGE <$LEVEL> 9
+#act
+FORMULATION <$STR(N$寂静之雷随机基础伤害)>*<$STR(N$寂静之雷魔次)>/5 N$寂静之雷随机基础伤害
+MOV N$寂静之雷循环次数 5
+delaycall 200 @寂静之雷开始打怪
+break
+
+
+
+#if
+SMALL N$寂静之雷魔次 10
+#act
+FORMULATION <$STR(N$寂静之雷随机基础伤害)>*<$STR(N$寂静之雷魔次)> N$寂静之雷随机基础伤害
+MOV N$寂静之雷循环次数 <$STR(N$寂静之雷魔次)>
+delaycall 200 @寂静之雷开始打怪
+break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@寂静之雷开始打怪]
+#if
+#ACT
+FORMULATION <$STR(N$寂静之雷随机基础伤害)>+<$STR(N$天殇套真实伤害)> N$寂静之雷随机基础伤害
+RangeHarm <$STR(N998)> <$STR(N999)> <$STR(N$寂静之雷范围)> 1 0 0 0 2 1 <$STR(N$寂静之雷特效播放编号)> <$STR(N$寂静之雷特效播放数量)> 50 0 0
+while 0 < N$寂静之雷循环次数
+RangeHarm <$STR(N998)> <$STR(N999)> <$STR(N$寂静之雷范围)> <$STR(N$寂静之雷随机基础伤害)> 0 0 0 2 0 0 0 0 0 0
+DEC N$寂静之雷循环次数 1
+endwhile
+
+
+
+
+;装备被动
+#if
+RANDOMEX N$九霄爆雷术几率 101
+#act
+PLAYEFFECT 1 22 6 1 100 0 0 0 1
+delaycall 800 @九霄爆雷术打怪
+
+;技能被动
+#if
+RANDOMEX N$焚土喷焰几率 101
+#act
+DELAYCALL 500 @焚土喷焰几率触发
+
+
+[@寂静之雷对人物伤害计算]
+#IF
+LARGE N$法宝神罚之雷降低魔御 0
+#ACT
+SetHumVar <$C.USERNAME> N$受攻击者寂静之雷降低魔御 N$法宝神罚之雷降低魔御
+GetHumVar <$C.USERNAME> <$STR(N$免疫对人物真实伤害)> N$对方免疫对人物真实伤害
+FORMULATION <$STR(N$对人物真实伤害)>-<$STR(N$对方免疫对人物真实伤害)> N$对人物造成的真实伤害
+hcall <$C.USERNAME> @法宝凰之玄晶寂静之雷降低魔御
+PLAYEFFECT 59 410 20 1 100 0 -150 -280 1
+#if
+LARGE N$寂静之雷幸运 0
+#ACT
+FORMULATION <$MC>+((<$MAXMC>-<$MC>)/10)*<$STR(N$寂静之雷幸运)> N$寂静之雷人物幸运攻击下限
+DEC N$寂静之雷人物幸运攻击下限 1
+#elseact
+MOV N$寂静之雷人物幸运攻击下限 <$MC>
+#if
+#act
+GetHumVar <$C.USERNAME> <$STR(N$人物暴击防御)> N$对方暴击防御
+
+MOVR N$寂静之雷打人最终伤害 <$STR(N$寂静之雷人物幸运攻击下限)> <$MAXMC>
+CalcPercent N$寂静之雷打人最终伤害 N$寂静之雷打人默认伤害 N$寂静之雷打人最终伤害
+CalcPercent N$寂静之雷打人最终伤害 N$寂静之雷人物伤害百分比 N$寂静之雷打人最终伤害
+
+#if
+LARGE N$人物暴击几率 <$STR(N$对方暴击防御)>
+#ACT
+FORMULATION <$STR(N$人物暴击几率)>-<$STR(N$对方暴击防御)> N$寂静之雷打人暴击几率
+
+
+
+#IF
+LARGE N$寂静之雷打人暴击几率 0
+RANDOMEX N$寂静之雷打人暴击几率 101
+#ACT
+PLAYEFFECT 73 0 12 1 80 0 -125 -170 1
+FORMULATION (<$STR(N$人物暴击伤害)>+100)/100*<$STR(N$寂静之雷打人最终伤害)> N$寂静之雷打人最终伤害
+
+
+
+
+
+
+
+#if
+#ACT
+delaycall 200 @寂静之雷对人物伤害
+[@寂静之雷对人物伤害]
+#if
+#ACT
+RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> 0 <$STR(N$寂静之雷打人最终伤害)> 0 0 0 1 1 <$STR(N$寂静之雷特效播放编号)> <$STR(N$寂静之雷特效播放数量)> 50 0 0
+
+RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 1 <$STR(N$寂静之雷特效播放编号)> <$STR(N$寂静之雷特效播放数量)> 50 0 0
+
+
+#if
+RANDOMEX 5 101
+#act
+DELAYCALL 500 @焚土喷焰几率触发
+break
+
+
+; #if
+; RANDOMEX N$九霄爆雷术几率 101
+; #act
+; PLAYEFFECT 1 22 6 1 100 0 0 0 1
+; delaycall 800 @九霄爆雷术打人
+
+
+;九霄爆雷术
+[@九霄爆雷术打怪]
+#if
+#act
+
+
+CalcPercent N$九霄爆雷术打怪伤害 N$九霄爆雷术伤害 N$九霄爆雷术打怪伤害
+RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> <$STR(N$寂静之雷范围)> <$STR(N$九霄爆雷术打怪伤害)> 0 0 0 2 1 28 23 100 0 0
+
+
+#IF
+RANDOMEX N$法宝九霄爆雷术切割怪物当前血量几率 101
+CheckCacheTextList ..\QuestDiary\怪物名称\精英及以下怪物.txt <$ATTACKMONSTER_NAMEEX>
+#ACT
+M.AddhpPerEx - 5
+
+[@九霄爆雷术打人]
+#IF
+#ACT
+RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> 2 <$STR(N$寂静之雷打人最终伤害)> 0 0 0 2 1 28 23 100 0 0
+
+[@焚土喷焰几率触发]
+#if
+#act
+PLAYEFFECT 1 3287 6 1 100 0 0 0 1
+
+Goto @焚土喷焰
+[@寂静之雷暴击触发]
+#IF
+RANDOMEX 
+#act
+
+}

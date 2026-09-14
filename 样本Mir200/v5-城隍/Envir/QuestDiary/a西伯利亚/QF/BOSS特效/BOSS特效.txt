@@ -1,0 +1,60 @@
+[@_@天师孙恩]
+{
+#IF
+#ACT
+formulation <$ATTACKMONSTER_XEX>-$天师孙恩特效范围$ N$孙恩特效坐标X1
+formulation <$ATTACKMONSTER_XEX>+$天师孙恩特效范围$ N$孙恩特效坐标X2
+formulation <$ATTACKMONSTER_YEX>-$天师孙恩特效范围$ N$孙恩特效坐标Y1
+formulation <$ATTACKMONSTER_YEX>+$天师孙恩特效范围$ N$孙恩特效坐标Y2
+MOV N$天师孙恩特效循环标识 0
+MOV L$天师孙恩特效播放X轴 []
+MOV L$天师孙恩特效播放Y轴 []
+WHILE N$天师孙恩特效循环标识 < $天师孙恩特效个数$
+MOVR N$当前随机生成X轴 <$STR(N$孙恩特效坐标X1)> <$STR(N$孙恩特效坐标X2)>
+INC L$天师孙恩特效播放X轴 <$STR(N$当前随机生成X轴)>
+MOVR N$当前随机生成Y轴 <$STR(N$孙恩特效坐标Y1)> <$STR(N$孙恩特效坐标Y2)>
+INC L$天师孙恩特效播放Y轴 <$STR(N$当前随机生成Y轴)>
+MAPEFFECT <$MAP> <$STR(N$当前随机生成X轴)> <$STR(N$当前随机生成Y轴)> 108 4560 3 1 100 1 
+MAPEFFECT <$MAP> <$STR(N$当前随机生成X轴)> <$STR(N$当前随机生成Y轴)> 108 4570 18 1 140 1 
+INC N$天师孙恩特效循环标识 1
+ENDWHILE
+MOV S$天师孙恩传递变量 <$STR(L$天师孙恩特效播放X轴)>*<$STR(L$天师孙恩特效播放Y轴)>
+GOTOLABEL 8 @_@天师孙恩场景魔法 <$X> <$Y> 10 0 S$天师孙恩传递变量 S$天师孙恩接收变量
+
+[@_@天师孙恩场景魔法]
+#IF
+EQUAL S$天师孙恩接收变量 
+#ACT
+BREAK
+
+#IF
+#ACT
+TEXTSPLIT * <$STR(S$天师孙恩接收变量)> S300
+MOV L$天师孙恩特效播放X轴 <$STR(S300)>
+MOV L$天师孙恩特效播放Y轴 <$STR(S301)>
+MOV N$孙恩释放魔法标识 1
+SENDCENTERMSG 180 251 天师·孙恩已释放【黄天无极】，%d后将再次释放. 0 20 @_@孙恩技能CD结束
+DELAYGOTO 1600 @_@孙恩魔法造成伤害
+
+[@_@孙恩魔法造成伤害]
+#IF
+#ACT
+MOV N$孙恩魔法伤害循环标识 0
+LOOPGOTO @_@孙恩魔法伤害执行 $天师孙恩特效个数$
+
+[@_@孙恩魔法伤害执行]
+#IF
+CHECKHUMINRANGE <$MAP> <$STR(L$天师孙恩特效播放X轴[<$STR(N$孙恩魔法伤害循环标识)>])> <$STR(L$天师孙恩特效播放Y轴[<$STR(N$孙恩魔法伤害循环标识)>])> 1
+#ACT
+FORMULATION ($天师孙恩魔法基础伤害$-<$MAXAC>-<$MAXMAC>)*(100-<$ELEMENT2>)/100 N$天师孙恩魔法实际伤害
+HUMANHP - <$STR(N$天师孙恩魔法实际伤害)>
+SendCenterMsg 180 251 你被天师孙恩的【黄天无极】命中,失去了[<$STR(N$天师孙恩魔法实际伤害)>点]生命！ 0 5
+
+#IF
+#ACT
+INC N$孙恩魔法伤害循环标识 1
+
+[@_@孙恩技能CD结束]
+#ACT
+MOV N$孙恩释放魔法标识 0
+}

@@ -1,0 +1,351 @@
+[@元歌智能挂机界面]
+{
+#IF
+#ACT
+GetNoDropItemCount N5
+
+#IF
+CheckContainsText <$STR(S$元歌挂机)> GJSJ:
+#ACT
+MOV S$元歌开关GJSJ <[√]/@元歌挂机开关(GJSJ)>
+#ElseAct
+MOV S$元歌开关GJSJ <[×]/@元歌挂机开关(GJSJ)>
+
+#IF
+CheckContainsText <$STR(S$元歌挂机)> YRSJ:
+#ACT
+MOV S$元歌开关YRSJ <[√]/@元歌挂机开关(YRSJ)>
+#ElseAct
+MOV S$元歌开关YRSJ <[×]/@元歌挂机开关(YRSJ)>
+
+#IF
+CheckContainsText <$STR(S$元歌挂机)> CXHC:
+#ACT
+MOV S$元歌开关CXHC <[√]/@元歌挂机开关(CXHC)>
+#ElseAct
+MOV S$元歌开关CXHC <[×]/@元歌挂机开关(CXHC)>
+
+#IF
+CheckContainsText <$STR(S$元歌挂机)> CTC:
+#ACT
+MOV S$元歌开关CTC <[√]/@元歌挂机开关(CTC)>
+#ElseAct
+MOV S$元歌开关CTC <[×]/@元歌挂机开关(CTC)>
+
+#IF
+CheckContainsText <$STR(S$元歌挂机)> GJ:
+#ACT
+MOV S$元歌挂机状态 <[√]挂机中-点击关闭/@元歌智能挂机>
+#ElseAct
+MOV S$元歌挂机状态 <[×]未挂机-点击开启/@元歌智能挂机>
+
+#IF
+NOT EQUAL <$STR(N$元歌挂机首次读取)> 1
+#ACT
+MOV N$元歌挂机首次读取 1
+MOV N$元歌挂机总 300
+MOV S$元歌挂机地图1 无记录
+MOV S$元歌挂机地图2 无记录
+MOV S$元歌挂机地图3 无记录
+MOV S$元歌挂机地图4 无记录
+MOV S$元歌挂机地图5 无记录
+;开启几个地图就赋值几个
+MOV N$元歌地图总 5
+MOV N$元歌嘲讽CD 10
+
+
+#IF
+#ACT
+#say
+\ \ \ \
+\<--------------------------------------------------------------------------------/FCOLOR=89>
+\
+\    <◇【元歌智能挂机系统】/FCOLOR=89>
+\ \
+\     <><$STR(S$元歌开关GJSJ)>  <[10]秒无攻击自动随机[有怪重启,无怪随机]/SCOLOR=250>
+\ \
+\     <><$STR(S$元歌开关YRSJ)>  <[10]码内有人自动随机/SCOLOR=250>
+\ \
+\     <><$STR(S$元歌开关CXHC)>  <低于[20%]HP回城泡澡,[90%]自动下图/SCOLOR=250>
+\ \
+\     <><$STR(S$元歌开关CTC)>  <全屏嘲讽[20*20]怪物/SCOLOR=250>  <-/@减嘲讽CD> {<$STR(N$元歌嘲讽CD)>秒/scolor=254} <+/@加嘲讽CD>
+\ \
+\     <[设置]/@元歌设置地图(1)> <[传送]/@元歌传送地图(1)>  <挂机地图1:  <$STR(S$元歌挂机地图1)>/FCOLOR=254>
+\     <[设置]/@元歌设置地图(2)> <[传送]/@元歌传送地图(2)>  <挂机地图2:  <$STR(S$元歌挂机地图2)>/FCOLOR=254>
+\     <[设置]/@元歌设置地图(3)> <[传送]/@元歌传送地图(3)>  <挂机地图3:  <$STR(S$元歌挂机地图3)>/FCOLOR=254>
+\     <[设置]/@元歌设置地图(4)> <[传送]/@元歌传送地图(4)>  <挂机地图4:  <$STR(S$元歌挂机地图4)>/FCOLOR=254>
+\     <[设置]/@元歌设置地图(5)> <[传送]/@元歌传送地图(5)>  <挂机地图5:  <$STR(S$元歌挂机地图5)>/FCOLOR=254>
+\ \
+\     <设置换图时间：/FCOLOR=250> <$STR(N$元歌挂机总)>秒 <5分钟/@元歌巡航时间(300)> <10分钟/@元歌巡航时间(600)> <半小时/@元歌巡航时间(1800)>
+\ \
+\     <死亡保护|215#免费领取死亡不掉装备次数！/@死亡不掉>  <剩余保护次数：<$STR(N5)>次/SCOLOR=254>
+\ \
+\     <><$STR(S$元歌挂机状态)>
+\ \
+\     <◆挂机自动/FCOLOR=89>  <强制和平·自动特修·死亡自动复活下图/SCOLOR=250>
+\     <◆全屏嘲讽/FCOLOR=89>  <20*20范围嘲讽聚怪，挂机效率翻倍/SCOLOR=250>
+\     <◆智能防卡/FCOLOR=89>  <有怪重启挂机·无怪随机换点/SCOLOR=250>
+\     <◆安全续航/FCOLOR=89>  <遇人随机防偷袭·残血回城泡澡/SCOLOR=250>
+\     <◆地图巡航/FCOLOR=89>  <5图自动换图，不在图自动回/SCOLOR=250>
+\     <◆死亡保护/FCOLOR=89>  <免费领取，死亡不掉装备/SCOLOR=250>
+\     <使用提示：/FCOLOR=58> <最少记录1个地图并设置换图时间，挂机中停不下来按F12关闭/SCOLOR=250>
+\<--------------------------------------------------------------------------------/FCOLOR=89>
+
+[@死亡不掉]
+#IF
+#ACT
+SetNoDropItemCount + 1 1 0
+GOTO @元歌智能挂机界面
+MessageBox 提示:领取成功！
+
+
+[@减嘲讽CD]
+#IF
+LARGE N$元歌嘲讽CD 10
+#ACT
+DEC N$元歌嘲讽CD 5
+GOTO @元歌智能挂机界面
+#ELSEACT
+MESSAGEBOX 最少保持10秒一次！
+
+[@加嘲讽CD]
+#IF
+SMALL N$元歌嘲讽CD 120
+#ACT
+INC N$元歌嘲讽CD 5
+GOTO @元歌智能挂机界面
+#ELSEACT
+MESSAGEBOX 最多2分钟一次！
+
+[@元歌巡航时间]
+#IF
+#ACT
+MOV N$元歌挂机总 <$SCRIPTPARAM1>
+GOTO @元歌智能挂机界面
+BREAK
+
+[@元歌设置地图]
+#IF
+EQUAL <$STR(S$元歌挂机地图<$SCRIPTPARAM1>)> 无记录
+#ACT
+MOV S$元歌挂机地图<$SCRIPTPARAM1> <$MAP>
+#ELSEACT
+MOV S$元歌挂机地图<$SCRIPTPARAM1> 无记录
+#IF
+#ACT
+GOTO @元歌智能挂机界面
+BREAK
+
+[@元歌传送地图]
+#IF
+NOT EQUAL <$STR(S$元歌挂机地图<$SCRIPTPARAM1>)> 无记录
+#ACT
+MAP <$STR(S$元歌挂机地图<$SCRIPTPARAM1>)>
+GOTO @元歌智能挂机界面
+BREAK
+#ELSEACT
+GOTO @元歌智能挂机界面
+
+[@元歌挂机开关]
+#IF
+NOT CheckContainsText <$STR(S$元歌挂机)> <$SCRIPTPARAM1>:
+#ACT
+INC S$元歌挂机 <$SCRIPTPARAM1>:
+GOTO @元歌智能挂机界面
+BREAK
+#ElseAct
+DEC S$元歌挂机 <$SCRIPTPARAM1>:
+GOTO @元歌智能挂机界面
+BREAK
+
+[@元歌智能挂机]
+
+#IF
+CheckContainsText <$STR(S$元歌挂机)> GJ:
+#Act
+DEC S$元歌挂机 GJ:
+DEC S$元歌挂机 CX:
+MOV N$元歌地图计数 1
+MOV N$元歌攻击秒 0
+StopAutoPlayGame
+GOTO @元歌智能挂机界面
+MessageBox 提示:你关闭了"元歌智能挂机"！
+BREAK
+
+#OR
+NOT EQUAL <$STR(S$元歌挂机地图1)> 无记录
+NOT EQUAL <$STR(S$元歌挂机地图2)> 无记录
+NOT EQUAL <$STR(S$元歌挂机地图3)> 无记录
+NOT EQUAL <$STR(S$元歌挂机地图4)> 无记录
+NOT EQUAL <$STR(S$元歌挂机地图5)> 无记录
+#ACT
+#ELSEACT
+MessageBox 提示:至少设置一个巡航地图！\\不管几个地图换图时间都要设置
+BREAK
+
+#IF
+NOT CheckContainsText <$STR(S$元歌挂机)> GJ:
+#ACT
+INC S$元歌挂机 GJ:
+DEC S$元歌挂机 CX:
+MOV N$元歌地图计数 1
+MOV N$元歌嘲讽计数 0
+MOV N$元歌攻击秒 0
+StartAutoPlayGame
+#CALL [\元歌脚本\群服功能\智能挂机.txt] @元歌智能触发
+GOTO @元歌智能挂机界面
+MessageBox 提示:你开启了"元歌智能挂机"！
+BREAK
+
+}
+
+[@元歌智能触发]
+{
+#IF
+CheckOnline <$USERNAME>
+NOT ISDUMMY
+CheckContainsText <$STR(S$元歌挂机)> GJ:
+NOT CheckContainsText <$STR(S$元歌挂机)> CX:
+#ACT
+;自动修理
+ActRepairAll
+;强制和平
+SetHumAttackMode 1 10
+GOTO @元歌挂机触发
+DELAYGOTO 1000 @元歌智能触发
+break
+
+[@元歌挂机触发]
+#IF
+#ACT
+INC N$元歌攻击秒 1
+SendCenterMsg 250 0 元歌挂机：[<$STR(N$元歌挂机次)>-<$STR(N$元歌挂机总)>][<$STR(N$元歌地图计数)>-<$STR(N$元歌地图总)>] 0 1
+
+;===================================全屏嘲讽
+#IF
+CheckContainsText <$STR(S$元歌挂机)> CTC:
+#ACT
+INC N$元歌嘲讽计数 1
+
+#IF
+CheckContainsText <$STR(S$元歌挂机)> CTC:
+EQUAL N$元歌嘲讽计数 <$STR(N$元歌嘲讽CD)>
+#ACT
+MOV N$元歌嘲讽计数 0
+DoTaunt 20 99999 0 1
+SendCenterMsg 250 0 元歌挂机：全屏嘲讽 0 1
+
+;===================================自动换图
+#IF
+SMALL N$元歌挂机次 <$STR(N$元歌挂机总)>
+#ACT
+INC N$元歌挂机次 1
+#ELSEACT
+MOV N$元歌挂机次 0
+INC N$元歌地图计数 1
+SendCenterMsg 250 0 元歌挂机：自动换图 0 1
+
+;===================================跳过无记录地图
+#OR
+EQUAL <$STR(S$元歌挂机地图<$STR(N$元歌地图计数)>)> 无记录
+EQUAL <$STR(S$元歌挂机地图<$STR(N$元歌地图计数)>)> 
+#ACT
+INC N$元歌地图计数 1
+SendCenterMsg 250 0 元歌挂机：此图无记录 0 1
+
+;===================================最后一个图回第一个图
+#IF
+large N$元歌地图计数 <$STR(N$元歌地图总)>
+#ACT
+MOV N$元歌地图计数 1
+SendCenterMsg 250 0 元歌挂机：一轮结束,从头开始 0 1
+
+;===================================不再地图自动传
+#IF
+not CHECKMAPNAME S$元歌挂机地图<$STR(N$元歌地图计数)>
+#ACT
+map <$STR(S$元歌挂机地图<$STR(N$元歌地图计数)>)>
+DELAYGOTO 500 @元歌重启挂机
+SendCenterMsg 250 0 元歌挂机：自动巡航 0 1
+break
+
+;===================================遇人随机
+#IF
+CheckContainsText <$STR(S$元歌挂机)> YRSJ:
+CheckRangeHumCount <$MAP> <$X> <$Y> 10 > 1
+#ACT
+map <$MAP>
+DELAYGOTO 200 @元歌重启挂机
+SendCenterMsg 250 0 元歌挂机：遇人随机 0 1
+break
+
+;===================================残血回城
+#IF
+CheckContainsText <$STR(S$元歌挂机)> CXHC:
+CheckHpPer < 20
+#ACT
+GoHome
+INC S$元歌挂机 CX:
+SendCenterMsg 250 0 元歌挂机：残血回城 0 1
+GOTO @元歌挂机残血
+break
+
+;===================================10秒没攻击-附近没怪随机
+#IF
+CHECKMAPNAME S$元歌挂机地图<$STR(N$元歌地图计数)>
+CheckContainsText <$STR(S$元歌挂机)> GJSJ:
+LARGE <$STR(N$元歌攻击秒)> 10
+CheckRangeMonCount <$MAP> <$X> <$Y> 15 < 1
+#ACT
+map <$MAP>
+DELAYGOTO 200 @元歌重启挂机
+SendCenterMsg 250 0 元歌挂机：无怪随机 0 1
+break
+
+;===================================10秒没攻击-附近有怪重启
+#IF
+CHECKMAPNAME S$元歌挂机地图<$STR(N$元歌地图计数)>
+CheckContainsText <$STR(S$元歌挂机)> GJSJ:
+LARGE <$STR(N$元歌攻击秒)> 10
+CheckRangeMonCount <$MAP> <$X> <$Y> 15 > 0
+#ACT
+MOV N$元歌攻击秒 0
+DELAYGOTO 200 @元歌重启挂机
+SendCenterMsg 250 0 元歌挂机：有怪重启 0 1
+break
+
+[@元歌重启挂机]
+#IF
+CheckOnline <$USERNAME>
+CHECKMAPNAME S$元歌挂机地图<$STR(N$元歌地图计数)>
+CheckContainsText <$STR(S$元歌挂机)> GJ:
+#ACT
+MOV N$元歌攻击秒 0
+StartAutoPlayGame
+break
+
+[@元歌挂机残血]
+#IF
+CheckHpPer < 90
+CheckContainsText <$STR(S$元歌挂机)> CXHC:
+CheckContainsText <$STR(S$元歌挂机)> CX:
+#ACT
+AddhpPer + 10
+AddMpPer + 10
+SendCenterMsg 250 0 元歌挂机：泉水回血中10% 0 1
+DELAYGOTO 2000 @元歌挂机残血
+BREAK
+#ELSEACT
+DEC S$元歌挂机 CX:
+GOTO @元歌智能触发
+BREAK
+
+[@元歌挂机复活]
+#IF
+CheckOnline <$USERNAME>
+CheckContainsText <$STR(S$元歌挂机)> GJ:
+#ACT
+REALIVE
+GoHome
+break
+}

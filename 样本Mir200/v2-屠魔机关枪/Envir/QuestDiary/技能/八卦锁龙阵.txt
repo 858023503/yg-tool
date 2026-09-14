@@ -1,0 +1,29 @@
+[@八卦锁龙阵]
+{
+#if
+#act
+PLAYEFFECT 1 1400 45 1 50 1 0 0 1
+MOV U156 10
+AddhpPer + 50
+
+Goto @统计属性
+ChangeHumAbility 1 + 99999
+ChangeHumAbility 2 + 99999
+ChangeHumAbility 3 + 99999
+ChangeHumAbility 4 + 99999
+delaycall 4000 @符文显现
+[@符文显现]
+#IF
+#ACT
+PLAYEFFECT 1 1485 24 1 40 1 0 0 1
+PLAYEFFECT 1 1465 7 1 100 1 0 0 1
+delaycall 500 @符文显现1
+[@符文显现1]
+#IF
+#ACT
+ChangeHumAbility 1 - 99999
+ChangeHumAbility 2 - 99999
+ChangeHumAbility 3 - 99999
+ChangeHumAbility 4 - 99999
+PLAYEFFECT 1 1472 13 0 100 1 0 0 1
+}

@@ -1,0 +1,42 @@
+[@main]
+#if
+#act
+OPENMERCHANTBIGDLG 5 941 1 4 0 0  0 360 15 1
+#say
+<&Text:七大陆所有怪物掉落极速宝石:90:55{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:1000个极速宝石提升1%神品品阶装备概率:85:85{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:每次需要1W元宝:140:115{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&IMGEX:5:730:731:732:145:178:1|提升/@提升品阶>
+
+[@提升品阶]
+#if
+EQUAL U413 200
+#act
+messagebox 满了肝帝
+break
+#if
+NOT CHECKITEM 极速宝石 1000
+#act
+messagebox 你没有极速宝石1000个
+break
+
+
+#if
+checkgamegold   < 9999
+#act
+messagebox 你没有10000元宝
+break
+
+#if
+CHECKITEM 极速宝石 1000
+checkgamegold > 9999
+#act
+take 极速宝石 1000
+INC U413 1
+gamegold  - 10000
+
+Goto @统计属性
+sendmsg 6 恭喜你啊同志,神品品阶提升1%,当前神品几率以提升<$STR(U413)>
+break
+#elseact
+sendmsg 6 ？

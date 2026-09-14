@@ -1,0 +1,434 @@
+[@普通转职证明]
+{
+#if
+#act
+OPENMERCHANTBIGDLG 5 881 1 4 0 0  0 610 0 1
+#SAY
+<&IMGEX:5:869:870:871:50:197/@转成战士>
+<&IMGEX:5:875:876:877:150:197/@转成法师>
+<&IMGEX:5:872:873:874:250:197/@转成道士>
+
+
+
+[@转成道士]
+#if
+CHECKSKILL 修罗血魂阵 = ?
+#act
+MOV N$修罗血魂阵 1
+
+
+#if
+CHECKSKILL 烈火剑法 = ?
+#act
+MOV N$烈火剑法 1
+
+
+#if
+CHECKSKILL 十字破军斩 = ?
+#act
+MOV N$十字破军斩 1
+
+
+#if
+CHECKSKILL 熔岩烈剑 = ?
+#act
+MOV N$熔岩烈剑 1
+
+#if
+CHECKSKILL 极光斩 = ?
+#act
+MOV N$极光斩 1
+
+#if
+CHECKSKILL 幻光剑影 = ?
+#act
+MOV N$幻光剑影 1
+
+
+
+
+
+
+#if
+CHECKSKILL 冰咆哮 = ?
+#act
+MOV N$冰咆哮 1
+
+#if
+CHECKSKILL 炎龙降临 = ?
+#act
+MOV N$炎龙降临 1
+#if
+CHECKSKILL 诱惑之光 = ?
+#act
+MOV N$诱惑之光 1
+#if
+CHECKSKILL 噬心魔骨 = ?
+#act
+MOV N$噬心魔骨 1
+#if
+CHECKSKILL 天龙之怒 = ?
+#act
+MOV N$天龙之怒 1
+#if
+CHECKSKILL 混乱元素 = ?
+#act
+MOV N$混乱元素 1
+
+#if
+CHECKSKILL 凤爆狂雷 = ?
+#act
+MOV N$凤爆狂雷 1
+
+#if
+#act
+CLEARSKILL
+CHANGEJOB taoist
+ADDSKILL 精神力战法 0
+ADDSKILL 神愈术 0
+ADDSKILL 隐身术 0
+ADDSKILL 灵魂火葫 0
+ADDSKILL 天灵符爆 0
+ADDSKILL 蛊毒术 0
+ADDSKILL 召唤骷髅 0
+ADDSKILL 仙法·万象魔咒 0
+ADDSKILL 道士机关枪 0
+ADDSKILL 心灵召唤 0
+ADDSKILL 双防之盾 0
+MOV T11 道士
+
+
+
+#OR
+EQUAL N$炎龙降临 1
+EQUAL N$修罗血魂阵 1
+#act
+ADDSKILL 浴火鞭策 0
+
+
+#OR
+EQUAL N$烈火剑法 1
+EQUAL N$冰咆哮 1
+#act
+ADDSKILL 幽龙镇魂 0
+
+
+#OR
+EQUAL N$十字破军斩 1
+EQUAL N$诱惑之光 1
+#act
+ADDSKILL 召唤火兽 0
+
+#OR
+EQUAL N$幻光剑影 1
+EQUAL N$噬心魔骨 1
+#act
+ADDSKILL 灵符乱舞 0
+
+#OR
+EQUAL N$熔岩烈剑 1
+EQUAL N$混乱元素 1
+#act
+ADDSKILL 八卦锁龙阵 0
+
+
+#or
+EQUAL U381 1
+#act
+ADDSKILL 月灵道祖 0
+
+
+#if
+#act
+messagebox 你已经换为道士,小退吧
+KICK
+
+
+[@转成法师]
+#if
+CHECKSKILL 修罗血魂阵 = ?
+#act
+MOV N$修罗血魂阵 1
+
+
+#if
+CHECKSKILL 烈火剑法 = ?
+#act
+MOV N$烈火剑法 1
+
+
+#if
+CHECKSKILL 十字破军斩 = ?
+#act
+MOV N$十字破军斩 1
+
+
+#if
+CHECKSKILL 熔岩烈剑 = ?
+#act
+MOV N$熔岩烈剑 1
+
+#if
+CHECKSKILL 极光斩 = ?
+#act
+MOV N$极光斩 1
+
+#if
+CHECKSKILL 幻光剑影 = ?
+#act
+MOV N$幻光剑影 1
+
+#if
+CHECKSKILL 召唤火兽 = ?
+#act
+MOV N$召唤火兽 1
+
+#if
+CHECKSKILL 八卦锁龙阵 = ?
+#act
+MOV N$八卦锁龙阵 1
+
+#if
+CHECKSKILL 灵符乱舞 = ?
+#act
+MOV N$灵符乱舞 1
+
+#if
+CHECKSKILL 幽龙镇魂 = ?
+#act
+MOV N$幽龙镇魂 1
+
+#if
+CHECKSKILL 浴火鞭策 = ?
+#act
+MOV N$浴火鞭策 1
+
+#if
+CHECKSKILL 月灵道祖 = ?
+#act
+MOV N$月灵道祖 1
+
+#if
+#act
+CLEARSKILL
+CHANGEJOB wizard
+ADDSKILL 魔法精通 0
+ADDSKILL 焚土喷焰 0
+ADDSKILL 群体雷电术 0
+ADDSKILL 梵天圣火 0
+ADDSKILL 漫天火雨打怪 0
+ADDSKILL 漫天火雨PK 0
+ADDSKILL 仙法·万象魔咒 0
+ADDSKILL 法师机关枪 0
+ADDSKILL 魔法盾 0
+MOV T11 法师
+
+#OR
+EQUAL N$幽龙镇魂 1
+EQUAL N$烈火剑法 1
+#act
+ADDSKILL 冰咆哮 0
+
+
+#OR
+EQUAL N$浴火鞭策 1
+EQUAL N$修罗血魂阵 1
+#act
+ADDSKILL 炎龙降临 0
+
+#OR
+EQUAL N$召唤火兽 1
+EQUAL N$十字破军斩 1
+#act
+MOV N$诱惑之光 0
+ADDSKILL 诱惑之光 0
+
+#or
+EQUAL N$幻光剑影 1
+EQUAL N$灵符乱舞 1
+#act
+MOV N$噬心魔骨 0
+ADDSKILL 噬心魔骨 0
+
+#or
+equal N$八卦锁龙阵 1
+EQUAL N$熔岩烈剑 1
+#act
+ADDSKILL 混乱元素 0
+MOV U154 60
+
+
+#or
+EQUAL U381 1
+#act
+ADDSKILL 凤爆狂雷 0
+
+
+
+
+
+#if
+#act
+messagebox 已经转变为法师,小退吧
+
+KICK
+
+
+[@转成战士]
+#if
+CHECKSKILL 修罗血魂阵 = ?
+#act
+MOV N$修罗血魂阵 1
+
+
+#if
+CHECKSKILL 烈火剑法 = ?
+#act
+MOV N$烈火剑法 1
+
+
+#if
+CHECKSKILL 十字破军斩 = ?
+#act
+MOV N$十字破军斩 1
+
+
+#if
+CHECKSKILL 熔岩烈剑 = ?
+#act
+MOV N$熔岩烈剑 1
+
+#if
+CHECKSKILL 极光斩 = ?
+#act
+MOV N$极光斩 1
+
+#if
+CHECKSKILL 幻光剑影 = ?
+#act
+MOV N$幻光剑影 1
+
+
+
+
+
+
+#if
+CHECKSKILL 冰咆哮 = ?
+#act
+MOV N$冰咆哮 1
+
+#if
+CHECKSKILL 炎龙降临 = ?
+#act
+MOV N$炎龙降临 1
+#if
+CHECKSKILL 诱惑之光 = ?
+#act
+MOV N$诱惑之光 1
+#if
+CHECKSKILL 噬心魔骨 = ?
+#act
+MOV N$噬心魔骨 1
+#if
+CHECKSKILL 天龙之怒 = ?
+#act
+MOV N$天龙之怒 1
+#if
+CHECKSKILL 混乱元素 = ?
+#act
+MOV N$混乱元素 1
+
+
+#if
+CHECKSKILL 召唤火兽 = ?
+#act
+MOV N$召唤火兽 1
+
+#if
+CHECKSKILL 八卦锁龙阵 = ?
+#act
+MOV N$八卦锁龙阵 1
+
+#if
+CHECKSKILL 灵符乱舞 = ?
+#act
+MOV N$灵符乱舞 1
+
+#if
+CHECKSKILL 幽龙镇魂 = ?
+#act
+MOV N$幽龙镇魂 1
+
+#if
+CHECKSKILL 浴火鞭策 = ?
+#act
+MOV N$浴火鞭策 1
+
+
+
+#if
+#act
+CLEARSKILL
+CHANGEJOB warrior
+ADDSKILL 基本剑术 0
+ADDSKILL 金殇斩 0
+ADDSKILL 刺杀剑术 0
+ADDSKILL 野蛮冲撞 3
+ADDSKILL 仙法·万象魔咒 0
+ADDSKILL 战士机关枪 0
+ADDSKILL 不屈意志 0
+MOV T11 战士
+#OR
+EQUAL N$浴火鞭策 1
+EQUAL N$炎龙降临 1
+#act
+ADDSKILL 修罗血魂阵 0
+MOV N$浴火鞭策 0
+MOV N$炎龙降临 0
+
+#OR
+EQUAL N$冰咆哮 1
+EQUAL N$幽龙镇魂 1
+#act
+ADDSKILL 烈火剑法 0
+mov N$冰咆哮 0
+mov N$幽龙镇魂 0
+
+#or
+EQUAL N$诱惑之光 1
+EQUAL N$召唤火兽 1
+#act
+ADDSKILL 十字破军斩 0
+MOV N$诱惑之光 1
+MOV N$召唤火兽 1
+#or
+EQUAL N$八卦锁龙阵 1
+EQUAL N$混乱元素 1
+#act
+ADDSKILL 熔岩烈剑 0
+MOV N$八卦锁龙阵 1
+MOV N$混乱元素 1
+
+#if
+EQUAL N$极光斩 1
+#act
+ADDSKILL 极光斩 0
+MOV N$极光斩 0
+#or
+EQUAL N$灵符乱舞 1
+EQUAL N$噬心魔骨 1
+#act
+ADDSKILL 幻光剑影 0
+MOV N$灵符乱舞 0
+MOV N$噬心魔骨 0
+
+
+#if
+#act
+messagebox 已经转变为战士,小退吧
+KICK
+
+
+
+}

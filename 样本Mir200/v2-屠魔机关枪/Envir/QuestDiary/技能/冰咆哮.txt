@@ -1,0 +1,318 @@
+[@冰咆哮]
+{
+#if
+EQUAL N$冰咆哮魔次 0
+#act
+sendmsg 6 没有冰咆哮魔次
+break
+
+
+#if
+EQUAL S$玩家当前大陆 五大陆
+#act
+AddHpPer - N$五大陆反伤
+
+
+
+
+
+#IF
+#ACT
+
+
+Goto @技能伤害
+PLAYEFFECT 1 393 10 1 50 0 0 0 0
+MOV N$冰咆哮特效编号 1
+MOV N$冰咆哮特效播放编号 1673
+MOV N$冰咆哮特效播放数量 20
+
+
+
+#if
+CHECKCURRTARGETRACE = 0
+#act
+MOV N$冰咆哮打人暴击几率 0
+goto @冰咆哮对人物伤害计算
+break
+#if
+NOT CHECKCURRTARGETRACE = 0
+
+#act
+goto @冰咆哮魔次开始
+break
+
+
+
+[@冰咆哮魔次开始]
+
+
+#if
+LARGE N$冰咆哮幸运 0
+#ACT
+;计算人物幸运攻击伤害下限
+FORMULATION <$MC>+(((<$MAXMC>-<$MC>)/10)*<$STR(N$冰咆哮幸运)>) N$冰咆哮人物幸运攻击下限
+
+DEC N$冰咆哮人物幸运攻击下限 1
+#elseact
+MOV N$冰咆哮人物幸运攻击下限 <$MC>
+
+#if
+#act
+
+MOVR N$冰咆哮最终伤害 <$STR(N$冰咆哮人物幸运攻击下限)> <$MAXMC>
+; sendmsg 6 随机伤害<$STR(N$冰咆哮最终伤害)>
+CalcPercent N$冰咆哮最终伤害 N$冰咆哮打怪默认伤害 N$冰咆哮最终伤害
+; sendmsg 6 冰咆哮打怪默认伤害<$STR(N$冰咆哮最终伤害)>
+; 
+
+CalcPercent N$冰咆哮最终伤害 N$冰咆哮对怪物伤害百分比 N$冰咆哮最终伤害
+; sendmsg 6 冰咆哮对怪物伤害百分比<$STR(N$冰咆哮最终伤害)>
+MOV N$冰咆哮循环次数 <$STR(N$冰咆哮魔次)>
+CalcPercent N$冰咆哮最终伤害 N$冰咆哮倍攻 N$冰咆哮最终伤害
+; sendmsg 6 冰咆哮倍攻<$STR(N$冰咆哮最终伤害)>
+FORMULATION <$STR(N$冰咆哮最终伤害)>/<$STR(N$所有技能伤害降低倍数)> N$冰咆哮最终伤害
+
+
+
+#IF
+RANDOMEX N$人物暴击几率 100
+#ACT
+PLAYEFFECT 73 0 12 1 80 0 -125 -170 1
+FORMULATION (<$STR(N$人物暴击伤害)>+100)/100*<$STR(N$冰咆哮最终伤害)> N$冰咆哮最终伤害
+; sendmsg 6 暴击<$STR(N$冰咆哮最终伤害)>
+
+#if
+CheckCacheTextList ..\QuestDiary\怪物名称\精英及以下怪物.txt <$ATTACKMONSTER_NAMEEX>
+LARGE N$精英怪增加伤害 100
+#act
+CalcPercent N$冰咆哮最终伤害 N$精英怪增加伤害 N$冰咆哮最终伤害
+
+#if
+CheckCacheTextList ..\QuestDiary\怪物名称\统领及以上怪物.txt <$ATTACKMONSTER_NAMEEX>
+LARGE N$对BOSS伤害增加 100
+#act
+CalcPercent N$冰咆哮最终伤害 N$对BOSS伤害增加 N$冰咆哮最终伤害
+
+; sendmsg 6 统领<$STR(N$冰咆哮最终伤害)>
+
+
+
+
+
+#if
+LARGE N$冰咆哮魔次 10
+large <$LEVEL> 99
+#act
+FORMULATION <$STR(N$冰咆哮最终伤害)>*<$STR(N$冰咆哮魔次)> N$冰咆哮最终伤害
+; sendmsg 6 魔次<$STR(N$冰咆哮最终伤害)>
+MOV N$冰咆哮循环次数 1
+delaycall 200 @冰咆哮判断寒渊冰刺打怪
+break
+
+#if
+LARGE N$冰咆哮魔次 10
+LARGE <$LEVEL> 79
+#act
+FORMULATION <$STR(N$冰咆哮最终伤害)>*<$STR(N$冰咆哮魔次)>/2 N$冰咆哮最终伤害
+MOV N$冰咆哮循环次数 2
+delaycall 200 @冰咆哮判断寒渊冰刺打怪
+break
+
+
+
+#if
+LARGE N$冰咆哮魔次 10
+LARGE <$LEVEL> 59
+#act
+FORMULATION <$STR(N$冰咆哮最终伤害)>*<$STR(N$冰咆哮魔次)>/3 N$冰咆哮最终伤害
+MOV N$冰咆哮循环次数 3
+delaycall 200 @冰咆哮判断寒渊冰刺打怪
+break
+
+#if
+LARGE N$冰咆哮魔次 10
+LARGE <$LEVEL> 29
+#act
+FORMULATION <$STR(N$冰咆哮最终伤害)>*<$STR(N$冰咆哮魔次)>/4 N$冰咆哮最终伤害
+MOV N$冰咆哮循环次数 4
+delaycall 200 @冰咆哮判断寒渊冰刺打怪
+break
+
+#if
+LARGE N$冰咆哮魔次 10
+LARGE <$LEVEL> 9
+#act
+FORMULATION <$STR(N$冰咆哮最终伤害)>*<$STR(N$冰咆哮魔次)>/5 N$冰咆哮最终伤害
+MOV N$冰咆哮循环次数 5
+delaycall 200 @冰咆哮判断寒渊冰刺打怪
+break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@冰咆哮判断寒渊冰刺打怪]
+
+#IF
+RANDOMEX N$寒渊冰刺几率 101
+#ACT
+goto @寒渊冰刺触发
+
+#elseact
+delaycall 400 @冰咆哮开始打怪
+
+
+
+
+[@冰咆哮开始打怪]
+
+
+#if
+#ACT
+FORMULATION <$STR(N$冰咆哮最终伤害)>+<$STR(N$天殇套真实伤害)> N$冰咆哮最终伤害
+
+MAPEFFECT <$MAP> <$STR(N998)> <$STR(N999)> 1 <$STR(N$冰咆哮特效播放编号)> <$STR(N$冰咆哮特效播放数量)> 1 50 1
+
+while 0 < N$冰咆哮循环次数
+RangeHarm <$STR(N998)> <$STR(N999)> <$STR(N$冰咆哮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+DEC N$冰咆哮循环次数 1
+endwhile
+
+
+
+
+
+
+
+
+
+
+
+; #IF
+; RANDOMEX N$法宝释放冰咆哮时有几率召陨石攻击 101
+; #ACT
+
+; FORMULATION <$STR(N$冰咆哮最终伤害)>*<$STR(N$召唤陨石攻击倍数)> N$法宝火之灵伤害
+; RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> <$STR(N$冰咆哮范围)> <$STR(N$法宝火之灵伤害)> 0 0 0 2 1 4833 12 100 0 1
+
+#if
+RANDOMEX N$焚土喷焰几率 101
+#act
+DELAYCALL 500 @焚土喷焰几率触发
+
+
+
+[@冰咆哮对人物伤害计算]
+
+#if
+LARGE N$冰咆哮幸运 0
+#ACT
+FORMULATION <$MC>+((<$MAXMC>-<$MC>)/10)*<$STR(N$冰咆哮幸运)> N$冰咆哮人物幸运攻击下限
+DEC N$冰咆哮人物幸运攻击下限 1
+#elseact
+MOV N$冰咆哮人物幸运攻击下限 <$MC>
+#if
+#act
+GetHumVar <$C.USERNAME> <$STR(N$人物暴击防御)> N$对方暴击防御
+GetHumVar <$C.USERNAME> <$STR(N$免疫对人物真实伤害)> N$对方免疫对人物真实伤害
+FORMULATION <$STR(N$对人物真实伤害)>-<$STR(N$对方免疫对人物真实伤害)> N$对人物造成的真实伤害
+
+
+
+MOVR N$冰咆哮打人最终伤害 <$STR(N$冰咆哮人物幸运攻击下限)> <$MAXMC>
+; sendmsg 6 随机<$STR(N$冰咆哮打人最终伤害)>
+CalcPercent N$冰咆哮打人最终伤害 N$冰咆哮打人默认伤害 N$冰咆哮打人最终伤害
+; sendmsg 6 默认<$STR(N$冰咆哮打人最终伤害)>
+CalcPercent N$冰咆哮打人最终伤害 N$冰咆哮对人物伤害百分比 N$冰咆哮打人最终伤害
+; sendmsg 6 百分比<$STR(N$冰咆哮打人最终伤害)>
+
+#if
+LARGE N$人物暴击几率 <$STR(N$对方暴击防御)>
+#ACT
+FORMULATION <$STR(N$人物暴击几率)>-<$STR(N$对方暴击防御)> N$冰咆哮打人暴击几率
+
+#IF
+LARGE N$冰咆哮打人暴击几率 0
+RANDOMEX N$冰咆哮打人暴击几率 101
+#ACT
+PLAYEFFECT 73 0 12 1 80 0 -125 -170 1
+FORMULATION (<$STR(N$人物暴击伤害)>+100)/100*<$STR(N$冰咆哮打人最终伤害)> N$冰咆哮打人最终伤害
+; sendmsg 6 暴击<$STR(N$冰咆哮打人最终伤害)>
+
+
+#IF
+#ACT
+delaycall 200 @冰咆哮对人物伤害
+
+
+
+#if
+RANDOMEX 5 101
+#act
+DELAYCALL 500 @焚土喷焰几率触发
+
+
+
+[@冰咆哮对人物伤害]
+#if
+#ACT
+
+RangeHarm <$STR(N998)> <$STR(N999)> 3 <$STR(N$冰咆哮打人最终伤害)> 0 0 0 1 1 <$STR(N$冰咆哮特效播放编号)> <$STR(N$冰咆哮特效播放数量)> 50 1 0
+RangeHarm <$STR(N998)> <$STR(N999)> 3 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 1 <$STR(N$冰咆哮特效播放编号)> <$STR(N$冰咆哮特效播放数量)> 50 1 0
+
+
+
+
+[@寒渊冰刺触发]
+#IF
+#ACT
+MAPEFFECT <$MAP> <$STR(N998)> <$STR(N999)> 1 <$STR(N$冰咆哮特效播放编号)> <$STR(N$冰咆哮特效播放数量)> 1 50 1
+delaycall  600 @寒渊冰刺伤害
+[@寒渊冰刺伤害]
+#IF
+#ACT
+FORMULATION <$STR(N$冰咆哮最终伤害)>+<$STR(N$天殇套真实伤害)> N$冰咆哮最终伤害
+
+while 0 < N$冰咆哮循环次数
+RangeHarm <$STR(N998)> <$STR(N999)> <$STR(N$寒渊冰刺范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 1 4618 28 50 1 0
+DEC N$冰咆哮循环次数 1
+endwhile
+
+#if
+RANDOMEX 5 101
+#act
+DELAYCALL 500 @焚土喷焰几率触发
+
+; #IF(1)
+; EQUAL <$CURRRTARGETFULLNAME> 九首寄生体
+; EQUAL <$CURRRTARGETFULLNAME> 北冥九首深渊龙
+; #ACT
+; FORMULATION <$STR(N$冰咆哮最终伤害)>*5 N$攻击世界BOSS血量
+; INC U68 <$STR(N$攻击世界BOSS血量)>
+; AddDlg 3 0 11 1 550:0 0:8 0 <&Img:243:0:6:-30><&ImgNum:9:<$STR(U68)>:-1:10:90>
+; writeconfigfileitem ..\..\..\..\通区文件\世界BOSS\世界BOSS数据保存.txt <$username> 伤害值 <$Str(U68)>
+; writeconfigfileitem ..\..\..\..\通区文件\世界BOSS\世界BOSS数据保存.txt <$username> 等级 <$LEVEL>
+; ; RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> 14 100 0 0 0 2 
+
+
+[@焚土喷焰几率触发]
+#if
+#act
+PLAYEFFECT 1 3287 6 1 100 0 0 0 1
+
+Goto @焚土喷焰
+}

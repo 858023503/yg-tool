@@ -1,0 +1,130 @@
+[@猎魂]
+{
+#if
+EQUAL <$KillMonName> 魂珠蛛魔
+#act
+SelfMapEffect <$MAP> <$KILLMONX> <$KILLMONY> 59 96 14 2 100 0
+delaycall 2000 @魔蛛的魂
+break
+
+#if
+EQUAL <$KillMonName> 魂珠邪灵
+#act
+SelfMapEffect <$MAP> <$KILLMONX> <$KILLMONY> 59 96 14 2 100 0
+delaycall 2000 @邪灵的魂
+break
+
+#if
+EQUAL <$KillMonName> 魂珠石魔
+#act
+SelfMapEffect <$MAP> <$KILLMONX> <$KILLMONY> 59 96 14 2 100 0
+delaycall 2000 @石魔的魂
+break
+
+
+
+
+[@魔蛛的魂]
+#if
+RANDOMEX 20 101
+#act
+goto @获取魔珠的魂
+#elseact
+INC U120 1
+
+sendmsg 5 收集镇魔蛛皇的魂魄【失败了】,已失败<$STR(U120)>次,第5次必出
+
+#if
+EQUAL U120 5
+#act
+goto @获取魔珠的魂
+
+[@获取魔珠的魂]
+#if
+#ACT
+INC U119 1
+MOV U120 0
+sendmsg 5 恭喜你收集到【镇魔蛛皇的魂魄】
+
+
+
+[@邪灵的魂]
+#if
+EQUAL U45 25
+#act
+MOV U45 26
+goto @获得邪灵的魂
+messagebox 任务完成了,快去领取奖励吧
+BREAK
+
+
+
+
+#IF
+RANDOMEX 20 101
+#act
+goto @获得邪灵的魂
+#elseact
+INC U122 1
+sendmsg 5 收集邪灵的魂魄【失败了】\,已失败<$STR(U122)>次,第5次必出
+
+
+#if
+EQUAL U122 5
+#act
+sendmsg 5 保底触发获得邪灵的魂魄一个
+goto @获得邪灵的魂
+
+[@获得邪灵的魂]
+#if
+#act
+INC U133 1
+MOV U122 0
+sendmsg 5 恭喜你收集到【邪灵的魂魄】
+
+
+
+
+
+
+
+
+[@石魔的魂]
+#if
+RANDOMEX 20 101
+#act
+goto @获取石魔的魂
+#elseact
+INC U134 1
+sendmsg 5 收集魂珠石魔的魂魄【失败了】已失败<$STR(U134)>次,第5次必出
+
+
+#if
+EQUAL U134 5
+#act
+sendmsg 5 保底触发获得邪灵的魂魄一个
+goto @获取石魔的魂
+
+
+
+
+[@获取石魔的魂]
+#if
+#ACT
+INC U121 1
+MOV U134 0
+sendmsg 5 恭喜你收集到【魂珠石魔】
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

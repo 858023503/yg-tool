@@ -1,0 +1,45 @@
+[@main]
+#IF
+#ACT
+ReadConfigFileItem ..\QuestDiary\测试区回收配置.txt <$USERID> 测试区回收元宝 N$测试区回收元宝数量
+
+DIV N$正式区所得元宝数量 <$STR(N$测试区回收元宝数量)> 2
+
+#IF
+#ACT
+#SAY
+<><玩家在测试区体验时，/SCOLOR=250><[回收装备]/SCOLOR=243><获得元宝都会/SCOLOR=250><自动进行记录/SCOLOR=243><！/SCOLOR=250>  \ \  
+<><正式开放/SCOLOR=249><后，使用/SCOLOR=250><相同账号/SCOLOR=249><注册并登陆，在此领回测试所得奖励/SCOLOR=250><50%/SCOLOR=253><！/SCOLOR=250>\ \  
+
+<>           <【/AUTOCOLOR=8> <您在测试区累计记录：  <$str(N$测试区回收元宝数量)>元宝/AUTOCOLOR=243> <】/AUTOCOLOR=8> \  
+<>           <【/AUTOCOLOR=8> <正式开区可获得收益：  <$str(N$正式区所得元宝数量)>元宝/AUTOCOLOR=243> <】/AUTOCOLOR=8> \ 
+
+<>                      <『/SCOLOR=69> <领取元宝奖励/@领取元宝> <』/SCOLOR=69>\
+<><『温馨提示』：玩家只能使用一个账号领取奖励，请使用你的主账号！> \
+
+
+
+[@领取元宝]
+#if
+CheckContainsText <$SERVERNAME> 测试
+#ACT
+MESSAGEBOX 请在开区之后再来领取！！！！！！！！！！！！！
+break
+#if
+CHECKTEXTLIST ..\QuestDiary\测试元宝记录.txt <$MACHINEID>
+#Act
+MessageBox [系统:]\　\　　　　当前机器领取过元宝测试奖励，无法二次领取！\
+Break
+
+#IF
+LARGE N$正式区所得元宝数量 0
+#ACT
+GAMEGOLD + <$str(N$正式区所得元宝数量)>
+WriteConfigFileItem ..\QuestDiary\测试区回收配置.txt <$USERID> 测试区回收元宝 0
+AddTextListEx ..\QuestDiary\测试元宝记录.txt <$MACHINEID>
+MOVR N$纵轴坐标 80 530
+SENDMOVEMSG 0 251 0 N$纵轴坐标 1 恭喜:玩家{[<$USERNAME>]/SCOLOR=254}领取测试区回收收益奖励{【<$STR(N$正式区所得元宝数量)>】/Scolor=253}。 14  30 0
+
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 未发现你在测试区有回收元宝记录！

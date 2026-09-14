@@ -1,0 +1,197 @@
+[@六大陆装备鉴定]
+{
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\拾取鉴定\装备\六大陆正常装备.txt <$STR(S98)>
+#ACT
+; SetCustomItemText -1 <IMG:1092:0>
+
+goto @雪城旧址鉴定词条圣品
+break
+
+
+
+
+[@雪城旧址鉴定词条圣品]
+#IF
+#ACT
+MOV N$武器鉴定攻击 0
+MOV N$武器鉴定魔法 0
+MOV N$武器鉴定道术 0
+MOV N$衣服首饰鉴定防御 0
+MOV N$衣服首饰鉴定魔御 0
+MOV N$衣服首饰鉴定道术 0
+MOV N$衣服首饰鉴定魔法 0
+MOV N$衣服首饰鉴定道术 0
+#IF
+GetStringPosEX ..\QuestDiary\拾取鉴定\装备\极品武器属性.txt <$STR(S98)> N1 S1 0
+#ACT
+
+goto @雪城旧址圣品武器给属性
+
+#IF
+GetStringPosEX ..\QuestDiary\拾取鉴定\装备\极品衣服首饰属性.txt <$STR(S98)> N1 S1 0
+#ACT
+
+GOTO @雪城旧址圣品衣服首饰给属性
+
+#IF
+GetStringPosEX ..\QuestDiary\拾取鉴定\装备\极品项链属性.txt <$STR(S98)> N1 S1 0
+#ACT
+GOTO @雪城旧址圣品项链给属性
+
+
+[@雪城旧址圣品项链给属性]
+#IF
+#ACT
+EXTRACTSTRING ~ S1 S$项链名字 N$项链攻击 N$项链魔法 N$项链道术
+
+; CalcPercent N$项链攻击 U311 N$极品项链攻击随机下限
+; CalcPercent N$项链魔法 U312 N$极品项链魔法随机下限
+; CalcPercent N$项链道术 U313 N$极品项链道术随机下限
+
+INC N$项链攻击 1
+INC N$项链魔法 1
+INC N$项链道术 1
+MOVR N$项链鉴定攻击 N$极品项链攻击随机下限 N$项链攻击
+MOVR N$项链鉴定魔法 N$极品项链魔法随机下限 N$项链魔法
+MOVR N$项链鉴定道术 N$极品项链道术随机下限 N$项链道术
+
+#IF
+
+NOT EQUAL N$项链鉴定攻击 0
+#ACT
+CHANGEITEMADDVALUE -1 2  + N$项链鉴定攻击
+
+
+#IF
+
+NOT EQUAL N$项链鉴定魔法 0
+#ACT
+CHANGEITEMADDVALUE -1 3  + N$项链鉴定魔法
+
+#IF
+
+NOT EQUAL N$项链鉴定道术 0
+#ACT
+CHANGEITEMADDVALUE -1 4  + N$项链鉴定道术
+
+
+
+
+[@雪城旧址圣品衣服首饰给属性]
+#IF
+#ACT
+EXTRACTSTRING ~ S1 S$衣服首饰名字 N$衣服首饰防御 N$衣服首饰魔御 N$衣服首饰攻击 N$衣服首饰魔法 N$衣服首饰道术
+
+
+
+
+
+
+
+
+; CalcPercent N$衣服首饰防御 U314 N$极品首饰防御随机下限
+; CalcPercent N$衣服首饰魔御 U315 N$极品首饰魔御随机下限
+; CalcPercent N$衣服首饰攻击 U311 N$极品首饰攻击随机下限
+; CalcPercent N$衣服首饰魔法 U312 N$极品首饰魔法随机下限
+; CalcPercent N$衣服首饰道术 U313 N$极品首饰道术随机下限
+INC N$衣服首饰防御 1
+INC N$衣服首饰魔御 1
+INC N$衣服首饰攻击 1
+INC N$衣服首饰魔法 1
+INC N$衣服首饰道术 1
+
+MOVR N$衣服首饰鉴定防御 N$极品首饰防御随机下限 N$衣服首饰防御
+MOVR N$衣服首饰鉴定魔御 N$极品首饰魔御随机下限 N$衣服首饰魔御
+MOVR N$衣服首饰鉴定攻击 N$极品首饰攻击随机下限 N$衣服首饰攻击
+MOVR N$衣服首饰鉴定魔法 N$极品首饰魔法随机下限 N$衣服首饰魔法
+MOVR N$衣服首饰鉴定道术 N$极品首饰道术随机下限 N$衣服首饰道术
+#IF
+
+NOT EQUAL N$衣服首饰鉴定防御 0
+#ACT
+CHANGEITEMADDVALUE -1 0  + N$衣服首饰鉴定防御
+
+#IF
+
+NOT EQUAL N$衣服首饰鉴定魔御 0
+#ACT
+CHANGEITEMADDVALUE -1 1  + N$衣服首饰鉴定魔御
+
+#IF
+
+NOT EQUAL N$衣服首饰鉴定道术 0
+#ACT
+CHANGEITEMADDVALUE -1 2  + N$衣服首饰鉴定攻击
+
+#IF
+
+NOT EQUAL N$衣服首饰鉴定魔法 0
+#ACT
+CHANGEITEMADDVALUE -1 3  + N$衣服首饰鉴定魔法
+
+#IF
+
+NOT EQUAL N$衣服首饰鉴定道术 0
+#ACT
+CHANGEITEMADDVALUE -1 4  + N$衣服首饰鉴定道术
+
+
+
+;备注的是武器加幸运的,武器只有攻魔道
+; CHANGEITEMADDVALUE -1 3  + 70
+; CHANGEITEMADDVALUE -1 4  + 11
+
+
+[@雪城旧址圣品武器给属性]
+#IF
+#ACT
+;极品属性增加攻击上限30% 四舍五入
+EXTRACTSTRING ~ S1 S$武器名字 N$武器攻击 N$武器魔法 N$武器道术
+
+
+
+
+
+
+
+
+
+; CalcPercent N$武器攻击 U311 N$极品武器攻击随机下限
+; CalcPercent N$武器魔法 U312 N$极品武器魔法随机下限
+; CalcPercent N$武器道术 U313 N$极品武器道术随机下限
+
+INC N$武器攻击 1
+INC N$武器魔法 1
+INC N$武器道术 1
+
+MOVR N$武器鉴定攻击 N$极品武器攻击随机下限 N$武器攻击
+MOVR N$武器鉴定魔法 N$极品武器魔法随机下限 N$武器魔法
+MOVR N$武器鉴定道术 N$极品武器道术随机下限 N$武器道术
+
+
+#IF
+
+NOT EQUAL N$武器鉴定攻击 0
+#ACT
+CHANGEITEMADDVALUE -1 0  + N$武器鉴定攻击
+
+
+#IF
+
+NOT EQUAL N$武器鉴定魔法 0
+#ACT
+CHANGEITEMADDVALUE -1 1  + N$武器鉴定魔法
+
+#IF
+
+NOT EQUAL N$武器鉴定道术 0
+#ACT
+CHANGEITEMADDVALUE -1 2  + N$武器鉴定道术
+
+
+
+
+}

@@ -1,0 +1,77 @@
+[@道士骷髅宝宝攻击触发]
+{
+#IF
+#ACT
+BB.HUMANHP + <$STR(N$法宝释道士宝宝吸血)>
+
+
+
+#if
+LARGE N$道士召唤宝宝幸运 0
+#ACT
+;计算人物幸运攻击伤害下限
+FORMULATION <$STR(N$骷髅宝宝伤害下限)>+(((<$STR(N$骷髅宝宝伤害上限)>-<$STR(N$骷髅宝宝伤害下限)>)/10)*<$STR(N$道士召唤宝宝幸运)>) N$骷髅宝宝伤害幸运下限
+
+DEC N$骷髅宝宝伤害幸运下限 1
+#elseact
+MOV N$骷髅宝宝伤害幸运下限 <$STR(N$骷髅宝宝伤害下限)>
+
+#if
+#act
+MOVR  N$骷髅宝宝随机伤害 N$骷髅宝宝伤害幸运下限 N$骷髅宝宝伤害上限 
+
+FORMULATION <$STR(N$骷髅宝宝随机伤害)>/<$STR(N$所有技能伤害降低倍数)> N$骷髅宝宝随机伤害
+
+
+#if
+randomex N$人物暴击几率 100
+#act
+FORMULATION <$STR(N$骷髅宝宝随机伤害)>*2 N$骷髅宝宝随机伤害
+CalcPercent N$骷髅宝宝随机伤害 N$人物暴击伤害 N$骷髅宝宝随机伤害
+; #if
+; #act
+; FORMULATION <$STR(N$骷髅宝宝随机伤害)>+<$STR(N$天殇套真实伤害)> N$骷髅宝宝随机伤害
+
+
+
+
+
+
+
+
+#if
+CheckCacheTextList ..\QuestDiary\怪物名称\精英及以下怪物.txt <$ATTACKMONSTER_NAMEEX>
+LARGE N$精英怪增加伤害 100
+#act
+CalcPercent N$骷髅宝宝随机伤害 N$精英怪增加伤害 N$骷髅宝宝随机伤害
+
+
+#OR
+EQUAL <$CurSlaveName> 巨刃骷髅
+EQUAL <$CurSlaveName> 战争弓箭手
+#ACT
+goto @骷髅宝宝致命伤害判断
+break
+
+
+#IF
+EQUAL <$CurSlaveName> 战争之王
+#ACT
+goto @战争之王宝宝致命伤害判断
+
+
+[@骷髅宝宝致命伤害判断]
+#if
+
+#ACT
+BB.RangeHarm <$SlaveTargetX> <$SlaveTargetY> 4 N$骷髅宝宝随机伤害 0 0 0 2 0 0 0 0 0 1
+
+
+[@战争之王宝宝致命伤害判断]
+#if
+
+#ACT
+BB.RangeHarm <$SlaveTargetX> <$SlaveTargetY> 4 N$骷髅宝宝随机伤害 0 0 0 2 0 0 0 0 0 1
+
+
+}

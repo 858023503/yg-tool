@@ -1,0 +1,261 @@
+[@Body]
+{
+[@KillMon]
+#IF
+CHECKFENGHAO 白玉为堂金做马
+#ACT
+GOTO @_@杀怪给金币
+
+#IF
+RANDOM 20
+CHECKITEMW 黄金戒指
+#ACT
+GIVE 金币 1000
+
+
+
+
+
+
+#IF
+CheckCallGamePet
+CheckGamePetLevel < 40
+#ACT
+GetDBMonsterFieldValue <$KILLMONNAME> EXP S$当前怪物数据库经验
+GamePetChangeExp + <$STR(S$当前怪物数据库经验)>
+SendCenterMsg 180 251 您的宠物获得了<$STR(N$宠物共享80经验)>经验 0 1
+
+#IF
+LARGE N$杀怪额外经验固值 0
+CHECKLEVELEX < 50
+#ACT
+CHANGEEXP + <$STR(N$杀怪额外经验固值)>
+
+#IF
+EQUAL <$KILLMONNAME> 雪域魔王
+EQUAL <$MAP> XY3
+#ACT
+ADDMAPGATE <$USERNAME>的<$DATE>雪域圣殿 <$MAP> <$KILLMONX> <$KILLMONY> 1 XY4 37 166 100 1
+SENDMSG 0 <$USERNAME>杀死了<$KILLMONNAME>，开启了雪域圣殿传送门，大家赶紧并肩子进去啦！！传送门只持续100秒哦！！！
+
+#IF
+EQUAL <$KILLMONNAME> 转轮王·薛
+EQUAL <$MAP> SY_H010
+checkitem 跳动的心脏[未激活] 1
+check [20] 1
+check [21] 1
+check [22] 1
+check [23] 1
+check [24] 1
+#ACT
+take 跳动的心脏[未激活] 5
+give 跳动的心脏[完整] 1
+SENDMSG 0 <$USERNAME>携带心脏杀死了<$KILLMONNAME>，深渊的心脏开始完全跳动起来了，恭喜<$USERNAME>！！！
+
+
+#IF
+EQUAL <$KILLMONNAME> 深渊雪域魔王
+EQUAL <$MAP> SY_XY3
+#ACT
+ADDMAPGATE <$USERNAME>的<$DATE>深渊雪域圣殿 <$MAP> <$KILLMONX> <$KILLMONY> 1 SY_XY4 37 166 100 1
+SENDMSG 0 <$USERNAME>杀死了<$KILLMONNAME>，开启了深渊雪域圣殿传送门，大家赶紧并肩子进去啦！！传送门只持续100秒哦！！！
+
+#IF
+CHECKITEMW 沙漠珍宝
+#ACT
+GOTO @_@复活怪物重新杀
+
+#IF
+CHECKMAGICNAME 专注杀戮
+CHECKSKILL 专注杀戮 < 3
+#ACT
+GOTO @_@专注杀戮增加经验
+
+#IF(2)
+CHECKITEMW  统率者(男)
+CHECKITEMW  统率者(女)
+CheckCustomItemProgressbarValue 18 0 1 < 10
+#ACT
+GOTO @_@统率者升级
+
+#IF(3)
+CheckShowGodBless
+NOT CheckOpenGodBless 0
+EQUAL <$KILLMONNAME> 阿拉蕾
+EQUAL <$KILLMONNAME> 怪博士
+#ACT
+MOV N$<$KILLMONNAME>神佑击杀标识 1
+SENDMSG 6 <$KILLMONNAME>击杀成功!开启1号神佑已击杀阿拉蕾:<$STR(N$阿拉蕾神佑击杀标识)>/1次,怪博士:<$STR(N$怪博士神佑击杀标识)>/1次
+
+#IF(3)
+CheckShowGodBless
+NOT CheckOpenGodBless 2
+EQUAL <$KILLMONNAME> 秦广王·蒋
+EQUAL <$KILLMONNAME> 楚江王·历
+EQUAL <$KILLMONNAME> 宋帝王·余
+EQUAL <$KILLMONNAME> 五官王·吕
+EQUAL <$KILLMONNAME> 阎罗天子·包
+EQUAL <$KILLMONNAME> 卞城王·毕
+EQUAL <$KILLMONNAME> 泰山王·董
+EQUAL <$KILLMONNAME> 都市王·黄
+EQUAL <$KILLMONNAME> 平等王·陆
+EQUAL <$KILLMONNAME> 转轮王·薛
+#ACT
+MOV N$<$KILLMONNAME>神佑击杀标识 1
+SENDMSG 6 <$KILLMONNAME>击杀成功!开启3号神佑已击杀秦广王:<$STR(N$秦广王·蒋神佑击杀标识)>/1次,楚江王:<$STR(N$楚江王·历神佑击杀标识)>/1次,宋帝王:<$STR(N$宋帝王·余神佑击杀标识)>/1次,五官王:<$STR(N$五官王·吕神佑击杀标识)>/1次,阎罗天子:<$STR(N$阎罗天子·包神佑击杀标识)>/1次,卞城王:<$STR(N$卞城王·毕神佑击杀标识)>/1次,泰山王:<$STR(N$泰山王·董神佑击杀标识)>/1次,都市王:<$STR(N$都市王·黄神佑击杀标识)>/1次,平等王:<$STR(N$平等王·陆神佑击杀标识)>/1次,转轮王:<$STR(N$转轮王·薛神佑击杀标识)>/1次
+
+[@_@统率者升级]
+#IF
+#ACT
+GetCustomItemProgressbarValue 18 0 0 N$统率者最大级别
+GetCustomItemProgressbarValue 18 0 1 N$统率者当前级别
+
+#IF
+EQUAL N$统率者当前级别 <$STR(N$统率者最大级别)>
+#ACT
+BREAK
+
+#IF
+NOT CheckContainsText <$KILLMONNAME> <$STR(L$统率者击杀目标数组[<$STR(N$统率者当前级别)>])>
+#ACT
+BREAK
+
+#IF
+NOT CheckContainsText <$MAP> SY_H0
+#ACT
+SENDMSG 6 你击杀了对应的怪物,但不在指定地图,升级失败！
+BREAK
+
+#IF
+RANDOMEX 20 100
+#ACT
+GOTO @_@统率者开始升级
+#ELSEACT
+SENDMSG 6 20%几率未达成,统率者升级失败！
+
+[@_@统率者开始升级]
+#IF
+#ACT
+MOV N$统率者下一级别 <$STR(N$统率者当前级别)>
+INC N$统率者下一级别 1
+LOOPGOTO @_@统率者加属性 <$STR(N$统率者下一级别)>
+SetCustomItemProgressbarValue 18 0 1 = <$STR(N$统率者下一级别)>
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{击杀<$KILLMONNAME>，成功为|251:0}{[统率者时装衣服]|254:0}{增加了|251:0}{[<$STR(N$统率者下一级别)>点]|254:0}{随机属性|251:0}
+
+#IF
+SMALL N$统率者下一级别 <$STR(N$统率者最大级别)>
+#ACT
+SetCustomItemText 18 击杀{[<$STR(L$统率者击杀目标数组[<$STR(N$统率者下一级别)>])>]|253}20%概率升级
+SetCustomItemTextColor 18 250
+#ELSEACT
+SetCustomItemText 18 已升至满级！
+SetCustomItemTextColor 18 250
+
+#IF
+#ACT
+UpdateItem 18
+
+[@_@统率者加属性]
+#IF
+RANDOMEX 30 100
+#ACT
+MOVR N$统率者随机加元素 0 8
+SetNewItemValue 18 <$STR(L$统率者击杀增加元素数组[<$STR(N$统率者随机加元素)>])> + 1
+#ELSEACT
+MOV N$统率者随机加属性 <$STR(L$职业主属性位置[<$JOB>])>
+CHANGEITEMADDVALUE 18 <$STR(N$统率者随机加属性)> + 1
+
+[@_@专注杀戮增加经验]
+#IF
+#ACT
+GetDBMonsterFieldValue <$KILLMONNAME> MonType S$杀死怪物类型
+
+#OR
+EQUAL S$杀死怪物类型 高级BOSS
+EQUAL S$杀死怪物类型 顶级BOSS
+EQUAL S$杀死怪物类型 人级BOSS
+#ACT
+MOVR N$技能增加经验值 1 <$STR(S$专注杀戮<$STR(S$杀死怪物类型)>经验)>
+CHANGETRANPOINT 专注杀戮 + <$STR(N$技能增加经验值)>
+SendCenterMsg 180 251 杀死[<$STR(S$杀死怪物类型)>]给专注杀戮增加了<$STR(N$技能增加经验值)>点经验！ 0 2
+GOTO @_@技能经验概率暴击
+
+[@_@复活怪物重新杀]
+#IF
+#ACT
+MOV N$复活重新杀概率 0
+
+#IF
+CHECKITEMW 沙漠珍宝
+#ACT
+MOV N$复活重新杀概率 3
+
+#IF
+RANDOMEX <$STR(N$复活重新杀概率)> 100
+#ACT
+MONGENEX <$MAP> <$KILLMONX> <$KILLMONY> <$KILLMONNAME> 1 1
+SENDMSG 6 沙漠珍宝触发，<$KILLMONNAME>原地复活！
+BREAK
+
+[@_@杀怪给金币]
+#IF
+#ACT
+M.GetObjectAbilityEX 1 N$杀死怪物血量上限
+MOVR N$随机给金币 1 <$STR(N$杀死怪物血量上限)>
+MOV S$杀死怪物送钱描述 你杀死了{<$KILLMONNAME>|249},你获得了<$STR(N$随机给金币)>金币。
+
+#IF
+CHECKFENGHAO 是非成败转头空
+RANDOMEX 5 100
+#ACT
+MOVR N$高级怪物送金币倍率 5 21
+MUL N$高级怪物送金币数量 <$STR(N$高级怪物送金币倍率)> <$STR(N$杀死怪物血量上限)>
+MOV S$杀死怪物送钱描述 你杀死了<$KILLMONNAME>,未知的力量赠送你<$STR(N$高级怪物送金币数量)>金币。
+INC N$随机给金币 <$STR(N$高级怪物送金币数量)>
+
+#IF
+#ACT
+GetDBMonsterFieldValue <$KILLMONNAME> MonType S$杀死怪物类型
+
+#IF
+NOT EQUAL S$<$STR(S$杀死怪物类型)>魔兽神佑怪物名
+#ACT
+SCATTERMONITEMS <$STR(S$<$STR(S$杀死怪物类型)>魔兽神佑怪物名)>
+
+#IF
+NOT EQUAL S$杀死怪物类型 垃圾
+#ACT
+MOV L$怪物金币福利数组 <$STR(S$<$STR(S$杀死怪物类型)>随机金币福利)>
+MOVR N$怪物类型随机送金币 <$STR(L$怪物金币福利数组[0])> <$STR(L$怪物金币福利数组[1])>
+GIVE 金币 <$STR(N$怪物类型随机送金币)>
+INC S$杀死怪物送钱描述 怪物级别金币奖励:<$STR(N$怪物类型随机送金币)>。
+
+#OR
+EQUAL S$杀死怪物类型 高级BOSS
+EQUAL S$杀死怪物类型 顶级BOSS
+EQUAL S$杀死怪物类型 人级BOSS
+#ACT
+ScatterMonItems 送宝树妖
+SENDMSG 6 你杀死<$STR(S$杀死怪物类型)>,送你一只送宝树妖的掉落！
+
+#IF
+SMALL U116 500
+EQUAL S$杀死怪物类型 人级BOSS
+EQUAL <$DRESS> 
+#ACT
+INC U116 1
+SENDMSG 6 你不穿衣服杀死[<$STR(S$杀死怪物类型)>]，裸杀次数+1。当前:<$STR(U116)>/500
+
+#IF
+SMALL U118 200
+EQUAL S$杀死怪物类型 人级BOSS
+CHECKHPPER < 30
+#ACT
+INC U118 1
+SENDMSG 6 你生命值低于30%杀死[<$STR(S$杀死怪物类型)>]，险胜次数+1。当前:<$STR(U118)>/200
+
+#IF
+#ACT
+GIVE 金币 <$STR(N$随机给金币)>
+SendCenterMsg 180 251 <$STR(S$杀死怪物送钱描述)> 0 1
+}

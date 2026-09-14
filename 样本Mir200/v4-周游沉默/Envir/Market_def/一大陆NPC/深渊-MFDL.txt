@@ -1,0 +1,42 @@
+[@main]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \
+<>     ======================<深渊宝藏>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<暗之BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><雷霆系列/SCOLOR=254>,<域类系列/SCOLOR=249>,<地图每秒减少5元宝/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴传送戒指或起源之心免费传送/SCOLOR=254> \
+<>               <否则自己跑或随机或消耗1000元宝/SCOLOR=249> \
+<>                        <ITEMSHOW:880:0:0:-0:1:1>\ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                                 <进入地图/@深渊1>           
+
+[@深渊1]
+#OR
+CHECKITEMW 传送戒指
+CHECKITEMW 起源の之心
+#ACT
+MAPMOVE 深渊宝藏
+BREAK
+#IF
+CHECKGAMEGOLD ? 1000
+#ACT
+GAMEGOLD - 1000
+MAPMOVE 深渊宝藏
+BREAK
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+BREAK
+
+
+
+
+
+
+

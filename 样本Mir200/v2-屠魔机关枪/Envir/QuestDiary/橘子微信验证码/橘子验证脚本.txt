@@ -1,0 +1,400 @@
+[@橘子验证绑定检测]
+#INCLUDE JZ常量.ini
+{
+
+
+#IF
+equal <$GamePromotionFlag> tq88666
+#ACT
+MOV S$会员站标识 tq88666
+
+#IF
+equal <$GamePromotionFlag> tq6868
+#ACT
+MOV S$会员站标识 tq6868
+
+#IF
+equal <$GamePromotionFlag> 9wwa
+#ACT
+MOV S$会员站标识 9wwa
+
+#IF
+equal <$GamePromotionFlag> 8jwl
+#ACT
+MOV S$会员站标识 8jwl
+
+
+
+#if
+NOT EQUAL $常量_微信OP 
+NOT EQUAL $常量_微信NC 
+#ACT
+MOV S$微信昵称 <$STR($常量_微信NC)>
+MOV S$安全状态 <&Img:23:$常量_补丁编号:200:185:D>
+MOV S$按钮显示 <&ImgEx:$常量_补丁编号:379:380:381:123:271/@进行微信解绑12>
+
+#if
+EQUAL $常量_微信OP 
+#ACT
+MOV S$微信昵称 暂未绑定
+MOV S$安全状态 <&Img:24:$常量_补丁编号:200:185:D>
+MOV S$按钮显示 <&ImgEx:$常量_补丁编号:376:377:378:123:271/@进行微信绑定>
+
+
+#if
+NOT EQUAL $常量_微信OP 
+EQUAL $常量_微信NC 
+#ACT
+MOV S$微信昵称 已绑定
+MOV S$安全状态 <&Img:23:$常量_补丁编号:200:185:D>
+MOV S$按钮显示 <&ImgEx:$常量_补丁编号:379:380:381:123:271/@进行微信解绑12>
+
+
+#if
+#act
+OPENMERCHANTBIGDLG $常量_补丁编号 366 0 4 X -50 0 530 5
+#SAY
+\ \ \
+<&ImgEx:$常量_补丁编号:373:374:375:335:70/@exit>\
+
+
+<&text:进入游戏自动生成二维码 扫码即可绑定:52:68{fcolor=94;fname=微软雅黑;fsize=11;fbold=1}>
+
+<&text:请打开微信 打开扫一扫进行扫码:73:98{fcolor=94;fname=微软雅黑;fsize=11;fbold=1}>
+
+<&text:机器码有变动时 可保障你的账号安全:60:128{fcolor=94;fname=微软雅黑;fsize=11;fbold=1}>
+
+<&text:若提示获取失败 请重新获取一次再试:60:158{fcolor=94;fname=微软雅黑;fsize=11;fbold=1}>
+
+<&text:账户安全：  :130:188{fcolor=250;fname=微软雅黑;fsize=11;fbold=1}>
+
+
+<&text:微信昵称：  :115:241{fcolor=94;fname=微软雅黑;fsize=11;fbold=1}>
+
+<&text:<$STR(S$微信昵称)>:185:241{fcolor=94;fname=微软雅黑;fsize=11;fbold=1}>
+
+          <$STR(S$安全状态)>       <$STR(S$按钮显示)>
+
+
+
+[@进行微信绑定]
+#ACT
+CALCVAR HUMAN success = 0
+CALCVAR HUMAN msg =
+SAVEVAR HUMAN success ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN msg ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+AddTextList ..\QuestDiary\橘子微信验证码\橘子微信验证.txt 6:<$STR(S$会员站标识)>:$常量_网关编号:<$SERVERNAME>:<$USERID>:<$USERNAME>:<$LEVEL>
+DELAYGOTO 2000 @获取二维码1
+OPENMERCHANTBIGDLG $常量_补丁编号 365 0 4 X -50 0 530 5
+#SAY
+\ \ 
+<&ImgEx:$常量_补丁编号:373:374:375:335:70/@exit>\
+
+<&text:系统正在生成二维码,请稍后:90:156{fcolor=94;fname=微软雅黑;fsize=11;fbold=1}>
+
+
+
+
+[@获取二维码1]
+#act
+LOADVAR HUMAN success ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+LOADVAR HUMAN msg ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+
+#IF
+EQUAL <$HUMAN(success)> 0
+#ACT
+MESSAGEBOX 【提示】：二维码获取失败<$HUMAN(msg)>！！！
+#ELSEACT
+CALCVAR HUMAN success = 0
+CALCVAR HUMAN msg =
+CALCVAR HUMAN nickname =
+CALCVAR HUMAN openid =
+CALCVAR HUMAN role_id =
+SAVEVAR HUMAN role_id ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN success ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN msg ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN nickname ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN openid ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+GetListString ..\QuestDiary\橘子微信验证码\二维码\<$USERNAME>.txt 0 S1
+;CLEARNAMELIST ..\QuestDiary\橘子微信验证码\二维码\<$USERNAME>.txt
+GOTO @显示二维码
+MOV N$时间 0
+DELAYGOTO 1000 @等待扫码结果
+
+[@显示二维码]
+#if
+#act
+GetListString ..\QuestDiary\橘子微信验证码\二维码\<$USERNAME>.txt 0 S33
+OPENMERCHANTBIGDLG $常量_补丁编号 365 0 4 X -50 0 530 5
+#SAY
+<&ImgEx:$常量_补丁编号:373:374:375:335:70/@exit> \
+
+<&text:二维码已生成:140:235{fcolor=94;fname=微软雅黑;fsize=10;fbold=1}>  \
+
+<&text:↑↑↑↑↑↑↑:135:255{fcolor=94;fname=微软雅黑;fsize=10;fbold=1}>  \
+
+<&text:扫描上方二维码:135:275{fcolor=94;fname=微软雅黑;fsize=10;fbold=1}>  \ \ \ \ \ \ \ \ \ \
+
+<$STR(S33)>
+
+[@等待扫码结果]
+#ACT
+INC N$时间 1
+LOADVAR HUMAN success ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+LOADVAR HUMAN msg ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+LOADVAR HUMAN nickname ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+LOADVAR HUMAN openid ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+LOADVAR HUMAN role_id ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+#IF
+EQUAL <$HUMAN(openid)>
+#ACT
+DELAYGOTO 1000 @等待扫码结果
+BREAK
+
+#IF
+EQUAL <$HUMAN(success)> 1
+#ACT
+ChangeModeEx 10 1
+ChangeModeEx 2 1
+MOV $常量_微信OP <$HUMAN(openid)>
+MOV $常量_机器码 <$MACHINEID>
+;如果有昵称的话 
+MOV $常量_微信NC <$HUMAN(nickname)>
+MOV $常量_角色ID <$HUMAN(role_id)>
+CALCVAR HUMAN success = 0
+CALCVAR HUMAN msg =
+CALCVAR HUMAN nickname =
+CALCVAR HUMAN openid =
+SAVEVAR HUMAN success ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN msg ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN nickname ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN openid ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+CLEARNAMELIST ..\QuestDiary\橘子微信验证码\二维码\<$USERNAME>.txt
+;绑定成功后,拉取玩家信息
+AddTextList ..\QuestDiary\橘子微信验证码\橘子微信验证.txt 3:<$STR(S$会员站标识)>:$常量_网关编号:<$SERVERNAME>:<$USERID>:<$USERNAME>:<$LEVEL>:<$STR($常量_微信OP)>
+AddTextList ..\..\..\..\会员站\注册.txt <$STR(S$会员站标识)>:<$STR($常量_微信OP)>
+mapmove $常量_主城地图号 $常量_主城地图X $常量_主城地图Y
+MESSAGEBOX 绑定成功
+
+close
+BREAK
+#ELSEACT
+CLEARNAMELIST ..\QuestDiary\橘子微信验证码\二维码\<$USERNAME>.txt
+MESSAGEBOX 【提示】：绑定失败<$HUMAN(msg)>！！！
+BREAK
+
+
+[@进行微信解绑]
+#ACT
+CALCVAR HUMAN success = 0
+CALCVAR HUMAN msg =
+SAVEVAR HUMAN success ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN msg ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+AddTextList ..\QuestDiary\橘子微信验证码\橘子微信验证.txt 6:<$STR(S$会员站标识)>:$常量_网关编号:<$SERVERNAME>:<$USERID>:<$USERNAME>:<$LEVEL>:1:*:<$STR($常量_角色ID)>
+DELAYGOTO 2000 @获取解绑二维码1
+OPENMERCHANTBIGDLG $常量_补丁编号 365 0 4 X -50 0 530 5
+#SAY
+\ \ \ \
+<ImgEx:$常量_补丁编号:373:374:375:332:5/@exit>\ \ \
+
+<&text:无法解除微信绑定 请联系客服:90:156{fcolor=94;fname=微软雅黑;fsize=11;fbold=1}>
+
+
+
+[@获取解绑二维码1]
+#act
+LOADVAR HUMAN success ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+LOADVAR HUMAN msg ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+
+#IF
+EQUAL <$HUMAN(success)> 0
+#ACT
+MESSAGEBOX 【提示】：二维码获取失败<$HUMAN(msg)>！！！
+#ELSEACT
+CALCVAR HUMAN success = 0
+CALCVAR HUMAN msg =
+CALCVAR HUMAN nickname =
+CALCVAR HUMAN openid =
+SAVEVAR HUMAN success ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN msg ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN nickname ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN openid ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+GetListString ..\QuestDiary\橘子微信验证码\二维码\<$USERNAME>.txt 0 S1
+;CLEARNAMELIST ..\QuestDiary\橘子微信验证码\二维码\<$USERNAME>.txt
+GOTO @显示解绑二维码
+MOV N$时间 0
+DELAYGOTO 1000 @等待解绑扫码结果
+
+[@1显示解绑二维码]
+#if
+#act
+GetListString ..\QuestDiary\橘子微信验证码\二维码\<$USERNAME>.txt 0 S33
+OPENMERCHANTBIGDLG $常量_补丁编号 365 0 4 X -50 0 530 5
+#SAY
+\ \ \ \
+<ImgEx:$常量_补丁编号:373:374:375:332:5/@exit><PlayImg:$常量_补丁编号:390:20:50:19:138:0:0>\ \ \
+<>　　　　　　            ; <二维码已生成/SCOLOR=70>\ \ \ \ \ \ \
+<>                       ; <↑↑↑↑↑↑↑/SCOLOR=249>\
+<>                        ;<扫描二维码解绑/SCOLOR=249>\
+<$STR(S33)>
+
+
+[@等待解绑扫码结果]
+#ACT
+INC N$时间 1
+LOADVAR HUMAN success ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+LOADVAR HUMAN msg ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+LOADVAR HUMAN nickname ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+LOADVAR HUMAN openid ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+#IF
+EQUAL <$HUMAN(openid)>
+#ACT
+DELAYGOTO 1000 @等待解绑扫码结果
+BREAK
+
+#IF
+EQUAL $常量_微信OP <$HUMAN(openid)>
+#ACT
+MOV $常量_微信OP 
+MOV $常量_机器码 
+MOV $常量_角色ID 
+;如果有昵称的话
+MOV $常量_微信NC
+CALCVAR HUMAN success = 0
+CALCVAR HUMAN msg =
+CALCVAR HUMAN nickname =
+CALCVAR HUMAN openid =
+CALCVAR HUMAN role_id =
+SAVEVAR HUMAN role_id ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN success ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN msg ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN nickname ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN openid ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+CLEARNAMELIST ..\QuestDiary\橘子微信验证码\二维码\<$USERNAME>.txt
+MESSAGEBOX 解绑成功
+mapmove $常量_验证地图
+close
+BREAK
+#ELSEACT
+CLEARNAMELIST ..\QuestDiary\橘子微信验证码\二维码\<$USERNAME>.txt
+MESSAGEBOX 【提示】：解绑失败！！！
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@1橘子验证登陆检测]
+#INCLUDE JZ常量.ini
+{
+#IF
+NOT EQUAL $常量_微信OP 
+NOT EQUAL $常量_机器码 <$MACHINEID>
+#ACT
+;这里改成你的出生地图,意思是如果机器码不对 就传送回出生地图 禁止任何操作 只能输入正确的微信验证码才能进入游戏
+ChangeModeEx 10 65535
+ChangeModeEx 2 65535
+CALCVAR HUMAN success = 0
+CALCVAR HUMAN msg =
+SAVEVAR HUMAN success ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN msg ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+AddTextList ..\QuestDiary\橘子微信验证码\橘子微信验证.txt 6:<$STR(S$会员站标识)>:$常量_网关编号:<$SERVERNAME>:<$USERID>:<$USERNAME>:<$LEVEL>:0:*:<$STR($常量_角色ID)>
+;AddTextList ..\QuestDiary\橘子微信验证码\橘子微信验证2.txt 6:<$STR(S$会员站标识)>:$常量_网关编号:<$SERVERNAME>:<$USERID>:<$USERNAME>:<$LEVEL>:0:*:<$STR($常量_角色ID)>
+DELAYGOTO 2000 @获取登陆二维码1
+OPENMERCHANTBIGDLG $常量_补丁编号 365 0 4 X -50 0 530 5
+#SAY
+\ \ \ \
+<&ImgEx:$常量_补丁编号:373:374:375:335:70/@exit> \ \ \
+<&text:系统正在生成二维码,请稍后:90:156{fcolor=94;fname=微软雅黑;fsize=11;fbold=1}>\
+
+
+
+[@获取登陆二维码1]
+#act
+LOADVAR HUMAN success ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+LOADVAR HUMAN msg ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+
+#IF
+EQUAL <$HUMAN(success)> 0
+#ACT
+MESSAGEBOX 【提示】：二维码获取失败<$HUMAN(msg)>！！！
+#ELSEACT
+CALCVAR HUMAN success = 0
+CALCVAR HUMAN msg =
+CALCVAR HUMAN nickname =
+CALCVAR HUMAN openid =
+CALCVAR HUMAN role_id =
+SAVEVAR HUMAN role_id ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN success ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN msg ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN nickname ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN openid ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+GetListString ..\QuestDiary\橘子微信验证码\二维码\<$USERNAME>.txt 0 S1
+;CLEARNAMELIST ..\QuestDiary\橘子微信验证码\二维码\<$USERNAME>.txt
+GOTO @显示登陆二维码
+MOV N$时间 0
+DELAYGOTO 1000 @等待登陆扫码结果
+
+[@显示登陆二维码]
+#if
+#act
+GetListString ..\QuestDiary\橘子微信验证码\二维码\<$USERNAME>.txt 0 S33
+OPENMERCHANTBIGDLG $常量_补丁编号 365 0 4 X -50 0 530 5
+#SAY
+\
+<ImgEx:$常量_补丁编号:373:374:375:332:5/@exit>\
+<&text:二维码已生成:140:235{fcolor=94;fname=微软雅黑;fsize=10;fbold=1}>  \
+
+<&text:↑↑↑↑↑↑↑:135:255{fcolor=94;fname=微软雅黑;fsize=10;fbold=1}>  \
+
+<&text:扫描上方二维码:135:275{fcolor=94;fname=微软雅黑;fsize=10;fbold=1}>  \ \ \ \ \ \ \ \ \ \
+<$STR(S33)>
+
+
+[@等待登陆扫码结果]
+#ACT
+INC N$时间 1
+LOADVAR HUMAN success ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+LOADVAR HUMAN msg ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+LOADVAR HUMAN nickname ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+LOADVAR HUMAN openid ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+LOADVAR HUMAN role_id ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+#IF
+;EQUAL <$HUMAN(openid)>
+NOT EQUAL $常量_微信OP <$HUMAN(openid)>
+#ACT
+DELAYGOTO 1000 @等待登陆扫码结果
+BREAK
+
+#IF
+EQUAL <$HUMAN(success)> 1
+#ACT
+MOV $常量_机器码 <$MACHINEID>
+CALCVAR HUMAN success = 0
+CALCVAR HUMAN msg =
+CALCVAR HUMAN nickname =
+CALCVAR HUMAN openid =
+SAVEVAR HUMAN success ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN msg ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN nickname ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+SAVEVAR HUMAN openid ..\QuestDiary\橘子微信验证码\橘子微信验证变量.ini
+CLEARNAMELIST ..\QuestDiary\橘子微信验证码\二维码\<$USERNAME>.txt
+MESSAGEBOX 验证成功
+ChangeModeEx 10 1
+ChangeModeEx 2 1
+mapmove 9大陆 98 71 5 
+close
+#ELSEACT
+CLEARNAMELIST ..\QuestDiary\橘子微信验证码\二维码\<$USERNAME>.txt
+MESSAGEBOX 【提示】：验证失败<$HUMAN(msg)>！！！
+
+} 

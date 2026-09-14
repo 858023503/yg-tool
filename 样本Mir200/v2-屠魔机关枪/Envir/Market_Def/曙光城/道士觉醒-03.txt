@@ -1,0 +1,66 @@
+[@main]
+#IF
+#ACT
+OPENMERCHANTBIGDLG 5 181 1 4 0 -80  1 735 0 1
+delaygoto 4500 @道士觉醒跳转1
+#SAY
+<PlayImg:1:1400:46:100:310:300:0>\
+<Imgex:5:178:179:180:575:420/@学习道士觉醒>
+[@道士觉醒跳转1]
+#if
+#ACT
+delaygoto 2000 @道士觉醒跳转2
+#SAY
+<PlayImg:1:1485:24:80:320:290:0>\
+<Imgex:5:178:179:180:575:420/@学习道士觉醒>
+[@道士觉醒跳转2]
+#if
+#ACT
+delaygoto 1000 @道士觉醒跳转3
+#SAY
+<PlayImg:1:1465:7:150:320:290:0>\
+<Imgex:5:178:179:180:575:420/@学习道士觉醒>
+
+[@道士觉醒跳转3]
+#if
+#ACT
+delaygoto 1600 @道士觉醒跳转4
+#SAY
+
+<PlayImg:1:1472:13:120:320:280:0>\
+<Imgex:5:178:179:180:575:420/@学习道士觉醒>
+
+[@道士觉醒跳转4]
+#if
+#ACT
+#SAY
+<PlayImg:17:120:16:80:220:115:0>\
+<Imgex:5:178:179:180:575:420/@学习道士觉醒>
+
+[@学习道士觉醒]
+#if
+#act
+messagebox 等级不够无法学习
+break
+#if
+SMALL U81 12
+#act
+messagebox 金丹中期才可以学习
+break
+#IF
+not checkjob taoist
+#act
+messagebox 你不是道士
+break
+#IF
+CHECKGAMEDIAMOND < 200000
+#act
+messagebox 你身上没有200000充值点
+break
+
+#if
+CHECKGAMEDIAMOND > 199999
+#act
+GAMEDIAMOND - 200000
+addskill 仙法·八卦锁龙阵 3
+messagebox 觉醒技能学习成功

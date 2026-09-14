@@ -1,0 +1,44 @@
+[@main]
+
+#SAY　
+　<可以白嫖，可以充，3档赞助，无隐藏/SCOLOR=242>\ 
+　<开挂者,麻烦您关闭游戏从新找服/SCOLOR=242>\
+   免费:<送背包开启80格。/SCOLOR=253>  <领取/@领取10>\  
+　 100元充值:<送赞助斗笠，传送属性/SCOLOR=253>  <领取/@领取100>\  
+　 300元充值:<送赞助称号，打怪经验1.20倍/SCOLOR=253>  <领取/@领取300>\  
+　当前充值金额：已充值 <[<$GAMEDIAMOND>]/SCOLOR=251> 元  
+
+
+[@领取100]
+#IF
+CHECK [1] 0
+CHECKGAMEDIAMOND > 99
+#ACT
+SET [1] 1
+GIVE 赞助斗笠 1
+MessageBox 成功领取赞助斗笠！
+#ELSEACT
+MessageBox 条件不满足或者领过了
+
+
+[@领取300]
+#IF
+CHECK [2] 0
+CHECKGAMEDIAMOND > 299
+#ACT
+SET [2] 1
+GIVEfenghao 玛法主宰者 1
+MessageBox 成功领取玛法主宰者称号！
+#ELSEACT
+MessageBox 条件不满足或者领过了
+
+[@领取10]
+#IF
+CHECK [3] 0
+#ACT
+SET [3] 1
+ExtBagpagecount + 2  
+ExtBagopenItemcount + 80  
+MessageBox 成功领取开启80格背包！
+#ELSEACT
+MessageBox 条件不满足或者领过了

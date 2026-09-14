@@ -1,0 +1,135 @@
+(@@InPutString @@InPutInteger)
+[@MAIN]
+#if
+#act
+;closebigdialogbox
+SENDMSG 4 ぐ电脑自动监控加速系统。超速自动抓进监狱，保释50元充值，开挂请三思！
+;OPENMERCHANTBIGDLG 4 607 1 0 50 20  0 1 1 ;大对话框
+;OPENMERCHANTBIGDLG 14 46 1 0 50 20  0 1 1 ;大对话框
+;OPENMERCHANTBIGDLG 14 45 1 0 50 20  0 1 1 ;中对话框
+OPENMERCHANTBIGDLG 14 44 1 0 50 20  0 1 1 ;小对话框
+#SAY
+<Img:48:14:387:0/@exit>\ \
+　<┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈/SCOLOR=83>\
+　　<外挂监控/AUTOCOLOR=254> <Hot~/AUTOCOLOR=249>         <封杀外挂我们更专业，绝对  零容忍！！/AUTOCOLOR=254,251,168,191,250,70,245,249,253>\
+　<┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈/SCOLOR=83>\
+　 <1.本服禁止使用一切非法外挂，被抓后后果自负/AUTOCOLOR=156> \
+　 <2.全自动监控，超速系统自动抓进/AUTOCOLOR=155><监狱/AUTOCOLOR=254>\
+　 <3.开挂保释金为：/AUTOCOLOR=147><50元充值/AUTOCOLOR=253>每次\
+　<┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈/SCOLOR=83>\
+;　　　　　　　　  【<为监狱里的朋友赠送元宝/@ms_赠送>】\
+　 <特别提醒：/FCOLOR=250>  <被抓监狱一律后果自负，联系客服一律拉黑/FCOLOR=242>\
+　 <特别提醒：/FCOLOR=250>  <被抓监狱一律后果自负，联系客服一律拉黑/FCOLOR=242>\
+　 <特别提醒：/FCOLOR=250>  <被抓监狱一律后果自负，联系客服一律拉黑/FCOLOR=242>\
+　 <特别提醒：/FCOLOR=250>  <被抓监狱一律后果自负，联系客服一律拉黑/FCOLOR=242>\
+　<┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈/SCOLOR=83>\
+
+
+
+
+[@ms_赠送]
+#if
+#act
+;OPENMERCHANTBIGDLG 4 607 1 0 50 20  0 1 1 ;大对话框
+;OPENMERCHANTBIGDLG 14 46 1 0 50 20  0 1 1 ;大对话框
+;OPENMERCHANTBIGDLG 14 45 1 0 50 20  0 1 1 ;中对话框
+OPENMERCHANTBIGDLG 14 44 1 0 50 20  0 1 1 ;小对话框
+#SAY
+<Img:48:14:387:0/@exit>\ \
+　<┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈/SCOLOR=83>\
+　　<抓挂小组/SCOLOR=254>  <Hot~/FCOLOR=249>     <在这里你可以很方便的向朋友赠送元宝/SCOLOR=253>\
+　<┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈/SCOLOR=83>\
+　　　<输入朋友名字/@@inputstring1>      赠送玩家名字：<$STR(S1)>\ \
+　　　<输入元宝数量/@@inputinteger1>      赠送元宝数量：<$STR(N1)>\ \
+　　　<确定赠送元宝/@赠送_开始>      你当前剩余元宝数量：<$GAMEGOLD>\
+　<┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈/SCOLOR=83>\
+　　　　　　　　　　　　　　　　　　　　　　     <返回首页/@main>
+[@赠送_开始]
+#IF
+EQUAL S1 <$USERNAME>
+#ACT
+MESSAGEBOX 对不起，无法给自己赠送元宝。
+BREAK
+
+#IF
+CheckOnline <$STR(S1)>
+#ELSEACT
+MESSAGEBOX 对不起，玩家【<$STR(S1)>】没有在线，赠送失败！
+BREAK
+
+#IF
+CheckGameGold > <$STR(N1)>
+#ELSEACT
+MESSAGEBOX 对不起，你身上没有<$STR(N1)>个元宝，赠送失败！
+BREAK
+
+#IF
+CheckOnline <$STR(S1)>
+CheckGameGold > <$STR(N1)>
+#ACT
+MESSAGEBOX 　\你确定给好友【<$STR(S1)>】赠送<$STR(N1)>个元宝吗？ @确定赠送 @取消赠送
+BREAK
+
+[@确定赠送]
+#IF
+CheckOnline <$STR(S1)>
+CheckGameGold > <$STR(N1)>
+#ACT
+GAMEGOLD - <$STR(N1)>
+SendMsg 6 [提示]：给好友[<$STR(S1)>]赠送[<$STR(N1)>元宝]成功，当前剩余元宝数量：<$GAMEGOLD>
+MOV G101 <$STR(N1)>
+S1.GameGold + <$STR(G101)>
+S1.SendMsg 6 [提示]：您的好友赠送给你[<$STR(G101)>]元宝，当前剩余元宝数量：<$GAMEGOLD>
+MOV G101 
+CLOSE
+#ELSEACT
+MessageBox [提示]：草！如果再作弊，送你去牢房！
+Mov S1
+Mov N1 0
+
+[@InPutString1]
+#IF
+EQUAL S1
+#ACT
+Break
+
+#IF
+CheckOnline <$STR(S1)>
+#Act
+Goto @ms_赠送
+#ELSEACT
+MESSAGEBOX [错误]:<$STR(S1)>当前不在线!
+
+[@InPutInteger1]
+#IF
+CheckGameGold > 1
+#ACT
+MOV M1 <$STR(N1)>
+DelayGoto 1 ~InPutInteger89
+Break
+
+[~InPutInteger89]
+#IF
+CheckGameGold > <$STR(M1)>
+#ACT
+Goto @ms_赠送
+#ELSEACT
+MESSAGEBOX [错误]:你当前没有足够的元宝,无法赠送!
+
+
+
+[@探监]
+#IF
+#ACT
+MESSAGEBOX 探监需要收费50元宝，并且60秒后自动传回盟重土城！\\您确认要探监吗？ @确定探监
+
+[@确定探监]
+#IF
+CHECKGAMEGOLD > 49
+#ACT
+GAMEGOLD - 50
+timerecall 1
+mapmove jianyu 10 13
+SendMsg 0 {监狱看守员ぐ|151:0:1}：{%s|227:0:1}花费{50元宝|154:0:1}进入了监狱{探望亲人|223:0:1}.
+#ELSEACT
+MESSAGEBOX 没有费用禁止探监，我会好好管教他们的！

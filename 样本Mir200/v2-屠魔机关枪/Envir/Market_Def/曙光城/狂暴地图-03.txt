@@ -1,0 +1,63 @@
+[@main]
+#IF
+#ACT
+OPENMERCHANTBIGDLG 52 255 1 4 0 -80 0
+#say
+
+<&ImgEx:52:196:220:221:134:259/@地图一>
+<&ImgEx:52:197:222:223:292:264/@地图二>
+<&ImgEx:52:198:224:225:470:261/@地图三>
+<&ImgEx:52:199:226:227:648:266/@地图四>
+
+
+<&PlayImg:52:173:15:100:0:11:0>
+<&IMGEX:52:200:201:202:765:125/@关闭对话框>
+
+[@关闭对话框]
+#if
+#ACT
+close
+
+
+[@地图一]
+#if
+equal U118 1
+#ACT
+MAPMOVE TQ0031  98  78  2
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 蚂蚁洞
+#CALL [\属性统计\统计属性.txt] @统计属性
+#ELSEACT
+messagebox 你没有开启狂暴无法进入
+[@地图二]
+#if
+equal U118 1
+#ACT
+MAPMOVE TQ0032  98  78  2
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 精灵谷
+#CALL [\属性统计\统计属性.txt] @统计属性
+#ELSEACT
+messagebox 你没有开启狂暴无法进入
+[@地图三]
+#if
+equal U118 1
+#ACT
+MAPMOVE TQ0033  98  78  2
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 黑暗魔殿
+#CALL [\属性统计\统计属性.txt] @统计属性
+#ELSEACT
+messagebox 你没有开启狂暴无法进入
+[@地图四]
+#if
+equal U118 1
+#ACT
+MAPMOVE TQ0034  98  78  2
+mov S$玩家当前大陆 三大陆
+MOV S$玩家当前地图 赤月峡谷
+#CALL [\属性统计\统计属性.txt] @统计属性
+#ELSEACT
+messagebox 你没有开启狂暴无法进入
+
+

@@ -1,0 +1,509 @@
+
+[@main]
+
+
+#IF
+EQUAL N$一大陆原核文字介绍判断 0
+#act
+GOTO @骷髅原核文字介绍判断
+#IF
+EQUAL N$一大陆原核文字介绍判断 1
+#act
+GOTO @僵尸原核文字介绍判断
+#IF
+EQUAL N$一大陆原核文字介绍判断 2
+#act
+GOTO @蜈蚣原核文字介绍判断
+#IF
+EQUAL N$一大陆原核文字介绍判断 3
+#act
+GOTO @猪洞原核文字介绍判断
+
+#IF
+#act
+OPENMERCHANTBIGDLG 48 0 1 4 0 0 1 1130 30 1
+#say
+;放入框
+<ITEMBOX:18:5:125:887:305:63:63:*:95#放入BOSS元核>
+<&ImgEx:48:115:115:115:860:560>
+;点开NPC下方发光字
+<&PlayImgEx:48:40:20:100:1:238:724:0>
+<&PlayImgEx:48:86:20:100:1:742:127:0>
+;下方BOSS按钮
+<&ImgEx:48:<$STR(S$骷髅按钮)>:0:490/@骷髅原核按钮>
+<&ImgEx:48:<$STR(S$僵尸按钮)>:190:500/@僵尸原核按钮>
+<&ImgEx:48:<$STR(S$蜈蚣按钮)>:330:540/@蜈蚣原核按钮>
+<&ImgEx:48:<$STR(S$猪洞按钮)>:530:500/@猪洞原核按钮>
+;原核文字介绍
+<$STR(S$原核文字介绍)>
+<$STR(S$需要费用)>
+
+;文字介绍右侧怪物图片
+;激活按钮
+<&ImgEx:48:1:2:3:850:640/@BOSS原核激活>
+
+
+
+[@ItemIntoBox18]
+#IF
+LARGE U75 0
+EQUAL <$BOXITEM[18].NAME> 骷髅王的元核
+#ACT
+ReturnBoxItem 18
+messagebox 红灵骷髅王元核已激活
+break
+
+#IF
+LARGE U76 0
+EQUAL <$BOXITEM[18].NAME> 尸王的元核
+#ACT
+ReturnBoxItem 18
+messagebox 尸王的元核已激活
+break
+#IF
+LARGE U77 0
+EQUAL <$BOXITEM[18].NAME> 触龙神的元核
+#ACT
+ReturnBoxItem 18
+messagebox 触龙神的元核已激活
+break
+#IF
+LARGE U78 0
+EQUAL <$BOXITEM[18].NAME> 猪皇的元核
+#ACT
+ReturnBoxItem 18
+messagebox 猪皇的元核已激活
+break
+
+#OR
+EQUAL <$BOXITEM[18].NAME> 骷髅王的元核
+EQUAL <$BOXITEM[18].NAME> 尸王的元核
+EQUAL <$BOXITEM[18].NAME> 触龙神的元核
+EQUAL <$BOXITEM[18].NAME> 猪皇的元核
+#ACT
+goto @原核UI重载
+
+#elseact
+ReturnBoxItem 18
+messagebox 只能放入一大陆BOSS元核
+
+
+
+[@原核UI重载]
+
+#IF
+EQUAL <$BOXITEM[18].NAME> 骷髅王的元核
+#ACT
+MOV S$原核文字介绍 <&Img:68:48:26:108> 
+MOV S$需要费用 <&Text:需要200000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 200000
+MOV S$骷髅按钮 77:77:77
+MOV S$僵尸按钮 74:75:74
+MOV S$蜈蚣按钮 78:79:78
+MOV S$猪洞按钮 80:81:80
+
+#IF
+EQUAL <$BOXITEM[18].NAME> 尸王的元核
+#ACT
+MOV S$原核文字介绍 <&Img:66:48:26:108>
+MOV S$需要费用 <&Text:需要500000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 500000
+MOV S$骷髅按钮 76:77:76
+MOV S$僵尸按钮 75:75:75
+MOV S$蜈蚣按钮 78:79:78
+MOV S$猪洞按钮 80:81:80
+#IF
+EQUAL <$BOXITEM[18].NAME> 触龙神的元核
+#ACT
+MOV S$原核文字介绍 <&Img:70:48:26:108>
+MOV S$需要费用 <&Text:需要700000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 700000
+
+
+MOV S$骷髅按钮 76:77:76
+MOV S$僵尸按钮 74:75:74
+MOV S$蜈蚣按钮 79:79:79
+MOV S$猪洞按钮 80:81:80
+#IF
+EQUAL <$BOXITEM[18].NAME> 猪皇的元核
+#ACT
+MOV S$原核文字介绍 <&Img:72:48:26:108>
+MOV S$需要费用 <&Text:需要1000000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 1000000
+
+
+MOV S$骷髅按钮 76:77:76
+MOV S$僵尸按钮 74:75:74
+MOV S$蜈蚣按钮 78:79:78
+MOV S$猪洞按钮 81:81:81
+
+#IF
+LARGE U75 0
+#act
+MOV S$骷髅按钮 77:77:77
+
+#IF
+LARGE U76 0
+#act
+MOV S$僵尸按钮 75:75:75
+
+#IF
+LARGE U77 0
+#act
+MOV S$蜈蚣按钮 79:79:79
+
+#IF
+LARGE U78 0
+#act
+MOV S$猪洞按钮 81:81:81
+
+
+#IF
+#ACT
+#say
+;放入框
+
+<ITEMBOX:18:5:125:887:305:63:63:*:95#放入BOSS元核>
+;点开NPC下方发光字
+; <&PlayImgEx:48:39:17:100:1:0:545:0>
+;下方BOSS按钮
+<&ImgEx:48:115:115:115:860:560>
+<&ImgEx:48:<$STR(S$骷髅按钮)>:0:490/@骷髅原核按钮>
+<&ImgEx:48:<$STR(S$僵尸按钮)>:190:500/@僵尸原核按钮>
+<&ImgEx:48:<$STR(S$蜈蚣按钮)>:330:540/@蜈蚣原核按钮>
+<&ImgEx:48:<$STR(S$猪洞按钮)>:530:500/@猪洞原核按钮>
+
+;原核文字介绍
+<$STR(S$原核文字介绍)>
+<$STR(S$需要费用)>
+
+;文字介绍右侧怪物图片
+<&PlayImgEx:48:86:20:100:1:742:127:0>
+;激活按钮
+<&ImgEx:48:1:2:3:850:640/@BOSS原核激活>
+
+
+
+[@骷髅原核按钮]
+#IF
+#ACT
+MOV N$一大陆原核文字介绍判断 0
+GOTO @main
+
+[@僵尸原核按钮]
+#IF
+#ACT
+MOV N$一大陆原核文字介绍判断 1
+GOTO @main
+
+[@蜈蚣原核按钮]
+#IF
+#ACT
+MOV N$一大陆原核文字介绍判断 2
+GOTO @main
+[@猪洞原核按钮]
+
+#IF
+#ACT
+MOV N$一大陆原核文字介绍判断 3
+GOTO @main
+
+
+
+[@骷髅原核文字介绍判断]
+#IF
+SMALL U75 1
+#ACT
+MOV S$原核文字介绍 <&Img:68:48:26:108>
+MOV S$需要费用 <&Text:需要200000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 200000
+MOV S$骷髅按钮 77:77:77
+MOV S$僵尸按钮 74:75:74
+MOV S$蜈蚣按钮 78:79:78
+MOV S$猪洞按钮 80:81:80
+
+#ELSEACT
+MOV S$原核文字介绍 <&Img:69:48:26:108>
+MOV S$需要费用 <&Text:需要200000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 200000
+MOV S$骷髅按钮 77:77:77
+MOV S$僵尸按钮 74:75:74
+MOV S$蜈蚣按钮 78:79:78
+MOV S$猪洞按钮 80:81:80
+
+
+#IF
+large U75 0
+#act
+MOV S$骷髅按钮 77:77:77
+
+#IF
+large U76 0
+#act
+MOV S$僵尸按钮 75:75:75
+
+#IF
+large U77 0
+#act
+MOV S$蜈蚣按钮 79:79:79
+
+#IF
+large U78 0
+#act
+MOV S$猪洞按钮 81:81:81
+
+
+[@僵尸原核文字介绍判断]
+#IF
+small U76 1
+#ACT
+MOV S$原核文字介绍 <&Img:66:48:26:108>
+MOV S$需要费用 <&Text:需要500000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 500000
+MOV S$骷髅按钮 76:77:76
+MOV S$僵尸按钮 75:75:75
+MOV S$蜈蚣按钮 78:79:78
+MOV S$猪洞按钮 80:81:80
+
+#ELSEACT
+MOV S$原核文字介绍 <&Img:67:48:26:108>
+MOV S$需要费用 <&Text:需要500000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 500000
+MOV S$骷髅按钮 76:77:76
+MOV S$僵尸按钮 75:75:75
+MOV S$蜈蚣按钮 78:79:78
+MOV S$猪洞按钮 80:81:80
+
+#IF
+large U75 0
+#act
+MOV S$骷髅按钮 77:77:77
+
+#IF
+large U76 0
+#act
+MOV S$僵尸按钮 75:75:75
+
+#IF
+large U77 0
+#act
+MOV S$蜈蚣按钮 79:79:79
+
+#IF
+large U78 0
+#act
+MOV S$猪洞按钮 81:81:81
+
+
+[@蜈蚣原核文字介绍判断]
+#IF
+SMALL U77 1
+#ACT
+MOV S$原核文字介绍 <&Img:70:48:26:108>
+MOV S$需要费用 <&Text:需要700000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 700000
+MOV S$骷髅按钮 76:77:76
+MOV S$僵尸按钮 74:75:74
+MOV S$蜈蚣按钮 79:79:79
+MOV S$猪洞按钮 80:81:80
+#ELSEACT
+MOV S$原核文字介绍 <&Img:71:48:26:108>
+MOV S$需要费用 <&Text:需要700000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 700000
+MOV S$骷髅按钮 76:77:76
+MOV S$僵尸按钮 74:75:74
+MOV S$蜈蚣按钮 79:79:79
+MOV S$猪洞按钮 80:81:80
+
+#IF
+large U75 0
+#act
+MOV S$骷髅按钮 77:77:77
+
+#IF
+large U76 0
+#act
+MOV S$僵尸按钮 75:75:75
+
+#IF
+large U77 0
+#act
+MOV S$蜈蚣按钮 79:79:79
+
+#IF
+large U78 0
+#act
+MOV S$猪洞按钮 81:81:81
+
+[@猪洞原核文字介绍判断]
+
+#IF
+SMALL U78 1
+#ACT
+MOV S$原核文字介绍 <&Img:72:48:26:108>
+MOV S$需要费用 <&Text:需要1000000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 1000000
+MOV S$骷髅按钮 76:77:76
+MOV S$僵尸按钮 74:75:74
+MOV S$蜈蚣按钮 78:79:78
+MOV S$猪洞按钮 81:81:81
+#ELSEACT
+MOV S$原核文字介绍 <&Img:73:48:26:108>
+MOV S$需要费用 <&Text:需要1000000金币:875:595{FCOLOR=108;FSIZE=12;FNAME=黑体;FBOLD=1}>
+MOV N$元核激活需要费用 1000000
+MOV S$骷髅按钮 76:77:76
+MOV S$僵尸按钮 74:75:74
+MOV S$蜈蚣按钮 78:79:78
+MOV S$猪洞按钮 81:81:81
+
+#IF
+large U75 0
+#act
+MOV S$骷髅按钮 77:77:77
+
+#IF
+large U76 0
+#act
+MOV S$僵尸按钮 75:75:75
+
+#IF
+large U77 0
+#act
+MOV S$蜈蚣按钮 79:79:79
+
+#IF
+large U78 0
+#act
+MOV S$猪洞按钮 81:81:81
+
+
+[@BOSS原核激活]
+#IF
+#act
+delaycall 3500 @一大陆原核成功几率
+#say
+;放入框
+<ITEMBOX:18:5:125:887:305:63:63:*:95#放入BOSS元核>
+;点开NPC下方发光字
+; <&PlayImgEx:48:39:17:100:1:0:545:0>
+;下方BOSS按钮
+<&ImgEx:48:115:115:115:860:560>
+<&ImgEx:48:<$STR(S$骷髅按钮)>:0:490/@骷髅原核按钮>
+<&ImgEx:48:<$STR(S$僵尸按钮)>:190:500/@僵尸原核按钮>
+<&ImgEx:48:<$STR(S$蜈蚣按钮)>:330:540/@蜈蚣原核按钮>
+<&ImgEx:48:<$STR(S$猪洞按钮)>:530:500/@猪洞原核按钮>
+;原核文字介绍
+<$STR(S$原核文字介绍)>
+<$STR(S$需要费用)>
+
+;文字介绍右侧怪物图片
+
+<&PlayImgEx:48:4:35:100:1:723:141:0>
+<&PlayImgEx:48:86:20:100:1:742:127:0>
+<&PlayImgEx:48:40:20:100:1:238:724:0>
+;激活按钮
+<&ImgEx:48:1:2:3:850:610/@BOSS原核激活>
+
+
+
+[@一大陆原核成功几率]
+#if
+EQUAL <$BOXITEM[18].NAME> 骷髅王的元核
+NOT CHECKGOLD <$STR(N$元核激活需要费用)>
+#act
+messagebox 金币不够
+break
+
+#if
+EQUAL <$BOXITEM[18].NAME> 尸王的元核
+NOT CHECKGOLD <$STR(N$元核激活需要费用)>
+#act
+messagebox 金币不够
+break
+
+#if
+EQUAL <$BOXITEM[18].NAME> 触龙神的元核
+NOT CHECKGOLD <$STR(N$元核激活需要费用)>
+#act
+messagebox 金币不够
+break
+
+#if
+EQUAL <$BOXITEM[18].NAME> 猪皇的元核
+NOT CHECKGOLD <$STR(N$元核激活需要费用)>
+#act
+messagebox 金币不够
+break
+
+#IF
+EQUAL <$BOXITEM[18].NAME> 骷髅王的元核
+#ACT
+take 金币 <$STR(N$元核激活需要费用)>
+DelBoxItem 18
+MOV U75 1
+MOV U45 20
+MOV N$一大陆原核文字介绍判断 0
+SCREENEFFECT 394 142 48 180 20 1 100 0 0 1
+;有新任务动态效果
+
+
+Goto @统计属性
+
+GOTO @main
+break
+
+#IF
+
+EQUAL <$BOXITEM[18].NAME> 尸王的元核
+#ACT
+take 金币 <$STR(N$元核激活需要费用)>
+DelBoxItem 18
+MOV U76 1
+MOV N$一大陆原核文字介绍判断 1
+SCREENEFFECT 394 142 48 180 20 1 100 0 0 1
+
+Goto @统计属性
+GOTO @main
+break
+
+#IF
+
+EQUAL <$BOXITEM[18].NAME> 触龙神的元核
+#ACT
+take 金币 <$STR(N$元核激活需要费用)>
+MOV U77 1
+MOV N$一大陆原核文字介绍判断 2
+DelBoxItem 18
+SCREENEFFECT 394 142 48 180 20 1 100 0 0 1
+
+Goto @统计属性
+GOTO @main
+break
+
+#IF
+
+EQUAL <$BOXITEM[18].NAME> 猪皇的元核
+#ACT
+take 金币 <$STR(N$元核激活需要费用)>
+MOV U78 1
+DelBoxItem 18
+MOV N$一大陆原核文字介绍判断 3
+SCREENEFFECT 394 142 48 180 20 1 100 0 0 1
+
+Goto @统计属性
+GOTO @main
+break
+
+[@全局内存缩小瘦身处理]
+#CALL [\属性统计\统计属性.TXT] @统计属性
+#CALL [\初始化属性\初始化属性.txt] @初始化属性
+#CALL [\强化装备属性统计\强化装备属性统计.txt] @强化装备属性统计
+#CALL [\称号系统\称号系统.txt] @称号系统
+#CALL [\属性统计\溢出判断.txt] @溢出判断
+#CALL [\属性统计\品阶几率.txt] @品阶几率
+#CALL [\道士宝宝\道士宝宝赋值属性.txt] @道士宝宝赋值属性
+#CALL [\技能\魔法盾.txt] @魔法盾
+#CALL [\技能\双防之盾.txt] @双防之盾
+#CALL [\技能\不屈意志.txt] @不屈意志
+#CALL [\属性面板\属性面板.txt] @属性面板
+#CALL [\爆率系统\爆率封顶.txt] @爆率封顶

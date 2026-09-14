@@ -1,0 +1,111 @@
+()
+%100
+[@main]
+#IF
+#ACT
+CloseBigDialogBox
+OPENMERCHANTBIGDLG 0 130 1 0 0 0 1 400 0
+#SAY
+<------------------------------------------------------------/SCOLOR=13>\
+<Hot~/SCOLOR=249> <四大神兽每180分钟刷新一只BOSS/SCOLOR=151> <Hot~/SCOLOR=249>\
+<------------------------------------------------------------/SCOLOR=13>\
+　<勇士你听我说:这里面是上古四大神兽很凶悍请谨慎进入/SCOLOR=69>\
+　<它们都携带了以下神器，消灭它们有几率获得上古神器噢/SCOLOR=69>\
+<------------------------------------------------------------/SCOLOR=13>\ \
+<产出装备/SCOLOR=249>  <ItemShow:487:0:5:-12:0> <ItemShow:492:0:8:-9:0> <ItemShow:488:0:13:-9:0> <ItemShow:490:0:19:-9:0> <ItemShow:489:0:21:-9:0>  <ItemShow:491:0:26:-9:0>\ \ \
+　　　　　<青龙|249#进入条件:(每秒扣10元宝)(武士之星法师之星道士之星*20)60级/@青龙>　　　　<白虎|249#进入条件:(每秒扣10元宝)(武士之星法师之星道士之星*20)60级/@白虎>　　　　<朱雀|249#进入条件:(每秒扣10元宝)(武士之星法师之星道士之星*20)60级/@朱雀>　　　　<玄武|249#进入条件:(每秒扣10元宝)(武士之星法师之星道士之星*20)60级/@玄武>\
+<PlayImg:19:260:6:100:43:-96:1> <PlayImg:19:260:6:100:0:-96:1> <PlayImg:19:260:6:100:-43:-96:1> <PlayImg:19:260:6:100:-86:-96:1> <PlayImg:19:260:6:100:-129:-96:1> <PlayImg:19:260:6:100:-173:-96:1> 
+[@青龙]
+#IF
+CHECKLEVELEX < 60
+#ACT
+messagebox 您等级不足60无法进入
+break
+
+
+#IF
+checkitem 武士之星 20
+checkitem 法师之星 20
+checkitem 道士之星 20
+#ACT
+TAKE 武士之星 20
+TAKE 法师之星 20
+TAKE 道士之星 20
+MAP shuai209
+SENDMSG 0 ぐ{「<$USERNAME>」|251:249:1}进入{『青龙地图』|251:249:1},装备靠爆.免费锻造.随身经验.散人天堂. 250 109
+BREAK
+#elseact
+messagebox 您材料不足无法进入
+break
+
+
+[@白虎]
+#IF
+CHECKLEVELEX < 60
+#ACT
+messagebox 您等级不足60无法进入
+break
+
+#IF
+checkitem 武士之星 20
+checkitem 法师之星 20
+checkitem 道士之星 20
+#ACT
+TAKE 武士之星 20
+TAKE 法师之星 20
+TAKE 道士之星 20
+MAP shuai210
+SENDMSG 0 ぐ{「<$USERNAME>」|251:249:1}进入{『白虎地图』|251:249:1},装备靠爆.免费锻造.随身经验.散人天堂. 250 109
+BREAK
+#elseact
+messagebox 您材料不足无法进入
+break
+
+[@朱雀]
+#IF
+CHECKLEVELEX < 60
+#ACT
+messagebox 您等级不足60无法进入
+break
+
+#IF
+checkitem 武士之星 20
+checkitem 法师之星 20
+checkitem 道士之星 20
+#ACT
+TAKE 武士之星 20
+TAKE 法师之星 20
+TAKE 道士之星 20
+MAP shuai204
+SENDMSG 0 ぐ{「<$USERNAME>」|251:249:1}进入{『朱雀地图』|251:249:1},装备靠爆.免费锻造.随身经验.散人天堂. 250 109
+BREAK
+#elseact
+messagebox 您材料不足无法进入
+break
+
+
+[@玄武]
+#IF
+CHECKLEVELEX < 60
+#ACT
+messagebox 您等级不足60无法进入
+break
+
+#IF
+checkitem 武士之星 20
+checkitem 法师之星 20
+checkitem 道士之星 20
+#ACT
+TAKE 武士之星 20
+TAKE 法师之星 20
+TAKE 道士之星 20
+MAP shuai205
+SENDMSG 0 ぐ{「<$USERNAME>」|251:249:1}进入{『玄武地图』|251:249:1},装备靠爆.免费锻造.随身经验.散人天堂. 250 109
+BREAK
+#elseact
+messagebox 您材料不足无法进入
+break
+
+
+
+

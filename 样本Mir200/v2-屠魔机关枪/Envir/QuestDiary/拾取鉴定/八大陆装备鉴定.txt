@@ -1,0 +1,60 @@
+[@八大陆装备鉴定]
+{
+#IF
+checkcontainstext <$STR(S99)> 凡品
+#ACT
+;品阶需要MOVR 随机默认是1需要+1 =2
+MOV N$品阶给条数 1
+#IF
+checkcontainstext <$STR(S99)> 精品
+#ACT
+MOV N$品阶给条数 2
+#IF
+checkcontainstext <$STR(S99)> 圣品
+#ACT
+MOV N$品阶给条数 3
+MOV S$圣品附加属性 允许
+#IF
+checkcontainstext <$STR(S99)> 仙品
+#ACT
+MOV N$品阶给条数 4
+MOV S$圣品附加属性 允许
+MOV S$仙品附加属性 允许
+#IF
+checkcontainstext <$STR(S99)> 神品 
+#ACT
+MOV N$品阶给条数 5
+MOV S$圣品附加属性 允许
+MOV S$仙品附加属性 允许
+
+#IF
+CheckTextList ..\QuestDiary\拾取鉴定\装备\炼狱之路装备.txt <$STR(S98)>
+#ACT
+
+Goto @炼狱之路装备鉴定
+
+BREAK
+
+#IF
+CheckTextList ..\QuestDiary\拾取鉴定\装备\冥府之路装备.txt <$STR(S98)>
+#ACT
+
+Goto @冥府之路装备鉴定
+BREAK
+
+#IF
+CheckTextList ..\QuestDiary\拾取鉴定\装备\瘟疫之地装备.txt <$STR(S98)>
+#ACT
+
+Goto @瘟疫之地装备鉴定
+BREAK
+
+#IF
+CheckTextList ..\QuestDiary\拾取鉴定\装备\暗黑之地装备.txt <$STR(S98)>
+#ACT
+
+Goto @暗黑之地装备鉴定
+BREAK
+
+
+}

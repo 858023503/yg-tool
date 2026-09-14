@@ -1,0 +1,34 @@
+[@MAIN]
+
+#if
+#act
+GetRandomText ..\..\..\..\通区文件\龙之迷数\龙之迷数.txt N$龙之迷数数字内容
+OPENMERCHANTBIGDLG 5 963 1 4 0 0  0 610 0 1
+#say
+<&INPUTTEXT:3:245:315:200:19:246:233:249:0:0:只能输入1-100数字:       请输入1-100的数字:249>
+<&IMGEX:5:964:965:966:280:350:3/@输入数字确认>
+
+
+
+[@输入数字确认]
+
+#if
+EQUAL <$NPCINPUT(3)> <$STR(N$龙之迷数数字内容)>
+#ACT
+messagebox 输入正确
+MOV J31 1
+#CALL [\属性统计\统计属性.txt] @统计属性
+goto @判断是否第一个输入正确
+#elseact
+sendmsg 6 输入错误,重新尝试
+
+[@判断是否第一个输入正确]
+#if
+CheckTextList ..\..\..\..\通区文件\龙之迷数\第一次.txt 0
+#act
+GIVE 数字卷轴 3
+DelTextListLine ..\..\..\..\通区文件\龙之迷数\第一次.txt  0
+AddTextListEx ..\..\..\..\通区文件\龙之迷数\第一次.txt 1
+AddTextListEx ..\..\..\..\通区文件\龙之迷数\第一次.txt 1
+addtextlist ..\..\..\..\通区文件\大喇叭\大喇叭.txt <$STR(T14)><$STR(U162)>区【<$USERNAME>】今日第一个才对迷之龙数奖励3个数字锦囊
+

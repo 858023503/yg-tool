@@ -1,0 +1,36 @@
+[@开始计算人物经验]
+{
+#IF
+#ACT
+MOV N$实际经验倍率 100
+
+#IF
+CHECKFENGHAO 白玉为堂金做马
+#ACT
+INC N$实际经验倍率 50
+
+#OR
+LARGE N$经验倍率卷小 0
+LARGE N$经验倍率卷中 0
+LARGE N$经验倍率卷大 0
+#ACT
+INC N$实际经验倍率 400
+
+#IF
+CHECKLEVELEX < 25
+SMALL N$实际经验倍率 500
+#ACT
+MOV N$实际经验倍率 500
+;SendMsg 6 低于25级赠送5倍经验，有效时间1小时。
+
+#IF
+CHECKITEMW 赞助斗笠
+#ACT
+INC N$实际经验倍率 300
+
+#IF
+NOT EQUAL N$实际经验倍率 <$STR(N$上次记录经验倍率)>
+#ACT
+MOV N$上次记录经验倍率 <$STR(N$实际经验倍率)>
+KILLMONEXPRATE <$STR(N$实际经验倍率)> 0 0 1
+}

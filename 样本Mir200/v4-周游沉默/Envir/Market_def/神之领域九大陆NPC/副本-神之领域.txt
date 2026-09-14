@@ -1,0 +1,40 @@
+[@main]
+#if
+#ACT
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+<><仙法 技冠群雄/AUTOCOLOR=251>\
+<><魔语 蛊惑人心/AUTOCOLOR=253>\
+<><妖变 开山碎石/AUTOCOLOR=254>\
+<><危险指数:？？？？/AUTOCOLOR=249> <难度指数:？？？？/AUTOCOLOR=249> <爆率指数:？？？？/AUTOCOLOR=249>\
+<>购买挑战时间：<500Rmb点购买3600秒/AUTOCOLOR=251>  60分钟刷新BOSS\
+<>剩余挑战时间：{<$STR(U30)>秒/AUTOCOLOR=251}\ \
+<><购买挑战时间/@购买>   <进入世界的尽头/@元宝进入>
+
+
+
+[@购买]
+#if
+CHECKGameDiamond > 499
+#act
+GameDiamond - 500
+inc u30 3600
+messagebox 购买成功，您的挑战剩余时间增加3600秒！
+goto @main
+break
+#elseact
+messagebox 对不起您没有足够的Rmb点无法购买..
+break
+
+
+
+[@元宝进入]
+#if
+large u30 0
+#ACT
+MAPMOVE  世界的尽头 300 300 300
+#elseact
+messagebox   您的剩余挑战时间不足无法进入地图..
+break
+

@@ -1,0 +1,1 @@
+#CALL [\爆率系统\焚燃之地\BOSS怪.txt] @BOSS怪

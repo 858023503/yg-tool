@@ -1,0 +1,57 @@
+[@main]
+
+#IF
+#ACT
+OPENMERCHANTBIGDLG 5 183 1 4 0 -80  1 730 0 1
+delaygoto 600 @战士觉醒1
+#SAY
+<PlayImg:1:637:8:150:230:470:0>\
+<Imgex:5:178:179:180:575:420/@学习战士觉醒>
+
+[@战士觉醒1]
+#if
+#act
+delaygoto 5500 @战士觉醒2
+#SAY
+<PlayImg:1:577:50:100:340:400:0>\
+
+<Imgex:5:178:179:180:575:420/@学习战士觉醒>
+
+
+[@战士觉醒2]
+#if
+#act
+#say
+<PlayImg:17:40:16:80:220:115:0>\
+<Imgex:5:178:179:180:575:420/@学习战士觉醒>
+
+
+
+[@学习战士觉醒]
+#if
+#act
+messagebox 等级不够无法学习
+break
+#if
+SMALL U81 12
+#act
+messagebox 金丹中期才可以学习
+break
+#IF
+not checkjob warrior
+#act
+messagebox 你不是战士
+break
+
+#IF
+CHECKGAMEDIAMOND < 200000
+#act
+messagebox 你身上没有200000充值点
+break
+
+#if
+CHECKGAMEDIAMOND > 199999
+#act
+GAMEDIAMOND - 200000
+addskill 仙法·熔岩烈剑 0
+messagebox 觉醒技能学习成功

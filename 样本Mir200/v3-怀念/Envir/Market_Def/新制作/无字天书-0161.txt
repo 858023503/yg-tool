@@ -1,0 +1,150 @@
+[@main]
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+\ \
+<------------------------------------------------------------/SCOLOR=83>\
+<> <我可以将书页兑换成无字天书!1-9号随机兑换/SCOLOR=103>\
+<------------------------------------------------------------/SCOLOR=83>\ \
+<>        <使用88书页随机兑换/@使用88书页随机兑换>        <技能天书合成/@技能天书合成> 
+
+
+[@技能天书合成]
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+\ \
+<------------------------------------------------------------/SCOLOR=83>\ \
+<> <1-9号无字天书+10万元宝/SCOLOR=255>           <成功率 50%/SCOLOR=249>   <合成/@合成1>\ \
+<> <1-9号无字天书+10万元宝+30积分/SCOLOR=255>    <成功率100%/SCOLOR=249>   <合成/@合成2>\ \
+<------------------------------------------------------------/SCOLOR=83>\ \
+
+[@合成2]
+#IF
+checkitem 天书① 1
+checkitem 天书② 1
+checkitem 天书③ 1
+checkitem 天书④ 1
+checkitem 天书⑤ 1
+checkitem 天书⑥ 1
+checkitem 天书⑦ 1
+checkitem 天书⑧ 1
+checkitem 天书⑨ 1
+CHECKGAMEGOLD > 99999
+CHECKCREDITPOINT > 29
+#ACT
+CREDITPOINT - 30
+GAMEGOLD - 100000
+take 天书① 1
+take 天书② 1
+take 天书③ 1
+take 天书④ 1
+take 天书⑤ 1
+take 天书⑥ 1
+take 天书⑦ 1
+take 天书⑧ 1
+take 天书⑨ 1
+give 技能天书 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}使用无字天书兑换{【技能天书】|252:251:1}..
+break
+#IF
+checkitem 天书① 1
+checkitem 天书② 1
+checkitem 天书③ 1
+checkitem 天书④ 1
+checkitem 天书⑤ 1
+checkitem 天书⑥ 1
+checkitem 天书⑦ 1
+checkitem 天书⑧ 1
+checkitem 天书⑨ 1
+CHECKGAMEGOLD > 99999
+CHECKGAMEGIRD > 29
+#ACT
+GAMEGIRD - 30
+GAMEGOLD - 100000
+take 天书① 1
+take 天书② 1
+take 天书③ 1
+take 天书④ 1
+take 天书⑤ 1
+take 天书⑥ 1
+take 天书⑦ 1
+take 天书⑧ 1
+take 天书⑨ 1
+give 技能天书 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}使用无字天书兑换{【技能天书】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:您的材料不够
+break
+
+[@合成1]
+#IF
+checkitem 天书① 1
+checkitem 天书② 1
+checkitem 天书③ 1
+checkitem 天书④ 1
+checkitem 天书⑤ 1
+checkitem 天书⑥ 1
+checkitem 天书⑦ 1
+checkitem 天书⑧ 1
+checkitem 天书⑨ 1
+RANDOMEX 30 100
+CHECKGAMEGOLD > 99999
+#ACT
+GAMEGOLD - 100000
+take 天书① 1
+take 天书② 1
+take 天书③ 1
+take 天书④ 1
+take 天书⑤ 1
+take 天书⑥ 1
+take 天书⑦ 1
+take 天书⑧ 1
+take 天书⑨ 1
+give 技能天书 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}使用无字天书兑换{【技能天书】|252:251:1}..
+break
+#IF
+checkitem 天书① 1
+checkitem 天书② 1
+checkitem 天书③ 1
+checkitem 天书④ 1
+checkitem 天书⑤ 1
+checkitem 天书⑥ 1
+checkitem 天书⑦ 1
+checkitem 天书⑧ 1
+checkitem 天书⑨ 1
+RANDOM 1
+CHECKGAMEGOLD > 99999
+#ACT
+GAMEGOLD - 100000
+take 天书① 1
+take 天书② 1
+take 天书③ 1
+take 天书④ 1
+take 天书⑤ 1
+take 天书⑥ 1
+take 天书⑦ 1
+take 天书⑧ 1
+take 天书⑨ 1
+MESSAGEBOX 兑换失败，请再接再厉
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:您的材料不够
+break
+
+[@使用88书页随机兑换]
+#IF
+checkitem 书页 88
+#ACT
+take 书页 88
+GetRandomText ..\QuestDiary\无字天书.txt S9
+give <$STR(S9)> 1
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}使用书页兑换{【<$STR(S9)>】|252:251:1}..
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:您的材料不够,需要88书页
+break

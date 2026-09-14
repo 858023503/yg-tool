@@ -1,0 +1,70 @@
+[@诱惑之光]
+{
+
+#IF
+#ACT
+PLAYEFFECT 1 3317 10 1 50 0 0 0 0
+MOV S$法师诱惑之光的宝宝名字
+MOV <$STR(S$法师诱惑之光的宝宝名字)> <$ATTACKMONSTER_NAMEEX>
+INC  <$STR(S$法师诱惑之光的宝宝名字)> <$CurTargetMasterName>
+#IF
+CompareText <$STR(S$法师诱惑之光的宝宝名字)> 火爆猴
+#ACT
+MOV N$诱惑之光几率 101
+MOV S$法师召唤宝宝名字 火爆猴
+
+#IF
+CompareText <$STR(S$法师诱惑之光的宝宝名字)> 双刀小妖
+#ACT
+MOV N$诱惑之光几率 201
+MOV S$法师召唤宝宝名字 双刀小妖
+
+
+
+
+#IF
+#ACT
+DELAYCALL 100 @诱惑之光延迟
+
+[@诱惑之光延迟]
+#IF
+#ACT
+RangeHarm <$STR(N998)> <$STR(N999)> 0 1 0 0 0 2 1 3327 10 50 1 0
+#IF(1)
+CHECKSLAVECOUNT > N$诱惑之光数量
+CHECKSLAVECOUNT = N$诱惑之光数量
+#ACT
+sendmsg 6 你当前只能诱惑<$STR(N$诱惑之光数量)>个宝宝
+break
+
+
+
+
+
+#IF
+RANDOMEX N$诱惑之光几率 N$法师诱惑之光怪物几率 
+CHECKSLAVECOUNT < N$诱惑之光数量
+#ACT
+KillMapMon <$MAP> <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> 0 <$ATTACKMONSTER_NAMEEX> 0 1
+; RangeHarm <$STR(N998)> <$STR(N999)> 0 9999 0 0 0 2 1 3327 10 50 1 0
+RECALLMOB <$ATTACKMONSTER_NAMEEX>
+goto @法师召唤宝宝给属性
+[@法师召唤宝宝给属性]
+
+#IF
+EQUAL S$法师召唤宝宝名字 火爆猴
+#ACT
+INC N$火爆猴 1
+sendmsg 6 对统领伤害提升10%,多诱惑一只增加10%
+
+Goto @统计属性
+
+#IF
+EQUAL S$法师召唤宝宝名字 双刀小妖
+#ACT
+INC N$双刀小妖 1
+sendmsg 6 对怪物所有技能对普通和精英伤害提升5%,多诱惑一只增加5%
+
+Goto @统计属性
+
+}

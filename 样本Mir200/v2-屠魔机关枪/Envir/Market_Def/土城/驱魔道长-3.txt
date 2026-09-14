@@ -1,0 +1,102 @@
+[@MAIN]
+
+#if
+EQUAL S$当前状态
+#act
+OPENMERCHANTBIGDLG 5 862 1 4 0 -80  1 760 -5 1
+#say
+<&PlayImg:3:2112:8:200:380:330:0>
+<ImgEx:5:863:864:865:-120:395|需要交付200元宝^任务赶尸完成后奖励400充值点/@赶尸任务>
+
+<&PlayImg:15:5514:6:200:300:370:0>
+<&PlayImg:15:5514:6:200:250:370:0>
+<&PlayImg:15:5514:6:200:200:370:0>
+<&PlayImg:15:5514:6:200:500:370:0>
+<&PlayImg:15:5514:6:200:450:370:0>
+<&PlayImg:15:5514:6:200:550:370:0>
+#elseact
+messagebox 你正处于赶尸状态,如放弃请小腿
+break
+
+
+
+
+[@押镖任务一级]
+#if
+EQUAL U13 11
+#act
+GOTO @新手押镖
+BREAK
+
+#if
+CHECKGAMEDIAMOND > 149
+#ACT
+GAMEDIAMOND - 150
+MOV U120 1
+MOV S$当前状态 僵尸
+RECALLMOB 僵尸 0 99999 0 0 1 1
+give 变身回人
+changeAppr 1009 1800
+close
+#elseact
+messagebox 接受一级任务需要【150】充值点
+
+[@押镖任务二级]
+#if
+EQUAL U13 11
+#act
+GOTO @新手押镖
+BREAK
+#if
+CHECKGAMEDIAMOND > 299
+#ACT
+GAMEDIAMOND - 300
+MOV U120 2
+MOV S$当前状态 僵尸
+RECALLMOB 僵尸 0 99999 0 0 1 1
+give 变身回人
+changeAppr 1009 1800
+close
+#elseact
+messagebox 接受二级任务需要【300】充值点
+[@押镖任务三级]
+#if
+EQUAL U13 11
+#act
+GOTO @新手押镖
+BREAK
+#if
+CHECKGAMEDIAMOND > 499
+#ACT
+GAMEDIAMOND - 500
+MOV U120 3
+MOV S$当前状态 僵尸
+RECALLMOB 僵尸 0 99999 0 0 1 1
+give 变身回人
+changeAppr 1009 1800
+SendNewLineMsg 0 251 0 15 200 10 0 玩家【<$USERNAME>】接受了三级赶尸任务杀了他可以得到500充值点
+close
+#elseact
+messagebox 接受三级任务需要【500】充值点
+
+
+
+
+
+[@新手押镖]
+#if
+EQUAL U13 11
+#act
+changeAppr 1009 1800
+MOV S$当前状态 僵尸
+RECALLMOB 僵尸(新手任务型) 0 99999 0 0 1 5
+MOV U13 13
+ChangeModeEx 1 300
+SendNewLineMsg 0 251 0 15 200 10 0 玩家【<$USERNAME>】接受了赶尸任务【新手赶尸处于保护状态无敌5分钟】
+sendmsg 6 第一次赶尸任务赠送10分钟无敌时间,请尽快把僵尸送到目的地以免被人杀人越货。。
+sendmsg 6 第一次赶尸任务赠送10分钟无敌时间,请尽快把僵尸送到目的地以免被人杀人越货。。
+sendmsg 6 第一次赶尸任务赠送10分钟无敌时间,请尽快把僵尸送到目的地以免被人杀人越货。。
+sendmsg 6 第一次赶尸任务赠送10分钟无敌时间,请尽快把僵尸送到目的地以免被人杀人越货。。
+sendmsg 6 第一次赶尸任务赠送10分钟无敌时间,请尽快把僵尸送到目的地以免被人杀人越货。。
+GotoNow  443 332
+CLOSE

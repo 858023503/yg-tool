@@ -1,0 +1,9 @@
+[AddData]
+AddName=Çá¸è
+AddLevel=2
+GrayShow=1
+ScaleShow=1
+EffigyState=72620544058459124
+EffigyState2=87274036104003608
+EffigyOffset=40
+ValidTime=-1

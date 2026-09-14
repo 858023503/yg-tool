@@ -1,0 +1,88 @@
+[@召唤宝宝]
+{
+我这里有很多低等级的宝宝出售！\
+按照你的级别高低，可以买到不同等级的宝宝\
+当然级别越高的宝宝价格越贵，<最多可以买5只宝宝/SCOLOR=249>\
+如果你已经有了5个宝宝还可以继续找我买宝宝就是白花钱！\
+你需要买那只宝宝呢？\
+<花20万金币买武兽|只限16级战士购买/@买武兽>  \
+<花10万金币买多多|只限16级法师购买/@买多多>  \
+<花20万金币买工蚁|只限45级法师.道士购买/@买工蚁>  \
+<花50万金币买蚁后|只限48级法师.道士购买/@买蚁后>  \
+
+[@买武兽]
+#IF
+CHECKLEVELEX < 16
+#ACT
+messagebox 不足16级不能购买!
+break
+
+#IF
+checkjob warrior
+CHECKSLAVECOUNT < 1
+CheckGold 200000
+#ACT
+Take 金币 200000
+RECALLMOB 武兽 7 7200
+SendMsg 1 {信息ぐ|151:0:1}：战士「{%s|227:0:1}」在土城{《购买宝宝》|223:0:1}购买了武兽！
+#SAY
+#ELSESAY
+只有没有宝宝的战士，才可以使用此功能。\
+或者你的金币不足无法购买 
+[@买蚁后]
+#IF
+CHECKLEVELEX < 48
+#ACT
+messagebox 不足48级不能购买!
+break
+
+#IF
+NOT CHECKJOB warrior
+CHECKSLAVECOUNT < 5
+CheckGold 500000
+#ACT
+Take 金币 500000
+RECALLMOB 蚁后 7 7200
+SendMsg 1 {信息ぐ|151:0:1}：法师「{%s|227:0:1}」在土城{《购买宝宝》|223:0:1}购买了蚁后！
+#SAY
+#ELSESAY
+只有没有宝宝的法师道士，才可以使用此功能。\
+或者你的金币不足无法购买
+
+[@买多多]
+#IF
+CHECKLEVELEX < 16
+#ACT
+messagebox 不足16级不能购买!
+break
+#IF
+checkjob wizard
+CHECKSLAVECOUNT < 5
+CheckGold 100000
+#ACT
+Take 金币 100000
+RECALLMOB 巨型多角虫1 1 7200
+SendMsg 1 {信息ぐ|151:0:1}：法师「{%s|227:0:1}」在土城{《购买宝宝》|223:0:1}购买了巨型多角虫！
+#SAY
+#ELSESAY
+只有法师才可以购买，或者你的宠物数量已经超过5只。\
+或者你的金币不足无法购买
+[@买工蚁]
+#IF
+CHECKLEVELEX < 45
+#ACT
+messagebox 不足45级不能购买!
+break
+#IF
+NOT CHECKJOB warrior
+CHECKSLAVECOUNT < 5
+CheckGold 200000
+#ACT
+Take 金币 200000
+RECALLMOB 工蚁 1 7200
+SendMsg 1 {信息ぐ|151:0:1}：法师「{%s|227:0:1}」在土城{《购买宝宝》|223:0:1}购买了工蚁！
+#SAY
+#ELSESAY
+只有法师.道士才可以购买，或者你的宠物数量已经超过5只。\
+或者你的金币不足无法购买
+}

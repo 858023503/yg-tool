@@ -1,0 +1,248 @@
+[@诛仙剑阵_法师]
+{
+#IF
+#ACT
+MOV N$诛魔次数 <$MC>
+DIV N$诛魔次数 300
+INC N$诛魔次数 7
+MUL N$诛魔爆破 <$MC> 450
+Div N$诛魔爆破 <$STR(N$诛魔爆破)> 100
+MUL N$诛魔爆破  <$STR(N$诛魔次数)>
+MUL M10 <$MAXMC> 300
+Div M10 <$STR(M10)> 100
+RangeHarm <$X> <$Y> 5 <$STR(M10)> 9 10
+PLAYEFFECT <$STR(N$素材X)> 292 8 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 306 8 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 320 8 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 342 8 2 200 0 0 0 1
+GuildNoticeMsg 249 255 诛魔造成次数：<$STR(N$诛魔次数)> Self
+DelayCall 800 @诛仙斩击21_法师
+BREAK
+
+[@诛仙斩击21_法师]
+#IF
+#act
+PLAYEFFECT <$STR(N$素材X)> 297 6 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 311 6 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 326 6 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 348 6 2 200 0 0 0 1
+MUL M30 <$MC> 310
+Div M30 <$STR(M30)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M30)> 
+DelayCall 300 @诛仙斩击20_法师
+BREAK
+
+[@诛仙斩击20_法师]
+#IF
+#act
+MUL M29 <$MC> 350
+Div M29 <$STR(M29)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M29)> 
+DelayCall 300 @诛仙斩击19_法师
+BREAK
+
+[@诛仙斩击19_法师]
+#IF
+#act
+PLAYEFFECT <$STR(N$素材X)> 297 6 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 311 6 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 326 6 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 348 6 2 200 0 0 0 1
+MUL M28 <$MC> 320
+Div M28 <$STR(M28)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M28)> 
+DelayCall 300 @诛仙斩击18_法师
+BREAK
+
+[@诛仙斩击18_法师]
+#IF
+#act
+MUL M27 <$MC> 330
+Div M27 <$STR(M27)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M27)> 
+DelayCall 300 @诛仙斩击17_法师
+BREAK
+
+[@诛仙斩击17_法师]
+#IF
+#act
+MUL M26 <$MC> 310
+Div M26 <$STR(M26)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M26)> 
+DelayCall 300 @诛仙斩击16_法师
+BREAK
+
+[@诛仙斩击16_法师]
+#IF
+#act
+MUL M25 <$MC> 300
+Div M25 <$STR(M25)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M25)> 
+DelayCall 300 @诛仙斩击15_法师
+BREAK
+
+[@诛仙斩击15_法师]
+#IF
+#act
+PLAYEFFECT <$STR(N$素材X)> 297 6 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 311 6 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 326 6 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 348 6 2 200 0 0 0 1
+MUL M24 <$MC> 320
+Div M24 <$STR(M24)> 100
+RangeHarm <$X> <$Y> 5 <$STR(M24)> 
+DelayCall 300 @诛仙斩击14_法师
+BREAK
+
+[@诛仙斩击14_法师]
+#IF
+#act
+MUL M23 <$MC> 310
+Div M23 <$STR(M23)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M23)> 
+DelayCall 300 @诛仙斩击13_法师
+BREAK
+
+[@诛仙斩击13_法师]
+#IF
+#act
+MUL M22 <$MC> 360
+Div M22 <$STR(M22)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M22)> 
+DelayCall 300 @诛仙斩击12_法师
+BREAK
+
+[@诛仙斩击12_法师]
+#IF
+#act
+MUL M21 <$MC> 340
+Div M21 <$STR(M21)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M21)> 
+DelayCall 300 @诛仙斩击11_法师
+BREAK
+
+[@诛仙斩击11_法师]
+#IF
+#act
+PLAYEFFECT <$STR(N$素材X)> 297 6 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 311 6 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 326 6 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 348 6 2 200 0 0 0 1
+MUL M20 <$MC> 300
+Div M20 <$STR(M20)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M20)> 
+DelayCall 300 @诛仙斩击10_法师
+BREAK
+
+[@诛仙斩击10_法师]
+#IF
+#act
+MUL M19 <$MC> 310
+Div M19 <$STR(M19)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M19)> 
+DelayCall 300 @诛仙斩击9_法师
+BREAK
+
+[@诛仙斩击9_法师]
+#IF
+#act
+MUL M18 <$MC> 330
+Div M18 <$STR(M18)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M18)> 
+DelayCall 300 @诛仙斩击8_法师
+BREAK
+
+[@诛仙斩击8_法师]
+#IF
+#act
+MUL M17 <$MC> 315
+Div M17 <$STR(M17)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M17)> 
+DelayCall 300 @诛仙斩击7_法师
+BREAK
+
+[@诛仙斩击7_法师]
+#IF
+#act
+PLAYEFFECT <$STR(N$素材X)> 297 6 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 311 6 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 326 6 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 348 6 2 200 0 0 0 1
+MUL M16 <$MC> 320
+Div M16 <$STR(M16)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M16)> 
+DelayCall 300 @诛仙斩击6_法师
+BREAK
+
+[@诛仙斩击6_法师]
+#IF
+#act
+MUL M15 <$MC> 360
+Div M15 <$STR(M15)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M15)> 
+DelayCall 300 @诛仙斩击5_法师
+BREAK
+
+[@诛仙斩击5_法师]
+#IF
+#act
+MUL M14 <$MC> 380
+Div M14 <$STR(M14)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M14)> 
+DelayCall 300 @诛仙斩击4_法师
+BREAK
+
+[@诛仙斩击4_法师]
+#IF
+#act
+MUL M13 <$MC> 350
+Div M13 <$STR(M13)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M13)> 
+DelayCall 300 @诛仙斩击3_法师
+BREAK
+
+[@诛仙斩击3_法师]
+#IF
+#act
+PLAYEFFECT <$STR(N$素材X)> 302 6 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 316 6 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 333 6 2 200 0 0 0 1
+PLAYEFFECT <$STR(N$素材X)> 348 6 2 200 0 0 0 1
+MUL M12 <$MC> 330
+Div M12 <$STR(M12)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M12)> 
+DelayCall 300 @诛仙斩击2_法师
+BREAK
+
+[@诛仙斩击2_法师]
+#IF
+#act
+MUL M11 <$MC> 320
+Div M11 <$STR(M11)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M11)> 
+DelayCall 300 @诛仙斩击1_法师
+BREAK
+
+[@诛仙斩击1_法师]
+#IF
+#act
+MUL M10 <$MC> 320
+Div M10 <$STR(M10)> 50
+RangeHarm <$X> <$Y> 5 <$STR(M10)> 
+DelayCall 300 @诛仙爆破_法师
+BREAK
+
+[@诛仙爆破_法师]
+#IF
+#act
+PLAYEFFECT <$STR(N$素材X)> 483 10 1 150 0 0 0 1
+MUL N$诛魔爆破 <$MC> 450
+Div N$诛魔爆破 <$STR(N$诛魔爆破)> 100
+MUL N$诛魔爆破  <$STR(N$诛魔次数)>
+RangeHarm <$X> <$Y> 10 <$STR(N$诛魔爆破)> 4 <$STR(N$诛魔爆破)>
+GuildNoticeMsg 249 255 诛魔造成伤害：<$STR(N$诛魔爆破)> Self
+PLAYEFFECT <$STR(N$素材X)> 483 10 1 150 0 0 0 1
+MOV N$诛魔次数 0
+MOV N$诛魔爆破 0
+BREAK
+}

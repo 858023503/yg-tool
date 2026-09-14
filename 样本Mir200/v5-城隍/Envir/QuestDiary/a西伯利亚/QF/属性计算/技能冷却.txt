@@ -1,0 +1,22 @@
+[@开始计算技能冷却]
+{
+#IF
+#ACT
+MOV N$烈火冷却减少 0
+MOV N$逐日冷却减少 0
+MOV N$开天冷却减少 0
+
+#IF
+CHECKGROUPITEM 132
+#ACT
+INC N$烈火冷却减少 3
+INC N$逐日冷却减少 3
+INC N$开天冷却减少 3
+
+#IF
+EQUAL <$JOB> 0
+#ACT
+SetSkillDecCD 烈火剑法 = <$STR(N$烈火冷却减少)>
+SetSkillDecCD 逐日剑法 = <$STR(N$逐日冷却减少)>
+SetSkillDecCD 开天斩 = <$STR(N$开天冷却减少)>
+}

@@ -1,0 +1,388 @@
+[@刺杀剑术]
+{
+#IF
+#ACT
+
+Goto @技能伤害
+
+
+
+
+
+
+
+
+#if
+EQUAL S$玩家当前大陆 五大陆
+#act
+AddHpPer - N$五大陆反伤
+
+#if
+CHECKCURRTARGETRACE = 0
+#act
+MOV N$刺杀打人暴击几率 0
+goto @刺杀对人物伤害
+break
+
+#if
+EQUAL <$CURRRUSEMAGICID> 12
+NOT CHECKCURRTARGETRACE = 0
+#act
+
+goto @刺杀魔次开启
+
+
+[@刺杀魔次开启]
+#if
+LARGE N$刺杀剑术幸运 0
+EQUAL <$CURRRUSEMAGICID> 12
+#ACT
+FORMULATION <$DC>+(((<$MAXDC>-<$DC>)/10)*<$STR(N$刺杀剑术幸运)>) N$刺杀人物幸运攻击下限
+DEC N$刺杀人物幸运攻击下限 1
+#elseact
+MOV N$刺杀人物幸运攻击下限 <$DC>
+
+
+#IF
+#act
+
+MOVR N$刺杀剑术随机基础伤害 <$STR(N$刺杀人物幸运攻击下限)> <$MAXDC>
+;默认伤害
+CalcPercent N$刺杀剑术随机基础伤害 N$刺杀打怪默认伤害 N$刺杀剑术随机基础伤害
+;降低系数
+
+MOV N$刺杀剑术循环次数 <$STR(N$刺杀魔次)>
+;百分比计算
+CalcPercent N$刺杀剑术随机基础伤害 N$刺杀剑术打怪伤害百分比 N$刺杀剑术随机基础伤害
+
+
+CalcPercent N$刺杀剑术随机基础伤害 N$刺杀剑术倍攻 N$刺杀剑术随机基础伤害
+
+FORMULATION <$STR(N$刺杀剑术随机基础伤害)>/<$STR(N$所有技能伤害降低倍数)> N$刺杀剑术随机基础伤害
+#IF
+RANDOMEX N$人物暴击几率 100
+#ACT
+PLAYEFFECT 73 0 12 1 80 0 -125 -170 1
+FORMULATION (<$STR(N$人物暴击伤害)>+100)/100*<$STR(N$刺杀剑术随机基础伤害)> N$刺杀剑术随机基础伤害
+
+#if
+CheckCacheTextList ..\QuestDiary\怪物名称\精英及以下怪物.txt <$ATTACKMONSTER_NAMEEX>
+LARGE N$精英怪增加伤害 100
+#act
+CalcPercent N$刺杀剑术随机基础伤害 N$精英怪增加伤害 N$刺杀剑术随机基础伤害
+
+
+
+
+
+#if
+LARGE N$刺杀魔次 10
+large <$LEVEL> 99
+#act
+FORMULATION <$STR(N$刺杀剑术随机基础伤害)>*<$STR(N$刺杀魔次)> N$刺杀剑术随机基础伤害
+MOV N$刺杀剑术循环次数 1
+goto @刺杀开始打怪
+break
+
+#if
+LARGE N$刺杀魔次 10
+LARGE <$LEVEL> 79
+#act
+FORMULATION <$STR(N$刺杀剑术随机基础伤害)>*<$STR(N$刺杀魔次)>/2 N$刺杀剑术随机基础伤害
+MOV N$刺杀剑术循环次数 2
+goto @刺杀开始打怪
+break
+
+
+
+#if
+LARGE N$刺杀魔次 10
+LARGE <$LEVEL> 59
+#act
+FORMULATION <$STR(N$刺杀剑术随机基础伤害)>*<$STR(N$刺杀魔次)>/3 N$刺杀剑术随机基础伤害
+MOV N$刺杀剑术循环次数 3
+goto @刺杀开始打怪
+break
+
+#if
+LARGE N$刺杀魔次 10
+LARGE <$LEVEL> 29
+#act
+FORMULATION <$STR(N$刺杀剑术随机基础伤害)>*<$STR(N$刺杀魔次)>/4 N$刺杀剑术随机基础伤害
+MOV N$刺杀剑术循环次数 4
+goto @刺杀开始打怪
+break
+
+#if
+LARGE N$刺杀魔次 10
+LARGE <$LEVEL> 9
+#act
+FORMULATION <$STR(N$刺杀剑术随机基础伤害)>*<$STR(N$刺杀魔次)>/5 N$刺杀剑术随机基础伤害
+MOV N$刺杀剑术循环次数 5
+goto @刺杀开始打怪
+break
+
+
+
+#if
+SMALL N$刺杀魔次 10
+#act
+FORMULATION <$STR(N$刺杀剑术随机基础伤害)>*<$STR(N$刺杀魔次)> N$刺杀剑术随机基础伤害
+MOV N$刺杀剑术循环次数 <$STR(N$刺杀魔次)>
+goto @刺杀开始打怪
+break
+
+
+[@刺杀开始打怪]
+#if
+#ACT
+
+;天克 战士打道士 增加伤害
+
+GetPlayInfo Dir N$玩家刺杀方向
+MOV N$刺杀伤害位置1X <$X>
+MOV N$刺杀伤害位置1Y <$Y>
+MOV N$刺杀伤害位置2X <$X>
+MOV N$刺杀伤害位置2Y <$Y>
+
+#if
+EQUAL N$玩家刺杀方向 0
+#act
+DEC N$刺杀伤害位置1Y 1
+DEC N$刺杀伤害位置2Y 2
+MOV N$刺杀动画编号 5102
+#if
+EQUAL N$玩家刺杀方向 1
+#act
+INC N$刺杀伤害位置1X 1
+DEC N$刺杀伤害位置1Y 1
+INC N$刺杀伤害位置2X 2
+DEC N$刺杀伤害位置2Y 2
+MOV N$刺杀动画编号 5111
+#if
+EQUAL N$玩家刺杀方向 2
+#act
+INC N$刺杀伤害位置1X 1
+INC N$刺杀伤害位置2X 2
+MOV N$刺杀动画编号 5120
+#if
+EQUAL N$玩家刺杀方向 3
+#act
+INC N$刺杀伤害位置1X 1
+INC N$刺杀伤害位置1Y 1
+INC N$刺杀伤害位置2X 2
+INC N$刺杀伤害位置2Y 2
+MOV N$刺杀动画编号 5129
+#if
+EQUAL N$玩家刺杀方向 4
+#act
+INC N$刺杀伤害位置1Y 1
+INC N$刺杀伤害位置2Y 2
+MOV N$刺杀动画编号 5138
+#if
+EQUAL N$玩家刺杀方向 5
+#act
+DEC N$刺杀伤害位置1X 1
+INC N$刺杀伤害位置1Y 1
+DEC N$刺杀伤害位置2X 2
+INC N$刺杀伤害位置2Y 2
+MOV N$刺杀动画编号 5147
+#if
+EQUAL N$玩家刺杀方向 6
+#act
+DEC N$刺杀伤害位置1X 1
+DEC N$刺杀伤害位置2X 2
+MOV N$刺杀动画编号 5156
+#if
+EQUAL N$玩家刺杀方向 7
+#act
+DEC N$刺杀伤害位置1X 1
+DEC N$刺杀伤害位置1Y 1
+DEC N$刺杀伤害位置2X 2
+DEC N$刺杀伤害位置2Y 2
+MOV N$刺杀动画编号 5165
+
+
+
+
+
+#if
+#ACT
+RangeHarm <$STR(N$刺杀伤害位置1X)> <$STR(N$刺杀伤害位置1Y)> N$刺杀范围 10 0 0 0 2 1 <$STR(N$刺杀动画编号)> 9 100 0 1
+FORMULATION <$STR(N$刺杀剑术随机基础伤害)>+<$STR(N$天殇套真实伤害)> N$刺杀剑术随机基础伤害
+while 0 < N$刺杀剑术循环次数
+RangeHarm <$X> <$Y> N$刺杀范围 N$刺杀剑术随机基础伤害 0 0 0 2 0 0 0 0 0 1
+DEC N$刺杀剑术循环次数 1
+endwhile
+
+
+
+#if
+RANDOMEX 5 100
+#act
+GOTO @地刺突袭打怪
+
+
+
+;已测试
+
+[@刺杀对人物伤害]
+
+#if
+#ACT
+
+;天克 战士打道士 增加伤害
+
+GetPlayInfo Dir N$玩家刺杀方向
+MOV N$刺杀伤害位置1X <$X>
+MOV N$刺杀伤害位置1Y <$Y>
+MOV N$刺杀伤害位置2X <$X>
+MOV N$刺杀伤害位置2Y <$Y>
+
+#if
+EQUAL N$玩家刺杀方向 0
+#act
+DEC N$刺杀伤害位置1Y 1
+DEC N$刺杀伤害位置2Y 2
+MOV N$刺杀动画编号 5102
+#if
+EQUAL N$玩家刺杀方向 1
+#act
+INC N$刺杀伤害位置1X 1
+DEC N$刺杀伤害位置1Y 1
+INC N$刺杀伤害位置2X 2
+DEC N$刺杀伤害位置2Y 2
+MOV N$刺杀动画编号 5102
+#if
+EQUAL N$玩家刺杀方向 2
+#act
+INC N$刺杀伤害位置1X 1
+INC N$刺杀伤害位置2X 2
+MOV N$刺杀动画编号 5102
+#if
+EQUAL N$玩家刺杀方向 3
+#act
+INC N$刺杀伤害位置1X 1
+INC N$刺杀伤害位置1Y 1
+INC N$刺杀伤害位置2X 2
+INC N$刺杀伤害位置2Y 2
+MOV N$刺杀动画编号 5102
+#if
+EQUAL N$玩家刺杀方向 4
+#act
+INC N$刺杀伤害位置1Y 1
+INC N$刺杀伤害位置2Y 2
+MOV N$刺杀动画编号 5102
+#if
+EQUAL N$玩家刺杀方向 5
+#act
+DEC N$刺杀伤害位置1X 1
+INC N$刺杀伤害位置1Y 1
+DEC N$刺杀伤害位置2X 2
+INC N$刺杀伤害位置2Y 2
+MOV N$刺杀动画编号 5102
+#if
+EQUAL N$玩家刺杀方向 6
+#act
+DEC N$刺杀伤害位置1X 1
+DEC N$刺杀伤害位置2X 2
+MOV N$刺杀动画编号 5102
+#if
+EQUAL N$玩家刺杀方向 7
+#act
+DEC N$刺杀伤害位置1X 1
+DEC N$刺杀伤害位置1Y 1
+DEC N$刺杀伤害位置2X 2
+DEC N$刺杀伤害位置2Y 2
+MOV N$刺杀动画编号 5102
+
+
+
+
+
+
+#if
+LARGE N$刺杀剑术幸运 0
+EQUAL <$CURRRUSEMAGICID> 12
+#ACT
+FORMULATION <$DC>+((<$MAXDC>-<$DC>)/10)*<$STR(N$刺杀剑术幸运)> N$刺杀人物幸运攻击下限
+DEC N$刺杀人物幸运攻击下限 1
+#elseact
+MOV N$刺杀人物幸运攻击下限 <$DC>
+
+
+
+#IF
+#ACT
+GetHumVar <$C.USERNAME> <$STR(N$人物暴击防御)> N$对方暴击防御
+GetHumVar <$C.USERNAME> <$STR(N$免疫对人物真实伤害)> N$对方免疫对人物真实伤害
+FORMULATION <$STR(N$对人物真实伤害)>-<$STR(N$对方免疫对人物真实伤害)> N$对人物造成的真实伤害
+MOVR N$刺杀剑术打人随机基础伤害 <$STR(N$刺杀人物幸运攻击下限)> <$MAXDC>
+CalcPercent N$刺杀剑术打人随机基础伤害 N$刺杀打人默认伤害 N$刺杀剑术打人随机基础伤害
+
+
+CalcPercent N$刺杀剑术打人随机基础伤害 N$刺杀剑术打人伤害百分比 N$刺杀剑术打人随机基础伤害
+
+#if
+LARGE N$人物暴击几率 <$STR(N$对方暴击防御)>
+#ACT
+FORMULATION <$STR(N$人物暴击几率)>-<$STR(N$对方暴击防御)> N$刺杀打人暴击几率
+
+
+
+#IF
+LARGE N$刺杀打人暴击几率 0
+RANDOMEX N$刺杀打人暴击几率 101
+#ACT
+PLAYEFFECT 73 0 12 1 80 0 -125 -170 1
+FORMULATION (<$STR(N$人物暴击伤害)>+100)/100*<$STR(N$刺杀剑术打人随机基础伤害)> N$刺杀剑术打人随机基础伤害
+
+;百分比计算
+#if
+#act
+; HCALL <$C.USERNAME> @被攻击刺杀掉血
+RangeHarm <$STR(N$刺杀伤害位置1X)> <$STR(N$刺杀伤害位置1Y)> 0 <$STR(N$刺杀剑术打人随机基础伤害)> 0 0 0 1 1 5102 9 0 0 1
+RangeHarm <$STR(N$刺杀伤害位置2X)> <$STR(N$刺杀伤害位置2Y)> 0 <$STR(N$刺杀剑术打人随机基础伤害)> 0 0 0 1 0 0 0 0 0 1
+
+RangeHarm <$STR(N$刺杀伤害位置1X)> <$STR(N$刺杀伤害位置1Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$刺杀伤害位置2X)> <$STR(N$刺杀伤害位置2Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+
+
+
+;获取刺杀伤害 获取对方防御 获取反伤百分比 刺杀伤害减去 对方随机防御 *0.2
+
+; #if
+; RANDOMEX 5 101
+; #act
+; goto @地刺突袭打人
+
+
+
+
+
+
+[@地刺突袭打人]
+#if
+#act
+RangeHarm <$X> <$Y> 2 <$STR(N$刺杀剑术打人随机基础伤害)> 0 0 0 1 1 2569 6 70 0 0
+
+
+[@地刺突袭打怪]
+#if
+#act
+FORMULATION <$STR(N$刺杀剑术随机基础伤害)> N$地刺突袭打怪伤害
+CalcPercent N$地刺突袭打怪伤害 N$地刺突袭伤害 N$地刺突袭打怪伤害
+RangeHarm <$X> <$Y> <$STR(N$刺杀范围)> <$STR(N$地刺突袭打怪伤害)> 0 0 0 2 1 2569 6 70 0 0
+
+
+
+#IF
+RANDOMEX N$法宝地刺突袭切割怪物当前血量几率 101
+CheckCacheTextList ..\QuestDiary\怪物名称\精英及以下怪物.txt <$ATTACKMONSTER_NAMEEX>
+#ACT
+M.AddhpPerEx - 5
+
+
+
+
+}

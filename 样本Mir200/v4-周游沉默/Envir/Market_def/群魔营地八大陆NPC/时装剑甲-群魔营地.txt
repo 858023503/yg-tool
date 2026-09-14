@@ -1,0 +1,82 @@
+[@main]
+#if
+#ACT
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+<><据说上古流传下来的神器，分布在玛法大陆的各各角落！/SCOLOR=70>\
+<><神器犹豫威力强大，想要得到它，不只是人类！/SCOLOR=70>\
+<><被盘踞的首领占为己有，要从它们手中取得神器不是易事！/SCOLOR=70>\ \
+<><ITEMSHOW:1526:0:0:0:1/@武器>      <ITEMSHOW:1527:0:0:0:1/@衣服1>      <ITEMSHOW:1528:0:0:0:1/@衣服2>\ 
+
+
+
+
+[@武器]
+#ACT
+MessageBox  合成:<[天使联盟]/FCOLOR=253>\\<需要五色神羽*100+主宰之刃*1+1500W元宝/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @1 @取消合成
+
+[@1]
+#if
+CheckItem  主宰之刃 1
+CheckItem  五色神羽 100
+CheckGameGold > 14999999
+#ACT
+GameGold - 15000000
+Take 五色神羽 100
+Take 主宰之刃 1
+Give 天使联盟 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@衣服1]
+#ACT
+MessageBox  合成:<[泰坦·甲]/FCOLOR=253>\\<需要五色神羽*100+主宰战甲*1+1500W元宝/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @2 @取消合成
+
+[@2]
+#if
+CheckItem  主宰战甲 1
+CheckItem  五色神羽 100
+CheckGameGold > 14999999
+#ACT
+GameGold - 15000000
+Take 五色神羽 100
+Take 主宰战甲 1
+Give 泰坦·甲 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@衣服2]
+#ACT
+MessageBox  合成:<[泰坦·袍]/FCOLOR=253>\\<需要五色神羽*100+主宰战袍*1+1500W元宝/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @3 @取消合成
+
+[@3]
+#if
+CheckItem  主宰战袍 1
+CheckItem  五色神羽 100
+CheckGameGold > 14999999
+#ACT
+GameGold - 15000000
+Take 五色神羽 100
+Take 主宰战袍 1
+Give 泰坦·袍 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+
+
+[@取消合成]
+#ACT
+Sendmsg 7 取消合成
+Break
+
+
+
+
+

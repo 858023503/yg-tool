@@ -1,0 +1,106 @@
+[@武器攻击BUFF触发]
+{
+#if
+#ACT
+MOV N$攻击伤害1 0
+
+
+#if
+CHECKUSEITEM 1
+#ELSEACT
+break
+
+#if
+equal <$CURRRUSEMAGICID> 22
+#act
+break
+
+#if
+equal <$CURRRUSEMAGICID> 39
+#act
+break
+
+
+#if
+CHECKUSEITEM 14
+CHECKCUSTOMITEMPROGRESSBAR 14 0
+#act
+GetCustomItemProgressbarValue 14 0 2  <$STR(N$装备BUFF百分比)>
+MOVR N$点数 1 701
+INC N$点数 1
+
+;===================致命一击=======================
+#if
+CheckContainsText <$G_WEAPON> 致命一击
+random 7
+#ACT
+GetCustomItemProgressbarValue 1 0 2  <$STR(N$装备BUFF百分比1)>
+;INC N$攻击伤害1 100
+;INC N$攻击伤害1 <$STR(N$装备BUFF百分比1)>
+mov N$攻击伤害1 100
+INC N$攻击伤害1 <$STR(N$装备BUFF百分比1)>
+PLAYEFFECT 7 2530 19 1 100 0
+SetNextDamage <$STR(N$攻击伤害1)>
+SendCenterMsg 254 0 致命一击BUFF生效,下次攻击将造成额外[<$STR(N$装备BUFF百分比1)>%]的伤害 0 1
+
+;===================神圣裁决=======================
+
+
+#if
+CheckContainsText <$G_WEAPON> 神圣裁决
+random 7
+#ACT
+GetCustomItemProgressbarValue 1 0 2  <$STR(N$装备BUFF百分比1)>
+MUL N$攻击伤害1  N$装备BUFF百分比1 <$PKPOWER>
+DIV N$攻击伤害1 40
+M.PLAYEFFECT 7 2150 10 1 100 0
+RangeHarm <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y>  0 <$Str(N$攻击伤害1)> 6
+;M.HumanHP - <$STR(N$攻击伤害1)>
+SendCenterMsg 254 0 神圣裁决BUFF生效,额外造成[<$STR(N$攻击伤害1)>]真实伤害 0 1
+
+
+;===================天雷爆击=======================
+
+#if
+CheckContainsText <$G_WEAPON> 天雷爆击
+random 6
+checkjob warrior
+#ACT
+GetCustomItemProgressbarValue 1 0 2  <$STR(N$装备BUFF百分比1)>
+MUL N$攻击伤害1 N$装备BUFF百分比1 <$maxDC>
+DIV N$攻击伤害1 40
+RangeHarm <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y>  2 <$Str(N$攻击伤害1)> 6
+PLAYEFFECT 9 1630 8 1 100 0
+M.PLAYEFFECT 9 1640 13 1 100 0
+SendCenterMsg 254 0 天雷暴击BUFF生效,对目标范围敌人造成[<$STR(N$攻击伤害1)>]真实伤害 0 1
+
+
+#if
+CheckContainsText <$G_WEAPON> 天雷爆击
+random 15
+checkjob wizard
+#ACT
+GetCustomItemProgressbarValue 1 0 2  <$STR(N$装备BUFF百分比1)>
+MUL N$攻击伤害1 N$装备BUFF百分比1 <$maxMC>
+DIV N$攻击伤害1 40
+RangeHarm <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y>  2 <$Str(N$攻击伤害1)> 6
+PLAYEFFECT 9 1630 8 1 100 0
+M.PLAYEFFECT 9 1640 13 1 100 0
+SendCenterMsg 254 0 天雷暴击BUFF生效,对目标范围敌人造成[<$STR(N$攻击伤害1)>]真实伤害 0 1
+
+#if
+CheckContainsText <$G_WEAPON> 天雷爆击
+random 10
+checkjob Taoist
+#ACT
+GetCustomItemProgressbarValue 1 0 2  <$STR(N$装备BUFF百分比1)>
+MUL N$攻击伤害1 N$装备BUFF百分比1 <$maxSC>
+DIV N$攻击伤害1 40
+RangeHarm <$ATTACKMONSTER_X> <$ATTACKMONSTER_Y>  2 <$Str(N$攻击伤害1)> 6
+PLAYEFFECT 9 1630 8 1 100 0
+M.PLAYEFFECT 9 1640 13 1 100 0
+SendCenterMsg 254 0 天雷暴击BUFF生效,对目标范围敌人造成[<$STR(N$攻击伤害1)>]真实伤害 0 1
+
+
+
+}

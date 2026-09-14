@@ -1,0 +1,50 @@
+[@极品+2]
+{
+#IF
+checkitemw 藤域头盔 1
+checkitemw 藤域手镯 2
+checkitemw 藤域戒指 2
+CheckItemAddValue 4 2 = 2
+CheckItemAddValue 5 2 = 2
+CheckItemAddValue 6 2 = 2
+CheckItemAddValue 7 2 = 2
+CheckItemAddValue 8 2 = 2
+#Act 
+GuildNoticeMsg 0 254 (*)恭喜（%s）佩戴[极品+2圣战套]激活套装属性[ＨＰ+130；攻击力1-4]！
+ChangeModeEx 3 999999 60
+ChangeModeEx 5 999999 2
+break
+#IF
+checkitemw 木域头盔 1
+checkitemw 木域手镯 2
+checkitemw 木域戒指 2
+CheckItemAddValue 4 3 = 2
+CheckItemAddValue 5 3 = 2
+CheckItemAddValue 6 3 = 2
+CheckItemAddValue 7 3 = 2
+CheckItemAddValue 8 3 = 2
+#Act 
+GuildNoticeMsg 0 254 (*)恭喜（%s）佩戴[极品+2法神套]激活套装属性[ＨＰ+70；魔法力1-4]！
+ChangeModeEx 3 999999 100
+ChangeModeEx 6 999999 2
+break
+#IF
+checkitemw 神域头盔 1
+checkitemw 神域手镯 2
+checkitemw 神域戒指 2
+CheckItemAddValue 4 4 = 2
+CheckItemAddValue 5 4 = 2
+CheckItemAddValue 6 4 = 2
+CheckItemAddValue 7 4 = 2
+CheckItemAddValue 8 4 = 2
+#Act 
+GuildNoticeMsg 0 254 (*)恭喜（%s）佩戴[极品+2天尊套]激活套装属性[ＨＰ+90；道术力1-4]！
+ChangeModeEx 3 999999 40
+ChangeModeEx 7 999999 2
+break
+#elseact
+ChangeModeEx 3 999999 0
+ChangeModeEx 5 999999 0
+ChangeModeEx 6 999999 0
+ChangeModeEx 7 999999 0
+}

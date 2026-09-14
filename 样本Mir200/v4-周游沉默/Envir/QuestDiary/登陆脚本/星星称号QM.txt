@@ -1,0 +1,304 @@
+[@称号QM]
+{
+
+
+
+#if
+#act
+GetUpgradeCount * N58
+
+
+#if
+small <$str(N58)> 10
+#ACT
+RECYCFENGHAO 出类拔萃
+RECYCFENGHAO 锋芒毕现
+RECYCFENGHAO 名扬万里
+RECYCFENGHAO 扬名四海
+RECYCFENGHAO 傲视九州
+RECYCFENGHAO 万古流芳
+RECYCFENGHAO 震烁古今
+RECYCFENGHAO 身外化身
+RECYCFENGHAO 天外飞仙
+RECYCFENGHAO 天下无双
+RECYCFENGHAO 荒古圣体
+RECYCFENGHAO 超凡入圣
+RECYCFENGHAO 归墟净螭
+break
+
+
+
+#if
+large <$str(N58)> 9
+small <$str(N58)> 20
+#ACT
+RECYCFENGHAO 锋芒毕现
+RECYCFENGHAO 名扬万里
+RECYCFENGHAO 扬名四海
+RECYCFENGHAO 傲视九州
+RECYCFENGHAO 万古流芳
+RECYCFENGHAO 震烁古今
+RECYCFENGHAO 身外化身
+RECYCFENGHAO 天外飞仙
+RECYCFENGHAO 天下无双
+RECYCFENGHAO 荒古圣体
+RECYCFENGHAO 超凡入圣
+RECYCFENGHAO 归墟净螭
+GIVEFENGHAO  出类拔萃
+sendmsg 6 {星星数量达到|251:0}{10颗|254:0}{获取|249:0}{出类拔萃|70:0}{称号！|250:0}
+break
+
+#if
+large <$str(N58)> 19
+small <$str(N58)> 30
+#ACT
+RECYCFENGHAO 出类拔萃
+RECYCFENGHAO 名扬万里
+RECYCFENGHAO 扬名四海
+RECYCFENGHAO 傲视九州
+RECYCFENGHAO 万古流芳
+RECYCFENGHAO 震烁古今
+RECYCFENGHAO 身外化身
+RECYCFENGHAO 天外飞仙
+RECYCFENGHAO 天下无双
+RECYCFENGHAO 荒古圣体
+RECYCFENGHAO 超凡入圣
+RECYCFENGHAO 归墟净螭
+GIVEFENGHAO 锋芒毕现
+sendmsg 6 {星星数量达到|251:0}{20颗|254:0}{获取|249:0}{锋芒毕现|70:0}{称号！|250:0}
+break
+
+#if
+large <$str(N58)> 29
+small <$str(N58)> 40
+#ACT
+RECYCFENGHAO 出类拔萃
+RECYCFENGHAO 锋芒毕现
+RECYCFENGHAO 扬名四海
+RECYCFENGHAO 傲视九州
+RECYCFENGHAO 万古流芳
+RECYCFENGHAO 震烁古今
+RECYCFENGHAO 身外化身
+RECYCFENGHAO 天外飞仙
+RECYCFENGHAO 天下无双
+RECYCFENGHAO 荒古圣体
+RECYCFENGHAO 超凡入圣
+RECYCFENGHAO 归墟净螭
+GIVEFENGHAO 名扬万里
+sendmsg 6 {星星数量达到|251:0}{30颗|254:0}{获取|249:0}{名扬万里|70:0}{称号！|250:0}
+break
+
+#if
+large <$str(N58)> 39
+small <$str(N58)> 50
+#ACT
+RECYCFENGHAO 出类拔萃
+RECYCFENGHAO 锋芒毕现
+RECYCFENGHAO 名扬万里
+RECYCFENGHAO 傲视九州
+RECYCFENGHAO 万古流芳
+RECYCFENGHAO 震烁古今
+RECYCFENGHAO 身外化身
+RECYCFENGHAO 天外飞仙
+RECYCFENGHAO 天下无双
+RECYCFENGHAO 荒古圣体
+RECYCFENGHAO 超凡入圣
+RECYCFENGHAO 归墟净螭
+GIVEFENGHAO 扬名四海
+sendmsg 6 {星星数量达到|251:0}{40颗|254:0}{获取|249:0}{扬名四海|70:0}{称号！|250:0}
+break
+
+#if
+large <$str(N58)> 49
+small <$str(N58)> 60
+#ACT
+
+RECYCFENGHAO 出类拔萃
+RECYCFENGHAO 锋芒毕现
+RECYCFENGHAO 名扬万里
+RECYCFENGHAO 扬名四海
+RECYCFENGHAO 万古流芳
+RECYCFENGHAO 震烁古今
+RECYCFENGHAO 身外化身
+RECYCFENGHAO 天外飞仙
+RECYCFENGHAO 天下无双
+RECYCFENGHAO 荒古圣体
+RECYCFENGHAO 超凡入圣
+RECYCFENGHAO 归墟净螭
+GIVEFENGHAO 傲视九州
+sendmsg 6 {星星数量达到|251:0}{50颗|254:0}{获取|249:0}{傲视九州|70:0}{称号！|250:0}
+break
+
+#if
+large <$str(N58)> 59
+small <$str(N58)> 70
+#ACT
+RECYCFENGHAO 出类拔萃
+RECYCFENGHAO 锋芒毕现
+RECYCFENGHAO 名扬万里
+RECYCFENGHAO 扬名四海
+RECYCFENGHAO 傲视九州
+RECYCFENGHAO 震烁古今
+RECYCFENGHAO 身外化身
+RECYCFENGHAO 天外飞仙
+RECYCFENGHAO 天下无双
+RECYCFENGHAO 荒古圣体
+RECYCFENGHAO 超凡入圣
+RECYCFENGHAO 归墟净螭
+GIVEFENGHAO 万古流芳
+sendmsg 6 {星星数量达到|251:0}{60颗|254:0}{获取|249:0}{万古流芳|70:0}{称号！|250:0}
+break
+
+#if
+large <$str(N58)> 69
+small <$str(N58)> 80
+#ACT
+RECYCFENGHAO 出类拔萃
+RECYCFENGHAO 锋芒毕现
+RECYCFENGHAO 名扬万里
+RECYCFENGHAO 扬名四海
+RECYCFENGHAO 傲视九州
+RECYCFENGHAO 万古流芳
+RECYCFENGHAO 身外化身
+RECYCFENGHAO 天外飞仙
+RECYCFENGHAO 天下无双
+RECYCFENGHAO 荒古圣体
+RECYCFENGHAO 超凡入圣
+RECYCFENGHAO 归墟净螭
+GIVEFENGHAO  震烁古今
+sendmsg 6 {星星数量达到|251:0}{70颗|254:0}{获取|249:0}{震烁古今|70:0}{称号！|250:0}
+break
+
+
+#if
+large <$str(N58)> 79
+small <$str(N58)> 90
+#ACT
+RECYCFENGHAO 出类拔萃
+RECYCFENGHAO 锋芒毕现
+RECYCFENGHAO 名扬万里
+RECYCFENGHAO 扬名四海
+RECYCFENGHAO 傲视九州
+RECYCFENGHAO 万古流芳
+RECYCFENGHAO 震烁古今
+RECYCFENGHAO 天外飞仙
+RECYCFENGHAO 天下无双
+RECYCFENGHAO 荒古圣体
+RECYCFENGHAO 超凡入圣
+RECYCFENGHAO 归墟净螭
+GIVEFENGHAO  身外化身
+sendmsg 6 {星星数量达到|251:0}{80颗|254:0}{获取|249:0}{身外化身|70:0}{称号！|250:0}
+break
+
+
+#if
+large <$str(N58)> 89
+small <$str(N58)> 100
+#ACT
+RECYCFENGHAO 出类拔萃
+RECYCFENGHAO 锋芒毕现
+RECYCFENGHAO 名扬万里
+RECYCFENGHAO 扬名四海
+RECYCFENGHAO 傲视九州
+RECYCFENGHAO 万古流芳
+RECYCFENGHAO 震烁古今
+RECYCFENGHAO 身外化身
+RECYCFENGHAO 天下无双
+RECYCFENGHAO 荒古圣体
+RECYCFENGHAO 超凡入圣
+RECYCFENGHAO 归墟净螭
+GIVEFENGHAO  天外飞仙
+sendmsg 6 {星星数量达到|251:0}{90颗|254:0}{获取|249:0}{天外飞仙|70:0}{称号！|250:0}
+break
+
+
+#if
+large <$str(N58)> 99
+small <$str(N58)> 110
+#ACT
+RECYCFENGHAO 出类拔萃
+RECYCFENGHAO 锋芒毕现
+RECYCFENGHAO 名扬万里
+RECYCFENGHAO 扬名四海
+RECYCFENGHAO 傲视九州
+RECYCFENGHAO 万古流芳
+RECYCFENGHAO 震烁古今
+RECYCFENGHAO 身外化身
+RECYCFENGHAO 天外飞仙
+RECYCFENGHAO 荒古圣体
+RECYCFENGHAO 超凡入圣
+RECYCFENGHAO 归墟净螭
+GIVEFENGHAO  天下无双
+sendmsg 6 {星星数量达到|251:0}{100颗|254:0}{获取|249:0}{天下无双|70:0}{称号！|250:0}
+break
+
+#if
+large <$str(N58)> 109
+small <$str(N58)> 120
+#ACT
+RECYCFENGHAO 出类拔萃
+RECYCFENGHAO 锋芒毕现
+RECYCFENGHAO 名扬万里
+RECYCFENGHAO 扬名四海
+RECYCFENGHAO 傲视九州
+RECYCFENGHAO 万古流芳
+RECYCFENGHAO 震烁古今
+RECYCFENGHAO 身外化身
+RECYCFENGHAO 天外飞仙
+RECYCFENGHAO 天下无双
+RECYCFENGHAO 超凡入圣
+RECYCFENGHAO 归墟净螭
+GIVEFENGHAO  荒古圣体
+sendmsg 6 {星星数量达到|251:0}{110颗|254:0}{获取|249:0}{荒古圣体|70:0}{称号！|250:0}
+break
+
+
+
+#if
+large <$str(N58)> 119
+small <$str(N58)> 130
+#ACT
+RECYCFENGHAO 出类拔萃
+RECYCFENGHAO 锋芒毕现
+RECYCFENGHAO 名扬万里
+RECYCFENGHAO 扬名四海
+RECYCFENGHAO 傲视九州
+RECYCFENGHAO 万古流芳
+RECYCFENGHAO 震烁古今
+RECYCFENGHAO 身外化身
+RECYCFENGHAO 天外飞仙
+RECYCFENGHAO 天下无双
+RECYCFENGHAO 荒古圣体
+RECYCFENGHAO 归墟净螭
+GIVEFENGHAO  超凡入圣
+sendmsg 6 {星星数量达到|251:0}{120颗|254:0}{获取|249:0}{超凡入圣|70:0}{称号！|250:0}
+break
+
+
+
+
+#if
+large <$str(N58)> 129
+small <$str(N58)> 140
+#ACT
+RECYCFENGHAO 出类拔萃
+RECYCFENGHAO 锋芒毕现
+RECYCFENGHAO 名扬万里
+RECYCFENGHAO 扬名四海
+RECYCFENGHAO 傲视九州
+RECYCFENGHAO 万古流芳
+RECYCFENGHAO 震烁古今
+RECYCFENGHAO 身外化身
+RECYCFENGHAO 天外飞仙
+RECYCFENGHAO 天下无双
+RECYCFENGHAO 荒古圣体
+RECYCFENGHAO 超凡入圣
+GIVEFENGHAO  归墟净螭
+sendmsg 6 {星星数量达到|251:0}{130颗|254:0}{获取|249:0}{归墟净螭|70:0}{称号！|250:0}
+break
+
+
+
+
+
+}

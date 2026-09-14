@@ -1,0 +1,420 @@
+[@MAIN]
+#IF
+#act
+OPENMERCHANTBIGDLG 5 940 1 4 -15 -52 1 440 20 1
+mov N$左边第一条属性对应编号 0
+mov N$左边第二条属性对应编号 0
+mov N$左边第三条属性对应编号 0
+mov N$左边第四条属性对应编号 0
+mov N$左边第五条属性对应编号 0
+#say
+<ITEMBOX:3:5:125:103:140:63:63:*:250#----------^250#请放入装备^250#---------->
+<ITEMBOX:4:5:125:312:140:63:63:*:250#----------^250#请放入天道晶石^250#---------->\
+<&IMGEX:5:942:942:942:180:229|确认/@镶嵌卡片>\ \ \ \ \ \ \ \ \ \
+<&Text:210级可镶嵌1张卡片:40:280{FCOLOR=250;FSIZE=12;FNAME=黑体}>
+<&Text:220级可镶嵌2张卡片:40:310{FCOLOR=250;FSIZE=12;FNAME=黑体}>
+<&Text:230级可镶嵌3张卡片:40:340{FCOLOR=250;FSIZE=12;FNAME=黑体}>
+<&Text:240级可镶嵌4张卡片:40:370{FCOLOR=250;FSIZE=12;FNAME=黑体}>
+<&Text:卡片镶嵌后无法取下:40:400{FCOLOR=250;FSIZE=12;FNAME=黑体}>
+<&Text:没有融合天道晶石的装备无法镶嵌:40:430{FCOLOR=250;FSIZE=12;FNAME=黑体}>
+<&Text:每次收费100传仙币:40:460{FCOLOR=250;FSIZE=12;FNAME=黑体}>
+
+[@ItemIntoBox3]
+#if
+not CheckCacheTextList ..\QuestDiary\天道镶嵌\天道镶嵌装备.txt <$BOXITEM[3].NAME>
+#act
+messagebox 只能放入六大陆装备
+goto @MAIN
+break
+#if
+#act
+SetUpgradeItem 3
+GetCustomItemValueEx -1 1 <$STR(N$没用)>  <$STR(N$左边第一条属性对应编号)> <$str(N$左边属性值一)> <$str(N$左边属性上限一)> <$STR(N$没用)>
+
+#if
+EQUAL N$左边第一条属性对应编号 0
+#act
+GOTO @MAIN
+messagebox 先去镶嵌天道晶石
+break
+
+#or
+equal 白帝青龙剑 <$BOXITEM[3].NAME>
+equal 白帝战甲 <$BOXITEM[3].NAME>
+equal 白帝战盔 <$BOXITEM[3].NAME>
+equal 白帝项链 <$BOXITEM[3].NAME>
+equal 白帝护臂 <$BOXITEM[3].NAME>
+equal 白帝戒指 <$BOXITEM[3].NAME>
+equal 白帝战靴 <$BOXITEM[3].NAME>
+equal 白帝战带 <$BOXITEM[3].NAME>
+equal 青冥怒血杖 <$BOXITEM[3].NAME>
+equal 青冥法甲 <$BOXITEM[3].NAME>
+equal 青冥法盔 <$BOXITEM[3].NAME>
+equal 青冥项链 <$BOXITEM[3].NAME>
+equal 青冥护臂 <$BOXITEM[3].NAME>
+equal 青冥戒指 <$BOXITEM[3].NAME>
+equal 青冥法靴 <$BOXITEM[3].NAME>
+equal 青冥法带 <$BOXITEM[3].NAME>
+equal 绿灵卫道刃 <$BOXITEM[3].NAME>
+equal 绿灵道甲 <$BOXITEM[3].NAME>
+equal 绿灵道盔 <$BOXITEM[3].NAME>
+equal 绿灵项链 <$BOXITEM[3].NAME>
+equal 绿灵护臂 <$BOXITEM[3].NAME>
+equal 绿灵戒指 <$BOXITEM[3].NAME>
+equal 绿灵道靴 <$BOXITEM[3].NAME>
+equal 绿灵道带 <$BOXITEM[3].NAME>
+#act
+SetUpgradeItem 3
+GetCustomItemValueEx -1 1 <$STR(N$没用)>  <$STR(N$左边第一条属性对应编号)> <$str(N$左边属性值一)> <$str(N$左边属性上限一)> <$STR(N$没用)>
+GetCustomItemValueEx -1 2 <$STR(N$没用)>  <$STR(N$左边第二条属性对应编号)> <$str(N$左边属性值二)> <$str(N$左边属性上限二)> <$STR(N$没用)>
+GetCustomItemValueEx -1 3 <$STR(N$没用)>  <$STR(N$左边第三条属性对应编号)> <$str(N$左边属性值三)> <$str(N$左边属性上限三)> <$STR(N$没用)>
+#if
+NOT EQUAL N$左边第三条属性对应编号 0
+#act
+messagebox 当前装备只能镶嵌1个卡片
+goto @main
+break
+
+
+
+#or
+EQUAL 火蝠金刀 <$BOXITEM[3].NAME>
+EQUAL 火蝠霸体甲 <$BOXITEM[3].NAME>
+EQUAL 火蝠战盔 <$BOXITEM[3].NAME>
+EQUAL 火蝠项链 <$BOXITEM[3].NAME>
+EQUAL 火蝠护臂 <$BOXITEM[3].NAME>
+EQUAL 火蝠戒指 <$BOXITEM[3].NAME>
+EQUAL 火蝠战靴 <$BOXITEM[3].NAME>
+EQUAL 火蝠战带 <$BOXITEM[3].NAME>
+EQUAL 霜九法剑 <$BOXITEM[3].NAME>
+EQUAL 霜九法甲 <$BOXITEM[3].NAME>
+EQUAL 霜九法盔 <$BOXITEM[3].NAME>
+EQUAL 霜九项链 <$BOXITEM[3].NAME>
+EQUAL 霜九护臂 <$BOXITEM[3].NAME>
+EQUAL 霜九戒指 <$BOXITEM[3].NAME>
+EQUAL 霜九法靴 <$BOXITEM[3].NAME>
+EQUAL 霜九法带 <$BOXITEM[3].NAME>
+EQUAL 冰封道剑 <$BOXITEM[3].NAME>
+EQUAL 冰封道甲 <$BOXITEM[3].NAME>
+EQUAL 冰封道盔 <$BOXITEM[3].NAME>
+EQUAL 冰封项链 <$BOXITEM[3].NAME>
+EQUAL 冰封护臂 <$BOXITEM[3].NAME>
+EQUAL 冰封戒指 <$BOXITEM[3].NAME>
+EQUAL 冰封道靴 <$BOXITEM[3].NAME>
+EQUAL 冰封道带 <$BOXITEM[3].NAME>
+#act
+SetUpgradeItem 3
+GetCustomItemValueEx -1 1 <$STR(N$没用)>  <$STR(N$左边第一条属性对应编号)> <$str(N$左边属性值一)> <$str(N$左边属性上限一)> <$STR(N$没用)>
+GetCustomItemValueEx -1 2 <$STR(N$没用)>  <$STR(N$左边第二条属性对应编号)> <$str(N$左边属性值二)> <$str(N$左边属性上限二)> <$STR(N$没用)>
+GetCustomItemValueEx -1 3 <$STR(N$没用)>  <$STR(N$左边第三条属性对应编号)> <$str(N$左边属性值三)> <$str(N$左边属性上限三)> <$STR(N$没用)>
+GetCustomItemValueEx -1 4 <$STR(N$没用)>  <$STR(N$左边第四条属性对应编号)> <$str(N$左边属性值四)> <$str(N$左边属性上限四)> <$STR(N$没用)>
+
+#if
+NOT EQUAL N$左边第四条属性对应编号 0
+#act
+messagebox 当前装备只能镶嵌2个卡片
+goto @main
+break
+
+#OR
+equal 黑死剑 <$BOXITEM[3].NAME>
+equal 黑影战甲 <$BOXITEM[3].NAME>
+equal 黑影战盔 <$BOXITEM[3].NAME>
+equal 黑影项链 <$BOXITEM[3].NAME>
+equal 黑影手镯 <$BOXITEM[3].NAME>
+equal 黑影戒指 <$BOXITEM[3].NAME>
+equal 黑影战鞋 <$BOXITEM[3].NAME>
+equal 黑影腰带 <$BOXITEM[3].NAME>
+equal 血影剑 <$BOXITEM[3].NAME>
+equal 血影法甲 <$BOXITEM[3].NAME>
+equal 血影法盔 <$BOXITEM[3].NAME>
+equal 血影项链 <$BOXITEM[3].NAME>
+equal 血影手镯 <$BOXITEM[3].NAME>
+equal 血影戒指 <$BOXITEM[3].NAME>
+equal 血影法鞋 <$BOXITEM[3].NAME>
+equal 血影法带 <$BOXITEM[3].NAME>
+equal 绿岚道剑 <$BOXITEM[3].NAME>
+equal 绿影道甲 <$BOXITEM[3].NAME>
+equal 绿影道盔 <$BOXITEM[3].NAME>
+equal 绿影项链 <$BOXITEM[3].NAME>
+equal 绿影手镯 <$BOXITEM[3].NAME>
+equal 绿影戒指 <$BOXITEM[3].NAME>
+equal 绿影道靴 <$BOXITEM[3].NAME>
+equal 绿影道带 <$BOXITEM[3].NAME>
+#act
+SetUpgradeItem 3
+GetCustomItemValueEx -1 1 <$STR(N$没用)>  <$STR(N$左边第一条属性对应编号)> <$str(N$左边属性值一)> <$str(N$左边属性上限一)> <$STR(N$没用)>
+GetCustomItemValueEx -1 2 <$STR(N$没用)>  <$STR(N$左边第二条属性对应编号)> <$str(N$左边属性值二)> <$str(N$左边属性上限二)> <$STR(N$没用)>
+GetCustomItemValueEx -1 3 <$STR(N$没用)>  <$STR(N$左边第三条属性对应编号)> <$str(N$左边属性值三)> <$str(N$左边属性上限三)> <$STR(N$没用)>
+GetCustomItemValueEx -1 4 <$STR(N$没用)>  <$STR(N$左边第四条属性对应编号)> <$str(N$左边属性值四)> <$str(N$左边属性上限四)> <$STR(N$没用)>
+GetCustomItemValueEx -1 5 <$STR(N$没用)>  <$STR(N$左边第五条属性对应编号)> <$str(N$左边属性值五)> <$str(N$左边属性上限五)> <$STR(N$没用)>
+#if
+NOT EQUAL N$左边第五条属性对应编号 0
+#act
+messagebox 当前装备只能镶嵌3个卡片
+goto @main
+break
+
+
+#or
+EQUAL 神威轮回大剑  <$BOXITEM[3].NAME>
+EQUAL 神威战甲  <$BOXITEM[3].NAME>
+EQUAL 神威战盔  <$BOXITEM[3].NAME>
+EQUAL 神威项链  <$BOXITEM[3].NAME>
+EQUAL 神威护臂  <$BOXITEM[3].NAME>
+EQUAL 神威戒指  <$BOXITEM[3].NAME>
+EQUAL 神威战靴  <$BOXITEM[3].NAME>
+EQUAL 神威战带  <$BOXITEM[3].NAME>
+EQUAL 苍穹万法剑  <$BOXITEM[3].NAME>
+EQUAL 苍穹法甲  <$BOXITEM[3].NAME>
+EQUAL 苍穹法盔  <$BOXITEM[3].NAME>
+EQUAL 苍穹项链  <$BOXITEM[3].NAME>
+EQUAL 苍穹手套  <$BOXITEM[3].NAME>
+EQUAL 苍穹戒指  <$BOXITEM[3].NAME>
+EQUAL 苍穹法靴  <$BOXITEM[3].NAME>
+EQUAL 苍穹法带  <$BOXITEM[3].NAME>
+EQUAL 万劫天道剑  <$BOXITEM[3].NAME>
+EQUAL 万劫道甲  <$BOXITEM[3].NAME>
+EQUAL 万劫道盔  <$BOXITEM[3].NAME>
+EQUAL 万劫项链  <$BOXITEM[3].NAME>
+EQUAL 万劫护臂  <$BOXITEM[3].NAME>
+EQUAL 万劫戒指  <$BOXITEM[3].NAME>
+EQUAL 万劫道靴  <$BOXITEM[3].NAME>
+EQUAL 万劫道带  <$BOXITEM[3].NAME>
+equal 究极刀皇刀 <$BOXITEM[3].NAME>
+equal 究极刀皇战甲 <$BOXITEM[3].NAME>
+equal 究极战盔 <$BOXITEM[3].NAME>
+equal 究极项链 <$BOXITEM[3].NAME>
+equal 究极护臂 <$BOXITEM[3].NAME>
+equal 究极戒指 <$BOXITEM[3].NAME>
+equal 究极战靴 <$BOXITEM[3].NAME>
+equal 究极腰带 <$BOXITEM[3].NAME>
+equal 天羽惊奇剑 <$BOXITEM[3].NAME>
+equal 天羽至高惊奇甲 <$BOXITEM[3].NAME>
+equal 至高法盔 <$BOXITEM[3].NAME>
+equal 至高项链 <$BOXITEM[3].NAME>
+equal 至高护臂 <$BOXITEM[3].NAME>
+equal 至高戒指 <$BOXITEM[3].NAME>
+equal 至高法靴 <$BOXITEM[3].NAME>
+equal 至高腰带 <$BOXITEM[3].NAME>
+equal 永恒惊凰剑 <$BOXITEM[3].NAME>
+equal 永恒真龙甲 <$BOXITEM[3].NAME>
+equal 永恒道盔 <$BOXITEM[3].NAME>
+equal 永恒项链 <$BOXITEM[3].NAME>
+equal 永恒护臂 <$BOXITEM[3].NAME>
+equal 永恒戒指 <$BOXITEM[3].NAME>
+equal 永恒道靴 <$BOXITEM[3].NAME>
+equal 永恒腰带 <$BOXITEM[3].NAME>
+#ACT
+SetUpgradeItem 3
+GetCustomItemValueEx -1 1 <$STR(N$没用)>  <$STR(N$左边第一条属性对应编号)> <$str(N$左边属性值一)> <$str(N$左边属性上限一)> <$STR(N$没用)>
+GetCustomItemValueEx -1 2 <$STR(N$没用)>  <$STR(N$左边第二条属性对应编号)> <$str(N$左边属性值二)> <$str(N$左边属性上限二)> <$STR(N$没用)>
+GetCustomItemValueEx -1 3 <$STR(N$没用)>  <$STR(N$左边第三条属性对应编号)> <$str(N$左边属性值三)> <$str(N$左边属性上限三)> <$STR(N$没用)>
+GetCustomItemValueEx -1 4 <$STR(N$没用)>  <$STR(N$左边第四条属性对应编号)> <$str(N$左边属性值四)> <$str(N$左边属性上限四)> <$STR(N$没用)>
+GetCustomItemValueEx -1 5 <$STR(N$没用)>  <$STR(N$左边第五条属性对应编号)> <$str(N$左边属性值五)> <$str(N$左边属性上限五)> <$STR(N$没用)>
+GetCustomItemValueEx -1 6 <$STR(N$没用)>  <$STR(N$左边第六条属性对应编号)> <$str(N$左边属性值六)> <$str(N$左边属性上限六)> <$STR(N$没用)>
+
+#if
+NOT EQUAL N$左边第六条属性对应编号 0
+#act
+messagebox 当前装备只能镶嵌4个卡片
+goto @main
+break
+
+[@ItemIntoBox4]
+#if
+EQUAL <$BOXITEM[3].NAME>
+#act
+GOTO @MAIN
+messagebox 左边先放入装备
+break
+
+
+
+#if
+not CheckCacheTextList ..\QuestDiary\冰晶卡片\冰晶卡片.txt <$BOXITEM[4].NAME>
+#act
+messagebox 只能放入冰晶卡片
+goto @MAIN
+break
+
+
+
+
+
+
+#if
+#act
+MOV N$卡片属性
+#if
+EQUAL <$BOXITEM[4].NAME> 冰晶魔蛛
+#act
+MOV N$卡片属性 274
+
+#if
+EQUAL <$BOXITEM[4].NAME> 冰晶天驴
+#act
+MOV N$卡片属性 276
+
+#if
+EQUAL <$BOXITEM[4].NAME> 冰晶独角兽
+#act
+MOV N$卡片属性 278
+
+#if
+EQUAL <$BOXITEM[4].NAME> 冰晶恶鼠
+#act
+MOV N$卡片属性 277
+
+#if
+EQUAL <$BOXITEM[4].NAME> 冰晶巫师
+#act
+MOV N$卡片属性 279
+
+#if
+EQUAL <$BOXITEM[4].NAME> 冰晶盗贼
+#act
+MOV N$卡片属性 280
+
+#if
+EQUAL <$BOXITEM[4].NAME> 冰晶哥布林
+#act
+MOV N$卡片属性 281
+
+#if
+EQUAL <$BOXITEM[4].NAME> 冰晶绿魔
+#act
+MOV N$卡片属性 282
+
+#if
+EQUAL <$BOXITEM[4].NAME> 冰晶遁地兽
+#act
+MOV N$卡片属性 283
+
+#if
+EQUAL <$BOXITEM[4].NAME> 冰晶幽魂
+#act
+MOV N$卡片属性 284
+
+#if
+EQUAL <$BOXITEM[4].NAME> 冰晶怪人
+#act
+MOV N$卡片属性 285
+
+#if
+EQUAL <$BOXITEM[4].NAME> 冰晶饿狼
+#act
+MOV N$卡片属性 286
+
+#if
+EQUAL <$BOXITEM[4].NAME> 冰晶石人
+#act
+MOV N$卡片属性 287
+
+#if
+EQUAL <$BOXITEM[4].NAME> 冰晶幽狼
+#act
+MOV N$卡片属性 288
+
+#if
+EQUAL <$BOXITEM[4].NAME> 冰晶巨嘴兽
+#act
+MOV N$卡片属性 289
+#if
+EQUAL <$BOXITEM[4].NAME> 冰晶晶魔
+#act
+MOV N$卡片属性 290
+#if
+EQUAL <$BOXITEM[4].NAME> 冰晶法老
+#act
+MOV N$卡片属性 291
+#if
+EQUAL <$BOXITEM[4].NAME> 冰晶忍士
+#act
+MOV N$卡片属性 292
+
+
+
+
+
+[@镶嵌卡片]
+#or
+equal <$BOXITEM[4].NAME>
+equal <$BOXITEM[3].NAME>
+#act
+messagebox 放入装备啊
+break
+#if
+checkgamegird < 100
+#ACT
+messagebox 传仙币不足
+break
+
+#IF
+#act
+gamegird  - 100
+SetUpgradeItem 3
+GetCustomItemValueEx -1 1 <$STR(N$没用)>  <$STR(N$左边第一条属性对应编号)> <$str(N$左边属性值一)> <$str(N$左边属性上限一)> <$STR(N$没用)>
+GetCustomItemValueEx -1 2 <$STR(N$没用)>  <$STR(N$左边第二条属性对应编号)> <$str(N$左边属性值二)> <$str(N$左边属性上限二)> <$STR(N$没用)>
+GetCustomItemValueEx -1 3 <$STR(N$没用)>  <$STR(N$左边第三条属性对应编号)> <$str(N$左边属性值三)> <$str(N$左边属性上限三)> <$STR(N$没用)>
+GetCustomItemValueEx -1 4 <$STR(N$没用)>  <$STR(N$左边第四条属性对应编号)> <$str(N$左边属性值四)> <$str(N$左边属性上限四)> <$STR(N$没用)>
+GetCustomItemValueEx -1 5 <$STR(N$没用)>  <$STR(N$左边第五条属性对应编号)> <$str(N$左边属性值五)> <$str(N$左边属性上限五)> <$STR(N$没用)>
+GetCustomItemValueEx -1 6 <$STR(N$没用)>  <$STR(N$左边第六条属性对应编号)> <$str(N$左边属性值六)> <$str(N$左边属性上限六)> <$STR(N$没用)>
+#if
+EQUAL N$左边第三条属性对应编号 0
+#act
+SetCustomItemText -1 <IMG:1091:0>
+SetCustomItemAbil -1 3 0 251
+SetCustomItemAbil -1 3 1 8
+SetCustomItemAbil -1 3 2 3
+SetCustomItemAbil -1 3 3 0
+SetCustomItemValueEX -1 3 = N$卡片属性 25
+UpdateItem boxitem3
+DelBoxItem 4
+messagebox 镶嵌成功
+goto @main
+break
+
+#if
+EQUAL N$左边第四条属性对应编号 0
+#act
+SetCustomItemText -1 <IMG:1091:0>
+SetCustomItemAbil -1 4 0 251
+SetCustomItemAbil -1 4 1 8
+SetCustomItemAbil -1 4 2 4
+SetCustomItemAbil -1 4 3 0
+SetCustomItemValueEX -1 4 = N$卡片属性 25
+UpdateItem boxitem3
+DelBoxItem 4
+messagebox 镶嵌成功
+goto @main
+break
+
+#if
+EQUAL N$左边第五条属性对应编号 0
+#act
+SetCustomItemText -1 <IMG:1091:0>
+SetCustomItemAbil -1 5 0 251
+SetCustomItemAbil -1 5 1 8
+SetCustomItemAbil -1 5 2 5
+SetCustomItemAbil -1 5 3 0
+SetCustomItemValueEX -1 5 = N$卡片属性 25
+DelBoxItem 4
+messagebox 镶嵌成功
+goto @main
+break
+
+#if
+EQUAL N$左边第六条属性对应编号 0
+#act
+SetCustomItemText -1 <IMG:1091:0>
+SetCustomItemAbil -1 6 0 251
+SetCustomItemAbil -1 6 1 8
+SetCustomItemAbil -1 6 2 6
+SetCustomItemAbil -1 6 3 0
+SetCustomItemValueEX -1 6 = N$卡片属性 25
+UpdateItem boxitem3
+DelBoxItem 4
+messagebox 镶嵌成功
+goto @main
+break

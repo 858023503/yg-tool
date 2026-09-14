@@ -1,0 +1,11 @@
+[@诛仙剑阵爆出]
+{
+#if
+randomex 1 20
+#act
+GetRandomText ..\QuestDiary\诛仙剑阵\剑阵名字.txt S$剑阵名字
+M.MonDropItemsEx <$KillMonName> <$STR(S$剑阵名字)> 1
+addtextlist ..\..\..\..\通区文件\大喇叭\大喇叭.txt <$STR(T14)><$STR(U162)>区【<$USERNAME>】击杀<$KillMonName>掉落了【<$STR(S$剑阵名字)>】~<$DATETIME>
+#ELSEACT
+INC U359 1
+}

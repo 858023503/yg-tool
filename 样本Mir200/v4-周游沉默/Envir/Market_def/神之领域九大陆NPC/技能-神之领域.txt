@@ -1,0 +1,268 @@
+[@main]
+#if
+#ACT
+OPENMERCHANTBIGDLG 3 1794 1 0 0 0 1 390 5 0
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+<>[<$USERNAME>]<您好！/SCOLOR=251>欢迎来到神之领域\
+<><勇士，你已经达到了身体极限了吗/SCOLOR=251>\
+<>当你获得了 <战神/SCOLOR=249> <法神/SCOLOR=254> <天尊/SCOLOR=253> 的认可\
+<><可以在这里任学一门神技/SCOLOR=249>\
+<><无量·瀚海乾坤罩/@1> <提升防御 血量上限+30% 持续10s /SCOLOR=103>\
+<><破灭·重瞳之眼/@2>   <提升属性上限30% 忽视防御50% 持续10s /SCOLOR=103>\
+<><重生·补天术/@3>     <使用补天术60s之内连续复活2次/SCOLOR=103>\
+<><无极·金钱炸弹/@4>   <每次使用消耗888元宝/SCOLOR=103>\
+<><禁技·烈焰焚天/@5>   <火系究极爆发/SCOLOR=103>\
+<><真武·大霹雳/@6>     <自身形成雷霆领域对周围每秒造成伤害 持续10s/SCOLOR=103>\ \
+<><学习神技需要: 5000Rmb点+999*洗髓丹+神位凭证*1/SCOLOR=251>\ \
+<><学习神技 请考虑在三.切记！切记！/SCOLOR=254>
+<>
+
+
+[@1]
+#or
+CHECKFENGHAO [真·战神] 1
+CHECKFENGHAO [真·法神] 1
+CHECKFENGHAO [真·天尊] 1
+#ACT
+goto @技能1
+#ELSEACT
+MESSAGEBOX  你还没有得到的认可.或者已经成神！
+break
+
+
+[@技能1]
+#if
+NOT CHECKFENGHAO [战神]
+NOT CHECKFENGHAO [法神]
+NOT CHECKFENGHAO [天尊]
+NOT CHECKFENGHAO [神]
+CHECKGameDiamond > 4999
+CheckItem  神位凭证 1
+CheckItem  洗髓丹 999
+#ACT
+GameDiamond - 5000
+Take 神位凭证 1
+Take 洗髓丹 999
+RECYCFENGHAO [真·战神]
+RECYCFENGHAO [真·法神]
+RECYCFENGHAO [真·天尊]
+ADDSKILL 无量·瀚海乾坤罩
+GIVEFENGHAO [神] 1
+#ELSEACT
+MESSAGEBOX  材料不足，或者已经成神！
+break
+
+;--------------------------------------------------------------------
+;--------------------------------------------------------------------
+
+
+[@2]
+#or
+CHECKFENGHAO [真·战神] 1
+CHECKFENGHAO [真·法神] 1
+CHECKFENGHAO [真·天尊] 1
+#ACT
+goto @技能2
+#ELSEACT
+MESSAGEBOX  你还没有得到的认可.或者已经成神！
+break
+
+
+[@技能2]
+#if
+NOT CHECKFENGHAO [战神]
+NOT CHECKFENGHAO [法神]
+NOT CHECKFENGHAO [天尊]
+NOT CHECKFENGHAO [神]
+CHECKGameDiamond > 4999
+CheckItem  神位凭证 1
+CheckItem  洗髓丹 999
+#ACT
+GameDiamond - 5000
+Take 神位凭证 1
+Take 洗髓丹 999
+RECYCFENGHAO [真·战神]
+RECYCFENGHAO [真·法神]
+RECYCFENGHAO [真·天尊]
+ADDSKILL 破灭·重瞳之眼
+GIVEFENGHAO [神] 1
+#ELSEACT
+MESSAGEBOX  材料不足，或者已经成神！
+break
+
+;--------------------------------------------------------------------
+;--------------------------------------------------------------------
+
+[@3]
+#or
+CHECKFENGHAO [真·战神] 1
+CHECKFENGHAO [真·法神] 1
+CHECKFENGHAO [真·天尊] 1
+#ACT
+goto @技能3
+#ELSEACT
+MESSAGEBOX  你还没有得到的认可.或者已经成神！
+break
+
+
+[@技能3]
+#if
+NOT CHECKFENGHAO [战神]
+NOT CHECKFENGHAO [法神]
+NOT CHECKFENGHAO [天尊]
+NOT CHECKFENGHAO [神]
+CHECKGameDiamond > 4999
+CheckItem  神位凭证 1
+CheckItem  洗髓丹 999
+#ACT
+GameDiamond - 5000
+Take 神位凭证 1
+Take 洗髓丹 999
+RECYCFENGHAO [真·战神]
+RECYCFENGHAO [真·法神]
+RECYCFENGHAO [真·天尊]
+ADDSKILL 重生·补天术
+GIVEFENGHAO [神] 1
+#ELSEACT
+MESSAGEBOX  材料不足，或者已经成神！
+break
+
+;--------------------------------------------------------------------
+;--------------------------------------------------------------------
+
+[@4]
+#or
+CHECKFENGHAO [真·战神] 1
+CHECKFENGHAO [真·法神] 1
+CHECKFENGHAO [真·天尊] 1
+#ACT
+goto @技能4
+#ELSEACT
+MESSAGEBOX  你还没有得到的认可.或者已经成神！
+break
+
+
+[@技能4]
+#if
+NOT CHECKFENGHAO [战神]
+NOT CHECKFENGHAO [法神]
+NOT CHECKFENGHAO [天尊]
+NOT CHECKFENGHAO [神]
+CHECKGameDiamond > 4999
+CheckItem  神位凭证 1
+CheckItem  洗髓丹 999
+#ACT
+GameDiamond - 5000
+Take 神位凭证 1
+Take 洗髓丹 999
+RECYCFENGHAO [真·战神]
+RECYCFENGHAO [真·法神]
+RECYCFENGHAO [真·天尊]
+ADDSKILL 无极·金钱炸弹
+GIVEFENGHAO [神] 1
+#ELSEACT
+MESSAGEBOX  材料不足，或者已经成神！
+break
+
+;--------------------------------------------------------------------
+;--------------------------------------------------------------------
+
+[@5]
+#or
+CHECKFENGHAO [真·战神] 1
+CHECKFENGHAO [真·法神] 1
+CHECKFENGHAO [真·天尊] 1
+#ACT
+goto @技能5
+#ELSEACT
+MESSAGEBOX  你还没有得到的认可.或者已经成神！
+break
+
+
+[@技能5]
+#if
+NOT CHECKFENGHAO [战神]
+NOT CHECKFENGHAO [法神]
+NOT CHECKFENGHAO [天尊]
+NOT CHECKFENGHAO [神]
+CHECKGameDiamond > 4999
+CheckItem  神位凭证 1
+CheckItem  洗髓丹 999
+#ACT
+GameDiamond - 5000
+Take 神位凭证 1
+Take 洗髓丹 999
+RECYCFENGHAO [真·战神]
+RECYCFENGHAO [真·法神]
+RECYCFENGHAO [真·天尊]
+ADDSKILL 禁技·烈焰焚天
+GIVEFENGHAO [神] 1
+#ELSEACT
+MESSAGEBOX  材料不足，或者已经成神！
+break
+
+;--------------------------------------------------------------------
+;--------------------------------------------------------------------
+
+[@6]
+#or
+CHECKFENGHAO [真·战神] 1
+CHECKFENGHAO [真·法神] 1
+CHECKFENGHAO [真·天尊] 1
+#ACT
+goto @技能6
+#ELSEACT
+MESSAGEBOX  你还没有得到的认可.或者已经成神！
+break
+
+
+[@技能6]
+#if
+NOT CHECKFENGHAO [战神]
+NOT CHECKFENGHAO [法神]
+NOT CHECKFENGHAO [天尊]
+NOT CHECKFENGHAO [神]
+CHECKGameDiamond > 4999
+CheckItem  神位凭证 1
+CheckItem  洗髓丹 999
+#ACT
+GameDiamond - 5000
+Take 神位凭证 1
+Take 洗髓丹 999
+RECYCFENGHAO [真·战神]
+RECYCFENGHAO [真·法神]
+RECYCFENGHAO [真·天尊]
+ADDSKILL 真武·大霹雳
+GIVEFENGHAO [神] 1
+#ELSEACT
+MESSAGEBOX  材料不足，或者已经成神！
+break
+
+;--------------------------------------------------------------------
+;--------------------------------------------------------------------
+
+
+
+[@重置]
+#IF
+CheckGAMEGold > 7999999
+#ACT
+GAMEGOLD - 8000000
+DELSKILL 无极·金钱炸弹
+DELSKILL 无量·瀚海乾坤罩
+DELSKILL 破灭·重瞳之眼
+DELSKILL 重生·补天术
+DELSKILL 禁技·烈焰焚天
+DELSKILL 真武·大霹雳
+RECYCFENGHAO [神]
+RECYCFENGHAO [神]
+RECYCFENGHAO [神]
+#ELSEACT
+MESSAGEBOX 元宝不足.无法重置...
+break
+
+
+
+

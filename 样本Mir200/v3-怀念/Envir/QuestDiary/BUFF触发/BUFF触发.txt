@@ -1,0 +1,1352 @@
+[@攻击BUFF触发]
+{
+#IF
+#ACT
+MOV N$死灵触发几率 0
+MOV N$疯狂触发几率 0
+MOV N$绝望触发几率 0
+MOV N$恶毒触发几率 0
+MOV N$力量触发几率 0
+MOV N$破甲触发几率 0
+MOV N$连击触发几率 0
+MOV N$急速触发几率 0
+MOV N$吸血触发几率 0
+MOV N$嗜血触发几率 0
+MOV N$致命触发几率 0
+MOV N$霸道触发几率 0
+MOV N$暴击触发几率 0
+MOV N$善恶有报几率 0
+MOV N$祝福触发几率 0
+MOV N$幸运触发几率 0
+MOV N$杀破狼触发几率 0
+MOV N$贤者触发几率 0
+MOV N$被诅咒触发几率 0
+MOV N$战神触发几率 0
+MOV N$斩杀触发几率 0
+MOV N$定身触发几率 0
+MOV N$暴君触发几率 0
+MOV N$残暴触发几率 0
+MOV N$电刃触发几率 0
+
+#IF
+	CheckUseItem 2
+#ACT
+	MOV S$检测物品 <$G_RIGHTHAND>
+	MOV N$检测位置 2
+	goto @全身计算BUFF
+#IF
+	CheckUseItem 9
+#ACT
+	MOV S$检测物品 <$G_BUJUK>
+	MOV N$检测位置 9
+	goto @全身计算BUFF
+#IF
+	CheckUseItem 12
+#ACT
+	MOV S$检测物品 <$G_CHARM>
+	MOV N$检测位置 12
+	goto @全身计算BUFF
+#IF
+	CheckUseItem 13
+#ACT
+	MOV S$检测物品 <$G_HAT>
+	MOV N$检测位置 13
+	goto @全身计算BUFF
+#IF
+	CheckUseItem 16
+#ACT
+	MOV S$检测物品 <$G_SHIELD>
+	MOV N$检测位置 16
+	goto @全身计算BUFF
+#IF
+	CheckUseItem 46
+#ACT
+	MOV S$检测物品 <$G_GODBLESSITEM7>
+	MOV N$检测位置 46
+	goto @全身计算BUFF
+
+
+#IF
+CHECKUSEITEM 2
+CHECKCUSTOMITEMPROGRESSBAR 2 0
+#ACT
+GetCustomItemProgressbarValue 2 0 2  <$STR(N$鼠BUFF百分比)>
+GetCustomItemProgressbar 2 0 1  <$STR(S$鼠名称)>
+EXTRACTSTRING + <$STR(S$鼠名称)> S$鼠BUFF名称 S$无用
+INC N$<$STR(S$鼠BUFF名称)> <$STR(N$鼠BUFF百分比)>
+
+#IF
+CHECKUSEITEM 16
+CHECKCUSTOMITEMPROGRESSBAR 16 0
+#ACT
+GetCustomItemProgressbarValue 16 0 2  <$STR(N$牛BUFF百分比)>
+GetCustomItemProgressbar 16 0 1  <$STR(S$牛名称)>
+EXTRACTSTRING + <$STR(S$牛名称)> S$牛BUFF名称 S$无用
+INC N$<$STR(S$牛BUFF名称)> <$STR(N$牛BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 13
+CHECKCUSTOMITEMPROGRESSBAR 13 0
+#ACT
+GetCustomItemProgressbarValue 13 0 2  <$STR(N$虎BUFF百分比)>
+GetCustomItemProgressbar 13 0 1  <$STR(S$虎名称)>
+EXTRACTSTRING + <$STR(S$虎名称)> S$虎BUFF名称 S$无用
+INC N$<$STR(S$虎BUFF名称)> <$STR(N$虎BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 9
+CHECKCUSTOMITEMPROGRESSBAR 9 0
+#ACT
+GetCustomItemProgressbarValue 9 0 2  <$STR(N$兔BUFF百分比)>
+GetCustomItemProgressbar 9 0 1  <$STR(S$兔名称)>
+EXTRACTSTRING + <$STR(S$兔名称)> S$兔BUFF名称 S$无用
+INC N$<$STR(S$兔BUFF名称)> <$STR(N$兔BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 12
+CHECKCUSTOMITEMPROGRESSBAR 12 0
+#ACT
+GetCustomItemProgressbarValue 12 0 2  <$STR(N$龙BUFF百分比)>
+GetCustomItemProgressbar 12 0 1  <$STR(S$龙名称)>
+EXTRACTSTRING + <$STR(S$龙名称)> S$龙BUFF名称 S$无用
+INC N$<$STR(S$龙BUFF名称)> <$STR(N$龙BUFF百分比)>
+
+
+
+#IF
+CHECKUSEITEM 7
+CHECKCUSTOMITEMPROGRESSBAR 7 0
+#ACT
+GetCustomItemProgressbarValue 7 0 2  <$STR(N$蛇BUFF百分比)>
+GetCustomItemProgressbar 7 0 1  <$STR(S$蛇名称)>
+EXTRACTSTRING + <$STR(S$蛇名称)> S$蛇BUFF名称 S$无用
+INC N$<$STR(S$蛇BUFF名称)> <$STR(N$蛇BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 8
+CHECKCUSTOMITEMPROGRESSBAR 8 0
+#ACT
+GetCustomItemProgressbarValue 8 0 2  <$STR(N$马BUFF百分比)>
+GetCustomItemProgressbar 8 0 1  <$STR(S$马名称)>
+EXTRACTSTRING + <$STR(S$马名称)> S$马BUFF名称 S$无用
+INC N$<$STR(S$马BUFF名称)> <$STR(N$马BUFF百分比)>
+
+#IF
+CHECKUSEITEM 47
+CHECKCUSTOMITEMPROGRESSBAR 47 0
+#ACT
+GetCustomItemProgressbarValue 47 0 2  <$STR(N$羊BUFF百分比)>
+GetCustomItemProgressbar 47 0 1  <$STR(S$羊名称)>
+EXTRACTSTRING + <$STR(S$羊名称)> S$羊BUFF名称 S$无用
+INC N$<$STR(S$羊BUFF名称)> <$STR(N$羊BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 48
+CHECKCUSTOMITEMPROGRESSBAR 48 0
+#ACT
+GetCustomItemProgressbarValue 48 0 2  <$STR(N$猴BUFF百分比)>
+GetCustomItemProgressbar 48 0 1  <$STR(S$猴名称)>
+EXTRACTSTRING + <$STR(S$猴名称)> S$猴BUFF名称 S$无用
+INC N$<$STR(S$猴BUFF名称)> <$STR(N$猴BUFF百分比)>
+
+#IF
+CHECKUSEITEM 49
+CHECKCUSTOMITEMPROGRESSBAR 49 0
+#ACT
+GetCustomItemProgressbarValue 49 0 2  <$STR(N$鸡BUFF百分比)>
+GetCustomItemProgressbar 49 0 1  <$STR(S$鸡名称)>
+EXTRACTSTRING + <$STR(S$鸡名称)> S$鸡BUFF名称 S$无用
+INC N$<$STR(S$鸡BUFF名称)> <$STR(N$鸡BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 50
+CHECKCUSTOMITEMPROGRESSBAR 50 0
+#ACT
+GetCustomItemProgressbarValue 50 0 2  <$STR(N$狗BUFF百分比)>
+GetCustomItemProgressbar 50 0 1  <$STR(S$狗名称)>
+EXTRACTSTRING + <$STR(S$狗名称)> S$狗BUFF名称 S$无用
+INC N$<$STR(S$狗BUFF名称)> <$STR(N$狗BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 51
+CHECKCUSTOMITEMPROGRESSBAR 51 0
+#ACT
+GetCustomItemProgressbarValue 51 0 2  <$STR(N$猪BUFF百分比)>
+GetCustomItemProgressbar 51 0 1  <$STR(S$猪名称)>
+EXTRACTSTRING + <$STR(S$猪名称)> S$猪BUFF名称 S$无用
+INC N$<$STR(S$猪BUFF名称)> <$STR(N$猪BUFF百分比)>
+
+
+
+#IF
+LARGE N$电刃触发几率 0
+#ACT
+MOVR N$电刃触发 1 101
+
+#IF
+large I666 N$电刀冷却结束时间
+SMALL N$电刃触发 <$STR(N$电刃触发几率)>
+NOT INSAFEZONE
+#ACT
+MOV N$电刀冷却结束时间 <$str(I666)>
+INC N$电刀冷却结束时间 20
+GOTOLABEL 7 @电刃 2
+RangeHarm <$X> <$Y> 3 100 6 
+M.PLAYEFFECT 18 1570 10 1 150 0 0 0 0
+playsoundExt Wav\M10-1.wav 1 4
+MOV N500 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『电刃BUFF』触发
+
+#IF
+LARGE N$死灵触发几率 0
+#ACT
+MOVR N$死灵触发 1 101
+
+#IF
+SMALL N$死灵触发 <$STR(N$死灵触发几率)>
+CHECKSLAVECOUNT < 2
+#ACT
+RECALLMOB 变异骷髅 3 10  1
+
+#IF
+LARGE N$疯狂触发几率 0
+#ACT
+MOVR N$疯狂触发 1 101
+
+
+#IF
+large I666 N$疯狂冷却结束时间
+SMALL N$疯狂触发 <$STR(N$疯狂触发几率)>
+#ACT
+MOV N$疯狂冷却结束时间 <$str(I666)>
+INC N$疯狂冷却结束时间 20
+AddHumNewValue 1 + 10 3
+PLAYEFFECT 20 2640 10 3 100 0 -260 -260 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『疯狂BUFF』触发
+
+
+#IF
+LARGE N$残暴触发几率 0
+#ACT
+MOVR N$残暴触发 1 101
+
+#IF
+large I666 N$残暴冷却结束时间
+SMALL N$残暴触发 <$STR(N$残暴触发几率)>
+#ACT
+MOV N$残暴冷却结束时间 <$str(I666)>
+INC N$残暴冷却结束时间 20
+AddHumNewValue 0 + 3 5
+PLAYEFFECT 20 3000 10 5 100 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『残暴BUFF』触发
+DELAYGOTO 5000 @残暴还原
+
+#IF
+LARGE N$战神触发几率 0
+#ACT
+MOVR N$战神触发 1 101
+
+#IF
+large I666 N$战神冷却结束时间
+SMALL N$战神触发 <$STR(N$战神触发几率)>
+#ACT
+MOV N$战神冷却结束时间 <$str(I666)>
+INC N$战神冷却结束时间 20
+ChangeHumAbility 6 + <$MAXDC> 2
+ChangeHumAbility 8 + <$MAXMC> 2
+ChangeHumAbility 10 + <$MAXSC> 2
+PLAYEFFECT 13 2530 20 1 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『战神BUFF』触发
+
+
+#IF
+LARGE N$暴君触发几率 0
+#ACT
+MOVR N$暴君触发 1 151
+;SENDMSG 5 当前疯狂几率<$STR(N$疯狂触发几率)>%,疯狂几率<$STR(N$疯狂触发)>
+
+#IF
+SMALL N$暴君触发 <$STR(N$暴君触发几率)>
+#ACT
+mov N102 <$PKPOWER>
+MUL N102 10   
+DIV N102 100     
+M.humanHP -  <$str(N102)>  1
+M.PLAYEFFECT 13 2460 7 1 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『暴君BUFF』触发
+
+
+#IF
+LARGE N$定身触发几率 0
+#ACT
+MOVR N$定身触发 1 151
+;SENDMSG 5 当前疯狂几率<$STR(N$疯狂触发几率)>%,疯狂几率<$STR(N$疯狂触发)>
+
+#IF
+SMALL N$定身触发 <$STR(N$定身触发几率)>
+#ACT
+M.CHANGESTATE 6 1
+M.PLAYEFFECT 20 1080 8 2 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『定身BUFF』触发
+
+#IF
+LARGE N$斩杀触发几率 0
+#ACT
+MOVR N$斩杀触发 1 101
+;SENDMSG 5 当前斩杀几率<$STR(N$斩杀触发几率)>%,斩杀几率<$STR(N$斩杀触发)>
+
+#IF
+NOT CHECKTEXTLIST ..\QuestDiary\不触发BOSS怪物.txt <$ATTACKMONSTER_NAME>
+large I666 N$斩杀冷却结束时间
+SMALL N$斩杀触发 <$STR(N$斩杀触发几率)>
+#ACT
+MOV N$斩杀冷却结束时间 <$str(I666)>
+INC N$斩杀冷却结束时间 10
+MOV N2  <$ATTACKMONSTER_HP>   
+DIV N2 100  
+MUL N2 10   
+M.humanHP -  <$str(N2)>
+m.PLAYEFFECT 7 690 7 1 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『斩杀BUFF』触发
+
+#IF
+LARGE N$吸血触发几率 0
+#ACT
+MOVR N$吸血触发 1 101
+;SENDMSG 5 当前吸血几率<$STR(N$吸血触发几率)>%,疯狂几率<$STR(N$吸血触发)>
+
+#IF
+large I666 N$吸血冷却结束时间
+SMALL N$吸血触发 <$STR(N$吸血触发几率)>
+#ACT
+MOV N$吸血冷却结束时间 <$str(I666)>
+INC N$吸血冷却结束时间 5
+MOV N$吸血值 <$MAXHP>
+DIV N$吸血值 50
+ChangeState 10 5 <$STR(N$吸血值)> 100
+PLAYEFFECT 20 2980 10 5 100 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『吸血BUFF』触发
+
+#IF
+LARGE N$嗜血触发几率 0
+#ACT
+MOVR N$嗜血触发 1 151
+
+#IF
+SMALL N$嗜血触发 <$STR(N$嗜血触发几率)>
+#ACT
+M.HumanHP - 20 300
+HumanHP + 20 300
+M.PLAYEFFECT 73 1060 20 1 50 0
+;PLAYEFFECT 37 1090 10 1 100 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『嗜血BUFF』触发
+
+
+#IF
+LARGE N$致命触发几率 0
+#ACT
+MOVR N$致命触发 1 101
+;SENDMSG 5 当前1几率<$STR(N$致命触发几率)>%,2几率<$STR(N$致命触发)>
+
+#IF
+large I666 N$致命冷却结束时间
+SMALL N$致命触发 <$STR(N$致命触发几率)>
+CheckJob Warrior
+#ACT
+MOV N$致命冷却结束时间 <$str(I666)>
+INC N$致命冷却结束时间 10
+MOV N$攻击伤害 <$MAXDC>
+;MUL N$攻击伤害 2
+M.HumanHP - <$STR(N$攻击伤害)>
+M.PLAYEFFECT 7 1340 5 1 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『致命BUFF』触发
+
+
+#IF
+large I666 N$致命冷却结束时间
+SMALL N$致命触发 <$STR(N$致命触发几率)>
+CheckJob Wizard
+#ACT
+MOV N$致命冷却结束时间 <$str(I666)>
+INC N$致命冷却结束时间 10
+MOV N$攻击伤害 <$MAXMC>
+;MUL N$攻击伤害 2
+M.HumanHP - <$STR(N$攻击伤害)>
+M.PLAYEFFECT 7 870 3 1 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『致命BUFF』触发
+
+
+#IF
+large I666 N$致命冷却结束时间
+SMALL N$致命触发 <$STR(N$致命触发几率)>
+CheckJob Taoist
+#ACT
+MOV N$致命冷却结束时间 <$str(I666)>
+INC N$致命冷却结束时间 10
+MOV N$攻击伤害 <$MAXSC>
+;MUL N$攻击伤害 2
+M.HumanHP - <$STR(N$攻击伤害)>
+M.PLAYEFFECT 7 870 3 1 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『致命BUFF』触发
+
+
+#IF
+LARGE N$霸道触发几率 0
+#ACT
+MOVR N$霸道触发 1 101
+
+#IF
+large I666 N$霸道冷却结束时间
+SMALL N$霸道触发 <$STR(N$霸道触发几率)>
+CHECKJOB Warrior
+#ACT
+MOV N$霸道冷却结束时间 <$str(I666)>
+INC N$霸道冷却结束时间 10
+MOV N$攻击伤害 <$MAXDC>
+M.HumanHP - <$STR(N$攻击伤害)>
+M.PLAYEFFECT 7 870 3 1 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『霸道BUFF』触发
+
+#IF
+large I666 N$霸道冷却结束时间
+SMALL N$霸道触发 <$STR(N$霸道触发几率)>
+CheckJob Taoist
+#ACT
+MOV N$霸道冷却结束时间 <$str(I666)>
+INC N$霸道冷却结束时间 10
+MOV N$攻击伤害 <$MAXSC>
+M.HumanHP - <$STR(N$攻击伤害)>
+M.PLAYEFFECT 7 870 3 1 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『霸道BUFF』触发
+
+#IF
+large I666 N$霸道冷却结束时间
+SMALL N$霸道触发 <$STR(N$霸道触发几率)>
+CheckJob Wizard
+#ACT
+MOV N$霸道冷却结束时间 <$str(I666)>
+INC N$霸道冷却结束时间 10
+MOV N$攻击伤害 <$MAXMC>
+M.HumanHP - <$STR(N$攻击伤害)>
+M.PLAYEFFECT 7 870 3 1 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『霸道BUFF』触发
+
+#IF
+LARGE N$暴击触发几率 0
+#ACT
+MOVR N$暴击触发 1 101
+
+#IF
+large I666 N$暴击冷却结束时间
+SMALL N$暴击触发 <$STR(N$暴击触发几率)>
+#ACT
+MOV N$暴击冷却结束时间 <$str(I666)>
+INC N$暴击冷却结束时间 10
+MOV N$攻击伤害 <$PKPOWER>
+MUL N$攻击伤害 25
+DIV N$攻击伤害 10
+M.HumanHP - <$STR(N$攻击伤害)>
+M.PLAYEFFECT 11 200 4 1 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『暴击BUFF』触发
+
+#IF
+LARGE N$力量触发几率 0
+#ACT
+MOVR N$力量触发 1 101
+
+#IF
+large I666 N$力量冷却结束时间
+CheckJob Warrior
+SMALL N$力量触发 <$STR(N$力量触发几率)>
+#ACT
+MOV N$力量冷却结束时间 <$str(I666)>
+INC N$力量冷却结束时间 10
+MOV N$攻击伤害 <$MAXHP>
+DIV N$攻击伤害 10
+M.HumanHp - <$STR(N$攻击伤害)>
+M.PLAYEFFECT 20 1536 6 1 160 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『力量BUFF』触发
+
+#IF
+LARGE N$恶毒触发几率 0
+#ACT
+MOVR N$恶毒触发 1 101
+
+#IF
+SMALL N$恶毒触发 <$STR(N$恶毒触发几率)>
+#ACT
+M.ChangeState 4 10
+M.ChangeState 5 10
+m.PLAYEFFECT 20 1890 7 13 100 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『恶毒BUFF』触发
+
+#IF
+LARGE N$杀破狼触发几率 0
+#ACT
+MOVR N$杀破狼触发 1 101
+
+#IF
+large I666 N$杀破狼冷却结束时间
+SMALL N$杀破狼触发 <$STR(N$杀破狼触发几率)>
+#ACT
+MOV N$杀破狼冷却结束时间 <$str(I666)>
+INC N$杀破狼冷却结束时间 20
+ChangeHumAbility 1 - 999 5
+ChangeHumAbility 2 - 999 5
+ChangeHumAbility 3 - 999 5
+ChangeHumAbility 4 - 999 5
+AddHumNewValue 1 + 20 5
+PLAYEFFECT 20 2500 10 5 100 0 -260 -260 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『杀破狼BUFF』触发
+
+#IF
+LARGE N$连击触发几率 0
+#ACT
+MOVR N$连击触发 1 151
+
+#IF
+SMALL N$连击触发 <$STR(N$连击触发几率)>
+#ACT
+m.HumanHP - <$PKPOWER> 1000
+PLAYSOUND Wav\61.wav 1 0
+m.PLAYEFFECT 20 1970 2 1 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『连击BUFF』触发
+
+#IF
+LARGE N$急速触发几率 0
+#ACT
+MOVR N$急速触发 1 101
+
+#IF
+large I666 N$急速冷却结束时间
+SMALL N$急速触发 <$STR(N$急速触发几率)>
+#ACT
+MOV N$急速冷却结束时间 <$str(I666)>
+INC N$急速冷却结束时间 20
+ChangeSpeed 2 1 5
+PLAYEFFECT 37 1092 10 5 100 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『急速BUFF』触发
+
+#IF
+LARGE N$贤者触发几率 0
+#ACT
+MOVR N$贤者触发 1 101
+
+#IF
+large I666 N$贤者冷却结束时间
+SMALL N$贤者触发 <$STR(N$贤者触发几率)>
+#ACT
+MOV N$贤者冷却结束时间 <$str(I666)>
+INC N$贤者冷却结束时间 10
+ChangeHumAbility 6 = 10 3
+ChangeHumAbility 8 = 10 3
+ChangeHumAbility 10 = 10 3
+ChangeHumAbility 19 = 10 3
+ChangeHumAbility 20 = 10 3
+PLAYEFFECT 20 2136 10 6 100 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『贤者BUFF』触发
+
+
+#IF
+LARGE N$被诅咒触发几率 0
+#ACT
+MOVR N$被诅咒触发 1 151
+
+#IF
+SMALL N$被诅咒触发 <$STR(N$被诅咒触发几率)>
+#ACT
+HUMANHP - 10 500
+M.HUMANHP - 50 500
+m.PLAYEFFECT 20 1680 13 1 100 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『诅咒BUFF』触发
+
+
+#IF
+LARGE N$破甲触发几率 0
+#ACT
+MOVR N$破甲触发 1 151
+
+#IF
+SMALL N$破甲触发 <$STR(N$破甲触发几率)>
+#ACT
+MOV N$防御 <$AC>
+MOV N$魔防 <$MAC>
+MOV N$最大防御 <$MAXAC>
+MOV N$最大魔防 <$MAXMAC>
+DIV N$防御 2
+DIV N$魔防 2
+DIV N$最大防御 2
+DIV N$最大魔防 2
+M.ChangeHumAbility 1 - <$STR(N$防御)> 3
+M.ChangeHumAbility 2 - <$STR(N$最大防御)> 3
+M.ChangeHumAbility 3 - <$STR(N$魔防)> 3
+M.ChangeHumAbility 4 - <$STR(N$最大魔防)> 3
+M.PLAYEFFECT 7 1410 7 1 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『破甲BUFF』触发
+
+#IF
+LARGE N$善恶有报几率 0
+#ACT
+MOVR N$善恶有报触发 1 101
+
+#IF
+SMALL N$善恶有报触发 <$STR(N$善恶有报几率)>
+#ACT
+MOVR N$点数 0 2
+goto @善恶有报的
+
+#IF
+LARGE N$祝福触发几率 0
+#ACT
+MOVR N$祝福触发 1 101
+
+#IF
+large I666 N$祝福冷却结束时间
+SMALL N$祝福触发 <$STR(N$祝福触发几率)>
+#ACT
+MOV N$祝福语冷却结束时间 <$str(I666)>
+INC N$祝福冷却结束时间 20
+MOV N$攻击 <$DC>
+MOV N$魔法 <$MC>
+MOV N$道术4 <$SC>
+MOV N$最大攻击 <$MAXDC>
+MOV N$最大魔法 <$MAXMC>
+MOV N$最大道术 <$MAXSC>
+DIV N$攻击 5
+DIV N$魔法 5
+DIV N$道术 5
+DIV N$最大攻击 5
+DIV N$最大魔法 5
+DIV N$最大道术 5
+ChangeHumAbility 5 + <$STR(N$攻击)> 7
+ChangeHumAbility 6 + <$STR(N$最大攻击)> 7
+ChangeHumAbility 7 + <$STR(N$魔法)> 7
+ChangeHumAbility 8 + <$STR(N$最大魔法)> 7
+ChangeHumAbility 9 + <$STR(N$道术)> 7
+ChangeHumAbility 10 + <$STR(N$最大道术)> 7
+PLAYEFFECT 9 2120 10 7 100 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『祝福BUFF』触发
+
+;#IF
+;LARGE N$幸运触发几率 0
+;#ACT
+;MOVR N$幸运触发 1 101
+
+;#IF
+;large I666 N$幸运冷却结束时间
+;SMALL N$幸运触发 <$STR(N$幸运触发几率)>
+;#ACT
+;MOV N$幸运冷却结束时间 <$str(I666)>
+;INC N$幸运冷却结束时间 20
+;ChangeHumAbility 21  + 7 10
+;PLAYEFFECT 20 1133 8 12 100 0
+;stoPPLAYEFFECT 6 2431 20 0 120 0 -220 -260 1
+;stoPPLAYEFFECT 6 1720 8 0 120 0 -3 -15 1
+;stoPPLAYEFFECT 6 1664 10 0 120 0 -3 -15 1
+;stoPPLAYEFFECT 6 1768 10 0 120 0 -3 -15 1
+;stoPPLAYEFFECT 6 2261 10 0 120 0 -3 -15 1
+;stoPPLAYEFFECT 6 1680 10 0 120 0 0 -15 1
+;SendNewLineMsg 1 222 0 10 185 1 1 　　　　『幸运BUFF』触发
+
+
+[@电刃]
+#IF
+#ACT
+PLAYEFFECT 18 1140 10 1 100 0 0 0 0
+playsoundExt Wav\M10-1.wav 1 4
+
+[@善恶有报的]
+#IF
+EQUAL N$点数 0
+#ACT
+MOV N$伤害 <$PKPOWER>
+HumanHP + <$STR(N$伤害)>
+PLAYEFFECT 37 1120 20 1 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『善恶有报BUFF』触发：善
+
+#IF
+EQUAL N$点数 1
+#ACT
+MOV N$伤害 <$PKPOWER>
+M.HumanHP - <$STR(N$伤害)>
+m.PLAYEFFECT 20 2320 3 1 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『善恶有报BUFF』触发：恶
+
+}
+
+[@击杀触发]
+{
+#IF
+#ACT
+MOV N$血腥触发几率 0
+MOV N$金光闪闪触发几率 0
+MOV N$杀戮成性触发几率 0
+MOV N$恐怖触发几率 0
+
+
+#IF
+CHECKUSEITEM 2
+CHECKCUSTOMITEMPROGRESSBAR 2 0
+#ACT
+GetCustomItemProgressbarValue 2 0 2  <$STR(N$鼠BUFF百分比)>
+GetCustomItemProgressbar 2 0 1  <$STR(S$鼠名称)>
+EXTRACTSTRING + <$STR(S$鼠名称)> S$鼠BUFF名称 S$无用
+INC N$<$STR(S$鼠BUFF名称)> <$STR(N$鼠BUFF百分比)>
+
+#IF
+CHECKUSEITEM 16
+CHECKCUSTOMITEMPROGRESSBAR 16 0
+#ACT
+GetCustomItemProgressbarValue 16 0 2  <$STR(N$牛BUFF百分比)>
+GetCustomItemProgressbar 16 0 1  <$STR(S$牛名称)>
+EXTRACTSTRING + <$STR(S$牛名称)> S$牛BUFF名称 S$无用
+INC N$<$STR(S$牛BUFF名称)> <$STR(N$牛BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 13
+CHECKCUSTOMITEMPROGRESSBAR 13 0
+#ACT
+GetCustomItemProgressbarValue 13 0 2  <$STR(N$虎BUFF百分比)>
+GetCustomItemProgressbar 13 0 1  <$STR(S$虎名称)>
+EXTRACTSTRING + <$STR(S$虎名称)> S$虎BUFF名称 S$无用
+INC N$<$STR(S$虎BUFF名称)> <$STR(N$虎BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 9
+CHECKCUSTOMITEMPROGRESSBAR 9 0
+#ACT
+GetCustomItemProgressbarValue 9 0 2  <$STR(N$兔BUFF百分比)>
+GetCustomItemProgressbar 9 0 1  <$STR(S$兔名称)>
+EXTRACTSTRING + <$STR(S$兔名称)> S$兔BUFF名称 S$无用
+INC N$<$STR(S$兔BUFF名称)> <$STR(N$兔BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 12
+CHECKCUSTOMITEMPROGRESSBAR 12 0
+#ACT
+GetCustomItemProgressbarValue 12 0 2  <$STR(N$龙BUFF百分比)>
+GetCustomItemProgressbar 12 0 1  <$STR(S$龙名称)>
+EXTRACTSTRING + <$STR(S$龙名称)> S$龙BUFF名称 S$无用
+INC N$<$STR(S$龙BUFF名称)> <$STR(N$龙BUFF百分比)>
+
+
+
+#IF
+CHECKUSEITEM 7
+CHECKCUSTOMITEMPROGRESSBAR 7 0
+#ACT
+GetCustomItemProgressbarValue 7 0 2  <$STR(N$蛇BUFF百分比)>
+GetCustomItemProgressbar 7 0 1  <$STR(S$蛇名称)>
+EXTRACTSTRING + <$STR(S$蛇名称)> S$蛇BUFF名称 S$无用
+INC N$<$STR(S$蛇BUFF名称)> <$STR(N$蛇BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 8
+CHECKCUSTOMITEMPROGRESSBAR 8 0
+#ACT
+GetCustomItemProgressbarValue 8 0 2  <$STR(N$马BUFF百分比)>
+GetCustomItemProgressbar 8 0 1  <$STR(S$马名称)>
+EXTRACTSTRING + <$STR(S$马名称)> S$马BUFF名称 S$无用
+INC N$<$STR(S$马BUFF名称)> <$STR(N$马BUFF百分比)>
+
+#IF
+CHECKUSEITEM 47
+CHECKCUSTOMITEMPROGRESSBAR 47 0
+#ACT
+GetCustomItemProgressbarValue 47 0 2  <$STR(N$羊BUFF百分比)>
+GetCustomItemProgressbar 47 0 1  <$STR(S$羊名称)>
+EXTRACTSTRING + <$STR(S$羊名称)> S$羊BUFF名称 S$无用
+INC N$<$STR(S$羊BUFF名称)> <$STR(N$羊BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 48
+CHECKCUSTOMITEMPROGRESSBAR 48 0
+#ACT
+GetCustomItemProgressbarValue 48 0 2  <$STR(N$猴BUFF百分比)>
+GetCustomItemProgressbar 48 0 1  <$STR(S$猴名称)>
+EXTRACTSTRING + <$STR(S$猴名称)> S$猴BUFF名称 S$无用
+INC N$<$STR(S$猴BUFF名称)> <$STR(N$猴BUFF百分比)>
+
+#IF
+CHECKUSEITEM 49
+CHECKCUSTOMITEMPROGRESSBAR 49 0
+#ACT
+GetCustomItemProgressbarValue 49 0 2  <$STR(N$鸡BUFF百分比)>
+GetCustomItemProgressbar 49 0 1  <$STR(S$鸡名称)>
+EXTRACTSTRING + <$STR(S$鸡名称)> S$鸡BUFF名称 S$无用
+INC N$<$STR(S$鸡BUFF名称)> <$STR(N$鸡BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 50
+CHECKCUSTOMITEMPROGRESSBAR 50 0
+#ACT
+GetCustomItemProgressbarValue 50 0 2  <$STR(N$狗BUFF百分比)>
+GetCustomItemProgressbar 50 0 1  <$STR(S$狗名称)>
+EXTRACTSTRING + <$STR(S$狗名称)> S$狗BUFF名称 S$无用
+INC N$<$STR(S$狗BUFF名称)> <$STR(N$狗BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 51
+CHECKCUSTOMITEMPROGRESSBAR 51 0
+#ACT
+GetCustomItemProgressbarValue 51 0 2  <$STR(N$猪BUFF百分比)>
+GetCustomItemProgressbar 51 0 1  <$STR(S$猪名称)>
+EXTRACTSTRING + <$STR(S$猪名称)> S$猪BUFF名称 S$无用
+INC N$<$STR(S$猪BUFF名称)> <$STR(N$猪BUFF百分比)>
+#IF
+LARGE N$血腥触发几率 0
+#ACT
+MOVR N$血腥触发 1 101
+
+#IF
+SMALL N$血腥触发 <$STR(N$血腥触发几率)>
+#ACT
+HumanHP + 100 300
+PLAYEFFECT 73 20 10 1 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『血腥BUFF』触发
+
+
+#IF
+LARGE N$金光闪闪触发几率 0
+#ACT
+MOVR N$金光闪闪触发 1 151
+
+#IF
+SMALL N$金光闪闪触发 <$STR(N$金光闪闪触发几率)>
+#ACT
+GAMEGOLD + 500
+PLAYEFFECT 73 40 10 1 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『金光闪闪BUFF』触发
+
+#IF
+LARGE N$杀戮成性触发几率 0
+#ACT
+MOVR N$杀戮成性触发 1 101
+
+#IF
+SMALL N$杀戮成性触发 <$STR(N$杀戮成性触发几率)>
+#ACT
+SetNextDamage 150
+PLAYEFFECT 13 2480 10 1 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『杀戮成性BUFF』触发
+
+#IF
+LARGE N$恐怖触发几率 0
+#ACT
+MOVR N$恐怖触发 1 101
+
+#IF
+SMALL N$恐怖触发 <$STR(N$恐怖触发几率)>
+equal N$恐怖开关 0
+#ACT
+mov N$恐怖开关 1
+mov S$附属名字 <$KILLMONNAME>
+ReCallMobEx2 <$KILLMONNAME> <$KILLMONX> <$KILLMONY> 100 0 1
+PLAYEFFECT 13 2480 10 1 150 0
+SendCenterMsg 249 242 『恐怖BUFF』触发：你击杀了<$KILLMONNAME>召唤它为自己作战。 0 2
+delaygoto 200000 @杀死附属
+
+
+
+[@杀死附属]
+#ACT
+KILLCALLMOB <$STR(S$附属名字)> 1 1
+MOV N$恐怖开关 0
+
+
+}
+
+[@被攻击触发]
+{
+#IF
+#ACT
+MOV N$幽灵触发几率 0
+MOV N$无敌触发几率 0
+MOV N$慈航普度触发几率 0
+MOV N$复苏之风触发几率 0
+MOV N$复仇触发几率 0
+MOV N$分身触发几率 0
+MOV N$防御触发几率 0
+MOV N$神佑触发几率 0
+MOV N$窃取触发几率 0
+MOV N$全身佩带数量 0
+
+#IF
+	CheckUseItem 2
+#ACT
+	MOV S$检测物品 <$G_RIGHTHAND>
+	MOV N$检测位置 2
+	goto @全身计算BUFF
+#IF
+	CheckUseItem 9
+#ACT
+	MOV S$检测物品 <$G_BUJUK>
+	MOV N$检测位置 9
+	goto @全身计算BUFF
+#IF
+	CheckUseItem 12
+#ACT
+	MOV S$检测物品 <$G_CHARM>
+	MOV N$检测位置 12
+	goto @全身计算BUFF
+#IF
+	CheckUseItem 13
+#ACT
+	MOV S$检测物品 <$G_HAT>
+	MOV N$检测位置 13
+	goto @全身计算BUFF
+#IF
+	CheckUseItem 16
+#ACT
+	MOV S$检测物品 <$G_SHIELD>
+	MOV N$检测位置 16
+	goto @全身计算BUFF
+#IF
+	CheckUseItem 46
+#ACT
+	MOV S$检测物品 <$G_GODBLESSITEM7>
+	MOV N$检测位置 46
+	goto @全身计算BUFF
+
+
+#IF
+CHECKUSEITEM 2
+CHECKCUSTOMITEMPROGRESSBAR 2 0
+#ACT
+GetCustomItemProgressbarValue 2 0 2  <$STR(N$鼠BUFF百分比)>
+GetCustomItemProgressbar 2 0 1  <$STR(S$鼠名称)>
+EXTRACTSTRING + <$STR(S$鼠名称)> S$鼠BUFF名称 S$无用
+INC N$<$STR(S$鼠BUFF名称)> <$STR(N$鼠BUFF百分比)>
+
+#IF
+CHECKUSEITEM 16
+CHECKCUSTOMITEMPROGRESSBAR 16 0
+#ACT
+GetCustomItemProgressbarValue 16 0 2  <$STR(N$牛BUFF百分比)>
+GetCustomItemProgressbar 16 0 1  <$STR(S$牛名称)>
+EXTRACTSTRING + <$STR(S$牛名称)> S$牛BUFF名称 S$无用
+INC N$<$STR(S$牛BUFF名称)> <$STR(N$牛BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 13
+CHECKCUSTOMITEMPROGRESSBAR 13 0
+#ACT
+GetCustomItemProgressbarValue 13 0 2  <$STR(N$虎BUFF百分比)>
+GetCustomItemProgressbar 13 0 1  <$STR(S$虎名称)>
+EXTRACTSTRING + <$STR(S$虎名称)> S$虎BUFF名称 S$无用
+INC N$<$STR(S$虎BUFF名称)> <$STR(N$虎BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 9
+CHECKCUSTOMITEMPROGRESSBAR 9 0
+#ACT
+GetCustomItemProgressbarValue 9 0 2  <$STR(N$兔BUFF百分比)>
+GetCustomItemProgressbar 9 0 1  <$STR(S$兔名称)>
+EXTRACTSTRING + <$STR(S$兔名称)> S$兔BUFF名称 S$无用
+INC N$<$STR(S$兔BUFF名称)> <$STR(N$兔BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 7
+CHECKCUSTOMITEMPROGRESSBAR 7 0
+#ACT
+GetCustomItemProgressbarValue 7 0 2  <$STR(N$龙BUFF百分比)>
+GetCustomItemProgressbar 7 0 1  <$STR(S$龙名称)>
+EXTRACTSTRING + <$STR(S$龙名称)> S$龙BUFF名称 S$无用
+INC N$<$STR(S$龙BUFF名称)> <$STR(N$龙BUFF百分比)>
+
+
+
+#IF
+CHECKUSEITEM 8
+CHECKCUSTOMITEMPROGRESSBAR 8 0
+#ACT
+GetCustomItemProgressbarValue 8 0 2  <$STR(N$蛇BUFF百分比)>
+GetCustomItemProgressbar 8 0 1  <$STR(S$蛇名称)>
+EXTRACTSTRING + <$STR(S$蛇名称)> S$蛇BUFF名称 S$无用
+INC N$<$STR(S$蛇BUFF名称)> <$STR(N$蛇BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 46
+CHECKCUSTOMITEMPROGRESSBAR 46 0
+#ACT
+GetCustomItemProgressbarValue 46 0 2  <$STR(N$马BUFF百分比)>
+GetCustomItemProgressbar 46 0 1  <$STR(S$马名称)>
+EXTRACTSTRING + <$STR(S$马名称)> S$马BUFF名称 S$无用
+INC N$<$STR(S$马BUFF名称)> <$STR(N$马BUFF百分比)>
+
+#IF
+CHECKUSEITEM 47
+CHECKCUSTOMITEMPROGRESSBAR 47 0
+#ACT
+GetCustomItemProgressbarValue 47 0 2  <$STR(N$羊BUFF百分比)>
+GetCustomItemProgressbar 47 0 1  <$STR(S$羊名称)>
+EXTRACTSTRING + <$STR(S$羊名称)> S$羊BUFF名称 S$无用
+INC N$<$STR(S$羊BUFF名称)> <$STR(N$羊BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 48
+CHECKCUSTOMITEMPROGRESSBAR 48 0
+#ACT
+GetCustomItemProgressbarValue 48 0 2  <$STR(N$猴BUFF百分比)>
+GetCustomItemProgressbar 48 0 1  <$STR(S$猴名称)>
+EXTRACTSTRING + <$STR(S$猴名称)> S$猴BUFF名称 S$无用
+INC N$<$STR(S$猴BUFF名称)> <$STR(N$猴BUFF百分比)>
+
+#IF
+CHECKUSEITEM 49
+CHECKCUSTOMITEMPROGRESSBAR 49 0
+#ACT
+GetCustomItemProgressbarValue 49 0 2  <$STR(N$鸡BUFF百分比)>
+GetCustomItemProgressbar 49 0 1  <$STR(S$鸡名称)>
+EXTRACTSTRING + <$STR(S$鸡名称)> S$鸡BUFF名称 S$无用
+INC N$<$STR(S$鸡BUFF名称)> <$STR(N$鸡BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 50
+CHECKCUSTOMITEMPROGRESSBAR 50 0
+#ACT
+GetCustomItemProgressbarValue 50 0 2  <$STR(N$狗BUFF百分比)>
+GetCustomItemProgressbar 50 0 1  <$STR(S$狗名称)>
+EXTRACTSTRING + <$STR(S$狗名称)> S$狗BUFF名称 S$无用
+INC N$<$STR(S$狗BUFF名称)> <$STR(N$狗BUFF百分比)>
+
+
+#IF
+CHECKUSEITEM 51
+CHECKCUSTOMITEMPROGRESSBAR 51 0
+#ACT
+GetCustomItemProgressbarValue 51 0 2  <$STR(N$猪BUFF百分比)>
+GetCustomItemProgressbar 51 0 1  <$STR(S$猪名称)>
+EXTRACTSTRING + <$STR(S$猪名称)> S$猪BUFF名称 S$无用
+INC N$<$STR(S$猪BUFF名称)> <$STR(N$猪BUFF百分比)>
+
+
+#IF
+LARGE N$无敌触发几率 0
+#ACT
+MOVR N$无敌触发 1 101
+
+#IF
+large I666 N$无敌冷却结束时间
+SMALL N$无敌触发 <$STR(N$无敌触发几率)>
+#ACT
+MOV N$无敌冷却结束时间 <$str(I666)>
+INC N$无敌冷却结束时间 20
+;ChangeModeEx 1 1
+SetSuckDamage = 2100000000 1000 100
+DELAYGOTO 3000 @吸伤还原
+PLAYEFFECT 20 2330 19 1 100 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『无敌BUFF』触发
+
+
+
+#IF
+LARGE N$复仇触发几率 0
+#ACT
+MOVR N$复仇触发 1 101
+
+#IF
+SMALL N$复仇触发 <$STR(N$复仇触发几率)>
+#ACT
+RECALLMOB 爆裂蜘蛛 0 1
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『复仇BUFF』触发
+
+#IF
+LARGE N$复苏之风触发几率 0
+#ACT
+MOVR N$复苏之风触发 1 101
+
+#IF
+large I666 N$复苏冷却结束时间
+SMALL N$复苏之风触发 <$STR(N$复苏之风触发几率)>
+#ACT
+MOV N$复苏冷却结束时间 <$str(I666)>
+INC N$复苏冷却结束时间 10
+AddhpPer + 10
+PLAYEFFECT 75 270 10 1 100 0
+SendCenterMsg 18 242 『复苏之风BUFF』触发：恢复10%生命值 0 3
+;SENDMSG 5 当前疯狂几率<$STR(N$复苏几率)>%，BUFF百分比<$STR(N$项链BUFF百分比)>，获取名称<$STR(S$项链名称)>，分隔图标<$STR(S$图标)>，分隔BUFF<$STR(S$项链BUFF名称)>
+
+#IF
+LARGE N$分身触发几率 0
+#ACT
+MOVR N$分身触发 1 151
+
+#IF
+SMALL N$分身触发 <$STR(N$分身触发几率)>
+NOT CheckSlaveCount > 0 <$UserName> 1
+#ACT
+RecallSelf 60 1 150 251
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『分身BUFF』触发
+
+#IF
+LARGE N$防御触发几率 0
+#ACT
+MOVR N$防御触发 1 101
+
+#IF
+large I666 N$防御冷却结束时间
+SMALL N$防御触发 <$STR(N$防御触发几率)>
+#ACT
+MOV N$防御冷却结束时间 <$str(I666)>
+INC N$防御冷却结束时间 10
+MOV N$防御 <$AC>
+MOV N$魔防 <$MAC>
+MOV N$最大防御 <$MAXAC>
+MOV N$最大魔防 <$MAXMAC>
+DIV N$防御 2
+DIV N$魔防 2
+DIV N$最大防御 2
+DIV N$最大魔防 2
+ChangeHumAbility 1 + <$STR(N$防御)> 10
+ChangeHumAbility 2 + <$STR(N$最大防御)> 10
+ChangeHumAbility 3 + <$STR(N$魔防)> 10
+ChangeHumAbility 4 + <$STR(N$最大魔防)> 10
+PLAYEFFECT 75 790 4 17 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『防御BUFF』触发
+
+
+#IF
+LARGE N$神佑触发几率 0
+#ACT
+MOVR N$神佑触发 1 101
+
+#IF
+large I666 N$神佑冷却结束时间
+SMALL N$神佑触发 <$STR(N$神佑触发几率)>
+#ACT
+MOV N$神佑冷却结束时间 <$str(I666)>
+INC N$神佑冷却结束时间 20
+ChangeHumAbility 11 + <$MAXHP> 3
+addhpper + 3
+PLAYEFFECT 7 670 7 8 150 0
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『神佑BUFF』触发
+
+#IF
+LARGE N$幽灵触发几率 0
+#ACT
+MOVR N$幽灵触发 1 101
+
+#IF
+large I666 N$幽灵冷却结束时间
+SMALL N$幽灵触发 <$STR(N$幽灵触发几率)>
+#ACT
+MOV N$幽灵冷却结束时间 <$str(I666)>
+INC N$幽灵冷却结束时间 10
+ChangeModeEx 2 1
+Gmexecute TestStatus 8 10
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『幽灵BUFF』触发
+
+
+
+#IF
+LARGE N$慈航普度触发几率 0
+#ACT
+MOVR N$慈航普度触发 1 201
+
+
+#IF
+SMALL N$慈航普度触发 <$STR(N$慈航普度触发几率)>
+#ACT
+MOVR N$点数 0 2
+PLAYEFFECT 13 180 15 1 100 0
+goto @慈航普度的
+
+
+#IF
+LARGE N$窃取触发几率 0
+#ACT
+MOVR N$窃取触发 1 201
+
+
+#IF
+SMALL N$窃取触发 <$STR(N$窃取触发几率)>
+#ACT
+HumanHP + <$PKPOWER> 300
+PLAYEFFECT 73 20 10 1 200 0
+
+
+
+[@慈航普度的]
+#IF
+EQUAL N$点数 0
+#ACT
+AddhpPer + 10
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『慈航普度BUFF』触发
+
+#IF
+EQUAL N$点数 1
+#ACT
+AddmpPer + 10
+SendNewLineMsg 1 222 0 10 185 1 1 　　　　『慈航普度BUFF』触发
+
+[@吸伤还原]
+#ACT
+SetSuckDamage = 1 1 1
+BREAK
+
+
+[@全身计算BUFF]
+#IF
+	CheckContainstext <$STR(S$检测物品)> 死灵
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$死灵触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 疯狂
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$疯狂触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 绝望
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$绝望触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 恶毒
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$恶毒触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 力量
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$力量触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 破甲
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$破甲触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 连击
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$连击触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 急速
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$急速触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 吸血
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$吸血触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 嗜血
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$嗜血触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 致命
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$致命触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 霸道
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$霸道触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 暴击
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$暴击触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 善恶
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$善恶有报几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 祝福
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$祝福触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 幸运
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$幸运触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 杀破
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$杀破狼触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 贤者
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$贤者触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 被诅
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$被诅咒触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 战神
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$战神触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 斩杀
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$斩杀触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 定身
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$定身触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 暴君
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$暴君触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 残暴
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$残暴触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 电刃
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$电刃触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 幽灵
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$幽灵触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 无敌
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$无敌触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 慈航
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$慈航普度触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 复苏
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$复苏之风触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 复仇
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$复仇触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 分身
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$分身触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 防御
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$防御触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 神佑
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$神佑触发几率
+#IF
+	CheckContainstext <$STR(S$检测物品)> 窃取
+#ACT
+	GetCustomItemProgressbarValue <$STR(N$检测位置)> 0 1 N$窃取触发几率
+
+
+
+[@残暴还原]
+#ACT
+#CALL [\1游戏登陆\属性加成.txt] @属性加成
+}

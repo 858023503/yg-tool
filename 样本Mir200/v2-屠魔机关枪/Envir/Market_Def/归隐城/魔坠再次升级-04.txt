@@ -1,0 +1,1704 @@
+[@main]
+
+
+#if
+#act
+OPENMERCHANTBIGDLG 5 1146 1 4 0 -80  0 560 0 1
+#SAY
+<Text:升级魔坠|需要幽梦之灵【仙器】和星辰坠【仙器】个10件+500传仙币:125:513{FCOLOR=250;FSIZE=14;FNAME=黑体}/@升级魔坠150>
+<playimg:49:2903:11:100:0:120:0>
+<ITEMBOX:2:5:2:145:380:63:63:*:95#放入通天魔坠>\
+
+[@ItemIntoBox2]
+#if
+not checkcontainstext 通天魔坠 <$BOXITEM[2].NAME>
+#act
+messagebox 只能放入通天魔坠
+goto @main
+break
+
+
+
+
+
+
+
+[@升级魔坠150]
+#if
+checkgamegird < 500
+#act
+messagebox 你没有500传仙币
+break
+
+
+#or
+NOT CHECKITEM 幽梦之灵【仙器】 10
+NOT CHECKITEM 星辰坠【仙器】 10
+#act
+messagebox 你没有星辰坠【仙器】或者幽梦之灵【仙器】10套
+break
+
+
+#if
+CHECKITEM 幽梦之灵【仙器】 10
+CHECKITEM 星辰坠【仙器】 10
+checkgamegird > 500
+#act
+take 幽梦之灵【仙器】 10
+take 星辰坠【仙器】 10
+gamegird - 500
+goto @给100属性魔坠
+
+
+
+
+
+
+
+
+[@给100属性魔坠]
+#if
+#act
+SetUpgradeItem 2
+MOV N$通天魔坠刺杀魔次 380
+MOV N$通天魔坠金殇斩 114
+MOV N$通天魔坠战士机关枪 1892400
+MOV N$通天魔坠野蛮 255
+MOV N$通天魔坠烈火 380
+MOV N$通天魔坠修罗血魂阵 198
+MOV N$通天魔坠熔岩烈剑 285
+MOV N$通天魔坠群体雷电术 1020
+MOV N$通天魔坠焚土喷焰 163
+MOV N$通天魔坠梵天圣火 248
+MOV N$通天魔坠冰咆哮 1020
+MOV N$通天魔坠炎龙降临 643
+MOV N$通天魔坠元素混乱 272
+MOV N$通天魔坠灵魂火葫 1188
+MOV N$通天魔坠天灵符爆 191
+MOV N$通天魔坠骷髅伤害 635
+MOV N$通天魔坠火兽伤害 635
+MOV N$通天魔坠圣兽伤害 635
+MOV N$通天魔坠石灵伤害 635
+MOV N$通天魔坠蛊毒术 288
+MOV N$通天魔坠幽龙镇魂 1116
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV100
+#act
+ChangeItemName -1 通天魔坠.LV101
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 1
+goto @升级魔坠属性100
+break
+
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV101
+#act
+ChangeItemName -1 通天魔坠.LV102
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 2
+
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV102
+#act
+ChangeItemName -1 通天魔坠.LV103
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 3
+
+goto @升级魔坠属性100
+break
+
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV103
+#act
+ChangeItemName -1 通天魔坠.LV104
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 4
+
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV104
+#act
+ChangeItemName -1 通天魔坠.LV105
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 5
+
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV105
+#act
+ChangeItemName -1 通天魔坠.LV106
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 6
+
+goto @升级魔坠属性100
+break
+
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV106
+#act
+ChangeItemName -1 通天魔坠.LV107
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 7
+
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV107
+#act
+ChangeItemName -1 通天魔坠.LV108
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 8
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV108
+#act
+ChangeItemName -1 通天魔坠.LV109
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 9
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV109
+#act
+ChangeItemName -1 通天魔坠.LV110
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 10
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV110
+#act
+ChangeItemName -1 通天魔坠.LV111
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 11
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV111
+#act
+ChangeItemName -1 通天魔坠.LV112
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 12
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV112
+#act
+ChangeItemName -1 通天魔坠.LV113
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 13
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV113
+#act
+ChangeItemName -1 通天魔坠.LV114
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 14
+goto @升级魔坠属性100
+break
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV114
+#act
+ChangeItemName -1 通天魔坠.LV115
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 15
+goto @升级魔坠属性100
+break
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV115
+#act
+ChangeItemName -1 通天魔坠.LV116
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 16
+goto @升级魔坠属性100
+break
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV116
+#act
+ChangeItemName -1 通天魔坠.LV117
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 17
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV117
+#act
+ChangeItemName -1 通天魔坠.LV118
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 18
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV118
+#act
+ChangeItemName -1 通天魔坠.LV119
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 19
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV119
+#act
+ChangeItemName -1 通天魔坠.LV120
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 20
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV120
+#act
+ChangeItemName -1 通天魔坠.LV121
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 21
+goto @升级魔坠属性100
+break
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV121
+#act
+ChangeItemName -1 通天魔坠.LV122
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 22
+goto @升级魔坠属性100
+break
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV122
+#act
+ChangeItemName -1 通天魔坠.LV123
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 23
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV123
+#act
+ChangeItemName -1 通天魔坠.LV124
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 24
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV124
+#act
+ChangeItemName -1 通天魔坠.LV125
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 25
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV125
+#act
+ChangeItemName -1 通天魔坠.LV126
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 26
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV126
+#act
+ChangeItemName -1 通天魔坠.LV127
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 27
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV127
+#act
+ChangeItemName -1 通天魔坠.LV128
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 28
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV128
+#act
+ChangeItemName -1 通天魔坠.LV129
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 29
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV129
+#act
+ChangeItemName -1 通天魔坠.LV130
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 30
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV130
+#act
+ChangeItemName -1 通天魔坠.LV131
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 31
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV131
+#act
+ChangeItemName -1 通天魔坠.LV132
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 32
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV132
+#act
+ChangeItemName -1 通天魔坠.LV133
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 33
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV132
+#act
+ChangeItemName -1 通天魔坠.LV133
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 33
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV133
+#act
+ChangeItemName -1 通天魔坠.LV134
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 34
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV134
+#act
+ChangeItemName -1 通天魔坠.LV135
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 35
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV135
+#act
+ChangeItemName -1 通天魔坠.LV136
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 36
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV136
+#act
+ChangeItemName -1 通天魔坠.LV137
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 37
+goto @升级魔坠属性100
+break
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV137
+#act
+ChangeItemName -1 通天魔坠.LV138
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 38
+goto @升级魔坠属性100
+break
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV138
+#act
+ChangeItemName -1 通天魔坠.LV139
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 39
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV139
+#act
+ChangeItemName -1 通天魔坠.LV140
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 40
+goto @升级魔坠属性100
+break
+
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV140
+#act
+ChangeItemName -1 通天魔坠.LV141
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 41
+goto @升级魔坠属性100
+break
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV141
+#act
+ChangeItemName -1 通天魔坠.LV142
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 42
+goto @升级魔坠属性100
+break
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV142
+#act
+ChangeItemName -1 通天魔坠.LV143
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 43
+goto @升级魔坠属性100
+break
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV143
+#act
+ChangeItemName -1 通天魔坠.LV144
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 44
+goto @升级魔坠属性100
+break
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV144
+#act
+ChangeItemName -1 通天魔坠.LV145
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 45
+goto @升级魔坠属性100
+break
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV145
+#act
+ChangeItemName -1 通天魔坠.LV146
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 46
+goto @升级魔坠属性100
+break
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV146
+#act
+ChangeItemName -1 通天魔坠.LV147
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 47
+goto @升级魔坠属性100
+break
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV147
+#act
+ChangeItemName -1 通天魔坠.LV148
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 48
+goto @升级魔坠属性100
+break
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV148
+#act
+ChangeItemName -1 通天魔坠.LV149
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 49
+goto @升级魔坠属性100
+break
+#if
+EQUAL <$BOXITEM[2].NAME_G> 通天魔坠.LV149
+#act
+ChangeItemName -1 通天魔坠.LV150
+FORMULATION <$STR(N$通天魔坠刺杀魔次)>*100 N$通天魔坠刺杀魔次
+FORMULATION <$STR(N$通天魔坠金殇斩)>*100 N$通天魔坠金殇斩
+FORMULATION <$STR(N$通天魔坠战士机关枪)>*100 N$通天魔坠战士机关枪
+FORMULATION <$STR(N$通天魔坠野蛮)>*100 N$通天魔坠野蛮
+FORMULATION <$STR(N$通天魔坠烈火)>*100 N$通天魔坠烈火
+FORMULATION <$STR(N$通天魔坠修罗血魂阵)>*100 N$通天魔坠修罗血魂阵
+FORMULATION <$STR(N$通天魔坠熔岩烈剑)>*100 N$通天魔坠熔岩烈剑
+FORMULATION <$STR(N$通天魔坠群体雷电术)>*100 N$通天魔坠群体雷电术
+FORMULATION <$STR(N$通天魔坠焚土喷焰)>*100 N$通天魔坠焚土喷焰
+FORMULATION <$STR(N$通天魔坠梵天圣火)>*100 N$通天魔坠梵天圣火
+FORMULATION <$STR(N$通天魔坠冰咆哮)>*100 N$通天魔坠冰咆哮
+FORMULATION <$STR(N$通天魔坠炎龙降临)>*100 N$通天魔坠炎龙降临
+FORMULATION <$STR(N$通天魔坠元素混乱)>*100 N$通天魔坠元素混乱
+FORMULATION <$STR(N$通天魔坠灵魂火葫)>*100 N$通天魔坠灵魂火葫
+FORMULATION <$STR(N$通天魔坠天灵符爆)>*100 N$通天魔坠天灵符爆
+FORMULATION <$STR(N$通天魔坠骷髅伤害)>*100 N$通天魔坠骷髅伤害
+FORMULATION <$STR(N$通天魔坠火兽伤害)>*100 N$通天魔坠火兽伤害
+FORMULATION <$STR(N$通天魔坠圣兽伤害)>*100 N$通天魔坠圣兽伤害
+FORMULATION <$STR(N$通天魔坠石灵伤害)>*100 N$通天魔坠石灵伤害
+FORMULATION <$STR(N$通天魔坠蛊毒术)>*100 N$通天魔坠蛊毒术
+FORMULATION <$STR(N$通天魔坠幽龙镇魂)>*100 N$通天魔坠幽龙镇魂
+MOV N$通天魔坠减伤 50
+goto @升级魔坠属性100
+break
+[@升级魔坠属性100]
+#if
+#act
+SetCustomItemText -1 <IMG:1148:0>
+SetCustomItemAbil -1 0 0 241
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 5 <$STR(N$通天魔坠刺杀魔次)> <$STR(N$通天魔坠刺杀魔次)>
+SetCustomItemAbil -1 1 0 241
+SetCustomItemAbil -1 1 1 8
+SetCustomItemAbil -1 1 2 1
+SetCustomItemAbil -1 1 3 0
+SetCustomItemValueEX -1 1 = 7 <$STR(N$通天魔坠金殇斩)> <$STR(N$通天魔坠金殇斩)>
+SetCustomItemAbil -1 2 0 241
+SetCustomItemAbil -1 2 1 8
+SetCustomItemAbil -1 2 2 2
+SetCustomItemAbil -1 2 3 0
+SetCustomItemValueEX -1 2 = 65 <$STR(N$通天魔坠战士机关枪)> <$STR(N$通天魔坠战士机关枪)>
+SetCustomItemAbil -1 3 0 241
+SetCustomItemAbil -1 3 1 8
+SetCustomItemAbil -1 3 2 3
+SetCustomItemAbil -1 3 3 0
+SetCustomItemValueEX -1 3 = 8 <$STR(N$通天魔坠野蛮)> <$STR(N$通天魔坠野蛮)>
+SetCustomItemAbil -1 4 0 241
+SetCustomItemAbil -1 4 1 8
+SetCustomItemAbil -1 4 2 4
+SetCustomItemAbil -1 4 3 0
+SetCustomItemValueEX -1 4 = 6 <$STR(N$通天魔坠烈火)> <$STR(N$通天魔坠烈火)>
+SetCustomItemAbil -1 4 0 241
+SetCustomItemAbil -1 4 1 8
+SetCustomItemAbil -1 4 2 4
+SetCustomItemAbil -1 4 3 0
+SetCustomItemValueEX -1 4 = 200 <$STR(N$通天魔坠修罗血魂阵)> <$STR(N$通天魔坠修罗血魂阵)>
+SetCustomItemAbil -1 5 0 241
+SetCustomItemAbil -1 5 1 8
+SetCustomItemAbil -1 5 2 5
+SetCustomItemAbil -1 5 3 0
+SetCustomItemValueEX -1 5 = 306 <$STR(N$通天魔坠熔岩烈剑)> <$STR(N$通天魔坠熔岩烈剑)>
+
+SetCustomItemAbil -1 6 0 241
+SetCustomItemAbil -1 6 1 8
+SetCustomItemAbil -1 6 2 6
+SetCustomItemAbil -1 6 3 0
+SetCustomItemValueEX -1 6 = 1 <$STR(N$通天魔坠群体雷电术)> <$STR(N$通天魔坠群体雷电术)>
+
+SetCustomItemAbil -1 7 0 241
+SetCustomItemAbil -1 7 1 8
+SetCustomItemAbil -1 7 2 7
+SetCustomItemAbil -1 7 3 0
+SetCustomItemValueEX -1 7 = 66 <$STR(N$通天魔坠焚土喷焰)> <$STR(N$通天魔坠焚土喷焰)>
+
+
+
+SetCustomItemAbil -1 8 0 241
+SetCustomItemAbil -1 8 1 8
+SetCustomItemAbil -1 8 2 8
+SetCustomItemAbil -1 8 3 0
+SetCustomItemValueEX -1 8 = 2 <$STR(N$通天魔坠梵天圣火)> <$STR(N$通天魔坠梵天圣火)>
+
+
+SetCustomItemAbil -1 9 0 241
+SetCustomItemAbil -1 9 1 8
+SetCustomItemAbil -1 9 2 9
+SetCustomItemAbil -1 9 3 0
+SetCustomItemValueEX -1 9 = 3 <$STR(N$通天魔坠冰咆哮)> <$STR(N$通天魔坠冰咆哮)>
+
+SetCustomItemAbil -1 10 0 241
+SetCustomItemAbil -1 10 1 8
+SetCustomItemAbil -1 10 2 10
+SetCustomItemAbil -1 10 3 0
+SetCustomItemValueEX -1 10 = 203 <$STR(N$通天魔坠炎龙降临)> <$STR(N$通天魔坠炎龙降临)>
+
+SetCustomItemAbil -1 11 0 241
+SetCustomItemAbil -1 11 1 8
+SetCustomItemAbil -1 11 2 11
+SetCustomItemAbil -1 11 3 0
+SetCustomItemValueEX -1 11 = 307 <$STR(N$通天魔坠元素混乱)> <$STR(N$通天魔坠元素混乱)>
+
+SetCustomItemAbil -1 12 0 241
+SetCustomItemAbil -1 12 1 8
+SetCustomItemAbil -1 12 2 12
+SetCustomItemAbil -1 12 3 0
+SetCustomItemValueEX -1 12 = 9 <$STR(N$通天魔坠灵魂火葫)> <$STR(N$通天魔坠灵魂火葫)>
+
+SetCustomItemAbil -1 13 0 241
+SetCustomItemAbil -1 13 1 8
+SetCustomItemAbil -1 13 2 13
+SetCustomItemAbil -1 13 3 0
+SetCustomItemValueEX -1 13 = 67 <$STR(N$通天魔坠天灵符爆)> <$STR(N$通天魔坠天灵符爆)>
+
+SetCustomItemAbil -1 14 0 241
+SetCustomItemAbil -1 14 1 8
+SetCustomItemAbil -1 14 2 14
+SetCustomItemAbil -1 14 3 0
+SetCustomItemValueEX -1 14 = 11 <$STR(N$通天魔坠骷髅伤害)> <$STR(N$通天魔坠骷髅伤害)>
+
+
+SetCustomItemAbil -1 15 0 241
+SetCustomItemAbil -1 15 1 8
+SetCustomItemAbil -1 15 2 15
+SetCustomItemAbil -1 15 3 0
+SetCustomItemValueEX -1 15 = 248 <$STR(N$通天魔坠火兽伤害)> <$STR(N$通天魔坠火兽伤害)>
+
+SetCustomItemAbil -1 16 0 241
+SetCustomItemAbil -1 16 1 8
+SetCustomItemAbil -1 16 2 16
+SetCustomItemAbil -1 16 3 0
+SetCustomItemValueEX -1 16 = 251 <$STR(N$通天魔坠圣兽伤害)> <$STR(N$通天魔坠圣兽伤害)>
+
+SetCustomItemAbil -1 17 0 241
+SetCustomItemAbil -1 17 1 8
+SetCustomItemAbil -1 17 2 17
+SetCustomItemAbil -1 17 3 0
+SetCustomItemValueEX -1 17 = 318 <$STR(N$通天魔坠石灵伤害)> <$STR(N$通天魔坠石灵伤害)>
+
+
+SetCustomItemAbil -1 18 0 241
+SetCustomItemAbil -1 18 1 8
+SetCustomItemAbil -1 18 2 18
+SetCustomItemAbil -1 18 3 0
+SetCustomItemValueEX -1 18 = 10 <$STR(N$通天魔坠蛊毒术)> <$STR(N$通天魔坠蛊毒术)>
+
+
+SetCustomItemAbil -1 19 0 241
+SetCustomItemAbil -1 19 1 8
+SetCustomItemAbil -1 19 2 19
+SetCustomItemAbil -1 19 3 0
+SetCustomItemValueEX -1 19 = 206 <$STR(N$通天魔坠幽龙镇魂)> <$STR(N$通天魔坠幽龙镇魂)>
+
+SetCustomItemAbil -1 20 0 241
+SetCustomItemAbil -1 20 1 8
+SetCustomItemAbil -1 20 2 20
+SetCustomItemAbil -1 20 3 0
+SetCustomItemValueEX -1 20 = 63 <$STR(N$通天魔坠战士机关枪)> <$STR(N$通天魔坠战士机关枪)>
+SetCustomItemAbil -1 21 0 241
+SetCustomItemAbil -1 21 1 8
+SetCustomItemAbil -1 21 2 21
+SetCustomItemAbil -1 21 3 0
+SetCustomItemValueEX -1 21 = 64 <$STR(N$通天魔坠战士机关枪)> <$STR(N$通天魔坠战士机关枪)>
+SetCustomItemAbil -1 22 0 241
+SetCustomItemAbil -1 22 1 8
+SetCustomItemAbil -1 22 2 22
+SetCustomItemAbil -1 22 3 0
+SetCustomItemValueEX -1 22 = 6 <$STR(N$通天魔坠烈火)> <$STR(N$通天魔坠烈火)>
+
+SetNewItemValue -1 2 = N$通天魔坠减伤
+SetNewItemValue -1 3 = N$通天魔坠减伤
+UpdateItem boxitem2
+messagebox 升级成功

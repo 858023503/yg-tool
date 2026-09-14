@@ -1,0 +1,76 @@
+[@超武启动啊]
+{
+#if
+#ACT
+#say
+\ \ \ \ \ \
+\     <◇【元歌终极超武】/FCOLOR=89>
+\ \
+\     <小伙子来选择你要启动的超级武器，启动后是无敌穿怪的哦/FCOLOR=250>
+\ \
+\     <核弹来袭：12×12范围秒杀，消耗/FCOLOR=253> <166杀怪点/FCOLOR=254>
+\     <点击启动 →/@元歌核弹>
+\ \
+\     <闪电风暴：20×20范围秒杀，消耗/FCOLOR=253> <266杀怪点/FCOLOR=254>
+\     <点击启动 →/@元歌闪电>
+\ \
+\     <加特林：兑换后为永久技能，开启后即可持续造成伤害，消耗/FCOLOR=253> <999杀怪点/FCOLOR=254>
+\     <本身伤害不高但是可以触发别的效果，越后期越厉害，但是可能会导致特效太多卡死，后期谨慎开启/FCOLOR=253>
+\     <前期兑换可以全自动刷杀怪点/FCOLOR=253>
+\     <点击兑换 →/@元歌加特林>
+\
+
+[@元歌核弹]
+#IF
+SMALL U<$str(N$元歌杀怪点)> 166
+#ACT
+MESSAGEBOX 杀怪点不足！需要166杀怪点才能启动核弹来袭！
+BREAK
+
+#IF
+LARGE U<$str(N$元歌杀怪点)> 165
+#ACT
+DEC U<$str(N$元歌杀怪点)> 166
+#CALL [\元歌脚本\各种触发\元歌核弹来袭.txt] @元歌核弹来袭
+
+[@元歌闪电]
+#IF
+SMALL U<$str(N$元歌杀怪点)> 266
+#ACT
+MESSAGEBOX 杀怪点不足！需要266杀怪点才能启动闪电风暴！
+BREAK
+
+#IF
+LARGE U<$str(N$元歌杀怪点)> 265
+#ACT
+DEC U<$str(N$元歌杀怪点)> 266
+#CALL [\元歌脚本\各种触发\元歌闪电风暴.txt] @元歌闪电风暴
+
+; ★★★ 加特林改成一次性兑换 ★★★
+[@元歌加特林]
+#IF
+CheckVAR HUMAN 元歌加特林点 = 1
+#ACT
+MESSAGEBOX 你已经兑换过加特林了！
+BREAK
+
+#IF
+CHECKSKILL 旋转吧加特林 = 3
+#ACT
+MESSAGEBOX 你已经学会加特林了！
+BREAK
+
+#IF
+LARGE U<$str(N$元歌杀怪点)> 998
+#ACT
+DEC U<$str(N$元歌杀怪点)> 999
+CalcVAR HUMAN 元歌加特林点 = 1
+SaveVAR HUMAN 元歌加特林点 ..\QuestDiary\元歌脚本\元歌群服点.txt
+ADDSKILL 旋转吧加特林 3
+MESSAGEBOX 加特林兑换成功！请在开关特效中使用！
+GuildNoticeMsg 241 161 无敌肝帝【<$USERNAME>】兑换了加特林，枪林弹雨，横扫千军！
+GOTO @超武启动啊
+#ELSEACT
+MESSAGEBOX 杀怪点不足！需要999杀怪点才能兑换加特林！
+BREAK
+}

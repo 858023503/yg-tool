@@ -1,0 +1,35 @@
+[@main]
+#IF
+#act
+OPENMERCHANTBIGDLG 5 889 1 4 -15 -52 1 560 0 1
+#say
+<&playimg:68:2969:12:130:45:80:0>
+<&playimg:68:2993:12:130:455:247:0>
+<&IMGEX:5:886:887:888:420:340|需要150个巨翼魔王精血/@合成传送戒指>
+<&ImgEx:5:1308:1308:1308:150:340|充值积分2000可直接兑换^白嫖可以蹲城主有几率爆出传送^必爆精血/@购买传送>
+
+[@合成传送戒指]
+#if
+not CHECKITEM 巨翼魔王精血 150
+#act
+messagebox 材料不足
+break
+#if
+CHECKITEM 巨翼魔王精血 150
+#act
+take 巨翼魔王精血 150
+give 传送戒指
+messagebox 恭喜你合成成功
+
+
+[@购买传送]
+#if
+checkgamepoint < 2000
+#act
+messagebox 积分不够
+break
+#if
+checkgamepoint > 1999
+#act
+gamepoint - 2000
+GIVE 传送戒指

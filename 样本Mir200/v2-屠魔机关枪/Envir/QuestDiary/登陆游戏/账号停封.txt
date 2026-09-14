@@ -1,0 +1,38 @@
+[@账号停封]
+{
+
+
+;密码
+
+#if
+CheckTextList ..\..\..\..\通区文件\账号停封\机器码.txt <$MACHINEID>
+#act
+sendmsg 6 账号已被冻结如有疑问联系管理
+ChangeState 6 9999999
+KICK
+#if
+CheckTextList ..\..\..\..\通区文件\账号停封\账号.txt <$USERID>
+#act
+sendmsg 6 账号已被冻结如有疑问联系管理
+ChangeState 6 9999999
+KICK
+#if
+CheckTextList ..\..\..\..\通区文件\账号停封\昵称.txt <$USERNAME>
+#act
+sendmsg 6 账号已被冻结如有疑问联系管理
+ChangeState 6 9999999
+KICK
+#if
+CheckTextList ..\..\..\..\通区文件\账号停封\IP地址.txt <$STR(S$登陆脚本IP地址)>
+#act
+sendmsg 6 账号已被冻结如有疑问联系管理
+ChangeState 6 9999999
+KICK
+
+#if
+CheckTextList ..\..\..\..\通区文件\账号停封\微信openid.txt <$STR(T29)>
+#act
+sendmsg 6 账号已被冻结如有疑问联系管理
+ChangeState 6 9999999
+KICK
+}

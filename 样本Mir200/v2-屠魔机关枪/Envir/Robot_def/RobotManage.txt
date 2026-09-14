@@ -1,0 +1,1117 @@
+[@请勿开挂]
+SENDMSG 0 请勿开挂,每小时人工审查一次发现后清除账号数据
+SENDMSG 0 请勿开挂,每小时人工审查一次发现后清除账号数据
+SENDMSG 0 请勿开挂,每小时人工审查一次发现后清除账号数据
+SENDMSG 0 请勿开挂,每小时人工审查一次发现后清除账号数据
+BREAK
+
+[@首次攻城检测]
+#IF
+large G25 1
+#act
+INC G25 1
+MOV G26 1
+SENDMSG 0 系统提示：20小时后所有行会集体攻城无需提交头像(首次攻城)
+SENDMSG 0 系统提示：20小时后所有行会集体攻城无需提交头像(首次攻城)
+SENDMSG 0 系统提示：20小时后所有行会集体攻城无需提交头像(首次攻城)
+SENDMSG 0 系统提示：20小时后所有行会集体攻城无需提交头像(首次攻城)
+BREAK
+#ELSEACT
+INC G25 1
+BREAK
+[@每日攻城检测]
+#IF
+EQUAL G26 1
+#act
+AddAttackSabukAll 0
+MOV G26 1
+MOV G20 0
+SENDMSG 0 ╔┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅╗
+SENDMSG 0 ┇ 所有行会已自动申请攻城！请提早建会,否则参加不了集体攻城！┇ 
+SENDMSG 0 ┇ 所有行会已自动申请攻城！每晚21点,自动开启全服大型攻城战！┇ 
+SENDMSG 0 ┇ 所有行会已自动申请攻城！每个行会都可以攻城!无需提交头像！┇ 
+SENDMSG 0 ╚┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅╝
+BREAK
+[@机器人恢复深渊进入次数]
+#IF
+
+#act
+Gmexecute 开始提问 @恢复深渊进入次数
+MOV G10 1
+
+
+[@子端刷草药1]
+#if
+#act
+MOV N$循环开始 0
+
+while N$循环开始 < 20
+GOTO @_@循环刷新所有地图采集变量1(<$Str(N$循环开始)>)
+INC N$循环开始 1
+endwhile
+
+[@_@循环刷新所有地图采集变量1]
+#IF
+#ACT
+;保存变量A100-A129即可
+MOV N$当前A变量处理 0
+INC N$当前A变量处理 <$scriptparam1>
+;A1=1
+
+
+;地图名字只要是2101-2130即可
+MOV N$当前地图名字编号 <$scriptparam1>
+;地图名字编号=1 取固定位置地图名字
+INC N$当前地图名字编号 1
+
+getrandomlinetext ..\QuestDiary\炼丹师草药\地图保存数据1.txt S$当前地图保存名字 <$Str(N$当前地图名字编号)>
+; sendmsg 0 当前地图名字编号<$Str(S$当前地图保存名字)>
+#IF
+#ACT
+MOV L$当前怪物清理名称处理 <$Str(A<$Str(N$当前A变量处理)>)>
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[0])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[1])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[2])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[3])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[4])> 255 1
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师普通草药.txt S$随机刷普通草药一
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师普通草药.txt S$随机刷普通草药二
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师高级草药.txt S$随机刷高级草药一
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师高级草药.txt S$随机刷高级草药二
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师特殊草药.txt S$随机刷特殊草药一
+MOV L$处理刷怪变量内容 [<$Str(S$随机刷普通草药一)>,<$Str(S$随机刷普通草药二)>,<$Str(S$随机刷高级草药一)>,<$Str(S$随机刷高级草药二)>,<$Str(S$随机刷特殊草药一)>]
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[0])> 500 3 100
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[1])> 500 3 100
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[2])> 500 2 191
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[3])> 500 2 191
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[4])> 500 1 245
+MOV A<$Str(N$当前A变量处理)> <$Str(L$处理刷怪变量内容)>
+; sendmsg 0 地图<$Str(S$当前地图保存名字)>刷新草药<$Str(L$处理刷怪变量内容)>
+
+
+
+
+
+[@子端刷草药2]
+#if
+#act
+MOV N$循环开始 0
+
+while N$循环开始 < 20
+GOTO @_@循环刷新所有地图采集变量2(<$Str(N$循环开始)>)
+INC N$循环开始 1
+endwhile
+
+[@_@循环刷新所有地图采集变量2]
+#IF
+#ACT
+;保存变量A100-A129即可
+MOV N$当前A变量处理 20
+INC N$当前A变量处理 <$scriptparam1>
+;A1=1
+
+
+;地图名字只要是2101-2130即可
+MOV N$当前地图名字编号 <$scriptparam1>
+;地图名字编号=1 取固定位置地图名字
+INC N$当前地图名字编号 1
+
+getrandomlinetext ..\QuestDiary\炼丹师草药\地图保存数据2.txt S$当前地图保存名字 <$Str(N$当前地图名字编号)>
+; sendmsg 0 当前地图名字编号<$Str(S$当前地图保存名字)>
+#IF
+#ACT
+MOV L$当前怪物清理名称处理 <$Str(A<$Str(N$当前A变量处理)>)>
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[0])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[1])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[2])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[3])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[4])> 255 1
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师普通草药.txt S$随机刷普通草药一
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师普通草药.txt S$随机刷普通草药二
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师高级草药.txt S$随机刷高级草药一
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师高级草药.txt S$随机刷高级草药二
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师特殊草药.txt S$随机刷特殊草药一
+MOV L$处理刷怪变量内容 [<$Str(S$随机刷普通草药一)>,<$Str(S$随机刷普通草药二)>,<$Str(S$随机刷高级草药一)>,<$Str(S$随机刷高级草药二)>,<$Str(S$随机刷特殊草药一)>]
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[0])> 500 3 100
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[1])> 500 3 100
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[2])> 500 2 191
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[3])> 500 2 191
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[4])> 500 1 245
+
+MOV A<$Str(N$当前A变量处理)> <$Str(L$处理刷怪变量内容)>
+
+
+[@子端刷草药3]
+#if
+#act
+MOV N$循环开始 0
+
+while N$循环开始 < 20
+GOTO @_@循环刷新所有地图采集变量3(<$Str(N$循环开始)>)
+INC N$循环开始 1
+endwhile
+
+[@_@循环刷新所有地图采集变量3]
+#IF
+#ACT
+;保存变量A100-A129即可
+MOV N$当前A变量处理 40
+INC N$当前A变量处理 <$scriptparam1>
+;A1=1
+
+
+;地图名字只要是2101-2130即可
+MOV N$当前地图名字编号 <$scriptparam1>
+;地图名字编号=1 取固定位置地图名字
+INC N$当前地图名字编号 1
+
+getrandomlinetext ..\QuestDiary\炼丹师草药\地图保存数据3.txt S$当前地图保存名字 <$Str(N$当前地图名字编号)>
+; sendmsg 0 当前地图名字编号<$Str(S$当前地图保存名字)>
+#IF
+#ACT
+MOV L$当前怪物清理名称处理 <$Str(A<$Str(N$当前A变量处理)>)>
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[0])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[1])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[2])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[3])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[4])> 255 1
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师普通草药.txt S$随机刷普通草药一
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师普通草药.txt S$随机刷普通草药二
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师高级草药.txt S$随机刷高级草药一
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师高级草药.txt S$随机刷高级草药二
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师特殊草药.txt S$随机刷特殊草药一
+MOV L$处理刷怪变量内容 [<$Str(S$随机刷普通草药一)>,<$Str(S$随机刷普通草药二)>,<$Str(S$随机刷高级草药一)>,<$Str(S$随机刷高级草药二)>,<$Str(S$随机刷特殊草药一)>]
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[0])> 500 3 100
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[1])> 500 3 100
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[2])> 500 2 191
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[3])> 500 2 191
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[4])> 500 1 245
+
+MOV A<$Str(N$当前A变量处理)> <$Str(L$处理刷怪变量内容)>
+
+
+
+
+
+[@子端刷草药4]
+#if
+#act
+MOV N$循环开始 0
+
+while N$循环开始 < 20
+GOTO @_@循环刷新所有地图采集变量4(<$Str(N$循环开始)>)
+INC N$循环开始 1
+endwhile
+
+[@_@循环刷新所有地图采集变量4]
+#IF
+#ACT
+;保存变量A100-A129即可
+MOV N$当前A变量处理 60
+INC N$当前A变量处理 <$scriptparam1>
+;A1=1
+
+
+;地图名字只要是2101-2130即可
+MOV N$当前地图名字编号 <$scriptparam1>
+;地图名字编号=1 取固定位置地图名字
+INC N$当前地图名字编号 1
+
+getrandomlinetext ..\QuestDiary\炼丹师草药\地图保存数据4.txt S$当前地图保存名字 <$Str(N$当前地图名字编号)>
+; sendmsg 0 当前地图名字编号<$Str(S$当前地图保存名字)>
+#IF
+#ACT
+MOV L$当前怪物清理名称处理 <$Str(A<$Str(N$当前A变量处理)>)>
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[0])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[1])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[2])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[3])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[4])> 255 1
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师普通草药.txt S$随机刷普通草药一
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师普通草药.txt S$随机刷普通草药二
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师高级草药.txt S$随机刷高级草药一
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师高级草药.txt S$随机刷高级草药二
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师特殊草药.txt S$随机刷特殊草药一
+MOV L$处理刷怪变量内容 [<$Str(S$随机刷普通草药一)>,<$Str(S$随机刷普通草药二)>,<$Str(S$随机刷高级草药一)>,<$Str(S$随机刷高级草药二)>,<$Str(S$随机刷特殊草药一)>]
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[0])> 500 3 100
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[1])> 500 3 100
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[2])> 500 2 191
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[3])> 500 2 191
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[4])> 500 1 245
+
+MOV A<$Str(N$当前A变量处理)> <$Str(L$处理刷怪变量内容)>
+
+
+
+
+
+[@子端刷草药5]
+#if
+#act
+MOV N$循环开始 0
+
+while N$循环开始 < 20
+GOTO @_@循环刷新所有地图采集变量5(<$Str(N$循环开始)>)
+INC N$循环开始 1
+endwhile
+
+[@_@循环刷新所有地图采集变量5]
+#IF
+#ACT
+;保存变量A100-A129即可
+MOV N$当前A变量处理 80
+INC N$当前A变量处理 <$scriptparam1>
+;A1=1
+
+
+;地图名字只要是2101-2130即可
+MOV N$当前地图名字编号 <$scriptparam1>
+;地图名字编号=1 取固定位置地图名字
+INC N$当前地图名字编号 1
+
+getrandomlinetext ..\QuestDiary\炼丹师草药\地图保存数据5.txt S$当前地图保存名字 <$Str(N$当前地图名字编号)>
+; sendmsg 0 当前地图名字编号<$Str(S$当前地图保存名字)>
+#IF
+#ACT
+MOV L$当前怪物清理名称处理 <$Str(A<$Str(N$当前A变量处理)>)>
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[0])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[1])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[2])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[3])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[4])> 255 1
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师普通草药.txt S$随机刷普通草药一
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师普通草药.txt S$随机刷普通草药二
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师高级草药.txt S$随机刷高级草药一
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师高级草药.txt S$随机刷高级草药二
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师特殊草药.txt S$随机刷特殊草药一
+MOV L$处理刷怪变量内容 [<$Str(S$随机刷普通草药一)>,<$Str(S$随机刷普通草药二)>,<$Str(S$随机刷高级草药一)>,<$Str(S$随机刷高级草药二)>,<$Str(S$随机刷特殊草药一)>]
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[0])> 500 3 100
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[1])> 500 3 100
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[2])> 500 2 191
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[3])> 500 2 191
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[4])> 500 1 245
+
+MOV A<$Str(N$当前A变量处理)> <$Str(L$处理刷怪变量内容)>
+
+
+[@子端刷草药6]
+#if
+#act
+MOV N$循环开始 0
+
+while N$循环开始 < 20
+GOTO @_@循环刷新所有地图采集变量6(<$Str(N$循环开始)>)
+INC N$循环开始 1
+endwhile
+
+[@_@循环刷新所有地图采集变量6]
+#IF
+#ACT
+;保存变量A100-A129即可
+MOV N$当前A变量处理 100
+INC N$当前A变量处理 <$scriptparam1>
+;A1=1
+
+
+;地图名字只要是2101-2130即可
+MOV N$当前地图名字编号 <$scriptparam1>
+;地图名字编号=1 取固定位置地图名字
+INC N$当前地图名字编号 1
+
+getrandomlinetext ..\QuestDiary\炼丹师草药\地图保存数据6.txt S$当前地图保存名字 <$Str(N$当前地图名字编号)>
+; sendmsg 0 当前地图名字编号<$Str(S$当前地图保存名字)>
+#IF
+#ACT
+MOV L$当前怪物清理名称处理 <$Str(A<$Str(N$当前A变量处理)>)>
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[0])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[1])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[2])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[3])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[4])> 255 1
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师普通草药.txt S$随机刷普通草药一
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师普通草药.txt S$随机刷普通草药二
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师高级草药.txt S$随机刷高级草药一
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师高级草药.txt S$随机刷高级草药二
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师特殊草药.txt S$随机刷特殊草药一
+MOV L$处理刷怪变量内容 [<$Str(S$随机刷普通草药一)>,<$Str(S$随机刷普通草药二)>,<$Str(S$随机刷高级草药一)>,<$Str(S$随机刷高级草药二)>,<$Str(S$随机刷特殊草药一)>]
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[0])> 500 3 100
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[1])> 500 3 100
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[2])> 500 2 191
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[3])> 500 2 191
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[4])> 500 1 245
+
+MOV A<$Str(N$当前A变量处理)> <$Str(L$处理刷怪变量内容)>
+
+[@子端刷草药7]
+#if
+#act
+MOV N$循环开始 0
+
+while N$循环开始 < 25
+GOTO @_@循环刷新所有地图采集变量7(<$Str(N$循环开始)>)
+INC N$循环开始 1
+endwhile
+
+[@_@循环刷新所有地图采集变量7]
+#IF
+#ACT
+;保存变量A100-A129即可
+MOV N$当前A变量处理 120
+INC N$当前A变量处理 <$scriptparam1>
+;A1=1
+
+
+;地图名字只要是2101-2130即可
+MOV N$当前地图名字编号 <$scriptparam1>
+;地图名字编号=1 取固定位置地图名字
+INC N$当前地图名字编号 1
+
+getrandomlinetext ..\QuestDiary\炼丹师草药\地图保存数据7.txt S$当前地图保存名字 <$Str(N$当前地图名字编号)>
+; sendmsg 0 当前地图名字编号<$Str(S$当前地图保存名字)>
+#IF
+#ACT
+MOV L$当前怪物清理名称处理 <$Str(A<$Str(N$当前A变量处理)>)>
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[0])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[1])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[2])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[3])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[4])> 255 1
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师普通草药.txt S$随机刷普通草药一
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师普通草药.txt S$随机刷普通草药二
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师高级草药.txt S$随机刷高级草药一
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师高级草药.txt S$随机刷高级草药二
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师特殊草药.txt S$随机刷特殊草药一
+MOV L$处理刷怪变量内容 [<$Str(S$随机刷普通草药一)>,<$Str(S$随机刷普通草药二)>,<$Str(S$随机刷高级草药一)>,<$Str(S$随机刷高级草药二)>,<$Str(S$随机刷特殊草药一)>]
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[0])> 500 3 100
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[1])> 500 3 100
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[2])> 500 2 191
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[3])> 500 2 191
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[4])> 500 1 245
+
+MOV A<$Str(N$当前A变量处理)> <$Str(L$处理刷怪变量内容)>
+
+
+
+
+[@子端刷草药8]
+#if
+#act
+MOV N$循环开始 0
+
+while N$循环开始 < 20
+GOTO @_@循环刷新所有地图采集变量8(<$Str(N$循环开始)>)
+INC N$循环开始 1
+endwhile
+
+[@_@循环刷新所有地图采集变量8]
+#IF
+#ACT
+;保存变量A100-A129即可
+MOV N$当前A变量处理 140
+INC N$当前A变量处理 <$scriptparam1>
+;A1=1
+
+
+;地图名字只要是2101-2130即可
+MOV N$当前地图名字编号 <$scriptparam1>
+;地图名字编号=1 取固定位置地图名字
+INC N$当前地图名字编号 1
+
+getrandomlinetext ..\QuestDiary\炼丹师草药\地图保存数据8.txt S$当前地图保存名字 <$Str(N$当前地图名字编号)>
+; sendmsg 0 当前地图名字编号<$Str(S$当前地图保存名字)>
+#IF
+#ACT
+MOV L$当前怪物清理名称处理 <$Str(A<$Str(N$当前A变量处理)>)>
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[0])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[1])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[2])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[3])> 255 1
+RandomKillMon <$Str(S$当前地图保存名字)> <$STR(L$当前怪物清理名称处理[4])> 255 1
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师普通草药.txt S$随机刷普通草药一
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师普通草药.txt S$随机刷普通草药二
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师高级草药.txt S$随机刷高级草药一
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师高级草药.txt S$随机刷高级草药二
+GetRandomText ..\QuestDiary\炼丹师草药\炼丹师特殊草药.txt S$随机刷特殊草药一
+MOV L$处理刷怪变量内容 [<$Str(S$随机刷普通草药一)>,<$Str(S$随机刷普通草药二)>,<$Str(S$随机刷高级草药一)>,<$Str(S$随机刷高级草药二)>,<$Str(S$随机刷特殊草药一)>]
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[0])> 500 3 100
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[1])> 500 3 100
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[2])> 500 2 191
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[3])> 500 2 191
+MONGENEX <$Str(S$当前地图保存名字)> 500 500 <$STR(L$处理刷怪变量内容[4])> 500 1 245
+
+MOV A<$Str(N$当前A变量处理)> <$Str(L$处理刷怪变量内容)>
+
+
+
+
+
+
+
+[@开区时间增加]
+#if
+#act
+INC G38 1
+
+
+
+
+
+[@世界BOSS检测]
+
+
+;死亡跑酷倒计时+返回安全区
+
+#if
+LARGE G14 0
+EQUAL G13 1
+#act
+DEC G14 1
+;全屏公告
+SendNewLineMsg 0 58 0 15 200 1 0 跑酷还有<$STR(G14)>秒开始,可获得大量金币
+
+
+#if
+EQUAL G14 0
+EQUAL G13 1
+#act
+SendNewLineMsg 0 58 0 15 200 10 1 死亡跑酷活动开始
+MOV G13 0
+MOV G15 1
+
+
+#if
+LARGE G15 0
+#act
+INC G15 1
+
+
+#if
+LARGE G15 180
+#act
+MOV G15 0
+
+
+
+
+;天降财报倒计时
+#if
+LARGE G30 0
+LARGE G34 240
+#act
+DEC G30 1
+DEC G34 1
+SendNewLineMsg 0 58 0 15 200 1 0 天降财宝还有<$STR(G30)>秒开始刷新
+
+#if
+EQUAL G35 1
+#act
+DEC G34 1
+
+#if
+EQUAL G34 0
+#act
+MOV G35 0
+Gmexecute 开始提问 @踢出天降财宝
+
+#if
+EQUAL G30 60
+#act
+THROWITEM RJD001 24 28 17 10元宝 1000|1 1 1
+THROWITEM RJD001 24 28 17 圣兽羽毛 10|1 1 1
+THROWITEM RJD001 24 28 17 1号幸运数字 10|1 1 1
+THROWITEM RJD001 24 28 17 2号幸运数字 10|1 1 1
+THROWITEM RJD001 24 28 17 3号幸运数字 10|1 1 1
+THROWITEM RJD001 24 28 17 4号幸运数字 10|1 1 1
+THROWITEM RJD001 24 28 17 5号幸运数字 10|1 1 1
+THROWITEM RJD001 24 28 17 6号幸运数字 10|1 1 1
+THROWITEM RJD001 24 28 17 7号幸运数字 10|1 1 1
+THROWITEM RJD001 24 28 17 8号幸运数字 10|1 1 1
+THROWITEM RJD001 24 28 17 9号幸运数字 10|1 1 1
+MOV G35 1
+
+
+
+[@子端幽灵骑士刷新]
+;1秒检测一次 幽灵骑士1小时刷新
+;宝箱争夺战 一个半小时
+#IF
+#ACT
+INC G9 1
+INC G11 1
+
+
+
+
+
+
+#IF
+EQUAL G9 600
+#ACT
+SCREENEFFECT 350 300 0 249 6 16 100 0 1
+SCREENEFFECT 130 80 0 255 19 5 100 0 1
+
+
+#IF
+EQUAL G9 1200
+#ACT
+SCREENEFFECT 350 300 0 249 6 16 100 0 0
+SCREENEFFECT 130 80 0 274 19 5 100 0 0
+#IF
+EQUAL G9 1800
+#ACT
+SCREENEFFECT 350 300 0 249 6 16 100 0 0
+SCREENEFFECT 130 80 0 293 19 5 100 0 0
+#IF
+EQUAL G9 2400
+#ACT
+SCREENEFFECT 350 300 0 249 6 16 100 0 0
+SCREENEFFECT 130 80 0 312 19 5 100 0 0
+#IF
+EQUAL G9 3000
+#ACT
+SCREENEFFECT 350 300 0 249 6 16 100 0 0
+SCREENEFFECT 130 80 0 331 19 5 100 0 0
+#IF
+EQUAL G9 3300
+#ACT
+SCREENEFFECT 350 300 0 249 6 16 100 0 0
+SCREENEFFECT 130 80 0 350 19 5 100 0 0
+#IF
+EQUAL G9 3540
+#ACT
+SCREENEFFECT 350 300 0 249 6 16 100 0 0
+SCREENEFFECT 130 80 0 369 19 5 100 0 0
+#IF
+EQUAL G9 3600
+#ACT
+MISSION 3 191 157
+PARAM1 191
+PARAM2 193
+PARAM3 5
+PARAM4 5
+MobPlace 幽灵冲锋兵
+MISSION 3 191 157
+PARAM1 191
+PARAM2 193
+PARAM3 5
+PARAM4 5
+MobPlace 幽灵先锋兵
+MISSION 3 191 157
+PARAM1 191
+PARAM2 193
+PARAM3 5
+PARAM4 5
+MobPlace 幽灵攻防兵
+MISSION 3 191 157
+PARAM1 191
+PARAM2 193
+PARAM3 5
+PARAM4 5
+MobPlace 幽灵骑士兵
+MISSION 3 191 157
+PARAM1 191
+PARAM2 193
+PARAM3 1
+PARAM4 5
+MobPlace 幽灵骑士
+;宝箱争夺战活动特效预加载
+SCREENEFFECT 9999 9999 59 0 20 3 100 0 1
+sendmsg 0 幽灵骑士坐标土城右下角 191,157
+sendmsg 0 幽灵骑士坐标土城右下角 191,157
+sendmsg 0 幽灵骑士坐标土城右下角 191,157
+sendmsg 0 幽灵骑士坐标土城右下角 191,157
+sendmsg 0 幽灵骑士坐标土城右下角 191,157
+sendmsg 0 幽灵骑士坐标土城右下角 191,157
+sendmsg 0 幽灵骑士坐标土城右下角 191,157
+sendmsg 0 幽灵骑士坐标土城右下角 191,157
+#if
+EQUAL G11 4200
+#act
+Gmexecute 开始提问 @宝箱争夺战20分钟提示
+;动画播放 宝箱活动20分钟后开始
+
+
+#if
+EQUAL G11 4800
+#act
+Gmexecute 开始提问 @宝箱争夺战10分钟提示
+;动画播放 宝箱活动10分钟后开始
+
+#if
+EQUAL G11 5300
+#act
+Gmexecute 开始提问 @宝箱争夺战1分钟提示
+;动画播放 宝箱活动1分钟后开始
+
+#if
+EQUAL G11 5400
+#act
+;活动开始
+Gmexecute 开始提问 @宝箱争夺战活动开始提示
+;刷怪
+MONGENEX baoxiang 24 35 争夺战宝箱 10 1 70
+
+;死亡跑到活动
+
+#if
+equal g11 18000
+#act
+;争夺战宝箱到点自动关闭,可能出现谁都没拿到宝箱活动列表不关闭
+mov G12 1
+
+
+[@子区客栈庭院活动]
+#if
+SMALL G36 30
+#act
+KillMapMon MAP081 50 58 100 * 0
+MONGENEX MAP081 50 58 客栈商贩 0 1 70
+SendNewLineMsg 0 58 0 15 200 1 0 客栈商贩已刷新,必爆2元真实充值
+INC G36 1
+Gmexecute 开始提问 @进入客栈庭院
+[@死亡赛道活动开启]
+#if
+#act
+sendmsg 0 跑酷活动已开启,进入赛场倒计时2分钟 
+MOV G13 1
+MOV G14 120
+MOV G15 0
+Gmexecute 开始提问 @死亡赛道活动通知
+
+;G13判断活动开始
+;G14活动开始倒计时
+;G14每秒递减
+;到0后开始活动
+
+
+[@称号地图刷新怪物]
+#if
+#act
+CLEARMAPMON fumo1
+CLEARMAPMON fumo2
+CLEARMAPMON fumo3
+CLEARMAPMON fumo4
+CLEARMAPMON fumo5
+CLEARMAPMON fumo6
+CLEARMAPMON fumo7
+CLEARMAPMON fumo8
+CLEARMAPMON fumo9
+CLEARMAPMON fumo10
+CLEARMAPMON fumo11
+CLEARMAPMON fumo12
+CLEARMAPMON fumo13
+CLEARMAPMON fumo14
+CLEARMAPMON fumo15
+CLEARMAPMON fumo16
+CLEARMAPMON fumo17
+CLEARMAPMON fumo18
+CLEARMAPMON fumo19
+CLEARMAPMON fumo20
+MONGENEX fumo1 37 50  狂龙战神 255 1  245
+MONGENEX fumo2 37 50  狂龙战神 255 1  245
+MONGENEX fumo3 37 50  狂龙战神 255 1  245
+MONGENEX fumo4 37 50  狂龙战神 255 1  245
+MONGENEX fumo5 37 50  狂龙战神 255 1  245
+MONGENEX fumo6 37 50  狂龙战神 255 1  245
+MONGENEX fumo7 37 50  狂龙战神 255 1  245
+MONGENEX fumo8 37 50  狂龙战神 255 1  245
+MONGENEX fumo9 37 50  狂龙战神 255 1  245
+MONGENEX fumo10 37 50  狂龙战神 255 1  245
+MONGENEX fumo11 37 50  狂龙战神 255 1  245
+MONGENEX fumo12 37 50  狂龙战神 255 1  245
+MONGENEX fumo13 37 50  狂龙战神 255 1  245
+MONGENEX fumo14 37 50  狂龙战神 255 1  245
+MONGENEX fumo15 37 50  狂龙战神 255 1  245
+MONGENEX fumo16 37 50  狂龙战神 255 1  245
+MONGENEX fumo17 37 50  狂龙战神 255 1  245
+MONGENEX fumo18 37 50  狂龙战神 255 1  245
+MONGENEX fumo19 37 50  狂龙战神 255 1  245
+MONGENEX fumo20 37 50  狂龙战神 255 1  245
+
+[@天降财宝开启]
+#if
+#act
+MOV G30 90
+Gmexecute 开始提问 @天降财宝通知
+MOV G34 300
+
+
+;母端
+[@母端世界BOSS检测]
+;G3 上古劫阵投放数量
+;G4 世界BOSS是否允许刷新
+;G5 BOSS刷新倒计时
+;G6=1 世界BOSS活动NPC显示是否开启活动
+;G7 九首寄生体死亡
+;G7=2 世界BOSS已刷新
+;G8 九首寄生体死亡倒计时
+
+;群雄聚会
+#if
+EQUAL G23 1
+;EQUAL <$GameDirectory> $常量_母端位置
+#act
+Gmexecute 开始提问 @群雄聚会给积分
+
+
+
+
+
+
+
+
+
+
+
+
+
+; #IF
+; EQUAL G5 0
+; #ACT
+; WriteConfigFileItem ..\..\..\..\通区文件\上古劫阵\上古劫阵数据处理.txt 上古劫阵 世界BOSS刷新倒计时 99
+; WriteConfigFileItem ..\..\..\..\通区文件\上古劫阵\上古劫阵数据处理.txt 上古劫阵 世界BOSS是否允许刷新 0
+; MONGENEX MAP053 62 27 九首寄生体 0 1
+; MOV G6 1
+
+
+; #IF
+; EQUAL G7 1
+; #ACT
+; INC G8 1
+; ;如果人物杀死怪物退出游戏会导致世界BOSS无法刷新以下代码自动刷
+; #IF
+; LARGE G8 15
+; CheckMapMonCount huanggong = 0
+; #ACT
+; MONGENEX huanggong <$STR(G1)> <$STR(G2)> 北冥九首深渊龙 0 1
+; MOV G7 2
+; MOV G8 0
+; sendmsg 0 系统刷怪北冥九首深渊龙
+
+; #IF
+; EQUAL G7 2
+; CheckMapMonCount huanggong = 0
+; #ACT
+; SENDMSG 0 北冥九首深渊龙被干死了
+; MOV G6 0
+; mov G7 0
+; MOV U68 0
+; SortHumVarToListEx 伤害值 ..\..\..\..\通区文件\世界BOSS\世界BOSS数据保存.txt 1 ..\..\..\..\通区文件\世界BOSS\排序后世界BOSS数据保存.txt 1 
+; THROWITEM 3 177 129 5 回城石 1|60
+;全服公告
+
+; #iF
+; small G3 999
+; EQUAL N$可以刷新世界BOSS处理 1
+; #ACT
+; MOV N$可以刷新世界BOSS处理 0
+; ClearNameList ..\..\..\..\通区文件\上古劫阵\刷BOSS变量处理.txt
+; addtextlist ..\..\..\..\通区文件\上古劫阵\刷BOSS变量处理.txt <$HOUR>-<$MINUTE>
+
+; #iF
+; LARGE G3 999
+; #ACT
+; MOV G3 0
+
+; [@其他区提示处理]
+; #iF
+; checkcontainstext <$SERVERNMAE> 跨区战场
+; #ACT
+; break
+
+; #IF
+; checktextlist ..\..\..\..\通区文件\上古劫阵\刷BOSS变量处理.txt <$Str(A101)>
+; #ACT
+; BREAK
+; #ELSEACT
+; getrandomlinetext ..\..\..\..\通区文件\上古劫阵\刷BOSS变量处理.txt A101 1
+; SendNewLineMsg 0 251 0 15 100 10 0 你是个逗逼
+
+
+
+
+;活动开始通区文件放内容G22给1 子端读取内容后通知玩家活动开始这里子端有个判断通知一次就不通知了 G22=1后每秒+1 10秒后删除童趣文件内容
+;活动结束 童趣文件写入活动一结束 子端判断后删除通知判断
+
+
+
+[@子端发布大喇叭]
+#if
+#ACT
+
+GetRandomText ..\QuestDiary\全服公告\大喇叭.txt S$发布大喇叭内容 0
+#if
+NOT EQUAL <$str(S$发布大喇叭内容)>
+#ACT
+GuildNoticeMsg 70 0 <$STR(S$发布大喇叭内容)>
+CLEARNAMELIST ..\QuestDiary\全服公告\大喇叭.txt 0
+mov S$发布大喇叭内容
+
+
+#if
+#ACT
+GetRandomText ..\QuestDiary\全服公告\公屏.txt S$发布大喇叭内容 0
+#if
+NOT EQUAL <$str(S$发布大喇叭内容)>
+#ACT
+SendNewLineMsg 0 251 0 15 200 10 1 <$STR(S$发布大喇叭内容)>
+CLEARNAMELIST ..\QuestDiary\全服公告\公屏.txt 0
+mov S$发布大喇叭内容
+
+
+#if
+GetStringPosEX ..\QuestDiary\执行代码\执行代码.txt 未执行的代码 N$未执行代码的行数 S$未执行代码的内容 0
+#act
+EXTRACTSTRING ~ S$未执行代码的内容 S$没用的代码 S$时间 S$游戏名字 S$执行类型 S$数字
+;程序读取数据库内容 写入到指定文件 程序读取 执行后删除之前的内容
+#if
+EQUAL S$执行类型 增加元宝
+#act
+;MOV S$执行类型
+Gmexecute 元宝 <$STR(S$游戏名字)> + S$数字
+DelTextList ..\QuestDiary\执行代码\执行代码.txt S$未执行代码的内容
+MOV S$执行类型
+sendmsg 5 群发言奖励已发放
+[@子端充值提示]
+#IF
+#act
+GetRandomText ..\QuestDiary\全服公告\充值提示.txt S$发布充值提示内容 0
+GetRandomText ..\QuestDiary\全服公告\充值1000提示.txt S$发布充值1000提示内容 0
+#IF
+not equal S$发布充值提示内容
+#act
+SendNewLineMsg 0 251 0 15 200 10 1 <$STR(S$发布充值提示内容)>
+CLEARNAMELIST ..\QuestDiary\全服公告\充值提示.txt 0
+mov S$发布充值提示内容
+break
+
+#if
+not equal S$发布充值1000提示内容
+#act
+SendNewLineMsg 0 251 0 15 200 20 1 <$STR(S$发布充值1000提示内容)>
+DelTextListLine ..\QuestDiary\全服公告\充值1000提示.txt 0
+mov S$发布充值1000提示内容
+Gmexecute 开始提问 @充值给传仙盲盒
+
+
+
+
+[@群雄聚会活动开始]
+#if
+#act
+SendNewLineMsg 0 251 0 15 200 15 1 群雄聚会活动已开启,参加活动每秒增加5元宝
+MOV G23 1
+mov G29 1
+
+[@群雄聚会活动结束]
+#if
+#act
+MOV G23 0
+Gmexecute 开始提问 @群雄聚会活动结束
+SendNewLineMsg 0 251 0 15 200 15 1 群雄聚会活动结束
+MOV G28 1
+MOV G37 0
+; CLEARMAPMON huanggong1
+; KillMapMon huanggong1 27 31 100 * 0
+; SortHumVarToListEx 伤害值 ..\..\..\..\通区文件\世界BOSS\世界BOSS数据保存.txt 1 ..\..\..\..\通区文件\世界BOSS\排序后世界BOSS数据保存.txt 1 
+; Gmexecute 开始提问 @世界BOSS积分给与
+
+
+
+[@子端群雄争霸活动开始公告]
+#if
+#ACT
+SendNewLineMsg 0 251 0 15 200 15 1 群雄聚会活动已开启,参加活动每秒增加5元宝,活动持续1800秒
+Gmexecute 开始提问 @群雄聚会通知
+
+
+[@子区全服持续通知]
+#if
+#act
+GetRandomText ..\..\..\..\通区文件\大喇叭\全服持续公告.txt S$全服持续公告
+#if
+NOT EQUAL <$str(S$全服持续公告)>
+#ACT
+SendNewLineMsg 0 58 0 15 200 10 1 <$STR(S$全服持续公告)>
+MOV S$全服持续公告
+[@子区更新版本]
+#if
+#act
+GetRandomText ..\..\..\..\通区文件\大喇叭\版本号更新内容.txt S$版本更新内容
+#if
+NOT EQUAL <$str(S$版本更新内容)>
+#ACT
+SendNewLineMsg 0 58 0 15 200 10 1 <$STR(S$版本更新内容)>
+MOV S$版本更新内容
+
+[@更新版本天降财宝活动]
+#if
+EQUAL G27 1
+#act
+SendNewLineMsg 0 58 0 15 200 10 1 藏宝室物品已刷新
+THROWITEM RJD001 24 28 17 10元宝 30|1 1 1
+THROWITEM RJD001 24 28 17 战灵法相进化石 10|1 1 1
+THROWITEM RJD001 24 28 17 龙珠入场卷 1|1 1 1
+THROWITEM RJD001 24 28 17 蛛魔猎魂入场卷 1|1 1 1
+THROWITEM RJD001 24 28 17 邪灵猎魂入场卷 1|1 1 1
+THROWITEM RJD001 24 28 17 石魔猎魂入场卷 1|1 1 1
+THROWITEM RJD001 24 28 17 幽魂能量护身符 1|1 1 1
+THROWITEM RJD001 24 28 17 深渊地图入场卷 1|1 1 1
+THROWITEM RJD001 24 28 17 天道解封卷 1|1 1 1
+THROWITEM RJD001 24 28 17 初级强化水晶 1|1 1 1
+THROWITEM RJD001 24 28 17 中级强化水晶 1|1 1 1
+THROWITEM RJD001 24 28 17 高级强化水晶 1|1 1 1
+THROWITEM RJD001 24 28 17 强化保护器 1|1 1 1
+THROWITEM RJD001 24 28 17 强化转移器 1|1 1 1
+THROWITEM RJD001 24 28 17 洗炼锁定器 100|1 1 1
+THROWITEM RJD001 24 28 17 一大陆转生水晶 1|1 1 1
+THROWITEM RJD001 24 28 17 二大陆转生水晶 1|1 1 1
+THROWITEM RJD001 24 28 17 三大陆转生水晶 1|1 1 1
+THROWITEM RJD001 24 28 17 四大陆转生水晶 1|1 1 1
+THROWITEM RJD001 24 28 17 五大陆转生水晶 1|1 1 1
+THROWITEM RJD001 24 28 17 十二灵兽首【鼠】 10|1 1 1
+THROWITEM RJD001 24 28 17 十二灵兽首【牛】 10|1 1 1
+THROWITEM RJD001 24 28 17 十二灵兽首【虎】 10|1 1 1
+THROWITEM RJD001 24 28 17 十二灵兽首【兔】 10|1 1 1
+THROWITEM RJD001 24 28 17 十二灵兽首【龙】 10|1 1 1
+THROWITEM RJD001 24 28 17 十二灵兽首【蛇】 10|1 1 1
+THROWITEM RJD001 24 28 17 十二灵兽首【马】 10|1 1 1
+THROWITEM RJD001 24 28 17 十二灵兽首【羊】 10|1 1 1
+THROWITEM RJD001 24 28 17 十二灵兽首【猴】 10|1 1 1
+THROWITEM RJD001 24 28 17 十二灵兽首【鸡】 10|1 1 1
+THROWITEM RJD001 24 28 17 十二灵兽首【狗】 10|1 1 1
+THROWITEM RJD001 24 28 17 十二灵兽首【猪】 10|1 1 1
+THROWITEM RJD001 24 28 17 幸运之果 1|1 1 1
+THROWITEM RJD001 24 28 17 贪婪之果 1|1 1 1
+THROWITEM RJD001 24 28 17 真视之果 1|1 1 1
+THROWITEM RJD001 24 28 17 命运之果 1|1 1 1
+THROWITEM RJD001 24 28 17 聚财之果 1|1 1 1
+THROWITEM RJD001 24 28 17 初级修为魂晶 10|1 1 1
+THROWITEM RJD001 24 28 17 中级修为魂晶 10|1 1 1
+THROWITEM RJD001 24 28 17 高级修为魂晶 10|1 1 1
+THROWITEM RJD001 24 28 17 超级修为魂晶 10|1 1 1
+THROWITEM RJD001 24 28 17 少量金币袋 100|1 1 1
+THROWITEM RJD001 24 28 17 中量金币袋 100|1 1 1
+THROWITEM RJD001 24 28 17 大量金币袋 10|1 1 1
+THROWITEM RJD001 24 28 17 5元宝 1|1 1 1
+THROWITEM RJD001 24 28 17 10元宝 1|1 1 1
+THROWITEM RJD001 24 28 17 20元宝 1|1 1 1
+THROWITEM RJD001 24 28 17 30元宝 1|1 1 1
+THROWITEM RJD001 24 28 17 50元宝 1|1 1 1
+THROWITEM RJD001 24 28 17 极品攻击晶体 1|1 1 1
+THROWITEM RJD001 24 28 17 极品魔法晶体 1|1 1 1
+THROWITEM RJD001 24 28 17 极品道术晶体 1|1 1 1
+THROWITEM RJD001 24 28 17 极品防御晶体 1|1 1 1
+THROWITEM RJD001 24 28 17 极品魔御晶体 1|1 1 1
+THROWITEM RJD001 24 28 17 仙术结晶 1|1 1 1
+THROWITEM RJD001 24 28 17 爆率宝石 1|1 1 1
+GetRandomText ..\QuestDiary\装备名字\雪域卡片.txt S$雪域卡片
+THROWITEM RJD001 24 28 17 S$雪域卡片 1|1 1 1
+
+[@服务器更新对话框提示]
+#if
+#act
+GetRandomText ..\..\..\..\通区文件\大喇叭\服务器更新对话框提示.txt S$服务器更新对话框提示
+#if
+NOT EQUAL <$str(S$服务器更新对话框提示)>
+#ACT
+SENDMSG 0 <$STR(S$服务器更新对话框提示)>
+MOV S$服务器更新对话框提示
+
+[@自动使用周卡]
+#if
+
+#act
+Gmexecute 开始提问 @凌晨使用周卡
+
+
+[@幸运儿名字啊]
+#if
+#act
+Gmexecute 开始提问 @幸运儿
+[@服务端目录]
+#if
+#act
+ 
+
+[@龙之迷数刷新]
+
+
+
+[@八卦房刷怪]
+#if
+#act
+CLEARMAPMON bagua1
+CLEARMAPMON bagua2
+CLEARMAPMON bagua3
+CLEARMAPMON bagua4
+CLEARMAPMON bagua5
+CLEARMAPMON bagua6
+CLEARMAPMON bagua7
+CLEARMAPMON bagua8
+CLEARMAPMON bagua9
+CLEARMAPMON bagua10
+CLEARMAPMON bagua11
+CLEARMAPMON bagua12
+CLEARMAPMON bagua13
+CLEARMAPMON bagua14
+CLEARMAPMON bagua15
+CLEARMAPMON bagua16
+CLEARMAPMON bagua17
+CLEARMAPMON bagua18
+CLEARMAPMON bagua19
+CLEARMAPMON bagua20
+MONGENEX bagua1 12 14  金蛋 255 5  245
+MONGENEX bagua2 12 14  金蛋 255 5  245
+MONGENEX bagua3 12 14  金蛋 255 5  245
+MONGENEX bagua4 12 14  金蛋 255 5  245
+MONGENEX bagua5 12 14  金蛋 255 5  245
+MONGENEX bagua6 12 14  金蛋 255 5  245
+MONGENEX bagua7 12 14  金蛋 255 5  245
+MONGENEX bagua8 12 14  金蛋 255 5  245
+MONGENEX bagua9 12 14  金蛋 255 5  245
+MONGENEX bagua10 12 14  金蛋 255 5  245
+MONGENEX bagua11 12 14  金蛋 255 5  245
+MONGENEX bagua12 12 14  金蛋 255 5  245
+MONGENEX bagua13 12 14  金蛋 255 5  245
+MONGENEX bagua14 12 14  金蛋 255 5  245
+MONGENEX bagua15 12 14  金蛋 255 5  245
+MONGENEX bagua16 12 14  金蛋 255 5  245
+MONGENEX bagua17 12 14  金蛋 255 5  245
+MONGENEX bagua18 12 14  金蛋 255 5  245
+MONGENEX bagua19 12 14  金蛋 255 5  245
+MONGENEX bagua20 12 14  金蛋 255 5  245
+addtextlist ..\..\..\..\通区文件\大喇叭\大喇叭.txt 跨服奇门八卦金蛋已刷新~<$DATETIME>
+
+
+
+
+[@仙魔战场开始]
+
+
+[@仙魔战场结束]
+
+
+[@仙魔战场清空数据]
+#if
+#act
+MOV G32 0
+MOV G33 0
+
+
+
+[@聚宝盆开启]
+#if
+#act
+CLEARMAPMON jubaopen
+MONGENEX jubaopen 12 14  聚宝树妖 255 10  245
+MONGENEX jubaopen 12 14  聚宝树妖 255 10  245
+MONGENEX jubaopen 12 14  聚宝树妖 255 10  245
+MONGENEX jubaopen 12 14  聚宝树妖 255 10  245
+MONGENEX jubaopen 12 14  聚宝树妖 255 10  245
+MONGENEX jubaopen 12 14  聚宝树妖 255 10  245
+MONGENEX jubaopen 12 14  聚宝树妖 255 10  245
+MONGENEX jubaopen 12 14  聚宝树妖 255 10  245
+MONGENEX jubaopen 12 14  聚宝树妖 255 10  245
+MONGENEX jubaopen 12 14  聚宝树妖 255 10  245
+Gmexecute 开始提问 @聚宝盆提示

@@ -1,0 +1,337 @@
+[@main]
+#if
+#ACT
+OPENMERCHANTBIGDLG 3 1794 1 4 0 -150 1 390 5 0
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\ \
+<><我乃炼体尊者！精通五行八卦，阴阳之力/SCOLOR=254>\ \
+<><为了突破身体极限， 我这里准备了对身体淬体 让你身体变的更强/SCOLOR=254>\ \
+<><每种体质可提升10次，会有三种体质选择/SCOLOR=254><淬体条件：100天地结晶+20W元宝/SCOLOR=253>\ \ 
+<><最高为10层 淬体时 有几率失败 失败会掉落淬体等级/SCOLOR=22>\ \
+<><天魔之体/SCOLOR=251>  <每级提升伤害+1% 生命值+2%/SCOLOR=93>     <当前等级：><$STR(u12)>    <点击提升|200次保底当前<$STR(u52)>次/@天魔1>\ \
+<><元素之心/SCOLOR=251>  <每级提升所有技能伤害+2%/SCOLOR=251>       <当前等级：><$STR(u13)>    <点击提升|200次保底当前<$STR(u53)>次/@元素1>\ \
+<><斩仙问道/SCOLOR=251>  <每级爆率增加10%/SCOLOR=250>               <当前等级：><$STR(u14)>    <点击提升|200次保底当前<$STR(u54)>次/@斩仙1>\ \
+
+
+
+[@天魔1]
+#if
+equal U12 10
+#act
+MessageBox 当前天魔之体淬体已满层！
+break
+
+#if
+not checkitem 天地结晶 100
+#act
+MessageBox 你没有足够的天地结晶无法淬炼！
+break
+
+#if
+checkgamegold < 200000
+#act
+MessageBox 你没有足够的元宝无法淬炼！
+break
+
+#if
+EQUAL U52 200
+#act
+gamegold - 200000
+take 天地结晶 100
+RECYCFENGHAO 天魔之体LV.1
+RECYCFENGHAO 天魔之体LV.2
+RECYCFENGHAO 天魔之体LV.3
+RECYCFENGHAO 天魔之体LV.4
+RECYCFENGHAO 天魔之体LV.5
+RECYCFENGHAO 天魔之体LV.6
+RECYCFENGHAO 天魔之体LV.7
+RECYCFENGHAO 天魔之体LV.8
+RECYCFENGHAO 天魔之体LV.9
+givefenghao 天魔之体LV.10
+MessageBox 淬炼成功天魔之体大乘！
+BREAK
+
+#if
+large U12 1
+randomex 30 100
+#act
+goto @天魔失败掉级
+break
+
+#if
+large U12 1
+randomex 70 100
+#act
+goto @天魔失败不掉级
+break
+
+
+#if
+#act
+INC U52 1
+gamegold - 200000
+take 天地结晶 100
+inc U12 1
+RECYCFENGHAO 天魔之体LV.1
+RECYCFENGHAO 天魔之体LV.2
+RECYCFENGHAO 天魔之体LV.3
+RECYCFENGHAO 天魔之体LV.4
+RECYCFENGHAO 天魔之体LV.5
+RECYCFENGHAO 天魔之体LV.6
+RECYCFENGHAO 天魔之体LV.7
+RECYCFENGHAO 天魔之体LV.8
+RECYCFENGHAO 天魔之体LV.9
+givefenghao 天魔之体LV.<$STR(U12)>
+MessageBox 淬炼成功天魔之体濒临大乘又进一步！
+goto @main
+break
+
+[@天魔失败掉级]
+#if
+#act
+INC U52 1
+gamegold - 200000
+take 天地结晶 100
+dec U12 1
+RECYCFENGHAO 天魔之体LV.1
+RECYCFENGHAO 天魔之体LV.2
+RECYCFENGHAO 天魔之体LV.3
+RECYCFENGHAO 天魔之体LV.4
+RECYCFENGHAO 天魔之体LV.5
+RECYCFENGHAO 天魔之体LV.6
+RECYCFENGHAO 天魔之体LV.7
+RECYCFENGHAO 天魔之体LV.8
+RECYCFENGHAO 天魔之体LV.9
+givefenghao 天魔之体LV.<$STR(U12)>
+goto @main
+MessageBox 淬炼失败扣除材料，天魔淬炼等级-1
+break
+
+[@天魔失败不掉级]
+#if
+#act
+INC U52 1
+gamegold - 200000
+take 天地结晶 100
+MessageBox 淬炼失败扣除材料，天魔淬炼等级不变
+goto @main
+break
+
+
+[@元素1]
+#if
+equal U13 10
+#act
+MessageBox 当前元素之心淬体已满层！
+break
+
+#if
+not checkitem 天地结晶 100
+#act
+MessageBox 你没有足够的天地结晶无法淬炼！
+break
+
+#if
+checkgamegold < 200000
+#act
+MessageBox 你没有足够的元宝无法淬炼！
+break
+
+#if
+EQUAL U53 200
+#act
+gamegold - 200000
+take 天地结晶 100
+RECYCFENGHAO 元素之心LV.1
+RECYCFENGHAO 元素之心LV.2
+RECYCFENGHAO 元素之心LV.3
+RECYCFENGHAO 元素之心LV.4
+RECYCFENGHAO 元素之心LV.5
+RECYCFENGHAO 元素之心LV.6
+RECYCFENGHAO 元素之心LV.7
+RECYCFENGHAO 元素之心LV.8
+RECYCFENGHAO 元素之心LV.9
+givefenghao 元素之心LV.10
+MessageBox 淬炼成功元素之心大乘！
+BREAK
+
+#if
+large U13 1
+randomex 30 100
+#act
+goto @元素失败掉级
+break
+
+#if
+large U13 1
+randomex 70 100
+#act
+goto @元素失败不掉级
+break
+
+
+#if
+#act
+INC U53 1
+gamegold - 200000
+take 天地结晶 100
+inc U13 1
+RECYCFENGHAO 元素之心LV.1
+RECYCFENGHAO 元素之心LV.2
+RECYCFENGHAO 元素之心LV.3
+RECYCFENGHAO 元素之心LV.4
+RECYCFENGHAO 元素之心LV.5
+RECYCFENGHAO 元素之心LV.6
+RECYCFENGHAO 元素之心LV.7
+RECYCFENGHAO 元素之心LV.8
+RECYCFENGHAO 元素之心LV.9
+givefenghao 元素之心LV.<$STR(U13)>
+MessageBox 淬炼成功元素之心濒临大乘又进一步！
+goto @main
+break
+
+[@元素失败掉级]
+#if
+#act
+INC U53 1
+gamegold - 200000
+take 天地结晶 100
+dec U13 1
+RECYCFENGHAO 元素之心LV.1
+RECYCFENGHAO 元素之心LV.2
+RECYCFENGHAO 元素之心LV.3
+RECYCFENGHAO 元素之心LV.4
+RECYCFENGHAO 元素之心LV.5
+RECYCFENGHAO 元素之心LV.6
+RECYCFENGHAO 元素之心LV.7
+RECYCFENGHAO 元素之心LV.8
+RECYCFENGHAO 元素之心LV.9
+givefenghao 元素之心LV.<$STR(U13)>
+goto @main
+MessageBox 淬炼失败扣除材料，元素淬炼等级-1
+break
+
+[@元素失败不掉级]
+#if
+#act
+INC U53 1
+gamegold - 200000
+take 天地结晶 100
+MessageBox 淬炼失败扣除材料，元素淬炼等级不变
+goto @main
+break
+
+
+[@斩仙1]
+#if
+equal U14 10
+#act
+MessageBox 当前斩仙问道淬体已满层！
+break
+
+#if
+not checkitem 天地结晶 100
+#act
+MessageBox 你没有足够的天地结晶无法淬炼！
+break
+
+#if
+checkgamegold < 200000
+#act
+MessageBox 你没有足够的元宝无法淬炼！
+break
+
+#if
+EQUAL U54 200
+#act
+gamegold - 200000
+take 天地结晶 100
+RECYCFENGHAO 斩仙问道LV.1
+RECYCFENGHAO 斩仙问道LV.2
+RECYCFENGHAO 斩仙问道LV.3
+RECYCFENGHAO 斩仙问道LV.4
+RECYCFENGHAO 斩仙问道LV.5
+RECYCFENGHAO 斩仙问道LV.6
+RECYCFENGHAO 斩仙问道LV.7
+RECYCFENGHAO 斩仙问道LV.8
+RECYCFENGHAO 斩仙问道LV.9
+givefenghao 斩仙问道LV.10
+MessageBox 淬炼成功斩仙问道大乘！
+BREAK
+
+#if
+large U14 1
+randomex 30 100
+#act
+goto @斩仙失败掉级
+break
+
+#if
+large U14 1
+randomex 70 100
+#act
+goto @斩仙失败不掉级
+break
+
+
+#if
+#act
+INC U54 1
+gamegold - 200000
+take 天地结晶 100
+inc U14 1
+RECYCFENGHAO 斩仙问道LV.1
+RECYCFENGHAO 斩仙问道LV.2
+RECYCFENGHAO 斩仙问道LV.3
+RECYCFENGHAO 斩仙问道LV.4
+RECYCFENGHAO 斩仙问道LV.5
+RECYCFENGHAO 斩仙问道LV.6
+RECYCFENGHAO 斩仙问道LV.7
+RECYCFENGHAO 斩仙问道LV.8
+RECYCFENGHAO 斩仙问道LV.9
+givefenghao 斩仙问道LV.<$STR(U14)>
+MessageBox 淬炼成功斩仙问道濒临大乘又进一步！
+goto @main
+break
+
+[@斩仙失败掉级]
+#if
+#act
+INC U54 1
+gamegold - 200000
+take 天地结晶 100
+dec U14 1
+RECYCFENGHAO 斩仙问道LV.1
+RECYCFENGHAO 斩仙问道LV.2
+RECYCFENGHAO 斩仙问道LV.3
+RECYCFENGHAO 斩仙问道LV.4
+RECYCFENGHAO 斩仙问道LV.5
+RECYCFENGHAO 斩仙问道LV.6
+RECYCFENGHAO 斩仙问道LV.7
+RECYCFENGHAO 斩仙问道LV.8
+RECYCFENGHAO 斩仙问道LV.9
+givefenghao 斩仙问道LV.<$STR(U14)>
+goto @main
+MessageBox 淬炼失败扣除材料，斩仙淬炼等级-1
+break
+
+[@斩仙失败不掉级]
+#if
+#act
+INC U54 1
+gamegold - 200000
+take 天地结晶 100
+MessageBox 淬炼失败扣除材料，斩仙淬炼等级不变
+goto @main
+break
+
+
+
+
+
+
+
+
+
+

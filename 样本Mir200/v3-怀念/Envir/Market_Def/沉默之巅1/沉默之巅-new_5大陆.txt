@@ -1,0 +1,203 @@
+[@main]
+
+#IF
+#ACT
+	CloseBigDialogBox
+#SAY
+\ \
+沉默之巅获得<称号>！每五层更换，每层逐步增加<怪物伤害>！\ 
+需要不停<强大自身攻击>属性才能通关，每层收费<5积分>，共55层！\
+每5层为一个<结点>，下次进入是从<结点>进入不需要从第一层开始！\ \
+<01-05/SCOLOR=254>后卿<(登封造极)|^249#1.人物体力2%^249#2.人物魔力2%><06-10/SCOLOR=254>旱魃<(威震八方)|^249#1.人物体力5%^249#2.人物魔力5%><11-15/SCOLOR=254>将臣<(盖世无双)|^249#1.人物体力8%^249#2.人物魔力8%>\
+<16-20/SCOLOR=254>瀛勾<(君临天下)|^249#1.物理减伤2%^249#2.魔法减伤2%^249#3.人物体力10%^249#4.人物魔力10%><21-25/SCOLOR=254>罗刹<(武林至尊)|^249#1.物理减伤5%^249#2.魔法减伤5%^249#3.人物体力10%^249#4.人物魔力10%><26-30/SCOLOR=254>金刚<(天下无敌)|^249#1.物理减伤8%^249#2.魔法减伤8%^249#3.人物体力10%^249#4.人物魔力10%>\
+<31-35/SCOLOR=254>幽灵<(末日审判)|^249#1.物理减伤10%^249#2.魔法减伤10%^249#3.人物体力10%^249#4.人物魔力10%><36-40/SCOLOR=254>修罗<(乱世枭雄)|^249#1.忽视防御2%^249#2.伤害反弹2%^249#3.物理减伤10%^249#4.魔法减伤10%^249#5.人物体力10%^249#6.人物魔力10%><41-45/SCOLOR=254>邪神<(王者归来)|^249#1.忽视防御5%^249#2.伤害反弹5%^249#3.物理减伤10%^249#4.魔法减伤10%^249#5.人物体力10%^249#6.人物魔力10%>\
+<46-50/SCOLOR=254>万兽<(武圣帝君)|^249#1.忽视防御10%^249#2.伤害反弹10%^249#3.物理减伤10%^249#4.魔法减伤10%^249#5.人物体力10%^249#6.人物魔力10%><51-55/SCOLOR=254>沉默<(怀念沉默)|^249#1.致命一击10%^249#2.致命伤害10%^249#3.忽视防御10%^249#4.伤害反弹10%^249#5.物理减伤10%^249#6.魔法减伤10%^249#7.人物体力10%^249#8.人物魔力10% >       <确认进入|249#此地图禁止携带宠物/@沉默之巅> 
+
+
+
+
+[@沉默之巅]
+#IF
+	CHECKCREDITPOINT > 4
+#ACT
+	CREDITPOINT - 5
+	GOTO @沉默之巅进入八
+break
+#IF
+	CHECKGAMEGIRD > 4
+#ACT
+	GAMEGIRD - 5
+	GOTO @沉默之巅进入八
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:积分或者转区积分不足5点
+break
+
+
+[@沉默之巅进入八]
+#IF
+	CHECKFENGHAO 怀念沉默
+#ACT
+	MESSAGEBOX 您的称号已经达到终极无法进入了
+BREAK
+#IF
+	CHECKFENGHAO 武圣帝君
+#ACT
+	mov N$随机一倍层数 51
+	KILLSLAVE
+	MAPMove iqy<$STR(N$随机一倍层数)> 30 27 5
+	MOV N$通天塔一倍传送 <$STR(N$随机一倍层数)>
+	MOV N$通天塔一倍奖励 0
+	#CALL [\通天塔数据\通天塔一倍传送.txt] @检测一倍刷小怪50
+	SENDDELAYMSG 挑战倒计时[%s]后自动回城，传送下层将重新计时(限时10分钟) 600 250 1 @通天塔回城
+	GuildNoticeMsg 116 0 [系统]：勇士{“<$USERNAME>”|249:0:1}闯入{“沉默之巅”|70:0:1}期待他能满载而归！
+break
+#IF
+	CHECKFENGHAO 王者归来
+#ACT
+	mov N$随机一倍层数 46
+	KILLSLAVE
+	MAPMove iqy<$STR(N$随机一倍层数)> 30 27 5
+	MOV N$通天塔一倍传送 <$STR(N$随机一倍层数)>
+	MOV N$通天塔一倍奖励 0
+	#CALL [\通天塔数据\通天塔一倍传送.txt] @检测一倍刷小怪45
+	SENDDELAYMSG 挑战倒计时[%s]后自动回城，传送下层将重新计时(限时10分钟) 600 250 1 @通天塔回城
+	GuildNoticeMsg 116 0 [系统]：勇士{“<$USERNAME>”|249:0:1}闯入{“沉默之巅”|70:0:1}期待他能满载而归！
+break
+#IF
+	CHECKFENGHAO 乱世枭雄
+#ACT
+	mov N$随机一倍层数 41
+	KILLSLAVE
+	MAPMove iqy<$STR(N$随机一倍层数)> 30 27 5
+	MOV N$通天塔一倍传送 <$STR(N$随机一倍层数)>
+	MOV N$通天塔一倍奖励 0
+	#CALL [\通天塔数据\通天塔一倍传送.txt] @检测一倍刷小怪40
+	SENDDELAYMSG 挑战倒计时[%s]后自动回城，传送下层将重新计时(限时10分钟) 600 250 1 @通天塔回城
+	GuildNoticeMsg 116 0 [系统]：勇士{“<$USERNAME>”|249:0:1}闯入{“沉默之巅”|70:0:1}期待他能满载而归！
+break
+#IF
+	CHECKFENGHAO 末日审判
+#ACT
+	mov N$随机一倍层数 36
+	KILLSLAVE
+	MAPMove iqy<$STR(N$随机一倍层数)> 30 27 5
+	MOV N$通天塔一倍传送 <$STR(N$随机一倍层数)>
+	MOV N$通天塔一倍奖励 0
+	#CALL [\通天塔数据\通天塔一倍传送.txt] @检测一倍刷小怪35
+	SENDDELAYMSG 挑战倒计时[%s]后自动回城，传送下层将重新计时(限时10分钟) 600 250 1 @通天塔回城
+	GuildNoticeMsg 116 0 [系统]：勇士{“<$USERNAME>”|249:0:1}闯入{“沉默之巅”|70:0:1}期待他能满载而归！
+break
+#IF
+	CHECKFENGHAO 天下无敌
+#ACT
+	mov N$随机一倍层数 31
+	KILLSLAVE
+	MAPMove iqy<$STR(N$随机一倍层数)> 30 27 5
+	MOV N$通天塔一倍传送 <$STR(N$随机一倍层数)>
+	MOV N$通天塔一倍奖励 0
+	#CALL [\通天塔数据\通天塔一倍传送.txt] @检测一倍刷小怪30
+	SENDDELAYMSG 挑战倒计时[%s]后自动回城，传送下层将重新计时(限时10分钟) 600 250 1 @通天塔回城
+	GuildNoticeMsg 116 0 [系统]：勇士{“<$USERNAME>”|249:0:1}闯入{“沉默之巅”|70:0:1}期待他能满载而归！
+break
+#IF
+	CHECKFENGHAO 武林至尊
+#ACT
+	mov N$随机一倍层数 26
+	KILLSLAVE
+	MAPMove iqy<$STR(N$随机一倍层数)> 30 27 5
+	MOV N$通天塔一倍传送 <$STR(N$随机一倍层数)>
+	MOV N$通天塔一倍奖励 0
+	#CALL [\通天塔数据\通天塔一倍传送.txt] @检测一倍刷小怪25
+	SENDDELAYMSG 挑战倒计时[%s]后自动回城，传送下层将重新计时(限时10分钟) 600 250 1 @通天塔回城
+	GuildNoticeMsg 116 0 [系统]：勇士{“<$USERNAME>”|249:0:1}闯入{“沉默之巅”|70:0:1}期待他能满载而归！
+break
+#IF
+	CHECKFENGHAO 君临天下
+#ACT
+	mov N$随机一倍层数 21
+	KILLSLAVE
+	MAPMove iqy<$STR(N$随机一倍层数)> 30 27 5
+	MOV N$通天塔一倍传送 <$STR(N$随机一倍层数)>
+	MOV N$通天塔一倍奖励 0
+	#CALL [\通天塔数据\通天塔一倍传送.txt] @检测一倍刷小怪20
+	SENDDELAYMSG 挑战倒计时[%s]后自动回城，传送下层将重新计时(限时10分钟) 600 250 1 @通天塔回城
+	GuildNoticeMsg 116 0 [系统]：勇士{“<$USERNAME>”|249:0:1}闯入{“沉默之巅”|70:0:1}期待他能满载而归！
+break
+#IF
+	CHECKFENGHAO 盖世无双
+#ACT
+	mov N$随机一倍层数 16
+	KILLSLAVE
+	MAPMove iqy<$STR(N$随机一倍层数)> 30 27 5
+	MOV N$通天塔一倍传送 <$STR(N$随机一倍层数)>
+	MOV N$通天塔一倍奖励 0
+	#CALL [\通天塔数据\通天塔一倍传送.txt] @检测一倍刷小怪15
+	SENDDELAYMSG 挑战倒计时[%s]后自动回城，传送下层将重新计时(限时10分钟) 600 250 1 @通天塔回城
+	GuildNoticeMsg 116 0 [系统]：勇士{“<$USERNAME>”|249:0:1}闯入{“沉默之巅”|70:0:1}期待他能满载而归！
+break
+
+#IF
+	CHECKFENGHAO 威震八方
+#ACT
+	mov N$随机一倍层数 11
+	KILLSLAVE
+	MAPMove iqy<$STR(N$随机一倍层数)> 30 27 5
+	MOV N$通天塔一倍传送 <$STR(N$随机一倍层数)>
+	MOV N$通天塔一倍奖励 0
+	#CALL [\通天塔数据\通天塔一倍传送.txt] @检测一倍刷小怪10
+	SENDDELAYMSG 挑战倒计时[%s]后自动回城，传送下层将重新计时(限时10分钟) 600 250 1 @通天塔回城
+	GuildNoticeMsg 116 0 [系统]：勇士{“<$USERNAME>”|249:0:1}闯入{“沉默之巅”|70:0:1}期待他能满载而归！
+break
+
+#IF
+	CHECKFENGHAO 登封造极
+#ACT
+	mov N$随机一倍层数 6
+	KILLSLAVE
+	MAPMove iqy<$STR(N$随机一倍层数)> 30 27 5
+	MOV N$通天塔一倍传送 <$STR(N$随机一倍层数)>
+	MOV N$通天塔一倍奖励 0
+	#CALL [\通天塔数据\通天塔一倍传送.txt] @检测一倍刷小怪5
+	SENDDELAYMSG 挑战倒计时[%s]后自动回城，传送下层将重新计时(限时10分钟) 600 250 1 @通天塔回城
+	GuildNoticeMsg 116 0 [系统]：勇士{“<$USERNAME>”|249:0:1}闯入{“沉默之巅”|70:0:1}期待他能满载而归！
+break
+
+
+#IF
+	NOT CHECKFENGHAO 登封造极
+	NOT CHECKFENGHAO 威震八方
+	NOT CHECKFENGHAO 盖世无双
+	NOT CHECKFENGHAO 君临天下
+	NOT CHECKFENGHAO 武林至尊
+	NOT CHECKFENGHAO 天下无敌
+	NOT CHECKFENGHAO 末日审判
+	NOT CHECKFENGHAO 乱世枭雄
+	NOT CHECKFENGHAO 王者归来
+	NOT CHECKFENGHAO 武圣帝君
+	NOT CHECKFENGHAO 怀念沉默
+#ACT
+	mov N$随机一倍层数 1
+	KILLSLAVE
+	MAPMove iqy<$STR(N$随机一倍层数)> 30 27 5
+	MOV N$通天塔一倍传送 <$STR(N$随机一倍层数)>
+	MOV N$通天塔一倍奖励 0
+	GOTO @通天塔一倍刷怪1
+	SENDDELAYMSG 挑战倒计时[%s]后自动回城，传送下层将重新计时(限时10分钟) 600 250 1 @通天塔回城
+	GuildNoticeMsg 116 0 [系统]：勇士{“<$USERNAME>”|249:0:1}闯入{“沉默之巅”|70:0:1}期待他能满载而归！
+break
+
+
+[@通天塔一倍刷怪1]
+#IF
+	CheckMapSameMonCount iqy<$STR(N$通天塔一倍传送)> 后卿[一] = 0
+#ACT
+	MONGENEX iqy<$STR(N$通天塔一倍传送)> 30  27  后卿[一] 15 1 249
+
+
+[@通天塔回城]
+#IF
+#ACT
+	MapMove 3 330 330 5
+	MESSAGEBOX [系统提示]:\　\　　　　您在同一层挑战超过规定时间，自动传回土城！
+BREAK

@@ -1,0 +1,72 @@
+[@鞭尸触发]
+{
+#IF
+#ACT
+MOV S$待鞭尸怪物 <$KILLMONNAME>
+
+#if
+CHECKCONTAINSTEXT <$STR(S$待鞭尸怪物)> 』
+CHECKCONTAINSTEXT <$STR(S$待鞭尸怪物)> 『
+#act
+Textsplit 』 <$STR(S$待鞭尸怪物)> S1
+MOV S$待鞭尸怪物 <$STR(S2)>
+
+#IF
+randomex 2 100
+checkfenghao 赞助大使 1
+#ACT
+ScatterMonItems <$STR(S$待鞭尸怪物)> <$KillMonMap> <$KillMonX> <$KillMonY>
+;#CALL [\专属装备变量\专属怪物爆率计算.txt] @专属怪物爆率计算
+SENDMSG 6 赞助大使:鞭尸触发.对<$KILLMONNAME>额外大爆一次！
+
+#if
+checkfenghao 黄金赞助 1
+randomex 5 100
+#act
+ScatterMonItems <$STR(S$待鞭尸怪物)> <$KillMonMap> <$KillMonX> <$KillMonY>
+;#CALL [\专属装备变量\专属怪物爆率计算.txt] @专属怪物爆率计算
+SENDMSG 6 黄金赞助:鞭尸触发.对<$KILLMONNAME>额外大爆一次！
+
+#if
+checkfenghao 白金赞助 1
+randomex 8 100
+#act
+ScatterMonItems <$STR(S$待鞭尸怪物)> <$KillMonMap> <$KillMonX> <$KillMonY>
+;#CALL [\专属装备变量\专属怪物爆率计算.txt] @专属怪物爆率计算
+SENDMSG 6 白金赞助:鞭尸触发.对<$KILLMONNAME>额外大爆一次！
+
+#if
+checkfenghao 钻石赞助 1
+randomex 12 100
+#act
+ScatterMonItems <$STR(S$待鞭尸怪物)> <$KillMonMap> <$KillMonX> <$KillMonY>
+;#CALL [\专属装备变量\专属怪物爆率计算.txt] @专属怪物爆率计算
+SENDMSG 6 钻石赞助:鞭尸触发.对<$KILLMONNAME>额外大爆一次！
+
+#if
+checkfenghao 王者赞助 1
+randomex 17 100
+#act
+ScatterMonItems <$STR(S$待鞭尸怪物)> <$KillMonMap> <$KillMonX> <$KillMonY>
+;#CALL [\专属装备变量\专属怪物爆率计算.txt] @专属怪物爆率计算
+SENDMSG 6 王者赞助:鞭尸触发.对<$KILLMONNAME>额外大爆一次！
+
+
+#if
+checkfenghao 至尊赞助 1
+randomex 30 100
+#act
+ScatterMonItems <$STR(S$待鞭尸怪物)> <$KillMonMap> <$KillMonX> <$KillMonY>
+;#CALL [\专属装备变量\专属怪物爆率计算.txt] @专属怪物爆率计算
+SENDMSG 6 至尊赞助:鞭尸触发.对<$KILLMONNAME>额外大爆一次！
+
+
+
+
+
+
+
+
+
+
+}

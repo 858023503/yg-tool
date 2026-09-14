@@ -1,0 +1,320 @@
+[@二级密码]
+{
+#IF
+NOT equal T8 
+ISONMAP 密码验证室
+#Act
+MOVR N50 321 339
+MOVR N51 321 339
+mapmove 3 <$STR(N50)> <$STR(N51)>
+break
+
+
+#IF
+equal T8 
+#Act
+CloseBigDialogBox
+#SAY
+<----------------------------------------------------------/SCOLOR=83>\
+　 <安心雅/SCOLOR=19> <尊敬的游戏玩家,您好/SCOLOR=151> <〖您的帐号存在被盗风险〗/SCOLOR=58>\
+<1、密保请设置为３－６个汉字！不要使用重复简单内容！/AUTOCOLOR=156>\
+<2、密保功能一旦开启永久生效，合区无任何影响，不需要重新设置！/AUTOCOLOR=155>\
+<3、设置密保后每次登录(机器)变化后上线都需要验证，不输入掉线处理！/AUTOCOLOR=145>\
+<4、请牢记您的密码，最好使用文本记住。一旦忘记。找回非常麻烦/AUTOCOLOR=253>\
+<----------------------------------------------------------/SCOLOR=83>\
+<√设置二级密码|251#‘请设置为３－６个汉字’/@@InPutString97(不要输入敏感字符，否则无法设置二级密码！)> ◆<设置３－６个汉字（越复杂越安全）/AUTOCOLOR=249>◆ <关闭对话/@关闭>\
+<√设置二级密码|251#‘请设置为３－６个汉字’/@@InPutString97(不要输入敏感字符，否则无法设置二级密码！)> ◆<设置３－６个汉字（越复杂越安全）/AUTOCOLOR=249>◆ <关闭对话/@关闭>\
+
+#elseact
+goto @aaaaaaa
+
+[@aaaaaaa]
+#IF
+#Act
+CloseBigDialogBox
+#SAY
+<----------------------------------------------------------/SCOLOR=83>\
+　 <安心雅/SCOLOR=19> <尊敬的游戏玩家,您好/SCOLOR=151> <〖您的帐号存在被盗风险〗/SCOLOR=58>\
+<1、密保请设置为３－６个汉字！不要使用重复简单内容！/AUTOCOLOR=156>\
+<2、密保功能一旦开启永久生效，合区无任何影响，不需要重新设置！/AUTOCOLOR=155>\
+<3、设置密保后每次登录(机器)变化后上线都需要验证，不输入掉线处理！/AUTOCOLOR=145>\
+<4、请牢记您的密码，最好使用文本记住。一旦忘记。找回非常麻烦/AUTOCOLOR=253>\
+<----------------------------------------------------------/SCOLOR=83>\
+<修改二级密码|249#‘请输入原二级密码’/@@InPutString98(请输入旧密码)>  ◆<请牢记您的密码，最好用文本记住/AUTOCOLOR=249>◆ <关闭对话×/@关闭>\
+<修改二级密码|249#‘请输入原二级密码’/@@InPutString98(请输入旧密码)>  ◆<请牢记您的密码，最好用文本记住/AUTOCOLOR=249>◆ <关闭对话×/@关闭>\
+
+  
+
+[@InPutString98]
+#IF
+EQUAL S98 <$STR(T8)>
+#ACT
+GOTO @修改密保
+MOV S98
+#elseact
+MESSAGEBOX 原二级密码错误不能修改
+CLOSE
+
+
+[@修改密保]
+#IF
+#Act
+CloseBigDialogBox
+#SAY
+<----------------------------------------------------------/SCOLOR=83>\
+　 <安心雅/SCOLOR=19> <尊敬的游戏玩家,您好/SCOLOR=151> <〖您的帐号存在被盗风险〗/SCOLOR=58>\
+<1、密保请设置为３－６个汉字！不要使用重复简单内容！/AUTOCOLOR=156>\
+<2、密保功能一旦开启永久生效，合区无任何影响，不需要重新设置！/AUTOCOLOR=155>\
+<3、设置密保后每次登录(机器)变化后上线都需要验证，不输入掉线处理！/AUTOCOLOR=145>\
+<4、请牢记您的密码，最好使用文本记住。一旦忘记。找回非常麻烦/AUTOCOLOR=253>\
+<----------------------------------------------------------/SCOLOR=83>\
+<新的二级密码|251#‘请设置新二级密码’^-^254#必须为３－６个汉字/@@InPutString99(不要输入敏感字符，否则无法设置二级密码！)>  ◆<设置３－６个汉字（越复杂越安全）/AUTOCOLOR=249>◆ <关闭对话/@关闭>\
+<新的二级密码|251#‘请设置新二级密码’^-^254#必须为３－６个汉字/@@InPutString99(不要输入敏感字符，否则无法设置二级密码！)>  ◆<设置３－６个汉字（越复杂越安全）/AUTOCOLOR=249>◆ <关闭对话/@关闭>\
+
+
+[@InPutString99]
+#IF
+CheckStringlength <$STR(S99)> < 6
+#ACT
+MESSAGEBOX 密码最少输入3个汉字，最多6个汉字！
+break
+
+#IF
+CheckStringlength <$STR(S99)> > 12
+#ACT
+MESSAGEBOX 密码最少输入3个汉字，最多6个汉字！
+break
+
+#or
+CheckContainsText <$STR(S99)> @
+CheckContainsText <$STR(S99)> (
+CheckContainsText <$STR(S99)> )
+CheckContainsText <$STR(S99)> [
+CheckContainsText <$STR(S99)> ]
+CheckContainsText <$STR(S99)> {
+CheckContainsText <$STR(S99)> }
+CheckContainsText <$STR(S99)> *
+CheckContainsText <$STR(S99)> /
+CheckContainsText <$STR(S99)> \
+CheckContainsText <$STR(S99)> $
+CheckContainsText <$STR(S99)> &
+CheckContainsText <$STR(S99)> 0
+CheckContainsText <$STR(S99)> 1
+CheckContainsText <$STR(S99)> 2
+CheckContainsText <$STR(S99)> 3
+CheckContainsText <$STR(S99)> 4
+CheckContainsText <$STR(S99)> 5
+CheckContainsText <$STR(S99)> 6
+CheckContainsText <$STR(S99)> 7
+CheckContainsText <$STR(S99)> 8
+CheckContainsText <$STR(S99)> 9
+CheckContainsText <$STR(S99)> a
+CheckContainsText <$STR(S99)> b
+CheckContainsText <$STR(S99)> c
+CheckContainsText <$STR(S99)> d
+CheckContainsText <$STR(S99)> e
+CheckContainsText <$STR(S99)> f
+CheckContainsText <$STR(S99)> g
+CheckContainsText <$STR(S99)> h
+CheckContainsText <$STR(S99)> i
+CheckContainsText <$STR(S99)> j
+CheckContainsText <$STR(S99)> k
+CheckContainsText <$STR(S99)> l
+CheckContainsText <$STR(S99)> m
+CheckContainsText <$STR(S99)> n
+CheckContainsText <$STR(S99)> o
+CheckContainsText <$STR(S99)> p
+CheckContainsText <$STR(S99)> q
+CheckContainsText <$STR(S99)> r
+CheckContainsText <$STR(S99)> s
+CheckContainsText <$STR(S99)> t
+CheckContainsText <$STR(S99)> u
+CheckContainsText <$STR(S99)> v
+CheckContainsText <$STR(S99)> w
+CheckContainsText <$STR(S99)> x
+CheckContainsText <$STR(S99)> y
+CheckContainsText <$STR(S99)> z
+#Act
+MESSAGEBOX 二级密码必须设置为汉字！！！
+break
+
+#IF
+#ACT
+MOV S$字符一 <$STR(S99)>
+MOV S$字符二 <$STR(S99)>
+DEC S$字符一 3 50
+DEC S$字符二 1 2
+
+#IF
+CheckContainsText <$STR(S$字符二)> <$STR(S$字符一)>
+#ACT
+MESSAGEBOX 设置密保不要出现相同的汉字！！！
+break
+
+#IF
+EQUAL S$密码2 
+#ACT
+MOV S$密码2 <$STR(S99)>
+goto @验证2
+break
+
+#IF
+EQUAL S$密码2 <$STR(S99)>
+#Act
+MOV T8 <$STR(S99)>
+MOV T7 <$MACHINEID>
+MESSAGEBOX 【设置密保成功，请牢记您的密保：[<$STR(S99)>]】
+GuildNoticeMsg 254 200 【设置密保成功，请牢记您的密保：[<$STR(S99)>] SELF
+MOV S99
+CLOSE
+#elseact
+MOV S$密码1 
+MOV S$密码2 
+MOV S$97 
+MOV S$99 
+goto @修改密保
+MESSAGEBOX 验证错误，需要重新输入设置密保
+break
+
+[@InPutString97]
+#IF
+CheckStringlength <$STR(S97)> < 6
+#ACT
+MESSAGEBOX 密码最少输入3个汉字，最多6个汉字！
+break
+
+#IF
+CheckStringlength <$STR(S97)> > 12
+#ACT
+MESSAGEBOX 密码最少输入3个汉字，最多6个汉字！
+break
+
+#or
+CheckContainsText <$STR(S97)> @
+CheckContainsText <$STR(S97)> (
+CheckContainsText <$STR(S97)> )
+CheckContainsText <$STR(S97)> [
+CheckContainsText <$STR(S97)> ]
+CheckContainsText <$STR(S97)> {
+CheckContainsText <$STR(S97)> }
+CheckContainsText <$STR(S97)> *
+CheckContainsText <$STR(S97)> /
+CheckContainsText <$STR(S97)> \
+CheckContainsText <$STR(S97)> $
+CheckContainsText <$STR(S97)> &
+CheckContainsText <$STR(S97)> 0
+CheckContainsText <$STR(S97)> 1
+CheckContainsText <$STR(S97)> 2
+CheckContainsText <$STR(S97)> 3
+CheckContainsText <$STR(S97)> 4
+CheckContainsText <$STR(S97)> 5
+CheckContainsText <$STR(S97)> 6
+CheckContainsText <$STR(S97)> 7
+CheckContainsText <$STR(S97)> 8
+CheckContainsText <$STR(S97)> 9
+CheckContainsText <$STR(S97)> a
+CheckContainsText <$STR(S97)> b
+CheckContainsText <$STR(S97)> c
+CheckContainsText <$STR(S97)> d
+CheckContainsText <$STR(S97)> e
+CheckContainsText <$STR(S97)> f
+CheckContainsText <$STR(S97)> g
+CheckContainsText <$STR(S97)> h
+CheckContainsText <$STR(S97)> i
+CheckContainsText <$STR(S97)> j
+CheckContainsText <$STR(S97)> k
+CheckContainsText <$STR(S97)> l
+CheckContainsText <$STR(S97)> m
+CheckContainsText <$STR(S97)> n
+CheckContainsText <$STR(S97)> o
+CheckContainsText <$STR(S97)> p
+CheckContainsText <$STR(S97)> q
+CheckContainsText <$STR(S97)> r
+CheckContainsText <$STR(S97)> s
+CheckContainsText <$STR(S97)> t
+CheckContainsText <$STR(S97)> u
+CheckContainsText <$STR(S97)> v
+CheckContainsText <$STR(S97)> w
+CheckContainsText <$STR(S97)> x
+CheckContainsText <$STR(S97)> y
+CheckContainsText <$STR(S97)> z
+#Act
+MESSAGEBOX 二级密码必须设置为汉字！！！
+break
+
+#IF
+#ACT
+MOV S$字符一 <$STR(S97)>
+MOV S$字符二 <$STR(S97)>
+DEC S$字符一 3 50
+DEC S$字符二 1 2
+
+#IF
+CheckContainsText <$STR(S$字符二)> <$STR(S$字符一)>
+#ACT
+MESSAGEBOX 设置密保不要出现相同的汉字！！！
+break
+
+#IF
+NOT equal T8 
+#Act
+MESSAGEBOX 　你已经设置过二级密码！！\　\　如果要修改密码请点击修改密码按钮！！
+break
+
+#IF
+EQUAL S$密码1 
+#ACT
+MOV S$密码1 <$STR(S97)>
+goto @验证1
+break
+
+#IF
+EQUAL S$密码1 <$STR(S97)>
+#ACT
+MOV T8 <$STR(S97)>
+MOV T7 <$MACHINEID>
+MESSAGEBOX 【设置密保成功，请牢记您的密保：[<$STR(S97)>]】
+GuildNoticeMsg 254 200 【设置密保成功，请牢记您的密保：[<$STR(S97)>] SELF
+MOV S97
+movR n$XX 280 295
+movR n$yy 610 620
+MAPMOVE 0 <$STR(n$xx)> <$STR(n$yy)>
+CLOSE
+#elseact
+MOV S$密码1 
+MOV S$密码2 
+MOV S$97 
+MOV S$99 
+goto @二级密码
+MESSAGEBOX 验证错误，需要重新输入设置密保
+break
+[@验证2]
+#IF
+#Act
+CloseBigDialogBox
+#SAY
+\    <【设置密保成功，请牢记您的密保：[<$STR(S$密码2)>]】/SCOLOR=31>\ \
+\    <需要再次输入验证是否正确!/SCOLOR=239>\ \
+\ \
+<>                    <验证二级密码|251#‘验证二级密码’^-^254#必须为３－６个汉字/@@InPutString99>
+
+[@验证1]
+#IF
+#Act
+CloseBigDialogBox
+#SAY
+\    <【设置密保成功，请牢记您的密保：[<$STR(S$密码1)>]】/SCOLOR=31>\ \
+\    <需要再次输入验证是否正确!/SCOLOR=239>\ \
+\ \
+<>                    <验证二级密码|251#‘验证二级密码’^-^254#必须为３－６个汉字/@@InPutString97>
+
+
+
+[@关闭]
+#IF
+#ACT
+CloseBigDialogBox
+Close
+
+
+}

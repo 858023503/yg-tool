@@ -1,0 +1,1091 @@
+
+;===================第一大陆============================
+[0 坏比奇] DAY
+[100|MF-56 盟重之光] DAY
+[3|anheizhucheng 暗黑土城] DAY
+[D701 密道地图] DAY
+;---------------->主城
+[01|bq003 暗夜城] DAY
+
+01 206 61 -> 2101 17 80
+; 2101 17 80 -> 01 206 61
+01 175 146 -> 1101 115 119
+; 1101 115 119 -> 01 175 146
+01 89 78 -> 1201 69 146
+; 1201 69 146 -> 01 89 89
+01 69 167 -> 2201 22 29
+; 2201 22 29 -> 01 69 167
+
+
+;---------------->骷髅矿区
+[2101|KD001 骷髅矿区一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[2102|KD002 骷髅矿区二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[2103|KD003 骷髅矿区三层] DAY  NOMANNOMON NEEDSET_OFF(998)
+[KD003 骷髅洞平行时空]
+2101 91 27 -> 2102 35 80
+2102 35 80 -> 2101 91 27
+2102 19 29 -> 2103 94 88
+2103 94 88 -> 2102 19 29
+
+
+
+
+;---------------->僵尸矿洞
+[1101|11001 僵尸矿洞一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[1102|11002 僵尸矿洞二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[1103|11003 僵尸矿洞三层] DAY  NOMANNOMON NEEDSET_OFF(998)
+[11003 僵尸矿洞平行时空]
+1101 31 26 ->  1102 92 24
+1102 92 24 ->  1101 31 26
+1102 10 52 ->  1103 81 70
+1103 81 70 ->  1102 10 52
+
+
+
+
+;---------------->蜈蚣洞
+[2201|WG001 蜈蚣洞一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[2202|WG002 蜈蚣洞二层] DAY  NOMANNOMON NEEDSET_OFF(998)
+[WG002 蜈蚣洞平行时空]
+2201 229 239 -> 2202 18 39
+2202 18 39 -> 2201 229 239
+
+
+
+
+;---------------->兽人古墓
+[1201|12003 兽人古墓一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[1202|12004 兽人古墓二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[1203|12005 兽人古墓三层] DAY NOMANNOMON NEEDSET_OFF(998)
+
+[1204|12002 香石古墓一层] DAY  NOMANNOMON NEEDSET_OFF(998)
+[1205|12001 香石古墓二层] DAY  NOMANNOMON NEEDSET_OFF(998)
+
+[12002 兽人古墓一层平行时空]
+[12001 兽人古墓二层平行时空]
+
+
+
+1201 46 109 -> 1202 37 65
+1202 37 65 -> 1201 46 109
+1202 15 35 -> 1203 12 67
+1203 12 67 -> 1202 15 35
+1203 42 28 -> 1204 26 127
+1204 26 127 -> 1203 42 28
+1204 115 46 -> 1205 16 43
+1205 16 43 -> 1204 115 46
+
+
+;===================第二大陆============================
+[02|ZC004 天威城] DAY
+
+02 45 18 -> 2501 112 126
+02 206 17 -> 1401 83 88
+02 205 260 -> 1301 176 54
+02 19 254 -> 2104 52 79
+
+; 2501 112 126 -> 02 45 18
+; 1401 83 88 -> 02 206 17
+; 1301 176 54 -> 02 205 260
+; 2104 52 79 -> 02 19 254
+
+
+[1301|13001 沃玛寺庙一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[1302|13002 沃玛寺庙二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[1303|13003 沃玛寺庙三层] DAY  NOMANNOMON NEEDSET_OFF(998)
+[13003 沃玛寺庙平行时空]
+1301 44 179 -> 1302 162 164
+1302 162 164 -> 1301 44 179
+1302 34 29 -> 1303 146 252
+1303 146 252 -> 1302 34 29
+
+
+[1401|ZM004 祖玛秘境一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[1402|ZM002 祖玛秘境二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[1403|ZM003 祖玛秘境三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[1404|ZM001 祖玛秘境四层] DAY  NOMANNOMON NEEDSET_OFF(998)
+[ZM001 祖玛秘境平行时空]
+1401 22 22 -> 1402 87 94
+1402 87 94 -> 1401 22 22
+1402 21 24 -> 1403 110 111
+1403 110 111 -> 1402 21 24
+1403 35 36 -> 1404 64 69
+
+
+[2104|kuangqu001 骨魔洞一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[2105|kuangqu002 骨魔洞二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[2106|kuangqu003 骨魔洞三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[kuangqu003 骨魔洞平行时空]
+2104 82 44 -> 2105 109 111
+2105 109 111 -> 2104 82 44
+2105 31 35 -> 2106 15 48
+2106 15 48 -> 2105 31 35
+
+
+
+;--------->恶魔营地
+[2501|MAP023 恶魔营地一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[2502|MAP024 恶魔营地二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[2503|MAP025 恶魔营地三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[MAP025 恶魔营地平行时空]
+2501 62 13 -> 2502 23 27
+2502 23 27 -> 2501 62 13
+2502 103 130 -> 2503 108 125
+2503 108 125 -> 2502 103 130
+
+
+
+;===================第三大陆============================
+
+[03|bq001 曙光白日城] DAY
+
+03 254 33 -> 2203 14 92
+03 258 317 -> 2301 17 86
+03 17 321 -> 2401 36 187
+03 21 35 -> 3101 29 267
+
+; 2203 14 92 -> 03 254 33
+; 2301 17 86 -> 03 258 317
+; 2401 36 187 -> 03 17 321
+; 3101 29 267 -> 03 21 35
+
+
+[2203|mayi01 蚂蚁洞一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[2204|mayi02 蚂蚁洞二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[2205|mayi03 蚂蚁洞三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[mayi03 蚂蚁洞平行时空]
+2203 21 24 -> 2204 28 19
+2204 28 19 -> 2203 21 24
+2204 81 165 -> 2205 61 30
+2205 61 30 -> 2204  81 165
+
+
+[2301|jinglinggu01 精灵谷一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[2302|jinglinggu02 精灵谷二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[2303|jinglinggu03 精灵谷三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[2304|jinglinggu04 精灵谷四层] DAY NOMANNOMON NEEDSET_OFF(998)
+[2305|jinglinggu05 精灵谷五层] DAY NOMANNOMON NEEDSET_OFF(998)
+[2306|jinglinggu06 精灵谷六层] DAY NOMANNOMON NEEDSET_OFF(998)
+[2307|jinglinggu07 精灵谷七层] DAY NOMANNOMON NEEDSET_OFF(998)
+[2308|jinglinggu08 精灵谷八层] DAY NOMANNOMON NEEDSET_OFF(998)
+[jinglinggu08 精灵谷平行时空]
+2301 161 180 -> 2302 131 22
+2302 131 22 -> 2301 161 180
+2302 228 82 -> 2303 23 39
+2303 23 39 -> 2302 228 82
+2303 174 22 -> 2304 48 21
+2304 48 21 -> 2303 174 22
+2304 176 124 -> 2305 19 48
+2305 19 48 -> 2304 176 124
+2305 178 135 -> 2306 19 65
+2306 19 65 -> 2305 178 135
+2306 179 41 -> 2307 24 161
+2307 24 161 -> 2306 179 41
+2307 174 35 -> 2308 17 221
+2308 17 221 -> 2307 174 35
+
+
+[2401|HY001 黑暗魔殿一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[2402|HY002 黑暗魔殿二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[2403|HY003 黑暗魔殿三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[HY003 黑暗魔殿平行时空]
+2401 173 49 -> 2402 43 139
+2402 43 139 -> 2401 173 49
+2402 121 51 -> 2403 28 70
+2403 28 70 -> 2402 121 51
+
+
+
+[3101|sheyaogu01 赤月峡谷一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[3102|sheyaogu02 赤月峡谷二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[3103|sheyaogu03 赤月峡谷三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[3104|sheyaogu04 赤月峡谷四层] DAY NOMANNOMON NEEDSET_OFF(998)
+[sheyaogu04 赤月峡谷平行时空]
+3101 171 76 -> 3102 78 249
+3102 78 249 -> 3101 171 76
+3102 81 40 -> 3103 24 42
+3103 24 42 -> 3102 81 40
+3103 27 16 -> 3104 62 55
+3104 62 55 -> 3103 27 16
+
+
+;===================第四大陆============================
+
+[04|qingyuanzhen 归隐城] DAY
+
+04 180 29 -> 3201 114 124
+04 173 185 -> 3301 30 34
+04 14 183 -> 3401 16 164
+04 16 29 -> 4101 116 111
+
+; 3201 114 124 -> 04 180 29
+; 3301 30 34 -> 04 173 185
+; 3401 16 164 -> 04 14 183
+; 4101 116 111 -> 04 16 29
+
+
+[3201|fengyingucha01 封魔古刹一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[3202|fengyingucha02 封魔古刹二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[3203|fengyingucha03 封魔古刹三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[3204|fengyingucha04 封魔古刹四层] DAY NOMANNOMON NEEDSET_OFF(998)
+[jubaopen|fengyingucha04 聚宝盆] DAY NOMANNOMON NEEDSET_OFF(998)
+
+[fengyingucha04 封魔古刹平行时空]
+3201 16 24 -> 3202 62 68
+3202 62 68 -> 3201 16 24
+3202 15 23 -> 3203 98 102
+3203 98 102 -> 3202 15 23
+3203 16 23 -> 3204 102 104
+
+;--------->牛魔寺庙
+[3301|wanglingdigong001 牛魔寺庙一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[3302|wanglingdigong002 牛魔寺庙二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[3303|wanglingdigong003 牛魔寺庙三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[wanglingdigong003 牛魔寺庙平行时空]
+3301 68 89 -> 3302 36 105
+3302 36 105 -> 3301 68 89
+3302 96 17 -> 3303 17 39
+3303 17 39 -> 3302 96 17
+
+
+[3401|wanduku001 魔毒蚀地一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[3402|wanduku002 魔毒蚀地二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[3403|wanduku003 魔毒蚀地三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[wanduku003 魔毒蚀地平行时空]
+3401 152 20 -> 3402 11 187
+3402 11 187 -> 3401 152 20
+3402 129 183 -> 3403 14 89
+3403 14 89 -> 3402 129 183
+
+
+
+[4101|fengmogong001 封魔宫一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[4102|fengmogong002 封魔宫二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[4103|fengmogong003 封魔宫三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[fengmogong003 封魔宫平行时空]
+4101 21 25 -> 4102 88 81
+4102 88 81 -> 4101 21 25
+4102 22 25 -> 4103 44 43
+4103 44 43 -> 4102 22 25
+
+
+;===================第五大陆============================
+
+[05|MAP003 龙祖城] DAY
+
+05 185 11 -> 4201 142 146
+05 157 174 -> 4301 124 131
+05 28 167 -> 4401 21 116
+05 15 19 -> 5301 25 101
+
+; 4201 142 146 -> 05 185 11
+; 4301 124 131 -> 05 157 174
+; 4401 21 116 -> 05 28 167
+; 5301 25 101 -> 05 15 19
+
+
+
+
+[4201|xianfengxiagu001 魔龙峡谷一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[4202|xianfengxiagu002 魔龙峡谷二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[xianfengxiagu002 魔龙峡谷平行时空]
+4201 30 26 -> 4202 162 156
+4202 162 156 -> 4201 30 26
+4202 22 26 -> 4203 86 54 
+4203 86 54 -> 4202 22 26
+
+
+
+
+[4203|zaozefuben001 魔龙沼泽一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[4204|zaozefuben002 魔龙沼泽二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[zaozefuben002 魔龙沼泽平行时空]
+4203 257 193 -> 4204 152 174
+4204 152 174 -> 4203 257 193
+4204 51 113 -> 4205 99 145
+4205 99 145 -> 4204 51 113
+
+
+
+[4205|huangyeyiji001 魔龙地宫一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[4206|huangyeyiji002 魔龙地宫二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[huangyeyiji002 魔龙地宫平行时空]
+4205 17 23 -> 4206 111 118
+4206 111 118 -> 4205 17 23
+
+;--------->幽暗地底
+[4301|youandidi001 幽暗地底一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[4302|youandidi002 幽暗地底二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[4303|youandidi003 幽暗地底三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[4304|youandidi004 幽暗地底四层] DAY NOMANNOMON NEEDSET_OFF(998)
+[youandidi004 幽暗地底平行时空]
+4301 21 12 -> 4302 128 127
+4302 128 127 -> 4301 21 12
+4302 66 56 -> 4303 72 70
+4303 72 70 -> 4302 66 56
+4303 33 28 -> 4304 42 43
+4304 42 43 -> 4303 33 28
+
+
+
+;--------->魔化工厂
+[4401|dixiagongchang001 魔化工厂一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[4402|dixiagongchang002 魔化工厂二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[4403|dixiagongchang003 魔化工厂三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[4404|dixiagongchang004 魔化工厂四层] DAY NOMANNOMON NEEDSET_OFF(998)
+[dixiagongchang004 魔化工厂平行时空]
+4401 80 37 -> 4402 38 125
+4402 38 125 -> 4401 21 116
+4402 108 23 -> 4403 23 147
+4403 23 147 -> 4402 108 23
+4403 28 34 -> 4404 102 72
+4404 102 72 -> 4403 28 34
+
+
+
+[5301|huolongku001 火龙地洞一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[5302|huolongku002 火龙地洞二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[5303|huolongku003 火龙地洞三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[5304|huolongku004 火龙地洞四层] DAY NOMANNOMON NEEDSET_OFF(998)
+[huolongku004 火龙地洞平行时空]
+5301 147 168 -> 5302 15 28
+5302 15 28 -> 5301 147 168
+5302 51 103 -> 5303 86 28
+5303 86 28 -> 5302 51 103
+5303 135 26 -> 5304 106 71
+5304 106 71 -> 5303 135 26
+
+
+;====================第六大陆=========================
+
+[06|MAP016 冰雪城] DAY
+
+
+06 231 118 -> 5101 93 95
+06 133 30 -> 5104 97 106
+06 22 225 -> 5201 17 115
+06 237 227 -> 5401 15 55
+
+; 5101 93 95 -> 06 231 118
+; 5104 97 106 -> 06 133 30
+; 5201 17 115 -> 06 22 225
+; 5401 15 55 -> 06 237 227
+
+
+
+[5101|xuechengjiuzhi001 雪城旧址一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[5102|xuechengjiuzhi002 雪城旧址二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[5103|xuechengjiuzhi003 雪城旧址三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[xuechengjiuzhi003 雪城旧址平行时空]
+5101 42 10 -> 5102 78 106
+5102 78 106 -> 5101 42 10
+5102 23 18 -> 5103 13 101
+5103 13 101 -> 5102 23 18
+
+[5104|shuijinggong01 冰晶宫一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[5105|shuijinggong02 冰晶宫二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[5106|shuijinggong03 冰晶宫三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[shuijinggong03 冰晶宫平行时空]
+5104 42 47 -> 5105 53 133
+5105 53 133 -> 5104 42 47
+5105 94 92 -> 5106 78 82
+5106 78 82 -> 5105 94 92
+
+;--------->狐月秘境
+[5201|zaozemijing001 沼泽秘境一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[5202|zaozemijing002 沼泽秘境二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[5203|zaozemijing003 沼泽秘境三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[5204|zaozemijing004 沼泽秘境四层] DAY NOMANNOMON NEEDSET_OFF(998)
+[zaozemijing004 沼泽秘境平行时空]
+5201 158 38 -> 5202 139 20
+5202 139 20 -> 5201 158 38
+5202 16 67 -> 5203 100 45
+5203 100 45 -> 5202 16 67
+5203 18 17 -> 5204 7 13
+5204 7 13 -> 5203 18 17
+
+
+
+;--------->万劫地宫
+[5401|youludiyu001 万劫地宫一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[5402|youludiyu002 万劫地宫二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[5403|youludiyu003 万劫地宫三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[5404|youludiyu004 万劫地宫四层] DAY NOMANNOMON NEEDSET_OFF(998)
+[5405|youludiyu005 万劫地宫五层] DAY NOMANNOMON NEEDSET_OFF(998)
+[5406|youludiyu006 万劫地宫六层] DAY NOMANNOMON NEEDSET_OFF(998)
+[youludiyu006 万劫地宫平行时空]
+5401 123 56 -> 5402 41 59
+5402 41 59 -> 5401 123 56
+5402 136 114 -> 5403 13 45
+5403 13 45 -> 5402 136 114
+5403 38 23 -> 5404 14 73
+5404 14 73 -> 5403 38 23
+5404 63 28 -> 5405 22 62
+5405 22 62 -> 5404 63 28
+5405 57 29 -> 5406 13 66
+5406 13 66 -> 5405 57 29
+
+
+
+;===================第七大陆============================
+
+[07|MAP079 兰陵城] DAY
+
+07 92 14 -> 7101 20 122
+07 99 105 -> 7201 236 241
+07 9 107 -> 7301 17 353
+07 65 12 -> 7401 62 71
+
+7101 20 122 -> 07 92 14
+7201 236 241 -> 07 99 105
+7301 17 353 -> 07 9 107
+7401 62 71 -> 07 65 12
+
+[7101|jingjuenvwangmu001 精绝古墓一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[7102|jingjuenvwangmu002 精绝古墓二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[7103|jingjuenvwangmu003 精绝古墓三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[7104|jingjuenvwangmu004 精绝古墓四层] DAY NOMANNOMON NEEDSET_OFF(998)
+[jingjuenvwangmu004 精绝古墓平行时空]
+7101 102 22 -> 7102 62 131
+7102 62 131 -> 7101 102 22
+7102 36 17  -> 7103 48 92
+7103 48 92  -> 7102 36 17
+7103 51 20  -> 7104 18 45
+7104 18 45  -> 7103 51 20
+
+
+
+[7201|fenranzhidi001 焚燃之地一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[7202|fenranzhidi002 焚燃之地二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[fenranzhidi002 焚燃之地平行时空]
+7201 74 73  ->  7202 30 89
+7202 30 89  ->  7201 74 73
+
+
+[7301|yanjiangdigong01 岩浆地宫一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[7302|yanjiangdigong02 岩浆地宫二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[7303|yanjiangdigong03 岩浆地宫三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[yanjiangdigong03 岩浆地宫平行时空]
+7301 223 49  ->  7302 278 217
+7302 278 217  ->  7301 223 49
+7302 32 18  ->  7303 180 183
+7303 180 183  ->  7302 32 18
+
+
+
+[7401|xuehaimogong001 血海魔宫一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[7402|xuehaimogong002 血海魔宫二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[7403|xuehaimogong003 血海魔宫三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[xuehaimogong003 血海魔宫平行时空]
+7401 31 16  ->  7402 88 92 
+7402 88 92 ->  7401 31 16
+7402 22 12  -> 7403 12 52
+7403 12 52 -> 7402 22 12
+
+
+
+;===================第八大陆============================
+
+[08|MAP037 冰火城] DAY
+
+08 17 282 -> 8101 21 91 
+08 24 38 -> 8201 102 140 
+08 267 51 -> 8301 276 243 
+08 271 276 -> 8401 15 168
+
+8101 21 91  -> 08 17 282
+8201 102 140 -> 08 24 38
+8301 276 243 -> 08 267 51
+8401 15 168 -> 08 271 276
+
+
+
+[8101|lianyuzhilu001 炼狱之路一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[8102|lianyuzhilu002 炼狱之路二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[8103|lianyuzhilu003 炼狱之路三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[lianyuzhilu003 炼狱之路平行时空]
+8101 115 22 -> 8102 118 45 
+8102 118 45 -> 8101 115 22 
+8102 71 51 -> 8103 12 56
+8103 12 56 -> 8102 71 51
+
+
+
+;--------->冥府之路三层
+[8201|mingfuzhidi001 冥府之路一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[8202|mingfuzhidi002 冥府之路二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[8203|mingfuzhidi003 冥府之路三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[mingfuzhidi003 冥府之路平行时空]
+8201 22 30 -> 8202 16 145
+8202 16 145 -> 8201 22 30
+8202 100 24 -> 8203 73 219
+8203 73 219 -> 8202 100 24 
+
+
+
+[8301|wenyiditu001 瘟疫之地一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[8302|wenyiditu002 瘟疫之地二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[wenyiditu002 瘟疫之地平行时空]
+8301 23 36 -> 8302 17 55
+8302 17 55 -> 7301 23 36
+
+
+
+[8401|anheizhidi001 暗黑之地一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[8402|anheizhidi002 暗黑之地二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[8403|anheizhidi003 暗黑之地三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[anheizhidi003 暗黑之地平行时空]
+8401 95 25 -> 8402 26 66
+8402 26 66 -> 8401 95 25
+8402 29 17 -> 8403 29 55
+8403 29 55 -> 8402 29 17
+
+
+;====================第九大陆=========================
+
+[09|MAP033 暴风城] DAY
+
+09 190 22 -> 9101  59 185 
+09 200 172 -> 9201  16 149 
+09 16 184 -> 9301  22 135 
+09 14 39 -> 9401  52 47 
+
+9101  59 185 -> 09 190 22
+9201  16 149 -> 09 200 172
+9301  22 135 -> 09 16 184
+9401  52 47 -> 09 14 39
+
+
+[9101|shaluzhanchang01 杀戮战场一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[9102|MAP026 战场密道] DAY NOMANNOMON NEEDSET_OFF(998)
+[9103|shaluzhanchang02 杀戮战场二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[shaluzhanchang02 杀戮战场平行时空]
+9101 78 26 -> 9102  20 76 
+9102 20 76 -> 9101 78 26
+9102 84 13 -> 9103 106 158 
+9103 106 158 -> 9102 84 13
+
+;--------->暴风金墓三层
+[9201|shiwanggumu01 暴风金墓一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[9202|shiwanggumu02 暴风金墓二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[9203|shiwanggumu03 暴风金墓三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[shiwanggumu03 暴风金墓平行时空]
+9201 113 40 -> 9202 13 150 
+9202 13 150 -> 9201 113 40
+9202 117 51 -> 9203 12 84
+9203 12 84 -> 9202 117 51
+
+
+;--------->彩矿地图二层
+[9301|caikuangditu001 地底晶矿一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[9302|caikuangditu002 地底晶矿二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[caikuangditu002 地底晶矿平行时空]
+9301 93 15 -> 9302 19 54
+9302 19 54 -> 9301 93 15
+
+
+;--------->兵马俑三层
+[9401|bingmayong001 上古遗迹一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[9402|bingmayong002 上古遗迹二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[9403|bingmayong003 上古遗迹三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[bingmayong003 上古遗迹平行时空]
+9401 72 29 -> 9402 50 31
+9402 50 31 -> 9401 72 29
+9402 17 22 -> 9403 12 57
+9403 12 57 -> 9402 17 22
+
+;====================第十大陆=========================
+
+[10|MAP040 鸿蒙城] DAY
+
+10 15 20 -> 10101 70 88
+10 206 29 -> 10201 110 143
+10 200 260 -> 10301 131 178
+10 15 257 -> 10401 43 164
+
+10101 70 88 -> 10 15 20
+10201 110 143 -> 10 206 29
+10301 131 178 -> 10 200 260
+10401 43 164 -> 10 15 257
+
+
+;--------->荒漠遗迹
+[10101|jiangjunfen01 荒漠遗迹一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[10102|jiangjunfen02 荒漠遗迹二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[10103|jiangjunfen03 荒漠遗迹三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[jiangjunfen03 荒漠遗迹平行时空]
+10101 29 33 -> 10102 95 18
+10102 95 18 -> 10101 29 33
+10102 27 114 -> 10103 16 127
+10103 16 127 -> 10102 27 114 
+
+;--------->熔岩密境三层
+[10201|rongyanmijing001 熔岩密境一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[10202|rongyanmijing002 熔岩密境二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[10203|rongyanmijing003 熔岩密境三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[rongyanmijing003 熔岩密境平行时空]
+10201 12 33 -> 10202 24 168
+10202 24 168 -> 10201 12 33
+10202 106 13 -> 10203 47 73
+10203 47 73 -> 10202 106 13 
+
+
+;--------->沙漠孤城三层
+[10301|shamogucheng001 沙漠孤城一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[10302|shamogucheng002 沙漠孤城二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[10303|shamogucheng003 沙漠孤城三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[shamogucheng003 沙漠孤城平行时空]
+10301 23 16 -> 10302 16 96
+10302 16 96 -> 10301 23 16
+10302 108 29 -> 10303 19 85
+10303 19 85 -> 10302 108 29
+
+;--------->深渊秘道三层
+[10401|shenyuanmidao001 深渊密道一层] DAY NOMANNOMON NEEDSET_OFF(998)
+[10402|shenyuanmidao002 深渊密道二层] DAY NOMANNOMON NEEDSET_OFF(998)
+[10403|shenyuanmidao003 深渊密道三层] DAY NOMANNOMON NEEDSET_OFF(998)
+[10404|shenyuanzhidi001 深渊密道四层] DAY NOMANNOMON NEEDSET_OFF(998)
+[10405|shenyuanzhidi002 深渊密道五层] DAY NOMANNOMON NEEDSET_OFF(998)
+[shenyuanzhidi002 深渊密道平行时空]
+10401 45 26 -> 10402 24 123
+10402 24 123 -> 10401 45 26
+10402 98 24 -> 10403 18 48
+10403 18 48 -> 10402 98 24
+10403 49 24 -> 10404 30 64
+10404 30 64 -> 10403 49 24 
+10404 13 42 -> 10405 96 135
+10405 96 135 -> 10404 13 42
+
+
+
+;====================特权地图=========================
+[TQ0011|MAP085 骷髅矿区特权地图] DAY NORANDOMMOVE
+[TQ0012|MAP085 僵尸洞穴特权地图] DAY NORANDOMMOVE
+[TQ0013|MAP085 蜈蚣洞特权地图] DAY NORANDOMMOVE
+[TQ0014|MAP085 兽人古墓特权地图] DAY NORANDOMMOVE
+
+
+[TQ0021|MAP085 沃玛寺庙特权地图] DAY NOMANNOMON
+[TQ0022|MAP085 祖玛秘境特权地图] DAY NOMANNOMON
+[TQ0023|MAP085 骨魔洞特权地图] DAY NOMANNOMON
+[TQ0024|MAP085 恶魔营地特权地图] DAY NOMANNOMON
+
+[TQ0031|MAP085 蚂蚁洞特权地图] DAY NOMANNOMON
+[TQ0032|MAP085 精灵谷特权地图] DAY NOMANNOMON
+[TQ0033|MAP085 黑暗魔殿特权地图] DAY NOMANNOMON
+[TQ0034|MAP085 赤月峡谷特权地图] DAY NOMANNOMON
+
+[TQ0041|MAP085 封魔古刹特权地图] DAY NOMANNOMON
+[TQ0042|MAP085 牛魔寺庙特权地图] DAY NOMANNOMON
+[TQ0043|MAP085 魔毒蚀地特权地图] DAY NOMANNOMON
+[TQ0044|MAP085 封魔宫特权地图] DAY NOMANNOMON
+
+
+
+[TQ0051|MAP085 魔龙峡谷特权地图] DAY NOMANNOMON
+[TQ0052|MAP085 幽暗地底特权地图] DAY NOMANNOMON
+[TQ0053|MAP085 魔化工厂特权地图] DAY NOMANNOMON
+[TQ0054|MAP085 火龙地洞特权地图] DAY NOMANNOMON
+
+
+[TQ006|MAP085 特权地图六] DAY NOMANNOMON
+[TQ007|MAP085 特权地图七] DAY NOMANNOMON
+[TQ008|MAP085 特权地图八] DAY NOMANNOMON
+[TQ009|MAP085 特权地图九] DAY NOMANNOMON
+[TQ0010|MAP085 特权地图十] DAY NOMANNOMON
+
+
+;====================法师召唤宝宝=========================
+
+[FSBB|lvzhulin 绿竹林] DAY
+
+
+
+; ;====================BOSS地图=========================
+; [BOSS001|MAP071 BOSS地图一] DAY
+; [BOSS002|MAP071 BOSS地图二] DAY
+; [BOSS003|MAP071 BOSS地图三] DAY
+; [BOSS004|MAP071 BOSS地图四] DAY
+; [BOSS005|MAP071 BOSS地图五] DAY
+; [BOSS006|MAP071 BOSS地图六] DAY
+; [BOSS007|MAP071 BOSS地图七] DAY
+; [BOSS008|MAP071 BOSS地图八] DAY
+; [BOSS009|MAP071 BOSS地图九] DAY
+; [BOSS0010|MAP071 BOSS地图十] DAY
+;====================新手村=========================
+
+[xinshoucun01 归隐之地] DAY
+
+
+;====================主城2=========================
+[ZC001 盟重2] DAY
+[ZC003 高清比奇] DAY
+[ZHUCHENG001 神途主城] DAY
+[MAP035 森罗殿] DAY
+[bq002 比奇002] DAY
+[MAP013 兰陵城] DAY
+  
+
+;====================种菜地图=========================
+
+[caiyuan 菜园] DAY
+
+;====================吃鸡战场=========================
+
+[chiji 吃鸡战场] DAY
+   
+
+[football 足球场] DAY NOMANNOMON
+
+;====================动态地图山村=========================
+
+[DT 动态地图测试] DAY
+
+;====================新人引导地图=========================
+
+[XHG 玄冥八卦房] DAY
+[TWD 天王殿] DAY
+[CLT 路费领取] DAY
+[XT001 天宫道场] DAY
+[XT002 云宫秘境] DAY
+[XT003 转生镜台] DAY
+[XT004 岩浆岛] DAY
+
+[run002 草地赛道] DAY
+
+[run001 死亡赛道] DAY Safe
+
+
+
+;====================备用地图=========================
+
+[RJD001 藏宝室] DAY
+[RJD002 道馆] DAY
+
+
+;====================8层塔=========================
+
+[T001 塔1] DAY
+[T002 塔2] DAY
+[T003 塔3] DAY
+[T004 塔4] DAY
+[T005 塔5] DAY
+[T006 塔6] DAY
+[T007 塔7] DAY
+[T008 塔8] DAY
+
+;--------->昼夜空岛四层
+[zhouyekongdao001 昼夜空岛一层] DAY
+[zhouyekongdao002 昼夜空岛二层] DAY
+[zhouyekongdao003 天命龙珠] DAY
+[zhouyekongdao004 昼夜空岛四层] DAYM
+
+
+;--------->暗夜森林
+[anyesenglin01 暗夜森林一层] DAY
+[anyesenglin02 暗夜森林二层] DAY
+[anyesenglin03 暗夜森林三层] DAY
+
+
+;--------->荒漠秘境三层
+[huangmomijing001 荒漠秘境一层] DAY
+[huangmomijing002 荒漠秘境二层] DAY
+[huangmomijing003 荒漠秘境三层] DAY
+
+;--------->天空之城三层
+[tiankongzhicheng001 天空之城一层] DAY
+[tiankongzhicheng002 天空之城二层] DAY
+[tiankongzhicheng003 天空之城三层] DAY
+
+;--------->黄沙秘境三层
+[huangshamijing001 黄沙秘境一层] DAY
+[huangshamijing002 黄沙秘境二层] DAY
+[huangshamijing003 黄沙秘境三层] DAY
+
+
+;--------->幽灵船仓三层
+[youlingchuancang001 幽灵船仓一层] DAY
+[youlingchuancang002 幽灵船仓二层] DAY
+[youlingchuancang003 幽灵船仓三层] DAY
+
+;====================活动地图=========================
+;--------->棋盘
+
+[qipanditu 珍珑棋局] DAY
+
+
+;--------->藏宝地
+
+[cangbaoditu 藏宝地图] DAY
+
+;--------->城镇
+[gudaishendian 古代神殿] DAY
+
+;--------->塔防地图
+
+[tafangditu 塔防地图] DAY
+
+
+
+;====================新加地图=========================
+;---------------------主城----------------
+;--------->树木林地类
+[lvzhulin 绿竹林] DAY
+
+
+;--------->荒漠
+
+;--------->火系
+[MAP015 火海城] DAY
+
+;--------->冰雪系
+
+
+
+;--------->大城
+
+
+
+;--------->动态测试用
+[888|n14 测试盟重] DAY
+[444|n0139 新人接待室] DAY
+
+
+
+
+;---------------------刷怪地图----------------
+;--------->火系
+
+[MAP005 火海迷宫] DAY
+[MAP056 岩浆迷宫] DAY
+
+;--------->地宫室内
+[MAP006 幽暗园厅] DAY
+[MAP057 方形水牢] DAY
+[MAP074 法老古道] DAY
+[MAP075 法老祭台] DAY
+[MAP082 触龙祭台] DAY
+
+
+;--------->峡谷类
+[MAP007 峡谷祭坛] DAY
+[MAP029 荒野峡谷] DAY
+
+
+;--------->地宫类
+
+[MAP039 将军地宫] DAY
+[MAP071 星芒迷宫] DAY
+[MAP055 烈阳地宫] DAY
+
+;--------->花草谷地类
+[MAP011 花仙腐地] DAY
+[MAP014 魔化林地] DAY
+
+
+;--------->通道类
+
+[MAP041 龙鳞道] DAY
+
+[MAP078 血晶矿道] DAY
+[MAP086 天宫仙道] DAY
+[MAP020 迷雾山廊] DAY
+[guiyimidao001 战场密道一层] DAY
+[guiyimidao002 战场密道二层] DAY
+
+;--------->婉转山道类
+[MAP027 盘旋鬼道] DAY
+
+;--------->兽人古堡
+[MAP031 兽人古堡] DAY
+
+
+;---------------------活动地图----------------
+;--------->两军对战用
+[MAP012 森林峡谷] DAY 
+
+[ZC002 狂暴地图一] DAY
+[MAP036 称号地图一] DAY
+
+;--------->种菜\刷BOSS\钓鱼等
+
+[MAP019 仙山灵地] DAY
+[MAP030 海滨渔村] DAY
+[MAP038 花园草地] DAY
+[MAP044 度假海岛] DAY
+[MAP045 情侣海岛] DAY
+[MAP050 海面渔村] DAY
+[MAP059 桃花岛] DAY
+[MAP069 清源古镇] DAY
+[MAP073 灵泉村] DAY
+
+;--------->特殊活动类\深渊地图等
+[MAP042 空中神殿] DAY
+[MAP021 四兽神殿] DAY
+[MAP043 野仙府邸] DAY
+[MAP048 荒野府邸] DAY
+[MAP058 天空神殿] DAY  
+;[MAP070 天空战台] DAY  
+[MAP077 云台] DAY  
+[MAP081 客栈庭院] DAY  
+
+;--------->锻造、火系地图
+[MAP022 地火熔炉] DAY
+[MAP062 铸神归隐地] DAY
+
+;--------->泡点、决斗类小图
+[MAP028 玉龙台] DAY
+[MAP032 残破宫门] DAY
+[MAP047 五行天台] DAY
+[MAP076 海之涯] DAY
+[MAP083 八卦台] DAY
+
+;--------->北境雪域
+[MAP010 北境雪村] DAY
+[MAP008 北境冰原] DAY
+[MAP008-2 星芒冰原] DAY
+[MAP017 雪晶矿洞] DAY
+[MAP034 冰龙骨地] DAY
+[MAP052 冰晶地宫] DAY
+[MAP053 冰封王座] DAY
+[baoxiang|12001 宝箱争夺] DAY
+[guaiwufang|12001 怪物房] DAY
+[paokuditu|12001 跑酷地图] DAY Safe
+;--------->末日荒漠
+[MAP018 日落客栈] DAY
+[MAP046 荒漠祭台] DAY
+[MAP072 黄沙遗城] DAY
+
+[MAP054 荒漠围城] DAY
+[MAP068 黄沙寨] DAY
+[MAP063 峡谷平原] DAY
+[MAP066 荒原金地] DAY
+
+;--------->末日森罗
+[MAP060 森罗暗道] DAY
+[MAP061 森罗荒原] DAY
+[MAP064 森罗祭台] DAY
+[MAP067 诛仙剑冢] DAY
+[MAP065 森罗殿] DAY
+
+
+[MAP080 雪国] DAY
+[MAP079 星光城] DAY
+
+
+
+; ;====================猎魂地图=========================
+[LH001|MAP082 黑暗祭台] DAY
+[LH002|MAP076 世界尽头] DAY
+[LH003|XT004  熔岩石阵] DAY
+
+; ;====================沙巴克=========================
+
+[shabake 沙巴克] DAY
+
+[huanggong 第一统战皇宫] DAY
+[huanggong1|huanggong 第一统战皇宫] DAY   Safe
+[huanggong2|huanggong 第二统战皇宫] DAY SECRET(28|打我呀|1130|2165)  Safe
+[huanggong3|huanggong 第三统战皇宫] DAY SECRET(28|打我呀|1130|2165)  Safe
+[huanggong4|huanggong 第四统战皇宫] DAY SECRET(28|打我呀|1130|2165)  Safe
+[huanggong5|huanggong 第五统战皇宫] DAY SECRET(28|打我呀|1130|2165)  Safe
+[huanggong6|huanggong 第六统战皇宫] DAY SECRET(28|打我呀|1130|2165)
+[huanggong7|huanggong 第七统战皇宫] DAY SECRET(28|打我呀|1130|2165)
+[huanggong8|huanggong 第八统战皇宫] DAY SECRET(28|打我呀|1130|2165)
+[huanggong9|huanggong 第九统战皇宫] DAY SECRET(28|打我呀|1130|2165)
+[huanggong10|huanggong 第十统战皇宫] DAY SECRET(28|打我呀|1130|2165)
+[huanggong11|huanggong 第11统战皇宫] DAY SECRET(28|打我呀|1130|2165)
+[huanggong12|huanggong 第12统战皇宫] DAY SECRET(28|打我呀|1130|2165)
+[huanggong13|huanggong 第13统战皇宫] DAY SECRET(28|打我呀|1130|2165)
+[huanggong14|huanggong 第14统战皇宫] DAY SECRET(28|打我呀|1130|2165)
+[huanggong15|huanggong 第15统战皇宫] DAY SECRET(28|打我呀|1130|2165)
+[huanggong16|huanggong 第16统战皇宫] DAY SECRET(28|打我呀|1130|2165)
+[huanggong17|huanggong 第17统战皇宫] DAY SECRET(28|打我呀|1130|2165)
+[huanggong18|huanggong 第18统战皇宫] DAY SECRET(28|打我呀|1130|2165)
+[huanggong19|huanggong 第19统战皇宫] DAY SECRET(28|打我呀|1130|2165)
+[huanggong20|huanggong 第20统战皇宫] DAY SECRET(28|打我呀|1000|2000)
+[huanggong100|huanggong 验证房间] DAY QUIZ Safe MISSION SECRET(28|打我呀|1000|2000)
+[kuafu1|MAP084 第一统战传仙战场] DAY
+[kuafu2|MAP084 第二统战传仙战场] DAY
+[kuafu3|MAP084 第三统战传仙战场] DAY
+[kuafu4|MAP084 第四统战传仙战场] DAY
+[kuafu5|MAP084 第五统战传仙战场] DAY
+[kuafu6|MAP084 第六统战传仙战场] DAY
+[kuafu7|MAP084 第七统战传仙战场] DAY
+[kuafu8|MAP084 第八统战传仙战场] DAY
+[kuafu9|MAP084 第九统战传仙战场] DAY
+[kuafu10|MAP084 第十统战传仙战场] DAY
+[kuafu11|MAP084 第11统战传仙战场] DAY
+[kuafu12|MAP084 第12统战传仙战场] DAY
+[kuafu13|MAP084 第13统战传仙战场] DAY
+[kuafu14|MAP084 第14统战传仙战场] DAY
+[kuafu15|MAP084 第15统战传仙战场] DAY
+[kuafu16|MAP084 第16统战传仙战场] DAY
+[kuafu17|MAP084 第17统战传仙战场] DAY
+[kuafu18|MAP084 第18统战传仙战场] DAY
+[kuafu19|MAP084 第19统战传仙战场] DAY
+[kuafu20|MAP084 第20统战传仙战场] DAY
+
+[fumo0|RJD003 伏魔大厅] DAY
+[fumo1|RJD003 第一统战伏魔大厅] DAY
+[fumo2|RJD003 第二统战伏魔大厅] DAY
+[fumo3|RJD003 第三统战伏魔大厅] DAY
+[fumo4|RJD003 第四统战伏魔大厅] DAY
+[fumo5|RJD003 第五统战伏魔大厅] DAY
+[fumo6|RJD003 第六统战伏魔大厅] DAY
+[fumo7|RJD003 第七统战伏魔大厅] DAY
+[fumo8|RJD003 第八统战伏魔大厅] DAY
+[fumo9|RJD003 第九统战伏魔大厅] DAY
+[fumo10|RJD003 第十统战伏魔大厅] DAY
+[fumo11|RJD003 第11统战伏魔大厅] DAY
+[fumo12|RJD003 第12统战伏魔大厅] DAY
+[fumo13|RJD003 第13统战伏魔大厅] DAY
+[fumo14|RJD003 第14统战伏魔大厅] DAY
+[fumo15|RJD003 第15统战伏魔大厅] DAY
+[fumo16|RJD003 第16统战伏魔大厅] DAY
+[fumo17|RJD003 第17统战伏魔大厅] DAY
+[fumo18|RJD003 第18统战伏魔大厅] DAY
+[fumo19|RJD003 第19统战伏魔大厅] DAY
+[fumo20|RJD003 第20统战伏魔大厅] DAY
+
+[bagua1|XHG 一统战玄冥八卦房] DAY
+[bagua2|XHG 二统战玄冥八卦房] DAY
+[bagua3|XHG 三统战玄冥八卦房] DAY
+[bagua4|XHG 四统战玄冥八卦房] DAY
+[bagua5|XHG 五统战玄冥八卦房] DAY
+[bagua6|XHG 六统战玄冥八卦房] DAY
+[bagua7|XHG 七统战玄冥八卦房] DAY
+[bagua8|XHG 八统战玄冥八卦房] DAY
+[bagua9|XHG 九统战玄冥八卦房] DAY
+[bagua10|XHG 十统战玄冥八卦房] DAY
+[bagua11|XHG 11统战玄冥八卦房] DAY
+[bagua12|XHG 12统战玄冥八卦房] DAY
+[bagua13|XHG 13统战玄冥八卦房] DAY
+[bagua14|XHG 14统战玄冥八卦房] DAY
+[bagua15|XHG 15统战玄冥八卦房] DAY
+[bagua16|XHG 16统战玄冥八卦房] DAY
+[bagua17|XHG 17统战玄冥八卦房] DAY
+[bagua18|XHG 18统战玄冥八卦房] DAY
+[bagua19|XHG 19统战玄冥八卦房] DAY
+[bagua20|XHG 20统战玄冥八卦房] DAY
+
+
+[VIP4|MAP067 VIP地图4] DAY
+
+
+
+[xianmo1|MAP051 高级仙魔斗场] DAY SHOWNATIONCOLOR NOSWITCHATTACKMODE(8)
+[xianmo2|MAP051 低级仙魔斗场] DAY SHOWNATIONCOLOR NOSWITCHATTACKMODE(8)
+
+
+
+[礼包房间|CLT 礼包房间]  SAFE FIGHT NORECALL NODEARRECALL NOMasterRECALL NOTALLOWUSEMAGIC(瞬息移动) NOTALLOWUSEITEMS(盟重传送石|回城卷|无极金丹|大陆回城石|行会回城卷|回城石|地牢逃脱卷) NOTHROWITEM NODEAL NODRUG NOSHOPPING
+[微信验证|CLT 微信验证]  SAFE FIGHT NORECALL NODEARRECALL NOMasterRECALL NOTALLOWUSEMAGIC(瞬息移动) NOTALLOWUSEITEMS(盟重传送石|回城卷|无极金丹|大陆回城石|行会回城卷|回城石|地牢逃脱卷) NOTHROWITEM NODEAL NODRUG NOSHOPPING 
+
+
+
+
+
+
+
+

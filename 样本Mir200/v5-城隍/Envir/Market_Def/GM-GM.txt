@@ -1,0 +1,11 @@
+﻿[@main]
+\ \
+最新功能，我可以帮你\ \
+     <点击此处|爽/@抽奖检测3>   \
+     
+[@抽奖检测3]
+#IF
+;CheckItem 金条 1
+#ACT
+;Take 金条 1
+AddGuildMemberCount + 50

@@ -1,0 +1,93 @@
+[@MAIN]
+#if
+#act
+
+OPENMERCHANTBIGDLG 45 1796 1 4 0 -80 1 386 5 1	
+#SAY
+
+
+<--------------------------------------------------------------/AUTOCOLOR=91>\ \
+　 <攻沙时间>：<首次攻沙时间为开区第三天,无需头像/SCOLOR=251>\  \
+　 <攻沙奖励>：<首次攻沙奖励元宝500W.天地结晶<$STR(G3)>颗，时装羽毛<$STR(G4)>个/SCOLOR=244>\  \
+　 <老区奖励>：<老区攻沙奖励元宝100W.天地结晶<$STR(G5)>颗，时装羽毛<$STR(G6)>个/SCOLOR=250>\  \
+　 <老区攻沙>：<每星期二.四.六 晚上八点自动开启,每日都有激情/SCOLOR=254>\  \
+　 <领取时间/SCOLOR=253>：<领奖时间为22:30---23:00/SCOLOR=253>\  \
+　 <盗取时间/SCOLOR=250>：<领奖时间为22:01---22:29/SCOLOR=250>\  \
+<--------------------------------------------------------------/AUTOCOLOR=91>\  \
+<>  <当前沙巴克奖池/SCOLOR=251>                              <强行盗取沙巴克奖励/@盗取>\
+
+<ProgressBar:120:275:55:620:630:6:100:4:1:0:<$STR(G1)>:<$STR(G2)>:0:250:0:0:%p／%m>\ \
+
+
+<>  　 　　 　      　<Text:沙巴克城主领取攻沙奖励:0:-20{FCOLOR=253}/@进入领取奖励>　 　　 　　 　 \
+
+
+[@盗取]
+#IF
+NOT HAVEGUILD
+#ACT
+messagebox 请先加入一个行会！
+break
+
+#if
+EQUAL G887 1
+#ACT
+messagebox 沙巴克宝藏盗取正在处于关闭状态！
+break
+
+#if
+#ACT
+SendCenterMsg 249 251 <$USERNAME>正在盗取沙巴克宝藏，请沙巴克城主火速带领成员赶往阻止 0 30
+SHOWPROGRESSBARDLG 10 @盗取成功 正在盗取沙巴克宝藏,进度%d%... 1 @盗取中断
+CLOSEMERCHANTBIGDLG
+break
+
+[@进入领取奖励]
+
+#if
+NOT ISCASTLEMASTER
+#Act
+messagebox 你不是沙巴克城主！
+break
+
+#if
+EQUAL G888 1
+#Act
+messagebox 现在并不是领取时间！获奖励已被领取！
+break
+
+#if
+EQUAL G889 3
+#Act
+GAMEGOLD + <$STR(G2)>
+GIVE  天地结晶 <$STR(G3)>
+GIVE  时装羽毛 <$STR(G4)>
+SceneShake 1
+MOV G888 1
+SendNewLineMsg 0 249 0 15 270 13 2 全服通告||沙巴克城主<$USERNAME>领取了首次沙巴克奖励||<$STR(G2)>元宝丶天地结晶*<$STR(G3)>丶时装羽毛*<$STR(G4)>||沙巴克奖池已更新老区每周二丶四丶六进行沙巴克争夺活动
+MOV G1 1000000  ;老区总奖励
+MOV G2 1000000  ;老区可盗取奖励
+MOV G5 1000  ;老区天地结晶奖励
+MOV G6 1000  ;老区时装羽毛奖励
+CLOSEMERCHANTBIGDLG
+break
+
+#if
+LARGE G889 3
+#Act
+GAMEGOLD + <$STR(G2)>
+GIVE  天地结晶 <$STR(G3)>
+GIVE  时装羽毛 <$STR(G4)>
+SceneShake 1
+MOV G888 1
+SendNewLineMsg 0 249 0 15 270 13 2 全服通告||沙巴克城主<$USERNAME>领取了老区沙巴克奖励||<$STR(G2)>元宝丶天地结晶*<$STR(G3)>丶时装羽毛*<$STR(G4)>||沙巴克奖池已更新老区每周二丶四丶六进行沙巴克争夺活动
+MOV G1 1000000  ;老区总奖励
+MOV G2 1000000  ;老区可盗取奖励
+MOV G5 1000  ;老区天地结晶奖励
+MOV G6 1000  ;老区时装羽毛奖励
+CLOSEMERCHANTBIGDLG
+break
+
+
+
+

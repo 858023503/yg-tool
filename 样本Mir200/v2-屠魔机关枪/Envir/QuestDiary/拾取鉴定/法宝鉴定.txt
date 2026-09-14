@@ -1,0 +1,48 @@
+[@法宝鉴定]
+{
+
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt [<$Str(S99)>]
+#ACT
+readconfigfileitem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$Str(S99)> 鉴定条目 N$鉴定条目 
+readconfigfileitem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$Str(S99)> 鉴定属性1 N$鉴定属性1
+readconfigfileitem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$Str(S99)> 融合属性上限 N$融合属性上限
+readconfigfileitem ..\QuestDiary\拾取鉴定\法宝数据核心处理.txt <$Str(S99)> 鉴定属性2是否随机 N$鉴定属性2是否随机
+
+#ELSEACT
+break
+
+#OR
+EQUAL <$Str(S99)> 戮仙剑
+EQUAL <$Str(S99)> 陷仙剑
+EQUAL <$Str(S99)> 绝仙剑
+EQUAL <$Str(S99)> 影仙剑
+EQUAL <$Str(S99)> 越女剑
+EQUAL <$Str(S99)> 赤霄剑
+#ACT
+
+SetCustomItemText -1 <IMG:1147:0>
+SetCustomItemAbil -1 1 0 168
+SetCustomItemAbil -1 1 1 8
+SetCustomItemAbil -1 1 2 1
+SetCustomItemAbil -1 1 3 0
+SetCustomItemValueEX -1 1 = <$Str(N$鉴定条目)> <$Str(N$鉴定属性1)> <$Str(N$融合属性上限)>
+break
+
+
+
+#IF
+#ACT
+SetCustomItemText -1 <IMG:113:0>
+MOVR N$词条数值 1 <$Str(N$鉴定属性1)>
+SetCustomItemAbil -1 1 0 151
+SetCustomItemAbil -1 1 1 8
+SetCustomItemAbil -1 1 2 1
+SetCustomItemAbil -1 1 3 0
+SetCustomItemValueEX -1 1 = <$Str(N$鉴定条目)> <$Str(N$词条数值)> <$Str(N$融合属性上限)>
+
+
+
+}

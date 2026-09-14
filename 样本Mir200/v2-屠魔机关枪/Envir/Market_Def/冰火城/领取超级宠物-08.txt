@@ -1,0 +1,30 @@
+[@main]
+#if
+#act
+OPENMERCHANTBIGDLG 5 941 1 4 0 0  0 360 15 1
+#say
+<&Text:拥有氪金魔王宠物后可以免费领取超级宠物:50:55{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:超级宠物默认伤害100京:120:85{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:并可以学习各种技能:125:115{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:领取费用50W元宝:125:145{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&IMGEX:5:730:731:732:145:178:1/@升级超级宠物>
+
+
+[@升级超级宠物]
+#if
+checkgamegold < 500000
+#act
+messagebox 元宝不够
+break
+
+#if
+EQUAL U137 10
+#act
+MOV U137 11
+MOV U386 200
+DeleteGamePet 0
+GiveGamePetEx 超级宠物
+RecallGamePet 超级宠物
+gamegold - 500000
+
+messagebox 兑换完成

@@ -1,0 +1,74 @@
+[@main]
+#if
+#ACT
+OPENMERCHANTBIGDLG 3 1794 1 4 0 -150 1 390 5 0
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+<地图介绍:/SCOLOR=254>击杀怪物有<几率/SCOLOR=70>召唤异界传送门,持续60s \
+<怪物等级:/SCOLOR=249>普通-<精英/SCOLOR=254>-<修罗/SCOLOR=251>-<魔化/SCOLOR=253>-<变异/SCOLOR=249>-<BOSS/SCOLOR=93>\
+<怪物刷新:/SCOLOR=251>普通,精英,修罗,魔化,变异随机刷新,小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟 \
+<进入条件:/SCOLOR=70>本服<没有/SCOLOR=250>任何会员专属及隐藏地图 \
+<装备出处:/SCOLOR=253>所有装备全靠爆出，无任何合成\ \ 
+<><前往要求1:> <1000元宝/AUTOCOLOR=251>\ 
+<><前往要求2:> 主属性达到→<666/AUTOCOLOR=22>       <><确认前往/@zmg>\ 
+<><地图掉落：/AUTOCOLOR=93>
+<>\
+<><ITEMSHOW:883:0:0:-0:1:13><ITEMSHOW:892:0:0:-0:1><ITEMSHOW:893:0:0:-0:1><ITEMSHOW:895:0:0:-0:1><ITEMSHOW:896:0:0:-0:1><ITEMSHOW:897:0:0:-0:1><ITEMSHOW:898:0:0:-0:1><ITEMSHOW:1953:0:0:-0:1><ITEMSHOW:1947:0:0:-0:1>\ \ \
+<><ITEMSHOW:543:0:0:-0:1><ITEMSHOW:545:0:0:-0:1><ITEMSHOW:547:0:0:-0:1><ITEMSHOW:487:0:0:-0:1><ITEMSHOW:488:0:0:-0:1><ITEMSHOW:489:0:0:-0:1><ITEMSHOW:555:0:0:-0:1><ITEMSHOW:557:0:0:-0:1><ITEMSHOW:631:0:0:-0:1>
+
+ 
+
+[@zmg]
+#IF
+CheckJob Warrior
+CHECKDC >  0 >  665
+#ACT
+goto @镇魔阁
+break
+#IF
+CheckJob Taoist
+CHECKsC >  0 >  665
+#ACT
+goto @镇魔阁
+break
+#IF
+CheckJob Wizard
+CHECKMC >  0 >  665
+#ACT
+goto @镇魔阁
+break
+#ELSEACT
+Messagebox 您还没有达到要求,去也是送死!
+break
+
+
+[@镇魔阁]
+#if
+CheckgameGold  ? 1000
+#act
+gamegold - 1000
+MAPMOVE GA1
+SendMsg 0 玩家{[%s]|}前往{[镇魔阁]|}寻宝去了,此地危险,新手勿进!
+#elseact
+MessageBox 条件为满足，无法进入。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

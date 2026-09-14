@@ -1,0 +1,17 @@
+[@开始计算TEXT条目]
+{
+#IF
+#ACT
+GetAllCustomItemValueByTextLine 56 0 29 N$无用变量1 N$逍遥词缀取值 N$无用变量2
+GetAllCustomItemValueByTextLine 56 0 30 N$无用变量1 N$灵性词缀取值 N$无用变量2
+GetAllCustomItemValueByTextLine 56 0 31 N$无用变量1 N$狂气词缀取值 N$无用变量2
+GetAllCustomItemValueByTextLine 56 0 32 N$无用变量1 N$气血词缀取值 N$无用变量2
+GetAllCustomItemValueByTextLine 56 0 33 N$无用变量1 N$福缘词缀取值 N$无用变量2
+GetAllCustomItemValueByTextLine 56 0 34 N$无用变量1 N$暴怒词缀取值 N$无用变量2
+GetAllCustomItemValueByTextLine 56 0 35 N$无用变量1 N$神助词缀取值 N$无用变量2
+GetAllCustomItemValueByTextLine 56 0 36 N$无用变量1 N$深刻词缀取值 N$无用变量2
+GetAllCustomItemValueByTextLine 56 0 37 N$无用变量1 N$偶然性词缀取值 N$无用变量2
+GetAllCustomItemValueByTextLine 56 0 38 N$无用变量1 N$狂徒词缀取值 N$无用变量2
+GetAllCustomItemValueByTextLine 56 0 39 N$无用变量1 N$生命汲取词缀取值 N$无用变量2
+GetAllCustomItemValueByTextLine 56 0 40 N$无用变量1 N$法力汲取词缀取值 N$无用变量2
+}

@@ -1,0 +1,18 @@
+[@载入头盔1级符文之语]
+{
+#IF
+CheckItemHasStone <$CurItemPos> 大魔王的心 1
+CheckItemHasStone <$CurItemPos> 小魔王的肝 1
+CheckFluteCount <$CurItemPos> = 2
+#ACT
+SetCustomItemText <$CurItemPos> 心肝宝贝(Heart　Liver　Baby)
+SetCustomItemTextColor <$CurItemPos> 102
+MOV N$饰品当前装备位置 <$CurItemPos>
+GOTO @_@初始化符文之语饰品默认自定义参数0
+MOV L$添加用自定义属性参数数组[5] 1
+MOV L$添加用自定义属性参数数组[7] 5
+MOV L$添加用自定义属性参数数组[9] 43
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+}

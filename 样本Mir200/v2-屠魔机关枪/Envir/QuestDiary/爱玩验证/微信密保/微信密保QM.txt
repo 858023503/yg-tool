@@ -1,0 +1,140 @@
+
+; ;---------------微信密保登陆检测---------------------
+; [@微信密保QM]
+; {
+; #IF
+; CHECKLEVELEX > 0
+; #ACT
+; MOV S$补丁编号 4	;Pak资源编号
+; MOV S$奖励物品 金条	;首次绑定赠送物品
+; MOV S$验证地图 3	;机器码变动后,传送的地图代码
+; ;--------------请修改上面的变量参数--------------
+; #IF
+; EQUAL T47
+; EQUAL T48
+; #ACT
+; BREAK
+
+; #if
+; EQUAL T49 <$MACHINEID>
+; #ACT
+; SENDMSG 6 机器码验证通过,祝您游戏愉快
+; break
+; #elseact
+; ;这里加上传送到验证房间 或者锁定玩家
+; MAP <$STR(S$验证地图)>
+; ChangeModeEx 10 65530
+; ;这里加上传送到验证房间 或者锁定玩家
+; ;这里加上传送到验证房间 或者锁定玩家
+; MOV N$有效期 120
+; SetOnTimer 23 1
+; MOVR N$验证码 100000 999999
+
+; AddTextListEx ..\..\..\..\爱玩验证\提交数据.txt FSYZWX|<$STR(T48)>|<$SERVERNAME>|<$USERNAME>|<$STR(N$验证码)>|<$STR(N$有效期)>|备用1|<$MACHINEID>
+
+; [@关闭微信]
+; #act
+; SetOffTimer 22
+; close
+
+; ;---------------微信密保绑定---------------------
+; [@OnTimer22]
+; #ACT
+; DEC N$有效期 1
+; #SAY
+; \ \ \
+; <ImgEx:<$STR(S$补丁编号)>:10:11:12:395:-23/@关闭微信>\
+; <Img:20:<$STR(S$补丁编号)>:274:22:D>\
+; 　请扫码关注微信公众号,首次绑定送:{<$STR(S$奖励物品)>/SCOLOR=250}\
+; 　绑定微信后,可使用微信接收动态验证码!\
+; 　<请在微信公众号中回复下面的数字进行绑定!/SCOLOR=253>\
+; 　<若提示验证码无效,请重新获取一次再试!/SCOLOR=70>\
+; <┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄/SCOLOR=14>\
+; {　有效期:<$STR(N$有效期)>/SCOLOR=14}\
+; <Img:16:<$STR(S$补丁编号)>:120:-2:D>\
+; <　在微信中回复数字:/SCOLOR=254> <$STR(S$数字图片)>\ 
+
+; #IF
+; SMALL N$有效期 1
+; #ACT
+; SetOffTimer 22
+; MOV N$验证码
+; messagebox 绑定失败!重新再试!
+; close
+; BREAK
+
+; #IF
+; SMALL N$有效期 115
+; #ACT
+; GetRandomText ..\..\..\..\爱玩验证\返回数据\<$UserName>_WXNC.txt S$98 0
+; GetRandomText ..\..\..\..\爱玩验证\返回数据\<$UserName>_WXID.txt S$99 0
+
+; #IF
+; EQUAL S$98
+; EQUAL S$99
+; #ACT
+; BREAK
+; #elseact
+; MOV T47 <$STR(S$98)>
+; MOV T48 <$STR(S$99)>
+; MOV T49 <$MACHINEID>
+; MOV S$98
+; MOV S$99
+; CLEARNAMELIST ..\..\..\..\爱玩验证\返回数据\<$UserName>_WXNC.txt
+; CLEARNAMELIST ..\..\..\..\爱玩验证\返回数据\<$UserName>_WXID.txt
+; SetOffTimer 22
+; messagebox 绑定成功\　\微信昵称:<$STR(T47)>\　\机器码:<$STR(T49)>
+; close
+
+; #IF
+; check [99] 1
+; #elseact
+; give <$STR(S$奖励物品)> 1
+; set [99] 1
+
+
+; ;微信公众号机器码检测--------------------
+
+; [@OnTimer23]
+; #ACT
+; DEC N$有效期 1
+; OPENMERCHANTBIGDLG <$STR(S$补丁编号)> 21 0 4 X -50 0 530 5
+; #say
+; \ \ \
+; <ImgEx:<$STR(S$补丁编号)>:10:11:12:395:-23/@exit>\
+; <Img:20:<$STR(S$补丁编号)>:274:22:D>\
+; 　<1.取消订阅将无法收到验证码!/SCOLOR=70>\
+; 　<2.若没有收到验证码请在微信中回复"1"/SCOLOR=70>\
+; 　<3.若回复"1"无验证码,请小退后重新获取!/SCOLOR=70>\
+; 　<若没有收到验证码,请小退获取一次再试!/SCOLOR=70>\
+; <┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄/SCOLOR=14>\
+; 　系统已发送验证码微信:{<$STR(T47)>/SCOLOR=250}\ 
+; <┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄/SCOLOR=14>\
+; 　　　　<请输入您收到的验证码/@@InPutString11(请输入您收到的验证码：)>    {有效期<$STR(N$有效期)>秒/SCOLOR=14}\
+
+
+
+; #IF
+; SMALL N$有效期 1
+; #ACT
+; KICK
+; messagebox 您在规定时间内没有完成验证,系统踢您下线!
+; BREAK
+
+
+; [@InPutString11]
+
+; #if
+; equal N$验证码 <$STR(S11)>
+; #act
+; MAPMOVE 3 333 333
+; ChangeModeEx 10 2
+; MOV T49 <$MACHINEID>
+; SetOffTimer 23
+; messagebox 微信验证通过,祝您游戏愉快!
+; CLOSE
+; #elseact
+; messagebox 验证码输入错误,请重新输入!
+; break
+
+; }

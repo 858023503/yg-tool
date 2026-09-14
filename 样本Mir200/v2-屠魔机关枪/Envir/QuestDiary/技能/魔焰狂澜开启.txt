@@ -1,0 +1,31 @@
+[@魔焰狂澜开启]
+{
+
+
+
+#if
+EQUAL N$魔焰狂澜开关 1
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+; MOV N$魔焰狂澜开关 0
+;不注释等于单独目标攻击
+releasemagicEX 1027 0 0 1 1 
+
+break
+
+MOV N$魔焰狂澜允许次数 10
+
+GOTO  @允许魔焰狂澜释放
+
+
+
+[@允许魔焰狂澜释放]
+#IF
+LARGE N$魔焰狂澜允许次数 0
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+DEC N$魔焰狂澜允许次数 1
+releasemagicEX 1027 0 0 1 1
+
+DELAYGOTO 100 @允许魔焰狂澜释放
+}

@@ -1,0 +1,8 @@
+[@Body]
+{
+[@GamePetRecall]
+#IF
+CheckContainsText <$GamePetName> свлЕ
+#ACT
+ChangeGamePetBodySize 70
+}

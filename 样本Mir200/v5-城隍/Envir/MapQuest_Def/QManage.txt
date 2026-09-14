@@ -1,0 +1,12 @@
+#include 随身工坊参数.txt
+#include 咸鱼淬炼参数.txt
+#CALL [a西伯利亚\通用触发段.txt] @Body
+#CALL [a西伯利亚\QM\NewHuman.txt] @Body
+#CALL [a西伯利亚\QM\StartUP.txt] @Body
+#CALL [a西伯利亚\QM\Robot.txt] @Body
+#CALL [a西伯利亚\QM\Login.txt] @Body
+#CALL [a西伯利亚\QM\定时器\2秒定时器.txt] @Body
+#CALL [a西伯利亚\QM\定时器\10秒定时器.txt] @Body
+#CALL [a西伯利亚\QM\定时器\管理测试用定时器.txt] @Body
+#CALL [a西伯利亚\QF\自定按钮\时装界面DNF装备.txt] @Body
+#CALL [\a西伯利亚\QF\自定按钮\时装界面魔兽神佑.txt] @Body

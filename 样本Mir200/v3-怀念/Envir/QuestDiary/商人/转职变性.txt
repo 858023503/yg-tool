@@ -1,0 +1,1820 @@
+[@转职变性]
+{
+#IF
+#ACT
+#SAY
+<------------------------------------------------------------/SCOLOR=83>\
+<提醒：部分技能转职后自动转换成当前职业技能/SCOLOR=253>     <我要转职/@人物转职>\
+<提醒：部分技能转职后自动转换成当前职业技能/SCOLOR=253>     <我要转职/@人物转职>\
+<------------------------------------------------------------/SCOLOR=83>\
+<你是否对现在的性别不爽，那么我给你动动手术/SCOLOR=242>     <我要变性/@人物变性>\
+<你是否对现在的性别不爽，那么我给你动动手术/SCOLOR=242>     <我要变性/@人物变性>\
+<------------------------------------------------------------/SCOLOR=83>\ \
+　<Hot~>      　　  　  　  　  　  　  　  　   <返回首页/@main>
+
+
+
+
+
+
+[@人物变性]
+#IF
+#ACT
+#SAY
+<------------------------------------------------------------/SCOLOR=83>\
+　<Hot~>  <你是否对现在的性别感觉不爽，那么我可以给你动动手术/SCOLOR=253>\
+<------------------------------------------------------------/SCOLOR=83>\ \
+　<Hot~>    <我要变性成男人/@男人>                 <我要变性成女人/@女人>\ \
+　<Hot~>              <变性需要：20000元宝/SCOLOR=250>\
+<------------------------------------------------------------/SCOLOR=83>\
+　<Hot~>      　　  　  　  　  　  　  　  　  　　<返回首页/@main>
+
+
+
+[@女人]
+#if
+checkmarry
+#ACT
+messagebox 抱歉，你已经结婚了，不能做变性手术哦，请先离婚.
+break
+#elseact
+goto @女人A
+break
+
+[@女人A]
+#IF
+CHECKGAMEGOLD > 19999
+#ACT
+GAMEGOLD - 20000
+CHANGEGENDER 1
+GUILDNOTICEMSG 0 254  ぐ恭喜【%s】已经变成一位女人了。.
+DELAYGOTO 1000 @人物小退
+break
+#elseact
+messagebox 你的元宝不足.
+break
+
+[@男人]
+#if
+checkmarry
+#ACT
+messagebox 抱歉，你已经结婚了，不能做变性手术哦，请先离婚.
+break
+#elseact
+goto @男人A
+break
+
+[@男人A]
+#IF
+CHECKGAMEGOLD > 19999
+#ACT
+GAMEGOLD - 20000
+CHANGEGENDER 0
+GUILDNOTICEMSG 0 254  ぐ恭喜【%s】已经变成一位男人了。.
+DELAYGOTO 1000 @人物小退
+break
+#elseact
+messagebox 你的元宝不足.
+break
+
+
+
+
+
+[@人物转职]
+
+#IF
+checkjob warrior
+#ACT
+goto @战士转职KA
+break
+
+#IF
+checkjob taoist
+#ACT
+goto @道士转职KA
+break
+
+#IF
+checkjob wizard
+#ACT
+goto @法师转职KA
+break
+
+
+[@法师转职KA]
+#IF
+#ACT
+#SAY
+<------------------------------------------------------------/SCOLOR=83>\
+　<Hot~> <转职后技能重新学习，护体神盾保留！/SCOLOR=254>\
+<------------------------------------------------------------/SCOLOR=83>\ \
+　<转职成道士/@道士A>   <所有技能转职后对应改为转职后职业技能/SCOLOR=242>\ \
+　<转职成战士/@战士A>   <所有技能转职后对应改为转职后职业技能/SCOLOR=242>\ \
+　<转职需要：100积分＋48级 /SCOLOR=250>\
+　　　　　　   　　　　　　   　　　　　　       <返回首页/@main>\
+
+[@道士转职KA]
+#IF
+#ACT
+#SAY
+<------------------------------------------------------------/SCOLOR=83>\
+　<Hot~> <转职后技能重新学习，护体神盾保留！/SCOLOR=254>\
+<------------------------------------------------------------/SCOLOR=83>\ \
+　<转职成法师/@法师A>   <所有技能转职后对应改为转职后职业技能/SCOLOR=242>\ \
+　<转职成战士/@战士A>   <所有技能转职后对应改为转职后职业技能/SCOLOR=242>\ \
+　<转职需要：100积分＋48级/SCOLOR=250>\
+　　　　　　   　　　　　　   　　　　　　       <返回首页/@main>\
+
+[@战士转职KA]
+#IF
+#ACT
+#SAY
+<------------------------------------------------------------/SCOLOR=83>\
+　<Hot~> <转职后技能重新学习，护体神盾保留！/SCOLOR=254>\
+<------------------------------------------------------------/SCOLOR=83>\
+　<转职成法师/@法师A>   <所有技能转职后对应改为转职后职业技能/SCOLOR=242>\ \
+　<转职成道士/@道士A>   <所有技能转职后对应改为转职后职业技能/SCOLOR=242>\ \
+　<转职需要：100积分＋48级/SCOLOR=250>\
+　　　　　　   　　　　　　   　　　　　　       <返回首页/@main>\
+
+
+
+
+
+
+
+
+[@战士A]
+#OR
+CHECKSKILL 护体神盾 = 0
+CHECKSKILL 护体神盾 = 1
+CHECKSKILL 护体神盾 = 2
+CHECKSKILL 护体神盾 = 3
+#ACT
+MOV S$护体 已学
+
+#IF
+CHECKLEVELex < 48
+#act
+MESSAGEBOX [提示]等级不足48无法转职！
+BREAK
+
+#IF
+CHECKGAMEGIRD < 100
+#act
+MESSAGEBOX [提示]积分不足100！
+BREAK
+#IF
+CHECKSKILL 施毒术 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 施毒术 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 施毒术 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 施毒术 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 施毒术 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 施毒术 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 施毒术 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 施毒术 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 施毒术 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+
+
+#IF
+CHECKSKILL 飓风破 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 飓风破 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 飓风破 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 飓风破 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 飓风破 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 飓风破 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 飓风破 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 飓风破 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 飓风破 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+
+#IF
+CHECKSKILL 裂神符 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 裂神符 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 裂神符 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 裂神符 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 裂神符 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 裂神符 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 裂神符 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 裂神符 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 裂神符 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+
+#IF
+CHECKSKILL 魔法盾 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 魔法盾 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 魔法盾 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 魔法盾 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 魔法盾 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 魔法盾 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 魔法盾 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 魔法盾 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 魔法盾 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+
+#IF
+CHECKSKILL 流星火雨 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 流星火雨 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 流星火雨 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 流星火雨 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 流星火雨 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 流星火雨 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 流星火雨 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 流星火雨 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 流星火雨 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+#IF
+CHECKSKILL 火墙 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 火墙 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 火墙 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 火墙 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 火墙 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 火墙 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 火墙 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 火墙 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 火墙 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+
+#IF
+CHECKSKILL 烈火剑法 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 烈火剑法 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 烈火剑法 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 烈火剑法 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 烈火剑法 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 烈火剑法 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 烈火剑法 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 烈火剑法 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 烈火剑法 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+
+#IF
+CHECKSKILL 开天斩 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 开天斩 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 开天斩 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 开天斩 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 开天斩 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 开天斩 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 开天斩 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 开天斩 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 开天斩 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+#IF
+CHECKSKILL 刺杀剑术 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 刺杀剑术 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 刺杀剑术 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 刺杀剑术 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 刺杀剑术 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 刺杀剑术 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 刺杀剑术 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 刺杀剑术 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 刺杀剑术 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+#IF
+#ACT
+goto @战士A1
+BREAK
+
+[@战士A1]
+#IF
+CHECKLEVELex > 47
+CHECKGAMEGIRD > 99
+#ACT
+GAMEGIRD - 100
+CLEARSKILL
+CHANGEJOB Warrior
+ADDSKILL 基本剑术 3
+ADDSKILL 攻杀剑术 3
+ADDSKILL 刺杀剑术 3
+ADDSKILL 半月弯刀 3
+ADDSKILL 野蛮冲撞 3
+ADDSKILL 烈火剑法 3
+goto @战士特殊技能
+GUILDNOTICEMSG 0 254  ぐ恭喜【%s】已转职一位伟大的战士了...
+messagebox 转职成功
+DELAYGOTO 1000 @人物小退
+break
+#elseact
+messagebox （错误]）你的材料不足.等级不足54
+break
+
+[@战士特殊技能]
+#IF
+EQUAL S$护体 已学
+#ACT
+ADDSKILL 护体神盾 3
+MOV S$护体
+
+
+
+;=================================================================================================
+[@法师A]
+#OR
+CHECKSKILL 护体神盾 = 0
+CHECKSKILL 护体神盾 = 1
+CHECKSKILL 护体神盾 = 2
+CHECKSKILL 护体神盾 = 3
+#ACT
+MOV S$护体 已学
+
+#IF
+CHECKLEVELex < 48
+#act
+MESSAGEBOX [提示]等级不足48无法转职！
+BREAK
+
+#IF
+CHECKGAMEGIRD < 100
+#act
+MESSAGEBOX [提示]积分不足100！
+BREAK
+
+#IF
+CHECKSKILL 施毒术 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 施毒术 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 施毒术 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 施毒术 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 施毒术 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 施毒术 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 施毒术 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 施毒术 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 施毒术 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+
+
+#IF
+CHECKSKILL 飓风破 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 飓风破 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 飓风破 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 飓风破 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 飓风破 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 飓风破 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 飓风破 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 飓风破 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 飓风破 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+
+#IF
+CHECKSKILL 裂神符 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 裂神符 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 裂神符 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 裂神符 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 裂神符 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 裂神符 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 裂神符 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 裂神符 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 裂神符 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+
+#IF
+CHECKSKILL 魔法盾 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 魔法盾 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 魔法盾 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 魔法盾 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 魔法盾 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 魔法盾 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 魔法盾 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 魔法盾 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 魔法盾 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+
+#IF
+CHECKSKILL 流星火雨 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 流星火雨 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 流星火雨 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 流星火雨 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 流星火雨 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 流星火雨 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 流星火雨 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 流星火雨 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 流星火雨 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+#IF
+CHECKSKILL 火墙 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 火墙 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 火墙 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 火墙 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 火墙 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 火墙 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 火墙 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 火墙 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 火墙 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+
+#IF
+CHECKSKILL 烈火剑法 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 烈火剑法 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 烈火剑法 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 烈火剑法 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 烈火剑法 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 烈火剑法 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 烈火剑法 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 烈火剑法 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 烈火剑法 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+
+#IF
+CHECKSKILL 开天斩 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 开天斩 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 开天斩 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 开天斩 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 开天斩 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 开天斩 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 开天斩 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 开天斩 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 开天斩 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+#IF
+CHECKSKILL 刺杀剑术 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 刺杀剑术 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 刺杀剑术 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 刺杀剑术 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 刺杀剑术 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 刺杀剑术 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 刺杀剑术 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 刺杀剑术 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 刺杀剑术 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+#IF
+#ACT
+goto @法师A1
+BREAK
+
+
+
+[@法师A1]
+#IF
+CHECKLEVELex > 47
+CHECKGAMEGIRD > 99
+#ACT
+GAMEGIRD - 100
+CLEARSKILL
+CHANGEJOB Wizard
+ADDSKILL 雷电术 3
+ADDSKILL 抗拒火环 3
+ADDSKILL 疾光电影 3
+ADDSKILL 诱惑之光 3
+ADDSKILL 瞬息移动 3
+ADDSKILL 火墙 3
+ADDSKILL 地狱雷光 3
+ADDSKILL 魔法盾 3
+ADDSKILL 圣言术 3
+ADDSKILL 冰咆哮 3
+ADDSKILL 心灵召唤 3
+GUILDNOTICEMSG 0 254  ぐ恭喜【%s】已转职一位伟大的魔法师。.
+messagebox 转职成功
+goto @法师特殊技能
+DELAYGOTO 1000 @人物小退
+break
+#elseact
+messagebox （错误]）你的材料不足.等级不足54
+break
+
+[@法师特殊技能]
+
+
+#IF
+EQUAL S$护体 已学
+#ACT
+ADDSKILL 护体神盾 3
+MOV S$护体
+
+;=================================================================================================
+[@道士A]
+#OR
+CHECKSKILL 护体神盾 = 0
+CHECKSKILL 护体神盾 = 1
+CHECKSKILL 护体神盾 = 2
+CHECKSKILL 护体神盾 = 3
+#ACT
+MOV S$护体 已学
+
+
+
+#IF
+CHECKLEVELex < 48
+#act
+MESSAGEBOX [提示]等级不足48无法转职！
+BREAK
+
+#IF
+CHECKGAMEGIRD < 100
+#act
+MESSAGEBOX [提示]积分不足100！
+BREAK
+#IF
+CHECKSKILL 施毒术 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 施毒术 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 施毒术 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 施毒术 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 施毒术 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 施毒术 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 施毒术 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 施毒术 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 施毒术 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+
+
+#IF
+CHECKSKILL 飓风破 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 飓风破 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 飓风破 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 飓风破 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 飓风破 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 飓风破 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 飓风破 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 飓风破 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 飓风破 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+
+#IF
+CHECKSKILL 裂神符 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 裂神符 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 裂神符 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 裂神符 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 裂神符 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 裂神符 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 裂神符 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 裂神符 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 裂神符 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+
+#IF
+CHECKSKILL 魔法盾 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 魔法盾 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 魔法盾 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 魔法盾 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 魔法盾 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 魔法盾 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 魔法盾 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 魔法盾 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 魔法盾 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+
+#IF
+CHECKSKILL 流星火雨 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 流星火雨 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 流星火雨 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 流星火雨 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 流星火雨 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 流星火雨 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 流星火雨 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 流星火雨 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 流星火雨 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+#IF
+CHECKSKILL 火墙 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 火墙 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 火墙 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 火墙 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 火墙 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 火墙 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 火墙 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 火墙 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 火墙 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+
+#IF
+CHECKSKILL 烈火剑法 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 烈火剑法 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 烈火剑法 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 烈火剑法 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 烈火剑法 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 烈火剑法 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 烈火剑法 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 烈火剑法 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 烈火剑法 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+
+#IF
+CHECKSKILL 开天斩 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 开天斩 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 开天斩 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 开天斩 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 开天斩 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 开天斩 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 开天斩 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 开天斩 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 开天斩 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+
+#IF
+CHECKSKILL 刺杀剑术 = 1 1
+#ACT
+give 书页 99
+GAMEGOLD + 60000
+
+#IF
+CHECKSKILL 刺杀剑术 = 2 1
+#ACT
+give 书页 198
+GAMEGOLD + 120000
+
+#IF
+CHECKSKILL 刺杀剑术 = 3 1
+#ACT
+give 书页 297
+GAMEGOLD + 180000
+
+#IF
+CHECKSKILL 刺杀剑术 = 4 1
+#ACT
+give 书页 396
+GAMEGOLD + 240000
+
+#IF
+CHECKSKILL 刺杀剑术 = 5 1
+#ACT
+give 书页 495
+GAMEGOLD + 300000
+
+#IF
+CHECKSKILL 刺杀剑术 = 6 1
+#ACT
+give 书页 594
+GAMEGOLD + 360000
+
+#IF
+CHECKSKILL 刺杀剑术 = 7 1
+#ACT
+give 书页 693
+GAMEGOLD + 420000
+
+#IF
+CHECKSKILL 刺杀剑术 = 8 1
+#ACT
+give 书页 792
+GAMEGOLD + 480000
+
+#IF
+CHECKSKILL 刺杀剑术 = 9 1
+#ACT
+give 书页 891
+GAMEGOLD + 540000
+#IF
+#ACT
+goto @道士A1
+BREAK
+
+
+[@道士A1]
+#IF
+CHECKLEVELex > 47
+CHECKGAMEGIRD > 99
+#ACT
+GAMEGIRD - 100
+CLEARSKILL
+CHANGEJOB Taoist
+ADDSKILL 治愈术 3
+ADDSKILL 精神力战法 3
+ADDSKILL 施毒术 3
+ADDSKILL 灵魂火符 3
+ADDSKILL 幽灵盾 3
+ADDSKILL 神圣战甲术 3
+ADDSKILL 隐身术 3
+ADDSKILL 集体隐身术 3
+ADDSKILL 群体治疗术 3
+ADDSKILL 召唤神兽 3
+goto @道士特殊技能
+GUILDNOTICEMSG 0 254  ぐ恭喜【%s】已转职一位伟大的道士了。
+messagebox 转职成功
+DELAYGOTO 1000 @人物小退
+break
+#elseact
+messagebox （错误]）你的材料不足.等级不足54
+break
+
+
+[@道士特殊技能]
+#IF
+EQUAL S$护体 已学
+#ACT
+ADDSKILL 护体神盾 3
+MOV S$护体
+
+;============================================================================================
+
+
+
+[@人物小退]
+#if
+#act
+KICK 1
+break
+}

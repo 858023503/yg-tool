@@ -1,0 +1,63 @@
+[@main]
+#if
+CHECKLEVELEX > 0
+#ACT
+OPENMERCHANTBIGDLG 3 1794 1 0 0 0 1 390 5 0
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+<><据说上古流传下来的神器，分布在玛法大陆的各各角落！/SCOLOR=70>\
+<><神器犹豫威力强大，想要得到它，不只是人类！/SCOLOR=70>\
+<><被盘踞的首领占为己有，要从它们手中取得神器不是易事！/SCOLOR=70>\ \
+<><ITEMSHOW:1069:0:0:0:1>    <ITEMSHOW:1071:0:0:0:1>    <ITEMSHOW:1072:0:0:0:1>    <ITEMSHOW:1075:0:0:0:1>\ \ \
+<><ITEMSHOW:1078:0:0:0:1>    <ITEMSHOW:1079:0:0:0:1>    <ITEMSHOW:1085:0:0:0:1>    <ITEMSHOW:1083:0:0:0:1>    <ITEMSHOW:1084:0:0:0:1>\  \   \ 
+<>此乃上古神器均由<专属BOSS/SCOLOR=249>掉落  <天地结晶/SCOLOR=253>击杀BOSS均有掉落\   
+<>也可以使用3000个天地结晶+300W元宝<随机兑换/SCOLOR=70>\
+<><天地结晶随机兑换/@兑换> \
+<>
+<>
+
+
+[@兑换]
+#if
+NOT CheckItem  天地结晶 3000
+#ACT
+MessageBox 材料不足,无法兑换！
+break
+
+#if
+CheckGameGold < 2999999
+#ACT
+MessageBox 元宝不足,无法兑换！
+break
+
+#if
+#ACT
+TAKE 天地结晶 3000
+GAMEGOLD - 3000000
+GetRanDomLineText ..\QuestDiary\兑换装备3.txt <$STR(S0)>
+GIVE <$STR(S0)> 1
+SendMsg 6 [系统提示]：恭喜您兑换成功！
+SendMoveMsg 0 251 0 125 1 {系统快报:/SCOLOR=251}{ぐ玩家/SCOLOR=253}{[<$Username>]/SCOLOR=254}{通过专属材料NPC/SCOLOR=70}{随机兑换了<$STR(S0)>，/SCOLOR=251}{可喜可贺！/SCOLOR=253} 12 10 0
+
+
+
+
+[@取消合成]
+#ACT
+Sendmsg 7 取消合成
+Break
+
+
+
+
+
+
+
+
+
+
+
+
+
+

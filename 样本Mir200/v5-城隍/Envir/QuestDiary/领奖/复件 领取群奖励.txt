@@ -1,0 +1,15 @@
+[@领取群奖励]
+{
+#IF
+checkaccountlist ..\QuestDiary\刷群.txt
+#ACT
+MOBSLAVE 骷髅精灵 1 1
+delaccountlist ..\QuestDiary\刷群.txt
+SENDMSG 0  ★[%s]:玩家<$USERNAME>努力宣传10个100人复古群，现成功领取骷髅精灵一只。
+messagebox  恭喜你成功领取骷髅精灵。
+break
+#ELSEACT
+messagebox 系统检测到您，请联系担保，或您已经领取了奖励！
+
+
+}

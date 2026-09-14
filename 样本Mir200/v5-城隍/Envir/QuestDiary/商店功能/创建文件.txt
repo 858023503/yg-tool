@@ -1,0 +1,16 @@
+[@创建文件]
+{
+
+#IF
+NOT CHECKTEXTLIST ..\..\..\..\通区文件\城隍\检测是否已经创建目录.txt 已创建目录
+#ACT
+mov S$用户数据存储地址 ..\..\..\..\通区文件\城隍\<$STR(U335)>.ini
+ForceDirectories ..\..\..\..\通区文件\
+ForceDirectories ..\..\..\..\通区文件\城隍\
+CreateFile ..\..\..\..\通区文件\城隍\检测是否已经创建目录.txt
+AddTextListEx ..\..\..\..\通区文件\城隍\检测是否已经创建目录.txt 已创建目录 0
+CreateFile S$用户数据存储地址
+#elseact
+CreateFile S$用户数据存储地址
+
+}

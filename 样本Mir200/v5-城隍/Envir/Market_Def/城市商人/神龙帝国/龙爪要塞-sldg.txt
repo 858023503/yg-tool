@@ -1,0 +1,15 @@
+[@main]
+你好，前面就是龙爪要塞了\
+一定要小心。\\
+
+<进入龙爪要塞/@go>  \ 
+
+
+[@go]
+#if
+CHECKLEVELEX > 90
+#act
+CLOSE
+MAPMOVE nanm  27 255
+#ELSESAY
+等级不足91级！

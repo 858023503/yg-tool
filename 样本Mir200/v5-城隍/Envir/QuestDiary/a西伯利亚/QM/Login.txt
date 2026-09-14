@@ -1,0 +1,114 @@
+[@Body]
+{
+[@Login]
+#IF
+NOT ISDUMMY
+#ACT
+#CALL [\商店功能\存销变量初始化.txt] @存销变量初始化
+mov S$用户数据存储地址 ..\..\..\..\通区文件\城隍\<$USERID>_<$USERNAME>.ini
+mov S$物品数据存储地址 ..\..\..\..\通区文件\城隍\物品数据\
+mov S$地图数据存储地址 ..\..\..\..\通区文件\城隍\地图数据\
+mov S$本地物品数据存储地址 ..\QuestDiary\武器\
+#CALL [\商店功能\界面配置读取.txt] @界面配置读取
+mov N$虾米资源编号 123
+ADDBUTTON <$STR(N$虾米资源编号)> 200 10 11 12 10 92 1 -1
+
+#IF
+NOT ISDUMMY
+ISNEWHUMAN
+#ACT
+#CALL [\商店功能\创建文件.txt] @创建文件
+
+
+#IF
+ISNEWHUMAN
+#ACT
+GOTO @_@新人操作加载
+
+
+#IF
+#ACT
+GOTO @_@获取人物允许攻击次数
+ADDSKILL 强者鉴定术 3
+SETONTIMER 1 10
+SETONTIMER 3 2
+SETONTIMER 21 2
+ADDBUTTON 0 20 2006 2006 2006 200 20 2 <PlayImg:8:1830:20:70:-35:-35:1> 250#魂环
+ADDBUTTON 64 3 140 141 142 100 74 7 -1 250#点击打开或关闭系统提示
+ADDBUTTON 0 1 1034 1035 1036 220 504 3 无限仓库 无限仓库
+ADDBUTTON 0 2 1034 1035 1036 300 504 3 有限仓库 有限仓库
+ADDBUTTON 0 4 1034 1035 1036 220 539 3 装备回收 装备回收
+ADDBUTTON 0 5 1034 1035 1036 300 539 3 随身工坊 随身工坊
+GOTO @_@构造背包系统
+GOTO @_@计算背包容量与负重
+GOTO @_@计算人物背包属性加成
+#CALL [a西伯利亚\QM\登陆初始化变量\魔兽神佑属性参数.txt] @初始化魔兽神佑属性参数
+#CALL [a西伯利亚\QM\登陆初始化变量\咸鱼淬炼配置变量.txt] @初始化咸鱼淬炼配置变量
+#CALL [a西伯利亚\QM\登陆初始化变量\自定义技能配置变量.txt] @初始化自定义技能配置变量
+#CALL [a西伯利亚\QM\登陆初始化变量\随身工坊变量.txt] @初始化随身工坊变量
+#CALL [a西伯利亚\QM\登陆初始化变量\基本变量.txt] @初始化基础变量
+;#CALL [a西伯利亚\QM\登陆初始化变量\战士基础加强.txt] @战士基础加强
+
+MOV L$寿夭命格数组 <$STR(S$寿夭<$GENDER>命格数组)>
+MOV S$人物当前命格 <$STR(L$寿夭命格数组[<$STR(J2)>])>
+#CALL [a西伯利亚\QF\属性计算\咸鱼淬炼.txt] @开始计算咸鱼淬炼
+#CALL [a西伯利亚\QF\自定按钮\时装界面魔兽神佑.txt] @_@计算魔兽装备加成
+#CALL [a西伯利亚\QF\属性计算\TEXT条目.txt] @开始计算TEXT条目
+#CALL [a西伯利亚\QF\属性计算\人物魂环.txt] @开始计算人物魂环
+#CALL [a西伯利亚\QF\属性计算\技能增删.txt] @开始计算技能增删
+#CALL [a西伯利亚\QF\属性计算\套装属性.txt] @开始计算套装属性
+#CALL [a西伯利亚\QF\属性计算\宝宝加成.txt] @开始计算宝宝加成
+#CALL [a西伯利亚\QF\属性计算\人物速度.txt] @开始计算人物速度
+#CALL [a西伯利亚\QF\属性计算\基础属性.txt] @开始计算基础属性
+#CALL [a西伯利亚\QF\属性计算\元素属性.txt] @开始计算元素属性
+#CALL [a西伯利亚\QF\属性计算\特殊属性.txt] @开始计算特殊属性
+#CALL [a西伯利亚\QF\属性计算\技能伤害.txt] @开始计算技能伤害
+#CALL [a西伯利亚\QF\属性计算\技能强化.txt] @开始计算技能强化
+#CALL [a西伯利亚\QF\属性计算\技能冷却.txt] @开始计算技能冷却
+
+#if
+#act
+OpenAutoPickItem 1 0 10 1 0 0 1000
+
+#IF
+CHECKLEVELEX < 25
+#ACT
+RECALLMOB 新手恶蛆 0 0 0 0 5 2
+
+#if
+CHECKLEVELEX > 35
+#act
+PLAYMAGICBALLEFFECT 11 1300 14 150 -1 0 1 0 0 0
+PLAYMAGICBALLEFFECT 11 1320 14 150 -1 1 1 0 0 0
+
+#IF
+ISCASTLEMASTER
+#ACT
+SENDMSG 0 {号令天下的沙城主|251:249:1}{〖<$USERNAME>〗|251:249:1}{上线了!!|251:249:1}
+
+#IF
+ISADMIN
+#act
+CHANGEMODE 1 1
+CHANGEMODE 2 1
+CHANGEMODE 3 1
+SETONTIMER 4 5
+
+[@OnTimer51]
+#IF
+#ACT
+MOV S$用户数据存储地址 ..\..\..\..\通区文件\城隍\<$USERID>_<$USERNAME>.ini
+MOV N$背包存储_定时开关 0
+ReadConfigFileItem S$用户数据存储地址 商店 背包存储定时 N$背包存储_定时开关
+
+#IF
+EQUAL N$背包存储_定时开关 1
+#ACT
+#CALL [\商店功能\商店.txt] @开启背包存储
+#IF
+NOT EQUAL N$背包存储_定时开关 1
+#ACT
+SetOffTimer 51
+BREAK
+;TOOL_STORE_TIMER_END
+}

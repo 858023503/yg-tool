@@ -1,0 +1,27 @@
+[@main]
+#if
+#ACT
+#SAY
+\<规则/SCOLOR=70>：<每天晚上/SCOLOR=230><19:00/SCOLOR=149>开始,<19:40/SCOLOR=149>停止进入,<19:50/SCOLOR=149><结束行会争霸战/SCOLOR=230>
+\<要求/SCOLOR=70>：<参加者必须加入行会/SCOLOR=230>
+\<要求/SCOLOR=70>：<在行会战结束，争霸地图内最后剩下的行会为胜利方/SCOLOR=230>
+\<领奖时间/SCOLOR=70>：<杀完对手的时候，最后剩下的行会为胜利方！/SCOLOR=230>
+\<奖励物品/SCOLOR=70>：<胜利方行会/SCOLOR=230><老大/SCOLOR=150>可以获得<500000元宝/SCOLOR=251>
+\ \
+\  <进入行会争霸地图/@1>
+
+[@1]
+#if
+NOT HAVEGUILD
+#act
+messagebox 你没加入行会！
+BREAK
+#if
+HOUR 19 19
+MIN   00 40
+#act
+MAP 行会争霸赛
+BREAK
+#ELSESAY
+需要在19:00-19:40进入！
+

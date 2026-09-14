@@ -1,0 +1,122 @@
+[@Body]
+{
+[@DNF强化]
+#IF
+NOT ISADMIN
+#ACT
+BREAK
+
+#IF
+#ACT
+GOTO @_@构造DNF装备强化参数
+OPENMERCHANTBIGDLG $NewopUI.pak$ 2473 1 4 0 0 0
+#SAY
+<TEXT:熔炼:16:-10{FCOLOR=251}/@随身工坊>
+<TEXT:升级:26:-10{FCOLOR=251}/@装备升级>
+<TEXT:淬炼:36:-10{FCOLOR=251}/@装备淬炼>
+<TEXT:开孔:46:-10{FCOLOR=251}/@装备开孔>
+<TEXT:升星:56:-10{FCOLOR=251}/@装备升星>
+<TEXT:DNF强化:66:-10{FCOLOR=249}>
+\ \ \
+< ><DNF装备强化说明：/SCOLOR=70>\
+< ><DNF装备强化可增加对应部位的/SCOLOR=251><[百分比属性加成]/SCOLOR=253><,强化/SCOLOR=251>\
+< ><需要/SCOLOR=251><[炉岩炭]/SCOLOR=250><,强化属性永久保留。最高强化/SCOLOR=251><+20/SCOLOR=250>\ \
+< ><人物DNF装备强化：/SCOLOR=70>\
+< ><强化武器|<$STR(S$0DNF装备强化描述)>/@开始强化DNF装备(0)>  <强化上衣|<$STR(S$1DNF装备强化描述)>/@开始强化DNF装备(1)>  <强化下装|<$STR(S$2DNF装备强化描述)>/@开始强化DNF装备(2)>  <强化肩膀|<$STR(S$3DNF装备强化描述)>/@开始强化DNF装备(3)>  <强化腰部|<$STR(S$4DNF装备强化描述)>/@开始强化DNF装备(4)>\
+< ><强化靴子|<$STR(S$5DNF装备强化描述)>/@开始强化DNF装备(5)>  <强化手镯|<$STR(S$6DNF装备强化描述)>/@开始强化DNF装备(6)>  <强化项链|<$STR(S$7DNF装备强化描述)>/@开始强化DNF装备(7)>  <强化戒指|<$STR(S$8DNF装备强化描述)>/@开始强化DNF装备(8)>  <强化辅助|<$STR(S$9DNF装备强化描述)>/@开始强化DNF装备(9)>\
+< ><强化魔法石|<$STR(S$10DNF装备强化描述)>/@开始强化DNF装备(10)>\ \
+<&IMGEX:$NewopUI.pak$:246:245:247:346:3/@EXIT>
+
+[@_@构造DNF装备强化参数]
+#IF
+#ACT
+MOV L$DNF装备强化等级数组 <$STR(T9)>
+MOV N$DNF装备强化循环标识 0
+
+WHILE N$DNF装备强化循环标识 < 11
+MOV S$<$STR(N$DNF装备强化循环标识)>DNF装备强化描述 70#当前强化等级：{<$STR(L$DNF装备强化等级数组[<$STR(N$DNF装备强化循环标识)>])>|250}^-^70#强化成功率：{<$DNF装备强化配置(<$STR(L$DNF装备强化等级数组[<$STR(N$DNF装备强化循环标识)>])>,0)>‰|250}^-^70#炉岩炭需求：{<$DNF装备强化配置(<$STR(L$DNF装备强化等级数组[<$STR(N$DNF装备强化循环标识)>])>,1)>个|250}^-^70#元宝需求数：{<$DNF装备强化配置(<$STR(L$DNF装备强化等级数组[<$STR(N$DNF装备强化循环标识)>])>,2)>|250}^-^70#是否有失败惩罚：{<$DNF装备强化配置(<$STR(L$DNF装备强化等级数组[<$STR(N$DNF装备强化循环标识)>])>,3)>|249}^-^70#强化失败惩罚：{<$DNF装备强化配置(<$STR(L$DNF装备强化等级数组[<$STR(N$DNF装备强化循环标识)>])>,4)>|249}
+INC N$DNF装备强化循环标识 1
+
+[@开始强化DNF装备]
+#IF
+#ACT
+MOV S$DNF装备强化位置 <$SCRIPTPARAM1>
+MOV L$DNF装备强化等级数组 <$STR(T9)>
+MOV N$当前DNF装备强化成功率 <$DNF装备强化配置(<$STR(L$DNF装备强化等级数组[<$STR(S$DNF装备强化位置)>])>,0)>
+MOV N$当前DNF装备需求材料数量 <$DNF装备强化配置(<$STR(L$DNF装备强化等级数组[<$STR(S$DNF装备强化位置)>])>,1)>
+MOV N$当前DNF装备需求货币数量 <$DNF装备强化配置(<$STR(L$DNF装备强化等级数组[<$STR(S$DNF装备强化位置)>])>,2)>
+MOV N$临时转换装等变量 <$STR(L$DNF装备强化等级数组[<$STR(S$DNF装备强化位置)>])>
+
+#IF
+LARGE N$临时转换装等变量 19
+#ACT
+MESSAGEBOX <该部位已经强化满级！/SCOLOR=70>
+BREAK
+
+#IF
+CHECKGAMEGOLD < <$STR(N$当前DNF装备需求货币数量)>
+#ACT
+MESSAGEBOX <你的元宝不足!!!/SCOLOR=249>
+BREAK
+
+#IF
+NOT CHECKITEM 炉岩炭 <$STR(N$当前DNF装备需求材料数量)>
+#ACT
+MESSAGEBOX <你的/SCOLOR=249><【炉岩炭】/SCOLOR=70><数量不足!!!/SCOLOR=249>
+BREAK
+
+#IF
+#ACT
+GAMEGOLD - <$STR(N$当前DNF装备需求货币数量)>
+TAKE 炉岩炭 <$STR(N$当前DNF装备需求材料数量)>
+
+#IF
+RANDOMEX <$STR(N$当前DNF装备强化成功率)> 1000
+#ACT
+GOTO @_@人物DNF装备强化成功处理
+#ELSEACT
+GOTO @_@人物DNF装备强化失败处理
+
+#IF
+#ACT
+GOTO @_@计算DNF装备加成
+GOTO @开始计算基础属性
+GOTO @开始计算元素属性
+
+[@_@人物DNF装备强化成功处理]
+#IF
+#ACT
+INC N$临时转换装等变量 1
+
+#IF
+LARGE N$临时转换装等变量 10
+#ACT
+GuildNoticeMsg 244 0 {[喜讯]|250:0}{『<$USERNAME>』|245:0}{将他的DNF系列装备|251:0}{[<$STR(L$DNF强化各部位名称[<$STR(S$DNF装备强化位置)>])>部位]|254:0}{强化至|251:0}{[+<$STR(N$临时转换装等变量)>]|70:0}
+#ELSEACT
+SENDMSG 6 【DNF系列<$STR(L$DNF强化各部位名称[<$STR(S$DNF装备强化位置)>])>】强化成功！当前强化等级：{<$STR(N$临时转换装等变量)>|70}
+
+#IF
+#ACT
+MOV L$DNF装备强化等级数组[<$STR(S$DNF装备强化位置)>] <$STR(N$临时转换装等变量)>
+MOV T9 <$STR(L$DNF装备强化等级数组)>
+GOTO @DNF强化
+
+[@_@人物DNF装备强化失败处理]
+#IF
+#ACT
+MOV N$人物DNF装备强化失败后果 <$DNF装备强化配置(<$STR(L$DNF装备强化等级数组[<$STR(S$DNF装备强化位置)>])>,5)>
+
+#IF
+EQUAL N$人物DNF装备强化失败后果 0
+#ACT
+INC N$临时转换装等变量 1
+GuildNoticeMsg 244 0 {[悲报]|250:0}{『<$USERNAME>』|245:0}{的DNF系列装备|251:0}{[<$STR(L$DNF强化各部位名称[<$STR(S$DNF装备强化位置)>])>部位]|254:0}{强化|251:0}{[+<$STR(N$临时转换装等变量)>]|70:0}{失败,|251:0}{[强化等级清零]|249:0}
+#ELSEACT
+SENDMSG 6 【DNF系列<$STR(L$DNF强化各部位名称[<$STR(S$DNF装备强化位置)>])>】强化失败！当前强化等级：{<$STR(N$人物DNF装备强化失败后果)>|249}
+
+#IF
+#ACT
+MOV L$DNF装备强化等级数组[<$STR(S$DNF装备强化位置)>] <$STR(N$人物DNF装备强化失败后果)>
+MOV T9 <$STR(L$DNF装备强化等级数组)>
+GOTO @DNF强化
+}

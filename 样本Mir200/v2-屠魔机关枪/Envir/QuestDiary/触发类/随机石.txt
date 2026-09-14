@@ -1,0 +1,74 @@
+[@随机石]
+{
+#if
+equal <$MAP> MAP010
+#act
+SENDMSG 6 禁止随机
+break
+#if
+EQUAL S$变身傀儡 是
+#act
+SENDMSG 6 变身傀儡禁止随机
+break
+
+#if
+NOT EQUAL N$战斗状态倒计时 0
+#act
+sendmsg 5 战斗状态禁止随机
+break
+
+#OR
+EQUAL <$MAP> huanggong1
+EQUAL <$MAP> huanggong2
+EQUAL <$MAP> huanggong3
+EQUAL <$MAP> huanggong4
+EQUAL <$MAP> huanggong5
+EQUAL <$MAP> huanggong6
+EQUAL <$MAP> huanggong7
+EQUAL <$MAP> huanggong8
+EQUAL <$MAP> huanggong9
+EQUAL <$MAP> huanggong10
+EQUAL <$MAP> ygxc
+EQUAL <$MAP> run001
+#act
+sendmsg 5 禁止传送
+break
+#or
+EQUAL <$MAP> baoxiang
+EQUAL <$MAP> TQ0011
+EQUAL <$MAP> TQ0012
+EQUAL <$MAP> TQ0013
+EQUAL <$MAP> TQ0014
+EQUAL <$MAP> TQ0021
+EQUAL <$MAP> TQ0022
+EQUAL <$MAP> TQ0023
+EQUAL <$MAP> TQ0024
+EQUAL <$MAP> TQ0031
+EQUAL <$MAP> TQ0032
+EQUAL <$MAP> TQ0033
+EQUAL <$MAP> TQ0034
+EQUAL <$MAP> TQ0041
+EQUAL <$MAP> TQ0042
+EQUAL <$MAP> TQ0043
+EQUAL <$MAP> TQ0044
+EQUAL <$MAP> TQ0051
+EQUAL <$MAP> TQ0052
+EQUAL <$MAP> TQ0053
+EQUAL <$MAP> TQ0054
+EQUAL <$MAP> TQ006
+EQUAL <$MAP> TQ007
+EQUAL <$MAP> TQ008
+EQUAL <$MAP> TQ009
+EQUAL <$MAP> TQ0010
+#act
+
+AddFunItemDura 1000
+BREAK
+#if
+#act
+AddFunItemDura 1000
+Gmexecute F <$MAP>
+
+
+
+}

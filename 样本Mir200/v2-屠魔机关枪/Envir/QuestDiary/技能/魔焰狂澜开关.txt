@@ -1,0 +1,21 @@
+[@魔焰狂澜开关]
+{
+
+
+#IF
+EQUAL N$魔焰狂澜开关 1
+#ACT
+MOV N$魔焰狂澜开关 0
+setofftimer  34
+sendmsg 7 【提示】关闭魔焰狂澜
+BREAK
+#IF
+EQUAL N$魔焰狂澜开关 0
+#ACT
+
+MOV N$魔焰狂澜开关 1
+setontimer 34 1
+sendmsg 7 【提示】魔焰狂澜已开启,每秒对所有怪物造成10次伤害
+BREAK
+
+}

@@ -1,0 +1,900 @@
+[@main]
+#if
+#act
+OPENMERCHANTBIGDLG 5 941 1 4 0 0  0 360 15 1
+#say
+<&Text:将传送戒指增加攻击和释放速度:35:55{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:每级增加5%:35:85{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:每次需要50个极速宝石+20000元宝+5个巨翼魔王精血:35:120{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:道士升满后可以召唤两只宝宝:35:145{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<ITEMBOX:8:5:2:277:96:63:63:*:95#放入战灵法相>\
+<&IMGEX:5:730:731:732:145:178:1|/@传送加属性>
+[@ItemIntoBox2]
+
+
+
+
+[@传送加属性]
+#if
+NOT CHECKITEM 巨翼魔王精血 5
+#act
+messagebox 你没有5个巨翼魔王精血
+break
+#if
+NOT CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+#act
+messagebox 你没有50个极速宝石
+break
+
+
+#if
+NOT CHECKBAGSIZE 5
+#act
+messagebox 保证背包有5个位置
+break
+
+#if
+checkgamegold  < 19999
+#act
+messagebox 你没有20000元宝
+break
+
+#if
+#act
+SetUpgradeItem 8
+
+#if
+
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV1
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 5
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+EQUAL  传送戒指.LV1 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV2
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 10
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV2 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV3
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 15
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV3 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV4
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 20
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV4 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV5
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 25
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV5 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV6
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 30
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV6 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV7
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 35
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV7 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV8
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 40
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV8 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV9
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 45
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV9 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV10
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 50
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV10 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV11
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 55
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV11 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV12
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 60
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV12 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV13
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 65
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV13 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV14
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 70
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV14 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV15
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 75
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV15 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV16
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 80
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV16 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV17
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 85
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV17 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV18
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 90
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV18 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV19
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 95
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV19 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV20
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 100
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV20 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV21
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 105
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV21 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV22
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 110
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV22 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV23
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 115
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV23 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV24
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 120
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV24 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV25
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 125
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV25 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV26
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 130
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV26 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV27
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 135
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV27 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV28
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 140
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV28 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV29
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 145
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV29 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV30
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 150
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV30 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV31
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 155
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV31 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV32
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 160
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV32 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV33
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 165
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV33 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV34
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 170
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV34 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV35
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 175
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV35 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV36
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 180
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV36 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV37
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 185
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV37 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV38
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 190
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV38 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV39
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 195
+
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK
+
+#if
+CHECKITEM 极速宝石 50
+CHECKITEM 巨翼魔王精血 5
+ 
+EQUAL  传送戒指.LV39 <$BOXITEM[8].NAME_G>
+#act
+ChangeItemName -1 传送戒指.LV40
+SetCustomItemText -1 <IMG:112:0>
+;1
+SetCustomItemAbil -1 0 0 100
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = 340 200
+MOV U415 1
+gamegold - 20000
+take 极速宝石 50
+take 巨翼魔王精血 5
+UpdateItem boxitem8
+BREAK

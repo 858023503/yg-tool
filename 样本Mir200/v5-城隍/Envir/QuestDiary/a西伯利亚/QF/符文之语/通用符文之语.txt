@@ -1,0 +1,168 @@
+[@Body]
+{
+[@_@普通宝石系列符文之语]
+#IF
+CheckItemHasStone <$CurItemPos> 碎裂的绿宝石 1
+CheckItemHasStone <$CurItemPos> 碎裂的蓝宝石 1
+CheckItemHasStone <$CurItemPos> 碎裂的红宝石 1
+CheckItemHasStone <$CurItemPos> 碎裂的紫宝石 1
+CheckItemHasStone <$CurItemPos> 碎裂的钻石 1
+CheckItemHasStone <$CurItemPos> 碎裂的黄玉 1
+CheckItemHasStone <$CurItemPos> 碎裂的珊瑚 1
+CheckFluteCount <$CurItemPos> = 7
+#ACT
+SetCustomItemText <$CurItemPos> 碎裂(*7)
+SetCustomItemTextColor <$CurItemPos> 102
+MOV N$饰品当前装备位置 <$CurItemPos>
+GOTO @_@初始化符文之语饰品默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 1
+MOV L$添加用自定义属性参数数组[9] 35
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语饰品默认自定义参数1
+MOV L$添加用自定义属性参数数组[3] 3
+MOV L$添加用自定义属性参数数组[7] 5
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语饰品默认自定义参数2
+MOV L$添加用自定义属性参数数组[3] 4
+MOV L$添加用自定义属性参数数组[7] 5
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语饰品默认自定义参数3
+MOV L$添加用自定义属性参数数组[3] 5
+MOV L$添加用自定义属性参数数组[7] 5
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+
+#IF
+CheckItemHasStone <$CurItemPos> 裂开的绿宝石 1
+CheckItemHasStone <$CurItemPos> 裂开的蓝宝石 1
+CheckItemHasStone <$CurItemPos> 裂开的红宝石 1
+CheckItemHasStone <$CurItemPos> 裂开的紫宝石 1
+CheckItemHasStone <$CurItemPos> 裂开的钻石 1
+CheckItemHasStone <$CurItemPos> 裂开的黄玉 1
+CheckItemHasStone <$CurItemPos> 裂开的珊瑚 1
+CheckFluteCount <$CurItemPos> = 7
+#ACT
+SetCustomItemText <$CurItemPos> 裂开(*7)
+SetCustomItemTextColor <$CurItemPos> 102
+MOV N$饰品当前装备位置 <$CurItemPos>
+GOTO @_@初始化符文之语饰品默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 2
+MOV L$添加用自定义属性参数数组[9] 35
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语饰品默认自定义参数1
+MOV L$添加用自定义属性参数数组[3] 3
+MOV L$添加用自定义属性参数数组[7] 7
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语饰品默认自定义参数2
+MOV L$添加用自定义属性参数数组[3] 4
+MOV L$添加用自定义属性参数数组[7] 7
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语饰品默认自定义参数3
+MOV L$添加用自定义属性参数数组[3] 5
+MOV L$添加用自定义属性参数数组[7] 7
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+
+#IF
+CheckItemHasStone <$CurItemPos> 绿宝石 1
+CheckItemHasStone <$CurItemPos> 蓝宝石 1
+CheckItemHasStone <$CurItemPos> 红宝石 1
+CheckItemHasStone <$CurItemPos> 紫宝石 1
+CheckItemHasStone <$CurItemPos> 钻石 1
+CheckItemHasStone <$CurItemPos> 黄玉 1
+CheckItemHasStone <$CurItemPos> 珊瑚 1
+CheckFluteCount <$CurItemPos> = 7
+#ACT
+SetCustomItemText <$CurItemPos> 普通(*7)
+SetCustomItemTextColor <$CurItemPos> 102
+MOV N$饰品当前装备位置 <$CurItemPos>
+GOTO @_@初始化符文之语饰品默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 3
+MOV L$添加用自定义属性参数数组[9] 35
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语饰品默认自定义参数1
+MOV L$添加用自定义属性参数数组[3] 3
+MOV L$添加用自定义属性参数数组[7] 10
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语饰品默认自定义参数2
+MOV L$添加用自定义属性参数数组[3] 4
+MOV L$添加用自定义属性参数数组[7] 10
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语饰品默认自定义参数3
+MOV L$添加用自定义属性参数数组[3] 5
+MOV L$添加用自定义属性参数数组[7] 10
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+
+#IF
+CheckItemHasStone <$CurItemPos> 无瑕疵的绿宝石 1
+CheckItemHasStone <$CurItemPos> 无瑕疵的蓝宝石 1
+CheckItemHasStone <$CurItemPos> 无瑕疵的红宝石 1
+CheckItemHasStone <$CurItemPos> 无瑕疵的紫宝石 1
+CheckItemHasStone <$CurItemPos> 无瑕疵的钻石 1
+CheckItemHasStone <$CurItemPos> 无瑕疵的黄玉 1
+CheckItemHasStone <$CurItemPos> 无瑕疵的珊瑚 1
+CheckFluteCount <$CurItemPos> = 7
+#ACT
+SetCustomItemText <$CurItemPos> 无瑕(*7)
+SetCustomItemTextColor <$CurItemPos> 102
+MOV N$饰品当前装备位置 <$CurItemPos>
+GOTO @_@初始化符文之语饰品默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 4
+MOV L$添加用自定义属性参数数组[9] 35
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语饰品默认自定义参数1
+MOV L$添加用自定义属性参数数组[3] 3
+MOV L$添加用自定义属性参数数组[7] 15
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语饰品默认自定义参数2
+MOV L$添加用自定义属性参数数组[3] 4
+MOV L$添加用自定义属性参数数组[7] 15
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语饰品默认自定义参数3
+MOV L$添加用自定义属性参数数组[3] 5
+MOV L$添加用自定义属性参数数组[7] 15
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+
+#IF
+CheckItemHasStone <$CurItemPos> 完美的绿宝石 1
+CheckItemHasStone <$CurItemPos> 完美的蓝宝石 1
+CheckItemHasStone <$CurItemPos> 完美的红宝石 1
+CheckItemHasStone <$CurItemPos> 完美的紫宝石 1
+CheckItemHasStone <$CurItemPos> 完美的钻石 1
+CheckItemHasStone <$CurItemPos> 完美的黄玉 1
+CheckItemHasStone <$CurItemPos> 完美的珊瑚 1
+CheckFluteCount <$CurItemPos> = 7
+#ACT
+SetCustomItemText <$CurItemPos> 完美(*7)
+SetCustomItemTextColor <$CurItemPos> 102
+MOV N$饰品当前装备位置 <$CurItemPos>
+GOTO @_@初始化符文之语饰品默认自定义参数0
+MOV L$添加用自定义属性参数数组[7] 5
+MOV L$添加用自定义属性参数数组[9] 35
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语饰品默认自定义参数1
+MOV L$添加用自定义属性参数数组[3] 3
+MOV L$添加用自定义属性参数数组[7] 20
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语饰品默认自定义参数2
+MOV L$添加用自定义属性参数数组[3] 4
+MOV L$添加用自定义属性参数数组[7] 20
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语饰品默认自定义参数3
+MOV L$添加用自定义属性参数数组[3] 5
+MOV L$添加用自定义属性参数数组[7] 20
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+
+[@_@符文之语用更新属性]
+#ACT
+UPDATEITEM <$CurItemPos>
+CLEARLINKITEM
+}

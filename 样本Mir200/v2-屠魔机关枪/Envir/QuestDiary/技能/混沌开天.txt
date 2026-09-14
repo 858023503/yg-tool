@@ -1,0 +1,351 @@
+[@混沌开天]
+{
+#if
+EQUAL N$烈火剑法魔次 0
+#act
+sendmsg 6 没有烈火剑法魔次
+break
+#if
+EQUAL S$玩家当前大陆 五大陆
+#act
+AddHpPer - N$五大陆反伤
+#IF
+#ACT
+
+Goto @技能伤害
+
+
+
+#if
+NOT EQUAL <$MagicTargetRace> 0
+#act
+goto @混沌开天魔次开启
+
+
+#if
+EQUAL <$MagicTargetRace> 0
+#act
+goto @混沌开天打人
+break
+
+; SENDMSG 6 烈火剑法减少后的CD<$STR(N$烈火剑法减少后的CD)>
+; GetSkillCD 烈火剑法 N$烈火CD变量
+; sendmsg 6 <$STR(N$烈火CD变量)>
+
+
+
+[@混沌开天魔次开启]
+#if
+#ACT
+GetPlayInfo Dir N$玩家烈火方向
+MOV N$烈火伤害位置X <$X>
+MOV N$烈火伤害位置Y <$Y>
+#if
+EQUAL N$玩家烈火方向 0
+#act
+DEC N$烈火伤害位置Y 1
+MOV N$烈火动画编号 4990
+MOV N$烈火自身动画编号 4990
+#if
+EQUAL N$玩家烈火方向 1
+#act
+INC N$烈火伤害位置X 1
+DEC N$烈火伤害位置Y 1
+MOV N$烈火动画编号 5004
+MOV N$烈火自身动画编号 5004
+#if
+EQUAL N$玩家烈火方向 2
+#act
+INC N$烈火伤害位置X 1
+MOV N$烈火动画编号 5018
+MOV N$烈火自身动画编号 5018
+#if
+EQUAL N$玩家烈火方向 3
+#act
+INC N$烈火伤害位置X 1
+INC N$烈火伤害位置Y 1
+MOV N$烈火动画编号 5032
+MOV N$烈火自身动画编号 5032
+#if
+EQUAL N$玩家烈火方向 4
+#act
+INC N$烈火伤害位置Y 1
+MOV N$烈火动画编号 5046
+MOV N$烈火自身动画编号 5046
+#if
+EQUAL N$玩家烈火方向 5
+#act
+DEC N$烈火伤害位置X 1
+INC N$烈火伤害位置Y 1
+MOV N$烈火动画编号 5060
+MOV N$烈火自身动画编号 5060
+#if
+EQUAL N$玩家烈火方向 6
+#act
+DEC N$烈火伤害位置X 1
+MOV N$烈火动画编号 5074
+MOV N$烈火自身动画编号 5074
+#if
+EQUAL N$玩家烈火方向 7
+#act
+DEC N$烈火伤害位置X 1
+DEC N$烈火伤害位置Y 1
+MOV N$烈火动画编号 5088
+MOV N$烈火自身动画编号 5088
+
+#if
+LARGE N$烈火剑法幸运 0
+#ACT
+FORMULATION <$DC>+((<$MAXDC>-<$DC>)/10)*<$STR(N$烈火剑法幸运)> N$烈火剑法人物幸运攻击下限
+DEC N$烈火剑法人物幸运攻击下限 1
+#elseact
+MOV N$烈火剑法人物幸运攻击下限 <$DC>
+
+
+
+
+#if
+#act
+MOVR N$烈火剑法最终伤害 <$STR(N$烈火剑法人物幸运攻击下限)> <$MAXDC>
+MOV N$烈火剑法循环次数 <$STR(N$烈火剑法魔次)>
+CalcPercent N$烈火剑法最终伤害 N$烈火剑法打怪默认伤害 N$烈火剑法最终伤害
+CalcPercent N$烈火剑法最终伤害 N$烈火剑法对怪物伤害百分比 N$烈火剑法最终伤害
+CalcPercent N$烈火剑法最终伤害 N$烈火剑法倍攻 N$烈火剑法最终伤害
+FORMULATION <$STR(N$烈火剑法最终伤害)>/<$STR(N$所有技能伤害降低倍数)> N$烈火剑法最终伤害
+
+#if
+CheckCacheTextList ..\QuestDiary\怪物名称\精英及以下怪物.txt <$ATTACKMONSTER_NAMEEX>
+LARGE N$精英怪增加伤害 100
+#act
+CalcPercent N$烈火剑法最终伤害 N$精英怪增加伤害 N$烈火剑法最终伤害
+
+#if
+CheckCacheTextList ..\QuestDiary\怪物名称\统领及以上怪物.txt <$ATTACKMONSTER_NAMEEX>
+LARGE N$对BOSS伤害增加 100
+#act
+CalcPercent N$烈火剑法最终伤害 N$对BOSS伤害增加 N$烈火剑法最终伤害
+
+
+#IF
+RANDOMEX N$人物暴击几率 100
+#ACT
+PLAYEFFECT 73 0 12 1 80 0 -125 -170 1
+FORMULATION (<$STR(N$人物暴击伤害)>+100)/100*<$STR(N$烈火剑法最终伤害)> N$烈火剑法最终伤害
+
+#if
+#act
+FORMULATION <$STR(N$烈火剑法最终伤害)>*<$STR(N$烈火剑法魔次)> N$烈火剑法最终伤害
+MOV N$烈火剑法循环次数 1
+CalcPercent N$烈火剑法最终伤害 N$混沌开天伤害 N$烈火剑法最终伤害
+
+#IF
+LARGE N$法宝释放混沌开天增加伤害 0
+#ACT
+CalcPercent N$烈火剑法最终伤害 130 N$烈火剑法最终伤害
+
+#if
+#ACT
+FORMULATION <$STR(N$烈火剑法最终伤害)>+<$STR(N$天殇套真实伤害)> N$烈火剑法最终伤害
+; MAPEFFECT <$MAP> <$X> <$Y> 1 <$STR(N$烈火自身动画编号)> 14 1 70 0
+
+#if
+LARGE N$法宝释放混沌开天增加伤害 0
+#act
+FORMULATION <$STR(N$烈火剑法最终伤害)>*2 N$烈火剑法最终伤害
+
+#if
+CHECK [995] 0
+#act
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> <$STR(N$混沌开天范围)> <$STR(N$烈火剑法最终伤害)> 0 0 0 2 1 <$STR(N$烈火自身动画编号)> 14 100 0 1
+#if
+CHECK [995] 1
+#act
+MAPEFFECT <$MAP> <$X> <$Y> 1 <$STR(N$烈火自身动画编号)> 14 1 100 0
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> <$STR(N$混沌开天范围)> <$STR(N$烈火剑法最终伤害)> 0 0 0 2 0 0 0 0 0 1
+
+
+
+
+
+
+
+[@混沌开天打人]
+#if
+LARGE N$烈火剑法幸运 0
+#ACT
+FORMULATION <$DC>+((<$MAXDC>-<$DC>)/10)*<$STR(N$烈火剑法幸运)> N$烈火剑法人物幸运攻击下限
+
+DEC N$烈火剑法人物幸运攻击下限 1
+#elseact
+MOV N$烈火剑法人物幸运攻击下限 <$DC>
+
+
+#if
+#act
+MOV N$烈火剑法打人暴击几率 0
+GetHumVar <$C.USERNAME> <$STR(N$人物暴击防御)> N$对方暴击防御
+GetHumVar <$C.USERNAME> <$STR(N$免疫对人物真实伤害)> N$对方免疫对人物真实伤害
+FORMULATION <$STR(N$对人物真实伤害)>-<$STR(N$对方免疫对人物真实伤害)> N$对人物造成的真实伤害
+MOVR N$烈火剑法打人伤害 <$STR(N$烈火剑法人物幸运攻击下限)> <$MAXDC>
+CalcPercent N$烈火剑法打人伤害 N$烈火剑法打人默认伤害 N$烈火剑法打人伤害
+;技能升级后的伤害
+CalcPercent N$烈火剑法打人伤害 N$烈火剑法对人物伤害百分比 N$烈火剑法打人伤害
+
+#if
+LARGE N$人物暴击几率 <$STR(N$对方暴击防御)>
+#ACT
+FORMULATION <$STR(N$人物暴击几率)>-<$STR(N$对方暴击防御)> N$烈火剑法打人暴击几率
+
+
+#IF
+LARGE N$烈火剑法打人暴击几率 0
+RANDOMEX N$烈火剑法打人暴击几率 101
+#ACT
+PLAYEFFECT 73 0 12 1 80 0 -125 -170 1
+FORMULATION (<$STR(N$人物暴击伤害)>+100)/100*<$STR(N$烈火剑法打人伤害)> N$烈火剑法打人伤害
+
+
+;技能升级后的伤害
+
+#if
+#ACT
+GetPlayInfo Dir N$玩家烈火方向
+MOV N$烈火伤害位置X <$X>
+MOV N$烈火伤害位置Y <$Y>
+#if
+EQUAL N$玩家烈火方向 0
+#act
+DEC N$烈火伤害位置Y 1
+MOV N$烈火动画编号 4990
+MAPEFFECT <$MAP> <$X> <$Y> 1 <$STR(N$烈火动画编号)> 14 1 100 0
+
+
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+
+
+DEC N$烈火伤害位置Y 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+DEC N$烈火伤害位置Y 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+#if
+EQUAL N$玩家烈火方向 1
+#act
+INC N$烈火伤害位置X 1
+DEC N$烈火伤害位置Y 1
+MOV N$烈火动画编号 5004
+MAPEFFECT <$MAP> <$X> <$Y> 1 <$STR(N$烈火动画编号)> 14 1 100 0
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+INC N$烈火伤害位置X 1
+DEC N$烈火伤害位置Y 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+INC N$烈火伤害位置X 1
+DEC N$烈火伤害位置Y 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+
+#if
+EQUAL N$玩家烈火方向 2
+#act
+INC N$烈火伤害位置X 1
+MOV N$烈火动画编号 5018
+MAPEFFECT <$MAP> <$X> <$Y> 1 <$STR(N$烈火动画编号)> 14 1 100 0
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+INC N$烈火伤害位置X 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+INC N$烈火伤害位置X 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+
+#if
+EQUAL N$玩家烈火方向 3
+#act
+INC N$烈火伤害位置X 1
+INC N$烈火伤害位置Y 1
+MOV N$烈火动画编号 5032
+MAPEFFECT <$MAP> <$X> <$Y> 1 <$STR(N$烈火动画编号)> 14 1 100 0
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+INC N$烈火伤害位置X 1
+INC N$烈火伤害位置Y 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+INC N$烈火伤害位置X 1
+INC N$烈火伤害位置Y 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+
+#if
+EQUAL N$玩家烈火方向 4
+#act
+INC N$烈火伤害位置Y 1
+MOV N$烈火动画编号 5046
+MAPEFFECT <$MAP> <$X> <$Y> 1 <$STR(N$烈火动画编号)> 14 1 100 0
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+INC N$烈火伤害位置Y 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+INC N$烈火伤害位置Y 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+
+#if
+EQUAL N$玩家烈火方向 5
+#act
+DEC N$烈火伤害位置X 1
+INC N$烈火伤害位置Y 1
+MOV N$烈火动画编号 5060
+MAPEFFECT <$MAP> <$X> <$Y> 1 <$STR(N$烈火动画编号)> 14 1 100 0
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+DEC N$烈火伤害位置X 1
+INC N$烈火伤害位置Y 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+DEC N$烈火伤害位置X 1
+INC N$烈火伤害位置Y 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+
+#if
+EQUAL N$玩家烈火方向 6
+#act
+DEC N$烈火伤害位置X 1
+MOV N$烈火动画编号 5074
+MAPEFFECT <$MAP> <$X> <$Y> 1 <$STR(N$烈火动画编号)> 14 1 100 0
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+DEC N$烈火伤害位置X 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+DEC N$烈火伤害位置X 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+#if
+EQUAL N$玩家烈火方向 7
+#act
+DEC N$烈火伤害位置X 1
+DEC N$烈火伤害位置Y 1
+MOV N$烈火动画编号 5088
+MAPEFFECT <$MAP> <$X> <$Y> 1 <$STR(N$烈火动画编号)> 14 1 100 0
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+DEC N$烈火伤害位置X 1
+DEC N$烈火伤害位置Y 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+DEC N$烈火伤害位置X 1
+DEC N$烈火伤害位置Y 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 <$STR(N$烈火剑法打人伤害)> 0 0 0 1 0 0 0 0 0 1
+RangeHarm <$STR(N$烈火伤害位置X)> <$STR(N$烈火伤害位置Y)> 0 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 1
+
+
+
+}

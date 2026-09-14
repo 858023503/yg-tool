@@ -1,0 +1,150 @@
+[@焚土喷焰]
+{
+;技能被动 金殇斩
+#IF
+#ACT
+
+Goto @技能伤害
+; #IF
+; EQUAL N$金禅魔钟开关 0
+; LARGE N$法宝释放焚土喷焰后攻击力提升百分比 0
+; #act
+
+; FORMULATION <$STR(N$初始化魔法力下限)>*<$STR(N$法宝释放焚土喷焰后攻击力提升百分比)>/100 N$金禅魔钟人物魔法力百分比下限
+; FORMULATION <$STR(N$初始化魔法力上限)>*<$STR(N$法宝释放焚土喷焰后攻击力提升百分比)>/100 N$金禅魔钟人物魔法力百分比上限
+; ChangeHumAbility 7 + N$金禅魔钟人物魔法力百分比下限
+; ChangeHumAbility 8 + N$金禅魔钟人物魔法力百分比上限
+; MOV N$金禅魔钟开关 1
+; PLAYEFFECT 59 290 20 1 100 0 -150 -280 1
+; delaycall 5000 @金禅魔钟恢复魔法力
+
+
+
+#if
+EQUAL S$玩家当前大陆 五大陆
+#act
+AddHpPer - N$五大陆反伤
+
+
+
+
+
+
+
+
+
+
+
+#if
+NOT CHECKCURRTARGETRACE = 0
+#act
+PLAYEFFECT 1 3287 6 1 100 0 0 0 1
+DELAYCALL 500 @焚土喷焰打怪开始
+
+
+
+#if
+CHECKCURRTARGETRACE = 0
+#act
+PLAYEFFECT 1 3287 6 1 100 0 0 0 1
+DELAYCALL 300 @焚土喷焰打人开始
+
+
+[@焚土喷焰打怪开始]
+
+#if
+LARGE N$焚土喷焰幸运 0
+#ACT
+FORMULATION <$MC>+(((<$MAXMC>-<$MC>)/10)*<$STR(N$焚土喷焰幸运)>) N$焚土喷焰人物幸运攻击下限
+DEC N$焚土喷焰人物幸运攻击下限 1
+#elseact
+MOV N$焚土喷焰人物幸运攻击下限 <$MC>
+
+#if
+#act
+MOVR N$焚土喷焰最终伤害 <$STR(N$焚土喷焰人物幸运攻击下限)> <$MAXMC>
+CalcPercent N$焚土喷焰最终伤害 N$焚土喷焰打怪默认伤害 N$焚土喷焰最终伤害
+CalcPercent N$焚土喷焰最终伤害 N$焚土喷焰怪物伤害百分比 N$焚土喷焰最终伤害
+CalcPercent N$焚土喷焰最终伤害 N$焚土喷焰倍攻 N$焚土喷焰最终伤害
+FORMULATION <$STR(N$焚土喷焰最终伤害)>/<$STR(N$所有技能伤害降低倍数)> N$焚土喷焰最终伤害
+
+#IF
+RANDOMEX N$人物暴击几率 100
+#ACT
+PLAYEFFECT 73 0 12 1 80 0 -125 -170 1
+FORMULATION (<$STR(N$人物暴击伤害)>+100)/100*<$STR(N$焚土喷焰最终伤害)> N$焚土喷焰最终伤害
+
+
+#if
+CheckCacheTextList ..\QuestDiary\怪物名称\精英及以下怪物.txt <$ATTACKMONSTER_NAMEEX>
+LARGE N$精英怪增加伤害 100
+#act
+CalcPercent N$焚土喷焰最终伤害 N$精英怪增加伤害 N$焚土喷焰最终伤害
+
+
+#if
+#act
+FORMULATION <$STR(N$焚土喷焰最终伤害)>+<$STR(N$天殇套真实伤害)> N$焚土喷焰最终伤害
+
+
+#if
+#ACT
+
+RangeHarm <$STR(N998)> <$STR(N999)> <$STR(N$焚土喷焰范围)> <$STR(N$焚土喷焰最终伤害)> 0 0 0 2 1 1631 14 100 0 0
+#if
+NOT CHECKCURRTARGETRACE = 0
+RANDOMEX N$法宝释放焚土喷焰有几率切割BOSS 101
+CheckCacheTextList ..\QuestDiary\怪物名称\统领及以上怪物.txt <$ATTACKMONSTER_NAMEEX>
+#act
+M.AddhpPerEx - 10
+;清泉宝瓶
+PLAYEFFECT 59 510 20 1 100 0 -150 -280 1
+[@焚土喷焰打人开始]
+
+#if
+LARGE N$焚土喷焰幸运 0
+#ACT
+FORMULATION <$MC>+(((<$MAXMC>-<$MC>)/10)*<$STR(N$焚土喷焰幸运)>) N$焚土喷焰人物幸运攻击下限
+DEC N$焚土喷焰人物幸运攻击下限 1
+#elseact
+MOV N$焚土喷焰人物幸运攻击下限 <$MC>
+
+#if
+#act
+GetHumVar <$C.USERNAME> <$STR(N$人物暴击防御)> N$对方暴击防御
+MOVR N$焚土喷焰最终伤害 <$STR(N$焚土喷焰人物幸运攻击下限)> <$MAXMC>
+CalcPercent N$焚土喷焰最终伤害 N$焚土喷焰打人默认伤害 N$焚土喷焰最终伤害
+MOV N$焚土喷焰打人暴击几率 0
+
+CalcPercent N$焚土喷焰最终伤害 N$焚土喷焰人物伤害百分比 N$焚土喷焰最终伤害
+#if
+LARGE N$人物暴击几率 <$STR(N$对方暴击防御)>
+#ACT
+FORMULATION <$STR(N$人物暴击几率)>-<$STR(N$对方暴击防御)> N$焚土喷焰打人暴击几率
+#IF
+LARGE N$焚土喷焰打人暴击几率 0
+RANDOMEX N$焚土喷焰打人暴击几率 101
+#ACT
+PLAYEFFECT 73 0 12 1 80 0 -125 -170 1
+FORMULATION (<$STR(N$人物暴击伤害)>+100)/100*<$STR(N$焚土喷焰最终伤害)> N$焚土喷焰最终伤害
+
+;技能升级后的伤害
+
+MAPEFFECT <$MAP> <$C.X> <$C.Y> 1 1631 14 1 100 0
+
+RangeHarm <$C.X> <$C.Y> <$STR(N$焚土喷焰范围)> N$焚土喷焰最终伤害 0 0 0 1 0 0 0 0 0 0
+
+RangeHarm <$C.X> <$C.Y> <$STR(N$焚土喷焰范围)> 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 0 0 0 0 0 0
+
+
+
+
+
+[@金禅魔钟恢复魔法力]
+#IF
+#ACT
+ChangeHumAbility 7 - N$金禅魔钟人物魔法力百分比下限
+ChangeHumAbility 8 - N$金禅魔钟人物魔法力百分比上限
+MOV N$金禅魔钟开关 0
+PLAYEFFECT 59 310 20 1 100 0 -150 -280 1
+}

@@ -1,0 +1,8 @@
+[@main]
+#IF
+#ACT
+MOV S$我的仓库按钮 
+#CALL [\商人\在线回收.txt] @回收
+BREAK
+
+

@@ -1,0 +1,10 @@
+[@在线帮助]
+{
+#IF
+#ACT
+MESSAGEBOX 功能脚本请自行添加！
+close
+break
+
+}
+

@@ -1,0 +1,285 @@
+[@爆率]
+{
+#if
+#ACT
+MOV N$基础爆率 100
+MOV N$狂暴爆率 0
+MOV N$腰牌爆率 0
+MOV N$面巾爆率 0
+MOV N$首饰爆率 0
+MOV N$天魔爆率 0
+MOV N$星星爆率 0
+MOV N$个人爆率 0
+
+#if
+check [890] 1
+#ACT
+MOV N$个人爆率 500
+
+
+#if
+checkfenghao 狂暴之力
+#ACT
+MOV N$狂暴爆率 30
+
+#if
+checkfenghao 斩仙问道LV.1
+#ACT
+MOV N$天魔爆率 10
+
+#if
+checkfenghao 斩仙问道LV.2
+#ACT
+MOV N$天魔爆率 20
+
+#if
+checkfenghao 斩仙问道LV.3
+#ACT
+MOV N$天魔爆率 30
+
+#if
+checkfenghao 斩仙问道LV.4
+#ACT
+MOV N$天魔爆率 40
+
+#if
+checkfenghao 斩仙问道LV.5
+#ACT
+MOV N$天魔爆率 50
+
+#if
+checkfenghao 斩仙问道LV.6
+#ACT
+MOV N$天魔爆率 60
+
+#if
+checkfenghao 斩仙问道LV.7
+#ACT
+MOV N$天魔爆率 70
+
+#if
+checkfenghao 斩仙问道LV.8
+#ACT
+MOV N$天魔爆率 80
+
+#if
+checkfenghao 斩仙问道LV.9
+#ACT
+MOV N$天魔爆率 90
+
+
+#if
+checkfenghao 斩仙问道LV.10
+#ACT
+MOV N$天魔爆率 100
+
+
+;--------------------------------------------------------------
+
+#OR
+CHECKITEMW  侠客面巾 1
+CHECKITEMW  侠客面巾[限时] 1
+#ACT
+MOV N$面巾爆率 30
+
+#if
+CHECKITEMW  游侠面巾 1
+#ACT
+MOV N$面巾爆率 50
+
+#if
+CHECKITEMW  猎魔面巾 1
+#ACT
+MOV N$面巾爆率 80
+
+#if
+CHECKITEMW  杀戮面巾 1
+#ACT
+MOV N$面巾爆率 120
+
+
+#if
+CHECKITEMW  至尊面巾 1
+#ACT
+MOV N$面巾爆率 160
+
+#if
+CHECKITEMW  不朽之王面巾 1
+#ACT
+MOV N$面巾爆率 250
+
+;--------------------------------------------------------------
+
+#if
+CHECKITEMW  恶魔之心 1
+#ACT
+MOV N$首饰爆率 50
+
+#if
+CHECKITEMW  恶魔の化身 1
+#ACT
+MOV N$首饰爆率 100
+
+
+;--------------------------------------------------------------
+#if
+CHECKITEMW  爆率腰牌(1.1)[限时] 1
+#ACT
+MOV N$腰牌爆率 10
+
+#if
+CHECKITEMW  爆率腰牌(1.1) 1
+#ACT
+MOV N$腰牌爆率 10
+
+#if
+CHECKITEMW  爆率腰牌(1.2) 1
+#ACT
+MOV N$腰牌爆率 20
+
+#if
+CHECKITEMW  爆率腰牌(1.3) 1
+#ACT
+MOV N$腰牌爆率 30
+
+#if
+CHECKITEMW  爆率腰牌(1.4) 1
+#ACT
+MOV N$腰牌爆率 40
+
+#if
+CHECKITEMW  爆率腰牌(1.5) 1
+#ACT
+MOV N$腰牌爆率 50
+
+#if
+CHECKITEMW  爆率腰牌(1.6) 1
+#ACT
+MOV N$腰牌爆率 60
+
+#if
+CHECKITEMW  爆率腰牌(1.7) 1
+#ACT
+MOV N$腰牌爆率 70
+
+#if
+CHECKITEMW  爆率腰牌(1.8) 1
+#ACT
+MOV N$腰牌爆率 80
+
+#if
+CHECKITEMW  爆率腰牌(1.9) 1
+#ACT
+MOV N$腰牌爆率 90
+
+#if
+CHECKITEMW  爆率腰牌(2.0) 1
+#ACT
+MOV N$腰牌爆率 100
+
+#OR
+CHECKITEMW  爆率腰牌(3.0)[限时] 1
+CHECKITEMW  爆率腰牌(3.0) 1
+#ACT
+MOV N$腰牌爆率 200
+
+#if
+CHECKITEMW  爆率腰牌(4.0) 1
+#ACT
+MOV N$腰牌爆率 300
+
+#if
+CHECKITEMW  爆率腰牌(5.0) 1
+#ACT
+MOV N$腰牌爆率 400
+
+
+;--------------------------------------------------------------
+
+#if
+checkfenghao 出类拔萃 1
+#ACT
+MOV N$星星爆率 20
+
+#if
+checkfenghao 锋芒毕现 1
+#ACT
+MOV N$星星爆率 40
+
+#if
+checkfenghao 名扬万里 1
+#ACT
+MOV N$星星爆率 60
+
+#if
+checkfenghao 扬名四海 1
+#ACT
+MOV N$星星爆率 80
+
+#if
+checkfenghao 傲视九州 1
+#ACT
+MOV N$星星爆率 100
+
+#if
+checkfenghao 万古流芳 1
+#ACT
+MOV N$星星爆率 120
+
+#if
+checkfenghao 震烁古今 1
+#ACT
+MOV N$星星爆率 140
+
+#if
+checkfenghao 身外化身 1
+#ACT
+MOV N$星星爆率 160
+
+#if
+checkfenghao 天外飞仙 1
+#ACT
+MOV N$星星爆率 180
+
+#if
+checkfenghao 天下无双 1
+#ACT
+MOV N$星星爆率 200
+
+#if
+checkfenghao 荒古圣体 1
+#ACT
+MOV N$星星爆率 230
+
+#if
+checkfenghao 超凡入圣 1
+#ACT
+MOV N$星星爆率 260
+
+#if
+checkfenghao 归墟净螭 1
+#ACT
+MOV N$星星爆率 300
+
+
+
+
+
+
+#if
+#act
+Inc  N$基础爆率 <$STR(N$临时爆率)>
+Inc  N$基础爆率 <$STR(N$时时爆率)>
+Inc  N$基础爆率 <$STR(N$赞助爆率)>
+Inc  N$基础爆率 <$STR(N$狂暴爆率)>
+Inc  N$基础爆率 <$STR(N$星星爆率)>
+Inc  N$基础爆率 <$STR(N$腰牌爆率)>
+Inc  N$基础爆率 <$STR(N$面巾爆率)>
+Inc  N$基础爆率 <$STR(N$首饰爆率)>
+Inc  N$基础爆率 <$STR(N$天魔爆率)>
+Inc  N$基础爆率 <$STR(N$个人爆率)>
+KILLMONBURSTRATE  <$STR(N$基础爆率)> 65535 0
+
+
+
+}

@@ -1,0 +1,360 @@
+[@MAIN]
+;材料成本550+500
+; U137=2=500  50000元宝/材料成本550=90次 几率带符95% 需要90-100次左右每次500元宝 95*500=47,500+550*95=52,250
+;3=800 80000/550=145次 几率带符70
+;4=1200 带符60 165*550  元宝177
+;5=1800  带符55 180*550 397
+;6=2500 带符50  200次 700
+;7=3500 带符40 250次 850
+;8=4000 带符30 320次 900
+;9=8000 带符20 450次 1227
+;1565次 材料860750+29205+71460+140000+212500+288000+552150=2,154,065 /100=21,540
+#if
+EQUAL U45 13
+#act
+messagebox 任务期间提升宠物经验不需要金币
+#if
+EQUAL U137 0
+#act
+MOV S$当前宠物 <&PlayImg:71:1:8:100:150:0:0>
+MOV S$下阶宠物 <&PlayImg:71:105:8:100:660:245:0>
+MOV S$宠物名字 <&IMG:196:71:710:77>
+MOV N$成功几率 85
+MOV N$货币消耗 3000000
+MOV S$货币后缀 金币
+
+#if
+EQUAL U137 1
+#act
+MOV S$当前宠物 <&PlayImg:71:9:8:100:150:0:0>
+MOV S$下阶宠物 <&PlayImg:71:113:8:100:675:250:0>
+MOV S$宠物名字 <&IMG:197:71:710:77>
+MOV N$成功几率 80
+MOV N$货币消耗 5000000
+MOV S$货币后缀 金币
+
+#if
+EQUAL U137 2
+#act
+MOV S$当前宠物 <&PlayImg:71:17:8:100:150:0:0>
+MOV S$下阶宠物 <&PlayImg:71:121:8:100:675:250:0>
+MOV S$宠物名字 <&IMG:198:71:710:77>
+MOV N$成功几率 70
+MOV N$货币消耗 8000000
+MOV S$货币后缀 金币
+
+#if
+EQUAL U137 3
+#act
+MOV S$当前宠物 <&PlayImg:71:26:8:100:150:0:0>
+MOV S$下阶宠物 <&PlayImg:71:129:8:100:675:250:0>
+MOV S$宠物名字 <&IMG:199:71:710:77>
+MOV N$成功几率 50
+MOV N$货币消耗 10000000
+MOV S$货币后缀 金币
+
+
+#if
+EQUAL U137 4
+#act
+MOV S$当前宠物 <&PlayImg:71:33:8:100:150:0:0>
+MOV S$下阶宠物 <&PlayImg:71:137:8:100:675:250:0>
+MOV S$宠物名字 <&IMG:200:71:710:77>
+MOV N$成功几率 40
+MOV N$货币消耗 177
+MOV S$货币后缀 元宝
+
+#if
+EQUAL U137 5
+#act
+MOV S$当前宠物 <&PlayImg:71:42:8:100:150:0:0>
+MOV S$下阶宠物 <&PlayImg:71:145:8:100:675:250:0>
+MOV S$宠物名字 <&IMG:201:71:710:77>
+MOV N$成功几率 35
+MOV N$货币消耗 397
+MOV S$货币后缀 元宝
+
+#if
+EQUAL U137 6
+#act
+MOV S$当前宠物 <&PlayImg:71:50:8:100:150:0:0>
+MOV S$下阶宠物 <&PlayImg:71:153:8:100:675:250:0>
+MOV S$宠物名字 <&IMG:202:71:710:77>
+MOV N$成功几率 30
+MOV N$货币消耗 700
+MOV S$货币后缀 元宝
+
+
+#if
+EQUAL U137 7
+#act
+MOV S$当前宠物 <&PlayImg:71:57:8:100:150:0:0>
+MOV S$下阶宠物 <&PlayImg:71:161:8:100:675:250:0>
+MOV S$宠物名字 <&IMG:203:71:710:77>
+MOV N$成功几率 20
+MOV N$货币消耗 850
+MOV S$货币后缀 元宝
+
+#if
+EQUAL U137 8
+#act
+MOV S$当前宠物 <&PlayImg:71:65:8:100:150:0:0>
+MOV S$下阶宠物 <&PlayImg:71:169:8:100:650:210:0>
+MOV S$宠物名字 <&IMG:204:71:710:77>
+MOV N$成功几率 10
+MOV N$货币消耗 900
+MOV S$货币后缀 元宝
+#if
+EQUAL U137 9
+#act
+MOV S$当前宠物 <&PlayImg:71:73:8:100:150:0:0>
+MOV S$下阶宠物 <&PlayImg:71:177:8:100:675:250:0>
+MOV S$宠物名字 <&IMG:205:71:710:77>
+MOV N$成功几率 0
+MOV N$货币消耗 1227
+MOV S$货币后缀 元宝
+
+
+#if
+CHECKITEM 宠物进阶水晶
+#act
+INC N$成功几率 20
+
+
+#IF
+#ACT
+OPENMERCHANTBIGDLG 71 0 1 4 0 -80 0
+#say
+<$STR(S$当前宠物)>
+<$STR(S$下阶宠物)>
+<$STR(S$宠物名字)>
+
+<&Text:<$STR(N$成功几率)>%:810:260{FCOLOR=245;FSIZE=11}> \ \
+<&Text:功能介绍(鼠标指向查看)|点击提升经验按钮可以给宠物提升经验值^每提升一点经验值增加对应属性^提升经验值有几率失败^失败后降低一点经验值^暴击几率到100%等于双倍攻击^暴击伤害加上暴击几率一起100%等于4倍攻击^PK时自己暴击几率300,对方暴击防御250,有50%的几率攻击触发暴击:730:128{FCOLOR=250;FSIZE=12;FNAME=黑体}> \ \
+<&Text:每2点经验值增加1%暴击几率和防御:720:190{FCOLOR=70;FSIZE=11}> \ \
+<&Text:每2点经验值增加1%技能倍攻:720:210{FCOLOR=70;FSIZE=11}> \ \
+<&Text:每30点经验值增加1%暴击伤害:720:230{FCOLOR=70;FSIZE=11}> \ \
+<&Text:需要消耗<$STR(N$货币消耗)><$STR(S$货币后缀)>:560:434{FCOLOR=245;FSIZE=11}> \ \
+<&ProgressBar:67:480:71:9999:206:1:100:30:7:0:100:<$STR(U136)>:0:250:0:3:%R点经验值>
+<&IMGEX:71:193:194:195:760:470/@提升按钮>
+<&IMGEX:71:207:208:209:340:420|150传仙币购买一个宠物保护器和一个宠物进阶水晶^保护器可以防止宠物进阶失败后经验减少^进阶水晶可以增加宠物进阶成功几率/@购买保护器和几率石>
+[@提升按钮]
+#if
+EQUAL U45 13
+#act
+goto @宠物进阶任务
+break
+#if
+EQUAL U140 1000
+#act
+messagebox 氪满了
+break
+#if
+EQUAL S$货币后缀 元宝
+#act
+goto @判断是否有元宝
+BREAK
+#if
+EQUAL S$货币后缀 金币
+#ACT
+goto @判断是否有金币
+break
+
+[@开始宠物进阶]
+#if
+RANDOMEX N$成功几率 101
+#act
+INC U136 1
+INC U140 1
+SENDMSG 6 宠物成功增加1点经验值当前经验值<$STR(U136)>
+take 宠物进阶水晶
+take 宠物保护器
+#elseact
+goto @宠物失败判断是否有宠物进阶水晶
+
+
+
+#if
+equal U137 0
+EQUAL U136 100
+#act
+MOV U137 1
+mov U136 0
+GiveGamePetEx 暴躁恶鼠
+RecallGamePet 暴躁恶鼠
+GOTO @MAIN
+BREAK
+#if
+equal U137 1
+EQUAL U136 100
+#act
+DeleteGamePet 0
+GiveGamePetEx 邪恶猫王
+RecallGamePet 邪恶猫王
+MOV U137 2
+mov U136 0
+GOTO @MAIN
+BREAK
+#if
+equal U137 2
+EQUAL U136 100
+#act
+DeleteGamePet 0
+GiveGamePetEx 美国队长
+RecallGamePet 美国队长
+MOV U137 3
+mov U136 0
+GOTO @MAIN
+BREAK
+#if
+equal U137 3
+EQUAL U136 100
+#act
+DeleteGamePet 0
+GiveGamePetEx 闪电魔王
+RecallGamePet 闪电魔王
+MOV U137 4
+mov U136 0
+GOTO @MAIN
+BREAK
+#if
+equal U137 4
+EQUAL U136 100
+#act
+DeleteGamePet 0
+GiveGamePetEx 金刚老狼
+RecallGamePet 金刚老狼
+MOV U137 5
+mov U136 0
+GOTO @MAIN
+BREAK
+#if
+equal U137 5
+EQUAL U136 100
+#act
+DeleteGamePet 0
+GiveGamePetEx 绿牛魔王
+RecallGamePet 绿牛魔王
+MOV U137 6
+mov U136 0
+GOTO @MAIN
+BREAK
+#if
+equal U137 6
+EQUAL U136 100
+#act
+DeleteGamePet 0
+GiveGamePetEx 性感美兔
+RecallGamePet 性感美兔
+MOV U137 7
+mov U136 0
+GOTO @MAIN
+BREAK
+#if
+equal U137 7
+EQUAL U136 100
+#act
+DeleteGamePet 0
+GiveGamePetEx 蝙蝠恶猪
+RecallGamePet 蝙蝠恶猪
+MOV U137 8
+mov U136 0
+GOTO @MAIN
+BREAK
+#if
+equal U137 8
+EQUAL U136 100
+#act
+DeleteGamePet 0
+GiveGamePetEx 钢铁恶鸡
+RecallGamePet 钢铁恶鸡
+MOV U137 9
+mov U136 0
+GOTO @MAIN
+BREAK
+#if
+equal U137 9
+EQUAL U136 100
+#act
+DeleteGamePet 0
+GiveGamePetEx 氪金魔王
+RecallGamePet 氪金魔王
+MOV U137 10
+mov U136 0
+GOTO @MAIN
+BREAK
+
+
+
+
+#if
+#act
+GOTO @MAIN
+
+
+
+[@判断是否有元宝]
+#if
+checkgamegold > N$货币消耗
+#act
+gamegold - N$货币消耗
+goto @开始宠物进阶
+#elseact
+messagebox 元宝不足
+break
+
+[@判断是否有金币]
+#if
+CHECKGOLD <$STR(N$货币消耗)>
+#act
+take 金币  N$货币消耗
+goto @开始宠物进阶
+#elseact
+messagebox 金币不足
+break
+
+
+[@宠物进阶任务]
+#if
+#act
+INC U136 1
+INC U140 1
+SENDMSG 6 宠物成功增加1点经验值当前经验值<$STR(U136)>
+GOTO @MAIN
+#if
+LARGE U140 9
+equal u45 13
+#act
+MOV U45 14
+;有新任务动态效果
+SCREENEFFECT N$新任务提示X N$新任务提示Y 25 51 15 0 100 0 0 0
+;完成任务
+PLAYEFFECT 25 20 10 3 100 0 23 -90 1
+PLAYEFFECT 25 40 10 3 100 0 0 0 0
+
+MOV S$接受完成任务按钮 <&ImgEx:61:47:48:49:450:540/@完成强化任务>
+messagebox 任务完成去领取奖励吧
+close
+[@购买保护器和几率石]
+#if
+checkgamegird < 150 
+#act
+messagebox 传仙币不足
+break
+#IF
+#ACT
+gamegird - 150
+GiveStateItem 宠物保护器 1 1 0 1 1 1
+GiveStateItem 宠物进阶水晶 1 1 0 1 1 1
+[@宠物失败判断是否有宠物进阶水晶]
+#if
+CHECKITEM 宠物保护器
+#act
+take 宠物保护器
+take 宠物进阶水晶
+sendmsg 6 宠物增加经验值失败了,扣除一个宠物保护器
+#elseact
+dec U136 1
+DEC U140 1
+take 宠物进阶水晶
+sendmsg 6 宠物增加经验值失败了,扣除一点经验值当前经验值<$STR(U136)>

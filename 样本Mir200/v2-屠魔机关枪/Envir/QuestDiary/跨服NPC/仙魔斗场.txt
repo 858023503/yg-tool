@@ -1,0 +1,166 @@
+[@仙魔斗场]
+{
+
+#if
+#act
+OPENMERCHANTBIGDLG 5 941 1 4 0 0  0 360 15 1
+#say
+<&Text:进入条件300级到1500级:110:60{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:每30分钟刷新50只怪:120:80{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:杀死一个增加一级:120:100{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+
+;<&Text:在线时每30分钟赠送300格吸怪体验一次:60:140{FCOLOR=150;FSIZE=12;FNAME=黑体;FBOLD=1}>
+
+<&IMGEX:5:730:731:732:145:178:2|/@进入仙魔战场>
+
+
+
+
+[@进入仙魔战场]
+#if
+SMALL <$level> 1500
+LARGE <$level> 299
+#ACT
+;goto @随机分配阵营
+goto @进入仙魔地图150
+break
+#elseact
+messagebox 等级范围不对
+
+
+
+[@随机分配阵营]
+#or
+CheckNation 1
+CheckNation 2
+#act
+BREAK
+
+#if
+EQUAL J100 0
+#act
+JoinNation 1
+INC J100 1
+#if
+EQUAL J100 1
+#act
+JoinNation 2
+INC J100 1
+#if
+EQUAL J100 2
+#act
+JoinNation 1
+INC J100 1
+#if
+EQUAL J100 3
+#act
+JoinNation 2
+INC J100 1
+#if
+EQUAL J100 4
+#act
+JoinNation 1
+INC J100 1
+#if
+EQUAL J100 5
+#act
+JoinNation 2
+INC J100 1
+
+#if
+EQUAL J100 6
+#act
+JoinNation 1
+INC J100 1
+#if
+EQUAL J100 7
+#act
+JoinNation 2
+INC J100 1
+#if
+EQUAL J100 8
+#act
+JoinNation 1
+INC J100 1
+#if
+EQUAL J100 9
+#act
+JoinNation 2
+INC J100 1
+#if
+EQUAL J100 10
+#act
+JoinNation 1
+INC J100 1
+#if
+EQUAL J100 11
+#act
+JoinNation 2
+INC J100 1
+#if
+EQUAL J100 12
+#act
+JoinNation 1
+INC J100 1
+#if
+EQUAL J100 13
+#act
+JoinNation 2
+INC J100 1
+#if
+EQUAL J100 14
+#act
+JoinNation 1
+INC J100 1
+#if
+EQUAL J100 15
+#act
+JoinNation 2
+INC J100 1
+#if
+EQUAL J100 16
+#act
+JoinNation 1
+INC J100 1
+#if
+EQUAL J100 17
+#act
+JoinNation 2
+INC J100 1
+#if
+EQUAL J100 18
+#act
+JoinNation 1
+INC J100 1
+#if
+EQUAL J100 19
+#act
+JoinNation 2
+INC J100 1
+#if
+EQUAL J100 20
+#act
+JoinNation 1
+INC J100 1
+[@进入仙魔地图150]
+#if
+;CheckNation 1
+#act
+mapmove xianmo1 18 115 3
+SENDMSG 5 击杀怪物会增加等级30分钟刷新一次
+SENDMSG 5 击杀怪物会增加等级30分钟刷新一次
+SENDMSG 5 击杀怪物会增加等级30分钟刷新一次
+SENDMSG 5 击杀怪物会增加等级30分钟刷新一次
+goto @统计属性
+[@全局内存缩小瘦身处理]
+#CALL [\初始化属性\初始化属性.txt] @初始化属性
+#CALL [\跨服NPC\仙魔斗场.TXT] @仙魔斗场
+#CALL [\跨服NPC\积分兑换.TXT] @积分兑换
+#CALL [\属性统计\统计属性.TXT] @统计属性
+; #if
+; CheckNation 2
+; #act
+; mapmove xianmo1 117 24 3
+
+
+}

@@ -1,0 +1,54 @@
+[@开始计算人物速度]
+{
+#IF
+#ACT
+GetAllCustomItemValue 10 N$人物攻速加成 N$总1攻速
+GetAllCustomItemValue 11 N$人物移速加成 N$总1移速
+GetAllCustomItemValue 12 N$人物魔速加成 N$总1魔速
+INC N$人物移速加成 <$STR(N$套装移动加成)>
+INC N$人物攻速加成 <$STR(N$套装攻速加成)>
+INC N$人物魔速加成 <$STR(N$套装魔速加成)>
+
+#IF 
+CHECKITEM 魔龙内丹 1
+#ACT
+INC N$人物攻速加成 3
+INC N$人物魔速加成 3
+
+#IF
+CheckStoneCount 大魔王的心 > 0
+#ACT
+INC N$人物攻速加成 2
+
+#IF
+CheckStoneCount 小魔王的肝 > 0
+#ACT
+INC N$人物魔速加成 2
+
+
+#IF 
+CHECKITEMW 血饮
+#ACT
+INC N$人物魔速加成 1
+
+#IF 
+CHECKITEMW 镇天
+#ACT
+INC N$人物魔速加成 3
+
+#IF 
+CHECKITEMW 开天
+#ACT
+INC N$人物攻速加成 3
+
+#IF
+LARGE N$疾风后速度 0
+#ACT
+INC N$人物攻速加成 <$STR(N$疾风后速度)>
+
+#IF
+#ACT
+ChangeSpeed 1 <$STR(N$人物移速加成)>
+ChangeSpeed 2 <$STR(N$人物攻速加成)>
+ChangeSpeed 3 <$STR(N$人物魔速加成)>
+}

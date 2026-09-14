@@ -1,0 +1,85 @@
+[@main]
+
+#IF
+#SAY
+\ \
+< /SCOLOR=0> <上线免费领取：称号一/FCOLOR=250>             <ItemShow:682:0:1:-20:1>       <点击获取|250#获取方式:^-^70#上线点击免费获取/@获取称号1>\ \ \
+< /SCOLOR=0> <满足特定条件领取：称号二/FCOLOR=249>         <ItemShow:683:0:1:-20:1>       <点击获取|250#获取方式:^-^70#缴纳1000W金币^70#缴纳50金刚石(不扣除)^70#毒刺*3^70#巨钳*1^70#毒龙勋*1/@获取称号2>\ \ \
+< /SCOLOR=0> <满足特定条件领取：称号三/FCOLOR=70>         <ItemShow:684:0:1:-20:1>       <点击获取|250#获取方式:^-^70#金刚石数量达到100(不扣除)/@获取称号3>\ \ \ 
+
+
+[@获取称号1]
+#IF
+CHECKFENGHAO 白玉为堂金做马
+#ACT
+MESSAGEBOX 你已经拥有称号了！
+BREAK
+
+#IF
+#ACT
+GIVEFENGHAO 白玉为堂金做马
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{在白嫖称号处成功的白嫖到神级称号|251:0}{[白玉为堂金做马]|254:0}
+
+[@获取称号2]
+#IF
+CHECKFENGHAO 是非成败转头空
+#ACT
+MESSAGEBOX 你已经拥有称号了！
+BREAK
+
+#IF
+SMALL <$GOLDCOUNT> 10000000
+#ACT
+MESSAGEBOX 你的金币不够！
+BREAK
+
+#IF
+CHECKGAMEDIAMOND < 50
+#ACT
+MESSAGEBOX 你的金刚石不够！
+BREAK
+
+#IF
+NOT CHECKITEM 毒刺 3
+#ACT
+MESSAGEBOX 你的[毒刺]不够！
+BREAK
+
+#IF
+NOT CHECKITEM 巨钳 1
+#ACT
+MESSAGEBOX 你的[巨钳]不够！
+BREAK
+
+#IF
+NOT CHECKITEM 毒龙勋 1
+#ACT
+MESSAGEBOX 你的[毒龙勋]不够！
+BREAK
+
+#IF
+#ACT
+TAKE 毒龙勋 1
+TAKE 巨钳 1
+TAKE 毒刺 3
+TAKE 金币 10000000
+GIVEFENGHAO 是非成败转头空
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{在白嫖称号处成功的白嫖到神级称号|251:0}{[是非成败转头空]|254:0}
+
+[@获取称号3]
+#IF
+CHECKFENGHAO 雁行零落悲秋风
+#ACT
+MESSAGEBOX 你已经拥有称号了！
+BREAK
+
+#IF
+CHECKGAMEDIAMOND < 100
+#ACT
+MESSAGEBOX 你的金刚石不够！
+BREAK
+
+#IF
+#ACT
+GIVEFENGHAO 雁行零落悲秋风
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{在白嫖称号处成功的白嫖到神级称号|251:0}{[雁行零落悲秋风]|254:0}

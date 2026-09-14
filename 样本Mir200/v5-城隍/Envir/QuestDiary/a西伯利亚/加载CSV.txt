@@ -1,0 +1,10 @@
+[@开始加载CSV]
+{
+#IF
+#ACT
+CSVOPENCACHE ..\QuestDiary\a西伯利亚\CSV文件\DNF\DNF装备强化配置.CSV
+CSVOPENCACHE ..\QuestDiary\a西伯利亚\CSV文件\DNF\DNF武器强化加成配置.CSV
+CSVOPENCACHE ..\QuestDiary\a西伯利亚\CSV文件\DNF\DNF防具强化加成配置.CSV
+CSVOPENCACHE ..\QuestDiary\a西伯利亚\CSV文件\DNF\DNF首饰强化加成配置.CSV
+CSVOPENCACHE ..\QuestDiary\a西伯利亚\CSV文件\DNF\DNF特殊强化加成配置.CSV
+}

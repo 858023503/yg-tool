@@ -1,0 +1,95 @@
+[@转职称号读取]
+{
+#IF
+#ACT
+RECYCFENGHAO [战神]
+RECYCFENGHAO [法神]
+RECYCFENGHAO [天尊]
+RECYCFENGHAO [真·战神]
+RECYCFENGHAO [真·法神]
+RECYCFENGHAO [真·天尊]
+RECYCFENGHAO [神]
+RECYCFENGHAO [魔]
+RECYCFENGHAO [尊]
+#IF
+checkjob warrior
+CHECK [3] 1
+#ACT
+GIVEFENGHAO [神]
+break
+
+#IF
+checkjob wizard
+CHECK [3] 1
+#ACT
+GIVEFENGHAO [魔]
+break
+
+#IF
+checkjob taoist
+CHECK [3] 1
+#ACT
+GIVEFENGHAO [尊]
+break
+
+
+#IF
+checkjob warrior
+CHECK [2] 1
+#ACT
+GIVEFENGHAO [真·战神]
+break
+
+#IF
+checkjob wizard
+CHECK [2] 1
+#ACT
+GIVEFENGHAO [真·法神]
+break
+
+#IF
+checkjob taoist
+CHECK [2] 1
+#ACT
+GIVEFENGHAO [真·天尊]
+break
+
+
+
+#IF
+checkjob warrior
+CHECK [1] 1
+#ACT
+GIVEFENGHAO [战神]
+break
+
+#IF
+checkjob wizard
+CHECK [1] 1
+#ACT
+GIVEFENGHAO [法神]
+break
+
+#IF
+checkjob taoist
+CHECK [1] 1
+#ACT
+GIVEFENGHAO [天尊]
+break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

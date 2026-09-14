@@ -1,0 +1,22 @@
+[@元歌全屏吸怪]
+{
+#IF
+CHECKMAPNAME 3
+#ACT
+MESSAGEBOX 当前地图禁止吸怪！
+break
+
+#IF
+INSAFEZONE
+#ACT
+MESSAGEBOX 安全区禁止吸怪！
+break
+
+#IF
+#ACT
+MAPEFFECT <$map> <$X> <$Y>  18 4735 29 1 100 0
+DoTaunt 10 1000000 1 0 0
+;2秒无敌状态
+ChangeModeEx 1 2
+SENDMSG 6 范围10*10格内的怪物已经全部吸取过来了！
+}

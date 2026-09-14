@@ -1,0 +1,1227 @@
+[@万象魔咒]
+{
+
+#IF
+#act
+MOV N$万象魔咒范围 100
+MAPEFFECT <$map> <$X> <$Y>  1 4766 25 1 50 0
+
+#if
+SMALL N$万象CD 120
+#act
+sendmsg 5 每释放一次吸怪1000只,地图有多少怪都可以吸过来,土城左下角可以减少吸怪CD
+sendmsg 5 每释放一次吸怪1000只,地图有多少怪都可以吸过来,土城左下角可以减少吸怪CD
+sendmsg 5 每释放一次吸怪1000只,地图有多少怪都可以吸过来,土城左下角可以减少吸怪CD
+sendmsg 5 每释放一次吸怪1000只,地图有多少怪都可以吸过来,土城左下角可以减少吸怪CD
+#if
+#act
+goto @50万象魔咒判断周围怪物数量
+
+
+
+[@50万象魔咒判断周围怪物数量]
+#if
+LARGE N$万象魔咒范围 0
+CheckRangeMonCount <$MAP> <$X> <$Y> 1 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 1 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 1
+CheckRangeMonCount <$MAP> <$X> <$Y> 2 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 2 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 2
+CheckRangeMonCount <$MAP> <$X> <$Y> 3 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 3 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 3
+CheckRangeMonCount <$MAP> <$X> <$Y> 4 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 4 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 4
+CheckRangeMonCount <$MAP> <$X> <$Y> 5 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 5 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 5
+CheckRangeMonCount <$MAP> <$X> <$Y> 6 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 6 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 6
+CheckRangeMonCount <$MAP> <$X> <$Y> 7 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 7 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 7
+CheckRangeMonCount <$MAP> <$X> <$Y> 8 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 8 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 8
+CheckRangeMonCount <$MAP> <$X> <$Y> 9 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 9 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 9
+CheckRangeMonCount <$MAP> <$X> <$Y> 10 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 10 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 10
+CheckRangeMonCount <$MAP> <$X> <$Y> 11 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 11 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 11
+CheckRangeMonCount <$MAP> <$X> <$Y> 12 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 12 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 12
+CheckRangeMonCount <$MAP> <$X> <$Y> 13 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 13 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 13
+CheckRangeMonCount <$MAP> <$X> <$Y> 14 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 14 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 14
+CheckRangeMonCount <$MAP> <$X> <$Y> 15 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 15 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 15
+CheckRangeMonCount <$MAP> <$X> <$Y> 16 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 16 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 16
+CheckRangeMonCount <$MAP> <$X> <$Y> 17 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 17 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 17
+CheckRangeMonCount <$MAP> <$X> <$Y> 18 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 18 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 18
+CheckRangeMonCount <$MAP> <$X> <$Y> 19 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 19 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 19
+CheckRangeMonCount <$MAP> <$X> <$Y> 20 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 20 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 20
+CheckRangeMonCount <$MAP> <$X> <$Y> 21 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 21 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 21
+CheckRangeMonCount <$MAP> <$X> <$Y> 22 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 22 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 22
+CheckRangeMonCount <$MAP> <$X> <$Y> 23 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 23 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 23
+CheckRangeMonCount <$MAP> <$X> <$Y> 24 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 24 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 24
+CheckRangeMonCount <$MAP> <$X> <$Y> 25 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 25 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 25
+CheckRangeMonCount <$MAP> <$X> <$Y> 26 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 26 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 26
+CheckRangeMonCount <$MAP> <$X> <$Y> 27 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 27 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 27
+CheckRangeMonCount <$MAP> <$X> <$Y> 28 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 28 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 28
+CheckRangeMonCount <$MAP> <$X> <$Y> 29 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 29 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 29
+CheckRangeMonCount <$MAP> <$X> <$Y> 30 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 30 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 30
+CheckRangeMonCount <$MAP> <$X> <$Y> 31 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 31 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 31
+CheckRangeMonCount <$MAP> <$X> <$Y> 32 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 32 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 32
+CheckRangeMonCount <$MAP> <$X> <$Y> 33 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 33 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 33
+CheckRangeMonCount <$MAP> <$X> <$Y> 34 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 34 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 34
+CheckRangeMonCount <$MAP> <$X> <$Y> 35 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 35 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 35
+CheckRangeMonCount <$MAP> <$X> <$Y> 36 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 36 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 36
+CheckRangeMonCount <$MAP> <$X> <$Y> 37 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 38 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 37
+CheckRangeMonCount <$MAP> <$X> <$Y> 38 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 38 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 38
+CheckRangeMonCount <$MAP> <$X> <$Y> 39 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 39 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 39
+CheckRangeMonCount <$MAP> <$X> <$Y> 40 > 1000
+#act
+
+MoveMapMonToPos * <$MAP> <$X> <$Y> 40 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 40
+CheckRangeMonCount <$MAP> <$X> <$Y> 41 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 41 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 41
+CheckRangeMonCount <$MAP> <$X> <$Y> 42 > 1000
+#act
+
+MoveMapMonToPos * <$MAP> <$X> <$Y> 42 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 42
+CheckRangeMonCount <$MAP> <$X> <$Y> 43 > 1000
+#act
+
+MoveMapMonToPos * <$MAP> <$X> <$Y> 43 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 43
+CheckRangeMonCount <$MAP> <$X> <$Y> 44 > 1000
+#act
+
+
+MoveMapMonToPos * <$MAP> <$X> <$Y> 44 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 44
+CheckRangeMonCount <$MAP> <$X> <$Y> 45 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 45 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 45
+CheckRangeMonCount <$MAP> <$X> <$Y> 46 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 46 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 46
+CheckRangeMonCount <$MAP> <$X> <$Y> 47 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 47 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 47
+CheckRangeMonCount <$MAP> <$X> <$Y> 48 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 48 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 48
+CheckRangeMonCount <$MAP> <$X> <$Y> 49 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 49 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+
+break
+#if
+LARGE N$万象魔咒范围 49
+CheckRangeMonCount <$MAP> <$X> <$Y> 50 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 50 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+
+#if
+LARGE N$万象魔咒范围 50
+CheckRangeMonCount <$MAP> <$X> <$Y> 51 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 51 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+
+#if
+LARGE N$万象魔咒范围 51
+CheckRangeMonCount <$MAP> <$X> <$Y> 52 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 52 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 52
+CheckRangeMonCount <$MAP> <$X> <$Y> 53 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 53 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 53
+CheckRangeMonCount <$MAP> <$X> <$Y> 54 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 54 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 54
+CheckRangeMonCount <$MAP> <$X> <$Y> 55 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 55 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 55
+CheckRangeMonCount <$MAP> <$X> <$Y> 56 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 56 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 57
+CheckRangeMonCount <$MAP> <$X> <$Y> 58 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 58 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 58
+CheckRangeMonCount <$MAP> <$X> <$Y> 59 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 59 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 59
+CheckRangeMonCount <$MAP> <$X> <$Y> 60 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 60 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 60
+CheckRangeMonCount <$MAP> <$X> <$Y> 61 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 61 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 61
+CheckRangeMonCount <$MAP> <$X> <$Y> 62 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 52 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 62
+CheckRangeMonCount <$MAP> <$X> <$Y> 63 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 63 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 63
+CheckRangeMonCount <$MAP> <$X> <$Y> 64 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 64 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 64
+CheckRangeMonCount <$MAP> <$X> <$Y> 65 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 65 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 65
+CheckRangeMonCount <$MAP> <$X> <$Y> 66 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 66 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 66
+CheckRangeMonCount <$MAP> <$X> <$Y> 67 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 67 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 67
+CheckRangeMonCount <$MAP> <$X> <$Y> 68 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 68 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 68
+CheckRangeMonCount <$MAP> <$X> <$Y> 69 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 69 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 69
+CheckRangeMonCount <$MAP> <$X> <$Y> 70 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 70 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 70
+CheckRangeMonCount <$MAP> <$X> <$Y> 71 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 71 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 71
+CheckRangeMonCount <$MAP> <$X> <$Y> 72 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 72 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 72
+CheckRangeMonCount <$MAP> <$X> <$Y> 73 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 73 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 73
+CheckRangeMonCount <$MAP> <$X> <$Y> 74 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 74 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 74
+CheckRangeMonCount <$MAP> <$X> <$Y> 75 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 75 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 75
+CheckRangeMonCount <$MAP> <$X> <$Y> 76 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 76 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 76
+CheckRangeMonCount <$MAP> <$X> <$Y> 77 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 77 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 77
+CheckRangeMonCount <$MAP> <$X> <$Y> 78 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 78 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 78
+CheckRangeMonCount <$MAP> <$X> <$Y> 79 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 79 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 79
+CheckRangeMonCount <$MAP> <$X> <$Y> 80 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 80 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 80
+CheckRangeMonCount <$MAP> <$X> <$Y> 81 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 81 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 81
+CheckRangeMonCount <$MAP> <$X> <$Y> 82 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 82 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 82
+CheckRangeMonCount <$MAP> <$X> <$Y> 83 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 83 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 83
+CheckRangeMonCount <$MAP> <$X> <$Y> 84 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 84 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 84
+CheckRangeMonCount <$MAP> <$X> <$Y> 85 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 85 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 85
+CheckRangeMonCount <$MAP> <$X> <$Y> 86 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 86 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 86
+CheckRangeMonCount <$MAP> <$X> <$Y> 87 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 87 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 87
+CheckRangeMonCount <$MAP> <$X> <$Y> 88 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 88 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 88
+CheckRangeMonCount <$MAP> <$X> <$Y> 89 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 89 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 89
+CheckRangeMonCount <$MAP> <$X> <$Y> 90 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 90 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 90
+CheckRangeMonCount <$MAP> <$X> <$Y> 91 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 91 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 91
+CheckRangeMonCount <$MAP> <$X> <$Y> 92 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 92 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 92
+CheckRangeMonCount <$MAP> <$X> <$Y> 93 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 93 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 93
+CheckRangeMonCount <$MAP> <$X> <$Y> 94 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 94 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 94
+CheckRangeMonCount <$MAP> <$X> <$Y> 95 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 95 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 95
+CheckRangeMonCount <$MAP> <$X> <$Y> 96 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 96 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 96
+CheckRangeMonCount <$MAP> <$X> <$Y> 97 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 97 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 97
+CheckRangeMonCount <$MAP> <$X> <$Y> 98 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 98 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 98
+CheckRangeMonCount <$MAP> <$X> <$Y> 99 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 99 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 99
+CheckRangeMonCount <$MAP> <$X> <$Y> 100 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 100 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 100
+CheckRangeMonCount <$MAP> <$X> <$Y> 101 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 101 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 101
+CheckRangeMonCount <$MAP> <$X> <$Y> 101 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 101 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 102
+CheckRangeMonCount <$MAP> <$X> <$Y> 102 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 102 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 103
+CheckRangeMonCount <$MAP> <$X> <$Y> 103 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 103 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 104
+CheckRangeMonCount <$MAP> <$X> <$Y> 104 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 104 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 105
+CheckRangeMonCount <$MAP> <$X> <$Y> 105 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 105 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 106
+CheckRangeMonCount <$MAP> <$X> <$Y> 106 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 106 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 107
+CheckRangeMonCount <$MAP> <$X> <$Y> 107 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 107 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+
+#if
+LARGE N$万象魔咒范围 108
+CheckRangeMonCount <$MAP> <$X> <$Y> 108 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 108 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+
+#if
+LARGE N$万象魔咒范围 109
+CheckRangeMonCount <$MAP> <$X> <$Y> 109 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 109 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 110
+CheckRangeMonCount <$MAP> <$X> <$Y> 110 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 110 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 111
+CheckRangeMonCount <$MAP> <$X> <$Y> 111 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 111 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 112
+CheckRangeMonCount <$MAP> <$X> <$Y> 112 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 112 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 113
+CheckRangeMonCount <$MAP> <$X> <$Y> 113 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 113 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 114
+CheckRangeMonCount <$MAP> <$X> <$Y> 114 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 114 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 115
+CheckRangeMonCount <$MAP> <$X> <$Y> 115 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 115 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 116
+CheckRangeMonCount <$MAP> <$X> <$Y> 116 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 116 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 117
+CheckRangeMonCount <$MAP> <$X> <$Y> 117 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 117 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 118
+CheckRangeMonCount <$MAP> <$X> <$Y> 118 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 118 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 119
+CheckRangeMonCount <$MAP> <$X> <$Y> 119 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 119 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 120
+CheckRangeMonCount <$MAP> <$X> <$Y> 120 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 120 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 121
+CheckRangeMonCount <$MAP> <$X> <$Y> 121 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 121 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 122
+CheckRangeMonCount <$MAP> <$X> <$Y> 122 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 122 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 123
+CheckRangeMonCount <$MAP> <$X> <$Y> 123 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 123 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 124
+CheckRangeMonCount <$MAP> <$X> <$Y> 124 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 124 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 125
+CheckRangeMonCount <$MAP> <$X> <$Y> 125 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 125 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 126
+CheckRangeMonCount <$MAP> <$X> <$Y> 126 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 126 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 127
+CheckRangeMonCount <$MAP> <$X> <$Y> 127 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 127 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 128
+CheckRangeMonCount <$MAP> <$X> <$Y> 128 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 128 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 129
+CheckRangeMonCount <$MAP> <$X> <$Y> 129 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 129 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 130
+CheckRangeMonCount <$MAP> <$X> <$Y> 130 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 130 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 131
+CheckRangeMonCount <$MAP> <$X> <$Y> 131 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 131 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 132
+CheckRangeMonCount <$MAP> <$X> <$Y> 132 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 132 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 133
+CheckRangeMonCount <$MAP> <$X> <$Y> 133 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 133 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 134
+CheckRangeMonCount <$MAP> <$X> <$Y> 134 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 134 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 135
+CheckRangeMonCount <$MAP> <$X> <$Y> 135 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 135 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 136
+CheckRangeMonCount <$MAP> <$X> <$Y> 136 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 136 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 137
+CheckRangeMonCount <$MAP> <$X> <$Y> 137 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 137 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 138
+CheckRangeMonCount <$MAP> <$X> <$Y> 138 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 138 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 139
+CheckRangeMonCount <$MAP> <$X> <$Y> 139 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 139 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 140
+CheckRangeMonCount <$MAP> <$X> <$Y> 140 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 140 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 141
+CheckRangeMonCount <$MAP> <$X> <$Y> 141 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 141 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 142
+CheckRangeMonCount <$MAP> <$X> <$Y> 142 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 142 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 143
+CheckRangeMonCount <$MAP> <$X> <$Y> 143 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 143 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 144
+CheckRangeMonCount <$MAP> <$X> <$Y> 144 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 144 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 145
+CheckRangeMonCount <$MAP> <$X> <$Y> 145 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 145 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 146
+CheckRangeMonCount <$MAP> <$X> <$Y> 146 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 146 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 147
+CheckRangeMonCount <$MAP> <$X> <$Y> 147 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 147 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 148
+CheckRangeMonCount <$MAP> <$X> <$Y> 148 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 148 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 149
+CheckRangeMonCount <$MAP> <$X> <$Y> 149 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 149 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 150
+CheckRangeMonCount <$MAP> <$X> <$Y> 150 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 150 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 151
+CheckRangeMonCount <$MAP> <$X> <$Y> 151 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 151 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 152
+CheckRangeMonCount <$MAP> <$X> <$Y> 152 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 152 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 153
+CheckRangeMonCount <$MAP> <$X> <$Y> 153 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 153 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+LARGE N$万象魔咒范围 154
+CheckRangeMonCount <$MAP> <$X> <$Y> 154 > 1000
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> 154 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+CheckRangeMonCount <$MAP> <$X> <$Y> <$STR(N$万象魔咒范围)> > 900
+#act
+MoveMapMonToPos * <$MAP> <$X> <$Y> N$万象魔咒范围 <$MAP> <$X> <$Y> 17
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+
+#if
+CheckRangeMonCount <$MAP> <$X> <$Y> <$STR(N$万象魔咒范围)> > 800
+#act
+
+MoveMapMonToPos * <$MAP> <$X> <$Y> N$万象魔咒范围 <$MAP> <$X> <$Y> 16
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+CheckRangeMonCount <$MAP> <$X> <$Y> <$STR(N$万象魔咒范围)> > 700
+#act
+
+MoveMapMonToPos * <$MAP> <$X> <$Y> N$万象魔咒范围 <$MAP> <$X> <$Y> 15
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+CheckRangeMonCount <$MAP> <$X> <$Y> <$STR(N$万象魔咒范围)> > 600
+#act
+
+MoveMapMonToPos * <$MAP> <$X> <$Y> N$万象魔咒范围 <$MAP> <$X> <$Y> 14
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+CheckRangeMonCount <$MAP> <$X> <$Y> <$STR(N$万象魔咒范围)> > 500
+#act
+
+MoveMapMonToPos * <$MAP> <$X> <$Y> N$万象魔咒范围 <$MAP> <$X> <$Y> 13
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+CheckRangeMonCount <$MAP> <$X> <$Y> <$STR(N$万象魔咒范围)> > 400
+#act
+
+MoveMapMonToPos * <$MAP> <$X> <$Y> N$万象魔咒范围 <$MAP> <$X> <$Y> 12
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+CheckRangeMonCount <$MAP> <$X> <$Y> <$STR(N$万象魔咒范围)> > 300
+#act
+
+MoveMapMonToPos * <$MAP> <$X> <$Y> N$万象魔咒范围 <$MAP> <$X> <$Y> 11
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+CheckRangeMonCount <$MAP> <$X> <$Y> <$STR(N$万象魔咒范围)> > 200
+#act
+
+MoveMapMonToPos * <$MAP> <$X> <$Y> N$万象魔咒范围 <$MAP> <$X> <$Y> 10
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+CheckRangeMonCount <$MAP> <$X> <$Y> <$STR(N$万象魔咒范围)> > 100
+#act
+
+MoveMapMonToPos * <$MAP> <$X> <$Y> N$万象魔咒范围 <$MAP> <$X> <$Y> 8
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+#if
+CheckRangeMonCount <$MAP> <$X> <$Y> <$STR(N$万象魔咒范围)> > 1
+#act
+
+MoveMapMonToPos * <$MAP> <$X> <$Y> N$万象魔咒范围 <$MAP> <$X> <$Y> 5
+MAPEFFECT <$map> <$X> <$Y>  1 4735 29 1 100 0
+break
+
+
+
+}

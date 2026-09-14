@@ -1,0 +1,106 @@
+[@Body]
+{
+[@PlayDie]
+#IF
+#ACT
+MOV N$万死复活标识 0
+
+#IF
+NOT CHECKFENGHAO 万死莫辞
+#ACT
+GOTO @_@死亡称号加载
+
+#OR
+CHECKFENGHAO 十死无生
+CHECKFENGHAO 百死莫赎
+CHECKFENGHAO 千死敢当
+CHECKFENGHAO 万死莫辞
+#ACT
+GOTO @_@万死称号效果
+
+#IF
+EQUAL N$万死复活标识 0
+#ACT
+SENDCENTERMSG 180 251 你将在%d后自动回城. 0 5 @死亡回城
+
+[@_@万死称号效果]
+#IF
+CHECKFENGHAO 十死无生
+#ACT
+MOV N$死亡复活概率 10
+MOV N$死亡复活比例 30
+
+#IF
+CHECKFENGHAO 百死莫赎
+#ACT
+MOV N$死亡复活概率 15
+MOV N$死亡复活比例 40
+
+#IF
+CHECKFENGHAO 千死敢当
+#ACT
+MOV N$死亡复活概率 20
+MOV N$死亡复活比例 60
+
+#IF
+CHECKFENGHAO 万死莫辞
+#ACT
+MOV N$死亡复活概率 40
+MOV N$死亡复活比例 100
+
+#IF
+RANDOMEX <$STR(N$死亡复活概率)> 120
+#ACT
+MOV N$万死复活标识 1
+REALIVE
+ADDHPPER = <$STR(N$死亡复活比例)>
+
+[@死亡回城]
+#IF
+#ACT
+
+GOHOME
+REALIVE
+
+[@_@死亡称号加载]
+#IF
+#ACT
+MOV N$死亡点数数值 1
+
+#IF
+NOT KillByHum
+#ACT
+GETDBMONSTERFIELDVALUE <$CURRRTARGETNAME> MonType S$死亡点数怪物类型
+INC N$死亡点数数值 <$STR(N$<$STR(S$死亡点数怪物类型)>额外死亡点数)>
+
+#IF
+SMALL U114 89
+#ACT
+INC U114 <$STR(N$死亡点数数值)>
+SENDMSG 6 你已经死亡，当前死亡点数:<$STR(U114)>
+
+#IF
+LARGE U114 88
+#ACT
+MOV U114 88
+
+#IF
+EQUAL U114 10
+#ACT
+SENDMSG 6 你已经达成[十死无生]成就,请打开任务面板领取称号。
+
+#IF
+EQUAL U114 20
+#ACT
+SENDMSG 6 你已经达成[百死莫赎]成就,请打开任务面板领取称号。
+
+#IF
+EQUAL U114 50
+#ACT
+SENDMSG 6 你已经达成[千死敢当]成就,请打开任务面板领取称号。
+
+#IF
+EQUAL U114 88
+#ACT
+SENDMSG 6 你已经达成[万死莫辞]成就,请打开任务面板领取称号。
+}

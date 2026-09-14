@@ -1,0 +1,21 @@
+[@HM减]
+{
+
+
+#if
+#ACT
+MOV N$绑定HP 0
+MOV N$绑定MP 0
+GetAllCustomItemValue 6 N$无用 N$绑定HP
+GetAllCustomItemValue 7 N$无用 N$绑定MP
+MUL N$绑定HP N$绑定HP <$MAXHP>
+DIV N$绑定HP 100
+MUL N$绑定MP N$绑定MP <$MAXMP>
+DIV N$绑定MP 100
+ChangeHumAbility 11 = <$STR(N$绑定HP)> 600000
+ChangeHumAbility 12 = <$STR(N$绑定MP)> 600000
+
+
+
+
+}

@@ -1,0 +1,59 @@
+[@main]
+#if
+#ACT
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+<>[<$USERNAME>]<您好！/SCOLOR=251>\
+<><勇士，很高兴你能来到这里/SCOLOR=254>\
+<><我一生为剑而痴，剑道是我毕生追求，追求极致/SCOLOR=254>\
+<><既然你能来到这里，说明你的能力出众，/SCOLOR=254>\ 
+<><ITEMSHOW:1832:0:0:0:1/@1>\ 
+<>
+
+ 
+
+
+
+
+
+[@1]
+#ACT
+MessageBox  合成:<[[仙]·一眼万年]/FCOLOR=253>\\<需要:天外陨石*200+苍茫朽木*200+深渊之水*200九天神泥*200/FCOLOR=103>\<地心之火*200+天恒石*200+七星龙渊*1+30000Rmb点/FCOLOR=103>\\<点击确认开始合成/FCOLOR=254> @2 @取消合成
+
+
+
+[@2]
+#if
+CheckItem  天外陨石 200
+CheckItem  苍茫朽木 200
+CheckItem  深渊之水 200
+CheckItem  九天神泥 200
+CheckItem  地心之火 200
+CheckItem  天恒石 200
+CheckItem  七星龙渊 1
+CHECKGameDiamond > 29999
+#ACT
+GameDiamond - 30000
+Take 天外陨石 200
+Take 苍茫朽木 200
+Take 深渊之水 200
+Take 九天神泥 200
+Take 地心之火 200
+Take 天恒石 200
+Take 七星龙渊 1
+Give [仙]·一眼万年 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@取消合成]
+#ACT
+Sendmsg 7 取消合成
+Break
+
+
+
+
+

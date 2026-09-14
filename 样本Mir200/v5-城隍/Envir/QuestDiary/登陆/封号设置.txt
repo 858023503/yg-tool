@@ -1,0 +1,10 @@
+[@封号]
+{
+#IF
+CHECKNAMELIST ../QuestDiary/游戏配置/NPC配置/彩名名单.txt
+#ACT
+SETRANKLEVELNAME %S\骨灰玩家
+CHANGENAMECOLOR 253
+SENDMSG 0  ★[%s]:骨灰玩家<$USERNAME>上线了。
+break
+}

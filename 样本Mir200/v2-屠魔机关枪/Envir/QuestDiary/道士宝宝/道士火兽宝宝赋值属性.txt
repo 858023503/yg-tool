@@ -1,0 +1,103 @@
+[@道士火兽宝宝赋值属性]
+{
+#IF
+#ACT
+CalcPercent <$SC> N$火兽默认伤害 N$火兽宝宝伤害下限
+CalcPercent <$MAXSC> N$火兽默认伤害 N$火兽宝宝伤害上限
+
+
+CalcPercent N$火兽宝宝伤害下限 N$火兽伤害 N$火兽宝宝伤害下限
+CalcPercent N$火兽宝宝伤害上限 N$火兽伤害 N$火兽宝宝伤害上限
+
+
+
+CalcPercent N$火兽宝宝伤害下限 N$火兽伤害倍攻 N$火兽宝宝伤害下限
+CalcPercent N$火兽宝宝伤害上限 N$火兽伤害倍攻 N$火兽宝宝伤害上限
+
+
+
+
+
+
+CalcPercent <$HP> N$火兽HP N$火兽宝宝HP
+CalcPercent <$AC> N$火兽防御 N$火兽宝宝防御下限
+CalcPercent <$MAXAC> N$火兽防御 N$火兽宝宝防御上限
+CalcPercent <$MAC> N$火兽魔御 N$火兽宝宝魔御下限
+CalcPercent <$MAXMAC> N$火兽魔御 N$火兽宝宝魔御上限
+
+
+
+FORMULATION 1000-<$STR(N$火兽移动)> N$火兽实际攻击速度
+FORMULATION 1000-<$STR(N$火兽移动)>-<$STR(N$法宝鞭策增加宝宝移动速度)> N$火兽实际移动速度
+
+FORMULATION <$STR(N$火兽移动)>+<$STR(N$法宝鞭策增加宝宝移动速度)> N$显示火兽移动速度
+FORMULATION <$STR(N$火兽攻速)>+<$STR(N$法宝鞭策增加宝宝攻击速度)> N$显示火兽攻击速度
+;总伤害百分比
+
+
+;道士宝宝伤害太高砍掉7倍
+
+
+
+#IF
+CheckAttackMode 1
+LARGE N$法宝和平模式宝宝增加攻击速度 0
+#ACT
+FORMULATION 1000-<$STR(N$火兽攻速)>-<$STR(N$法宝和平模式宝宝增加攻击速度)> N$火兽实际攻击速度
+FORMULATION 1000-<$STR(N$火兽移动)>-<$STR(N$法宝鞭策增加宝宝移动速度)> N$火兽实际移动速度
+
+FORMULATION <$STR(N$火兽移动)>+<$STR(N$法宝鞭策增加宝宝移动速度)> N$显示火兽移动速度
+FORMULATION <$STR(N$火兽攻速)>+<$STR(N$法宝鞭策增加宝宝攻击速度)>+<$STR(N$法宝和平模式宝宝增加攻击速度)> N$显示火兽攻击速度
+#elseact
+FORMULATION 1000-<$STR(N$火兽攻速)> N$火兽实际攻击速度
+FORMULATION 1000-<$STR(N$火兽移动)>-<$STR(N$法宝鞭策增加宝宝移动速度)> N$火兽实际移动速度
+
+FORMULATION <$STR(N$火兽移动)>+<$STR(N$法宝鞭策增加宝宝移动速度)> N$显示火兽移动速度
+FORMULATION <$STR(N$火兽攻速)>+<$STR(N$法宝鞭策增加宝宝攻击速度)> N$显示火兽攻击速度
+
+#if
+#ACT
+; ChangeSlaveAbility 0 N$骷髅宝宝血量初始化
+ChangeSlaveAbility 1 N$火兽宝宝HP
+ChangeSlaveAbility 4 N$火兽宝宝防御下限
+ChangeSlaveAbility 5 N$火兽宝宝防御上限
+ChangeSlaveAbility 6 N$火兽宝宝魔御下限
+ChangeSlaveAbility 7 N$火兽宝宝魔御上限
+ChangeSlaveAbility 8 1
+ChangeSlaveAbility 9 1
+ChangeSlaveAbility 14 N$火兽显示攻击速度
+ChangeSlaveAbility 15 N$火兽显示移动速度
+ChangeSlaveAbility 30
+RecalcSlaveAbility
+
+MOV N$火兽宝宝重击下限 <$STR(N$火兽宝宝伤害下限)>
+MOV N$火兽宝宝重击上限 <$STR(N$火兽宝宝伤害上限)>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

@@ -1,0 +1,12 @@
+[@main]
+我可以送你回苍月岛\\
+
+
+<回去/@go>  \ 
+
+
+[@go]
+#if
+#act
+CLOSE
+MAPMOVE n5  696 625

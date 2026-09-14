@@ -1,0 +1,759 @@
+[@游戏攻略]
+{
+#if
+#act
+MOV S$攻略提示1
+MOV S$攻略提示2
+MOV S$攻略提示3
+MOV S$攻略提示4
+MOV S$攻略提示5
+MOV S$攻略提示6
+#if
+EQUAL S$玩家当前地图 骷髅矿区
+#act
+goto @判断骷髅矿区是否达标
+
+
+
+#if
+EQUAL S$玩家当前地图 僵尸矿洞
+#act
+goto @判断僵尸矿洞是否达标
+
+#if
+EQUAL S$玩家当前地图 蜈蚣洞
+#act
+goto @判断蜈蚣洞是否达标
+
+#if
+EQUAL S$玩家当前地图 兽人古墓
+#act
+goto @判断兽人古墓是否达标
+
+#if
+EQUAL S$玩家当前地图 沃玛寺庙
+#act
+goto @判断沃玛寺庙是否达标
+
+#if
+EQUAL S$玩家当前地图 祖玛寺庙
+#act
+goto @判断祖玛寺庙是否达标
+
+
+
+#if
+EQUAL S$玩家当前地图 骨魔洞
+#act
+goto @判断骨魔洞是否达标
+
+#if
+NOT EQUAL S$攻略提示1
+#ACT
+MOV S$第一条攻略文字坐标 50:150
+
+#ELSEACT
+
+#IF
+#act
+
+OPENMERCHANTBIGDLG 5 1142 1 4 -15 -52 1 510 10 1
+#say
+<$str(S$攻略提示1)>
+<$str(S$攻略提示2)>
+<$str(S$攻略提示3)>
+<$str(S$攻略提示4)>
+<$STR(S$攻略提示5)>
+<$STR(S$攻略提示6)>
+
+
+[@判断骷髅矿区是否达标]
+#if
+#act
+messagebox 到僵尸洞在点击查看攻略
+
+
+[@判断骨魔洞是否达标]
+
+
+
+[@判断祖玛寺庙是否达标]
+#if
+checkjob warrior
+#act
+GOTO @判断战士祖玛寺庙攻略
+#if
+checkjob wizard
+#act
+GOTO @判断法师祖玛寺庙攻略
+#if
+checkjob taoist
+#act
+GOTO @判断道士祖玛寺庙攻略
+
+[@判断道士祖玛寺庙攻略]
+#if
+SMALL <$MAXSC> 117
+#act
+#act
+MOV S$攻略提示1 <&Text:攻击力不达标|请佩戴【一套僵尸洞装备】,本服伤害精细计算每点攻击都很重要:90:160{FCOLOR=249;FSIZE=11}>
+#ELSEACT
+MOV S$攻略提示1 <&Text:攻击力已达标:90:160{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$灵葫魔次 3200
+#act
+MOV S$攻略提示2 <&Text:灵魂火葫魔次不达标|回【僵尸洞】打【精品以上装备】→进行【锁定洗练】把【灵魂火葫魔次】提升到3200以上:90:180{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示2  <&Text:灵魂火葫魔次已达标:90:180{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL N$法宝灵葫怪物伤害百分比 100
+#act
+MOV S$攻略提示3  <&Text:灵魂火葫百分比不达标|回【骷髅洞】击杀【统领及以上BOSS】会爆出【九转紫葫】可使【刺杀伤害翻倍】^【可佩戴多个九转紫葫】法宝属性会叠加^三大陆可以将多个九转紫葫法宝属性融合到一起:90:200{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示3  <&Text:灵魂火葫百分比已达标:90:200{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL 101 8
+#act
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石未激活|击杀僵尸洞小怪可以爆出灵魂板石^然后去一大陆暗夜城找NPC激活属性^每个板石增加1%双防、攻魔道和HP:90:220{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石已激活:90:220{FCOLOR=250;FSIZE=11}>
+
+
+
+
+
+
+[@判断法师祖玛寺庙攻略]
+#if
+SMALL <$MAXMC> 139
+
+#act
+MOV S$攻略提示1 <&Text:攻击力不达标|请佩戴【一套僵尸洞装备】,本服伤害精细计算每点攻击都很重要:90:160{FCOLOR=249;FSIZE=11}>
+#ELSEACT
+MOV S$攻略提示1 <&Text:攻击力已达标:90:160{FCOLOR=250;FSIZE=11}>
+
+
+#if
+SMALL N$寂静之雷魔次 2680
+
+#act
+MOV S$攻略提示2 <&Text:群体雷电术魔次不达标|回【僵尸洞】打【精品以上装备】→进行【锁定洗练】把【群体雷电术】提升到2680以上:90:180{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示2  <&Text:群体雷电术魔次已达标:90:180{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$法宝寂静之雷怪物伤害百分比 100
+
+#act
+MOV S$攻略提示3  <&Text:群体雷电术百分比不达标|回【骷髅洞】击杀【统领及以上BOSS】会爆出【翠林之心】可使【刺杀伤害翻倍】^【可佩戴多个翠林之心】法宝属性会叠加^三大陆可以将多个翠林之心法宝属性融合到一起:90:200{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示3  <&Text:群体雷电术百分比已达标:90:200{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL 101 8
+#act
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石未激活|击杀僵尸洞小怪可以爆出灵魂板石^然后去一大陆暗夜城找NPC激活属性^每个板石增加1%双防、攻魔道和HP:90:220{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石已激活:90:220{FCOLOR=250;FSIZE=11}>
+
+
+
+
+[@判断战士祖玛寺庙攻略]
+#if
+SMALL <$MAXDC> 198
+#act
+MOV S$攻略提示1 <&Text:攻击力不达标|请佩戴【一套僵尸洞装备】,本服伤害精细计算每点攻击都很重要:90:160{FCOLOR=249;FSIZE=11}>
+#ELSEACT
+MOV S$攻略提示1 <&Text:攻击力已达标:90:160{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$刺杀魔次 1000
+#act
+MOV S$攻略提示2 <&Text:刺杀魔次不达标|回【僵尸洞】打【精品以上装备】→进行【锁定洗练】把【刺杀魔次】提升到1000以上:90:180{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示2  <&Text:刺杀魔次已达标:90:180{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$法宝刺杀怪物伤害百分比 100
+#act
+MOV S$攻略提示3  <&Text:刺杀百分比不达标|回【骷髅洞】击杀【统领及以上BOSS】会爆出【盘龙之戒】可使【刺杀伤害翻倍】^【可佩戴多个盘龙之戒】法宝属性会叠加^三大陆可以将多个盘龙之戒法宝属性融合到一起:90:200{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示3  <&Text:刺杀百分比已达标:90:200{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL 101 8
+#act
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石未激活|击杀僵尸洞小怪可以爆出灵魂板石^然后去一大陆暗夜城找NPC激活属性^每个板石增加1%双防、攻魔道和HP:90:220{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石已激活:90:220{FCOLOR=250;FSIZE=11}>
+
+
+
+
+
+[@判断沃玛寺庙是否达标]
+#if
+checkjob warrior
+#act
+GOTO @判断战士沃玛寺庙攻略
+#if
+checkjob wizard
+#act
+GOTO @判断法师沃玛寺庙攻略
+#if
+checkjob taoist
+#act
+GOTO @判断道士沃玛寺庙攻略
+
+[@判断道士沃玛寺庙攻略]
+#if
+SMALL <$MAXSC> 93
+#act
+#act
+MOV S$攻略提示1 <&Text:攻击力不达标|请佩戴【一套僵尸洞装备】,本服伤害精细计算每点攻击都很重要:90:160{FCOLOR=249;FSIZE=11}>
+#ELSEACT
+MOV S$攻略提示1 <&Text:攻击力已达标:90:160{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$灵葫魔次 2500
+#act
+MOV S$攻略提示2 <&Text:灵魂火葫魔次不达标|回【僵尸洞】打【精品以上装备】→进行【锁定洗练】把【灵魂火葫魔次】提升到2500以上:90:180{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示2  <&Text:灵魂火葫魔次已达标:90:180{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL N$法宝灵葫怪物伤害百分比 100
+#act
+MOV S$攻略提示3  <&Text:灵魂火葫百分比不达标|回【骷髅洞】击杀【统领及以上BOSS】会爆出【九转紫葫】可使【刺杀伤害翻倍】^【可佩戴多个九转紫葫】法宝属性会叠加^三大陆可以将多个九转紫葫法宝属性融合到一起:90:200{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示3  <&Text:灵魂火葫百分比已达标:90:200{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL U73 32
+#act
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石未激活|击杀僵尸洞小怪可以爆出灵魂板石^然后去一大陆暗夜城找NPC激活属性^每个板石增加1%双防、攻魔道和HP:90:220{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石已激活:90:220{FCOLOR=250;FSIZE=11}>
+
+
+
+
+
+[@判断法师沃玛寺庙攻略]
+#if
+SMALL <$MAXMC> 110
+
+#act
+MOV S$攻略提示1 <&Text:攻击力不达标|请佩戴【一套僵尸洞装备】,本服伤害精细计算每点攻击都很重要:90:160{FCOLOR=249;FSIZE=11}>
+#ELSEACT
+MOV S$攻略提示1 <&Text:攻击力已达标:90:160{FCOLOR=250;FSIZE=11}>
+
+
+#if
+SMALL N$寂静之雷魔次 2150
+
+#act
+MOV S$攻略提示2 <&Text:群体雷电术魔次不达标|回【僵尸洞】打【精品以上装备】→进行【锁定洗练】把【群体雷电术】提升到2150以上:90:180{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示2  <&Text:群体雷电术魔次已达标:90:180{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$法宝寂静之雷怪物伤害百分比 100
+
+#act
+MOV S$攻略提示3  <&Text:群体雷电术百分比不达标|回【骷髅洞】击杀【统领及以上BOSS】会爆出【翠林之心】可使【刺杀伤害翻倍】^【可佩戴多个翠林之心】法宝属性会叠加^三大陆可以将多个翠林之心法宝属性融合到一起:90:200{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示3  <&Text:群体雷电术百分比已达标:90:200{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL U73 32
+#act
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石未激活|击杀僵尸洞小怪可以爆出灵魂板石^然后去一大陆暗夜城找NPC激活属性^每个板石增加1%双防、攻魔道和HP:90:220{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石已激活:90:220{FCOLOR=250;FSIZE=11}>
+
+
+
+
+
+[@判断战士沃玛寺庙攻略]
+#if
+SMALL <$MAXDC> 157
+#act
+MOV S$攻略提示1 <&Text:攻击力不达标|请佩戴【一套僵尸洞装备】,本服伤害精细计算每点攻击都很重要:90:160{FCOLOR=249;FSIZE=11}>
+#ELSEACT
+MOV S$攻略提示1 <&Text:攻击力已达标:90:160{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$刺杀魔次 800
+#act
+MOV S$攻略提示2 <&Text:刺杀魔次不达标|回【僵尸洞】打【精品以上装备】→进行【锁定洗练】把【刺杀魔次】提升到800以上:90:180{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示2  <&Text:刺杀魔次已达标:90:180{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$法宝刺杀怪物伤害百分比 100
+#act
+MOV S$攻略提示3  <&Text:刺杀百分比不达标|回【骷髅洞】击杀【统领及以上BOSS】会爆出【盘龙之戒】可使【刺杀伤害翻倍】^【可佩戴多个盘龙之戒】法宝属性会叠加^三大陆可以将多个盘龙之戒法宝属性融合到一起:90:200{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示3  <&Text:刺杀百分比已达标:90:200{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL U73 32
+#act
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石未激活|击杀僵尸洞小怪可以爆出灵魂板石^然后去一大陆暗夜城找NPC激活属性^每个板石增加1%双防、攻魔道和HP:90:220{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石已激活:90:220{FCOLOR=250;FSIZE=11}>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@判断兽人古墓是否达标]
+#if
+checkjob warrior
+#act
+GOTO @判断战士兽人古墓攻略
+#if
+checkjob wizard
+#act
+GOTO @判断法师兽人古墓攻略
+#if
+checkjob taoist
+#act
+GOTO @判断道士兽人古墓攻略
+
+
+[@判断道士兽人古墓攻略]
+#if
+SMALL <$MAXSC> 69
+#act
+#act
+MOV S$攻略提示1 <&Text:攻击力不达标|请佩戴【一套僵尸洞装备】,本服伤害精细计算每点攻击都很重要:90:160{FCOLOR=249;FSIZE=11}>
+#ELSEACT
+MOV S$攻略提示1 <&Text:攻击力已达标:90:160{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$灵葫魔次 1800
+#act
+MOV S$攻略提示2 <&Text:灵魂火葫魔次不达标|回【僵尸洞】打【精品以上装备】→进行【锁定洗练】把【灵魂火葫魔次】提升到1800以上:90:180{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示2  <&Text:灵魂火葫魔次已达标:90:180{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL N$法宝灵葫怪物伤害百分比 100
+#act
+MOV S$攻略提示3  <&Text:灵魂火葫百分比不达标|回【骷髅洞】击杀【统领及以上BOSS】会爆出【九转紫葫】可使【刺杀伤害翻倍】^【可佩戴多个九转紫葫】法宝属性会叠加^三大陆可以将多个九转紫葫法宝属性融合到一起:90:200{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示3  <&Text:灵魂火葫百分比已达标:90:200{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL U73 24
+#act
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石未激活|击杀僵尸洞小怪可以爆出灵魂板石^然后去一大陆暗夜城找NPC激活属性^每个板石增加1%双防、攻魔道和HP:90:220{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石已激活:90:220{FCOLOR=250;FSIZE=11}>
+
+
+
+#if
+EQUAL U29 0
+small U30 75
+#act
+MOV S$攻略提示5  <&Text:盾牌生命属性不达标|击杀僵尸洞小怪可以爆出盾牌碎片^然后去土城左上角升级盾牌属性^扛不住怪就去升级盾牌属性:90:240{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示5  <&Text:盾牌生命属性已达标:90:240{FCOLOR=250;FSIZE=11}>
+
+
+#IF
+EQUAL U29 0
+small U31 75
+#act
+MOV S$攻略提示6  <&Text:盾牌防御属性不达标|击杀僵尸洞小怪可以爆出盾牌碎片^然后去土城左上角升级盾牌属性^扛不住怪就去升级盾牌属性:90:260{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示6  <&Text:盾牌防御属性已达标:90:260{FCOLOR=250;FSIZE=11}>
+
+
+[@判断战士兽人古墓攻略]
+#if
+SMALL <$MAXDC> 115
+#act
+MOV S$攻略提示1 <&Text:攻击力不达标|请佩戴【一套僵尸洞装备】,本服伤害精细计算每点攻击都很重要:90:160{FCOLOR=249;FSIZE=11}>
+#ELSEACT
+MOV S$攻略提示1 <&Text:攻击力已达标:90:160{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$刺杀魔次 600
+#act
+MOV S$攻略提示2 <&Text:刺杀魔次不达标|回【僵尸洞】打【精品以上装备】→进行【锁定洗练】把【刺杀魔次】提升到600以上:90:180{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示2  <&Text:刺杀魔次已达标:90:180{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$法宝刺杀怪物伤害百分比 100
+#act
+MOV S$攻略提示3  <&Text:刺杀百分比不达标|回【骷髅洞】击杀【统领及以上BOSS】会爆出【盘龙之戒】可使【刺杀伤害翻倍】^【可佩戴多个盘龙之戒】法宝属性会叠加^三大陆可以将多个盘龙之戒法宝属性融合到一起:90:200{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示3  <&Text:刺杀百分比已达标:90:200{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL U73 24
+#act
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石未激活|击杀僵尸洞小怪可以爆出灵魂板石^然后去一大陆暗夜城找NPC激活属性^每个板石增加1%双防、攻魔道和HP:90:220{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石已激活:90:220{FCOLOR=250;FSIZE=11}>
+
+#if
+EQUAL U29 0
+small U30 75
+#act
+MOV S$攻略提示5  <&Text:盾牌生命属性不达标|击杀僵尸洞小怪可以爆出盾牌碎片^然后去土城左上角升级盾牌属性^扛不住怪就去升级盾牌属性:90:240{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示5  <&Text:盾牌生命属性已达标:90:240{FCOLOR=250;FSIZE=11}>
+
+
+#IF
+EQUAL U29 0
+small U31 75
+#act
+MOV S$攻略提示6  <&Text:盾牌防御属性不达标|击杀僵尸洞小怪可以爆出盾牌碎片^然后去土城左上角升级盾牌属性^扛不住怪就去升级盾牌属性:90:260{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示6  <&Text:盾牌防御属性已达标:90:260{FCOLOR=250;FSIZE=11}>
+
+
+
+
+
+[@判断法师兽人古墓攻略]
+#if
+SMALL <$MAXMC> 80
+
+#act
+MOV S$攻略提示1 <&Text:攻击力不达标|请佩戴【一套僵尸洞装备】,本服伤害精细计算每点攻击都很重要:90:160{FCOLOR=249;FSIZE=11}>
+#ELSEACT
+MOV S$攻略提示1 <&Text:攻击力已达标:90:160{FCOLOR=250;FSIZE=11}>
+
+
+#if
+SMALL N$寂静之雷魔次 1550
+
+#act
+MOV S$攻略提示2 <&Text:群体雷电术魔次不达标|回【僵尸洞】打【精品以上装备】→进行【锁定洗练】把【群体雷电术】提升到1550以上:90:180{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示2  <&Text:群体雷电术魔次已达标:90:180{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$法宝寂静之雷怪物伤害百分比 100
+
+#act
+MOV S$攻略提示3  <&Text:群体雷电术百分比不达标|回【骷髅洞】击杀【统领及以上BOSS】会爆出【翠林之心】可使【刺杀伤害翻倍】^【可佩戴多个翠林之心】法宝属性会叠加^三大陆可以将多个翠林之心法宝属性融合到一起:90:200{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示3  <&Text:群体雷电术百分比已达标:90:200{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL U73 24
+#act
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石未激活|击杀僵尸洞小怪可以爆出灵魂板石^然后去一大陆暗夜城找NPC激活属性^每个板石增加1%双防、攻魔道和HP:90:220{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石已激活:90:220{FCOLOR=250;FSIZE=11}>
+
+#if
+EQUAL U29 0
+small U30 75
+#act
+MOV S$攻略提示5  <&Text:盾牌生命属性不达标|击杀僵尸洞小怪可以爆出盾牌碎片^然后去土城左上角升级盾牌属性^扛不住怪就去升级盾牌属性:90:240{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示5  <&Text:盾牌生命属性已达标:90:240{FCOLOR=250;FSIZE=11}>
+
+
+#IF
+EQUAL U29 0
+small U31 75
+#act
+MOV S$攻略提示6  <&Text:盾牌防御属性不达标|击杀僵尸洞小怪可以爆出盾牌碎片^然后去土城左上角升级盾牌属性^扛不住怪就去升级盾牌属性:90:260{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示6  <&Text:盾牌防御属性已达标:90:260{FCOLOR=250;FSIZE=11}>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@判断蜈蚣洞是否达标]
+#if
+checkjob warrior
+#act
+GOTO @判断战士蜈蚣洞攻略
+#if
+checkjob wizard
+#act
+GOTO @判断法师蜈蚣洞攻略
+#if
+checkjob taoist
+#act
+GOTO @判断道士蜈蚣洞攻略
+[@判断道士蜈蚣洞攻略]
+#if
+SMALL <$MAXSC> 52
+#act
+#act
+MOV S$攻略提示1 <&Text:攻击力不达标|请佩戴【一套僵尸洞装备】,本服伤害精细计算每点攻击都很重要:90:160{FCOLOR=249;FSIZE=11}>
+#ELSEACT
+MOV S$攻略提示1 <&Text:攻击力已达标:90:160{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$灵葫魔次 1300
+#act
+MOV S$攻略提示2 <&Text:灵魂火葫魔次不达标|回【僵尸洞】打【精品以上装备】→进行【锁定洗练】把【灵魂火葫魔次】提升到1300以上:90:180{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示2  <&Text:灵魂火葫魔次已达标:90:180{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL N$法宝灵葫怪物伤害百分比 100
+#act
+MOV S$攻略提示3  <&Text:灵魂火葫百分比不达标|回【骷髅洞】击杀【统领及以上BOSS】会爆出【九转紫葫】可使【刺杀伤害翻倍】^【可佩戴多个九转紫葫】法宝属性会叠加^三大陆可以将多个九转紫葫法宝属性融合到一起:90:200{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示3  <&Text:灵魂火葫百分比已达标:90:200{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL U73 16
+#act
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石未激活|击杀僵尸洞小怪可以爆出灵魂板石^然后去一大陆暗夜城找NPC激活属性^每个板石增加1%双防、攻魔道和HP:90:220{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石已激活:90:220{FCOLOR=250;FSIZE=11}>
+
+
+
+#if
+EQUAL U29 0
+small U30 50
+#act
+MOV S$攻略提示5  <&Text:盾牌生命属性不达标|击杀僵尸洞小怪可以爆出盾牌碎片^然后去土城左上角升级盾牌属性^扛不住怪就去升级盾牌属性:90:240{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示5  <&Text:盾牌生命属性已达标:90:240{FCOLOR=250;FSIZE=11}>
+
+
+#IF
+EQUAL U29 0
+small U31 50
+#act
+MOV S$攻略提示6  <&Text:盾牌防御属性不达标|击杀僵尸洞小怪可以爆出盾牌碎片^然后去土城左上角升级盾牌属性^扛不住怪就去升级盾牌属性:90:260{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示6  <&Text:盾牌防御属性已达标:90:260{FCOLOR=250;FSIZE=11}>
+
+[@判断法师蜈蚣洞攻略]
+#if
+SMALL <$MAXMC> 61
+
+#act
+MOV S$攻略提示1 <&Text:攻击力不达标|请佩戴【一套僵尸洞装备】,本服伤害精细计算每点攻击都很重要:90:160{FCOLOR=249;FSIZE=11}>
+#ELSEACT
+MOV S$攻略提示1 <&Text:攻击力已达标:90:160{FCOLOR=250;FSIZE=11}>
+
+
+#if
+SMALL N$寂静之雷魔次 1100
+
+#act
+MOV S$攻略提示2 <&Text:群体雷电术魔次不达标|回【僵尸洞】打【精品以上装备】→进行【锁定洗练】把【群体雷电术】提升到1100以上:90:180{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示2  <&Text:群体雷电术魔次已达标:90:180{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$法宝寂静之雷怪物伤害百分比 100
+
+#act
+MOV S$攻略提示3  <&Text:群体雷电术百分比不达标|回【骷髅洞】击杀【统领及以上BOSS】会爆出【翠林之心】可使【刺杀伤害翻倍】^【可佩戴多个翠林之心】法宝属性会叠加^三大陆可以将多个翠林之心法宝属性融合到一起:90:200{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示3  <&Text:群体雷电术百分比已达标:90:200{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL U73 16
+#act
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石未激活|击杀僵尸洞小怪可以爆出灵魂板石^然后去一大陆暗夜城找NPC激活属性^每个板石增加1%双防、攻魔道和HP:90:220{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石已激活:90:220{FCOLOR=250;FSIZE=11}>
+
+#if
+EQUAL U29 0
+small U30 50
+#act
+MOV S$攻略提示5  <&Text:盾牌生命属性不达标|击杀僵尸洞小怪可以爆出盾牌碎片^然后去土城左上角升级盾牌属性^扛不住怪就去升级盾牌属性:90:240{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示5  <&Text:盾牌生命属性已达标:90:240{FCOLOR=250;FSIZE=11}>
+
+
+#IF
+EQUAL U29 0
+small U31 50
+#act
+MOV S$攻略提示6  <&Text:盾牌防御属性不达标|击杀僵尸洞小怪可以爆出盾牌碎片^然后去土城左上角升级盾牌属性^扛不住怪就去升级盾牌属性:90:260{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示6  <&Text:盾牌防御属性已达标:90:260{FCOLOR=250;FSIZE=11}>
+
+[@判断战士蜈蚣洞攻略]
+#if
+SMALL <$MAXDC> 89
+#act
+MOV S$攻略提示1 <&Text:攻击力不达标|请佩戴【一套僵尸洞装备】,本服伤害精细计算每点攻击都很重要:90:160{FCOLOR=249;FSIZE=11}>
+#ELSEACT
+MOV S$攻略提示1 <&Text:攻击力已达标:90:160{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$刺杀魔次 400
+#act
+MOV S$攻略提示2 <&Text:刺杀魔次不达标|回【僵尸洞】打【精品以上装备】→进行【锁定洗练】把【刺杀魔次】提升到400以上:90:180{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示2  <&Text:刺杀魔次已达标:90:180{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$法宝刺杀怪物伤害百分比 100
+#act
+MOV S$攻略提示3  <&Text:刺杀百分比不达标|回【骷髅洞】击杀【统领及以上BOSS】会爆出【盘龙之戒】可使【刺杀伤害翻倍】^【可佩戴多个盘龙之戒】法宝属性会叠加^三大陆可以将多个盘龙之戒法宝属性融合到一起:90:200{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示3  <&Text:刺杀百分比已达标:90:200{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL U73 16
+#act
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石未激活|击杀僵尸洞小怪可以爆出灵魂板石^然后去一大陆暗夜城找NPC激活属性^每个板石增加1%双防、攻魔道和HP:90:220{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石已激活:90:220{FCOLOR=250;FSIZE=11}>
+
+#if
+EQUAL U29 0
+small U30 50
+#act
+MOV S$攻略提示5  <&Text:盾牌生命属性不达标|击杀僵尸洞小怪可以爆出盾牌碎片^然后去土城左上角升级盾牌属性^扛不住怪就去升级盾牌属性:90:240{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示5  <&Text:盾牌生命属性已达标:90:240{FCOLOR=250;FSIZE=11}>
+
+
+#IF
+EQUAL U29 0
+small U31 50
+#act
+MOV S$攻略提示6  <&Text:盾牌防御属性不达标|击杀僵尸洞小怪可以爆出盾牌碎片^然后去土城左上角升级盾牌属性^扛不住怪就去升级盾牌属性:90:260{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示6  <&Text:盾牌防御属性已达标:90:260{FCOLOR=250;FSIZE=11}>
+
+[@判断僵尸矿洞是否达标]
+#if
+checkjob warrior
+#act
+GOTO @判断战士僵尸洞
+#if
+checkjob WIZARD
+#act
+GOTO @判断法师僵尸洞
+#if
+checkjob taoist
+#act
+GOTO @判断道士僵尸洞
+[@判断道士僵尸洞]
+#if
+SMALL <$MAXSC> 39
+#act
+#act
+MOV S$攻略提示1 <&Text:攻击力不达标|请佩戴【一套骷髅洞装备】,本服伤害精细计算每点攻击都很重要:90:160{FCOLOR=249;FSIZE=11}>
+#ELSEACT
+MOV S$攻略提示1 <&Text:攻击力已达标:90:160{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$灵葫魔次 310
+#act
+MOV S$攻略提示2 <&Text:灵魂火葫魔次不达标|回【骷髅洞】打【精品以上装备】→进行【锁定洗练】把【灵魂火葫魔次】提升到310以上:90:180{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示2  <&Text:灵魂火葫魔次已达标:90:180{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL N$法宝灵葫怪物伤害百分比 100
+#act
+MOV S$攻略提示3  <&Text:灵魂火葫百分比不达标|回【骷髅洞】击杀【统领及以上BOSS】会爆出【九转紫葫】可使【刺杀伤害翻倍】^【可佩戴多个九转紫葫】法宝属性会叠加^三大陆可以将多个九转紫葫法宝属性融合到一起:90:200{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示3  <&Text:灵魂火葫百分比已达标:90:200{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL U73 16
+#act
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石未激活|击杀僵尸洞小怪可以爆出灵魂板石^然后去一大陆暗夜城找NPC激活属性^每个板石增加1%双防、攻魔道和HP:90:220{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石已激活:90:220{FCOLOR=250;FSIZE=11}>
+
+
+[@判断战士僵尸洞]
+#if
+SMALL <$MAXDC> 65
+#act
+MOV S$攻略提示1 <&Text:攻击力不达标|请佩戴【一套骷髅洞装备】,本服伤害精细计算每点攻击都很重要:90:160{FCOLOR=249;FSIZE=11}>
+#ELSEACT
+MOV S$攻略提示1 <&Text:攻击力已达标:90:160{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$刺杀魔次 100
+#act
+MOV S$攻略提示2 <&Text:刺杀魔次不达标|回【骷髅洞】打【精品以上装备】→进行【锁定洗练】把【刺杀魔次】提升到100以上:90:180{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示2  <&Text:刺杀魔次已达标:90:180{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$法宝刺杀怪物伤害百分比 100
+#act
+MOV S$攻略提示3  <&Text:刺杀百分比不达标|回【骷髅洞】击杀【统领及以上BOSS】会爆出【盘龙之戒】可使【刺杀伤害翻倍】^【可佩戴多个盘龙之戒】法宝属性会叠加^三大陆可以将多个盘龙之戒法宝属性融合到一起:90:200{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示3  <&Text:刺杀百分比已达标:90:200{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL U73 16
+#act
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石未激活|击杀僵尸洞小怪可以爆出灵魂板石^然后去一大陆暗夜城找NPC激活属性^每个板石增加1%双防、攻魔道和HP:90:220{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石已激活:90:220{FCOLOR=250;FSIZE=11}>
+
+[@判断法师僵尸洞]
+#if
+SMALL <$MAXMC> 44
+
+#act
+MOV S$攻略提示1 <&Text:攻击力不达标|请佩戴【一套骷髅洞装备】,本服伤害精细计算每点攻击都很重要:90:160{FCOLOR=249;FSIZE=11}>
+#ELSEACT
+MOV S$攻略提示1 <&Text:攻击力已达标:90:160{FCOLOR=250;FSIZE=11}>
+
+
+#if
+SMALL N$寂静之雷魔次 275
+
+#act
+MOV S$攻略提示2 <&Text:群体雷电术魔次不达标|回【骷髅洞】打【精品以上装备】→进行【锁定洗练】把【群体雷电术】提升到275以上:90:180{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示2  <&Text:群体雷电术魔次已达标:90:180{FCOLOR=250;FSIZE=11}>
+#if
+SMALL N$法宝寂静之雷怪物伤害百分比 100
+
+#act
+MOV S$攻略提示3  <&Text:群体雷电术百分比不达标|回【骷髅洞】击杀【统领及以上BOSS】会爆出【翠林之心】可使【刺杀伤害翻倍】^【可佩戴多个翠林之心】法宝属性会叠加^三大陆可以将多个翠林之心法宝属性融合到一起:90:200{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示3  <&Text:群体雷电术百分比已达标:90:200{FCOLOR=250;FSIZE=11}>
+
+#if
+SMALL U73 16
+#act
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石未激活|击杀僵尸洞小怪可以爆出灵魂板石^然后去一大陆暗夜城找NPC激活属性^每个板石增加1%双防、攻魔道和HP:90:220{FCOLOR=249;FSIZE=11}>
+#elseact
+MOV S$攻略提示4  <&Text:僵尸洞灵魂板石已激活:90:220{FCOLOR=250;FSIZE=11}>
+
+}

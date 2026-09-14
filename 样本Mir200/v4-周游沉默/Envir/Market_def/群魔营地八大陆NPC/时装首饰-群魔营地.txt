@@ -1,0 +1,100 @@
+[@main]
+#if
+#ACT
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+<><据说上古流传下来的神器，分布在玛法大陆的各各角落！/SCOLOR=70>\
+<><神器犹豫威力强大，想要得到它，不只是人类！/SCOLOR=70>\
+<><被盘踞的首领占为己有，要从它们手中取得神器不是易事！/SCOLOR=70>\ \
+<><ITEMSHOW:1529:0:0:0:1/@首饰1>      <ITEMSHOW:1530:0:0:0:1/@首饰2>      <ITEMSHOW:1531:0:0:0:1/@首饰3>      <ITEMSHOW:1532:0:0:0:1/@首饰4>\ 
+
+
+
+
+[@首饰1]
+#ACT
+MessageBox  合成:<[飞鸿踏雪]/FCOLOR=253>\\<需要五色神羽*50+定风珠*1+888W元宝/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @1 @取消合成
+
+[@1]
+#if
+CheckItem  定风珠 1
+CheckItem  五色神羽 50
+CheckGameGold > 8888887
+#ACT
+GameGold - 8888888
+Take 五色神羽 50
+Take 定风珠 1
+Give 飞鸿踏雪 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@首饰2]
+#ACT
+MessageBox  合成:<[龙王神力]/FCOLOR=253>\\<需要五色神羽*50+八卦盘*1+888W元宝/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @2 @取消合成
+
+[@2]
+#if
+CheckItem  八卦盘 1
+CheckItem  五色神羽 50
+CheckGameGold > 8888887
+#ACT
+GameGold - 8888888
+Take 五色神羽 50
+Take 八卦盘 1
+Give 龙王神力 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@首饰3]
+#ACT
+MessageBox  合成:<[山河画卷]/FCOLOR=253>\\<需要五色神羽*50+炼妖壶*1+888W元宝/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @3 @取消合成
+
+[@3]
+#if
+CheckItem  炼妖壶 1
+CheckItem  五色神羽 50
+CheckGameGold > 8888887
+#ACT
+GameGold - 8888888
+Take 五色神羽 50
+Take 炼妖壶 1
+Give 山河画卷 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@首饰4]
+#ACT
+MessageBox  合成:<[琉璃月]/FCOLOR=253>\\<需要五色神羽*50+彼岸花*1+888W元宝/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @4 @取消合成
+
+[@4]
+#if
+CheckItem  彼岸花 1
+CheckItem  五色神羽 50
+CheckGameGold > 8888887
+#ACT
+GameGold - 8888888
+Take 五色神羽 50
+Take 彼岸花 1
+Give 琉璃月 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+
+[@取消合成]
+#ACT
+Sendmsg 7 取消合成
+Break
+
+
+
+
+

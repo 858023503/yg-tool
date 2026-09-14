@@ -1,0 +1,48 @@
+[@main]
+行会争霸活动时间：\
+19:00开启--19:40停止进入--20:01领取奖励\\
+\奖励物品：胜利方行会老大可以获得,<500000/SCOLOR=251>元宝\
+\活动内容：每隔5-10分会刷新福利怪 \ \
+
+<会长领取成功奖励/@领>\
+
+
+
+
+[@领]
+#if
+HOUR 20 20
+MIN  1 59
+equal J63 0
+#act
+goto @领1
+break
+#elseact
+messagebox  请在20:01来领取！
+
+[@领1]
+#if
+MAPHUMISSAMEGUILD E1
+#act
+goto @的了
+break
+#elseact
+messagebox  当前地图还有其他行会的人，请把他们都清理出去!
+
+[@的了]
+#if
+ISGUILDMASTER
+MapHumIsSameGuild 1
+equal G480 1
+equal J63 0
+#ACT
+mov G480 0
+mov J63 1
+GAMEGOLD + 500000
+SendCenterMsg 250 255  本次比赛【<$GUILDNAME>】行会获得胜利，行会老大获得了，500000元宝，!
+SendCenterMsg 250 255  本次比赛【<$GUILDNAME>】行会获得胜利，行会老大获得了，500000元宝，!
+mapmove MFDL 735 691 2
+#elseact
+messagebox  领取失败：\1.你不是行会老大，不能领取或者已被领取(只能一个会长领取)
+
+

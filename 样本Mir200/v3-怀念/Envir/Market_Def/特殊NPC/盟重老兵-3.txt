@@ -1,0 +1,199 @@
+%100
++10
++11
++15
+[@main]
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+<你要去哪个商店？这个是免费服务！> \ \
+<铁匠铺/@Gwe>    <布料店/@Gpo> \
+<首饰店/@Gza>    <客  栈/@Gwh> \
+<书  店/@Gbo>    <婚姻殿堂/@婚烟殿堂>\ \
+<关  闭/@exit>
+
+
+[@婚烟殿堂]
+#IF
+#ACT
+map m101
+
+[@main42489]
+听说炼狱教主复活了!他的领地“封魔谷”也已重现大陆!\
+好象封魔谷的入口在沃玛森林附近\
+不过那么邪恶的地方,你真的打算去吗?\\
+<去商店/@talkwith>\
+<去沙巴克/@去沙巴克>\
+<清洗红名/@清洗红名>\
+<行会争霸/@行会争霸>\
+<防骗棋牌室/@qipais>\
+<行会战地图/@hhzdt>\
+
+
+[@talkwith]
+#IF
+#SAY
+你要去哪个商店？这个是免费服务！ \ \
+<铁匠铺/@Gwe>    <布料店/@Gpo> \
+<首饰店/@Gza>    <客栈/@Gwh> \
+<书店/@Gbo> \ \
+<返回/@main>
+[@Gwe]
+#IF
+#ACT
+map 0159
+[@Gpo]
+#IF
+#ACT
+map 0149
+[@Gza]
+#IF
+#ACT
+map 0158
+[@Gwh]
+#IF
+#ACT
+map 0145
+[@Gbo]
+#IF
+#ACT
+map 0161 
+
+[@行会争霸]
+详细规则：晚上22:10系统定期举行,22:30关闭入口\
+          22:31传送到争霸地图,22:55集体传送回盟重\
+　　　　　必须在半小时内杀光敌对行会所有人,否则无法领奖励\
+获胜奖励：半小时中赢得胜利的行会,可以获得300元宝奖励\
+进入条件：进入需要加入行会\
+<进入场地/@进入场地>\
+
+[@进入场地]
+#IF
+HOUR 22 22
+MIN 10 30
+HAVEGUILD
+#ACT
+mapmove D5071a 20 23
+#ELSESAY
+你加入行会了吗\
+每天行会争霸开门时间是每天22:10-22:30分\
+
+[@去沙巴克]
+#IF
+#ACT
+mapmove 3 706 407
+give 回城卷 1
+break
+
+[@hhzdt]
+　\
+  行会战地图无行会成员禁止进入，进入后禁止退出行会　\
+  请选择地图进入　\
+　\
+  <行会战地图一/@mhdt1>    <行会战地图二/@mhdt2>　<幻境七层/@幻七>\
+  <行会战地图三/@mhdt3>    <行会战地图四/@mhdt4>　<沙藏宝阁/@藏宝>\
+                                                　\
+                                   <返回/@main>
+[@mhdt1]
+#IF
+HAVEGUILD
+#ACT
+give 回城卷 1
+mapmove hhz1 73 67
+#ELSESAY
+    你没加入行会！
+[@mhdt2]
+#IF
+HAVEGUILD
+#ACT
+give 回城卷 1
+mapmove hhz2 161 172
+#ELSESAY
+    你没加入行会！
+[@mhdt3]
+#IF
+HAVEGUILD
+#ACT
+give 回城卷 1
+mapmove hhz3 8 10
+#ELSESAY
+    你没加入行会！
+[@mhdt4]
+#IF
+HAVEGUILD
+#ACT
+give 回城卷 1
+mapmove hhz4 27 20
+#ELSESAY
+    你没加入行会！
+
+[@幻七]
+#IF
+HAVEGUILD
+#ACT
+give 回城卷 1
+mapmove H007 162 171
+#ELSESAY
+    你没加入行会！
+
+[@藏宝]
+#IF
+HAVEGUILD
+#ACT
+give 回城卷 1
+mapmove H204
+#ELSESAY
+    你没加入行会！
+
+[@qipais]
+注意:开放本棋牌室为防止“多色诈骗”法，在土密室，仓库2楼等\
+其他地方，部分人可以一次仍多颗色子，想仍多少点就仍多少点！\
+<在庄家仍色子的时候，将鼠标放在色子上，看是否叠的多颗色子>\
+<如果是叠，必是骗子...>\
+注意：<跑单自负，请在信任庄家的情况下进行游戏!>\
+进入<防骗棋牌⑴号包厢/@gofp1>\
+进入<防骗棋牌⑵号包厢/@gofp2>\
+进入<防骗棋牌⑶号包厢(进入需要50元宝)/@gofp3>\
+进入<防骗棋牌⑷号包厢(进入需要50元宝)/@gofp4>\
+
+[@gofp1]
+#IF
+#ACT
+mapmove FPQP1
+
+[@gofp2]
+#IF
+#ACT
+mapmove FPQP2
+
+[@gofp3]
+#IF
+checkgamegold > 49
+#ACT
+gamegold - 50
+mapmove FPQP3
+#elseact
+messagebox 你没有足够的元宝支付费用...
+
+
+[@gofp4]
+#IF
+checkgamegold > 49
+#ACT
+gamegold - 50
+mapmove FPQP4
+#elseact
+messagebox 你没有足够的元宝支付费用...
+
+[@清洗红名]
+#IF
+checkgold 1000000
+#ACT
+take 金币 1000000
+CHANGEPKPOINT = 0
+SENDMSG 6 你的PK值已清洗!
+break 
+#ELSESAY 
+你没有100w金币用来支付我们的服务费用!
+

@@ -1,0 +1,170 @@
+[@main]
+
+#if
+#ACT
+
+OPENMERCHANTBIGDLG 45 1796 1 4 0 -80 1 386 5 1
+#Call [称号变量.txt] @开始计算
+#SAY
+\
+<> <------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243} {专/AUTOCOLOR=243,222,241,255,242,254,253,249,180} {属/AUTOCOLOR=180,243,222,241,255,242,254,253,249} {称/AUTOCOLOR=249,180,243,222,241,255,242,254,253} {号/AUTOCOLOR=253,249,180,243,222,241,255,242,254}< --------------------/SCOLOR=254>\ \ 
+
+
+<>    <封界域使/SCOLOR=241>     <称号属性|254#切割+500,全属性5-5,HP-MP+200,伤害吸收+5%/SCOLOR=250>     <查看所需物品|251#战士：绿玉裁决*1,骑士战袍(男)骑士战袍(女)各一件,贝迪头盔*1|铜域项链*1|铜域手镯*2|铜域戒指*2|神域腰带*1|神域靴子*1|150000元宝^251#法师：七星法杖*1,骑士战袍(男)骑士战袍(女)各一件,勇士头盔*1|水域项链*1|水域手镯*2|水域戒指*2|神域腰带*1|神域靴子*1|150000元宝^251#道士：金域无极棍*1,骑士战袍(男)骑士战袍(女)各一件,道域头盔*1|土域项链*1|土域手镯*2|土域戒指*2|神域腰带*1|神域靴子*1|150000元宝>     <$STR(S154)>\ \
+<>    <寂静战神/SCOLOR=241>     <称号属性|254#切割+600,全属性6-6,HP-MP+250,伤害吸收+6%/SCOLOR=250>     <查看所需物品|251#绿玉屠龙*1|蓝灵法杖*1|小毛剑*1|猩猩战甲(男)猩猩战甲(女)各一件,寂静头饰*1|寂静项链*1|寂静左手*1|寂静右手*1|寂静左指*1|寂静右指*1|寂静靴子*1|寂静腰带*1|200000元宝>     <$STR(S155)>\ \
+
+
+<>        <我本沉默 再续金典 一直被模仿 从未被超越/SCOLOR=254>   \
+
+
+
+[@寂静战神]
+#if
+check [54] 0
+#act
+MessageBox [系统提示]：请您先获得【封界域使】称号..
+break
+
+#IF
+CheckGameGold > 199999
+CHECKITEM 绿玉屠龙 1
+CHECKITEM 蓝灵法杖 1
+CHECKITEM 小毛剑 1
+CHECKITEM 猩猩战甲(男) 1
+CHECKITEM 猩猩战甲(女) 1
+CHECKITEM 寂静头饰 1
+CHECKITEM 寂静项链 1
+CHECKITEM 寂静左手 1
+CHECKITEM 寂静右手 1
+CHECKITEM 寂静左指 1
+CHECKITEM 寂静右指 1
+CHECKITEM 寂静靴子 1
+CHECKITEM 寂静腰带 1
+#ACT
+GameGold - 200000
+TAKE 绿玉屠龙 1
+TAKE 蓝灵法杖 1
+TAKE 小毛剑 1
+TAKE 猩猩战甲(男) 1
+TAKE 猩猩战甲(女) 1
+TAKE 寂静头饰 1
+TAKE 寂静项链 1
+TAKE 寂静左手 1
+TAKE 寂静右手 1
+TAKE 寂静左指 1
+TAKE 寂静右指 1
+TAKE 寂静靴子 1
+TAKE 寂静腰带 1
+RECYCFENGHAO 封界域使
+GIVEFENGHAO 寂静战神 1
+set [55] 1
+MessageBox [系统提示]：恭喜您获得了【寂静战神】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+#IF
+#ACT
+MessageBox 材料或者元宝不足,请详细查看背包..
+
+[@封界域使]
+#if
+check [53] 0
+#act
+MessageBox [系统提示]：请您先获得【雷霆霸主】称号..
+break
+
+#if
+checkjob warrior
+CheckGameGold > 149999
+CHECKITEM 绿玉裁决 1
+CHECKITEM 骑士战袍(男) 1
+CHECKITEM 骑士战袍(女) 1
+CHECKITEM 贝迪头盔 1
+CHECKITEM 铜域项链 1
+CHECKITEM 铜域手镯 2
+CHECKITEM 铜域戒指 2
+CHECKITEM 神域腰带 1
+CHECKITEM 神域靴子 1
+#ACT
+GameGold - 150000
+TAKE 绿玉裁决 1
+TAKE 骑士战袍(男) 1
+TAKE 骑士战袍(女) 1
+TAKE 贝迪头盔 1
+TAKE 铜域项链 1
+TAKE 铜域手镯 2
+TAKE 铜域戒指 2
+TAKE 神域腰带 1
+TAKE 神域靴子 1
+RECYCFENGHAO 雷霆霸主
+GIVEFENGHAO 封界域使 1
+set [54] 1
+MessageBox [系统提示]：恭喜您获得了【封界域使】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+#IF
+checkjob wizard
+CheckGameGold > 149999
+CHECKITEM 七星法杖 1
+CHECKITEM 骑士战袍(男) 1
+CHECKITEM 骑士战袍(女) 1
+CHECKITEM 勇士头盔 1
+CHECKITEM 水域项链 1
+CHECKITEM 水域手镯 2
+CHECKITEM 水域戒指 2
+CHECKITEM 神域腰带 1
+CHECKITEM 神域靴子 1
+#ACT
+GameGold - 150000
+TAKE 七星法杖 1
+TAKE 骑士战袍(男) 1
+TAKE 骑士战袍(女) 1
+TAKE 勇士头盔 1
+TAKE 水域项链 1
+TAKE 水域手镯 2
+TAKE 水域戒指 2
+TAKE 神域腰带 1
+TAKE 神域靴子 1
+RECYCFENGHAO 雷霆霸主
+GIVEFENGHAO 封界域使 1
+set [54] 1
+MessageBox [系统提示]：恭喜您获得了【封界域使】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob taoist
+CheckGameGold > 149999
+CHECKITEM 金域无极棍 1
+CHECKITEM 骑士战袍(男) 1
+CHECKITEM 骑士战袍(女) 1
+CHECKITEM 道域头盔 1
+CHECKITEM 土域项链 1
+CHECKITEM 土域手镯 2
+CHECKITEM 土域戒指 2
+CHECKITEM 神域腰带 1
+CHECKITEM 神域靴子 1
+#ACT
+GameGold - 150000
+TAKE 金域无极棍 1
+TAKE 骑士战袍(男) 1
+TAKE 骑士战袍(女) 1
+TAKE 道域头盔 1
+TAKE 土域项链 1
+TAKE 土域手镯 2
+TAKE 土域戒指 2
+TAKE 神域腰带 1
+TAKE 神域靴子 1
+RECYCFENGHAO 雷霆霸主
+GIVEFENGHAO 封界域使 1
+set [54] 1
+MessageBox [系统提示]：恭喜您获得了【封界域使】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+#IF
+#ACT
+MessageBox 材料或者元宝不足,请详细查看背包..
+

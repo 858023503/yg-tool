@@ -1,0 +1,28 @@
+[@魔法技能对人触发开始]
+{
+#IF
+CheckVarInList L$允许魔法触发技能编号 <$CURRRUSEMAGICID>
+#ACT
+GOTO @_@对人魔法技能编号<$CURRRUSEMAGICID>触发
+
+[@_@对人魔法技能编号5触发]
+#IF
+EQUAL N$神火激活标识 1
+#ACT
+M.ChangeItemDura 0 - 1000
+M.ChangeItemDura 1 - 1000
+M.ChangeItemDura 3 - 500
+M.ChangeItemDura 4 - 600
+M.ChangeItemDura 5 - 400
+M.ChangeItemDura 6 - 400
+M.ChangeItemDura 7 - 400
+M.ChangeItemDura 8 - 400
+
+[@_@对人魔法技能编号58触发]
+#IF
+EQUAL N$混乱之雨激活标识 1
+RANDOMEX 5 100
+#ACT
+MOVR N$随机获得状态码 0 8
+M.CHANGESTATE <$STR(L$混乱之雨状态代码[<$STR(N$随机获得状态码)>])> <$STR(L$混乱之雨状态时间[<$STR(N$随机获得状态码)>])>
+}

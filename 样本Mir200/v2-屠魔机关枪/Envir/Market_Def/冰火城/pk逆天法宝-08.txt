@@ -1,0 +1,29 @@
+[@MAIN]
+#IF
+#act
+OPENMERCHANTBIGDLG 5 360 1 4 -15 -52 1 440 20 1
+#say
+<&Text:干将莫邪属性满后激活自然号角合成权限:80:130{FCOLOR=250;FSIZE=12;FNAME=黑体}>
+<ITEMBOX:8:5:339:200:250:63:63:*:250#--------------^250#请放入神品装备^250#-------------->\
+<&Text:确认权限:200:350{FCOLOR=250;FSIZE=12;FNAME=黑体}/@提升号角权限>
+
+[@ItemIntoBox8]
+#IF
+not checkcontainstext <$BOXITEM[8].NAME> 干将莫邪剑
+#ACT
+messagebox 只能放入干将莫邪剑
+goto @main
+break
+[@提升号角权限]
+#if
+#act
+SetUpgradeItem 8
+GetCustomItemValueEx -1 1 <$STR(N$没用)>  <$STR(N$左边法宝第一条属性对应编号)> <$str(N$左边属性值)> <$str(N$左边属性上限一)> <$STR(N$没用)>
+#if
+EQUAL <$str(N$左边属性值)> 100000
+#act
+MOV U410 1
+DelBoxItem 8
+messagebox 提升成功
+#elseact
+messagebox 属性未满

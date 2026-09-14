@@ -1,0 +1,101 @@
+[@MAIN]
+#if
+#act
+OPENMERCHANTBIGDLG 5 0 1 4 0 -80  1 610 0 1
+#SAY
+<ITEMBOX:3:5:2:150:223:63:63:*:250#----------^250#请放入装备^250#---------->
+<PlayImg:26:2355:10:100:195:190:0>
+<ITEMBOX:4:5:2:400:223:63:63:*:250#----------^250#请放入宝珠^250#---------->\
+<铭文转移/@铭文转移>
+[@铭文转移]
+#IF
+#ACT
+MOV N$铭文转移左侧装备等级 0
+MOV N$铭文转移右侧装备等级 0
+MOV N$左边对应编号 0
+#IF
+EQUAL <$BOXITEM[3].NAME>
+#ACT
+messagebox 请在左侧放入装备
+BREAK
+
+; #IF
+; EQUAL <$BOXITEM[2].NAME>
+; #ACT
+; messagebox 请在右侧放入装备
+; BREAK
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文转移\一级装备名称.txt <$BOXITEM[3].NAME>
+#ACT
+MOV N$铭文转移左侧装备等级 1
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文转移\一级装备名称.txt <$BOXITEM[4].NAME>
+#ACT
+MOV N$铭文转移右侧装备等级 1
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文转移\二级装备名称.txt <$BOXITEM[3].NAME>
+#ACT
+MOV N$铭文转移左侧装备等级 2
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文转移\二级装备名称.txt <$BOXITEM[4].NAME>
+#ACT
+MOV N$铭文转移右侧装备等级 2
+
+
+
+#IF
+EQUAL N$铭文转移左侧装备等级 <$STR(N$铭文转移右侧装备等级)>
+#ACT
+SetUpgradeItem 3
+GetCustomItemValueEx -1 1 <$STR(N$没用)>  <$STR(N$左边第一条属性对应编号)> <$str(N$左边属性值一)> <$str(N$左边属性上限一)> <$STR(N$没用)>
+GetCustomItemValueEx -1 2 <$STR(N$没用)>  <$STR(N$左边第二条属性对应编号)> <$str(N$左边属性值二)> <$str(N$左边属性上限二)> <$STR(N$没用)>
+GetCustomItemValueEx -1 3 <$STR(N$没用)>  <$STR(N$左边第三条属性对应编号)> <$str(N$左边属性值三)> <$str(N$左边属性上限三)> <$STR(N$没用)>
+GetCustomItemValueEx -1 4 <$STR(N$没用)>  <$STR(N$左边第四条属性对应编号)> <$str(N$左边属性值四)> <$str(N$左边属性上限四)> <$STR(N$没用)>
+GetCustomItemValueEx -1 5 <$STR(N$没用)>  <$STR(N$左边第五条属性对应编号)> <$str(N$左边属性值五)> <$str(N$左边属性上限五)> <$STR(N$没用)>
+GetCustomItemValueEx -1 6 <$STR(N$没用)>  <$STR(N$左边第六条属性对应编号)> <$str(N$左边属性值六)> <$str(N$左边属性上限六)> <$STR(N$没用)>
+GetCustomItemValueEx -1 7 <$STR(N$没用)>  <$STR(N$左边第七条属性对应编号)> <$str(N$左边属性值七)> <$str(N$左边属性上限七)> <$STR(N$没用)>
+GetCustomItemValueEx -1 8 <$STR(N$没用)>  <$STR(N$左边第八条属性对应编号)> <$str(N$左边属性值八)> <$str(N$左边属性上限八)> <$STR(N$没用)>
+SetUpgradeItem 4
+GetCustomItemValueEx -1 1 <$STR(N$没用)>  <$STR(N$右边第一条属性对应编号)> <$str(N$右边属性值一)> <$str(N$右边属性上限一)> <$STR(N$没用)>
+GetCustomItemValueEx -1 2 <$STR(N$没用)>  <$STR(N$右边第二条属性对应编号)> <$str(N$右边属性值二)> <$str(N$右边属性上限二)> <$STR(N$没用)>
+GetCustomItemValueEx -1 3 <$STR(N$没用)>  <$STR(N$右边第三条属性对应编号)> <$str(N$右边属性值三)> <$str(N$右边属性上限三)> <$STR(N$没用)>
+GetCustomItemValueEx -1 4 <$STR(N$没用)>  <$STR(N$右边第四条属性对应编号)> <$str(N$右边属性值四)> <$str(N$右边属性上限四)> <$STR(N$没用)>
+GetCustomItemValueEx -1 5 <$STR(N$没用)>  <$STR(N$右边第五条属性对应编号)> <$str(N$右边属性值五)> <$str(N$右边属性上限五)> <$STR(N$没用)>
+GetCustomItemValueEx -1 6 <$STR(N$没用)>  <$STR(N$右边第六条属性对应编号)> <$str(N$右边属性值六)> <$str(N$右边属性上限六)> <$STR(N$没用)>
+GetCustomItemValueEx -1 7 <$STR(N$没用)>  <$STR(N$右边第七条属性对应编号)> <$str(N$右边属性值七)> <$str(N$右边属性上限七)> <$STR(N$没用)>
+GetCustomItemValueEx -1 8 <$STR(N$没用)>  <$STR(N$右边第八条属性对应编号)> <$str(N$右边属性值八)> <$str(N$右边属性上限八)> <$STR(N$没用)>
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文转移\铭文编号.txt N$左边第五条属性对应编号
+#ACT
+MOV N$左边对应编号  <$STR(N$左边第五条属性对应编号)>
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文转移\铭文编号.txt N$左边第六条属性对应编号
+#ACT
+MOV N$左边对应编号  <$STR(N$左边第六条属性对应编号)>
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文转移\铭文编号.txt N$右边第五条属性对应编号
+#ACT
+SetCustomItemAbil -1 5 0 70
+SetCustomItemAbil -1 5 1 8
+SetCustomItemAbil -1 5 2 5
+SetCustomItemAbil -1 5 3 0
+SetCustomItemValueEX -1 5 = N$左边对应编号 N$左边属性值五
+UpdateItem boxitem4
+
+#IF
+CheckCacheTextList ..\QuestDiary\铭文转移\铭文编号.txt N$右边第六条属性对应编号
+#ACT
+SetCustomItemAbil -1 6 0 70
+SetCustomItemAbil -1 6 1 8
+SetCustomItemAbil -1 6 2 6
+SetCustomItemAbil -1 6 3 0
+SetCustomItemValueEX -1 6 = N$左边对应编号 N$左边属性值六
+UpdateItem boxitem4

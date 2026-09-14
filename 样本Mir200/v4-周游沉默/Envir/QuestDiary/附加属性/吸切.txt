@@ -1,0 +1,31 @@
+[@吸切]
+{
+
+#if
+CHECKCURRTARGETRACE = 0 
+#ACT
+break
+
+#if
+#ACT
+GetAllCustomItemValue 8 N$吸血值 N$吸血值百分比
+GetAllCustomItemValue 9 N$切割值 N$切割值百分比
+movr N$吸血概率 1 10
+movr N$切割概率 3 10
+#if
+Large N$吸血值 0
+random <$STR(N$吸血概率)>
+#ACT
+HumanHP + <$STR(N$吸血值)>
+;SendCenterMsg 254 0 你吸取对方【<$STR(N$吸血值)>】点血量恢复自身 0 1
+
+#if
+Large N$切割值 0
+random <$STR(N$切割概率)>
+#ACT
+M.HumanHP - <$STR(N$切割值)>
+;SendCenterMsg 254 0 你给对方造成【<$STR(N$切割值)>】点真实切割伤害 0 1
+
+
+
+}

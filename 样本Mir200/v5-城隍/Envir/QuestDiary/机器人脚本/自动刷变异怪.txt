@@ -1,0 +1,41 @@
+[@自动刷变异怪]
+
+{
+
+
+#IF
+#ACT
+MOV I8 0
+ReadConfigFileItem ..\QuestDiary\机器人脚本\变异怪物配置.ini <$STR(A1)> 地图代码 <$STR(A2)>
+ReadConfigFileItem ..\QuestDiary\机器人脚本\变异怪物配置.ini <$STR(A1)> 地图怪物 <$STR(A3)>
+ReadConfigFileItem ..\QuestDiary\机器人脚本\变异怪物配置.ini <$STR(A1)> 怪物数量 <$STR(I1)>
+ReadConfigFileItem ..\QuestDiary\机器人脚本\变异怪物配置.ini <$STR(A1)> X坐标 <$STR(I2)>
+ReadConfigFileItem ..\QuestDiary\机器人脚本\变异怪物配置.ini <$STR(A1)> Y坐标 <$STR(I3)>
+ReadConfigFileItem ..\QuestDiary\机器人脚本\变异怪物配置.ini <$STR(A1)> 刷怪范围 <$STR(I4)>
+MOV L$刷新怪物 [<$STR(A3)>]
+
+loopgoto @马上变异刷怪 5
+
+
+
+
+[@马上变异刷怪]
+
+#IF
+CheckMapSameMonCount <$const(<$STR(A2)>)> <$STR(L$刷新怪物[<$STR(I8)>])> < <$STR(I1)>
+#ACT
+MONGENEX <$const(<$STR(A2)>)> <$STR(I2)> <$STR(I3)> <$STR(L$刷新怪物[<$STR(I8)>])> <$STR(I4)> <$STR(I1)> 255 0 0 0 0 0 110
+;sendmsg 0 刷怪<$STR(L$刷新怪物[<$STR(I8)>])>，大
+#IF
+#ACT
+INC I8 1
+#IF
+CheckMapSameMonCount <$const(<$STR(A2)>)> <$STR(L$刷新怪物[<$STR(I8)>])> < <$STR(I1)>
+#ACT
+MONGENEX <$const(<$STR(A2)>)> <$STR(I2)> <$STR(I3)> <$STR(L$刷新怪物[<$STR(I8)>])> <$STR(I4)> <$STR(I1)> 255 0 0 0 0 0 85
+;sendmsg 0 刷怪<$STR(L$刷新怪物[<$STR(I8)>])>，小
+#IF
+#ACT
+INC I8 1
+
+}

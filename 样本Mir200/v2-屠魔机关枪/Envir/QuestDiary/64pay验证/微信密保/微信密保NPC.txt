@@ -1,0 +1,112 @@
+[@微信密保NPC]
+{
+
+#if
+EQUAL T488
+#ACT
+MOV S$微信昵称 暂未绑定
+MOV S$按钮显示 <ImgEx:<$STR(S$补丁编号)>:13:14:15:65:-5/@进行微信绑定1>
+#elseact
+MOV S$微信昵称 已绑微信
+MOV S$按钮显示 <ImgEx:<$STR(S$补丁编号)>:17:18:19:65:-5/@进行微信解绑>
+
+#if
+#act
+OPENMERCHANTBIGDLG <$STR(S$补丁编号)> 21 0 4 X -50 0 530 5
+#SAY
+\ \ \
+<ImgEx:<$STR(S$补丁编号)>:10:11:12:395:-23/@exit>\
+<Img:20:<$STR(S$补丁编号)>:274:22:D>\
+　请扫码关注微信公众号,首次绑定送:{<$STR(S$奖励物品)>/SCOLOR=250}\
+　绑定微信后,可使用微信接收动态验证码,当机器\
+　码有变动时,系统将发送验证码到您的微信上!\
+　<若提示验证码无效,请重新获取一次再试!/SCOLOR=70>\
+<┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄/SCOLOR=14>\
+　绑定的微信:{<$STR(S$微信昵称)>/SCOLOR=250}\ 
+<┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄/SCOLOR=14>\
+<$STR(S$按钮显示)>
+
+
+[@进行微信绑定1]
+#IF
+EQUAL T487
+EQUAL T488
+#ACT
+MOV S98
+MOV S99
+
+MOV N$有效期 120
+MOVR N$验证码 100000 999999
+AddTextListEx ..\..\..\..\..\易联验证\提交数据.txt FSBDWX|<$SERVERNAME>|<$USERNAME>|<$STR(N$验证码)>|120|备用1|<$MACHINEID>
+SETONTIMER 75 1
+OPENMERCHANTBIGDLG <$STR(S$补丁编号)> 21 0 4 X -50 0 530 5
+
+MOV N$转换的数字 <$STR(N$验证码)>
+MOV S$图片样式 102
+MOV S$图片坐标X 8
+MOV S$图片坐标Y -10
+#CALL [\64pay验证\微信密保\数字转换图片.txt] @数字转换图片
+
+#SAY
+\ \ \
+<ImgEx:<$STR(S$补丁编号)>:10:11:12:395:-23/@exit>\
+<Img:20:<$STR(S$补丁编号)>:274:22:D>\
+　请扫码关注微信公众号,首次绑定送:{<$STR(S$奖励物品)>/SCOLOR=250}\
+　绑定微信后,可使用微信接收动态验证码,当机器\
+　码有变动时,系统将发送验证码到您的微信上!\
+　<若提示验证码无效,请重新获取一次再试!/SCOLOR=70>\
+<┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄/SCOLOR=14>\
+{　有效期:<$STR(N$有效期)>/SCOLOR=14}\
+<Img:16:<$STR(S$补丁编号)>:120:-2:D>\
+<　在微信中回复数字:/SCOLOR=254> <$STR(S$数字图片)>\ 
+#elseact
+messagebox 你已经绑定过微信了!
+break
+
+
+[@进行微信解绑]
+#IF
+EQUAL T488
+#ACT
+messagebox 请先绑定微信,才能进行解绑操作
+#ELSEACT
+MOVR N$验证码 100000 999999
+AddTextListEx ..\..\..\..\..\易联验证\提交数据.txt FSJCWX|<$STR(T488)>|<$SERVERNAME>|<$USERNAME>|<$STR(N$验证码)>|120|备用1|<$MACHINEID>
+OPENMERCHANTBIGDLG <$STR(S$补丁编号)> 21 0 4 X -50 0 530 5
+#elsesay
+\ \ \
+<ImgEx:<$STR(S$补丁编号)>:10:11:12:395:-23/@exit>\
+<Img:20:<$STR(S$补丁编号)>:274:22:D>\
+　<1.取消订阅将无法收到验证码!/SCOLOR=70>\
+　<2.若没有收到验证码请在微信中回复"1"/SCOLOR=70>\
+　<3.若回复"1"无验证码,请关闭后重新获取!/SCOLOR=70>\
+　<若没有收到验证码,请重新获取一次再试!/SCOLOR=70>\
+<┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄/SCOLOR=14>\
+　系统已发送验证码微信:{<$STR(S$微信昵称)>/SCOLOR=250}\ 
+<┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄/SCOLOR=14>\
+　　　        <请输入您收到的验证码/@@InPutString11(请输入您收到的验证码：)>\ 
+
+
+[@InPutString11]
+#IF
+EQUAL S11
+#ACT
+messagebox 请输入正确的验证码!
+BREAK
+
+#if
+equal N$验证码 <$STR(S11)>
+#act
+MOV T487
+MOV T488
+MOV T489
+messagebox 微信解绑成功!
+CLOSE
+#elseact
+messagebox 验证码输入错误,请重新输入!
+break
+
+
+}
+
+

@@ -1,0 +1,351 @@
+[@main]
+
+#if
+#ACT
+
+OPENMERCHANTBIGDLG 45 1796 1 4 0 -80 1 386 5 1
+#Call [称号变量.txt] @开始计算
+#SAY
+\
+<> <------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243} {专/AUTOCOLOR=243,222,241,255,242,254,253,249,180} {属/AUTOCOLOR=180,243,222,241,255,242,254,253,249} {称/AUTOCOLOR=249,180,243,222,241,255,242,254,253} {号/AUTOCOLOR=253,249,180,243,222,241,255,242,254}< --------------------/SCOLOR=254>\ \ 
+
+<>    <云鹤九霄/SCOLOR=241>     <称号属性|254#切割+800,全属性7-7,HP-MP+300,伤害吸收+7%/SCOLOR=250>     <查看所需物品|251#战士：光子剑*1,神武战甲(男)(女)各一件,蝴蝶盔*1|蝴蝶链*1|蝴蝶镯*1|蝴蝶腕*1|蝴蝶戒*1|蝴蝶指*1|蝴蝶带*1|蝴蝶靴*1|250000元宝^251#法师：天神杖*1,凤灵法衣(男)(女)各一件,魔神盔*1|魔神链*1|魔神镯*1|魔神腕*1|魔神戒*1|魔神指*1|魔神带*1|魔神靴*1|250000元宝^251#道士：梦幻之刃*1,无极道衣(男)(女)各一件,道玄盔*1|道玄链*1|道玄镯*1|道玄腕*1|道玄戒*1|道玄指*1|道玄带*1|道玄靴*1|250000元宝>     <$STR(S156)>\ \
+<>    <天地无极/SCOLOR=241>     <称号属性|254#切割+1000,全属性8-8,HP-MP+350,伤害吸收+8%/SCOLOR=250>     <查看所需物品|251#战士：海边月*1,龙隐圣铠(男)(女)各一件,轩辕盔*1|轩辕链*1|轩辕镯*1|轩辕腕*1|轩辕戒*1|轩辕指*1|轩辕带*1|轩辕靴*1|300000元宝^251#法师：幽灵の魔*1,紫月法袍(男)(女)各一件,寒冰盔*1|寒冰链*1|寒冰镯*1|寒冰腕*1|寒冰戒*1|寒冰指*1|寒冰带*1|寒冰靴*1|300000元宝^251#道士：打神鞭*1,逍遥道袍((男)(女)各一件,通天盔*1|通天链*1|通天镯*1|通天腕*1|通天戒*1|通天指*1|通天带*1|通天靴*1|300000元宝>     <$STR(S157)>\ \
+<>    <日月乾坤/SCOLOR=246>     <称号属性|254#切割+1200,全属性9-9,HP-MP+400,伤害吸收+9%/SCOLOR=250>     <查看所需物品|251#战士：末日盔*1|末日链*1|末日镯*1|末日腕*1|末日戒*1|末日指*1|末日带*1|末日靴*1|500000元宝^251#法师：冥王盔*1|冥王链*1|冥王镯*1|冥王腕*1|冥王戒*1|冥王指*1|冥王带*1|冥王靴*1|500000元宝^251#道士：神灵盔*1|神灵链*1|神灵镯*1|神灵腕*1|神灵戒*1|神灵指*1|神灵带*1|神灵靴*1|500000元宝>     <$STR(S158)>\ \ 
+
+
+
+<>      <我本沉默 再续金典 一直被模仿 从未被超越/SCOLOR=254>   \
+
+[@日月乾坤]
+#if
+check [57] 0
+#act
+MessageBox [系统提示]：请您先获得【天地无极】称号..
+break
+
+#if
+checkjob warrior
+CheckGameGold > 499999
+CHECKITEM 末日盔 1
+CHECKITEM 末日链 1
+CHECKITEM 末日镯 1
+CHECKITEM 末日腕 1
+CHECKITEM 末日戒 1
+CHECKITEM 末日指 1
+CHECKITEM 末日带 1
+CHECKITEM 末日靴 1
+#ACT
+GameGold - 500000
+TAKE 末日盔 1
+TAKE 末日链 1
+TAKE 末日镯 1
+TAKE 末日腕 1
+TAKE 末日戒 1
+TAKE 末日指 1
+TAKE 末日带 1
+TAKE 末日靴 1
+RECYCFENGHAO 天地无极
+GIVEFENGHAO 日月乾坤 1
+set [58] 1
+MessageBox [系统提示]：恭喜您获得了【日月乾坤】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob wizard
+CheckGameGold > 499999
+CHECKITEM 冥王盔 1
+CHECKITEM 冥王链 1
+CHECKITEM 冥王镯 1
+CHECKITEM 冥王腕 1
+CHECKITEM 冥王戒 1
+CHECKITEM 冥王指 1
+CHECKITEM 冥王带 1
+CHECKITEM 冥王靴 1
+#ACT
+GameGold - 500000
+TAKE 冥王盔 1
+TAKE 冥王链 1
+TAKE 冥王镯 1
+TAKE 冥王腕 1
+TAKE 冥王戒 1
+TAKE 冥王指 1
+TAKE 冥王带 1
+TAKE 冥王靴 1
+RECYCFENGHAO 天地无极
+GIVEFENGHAO 日月乾坤 1
+set [58] 1
+MessageBox [系统提示]：恭喜您获得了【日月乾坤】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob taoist
+CheckGameGold > 499999
+CHECKITEM 神灵盔 1
+CHECKITEM 神灵链 1
+CHECKITEM 神灵镯 1
+CHECKITEM 神灵腕 1
+CHECKITEM 神灵戒 1
+CHECKITEM 神灵指 1
+CHECKITEM 神灵带 1
+CHECKITEM 神灵靴 1
+#ACT
+GameGold - 500000
+TAKE 神灵盔 1
+TAKE 神灵链 1
+TAKE 神灵镯 1
+TAKE 神灵腕 1
+TAKE 神灵戒 1
+TAKE 神灵指 1
+TAKE 神灵带 1
+TAKE 神灵靴 1
+RECYCFENGHAO 天地无极
+GIVEFENGHAO 日月乾坤 1
+set [58] 1
+MessageBox [系统提示]：恭喜您获得了【日月乾坤】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+#IF
+#ACT
+MessageBox 材料或者元宝不足,请详细查看背包..
+
+break
+
+[@天地无极]
+#if
+check [56] 0
+#act
+MessageBox [系统提示]：请您先获得【云鹤九霄】称号..
+break
+
+#if
+checkjob warrior
+CheckGameGold > 299999
+CHECKITEM 海边月 1
+CHECKITEM 龙隐圣铠(男) 1
+CHECKITEM 龙隐圣袍(女) 1
+CHECKITEM 轩辕盔 1
+CHECKITEM 轩辕链 1
+CHECKITEM 轩辕镯 1
+CHECKITEM 轩辕腕 1
+CHECKITEM 轩辕戒 1
+CHECKITEM 轩辕指 1
+CHECKITEM 轩辕带 1
+CHECKITEM 轩辕靴 1
+#ACT
+GameGold - 300000
+TAKE 海边月 1
+TAKE 龙隐圣铠(男) 1
+TAKE 龙隐圣袍(女) 1
+TAKE 轩辕盔 1
+TAKE 轩辕链 1
+TAKE 轩辕镯 1
+TAKE 轩辕腕 1
+TAKE 轩辕戒 1
+TAKE 轩辕指 1
+TAKE 轩辕带 1
+TAKE 轩辕靴 1
+RECYCFENGHAO 云鹤九霄
+GIVEFENGHAO 天地无极 1
+set [57] 1
+MessageBox [系统提示]：恭喜您获得了【天地无极】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+#IF
+checkjob wizard
+CheckGameGold > 299999
+CHECKITEM 幽灵の魔 1
+CHECKITEM 紫月法袍(男) 1
+CHECKITEM 紫月法袍(女) 1
+CHECKITEM 寒冰盔 1
+CHECKITEM 寒冰链 1
+CHECKITEM 寒冰镯 1
+CHECKITEM 寒冰腕 1
+CHECKITEM 寒冰戒 1
+CHECKITEM 寒冰指 1
+CHECKITEM 寒冰带 1
+CHECKITEM 寒冰靴 1
+#ACT
+GameGold - 300000
+TAKE 幽灵の魔 1
+TAKE 紫月法袍(男) 1
+TAKE 紫月法袍(女) 1
+TAKE 寒冰盔 1
+TAKE 寒冰链 1
+TAKE 寒冰镯 1
+TAKE 寒冰腕 1
+TAKE 寒冰戒 1
+TAKE 寒冰指 1
+TAKE 寒冰带 1
+TAKE 寒冰靴 1
+RECYCFENGHAO 云鹤九霄
+GIVEFENGHAO 天地无极 1
+set [57] 1
+MessageBox [系统提示]：恭喜您获得了【天地无极】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob taoist
+CheckGameGold > 299999
+CHECKITEM 打神鞭 1
+CHECKITEM 逍遥道袍(男) 1
+CHECKITEM 逍遥道袍(女) 1
+CHECKITEM 通天盔 1
+CHECKITEM 通天链 1
+CHECKITEM 通天镯 1
+CHECKITEM 通天腕 1
+CHECKITEM 通天戒 1
+CHECKITEM 通天指 1
+CHECKITEM 通天带 1
+CHECKITEM 通天靴 1
+#ACT
+GameGold - 300000
+TAKE 打神鞭 1
+TAKE 逍遥道袍(男) 1
+TAKE 逍遥道袍(女) 1
+TAKE 通天盔 1
+TAKE 通天链 1
+TAKE 通天镯 1
+TAKE 通天腕 1
+TAKE 通天戒 1
+TAKE 通天指 1
+TAKE 通天带 1
+TAKE 通天靴 1
+RECYCFENGHAO 云鹤九霄
+GIVEFENGHAO 天地无极 1
+set [57] 1
+MessageBox [系统提示]：恭喜您获得了【天地无极】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+#IF
+#ACT
+MessageBox 材料或者元宝不足,请详细查看背包..
+
+break
+[@云鹤九霄]
+#if
+check [55] 0
+#act
+MessageBox [系统提示]：请您先获得【寂静战神】称号..
+break
+#if
+checkjob warrior
+CheckGameGold > 249999
+CHECKITEM 光子剑 1
+CHECKITEM 神武战甲(男) 1
+CHECKITEM 神武战甲(女) 1
+CHECKITEM 蝴蝶盔 1
+CHECKITEM 蝴蝶链 1
+CHECKITEM 蝴蝶镯 1
+CHECKITEM 蝴蝶腕 1
+CHECKITEM 蝴蝶戒 1
+CHECKITEM 蝴蝶指 1
+CHECKITEM 蝴蝶带 1
+CHECKITEM 蝴蝶靴 1
+#ACT
+GameGold - 250000
+TAKE 光子剑 1
+TAKE 神武战甲(男) 1
+TAKE 神武战甲(女) 1
+TAKE 蝴蝶盔 1
+TAKE 蝴蝶链 1
+TAKE 蝴蝶镯 1
+TAKE 蝴蝶腕 1
+TAKE 蝴蝶戒 1
+TAKE 蝴蝶指 1
+TAKE 蝴蝶带 1
+TAKE 蝴蝶靴 1
+RECYCFENGHAO 寂静战神
+GIVEFENGHAO 云鹤九霄 1
+set [56] 1
+MessageBox [系统提示]：恭喜您获得了【云鹤九霄】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+#IF
+checkjob wizard
+CheckGameGold > 249999
+CHECKITEM 天神杖 1
+CHECKITEM 凤灵法衣(男) 1
+CHECKITEM 凤灵法衣(女) 1
+CHECKITEM 魔神盔 1
+CHECKITEM 魔神链 1
+CHECKITEM 魔神镯 1
+CHECKITEM 魔神腕 1
+CHECKITEM 魔神戒 1
+CHECKITEM 魔神指 1
+CHECKITEM 魔神带 1
+CHECKITEM 魔神靴 1
+#ACT
+GameGold - 250000
+TAKE 天神杖 1
+TAKE 凤灵法衣(男) 1
+TAKE 凤灵法衣(女) 1
+TAKE 魔神盔 1
+TAKE 魔神链 1
+TAKE 魔神镯 1
+TAKE 魔神腕 1
+TAKE 魔神戒 1
+TAKE 魔神指 1
+TAKE 魔神带 1
+TAKE 魔神靴 1
+RECYCFENGHAO 寂静战神
+GIVEFENGHAO 云鹤九霄 1
+set [56] 1
+MessageBox [系统提示]：恭喜您获得了【云鹤九霄】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+
+#IF
+checkjob taoist
+CheckGameGold > 249999
+CHECKITEM 梦幻之刃 1
+CHECKITEM 无极道衣(男) 1
+CHECKITEM 无极道衣(女) 1
+CHECKITEM 道玄盔 1
+CHECKITEM 道玄链 1
+CHECKITEM 道玄镯 1
+CHECKITEM 道玄腕 1
+CHECKITEM 道玄戒 1
+CHECKITEM 道玄指 1
+CHECKITEM 道玄带 1
+CHECKITEM 道玄靴 1
+#ACT
+GameGold - 250000
+TAKE 梦幻之刃 1
+TAKE 无极道衣(男) 1
+TAKE 无极道衣(女) 1
+TAKE 道玄盔 1
+TAKE 道玄链 1
+TAKE 道玄镯 1
+TAKE 道玄腕 1
+TAKE 道玄戒 1
+TAKE 道玄指 1
+TAKE 道玄带 1
+TAKE 道玄靴 1
+RECYCFENGHAO 寂静战神
+GIVEFENGHAO 云鹤九霄 1
+set [56] 1
+MessageBox [系统提示]：恭喜您获得了【云鹤九霄】称号..
+GOTO @MAIN
+#CALL [\专属触发\穿脱触发.txt] @开始穿戴
+break
+#IF
+#ACT
+MessageBox 材料或者元宝不足,请详细查看背包..
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+[@main]
+#IF
+#ACT
+CloseBigDialogBox
+BREAK
+#SAY
+\ 
+<欢迎来的怀念沉默，找回2003年少时的记忆！/SCOLOR=249>\
+{-------------------------------------------------------------/FCOLOR=35}\
+<地图介绍：/SCOLOR=250>火龙地狱[一层]\ \
+
+<主要BOSS：/SCOLOR=250><火龙魔王 人形怪 怀念天珠/SCOLOR=253>\ \
+
+<刷新时间：/SCOLOR=250><15分钟 60分钟 120分钟/SCOLOR=254>\ \
+
+<进图条件：/SCOLOR=250><强筋健体完成中级修炼/SCOLOR=249>                  <确定进入/@点击进入>\
+
+
+
+[@点击进入]
+#IF
+equal U14 20
+equal U15 20
+equal U16 20
+#ACT
+MAPMOVE STHUOLONG0 90 102
+SENDMSG 0 [<$USERNAME>]--进入了火龙地狱,让我们祝福他吧!!!
+break
+#ELSEACT
+MESSAGEBOX 条件不足无法进入！
+break
+

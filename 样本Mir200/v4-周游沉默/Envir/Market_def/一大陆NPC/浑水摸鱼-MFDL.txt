@@ -1,0 +1,28 @@
+[@main]
+#if
+#ACT
+#SAY
+\ 
+<>                    <·浑水摸鱼活动·/AUTOCOLOR=249>\
+<>全服活动：\
+<><每隔120 会刷新一只活动BOSS 爆率极高 必掉充值点 以及大量材料/AUTOCOLOR=254>\
+<><全服公告 所有玩家都可以参加/AUTOCOLOR=254>\
+<><进入条件：开启狂暴之力>并<持有5000元宝>\ \
+<><进入图会显示神秘人名字/AUTOCOLOR=254>\ \
+<><进入/@浑水摸鱼>\
+
+
+
+
+
+
+[@浑水摸鱼]
+#if
+checkfenghao 狂暴之力
+checkgamegold ? 5000
+#ACT
+gamegold - 5000
+MAPMOVE EV002 23 27 
+#ELSEACT
+MESSAGEBOX 提示：您么有狂暴之力称号或元宝不足5000。
+Break

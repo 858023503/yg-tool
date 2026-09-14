@@ -1,0 +1,14 @@
+[@main]
+#if
+#ACT
+map 玛法异界
+Delnpc 异界之门 <$STR(T10)>
+SENDDELAYMSG 你将在%s后被传回玛法大陆 3600 250 1 @回玛法
+
+
+break
+
+[@回玛法]
+#if
+#act
+MAPMOVE MFDL 146 186 5

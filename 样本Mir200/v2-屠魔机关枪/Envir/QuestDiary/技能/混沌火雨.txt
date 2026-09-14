@@ -1,0 +1,1508 @@
+[@混沌火雨]
+{
+
+#if
+EQUAL N$冰咆哮魔次 0
+#act
+sendmsg 6 没有冰咆哮魔次
+break
+
+
+#if
+EQUAL S$玩家当前大陆 五大陆
+#act
+AddHpPer - N$五大陆反伤
+
+
+#IF
+#ACT
+
+
+Goto @技能伤害
+
+
+
+
+#if
+CHECKCURRTARGETRACE = 0
+#act
+MOV N$混沌火雨打人暴击几率 0
+goto @混沌火雨对人物伤害计算
+break
+#if
+NOT CHECKCURRTARGETRACE = 0
+
+#act
+goto @混沌火雨魔次开始
+break
+
+
+[@混沌火雨魔次开始]
+
+
+#if
+LARGE N$冰咆哮幸运 0
+#ACT
+;计算人物幸运攻击伤害下限
+FORMULATION <$MC>+(((<$MAXMC>-<$MC>)/10)*<$STR(N$冰咆哮幸运)>) N$冰咆哮人物幸运攻击下限
+
+DEC N$冰咆哮人物幸运攻击下限 1
+#elseact
+MOV N$冰咆哮人物幸运攻击下限 <$MC>
+
+#if
+#act
+
+MOVR N$冰咆哮最终伤害 <$STR(N$冰咆哮人物幸运攻击下限)> <$MAXMC>
+; sendmsg 6 随机伤害<$STR(N$冰咆哮最终伤害)>
+CalcPercent N$冰咆哮最终伤害 N$冰咆哮打怪默认伤害 N$冰咆哮最终伤害
+; sendmsg 6 冰咆哮打怪默认伤害<$STR(N$冰咆哮最终伤害)>
+
+
+CalcPercent N$冰咆哮最终伤害 N$冰咆哮对怪物伤害百分比 N$冰咆哮最终伤害
+; sendmsg 6 冰咆哮对怪物伤害百分比<$STR(N$冰咆哮最终伤害)>
+
+CalcPercent N$冰咆哮最终伤害 N$冰咆哮倍攻 N$冰咆哮最终伤害
+; sendmsg 6 冰咆哮倍攻<$STR(N$冰咆哮最终伤害)>
+FORMULATION <$STR(N$冰咆哮最终伤害)>/<$STR(N$所有技能伤害降低倍数)> N$冰咆哮最终伤害
+; sendmsg 6 所有技能伤害降低倍数<$STR(N$冰咆哮最终伤害)>
+
+
+#IF
+RANDOMEX N$人物暴击几率 100
+#ACT
+PLAYEFFECT 73 0 12 1 80 0 -125 -170 1
+FORMULATION (<$STR(N$人物暴击伤害)>+100)/100*<$STR(N$冰咆哮最终伤害)> N$冰咆哮最终伤害
+
+
+#if
+CheckCacheTextList ..\QuestDiary\怪物名称\精英及以下怪物.txt <$ATTACKMONSTER_NAMEEX>
+LARGE N$精英怪增加伤害 100
+#act
+CalcPercent N$冰咆哮最终伤害 N$精英怪增加伤害 N$冰咆哮最终伤害
+
+#if
+CheckCacheTextList ..\QuestDiary\怪物名称\统领及以上怪物.txt <$ATTACKMONSTER_NAMEEX>
+LARGE N$对BOSS伤害增加 100
+#act
+CalcPercent N$冰咆哮最终伤害 N$对BOSS伤害增加 N$冰咆哮最终伤害
+
+
+
+
+
+
+
+#if
+#act
+; sendmsg 6 冰咆哮最终伤害冰咆哮最终伤害冰咆哮最终伤害<$STR(N$冰咆哮最终伤害)>
+FORMULATION <$STR(N$冰咆哮最终伤害)>*<$STR(N$冰咆哮魔次)> N$冰咆哮最终伤害
+; sendmsg 6 冰咆哮魔次<$STR(N$冰咆哮魔次)>
+; sendmsg 6 冰咆哮魔次伤害<$STR(N$冰咆哮最终伤害)>
+CalcPercent N$冰咆哮最终伤害 N$混沌火雨伤害 N$冰咆哮最终伤害
+; sendmsg 6 混沌火雨伤害<$STR(N$混沌火雨伤害)>
+; sendmsg 6 混沌火雨伤害<$STR(N$冰咆哮最终伤害)>
+FORMULATION <$STR(N$冰咆哮最终伤害)>+<$STR(N$天殇套真实伤害)> N$冰咆哮最终伤害
+; RangeHarm <$STR(N998)> <$STR(N999)> 3 <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+MOV N$混沌火雨循环次数 1
+
+
+#if
+EQUAL N$混沌火轮数量 4
+#act
+MOV N$流行火雨坐标X1 <$STR(N998)>
+MOV N$流行火雨坐标Y1 <$STR(N999)>
+MOV N$流行火雨坐标X2 <$STR(N998)>
+MOV N$流行火雨坐标Y2 <$STR(N999)>
+MOV N$流行火雨坐标X3 <$STR(N998)>
+MOV N$流行火雨坐标Y3 <$STR(N999)>
+MOV N$流行火雨坐标X4 <$STR(N998)>
+MOV N$流行火雨坐标Y4 <$STR(N999)>
+INC N$流行火雨坐标X1 5
+DEC N$流行火雨坐标X2 5
+INC N$流行火雨坐标Y3 5
+DEC N$流行火雨坐标Y4 5
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> 12 1938 22 1 100 1 0
+delaycall 1500 @混沌火轮伤害4
+break
+#if
+EQUAL N$混沌火轮数量 5
+#act
+MOV N$流行火雨坐标X1 <$STR(N998)>
+MOV N$流行火雨坐标Y1 <$STR(N999)>
+MOV N$流行火雨坐标X2 <$STR(N998)>
+MOV N$流行火雨坐标Y2 <$STR(N999)>
+MOV N$流行火雨坐标X3 <$STR(N998)>
+MOV N$流行火雨坐标Y3 <$STR(N999)>
+MOV N$流行火雨坐标X4 <$STR(N998)>
+MOV N$流行火雨坐标Y4 <$STR(N999)>
+MOV N$流行火雨坐标X5 <$STR(N998)>
+MOV N$流行火雨坐标Y5 <$STR(N999)>
+INC N$流行火雨坐标X1 5
+DEC N$流行火雨坐标X2 5
+INC N$流行火雨坐标Y3 5
+DEC N$流行火雨坐标Y4 5
+
+
+DEC N$流行火雨坐标X5 11
+
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> 12 1938 22 1 100 1 0
+delaycall 1500 @混沌火轮伤害5
+break
+
+#if
+EQUAL N$混沌火轮数量 6
+#act
+MOV N$流行火雨坐标X1 <$STR(N998)>
+MOV N$流行火雨坐标Y1 <$STR(N999)>
+MOV N$流行火雨坐标X2 <$STR(N998)>
+MOV N$流行火雨坐标Y2 <$STR(N999)>
+MOV N$流行火雨坐标X3 <$STR(N998)>
+MOV N$流行火雨坐标Y3 <$STR(N999)>
+MOV N$流行火雨坐标X4 <$STR(N998)>
+MOV N$流行火雨坐标Y4 <$STR(N999)>
+MOV N$流行火雨坐标X5 <$STR(N998)>
+MOV N$流行火雨坐标Y5 <$STR(N999)>
+MOV N$流行火雨坐标X6 <$STR(N998)>
+MOV N$流行火雨坐标Y6 <$STR(N999)>
+INC N$流行火雨坐标X1 5
+DEC N$流行火雨坐标X2 5
+INC N$流行火雨坐标Y3 5
+DEC N$流行火雨坐标Y4 5
+DEC N$流行火雨坐标X5 11
+DEC N$流行火雨坐标X6 7
+DEC N$流行火雨坐标Y6 7
+
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> 12 1938 22 1 100 1 0
+delaycall 1500 @混沌火轮伤害6
+break
+
+
+
+
+#if
+EQUAL N$混沌火轮数量 7
+#act
+MOV N$流行火雨坐标X1 <$STR(N998)>
+MOV N$流行火雨坐标Y1 <$STR(N999)>
+MOV N$流行火雨坐标X2 <$STR(N998)>
+MOV N$流行火雨坐标Y2 <$STR(N999)>
+MOV N$流行火雨坐标X3 <$STR(N998)>
+MOV N$流行火雨坐标Y3 <$STR(N999)>
+MOV N$流行火雨坐标X4 <$STR(N998)>
+MOV N$流行火雨坐标Y4 <$STR(N999)>
+MOV N$流行火雨坐标X5 <$STR(N998)>
+MOV N$流行火雨坐标Y5 <$STR(N999)>
+MOV N$流行火雨坐标X6 <$STR(N998)>
+MOV N$流行火雨坐标Y6 <$STR(N999)>
+MOV N$流行火雨坐标X7 <$STR(N998)>
+MOV N$流行火雨坐标Y7 <$STR(N999)>
+INC N$流行火雨坐标X1 5
+DEC N$流行火雨坐标X2 5
+INC N$流行火雨坐标Y3 5
+DEC N$流行火雨坐标Y4 5
+DEC N$流行火雨坐标X5 11
+DEC N$流行火雨坐标X6 7
+DEC N$流行火雨坐标Y6 7
+INC N$流行火雨坐标X7 7
+DEC N$流行火雨坐标Y7 7
+
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> 12 1938 22 1 100 1 0
+delaycall 1500 @混沌火轮伤害7
+break
+
+#if
+EQUAL N$混沌火轮数量 8
+#act
+MOV N$流行火雨坐标X1 <$STR(N998)>
+MOV N$流行火雨坐标Y1 <$STR(N999)>
+MOV N$流行火雨坐标X2 <$STR(N998)>
+MOV N$流行火雨坐标Y2 <$STR(N999)>
+MOV N$流行火雨坐标X3 <$STR(N998)>
+MOV N$流行火雨坐标Y3 <$STR(N999)>
+MOV N$流行火雨坐标X4 <$STR(N998)>
+MOV N$流行火雨坐标Y4 <$STR(N999)>
+MOV N$流行火雨坐标X5 <$STR(N998)>
+MOV N$流行火雨坐标Y5 <$STR(N999)>
+MOV N$流行火雨坐标X6 <$STR(N998)>
+MOV N$流行火雨坐标Y6 <$STR(N999)>
+MOV N$流行火雨坐标X7 <$STR(N998)>
+MOV N$流行火雨坐标Y7 <$STR(N999)>
+MOV N$流行火雨坐标X8 <$STR(N998)>
+MOV N$流行火雨坐标Y8 <$STR(N999)>
+INC N$流行火雨坐标X1 5
+DEC N$流行火雨坐标X2 5
+INC N$流行火雨坐标Y3 5
+DEC N$流行火雨坐标Y4 5
+DEC N$流行火雨坐标X5 11
+DEC N$流行火雨坐标X6 7
+DEC N$流行火雨坐标Y6 7
+INC N$流行火雨坐标X7 7
+DEC N$流行火雨坐标Y7 7
+DEC N$流行火雨坐标X8 7
+INC N$流行火雨坐标Y8 7
+
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> 12 1938 22 1 100 1 0
+delaycall 1500 @混沌火轮伤害8
+break
+
+#if
+EQUAL N$混沌火轮数量 9
+#act
+MOV N$流行火雨坐标X1 <$STR(N998)>
+MOV N$流行火雨坐标Y1 <$STR(N999)>
+MOV N$流行火雨坐标X2 <$STR(N998)>
+MOV N$流行火雨坐标Y2 <$STR(N999)>
+MOV N$流行火雨坐标X3 <$STR(N998)>
+MOV N$流行火雨坐标Y3 <$STR(N999)>
+MOV N$流行火雨坐标X4 <$STR(N998)>
+MOV N$流行火雨坐标Y4 <$STR(N999)>
+MOV N$流行火雨坐标X5 <$STR(N998)>
+MOV N$流行火雨坐标Y5 <$STR(N999)>
+MOV N$流行火雨坐标X6 <$STR(N998)>
+MOV N$流行火雨坐标Y6 <$STR(N999)>
+MOV N$流行火雨坐标X7 <$STR(N998)>
+MOV N$流行火雨坐标Y7 <$STR(N999)>
+MOV N$流行火雨坐标X8 <$STR(N998)>
+MOV N$流行火雨坐标Y8 <$STR(N999)>
+MOV N$流行火雨坐标X9 <$STR(N998)>
+MOV N$流行火雨坐标Y9 <$STR(N999)>
+INC N$流行火雨坐标X1 5
+DEC N$流行火雨坐标X2 5
+INC N$流行火雨坐标Y3 5
+DEC N$流行火雨坐标Y4 5
+DEC N$流行火雨坐标X5 11
+DEC N$流行火雨坐标X6 7
+DEC N$流行火雨坐标Y6 7
+INC N$流行火雨坐标X7 7
+DEC N$流行火雨坐标Y7 7
+DEC N$流行火雨坐标X8 7
+INC N$流行火雨坐标Y8 7
+INC N$流行火雨坐标X9 7
+INC N$流行火雨坐标Y9 7
+
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> 12 1938 22 1 100 1 0
+delaycall 1500 @混沌火轮伤害9
+break
+
+#if
+EQUAL N$混沌火轮数量 10
+#act
+MOV N$流行火雨坐标X1 <$STR(N998)>
+MOV N$流行火雨坐标Y1 <$STR(N999)>
+MOV N$流行火雨坐标X2 <$STR(N998)>
+MOV N$流行火雨坐标Y2 <$STR(N999)>
+MOV N$流行火雨坐标X3 <$STR(N998)>
+MOV N$流行火雨坐标Y3 <$STR(N999)>
+MOV N$流行火雨坐标X4 <$STR(N998)>
+MOV N$流行火雨坐标Y4 <$STR(N999)>
+MOV N$流行火雨坐标X5 <$STR(N998)>
+MOV N$流行火雨坐标Y5 <$STR(N999)>
+MOV N$流行火雨坐标X6 <$STR(N998)>
+MOV N$流行火雨坐标Y6 <$STR(N999)>
+MOV N$流行火雨坐标X7 <$STR(N998)>
+MOV N$流行火雨坐标Y7 <$STR(N999)>
+MOV N$流行火雨坐标X8 <$STR(N998)>
+MOV N$流行火雨坐标Y8 <$STR(N999)>
+MOV N$流行火雨坐标X9 <$STR(N998)>
+MOV N$流行火雨坐标Y9 <$STR(N999)>
+MOV N$流行火雨坐标X10 <$STR(N998)>
+MOV N$流行火雨坐标Y10 <$STR(N999)>
+INC N$流行火雨坐标X1 5
+DEC N$流行火雨坐标X2 5
+INC N$流行火雨坐标Y3 5
+DEC N$流行火雨坐标Y4 5
+DEC N$流行火雨坐标X5 11
+DEC N$流行火雨坐标X6 7
+DEC N$流行火雨坐标Y6 7
+INC N$流行火雨坐标X7 7
+DEC N$流行火雨坐标Y7 7
+DEC N$流行火雨坐标X8 7
+INC N$流行火雨坐标Y8 7
+INC N$流行火雨坐标X9 7
+INC N$流行火雨坐标Y9 7
+INC N$流行火雨坐标Y10 13
+
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> 12 1938 22 1 100 1 0
+delaycall 1500 @混沌火轮伤害10
+break
+
+
+#if
+EQUAL N$混沌火轮数量 11
+#act
+MOV N$流行火雨坐标X1 <$STR(N998)>
+MOV N$流行火雨坐标Y1 <$STR(N999)>
+MOV N$流行火雨坐标X2 <$STR(N998)>
+MOV N$流行火雨坐标Y2 <$STR(N999)>
+MOV N$流行火雨坐标X3 <$STR(N998)>
+MOV N$流行火雨坐标Y3 <$STR(N999)>
+MOV N$流行火雨坐标X4 <$STR(N998)>
+MOV N$流行火雨坐标Y4 <$STR(N999)>
+MOV N$流行火雨坐标X5 <$STR(N998)>
+MOV N$流行火雨坐标Y5 <$STR(N999)>
+MOV N$流行火雨坐标X6 <$STR(N998)>
+MOV N$流行火雨坐标Y6 <$STR(N999)>
+MOV N$流行火雨坐标X7 <$STR(N998)>
+MOV N$流行火雨坐标Y7 <$STR(N999)>
+MOV N$流行火雨坐标X8 <$STR(N998)>
+MOV N$流行火雨坐标Y8 <$STR(N999)>
+MOV N$流行火雨坐标X9 <$STR(N998)>
+MOV N$流行火雨坐标Y9 <$STR(N999)>
+MOV N$流行火雨坐标X10 <$STR(N998)>
+MOV N$流行火雨坐标Y10 <$STR(N999)>
+MOV N$流行火雨坐标X11 <$STR(N998)>
+MOV N$流行火雨坐标Y11 <$STR(N999)>
+INC N$流行火雨坐标X1 5
+DEC N$流行火雨坐标X2 5
+INC N$流行火雨坐标Y3 5
+DEC N$流行火雨坐标Y4 5
+DEC N$流行火雨坐标X5 11
+DEC N$流行火雨坐标X6 7
+DEC N$流行火雨坐标Y6 7
+INC N$流行火雨坐标X7 7
+DEC N$流行火雨坐标Y7 7
+DEC N$流行火雨坐标X8 7
+INC N$流行火雨坐标Y8 7
+INC N$流行火雨坐标X9 7
+INC N$流行火雨坐标Y9 7
+INC N$流行火雨坐标Y10 13
+DEC N$流行火雨坐标X11 7
+INC N$流行火雨坐标Y11 15
+
+
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> 12 1938 22 1 100 1 0
+delaycall 1500 @混沌火轮伤害11
+break
+
+
+
+
+#if
+EQUAL N$混沌火轮数量 12
+#act
+MOV N$流行火雨坐标X1 <$STR(N998)>
+MOV N$流行火雨坐标Y1 <$STR(N999)>
+MOV N$流行火雨坐标X2 <$STR(N998)>
+MOV N$流行火雨坐标Y2 <$STR(N999)>
+MOV N$流行火雨坐标X3 <$STR(N998)>
+MOV N$流行火雨坐标Y3 <$STR(N999)>
+MOV N$流行火雨坐标X4 <$STR(N998)>
+MOV N$流行火雨坐标Y4 <$STR(N999)>
+MOV N$流行火雨坐标X5 <$STR(N998)>
+MOV N$流行火雨坐标Y5 <$STR(N999)>
+MOV N$流行火雨坐标X6 <$STR(N998)>
+MOV N$流行火雨坐标Y6 <$STR(N999)>
+MOV N$流行火雨坐标X7 <$STR(N998)>
+MOV N$流行火雨坐标Y7 <$STR(N999)>
+MOV N$流行火雨坐标X8 <$STR(N998)>
+MOV N$流行火雨坐标Y8 <$STR(N999)>
+MOV N$流行火雨坐标X9 <$STR(N998)>
+MOV N$流行火雨坐标Y9 <$STR(N999)>
+MOV N$流行火雨坐标X10 <$STR(N998)>
+MOV N$流行火雨坐标Y10 <$STR(N999)>
+MOV N$流行火雨坐标X11 <$STR(N998)>
+MOV N$流行火雨坐标Y11 <$STR(N999)>
+MOV N$流行火雨坐标X12 <$STR(N998)>
+MOV N$流行火雨坐标Y12 <$STR(N999)>
+INC N$流行火雨坐标X1 5
+DEC N$流行火雨坐标X2 5
+INC N$流行火雨坐标Y3 5
+DEC N$流行火雨坐标Y4 5
+DEC N$流行火雨坐标X5 11
+DEC N$流行火雨坐标X6 7
+DEC N$流行火雨坐标Y6 7
+INC N$流行火雨坐标X7 7
+DEC N$流行火雨坐标Y7 7
+DEC N$流行火雨坐标X8 7
+INC N$流行火雨坐标Y8 7
+INC N$流行火雨坐标X9 7
+INC N$流行火雨坐标Y9 7
+INC N$流行火雨坐标Y10 13
+DEC N$流行火雨坐标X11 7
+INC N$流行火雨坐标Y11 15
+dec N$流行火雨坐标X12 13
+DEC N$流行火雨坐标Y12 7
+
+
+
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X12)> <$STR(N$流行火雨坐标Y12)> 12 1938 22 1 100 1 0
+delaycall 1500 @混沌火轮伤害12
+break
+
+
+#if
+EQUAL N$混沌火轮数量 13
+#act
+MOV N$流行火雨坐标X1 <$STR(N998)>
+MOV N$流行火雨坐标Y1 <$STR(N999)>
+MOV N$流行火雨坐标X2 <$STR(N998)>
+MOV N$流行火雨坐标Y2 <$STR(N999)>
+MOV N$流行火雨坐标X3 <$STR(N998)>
+MOV N$流行火雨坐标Y3 <$STR(N999)>
+MOV N$流行火雨坐标X4 <$STR(N998)>
+MOV N$流行火雨坐标Y4 <$STR(N999)>
+MOV N$流行火雨坐标X5 <$STR(N998)>
+MOV N$流行火雨坐标Y5 <$STR(N999)>
+MOV N$流行火雨坐标X6 <$STR(N998)>
+MOV N$流行火雨坐标Y6 <$STR(N999)>
+MOV N$流行火雨坐标X7 <$STR(N998)>
+MOV N$流行火雨坐标Y7 <$STR(N999)>
+MOV N$流行火雨坐标X8 <$STR(N998)>
+MOV N$流行火雨坐标Y8 <$STR(N999)>
+MOV N$流行火雨坐标X9 <$STR(N998)>
+MOV N$流行火雨坐标Y9 <$STR(N999)>
+MOV N$流行火雨坐标X10 <$STR(N998)>
+MOV N$流行火雨坐标Y10 <$STR(N999)>
+MOV N$流行火雨坐标X11 <$STR(N998)>
+MOV N$流行火雨坐标Y11 <$STR(N999)>
+MOV N$流行火雨坐标X12 <$STR(N998)>
+MOV N$流行火雨坐标Y12 <$STR(N999)>
+MOV N$流行火雨坐标X13 <$STR(N998)>
+MOV N$流行火雨坐标Y13 <$STR(N999)>
+INC N$流行火雨坐标X1 5
+DEC N$流行火雨坐标X2 5
+INC N$流行火雨坐标Y3 5
+DEC N$流行火雨坐标Y4 5
+DEC N$流行火雨坐标X5 11
+DEC N$流行火雨坐标X6 7
+DEC N$流行火雨坐标Y6 7
+INC N$流行火雨坐标X7 7
+DEC N$流行火雨坐标Y7 7
+DEC N$流行火雨坐标X8 7
+INC N$流行火雨坐标Y8 7
+INC N$流行火雨坐标X9 7
+INC N$流行火雨坐标Y9 7
+INC N$流行火雨坐标Y10 13
+DEC N$流行火雨坐标X11 7
+INC N$流行火雨坐标Y11 15
+dec N$流行火雨坐标X12 13
+DEC N$流行火雨坐标Y12 7
+DEC N$流行火雨坐标X13 13
+INC N$流行火雨坐标Y13 7
+
+
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X12)> <$STR(N$流行火雨坐标Y12)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X13)> <$STR(N$流行火雨坐标Y13)> 12 1938 22 1 100 1 0
+delaycall 1500 @混沌火轮伤害13
+break
+
+
+#if
+EQUAL N$混沌火轮数量 14
+#act
+MOV N$流行火雨坐标X1 <$STR(N998)>
+MOV N$流行火雨坐标Y1 <$STR(N999)>
+MOV N$流行火雨坐标X2 <$STR(N998)>
+MOV N$流行火雨坐标Y2 <$STR(N999)>
+MOV N$流行火雨坐标X3 <$STR(N998)>
+MOV N$流行火雨坐标Y3 <$STR(N999)>
+MOV N$流行火雨坐标X4 <$STR(N998)>
+MOV N$流行火雨坐标Y4 <$STR(N999)>
+MOV N$流行火雨坐标X5 <$STR(N998)>
+MOV N$流行火雨坐标Y5 <$STR(N999)>
+MOV N$流行火雨坐标X6 <$STR(N998)>
+MOV N$流行火雨坐标Y6 <$STR(N999)>
+MOV N$流行火雨坐标X7 <$STR(N998)>
+MOV N$流行火雨坐标Y7 <$STR(N999)>
+MOV N$流行火雨坐标X8 <$STR(N998)>
+MOV N$流行火雨坐标Y8 <$STR(N999)>
+MOV N$流行火雨坐标X9 <$STR(N998)>
+MOV N$流行火雨坐标Y9 <$STR(N999)>
+MOV N$流行火雨坐标X10 <$STR(N998)>
+MOV N$流行火雨坐标Y10 <$STR(N999)>
+MOV N$流行火雨坐标X11 <$STR(N998)>
+MOV N$流行火雨坐标Y11 <$STR(N999)>
+MOV N$流行火雨坐标X12 <$STR(N998)>
+MOV N$流行火雨坐标Y12 <$STR(N999)>
+MOV N$流行火雨坐标X13 <$STR(N998)>
+MOV N$流行火雨坐标Y13 <$STR(N999)>
+MOV N$流行火雨坐标X14 <$STR(N998)>
+MOV N$流行火雨坐标Y14 <$STR(N999)>
+INC N$流行火雨坐标X1 5
+DEC N$流行火雨坐标X2 5
+INC N$流行火雨坐标Y3 5
+DEC N$流行火雨坐标Y4 5
+DEC N$流行火雨坐标X5 11
+DEC N$流行火雨坐标X6 7
+DEC N$流行火雨坐标Y6 7
+INC N$流行火雨坐标X7 7
+DEC N$流行火雨坐标Y7 7
+DEC N$流行火雨坐标X8 7
+INC N$流行火雨坐标Y8 7
+INC N$流行火雨坐标X9 7
+INC N$流行火雨坐标Y9 7
+INC N$流行火雨坐标Y10 13
+DEC N$流行火雨坐标X11 7
+INC N$流行火雨坐标Y11 15
+dec N$流行火雨坐标X12 13
+DEC N$流行火雨坐标Y12 7
+DEC N$流行火雨坐标X13 13
+INC N$流行火雨坐标Y13 7
+INC N$流行火雨坐标X14 11
+
+
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X12)> <$STR(N$流行火雨坐标Y12)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X13)> <$STR(N$流行火雨坐标Y13)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X14)> <$STR(N$流行火雨坐标Y14)> 12 1938 22 1 100 1 0
+delaycall 1500 @混沌火轮伤害14
+break
+
+
+
+#if
+EQUAL N$混沌火轮数量 15
+#act
+MOV N$流行火雨坐标X1 <$STR(N998)>
+MOV N$流行火雨坐标Y1 <$STR(N999)>
+MOV N$流行火雨坐标X2 <$STR(N998)>
+MOV N$流行火雨坐标Y2 <$STR(N999)>
+MOV N$流行火雨坐标X3 <$STR(N998)>
+MOV N$流行火雨坐标Y3 <$STR(N999)>
+MOV N$流行火雨坐标X4 <$STR(N998)>
+MOV N$流行火雨坐标Y4 <$STR(N999)>
+MOV N$流行火雨坐标X5 <$STR(N998)>
+MOV N$流行火雨坐标Y5 <$STR(N999)>
+MOV N$流行火雨坐标X6 <$STR(N998)>
+MOV N$流行火雨坐标Y6 <$STR(N999)>
+MOV N$流行火雨坐标X7 <$STR(N998)>
+MOV N$流行火雨坐标Y7 <$STR(N999)>
+MOV N$流行火雨坐标X8 <$STR(N998)>
+MOV N$流行火雨坐标Y8 <$STR(N999)>
+MOV N$流行火雨坐标X9 <$STR(N998)>
+MOV N$流行火雨坐标Y9 <$STR(N999)>
+MOV N$流行火雨坐标X10 <$STR(N998)>
+MOV N$流行火雨坐标Y10 <$STR(N999)>
+MOV N$流行火雨坐标X11 <$STR(N998)>
+MOV N$流行火雨坐标Y11 <$STR(N999)>
+MOV N$流行火雨坐标X12 <$STR(N998)>
+MOV N$流行火雨坐标Y12 <$STR(N999)>
+MOV N$流行火雨坐标X13 <$STR(N998)>
+MOV N$流行火雨坐标Y13 <$STR(N999)>
+MOV N$流行火雨坐标X14 <$STR(N998)>
+MOV N$流行火雨坐标Y14 <$STR(N999)>
+MOV N$流行火雨坐标X15 <$STR(N998)>
+MOV N$流行火雨坐标Y15 <$STR(N999)>
+INC N$流行火雨坐标X1 5
+DEC N$流行火雨坐标X2 5
+INC N$流行火雨坐标Y3 5
+DEC N$流行火雨坐标Y4 5
+DEC N$流行火雨坐标X5 11
+DEC N$流行火雨坐标X6 7
+DEC N$流行火雨坐标Y6 7
+INC N$流行火雨坐标X7 7
+DEC N$流行火雨坐标Y7 7
+DEC N$流行火雨坐标X8 7
+INC N$流行火雨坐标Y8 7
+INC N$流行火雨坐标X9 7
+INC N$流行火雨坐标Y9 7
+INC N$流行火雨坐标Y10 13
+DEC N$流行火雨坐标X11 7
+INC N$流行火雨坐标Y11 15
+dec N$流行火雨坐标X12 13
+DEC N$流行火雨坐标Y12 7
+DEC N$流行火雨坐标X13 13
+INC N$流行火雨坐标Y13 7
+INC N$流行火雨坐标X14 11
+DEC N$流行火雨坐标X15 17
+
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X12)> <$STR(N$流行火雨坐标Y12)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X13)> <$STR(N$流行火雨坐标Y13)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X14)> <$STR(N$流行火雨坐标Y14)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X15)> <$STR(N$流行火雨坐标Y15)> 12 1938 22 1 100 1 0
+delaycall 1500 @混沌火轮伤害15
+break
+
+
+
+
+#if
+EQUAL N$混沌火轮数量 16
+#act
+MOV N$流行火雨坐标X1 <$STR(N998)>
+MOV N$流行火雨坐标Y1 <$STR(N999)>
+MOV N$流行火雨坐标X2 <$STR(N998)>
+MOV N$流行火雨坐标Y2 <$STR(N999)>
+MOV N$流行火雨坐标X3 <$STR(N998)>
+MOV N$流行火雨坐标Y3 <$STR(N999)>
+MOV N$流行火雨坐标X4 <$STR(N998)>
+MOV N$流行火雨坐标Y4 <$STR(N999)>
+MOV N$流行火雨坐标X5 <$STR(N998)>
+MOV N$流行火雨坐标Y5 <$STR(N999)>
+MOV N$流行火雨坐标X6 <$STR(N998)>
+MOV N$流行火雨坐标Y6 <$STR(N999)>
+MOV N$流行火雨坐标X7 <$STR(N998)>
+MOV N$流行火雨坐标Y7 <$STR(N999)>
+MOV N$流行火雨坐标X8 <$STR(N998)>
+MOV N$流行火雨坐标Y8 <$STR(N999)>
+MOV N$流行火雨坐标X9 <$STR(N998)>
+MOV N$流行火雨坐标Y9 <$STR(N999)>
+MOV N$流行火雨坐标X10 <$STR(N998)>
+MOV N$流行火雨坐标Y10 <$STR(N999)>
+MOV N$流行火雨坐标X11 <$STR(N998)>
+MOV N$流行火雨坐标Y11 <$STR(N999)>
+MOV N$流行火雨坐标X12 <$STR(N998)>
+MOV N$流行火雨坐标Y12 <$STR(N999)>
+MOV N$流行火雨坐标X13 <$STR(N998)>
+MOV N$流行火雨坐标Y13 <$STR(N999)>
+MOV N$流行火雨坐标X14 <$STR(N998)>
+MOV N$流行火雨坐标Y14 <$STR(N999)>
+MOV N$流行火雨坐标X15 <$STR(N998)>
+MOV N$流行火雨坐标Y15 <$STR(N999)>
+MOV N$流行火雨坐标X16 <$STR(N998)>
+MOV N$流行火雨坐标Y16 <$STR(N999)>
+INC N$流行火雨坐标X1 5
+DEC N$流行火雨坐标X2 5
+INC N$流行火雨坐标Y3 5
+DEC N$流行火雨坐标Y4 5
+DEC N$流行火雨坐标X5 11
+DEC N$流行火雨坐标X6 7
+DEC N$流行火雨坐标Y6 7
+INC N$流行火雨坐标X7 7
+DEC N$流行火雨坐标Y7 7
+DEC N$流行火雨坐标X8 7
+INC N$流行火雨坐标Y8 7
+INC N$流行火雨坐标X9 7
+INC N$流行火雨坐标Y9 7
+INC N$流行火雨坐标Y10 13
+DEC N$流行火雨坐标X11 7
+INC N$流行火雨坐标Y11 15
+dec N$流行火雨坐标X12 13
+DEC N$流行火雨坐标Y12 7
+DEC N$流行火雨坐标X13 13
+INC N$流行火雨坐标Y13 7
+INC N$流行火雨坐标X14 11
+DEC N$流行火雨坐标X15 17
+DEC N$流行火雨坐标X16 18
+INC N$流行火雨坐标Y16 10
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X12)> <$STR(N$流行火雨坐标Y12)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X13)> <$STR(N$流行火雨坐标Y13)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X14)> <$STR(N$流行火雨坐标Y14)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X15)> <$STR(N$流行火雨坐标Y15)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X16)> <$STR(N$流行火雨坐标Y16)> 12 1938 22 1 100 1 0
+delaycall 1500 @混沌火轮伤害16
+break
+
+
+#if
+EQUAL N$混沌火轮数量 17
+#act
+MOV N$流行火雨坐标X1 <$STR(N998)>
+MOV N$流行火雨坐标Y1 <$STR(N999)>
+MOV N$流行火雨坐标X2 <$STR(N998)>
+MOV N$流行火雨坐标Y2 <$STR(N999)>
+MOV N$流行火雨坐标X3 <$STR(N998)>
+MOV N$流行火雨坐标Y3 <$STR(N999)>
+MOV N$流行火雨坐标X4 <$STR(N998)>
+MOV N$流行火雨坐标Y4 <$STR(N999)>
+MOV N$流行火雨坐标X5 <$STR(N998)>
+MOV N$流行火雨坐标Y5 <$STR(N999)>
+MOV N$流行火雨坐标X6 <$STR(N998)>
+MOV N$流行火雨坐标Y6 <$STR(N999)>
+MOV N$流行火雨坐标X7 <$STR(N998)>
+MOV N$流行火雨坐标Y7 <$STR(N999)>
+MOV N$流行火雨坐标X8 <$STR(N998)>
+MOV N$流行火雨坐标Y8 <$STR(N999)>
+MOV N$流行火雨坐标X9 <$STR(N998)>
+MOV N$流行火雨坐标Y9 <$STR(N999)>
+MOV N$流行火雨坐标X10 <$STR(N998)>
+MOV N$流行火雨坐标Y10 <$STR(N999)>
+MOV N$流行火雨坐标X11 <$STR(N998)>
+MOV N$流行火雨坐标Y11 <$STR(N999)>
+MOV N$流行火雨坐标X12 <$STR(N998)>
+MOV N$流行火雨坐标Y12 <$STR(N999)>
+MOV N$流行火雨坐标X13 <$STR(N998)>
+MOV N$流行火雨坐标Y13 <$STR(N999)>
+MOV N$流行火雨坐标X14 <$STR(N998)>
+MOV N$流行火雨坐标Y14 <$STR(N999)>
+MOV N$流行火雨坐标X15 <$STR(N998)>
+MOV N$流行火雨坐标Y15 <$STR(N999)>
+MOV N$流行火雨坐标X16 <$STR(N998)>
+MOV N$流行火雨坐标Y16 <$STR(N999)>
+MOV N$流行火雨坐标X17 <$STR(N998)>
+MOV N$流行火雨坐标Y17 <$STR(N999)>
+INC N$流行火雨坐标X1 5
+DEC N$流行火雨坐标X2 5
+INC N$流行火雨坐标Y3 5
+DEC N$流行火雨坐标Y4 5
+DEC N$流行火雨坐标X5 11
+DEC N$流行火雨坐标X6 7
+DEC N$流行火雨坐标Y6 7
+INC N$流行火雨坐标X7 7
+DEC N$流行火雨坐标Y7 7
+DEC N$流行火雨坐标X8 7
+INC N$流行火雨坐标Y8 7
+INC N$流行火雨坐标X9 7
+INC N$流行火雨坐标Y9 7
+INC N$流行火雨坐标Y10 13
+DEC N$流行火雨坐标X11 7
+INC N$流行火雨坐标Y11 15
+dec N$流行火雨坐标X12 13
+DEC N$流行火雨坐标Y12 7
+DEC N$流行火雨坐标X13 13
+INC N$流行火雨坐标Y13 7
+INC N$流行火雨坐标X14 11
+DEC N$流行火雨坐标X15 17
+DEC N$流行火雨坐标X16 18
+INC N$流行火雨坐标Y16 10
+INC N$流行火雨坐标X17 13
+inc N$流行火雨坐标Y17 8
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X12)> <$STR(N$流行火雨坐标Y12)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X13)> <$STR(N$流行火雨坐标Y13)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X14)> <$STR(N$流行火雨坐标Y14)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X15)> <$STR(N$流行火雨坐标Y15)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X16)> <$STR(N$流行火雨坐标Y16)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X17)> <$STR(N$流行火雨坐标Y17)> 12 1938 22 1 100 1 0
+delaycall 1500 @混沌火轮伤害17
+break
+
+
+#if
+EQUAL N$混沌火轮数量 18
+#act
+MOV N$流行火雨坐标X1 <$STR(N998)>
+MOV N$流行火雨坐标Y1 <$STR(N999)>
+MOV N$流行火雨坐标X2 <$STR(N998)>
+MOV N$流行火雨坐标Y2 <$STR(N999)>
+MOV N$流行火雨坐标X3 <$STR(N998)>
+MOV N$流行火雨坐标Y3 <$STR(N999)>
+MOV N$流行火雨坐标X4 <$STR(N998)>
+MOV N$流行火雨坐标Y4 <$STR(N999)>
+MOV N$流行火雨坐标X5 <$STR(N998)>
+MOV N$流行火雨坐标Y5 <$STR(N999)>
+MOV N$流行火雨坐标X6 <$STR(N998)>
+MOV N$流行火雨坐标Y6 <$STR(N999)>
+MOV N$流行火雨坐标X7 <$STR(N998)>
+MOV N$流行火雨坐标Y7 <$STR(N999)>
+MOV N$流行火雨坐标X8 <$STR(N998)>
+MOV N$流行火雨坐标Y8 <$STR(N999)>
+MOV N$流行火雨坐标X9 <$STR(N998)>
+MOV N$流行火雨坐标Y9 <$STR(N999)>
+MOV N$流行火雨坐标X10 <$STR(N998)>
+MOV N$流行火雨坐标Y10 <$STR(N999)>
+MOV N$流行火雨坐标X11 <$STR(N998)>
+MOV N$流行火雨坐标Y11 <$STR(N999)>
+MOV N$流行火雨坐标X12 <$STR(N998)>
+MOV N$流行火雨坐标Y12 <$STR(N999)>
+MOV N$流行火雨坐标X13 <$STR(N998)>
+MOV N$流行火雨坐标Y13 <$STR(N999)>
+MOV N$流行火雨坐标X14 <$STR(N998)>
+MOV N$流行火雨坐标Y14 <$STR(N999)>
+MOV N$流行火雨坐标X15 <$STR(N998)>
+MOV N$流行火雨坐标Y15 <$STR(N999)>
+MOV N$流行火雨坐标X16 <$STR(N998)>
+MOV N$流行火雨坐标Y16 <$STR(N999)>
+MOV N$流行火雨坐标X17 <$STR(N998)>
+MOV N$流行火雨坐标Y17 <$STR(N999)>
+MOV N$流行火雨坐标X18 <$STR(N998)>
+MOV N$流行火雨坐标Y18 <$STR(N999)>
+INC N$流行火雨坐标X1 5
+DEC N$流行火雨坐标X2 5
+INC N$流行火雨坐标Y3 5
+DEC N$流行火雨坐标Y4 5
+DEC N$流行火雨坐标X5 11
+DEC N$流行火雨坐标X6 7
+DEC N$流行火雨坐标Y6 7
+INC N$流行火雨坐标X7 7
+DEC N$流行火雨坐标Y7 7
+DEC N$流行火雨坐标X8 7
+INC N$流行火雨坐标Y8 7
+INC N$流行火雨坐标X9 7
+INC N$流行火雨坐标Y9 7
+INC N$流行火雨坐标Y10 13
+DEC N$流行火雨坐标X11 7
+INC N$流行火雨坐标Y11 15
+dec N$流行火雨坐标X12 13
+DEC N$流行火雨坐标Y12 7
+DEC N$流行火雨坐标X13 13
+INC N$流行火雨坐标Y13 7
+INC N$流行火雨坐标X14 11
+DEC N$流行火雨坐标X15 17
+DEC N$流行火雨坐标X16 18
+INC N$流行火雨坐标Y16 10
+INC N$流行火雨坐标X17 13
+inc N$流行火雨坐标Y17 8
+INC N$流行火雨坐标X18 7
+inc N$流行火雨坐标Y18 14
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X12)> <$STR(N$流行火雨坐标Y12)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X13)> <$STR(N$流行火雨坐标Y13)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X14)> <$STR(N$流行火雨坐标Y14)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X15)> <$STR(N$流行火雨坐标Y15)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X16)> <$STR(N$流行火雨坐标Y16)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X17)> <$STR(N$流行火雨坐标Y17)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X18)> <$STR(N$流行火雨坐标Y18)> 12 1938 22 1 100 1 0
+delaycall 1500 @混沌火轮伤害18
+break
+
+#if
+EQUAL N$混沌火轮数量 19
+#act
+MOV N$流行火雨坐标X1 <$STR(N998)>
+MOV N$流行火雨坐标Y1 <$STR(N999)>
+MOV N$流行火雨坐标X2 <$STR(N998)>
+MOV N$流行火雨坐标Y2 <$STR(N999)>
+MOV N$流行火雨坐标X3 <$STR(N998)>
+MOV N$流行火雨坐标Y3 <$STR(N999)>
+MOV N$流行火雨坐标X4 <$STR(N998)>
+MOV N$流行火雨坐标Y4 <$STR(N999)>
+MOV N$流行火雨坐标X5 <$STR(N998)>
+MOV N$流行火雨坐标Y5 <$STR(N999)>
+MOV N$流行火雨坐标X6 <$STR(N998)>
+MOV N$流行火雨坐标Y6 <$STR(N999)>
+MOV N$流行火雨坐标X7 <$STR(N998)>
+MOV N$流行火雨坐标Y7 <$STR(N999)>
+MOV N$流行火雨坐标X8 <$STR(N998)>
+MOV N$流行火雨坐标Y8 <$STR(N999)>
+MOV N$流行火雨坐标X9 <$STR(N998)>
+MOV N$流行火雨坐标Y9 <$STR(N999)>
+MOV N$流行火雨坐标X10 <$STR(N998)>
+MOV N$流行火雨坐标Y10 <$STR(N999)>
+MOV N$流行火雨坐标X11 <$STR(N998)>
+MOV N$流行火雨坐标Y11 <$STR(N999)>
+MOV N$流行火雨坐标X12 <$STR(N998)>
+MOV N$流行火雨坐标Y12 <$STR(N999)>
+MOV N$流行火雨坐标X13 <$STR(N998)>
+MOV N$流行火雨坐标Y13 <$STR(N999)>
+MOV N$流行火雨坐标X14 <$STR(N998)>
+MOV N$流行火雨坐标Y14 <$STR(N999)>
+MOV N$流行火雨坐标X15 <$STR(N998)>
+MOV N$流行火雨坐标Y15 <$STR(N999)>
+MOV N$流行火雨坐标X16 <$STR(N998)>
+MOV N$流行火雨坐标Y16 <$STR(N999)>
+MOV N$流行火雨坐标X17 <$STR(N998)>
+MOV N$流行火雨坐标Y17 <$STR(N999)>
+MOV N$流行火雨坐标X18 <$STR(N998)>
+MOV N$流行火雨坐标Y18 <$STR(N999)>
+MOV N$流行火雨坐标X19 <$STR(N998)>
+MOV N$流行火雨坐标Y19 <$STR(N999)>
+INC N$流行火雨坐标X1 5
+DEC N$流行火雨坐标X2 5
+INC N$流行火雨坐标Y3 5
+DEC N$流行火雨坐标Y4 5
+DEC N$流行火雨坐标X5 11
+DEC N$流行火雨坐标X6 7
+DEC N$流行火雨坐标Y6 7
+INC N$流行火雨坐标X7 7
+DEC N$流行火雨坐标Y7 7
+DEC N$流行火雨坐标X8 7
+INC N$流行火雨坐标Y8 7
+INC N$流行火雨坐标X9 7
+INC N$流行火雨坐标Y9 7
+INC N$流行火雨坐标Y10 13
+DEC N$流行火雨坐标X11 7
+INC N$流行火雨坐标Y11 15
+dec N$流行火雨坐标X12 13
+DEC N$流行火雨坐标Y12 7
+DEC N$流行火雨坐标X13 13
+INC N$流行火雨坐标Y13 7
+INC N$流行火雨坐标X14 11
+DEC N$流行火雨坐标X15 17
+DEC N$流行火雨坐标X16 18
+INC N$流行火雨坐标Y16 10
+INC N$流行火雨坐标X17 13
+inc N$流行火雨坐标Y17 8
+INC N$流行火雨坐标X18 7
+inc N$流行火雨坐标Y18 14
+INC N$流行火雨坐标X19 13
+dec N$流行火雨坐标Y19 7
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X12)> <$STR(N$流行火雨坐标Y12)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X13)> <$STR(N$流行火雨坐标Y13)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X14)> <$STR(N$流行火雨坐标Y14)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X15)> <$STR(N$流行火雨坐标Y15)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X16)> <$STR(N$流行火雨坐标Y16)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X17)> <$STR(N$流行火雨坐标Y17)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X18)> <$STR(N$流行火雨坐标Y18)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X19)> <$STR(N$流行火雨坐标Y19)> 12 1938 22 1 100 1 0
+delaycall 1500 @混沌火轮伤害19
+break
+
+#if
+EQUAL N$混沌火轮数量 20
+#act
+MOV N$流行火雨坐标X1 <$STR(N998)>
+MOV N$流行火雨坐标Y1 <$STR(N999)>
+MOV N$流行火雨坐标X2 <$STR(N998)>
+MOV N$流行火雨坐标Y2 <$STR(N999)>
+MOV N$流行火雨坐标X3 <$STR(N998)>
+MOV N$流行火雨坐标Y3 <$STR(N999)>
+MOV N$流行火雨坐标X4 <$STR(N998)>
+MOV N$流行火雨坐标Y4 <$STR(N999)>
+MOV N$流行火雨坐标X5 <$STR(N998)>
+MOV N$流行火雨坐标Y5 <$STR(N999)>
+MOV N$流行火雨坐标X6 <$STR(N998)>
+MOV N$流行火雨坐标Y6 <$STR(N999)>
+MOV N$流行火雨坐标X7 <$STR(N998)>
+MOV N$流行火雨坐标Y7 <$STR(N999)>
+MOV N$流行火雨坐标X8 <$STR(N998)>
+MOV N$流行火雨坐标Y8 <$STR(N999)>
+MOV N$流行火雨坐标X9 <$STR(N998)>
+MOV N$流行火雨坐标Y9 <$STR(N999)>
+MOV N$流行火雨坐标X10 <$STR(N998)>
+MOV N$流行火雨坐标Y10 <$STR(N999)>
+MOV N$流行火雨坐标X11 <$STR(N998)>
+MOV N$流行火雨坐标Y11 <$STR(N999)>
+MOV N$流行火雨坐标X12 <$STR(N998)>
+MOV N$流行火雨坐标Y12 <$STR(N999)>
+MOV N$流行火雨坐标X13 <$STR(N998)>
+MOV N$流行火雨坐标Y13 <$STR(N999)>
+MOV N$流行火雨坐标X14 <$STR(N998)>
+MOV N$流行火雨坐标Y14 <$STR(N999)>
+MOV N$流行火雨坐标X15 <$STR(N998)>
+MOV N$流行火雨坐标Y15 <$STR(N999)>
+MOV N$流行火雨坐标X16 <$STR(N998)>
+MOV N$流行火雨坐标Y16 <$STR(N999)>
+MOV N$流行火雨坐标X17 <$STR(N998)>
+MOV N$流行火雨坐标Y17 <$STR(N999)>
+MOV N$流行火雨坐标X18 <$STR(N998)>
+MOV N$流行火雨坐标Y18 <$STR(N999)>
+MOV N$流行火雨坐标X19 <$STR(N998)>
+MOV N$流行火雨坐标Y19 <$STR(N999)>
+MOV N$流行火雨坐标X20 <$STR(N998)>
+MOV N$流行火雨坐标Y20 <$STR(N999)>
+INC N$流行火雨坐标X1 5
+DEC N$流行火雨坐标X2 5
+INC N$流行火雨坐标Y3 5
+DEC N$流行火雨坐标Y4 5
+DEC N$流行火雨坐标X5 11
+DEC N$流行火雨坐标X6 7
+DEC N$流行火雨坐标Y6 7
+INC N$流行火雨坐标X7 7
+DEC N$流行火雨坐标Y7 7
+DEC N$流行火雨坐标X8 7
+INC N$流行火雨坐标Y8 7
+INC N$流行火雨坐标X9 7
+INC N$流行火雨坐标Y9 7
+INC N$流行火雨坐标Y10 13
+DEC N$流行火雨坐标X11 7
+INC N$流行火雨坐标Y11 15
+dec N$流行火雨坐标X12 13
+DEC N$流行火雨坐标Y12 7
+DEC N$流行火雨坐标X13 13
+INC N$流行火雨坐标Y13 7
+INC N$流行火雨坐标X14 11
+DEC N$流行火雨坐标X15 17
+DEC N$流行火雨坐标X16 18
+INC N$流行火雨坐标Y16 10
+INC N$流行火雨坐标X17 13
+inc N$流行火雨坐标Y17 8
+INC N$流行火雨坐标X18 7
+inc N$流行火雨坐标Y18 14
+INC N$流行火雨坐标X19 13
+dec N$流行火雨坐标Y19 7
+DEC N$流行火雨坐标Y20 11
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X12)> <$STR(N$流行火雨坐标Y12)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X13)> <$STR(N$流行火雨坐标Y13)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X14)> <$STR(N$流行火雨坐标Y14)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X15)> <$STR(N$流行火雨坐标Y15)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X16)> <$STR(N$流行火雨坐标Y16)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X17)> <$STR(N$流行火雨坐标Y17)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X18)> <$STR(N$流行火雨坐标Y18)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X19)> <$STR(N$流行火雨坐标Y19)> 12 1938 22 1 100 1 0
+MAPEFFECT <$MAP> <$STR(N$流行火雨坐标X20)> <$STR(N$流行火雨坐标Y20)> 12 1938 22 1 100 1 0
+delaycall 1500 @混沌火轮伤害20
+break
+
+
+[@混沌火轮伤害20]
+#if
+#act
+RangeHarm <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X12)> <$STR(N$流行火雨坐标Y12)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X13)> <$STR(N$流行火雨坐标Y13)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X14)> <$STR(N$流行火雨坐标Y14)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X15)> <$STR(N$流行火雨坐标Y15)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X16)> <$STR(N$流行火雨坐标Y16)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X18)> <$STR(N$流行火雨坐标Y18)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X19)> <$STR(N$流行火雨坐标Y19)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X20)> <$STR(N$流行火雨坐标Y20)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+
+[@混沌火轮伤害19]
+#if
+#act
+RangeHarm <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X12)> <$STR(N$流行火雨坐标Y12)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X13)> <$STR(N$流行火雨坐标Y13)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X14)> <$STR(N$流行火雨坐标Y14)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X15)> <$STR(N$流行火雨坐标Y15)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X16)> <$STR(N$流行火雨坐标Y16)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X18)> <$STR(N$流行火雨坐标Y18)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X19)> <$STR(N$流行火雨坐标Y19)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+
+
+
+
+[@混沌火轮伤害18]
+#if
+#act
+RangeHarm <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X12)> <$STR(N$流行火雨坐标Y12)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X13)> <$STR(N$流行火雨坐标Y13)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X14)> <$STR(N$流行火雨坐标Y14)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X15)> <$STR(N$流行火雨坐标Y15)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X16)> <$STR(N$流行火雨坐标Y16)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X18)> <$STR(N$流行火雨坐标Y18)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+
+
+[@混沌火轮伤害17]
+#if
+#act
+RangeHarm <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X12)> <$STR(N$流行火雨坐标Y12)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X13)> <$STR(N$流行火雨坐标Y13)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X14)> <$STR(N$流行火雨坐标Y14)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X15)> <$STR(N$流行火雨坐标Y15)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X16)> <$STR(N$流行火雨坐标Y16)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X17)> <$STR(N$流行火雨坐标Y17)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+[@混沌火轮伤害16]
+#if
+#act
+RangeHarm <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X12)> <$STR(N$流行火雨坐标Y12)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X13)> <$STR(N$流行火雨坐标Y13)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X14)> <$STR(N$流行火雨坐标Y14)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X15)> <$STR(N$流行火雨坐标Y15)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X16)> <$STR(N$流行火雨坐标Y16)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+
+[@混沌火轮伤害15]
+#if
+#act
+RangeHarm <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X12)> <$STR(N$流行火雨坐标Y12)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X13)> <$STR(N$流行火雨坐标Y13)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X14)> <$STR(N$流行火雨坐标Y14)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X15)> <$STR(N$流行火雨坐标Y15)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+
+
+[@混沌火轮伤害14]
+#if
+#act
+RangeHarm <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X12)> <$STR(N$流行火雨坐标Y12)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X13)> <$STR(N$流行火雨坐标Y13)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X14)> <$STR(N$流行火雨坐标Y14)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+
+
+
+
+
+
+
+[@混沌火轮伤害13]
+#if
+#act
+RangeHarm <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X12)> <$STR(N$流行火雨坐标Y12)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X13)> <$STR(N$流行火雨坐标Y13)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+
+
+[@混沌火轮伤害12]
+#if
+#act
+RangeHarm <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X12)> <$STR(N$流行火雨坐标Y12)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+
+
+[@混沌火轮伤害11]
+#if
+#act
+RangeHarm <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X11)> <$STR(N$流行火雨坐标Y11)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+
+
+
+
+
+
+
+[@混沌火轮伤害10]
+#if
+#act
+RangeHarm <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X10)> <$STR(N$流行火雨坐标Y10)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+
+
+
+
+
+
+
+
+[@混沌火轮伤害9]
+#if
+#act
+RangeHarm <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X9)> <$STR(N$流行火雨坐标Y9)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+[@混沌火轮伤害8]
+#if
+#act
+RangeHarm <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X8)> <$STR(N$流行火雨坐标Y8)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+
+
+
+
+[@混沌火轮伤害7]
+#if
+#act
+RangeHarm <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X7)> <$STR(N$流行火雨坐标Y7)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+
+
+
+
+
+[@混沌火轮伤害6]
+#if
+#act
+RangeHarm <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X6)> <$STR(N$流行火雨坐标Y6)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+[@混沌火轮伤害5]
+#if
+#act
+RangeHarm <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X5)> <$STR(N$流行火雨坐标Y5)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+[@混沌火轮伤害4]
+#if
+#act
+RangeHarm <$STR(N$流行火雨坐标X1)> <$STR(N$流行火雨坐标Y1)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X2)> <$STR(N$流行火雨坐标Y2)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X3)> <$STR(N$流行火雨坐标Y3)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+RangeHarm <$STR(N$流行火雨坐标X4)> <$STR(N$流行火雨坐标Y4)> <$STR(N$混沌火轮范围)> <$STR(N$冰咆哮最终伤害)> 0 0 0 2 0 0 0 0 0 0
+
+
+
+
+
+
+
+
+[@混沌火雨对人物伤害计算]
+#if
+LARGE N$冰咆哮幸运 0
+#ACT
+FORMULATION <$MC>+((<$MAXMC>-<$MC>)/10)*<$STR(N$冰咆哮幸运)> N$冰咆哮人物幸运攻击下限
+DEC N$冰咆哮人物幸运攻击下限 1
+#elseact
+MOV N$冰咆哮人物幸运攻击下限 <$MC>
+#if
+#act
+GetHumVar <$C.USERNAME> <$STR(N$人物暴击防御)> N$对方暴击防御
+GetHumVar <$C.USERNAME> <$STR(N$免疫对人物真实伤害)> N$对方免疫对人物真实伤害
+FORMULATION <$STR(N$对人物真实伤害)>-<$STR(N$对方免疫对人物真实伤害)> N$对人物造成的真实伤害
+MOVR N$冰咆哮打人最终伤害 <$STR(N$冰咆哮人物幸运攻击下限)> <$MAXMC>
+; sendmsg 6 随机<$STR(N$冰咆哮打人最终伤害)>
+CalcPercent N$冰咆哮打人最终伤害 N$冰咆哮打人默认伤害 N$冰咆哮打人最终伤害
+; sendmsg 6 默认<$STR(N$冰咆哮打人最终伤害)>
+CalcPercent N$冰咆哮打人最终伤害 N$冰咆哮对人物伤害百分比 N$冰咆哮打人最终伤害
+; sendmsg 6 百分比<$STR(N$冰咆哮打人最终伤害)>
+
+#if
+LARGE N$人物暴击几率 <$STR(N$对方暴击防御)>
+#ACT
+FORMULATION <$STR(N$人物暴击几率)>-<$STR(N$对方暴击防御)> N$冰咆哮打人暴击几率
+
+#IF
+LARGE N$冰咆哮打人暴击几率 0
+RANDOMEX N$冰咆哮打人暴击几率 101
+#ACT
+PLAYEFFECT 73 0 12 1 80 0 -125 -170 1
+FORMULATION (<$STR(N$人物暴击伤害)>+100)/100*<$STR(N$冰咆哮打人最终伤害)> N$冰咆哮打人最终伤害
+
+
+#if
+#act
+goto @混沌火轮开始对人物伤害
+[@混沌火轮开始对人物伤害]
+#if
+#ACT
+
+RangeHarm <$STR(N998)> <$STR(N999)> 3 <$STR(N$冰咆哮打人最终伤害)> 0 0 0 1 1 4950 22 100 0 0
+
+
+
+RangeHarm <$STR(N998)> <$STR(N999)> 3 0 6 <$STR(N$对人物造成的真实伤害)> 0 1 1 4950 22 100 0 0
+
+}

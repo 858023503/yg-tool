@@ -1,0 +1,367 @@
+[@main]
+#IF
+#act
+
+OPENMERCHANTBIGDLG 5 546 1 4 -15 -52 1 560 0 1
+#say
+<ITEMBOX:11:5:125:397:243:63:63:*:95#放入晶石>
+<ITEMBOX:12:5:125:486:243:63:63:*:95#放入晶石>
+<&img:536:5:380:55><&TEXT:????:460:57{FCOLOR=95}>
+<&img:538:5:380:75><&TEXT:????:460:77{FCOLOR=95}>
+<&img:538:5:380:95><&TEXT:????:460:97{FCOLOR=95}>
+<&img:537:5:380:115><&TEXT:????:460:117{FCOLOR=95}>
+<&img:539:5:385:135>
+<&img:547:5:440:140>
+
+
+; <&playimg:7:2437:8:130:-50:-20:0>
+<&IMGEX:5:548:549:550:395:320/@融合法宝>
+
+
+[@ItemIntoBox11]
+#IF
+NOT EQUAL <$BOXITEM[11].NAME> 天道晶石
+#ACT
+messagebox 只能放入天道晶石
+goto @main
+break
+
+
+#if
+
+#act
+SetUpgradeItem 11
+GetCustomItemValueEx -1 0 <$STR(N$没用)>  <$STR(N$左边第一条属性对应编号)> <$str(N$左边属性值)> <$str(N$左边属性上限一)> <$STR(N$没用)>
+#IF
+EQUAL N$左边第一条属性对应编号 1
+#ACT
+MOV S$显示第一条编号对应属性 寂静之雷
+MOV S$显示第一条编号后缀 次
+MOV S$显示第一条技能描述 寂静之雷魔次
+
+#IF
+EQUAL N$左边第一条属性对应编号 2
+#ACT
+MOV S$显示第一条编号对应属性 梵天圣火
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 梵天圣火伤害百分比
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 3
+#ACT
+MOV S$显示第一条编号对应属性 冰咆哮
+MOV S$显示第一条编号后缀 次
+MOV S$显示第一条技能描述 冰咆哮魔次
+
+#IF
+EQUAL N$左边第一条属性对应编号 4
+#ACT
+MOV S$显示第一条编号对应属性 漫天火雨
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 漫天火雨打人百分比
+
+#IF
+EQUAL N$左边第一条属性对应编号 5
+#ACT
+MOV S$显示第一条编号对应属性 刺杀剑术
+MOV S$显示第一条编号后缀 次
+MOV S$显示第一条技能描述 刺杀剑术魔次
+
+
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 6
+#ACT
+MOV S$显示第一条编号对应属性 烈火剑法
+MOV S$显示第一条编号后缀 次
+MOV S$显示第一条技能描述 烈火剑法魔次
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 7
+#ACT
+MOV S$显示第一条编号对应属性 金殇斩
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 金殇斩伤害百分比
+
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 8
+#ACT
+MOV S$显示第一条编号对应属性 野蛮冲撞
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 野蛮冲撞伤害百分比
+
+#IF
+EQUAL N$左边第一条属性对应编号 9
+#ACT
+MOV S$显示第一条编号对应属性 灵葫
+MOV S$显示第一条编号后缀 次
+MOV S$显示第一条技能描述 灵葫魔次
+
+#IF
+EQUAL N$左边第一条属性对应编号 10
+#ACT
+MOV S$显示第一条编号对应属性 蛊毒术
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 蛊毒术伤害百分比
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 11
+#ACT
+MOV S$显示第一条编号对应属性 召唤骷髅
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 骷髅打怪百分比
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 63
+#ACT
+MOV S$显示第一条编号对应属性 魔焰狂澜
+MOV S$显示第一条编号后缀 点
+MOV S$显示第一条技能描述 魔焰狂澜伤害
+
+#IF
+EQUAL N$左边第一条属性对应编号 64
+#ACT
+MOV S$显示第一条编号对应属性 威慑符印
+MOV S$显示第一条编号后缀 点
+MOV S$显示第一条技能描述 威慑符印伤害
+
+
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 65
+#ACT
+MOV S$显示第一条编号对应属性 龙袭风暴
+MOV S$显示第一条编号后缀 点
+MOV S$显示第一条技能描述 龙袭风暴伤害
+
+
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 66
+#ACT
+MOV S$显示第一条编号对应属性 焚土喷焰
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 焚土喷焰百分比
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 67
+#ACT
+MOV S$显示第一条编号对应属性 天灵符爆
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 天灵符爆百分比
+
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 200
+#ACT
+MOV S$显示第一条编号对应属性 修罗血魂阵
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 修罗血魂阵伤害
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 203
+#ACT
+MOV S$显示第一条编号对应属性 炎龙降临
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 炎龙降临伤害
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 206
+#ACT
+MOV S$显示第一条编号对应属性 幽龙镇魂
+MOV S$显示第一条编号后缀 次
+MOV S$显示第一条技能描述 幽龙镇魂魔次
+
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 246
+#ACT
+MOV S$显示第一条编号对应属性 十字破军斩
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 十字破军斩伤害
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 247
+#ACT
+MOV S$显示第一条编号对应属性 浴火鞭策
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 浴火鞭策伤害
+
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 248
+#ACT
+MOV S$显示第一条编号对应属性 召唤火兽
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 召唤火兽伤害
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 251
+#ACT
+MOV S$显示第一条编号对应属性 召唤圣兽
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 召唤圣兽伤害
+
+
+
+
+#IF
+#act
+#say
+<ITEMBOX:11:5:125:397:243:63:63:*:95#放入需要融合的法宝>
+<ITEMBOX:12:5:125:486:243:63:63:*:95#放入需要融合的法宝>
+<&img:536:5:380:55><&TEXT:能量核心1个:460:57{FCOLOR=95}>
+<&img:538:5:380:75><&TEXT:1000000000金币:460:77{FCOLOR=95}>
+<&img:538:5:380:95><&TEXT:100个传仙币:460:97{FCOLOR=95}>
+<&img:537:5:380:115><&TEXT:100%:460:117{FCOLOR=95}>
+<&img:539:5:385:135>
+<&img:547:5:440:140>
+
+<&img:540:5:380:155><&TEXT:<$str(N$左边属性值)><$STR(S$显示第一条编号后缀)>:460:159{FCOLOR=151}>
+<&img:540:5:380:170><&TEXT:在右侧放入同样的晶石:460:174{FCOLOR=151}>
+<&img:574:5:380:185><&TEXT:在右侧放入同样的晶石:459:189{FCOLOR=151}>
+<$STR(S$法宝动态效果)>
+; <&playimg:7:2437:8:130:-50:-20:0>
+<&IMGEX:5:548:549:550:395:320/@融合法宝>
+
+
+[@ItemIntoBox12]
+#if
+EQUAL <$BOXITEM[11].NAME>
+#act
+messagebox 请先把天道晶石放入左边装备框
+goto @main
+break
+
+
+
+#if
+#act
+SetUpgradeItem 12
+GetCustomItemValueEx -1 0 <$STR(N$没用)>  <$STR(N$右边法宝第一条属性对应编号)> <$str(N$右边属性值)> <$str(N$右边属性上限一)> <$STR(N$没用)>
+
+
+
+#if
+not equal <$STR(N$左边第一条属性对应编号)> <$STR(N$右边法宝第一条属性对应编号)>
+#act
+messagebox 两个天道晶石属性必须一样
+goto @main
+break
+
+
+
+
+
+
+#if
+EQUAL  <$STR(N$左边第一条属性对应编号)> <$STR(N$右边法宝第一条属性对应编号)>
+#act
+SetUpgradeItem 12
+
+formulation min(<$str(N$左边属性值)>+<$str(N$右边属性值)>,<$str(N$右边属性上限一)>) N$法宝融合后的属性
+#elseact
+messagebox 晶石融合时两个对话框的晶石属性需要一样
+ReturnBoxItem 12
+break
+
+
+
+#IF
+#act
+#say
+<ITEMBOX:11:5:125:397:243:63:63:*:95#放入需要融合的法宝>
+<ITEMBOX:12:5:125:486:243:63:63:*:95#放入需要融合的法宝>
+<&img:536:5:380:55><&TEXT:能量核心1个:460:57{FCOLOR=95}>
+<&img:538:5:380:75><&TEXT:1000000000金币:460:77{FCOLOR=95}>
+<&img:538:5:380:95><&TEXT:100传仙币:460:97{FCOLOR=95}>
+<&img:537:5:380:115><&TEXT:100%:460:117{FCOLOR=95}>
+<&img:539:5:385:135>
+<&img:547:5:440:140>
+
+<&img:540:5:380:155><&TEXT:<$str(N$左边属性值)><$STR(S$法宝融合后缀)>:460:159{FCOLOR=151}>
+<&img:540:5:380:170><&TEXT:<$STR(N$右边属性值)><$STR(S$法宝融合后缀)>:460:174{FCOLOR=151}>
+<&img:574:5:380:185><&TEXT:融合后属性<$STR(N$法宝融合后的属性)><$STR(S$法宝融合后缀)>:459:189{FCOLOR=151}>
+<$STR(S$法宝动态效果)>
+; <&playimg:7:2437:8:130:-50:-20:0>
+<&IMGEX:5:548:549:550:395:320/@融合法宝>
+
+
+
+[@融合法宝]
+#if
+EQUAL <$BOXITEM[12].NAME>
+#act
+messagebox 放入天道晶石啊老兄
+goto @main
+break
+#if
+not checkgold 1000000000
+#act
+messagebox 金币费用不够
+break
+
+#if
+checkgamegird  < 100
+#act
+messagebox 传仙币数量不够
+break
+#if
+NOT CHECKITEM 能量核心 1
+#act
+messagebox 能量核心数量不够
+BREAK
+
+
+
+#if
+#act
+;成功
+DelBoxItem 12
+SetUpgradeItem 11
+
+SetCustomItemAbil -1 0 0 245
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 1
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = N$左边第一条属性对应编号 N$法宝融合后的属性 <$STR(N$左边属性上限一)>
+UpdateItem boxitem11
+SENDMSG 6 融合成功
+take 能量核心 1
+take 金币 1000000000
+gamegird  - 100
+goto @main
+
+#elseact
+DelBoxItem 12
+;失败
+SENDMSG 6 融合失败
+
+
+
+
+[@ItemOutBox11]
+#if
+#act
+goto @main
+[@ItemOutBox12]
+#if
+#act
+goto @main

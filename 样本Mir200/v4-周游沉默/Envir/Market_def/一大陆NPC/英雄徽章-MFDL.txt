@@ -1,0 +1,220 @@
+[@main]
+<英雄徽章/SCOLOR=249>需要对应材料提升\
+英雄徽章可以获得<血量魔法加成>和<三职业BUFF>\
+杀怪撸装备必备之物！\ \ 
+
+\
+<英雄徽章BUFF>：战士强化,法师宝宝切割,道士多招一只骷髅\ 
+<英雄徽章BUFF>：根据徽章的等级不同BUFF的效果不同！\ 
+<在右边框内放入英雄徽章开始提升/SCOLOR=250>\ 
+<ITEMBOX:1:18:513:340:120:32:32:*:251#放入者英雄徽章>\
+
+
+;-----------------------------------------------------------------------------------------
+;-----------------------------------------------------------------------------------------
+[@ItemIntoBox1]
+
+#if
+Equal <$BOXITEM[1].NAME> 英雄徽章lv1
+#act
+MessageBox <是否确认要进化/SCOLOR=250><『<$BOXITEM[1].NAME>』/SCOLOR=243>\<进化所需材料：/SCOLOR=250><元宝30000/SCOLOR=251>\<进化所需材料：/SCOLOR=250><装备碎片*50/SCOLOR=249>\<进化成功获得：/SCOLOR=250><英雄徽章lv2/SCOLOR=253>\<进化成功几率：/SCOLOR=250><100%/SCOLOR=249> @确定2  @取消
+break
+
+#if
+Equal <$BOXITEM[1].NAME> 英雄徽章lv2
+#act
+MessageBox <是否确认要进化/SCOLOR=250><『<$BOXITEM[1].NAME>』/SCOLOR=243>\<进化所需材料：/SCOLOR=250><元宝50000/SCOLOR=251>\<进化所需材料：/SCOLOR=250><装备碎片*100/SCOLOR=249>\<进化成功获得：/SCOLOR=250><英雄徽章lv3/SCOLOR=253>\<进化成功几率：/SCOLOR=250><100%/SCOLOR=249> @确定3  @取消
+break
+
+#if
+Equal <$BOXITEM[1].NAME> 英雄徽章lv3
+#act
+MessageBox <是否确认要进化/SCOLOR=250><『<$BOXITEM[1].NAME>』/SCOLOR=243>\<进化所需材料：/SCOLOR=250><元宝100000/SCOLOR=251>\<进化所需材料：/SCOLOR=250><装备碎片*200/SCOLOR=249>\<进化成功获得：/SCOLOR=250><英雄徽章lv4/SCOLOR=253>\<进化成功几率：/SCOLOR=250><100%/SCOLOR=249> @确定4  @取消
+break
+
+#if
+Equal <$BOXITEM[1].NAME> 英雄徽章lv4
+#act
+MessageBox <是否确认要进化/SCOLOR=250><『<$BOXITEM[1].NAME>』/SCOLOR=243>\<进化所需材料：/SCOLOR=250><元宝300000/SCOLOR=251>\<进化所需材料：/SCOLOR=250><装备碎片*300/SCOLOR=249>\<进化成功获得：/SCOLOR=250><英雄徽章lv5/SCOLOR=253>\<进化成功几率：/SCOLOR=250><100%/SCOLOR=249> @确定5  @取消
+break
+
+#if
+Equal <$BOXITEM[1].NAME> 英雄徽章lv5
+#act
+MessageBox <是否确认要进化/SCOLOR=250><『<$BOXITEM[1].NAME>』/SCOLOR=243>\<进化所需材料：/SCOLOR=250><元宝500000/SCOLOR=251>\<进化所需材料：/SCOLOR=250><装备碎片*400/SCOLOR=249>\<进化成功获得：/SCOLOR=250><英雄徽章lv6/SCOLOR=253>\<进化成功几率：/SCOLOR=250><100%/SCOLOR=249> @确定6  @取消
+break
+
+#if
+Equal <$BOXITEM[1].NAME> 英雄徽章lv6
+#act
+MessageBox <是否确认要进化/SCOLOR=250><『<$BOXITEM[1].NAME>』/SCOLOR=243>\<进化所需材料：/SCOLOR=250><元宝1000000/SCOLOR=251>\<进化所需材料：/SCOLOR=250><装备碎片*500/SCOLOR=249>\<进化成功获得：/SCOLOR=250><英雄徽章lv7/SCOLOR=253>\<进化成功几率：/SCOLOR=250><100%/SCOLOR=249> @确定7  @取消
+break
+
+
+#elseact
+ReturnBoxItem 1
+MessageBox <你放入的/SCOLOR=250><『装备』/SCOLOR=243><无法进行进化操作！/SCOLOR=250>\
+
+[@取消]
+#if
+#act
+ReturnBoxItem 1
+
+;-----------------------------------------------------------------------------------------
+;-----------------------------------------------------------------------------------------
+;-----------------------------------------------------------------------------------------
+;-----------------------------------------------------------------------------------------
+;-----------------------------------------------------------------------------------------
+[@确定2]
+#if
+CheckItem 装备碎片 50
+CHECKGAMEGOLD  >  29999
+#act
+#elseact
+MessageBox  条件未满足无法操作！
+ReturnBoxItem 1
+break
+
+#if
+CheckItem 装备碎片 50
+CHECKGAMEGOLD  >  29999
+#act  
+DelBoxItem 1 1
+take 装备碎片 50
+take 英雄徽章lv1
+GAMEGOLD - 30000
+GiveStateItem  英雄徽章lv2  1 1 0 0 1 1 
+SENDMOVEMSG 0 253 255 350 1 恭喜[%s]打造出[英雄徽章lv2]，实力大增! 13 20 0
+break
+;-----------------------------------------------------------------------------------------
+[@确定3]
+#if
+CheckItem 装备碎片 100
+CHECKGAMEGOLD  >  49999
+#act
+#elseact
+MessageBox  条件未满足无法操作！
+ReturnBoxItem 1
+break
+
+#if
+CheckItem 装备碎片 100
+CHECKGAMEGOLD  >  49999
+#act
+DelBoxItem 1 1
+take 装备碎片 100
+take 英雄徽章lv2
+GAMEGOLD - 50000
+GiveStateItem  英雄徽章lv3  1 1 0 0 1 1 
+SENDMOVEMSG 0 253 255 350 1 恭喜[%s]打造出[英雄徽章lv3]，实力大增! 13 20 0
+break
+;-----------------------------------------------------------------------------------------
+[@确定4]
+#if
+CheckItem 装备碎片 200
+CHECKGAMEGOLD  >  99999
+#act
+#elseact
+MessageBox  条件未满足无法操作！
+ReturnBoxItem 1
+break
+
+#if
+CheckItem 装备碎片 200
+CHECKGAMEGOLD  >  99999
+#act
+DelBoxItem 1 1
+take 装备碎片 200
+take 英雄徽章lv3
+GAMEGOLD - 100000
+GiveStateItem 英雄徽章lv4  1 1 0 0 1 1 
+SENDMOVEMSG 0 253 255 350 1 恭喜[%s]打造出[英雄徽章lv4]，实力大增! 13 20 0
+break
+;-----------------------------------------------------------------------------------------
+[@确定5]
+#if
+CheckItem 装备碎片 300
+CHECKGAMEGOLD  >  299999
+#act
+#elseact
+MessageBox  条件未满足无法操作！
+ReturnBoxItem 1
+break
+
+#if
+CheckItem 装备碎片 300
+CHECKGAMEGOLD  >  299999
+#act
+DelBoxItem 1 1
+take 装备碎片 300
+take 英雄徽章lv4
+GAMEGOLD - 300000
+GiveStateItem 英雄徽章lv5  1 1 0 0 1 1 
+SENDMOVEMSG 0 253 255 350 1 恭喜[%s]打造出[英雄徽章lv5]，实力大增! 13 20 0
+break
+;-----------------------------------------------------------------------------------------
+[@确定6]
+#if
+CheckItem 装备碎片 400
+CHECKGAMEGOLD  >  499999
+#act
+#elseact
+MessageBox  条件未满足无法操作！
+ReturnBoxItem 1
+break
+
+#if
+CheckItem 装备碎片 400
+CHECKGAMEGOLD  >  499999
+#act
+DelBoxItem 1 1
+take 装备碎片 400
+take 英雄徽章lv5
+GAMEGOLD - 500000
+GiveStateItem 英雄徽章lv6  1 1 0 0 1 1 
+SENDMOVEMSG 0 253 255 350 1 恭喜[%s]打造出[英雄徽章lv6]，实力大增! 13 20 0
+break
+;-----------------------------------------------------------------------------------------
+[@确定7]
+#if
+CheckItem 装备碎片 500
+CHECKGAMEGOLD  >  999999
+#act
+#elseact
+MessageBox  条件未满足无法操作！
+ReturnBoxItem 1
+break
+
+#if
+CheckItem 装备碎片 500
+CHECKGAMEGOLD  >  999999
+#act
+DelBoxItem 1 1
+take 装备碎片 500
+take 英雄徽章lv6
+GAMEGOLD - 1000000
+GiveStateItem 英雄徽章lv7  1 1 0 0 1 1 
+SENDMOVEMSG 0 253 255 350 1 恭喜[%s]打造出[英雄徽章lv7]，实力大增! 13 20 0
+break
+
+;-----------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+[@½ð¸Õ¼ì²â]
+{
+#if
+CHECKVAR GLOBAL YBJX-¾èÏ×µÚ1Ãû = <$USERNAME>
+#act
+setontimer 9 1 
+BREAK
+
+}

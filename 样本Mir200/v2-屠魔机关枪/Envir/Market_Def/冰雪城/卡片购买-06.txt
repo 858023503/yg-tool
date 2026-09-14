@@ -1,0 +1,42 @@
+[@main]
+
+#if
+#act
+OPENMERCHANTBIGDLG 5 941 1 4 0 0  0 360 15 1
+#say
+<&Text:500»ý·Ö¹ºÂòÒ»ÕÅ¿¨Æ¬:100:50{FCOLOR=250;FSIZE=12;FNAME=ºÚÌå;FBOLD=1}>
+<&Text:¹ºÂòÁÒ»ð¿¨Æ¬:120:70{FCOLOR=250;FSIZE=12;FNAME=ºÚÌå;FBOLD=1}/@¹ºÂòÁÒ»ð¿¨Æ¬>
+<&Text:¹ºÂòÊ¥ÊÞ¿¨Æ¬:120:90{FCOLOR=250;FSIZE=12;FNAME=ºÚÌå;FBOLD=1}/@¹ºÂòÊ¥ÊÞ¿¨Æ¬>
+<&Text:¹ºÂòÓÄÁúÕò»ê¿¨Æ¬:120:110{FCOLOR=250;FSIZE=12;FNAME=ºÚÌå;FBOLD=1}/@¹ºÂòÓÄÁúÕò»ê¿¨Æ¬>
+<&Text:¹ºÂò±ùÅØ¿¨Æ¬:120:130{FCOLOR=250;FSIZE=12;FNAME=ºÚÌå;FBOLD=1}/@¹ºÂò±ùÅØ¿¨Æ¬>
+
+
+[@¹ºÂòÁÒ»ð¿¨Æ¬]
+#if
+checkgamepoint > 499
+#act
+gamepoint - 500
+GIVE ±ù¾§Ä§Öë
+#ELSEACT
+messagebox »ý·Ö²»×ã
+[@¹ºÂòÊ¥ÊÞ¿¨Æ¬]
+#if
+checkgamepoint > 499
+#act
+gamepoint - 500
+GIVE ±ù¾§¶ñÊó
+messagebox »ý·Ö²»×ã
+[@¹ºÂòÓÄÁúÕò»ê¿¨Æ¬]
+#if
+checkgamepoint > 499
+#act
+gamepoint - 500
+GIVE ±ù¾§¶À½ÇÊÞ
+messagebox »ý·Ö²»×ã
+[@¹ºÂò±ùÅØ¿¨Æ¬]
+#if
+checkgamepoint > 499
+#act
+gamepoint - 500
+GIVE ±ù¾§ÌìÂ¿
+messagebox »ý·Ö²»×ã

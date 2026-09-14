@@ -1,0 +1,38 @@
+[@物理技能对人触发开始]
+{
+#IF
+CheckVarInList L$允许物理触发技能编号 <$CURRRUSEMAGICID>
+#ACT
+GOTO @_@对人物理技能编号<$CURRRUSEMAGICID>触发
+
+[@_@对人物理技能编号66触发]
+#IF
+EQUAL N$麻痹斩激活标识 1
+#ACT
+M.CHANGESTATE 1 3
+
+[@_@对人物理技能编号12触发]
+#IF(2)
+EQUAL N$破魔激活标识 1
+#ACT
+M.GetObjectAbilityEx 10 N$破魔法下
+M.GetObjectAbilityEx 11 N$破魔法上
+M.GetObjectAbilityEx 12 N$破魔道下
+M.GetObjectAbilityEx 13 N$破魔道上
+GetHumVar <$CURRRTARGETNAME> <$str(N$破魔法下)> N$破魔法下
+GetHumVar <$CURRRTARGETNAME> <$str(N$破魔法上)> N$破魔法上
+GetHumVar <$CURRRTARGETNAME> <$str(N$破魔道下)> N$破魔道下
+GetHumVar <$CURRRTARGETNAME> <$str(N$破魔道上)> N$破魔道上
+FORMULATION (<$str(N$破魔法下)>+<$str(N$破魔法上)>+<$str(N$破魔道下)>+<$str(N$破魔道上)>)/2 N$破魔伤害
+setHumVar <$CURRRTARGETNAME> N$破魔害 <$str(N$破魔伤害)>
+M.humanHP - <$str(N$破魔害)> 100
+
+[@_@对人物理技能编号26触发]
+#IF
+EQUAL N$缴械激活标识 1
+#ACT
+MOV I10 10
+M.ChangeModeEx 9 <$STR(I10)>
+M.playeffect 71 108 10 0 50
+M.SetArrBuff 1 105 0 2015 <$STR(I10)> 0 0 0 被缴械：10秒内禁止攻击！
+}

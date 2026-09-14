@@ -1,0 +1,25 @@
+[@main]
+#if
+#act
+OPENMERCHANTBIGDLG 5 941 1 4 0 0  0 360 15 1
+#say
+<&Text:拥有奥术晶核可以提升1级:110:55{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:奥数晶核所有怪物爆出:120:85{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:每次需要5000元宝:120:115{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&IMGEX:5:730:731:732:145:178:1/@升级超级宠物>
+
+
+[@升级超级宠物]
+#if
+checkgamegold < 5000
+#act
+messagebox 元宝不够
+break
+
+#if
+checkitem 奥术晶核
+#act
+take 奥术晶核
+gamegold - 5000
+CHANGELEVEL + 1
+sendmsg 6 等级+1

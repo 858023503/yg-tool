@@ -1,0 +1,289 @@
+[@Body]
+{
+[@STDMODESHOW10]
+#IF
+NOT EQUAL <$G_BagItemName> 干瘪的心脏[未激活]
+#ACT
+MESSAGEBOX 当前物品不允许附魔！
+BREAK
+
+#IF
+check [24] 1
+#ACT
+MESSAGEBOX 你已经为心脏添加过此物品了！
+BREAK
+
+#IF
+check [24] 0
+check [20] 1
+check [21] 1
+check [22] 1
+check [23] 1
+#ACT
+TAKE <$USEITEMNAME> 1
+TAKE 干瘪的心脏[未激活] 1
+give 跳动的心脏[未激活]
+set [24] 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用了|251:0}{[<$USEITEMNAME>]|254:0}{对|251:0}{[<$BAGITEMNAME>]|70:0}{附魔了最后的|251:0}{[雪域之力]|254:0}{,心脏开始跳动了。|251:0}
+BREAK
+
+
+#IF
+check [24] 0
+#ACT
+TAKE <$USEITEMNAME> 1
+set [24] 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用了|251:0}{[<$USEITEMNAME>]|254:0}{对|251:0}{[<$BAGITEMNAME>]|70:0}{附魔了|251:0}{[雪域之力]|254:0}{,心脏开始复苏了。|251:0}
+
+
+[@STDMODESHOW9]
+#IF
+NOT EQUAL <$G_BagItemName> 干瘪的心脏[未激活]
+#ACT
+MESSAGEBOX 当前物品不允许附魔！
+BREAK
+
+#IF
+check [23] 1
+#ACT
+MESSAGEBOX 你已经为心脏添加过此物品了！
+BREAK
+
+#IF
+check [24] 1
+check [20] 1
+check [21] 1
+check [22] 1
+check [23] 0
+#ACT
+TAKE <$USEITEMNAME> 1
+TAKE 干瘪的心脏[未激活] 1
+give 跳动的心脏[未激活]
+set [23] 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用了|251:0}{[<$USEITEMNAME>]|254:0}{对|251:0}{[<$BAGITEMNAME>]|70:0}{附魔了最后的|251:0}{[瘟疫之力]|254:0}{,心脏开始跳动了。|251:0}
+BREAK
+
+#IF
+check [23] 0
+#ACT
+TAKE <$USEITEMNAME> 1
+set [23] 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用了|251:0}{[<$USEITEMNAME>]|254:0}{对|251:0}{[<$BAGITEMNAME>]|70:0}{附魔了|251:0}{[瘟疫之力]|254:0}{,心脏开始复苏了。|251:0}
+
+
+[@STDMODESHOW8]
+#IF
+NOT EQUAL <$G_BagItemName> 干瘪的心脏[未激活]
+#ACT
+MESSAGEBOX 当前物品不允许附魔！
+BREAK
+
+#IF
+check [22] 1
+#ACT
+MESSAGEBOX 你已经为心脏添加过此物品了！
+BREAK
+
+#IF
+check [24] 1
+check [20] 1
+check [21] 1
+check [22] 0
+check [23] 1
+#ACT
+TAKE <$USEITEMNAME> 1
+TAKE 干瘪的心脏[未激活] 1
+give 跳动的心脏[未激活]
+set [22] 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用了|251:0}{[<$USEITEMNAME>]|254:0}{对|251:0}{[<$BAGITEMNAME>]|70:0}{附魔了最后的|251:0}{[沙漠之力]|254:0}{,心脏开始跳动了。|251:0}
+BREAK
+
+#IF
+check [22] 0
+#ACT
+TAKE <$USEITEMNAME> 1
+set [22] 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用了|251:0}{[<$USEITEMNAME>]|254:0}{对|251:0}{[<$BAGITEMNAME>]|70:0}{附魔了|251:0}{[沙漠之力]|254:0}{,心脏开始复苏了。|251:0}
+
+[@STDMODESHOW7]
+#IF
+NOT EQUAL <$G_BagItemName> 干瘪的心脏[未激活]
+#ACT
+MESSAGEBOX 当前物品不允许附魔！
+BREAK
+
+#IF
+check [21] 1
+#ACT
+MESSAGEBOX 你已经为心脏添加过此物品了！
+BREAK
+
+#IF
+check [24] 1
+check [20] 1
+check [21] 0
+check [22] 1
+check [23] 1
+#ACT
+TAKE <$USEITEMNAME> 1
+TAKE 干瘪的心脏[未激活] 1
+give 跳动的心脏[未激活]
+set [21] 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用了|251:0}{[<$USEITEMNAME>]|254:0}{对|251:0}{[<$BAGITEMNAME>]|70:0}{附魔了最后的|251:0}{[弧月之力]|254:0}{,心脏开始跳动了。|251:0}
+BREAK
+
+#IF
+check [21] 0
+#ACT
+TAKE <$USEITEMNAME> 1
+set [21] 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用了|251:0}{[<$USEITEMNAME>]|254:0}{对|251:0}{[<$BAGITEMNAME>]|70:0}{附魔了|251:0}{[弧月之力]|254:0}{,心脏开始复苏了。|251:0}
+
+[@STDMODESHOW6]
+#IF
+NOT EQUAL <$G_BagItemName> 干瘪的心脏[未激活]
+#ACT
+MESSAGEBOX 当前物品不允许附魔！
+BREAK
+
+#IF
+check [20] 1
+#ACT
+MESSAGEBOX 你已经为心脏添加过此物品了！
+BREAK
+
+#IF
+check [24] 1
+check [20] 0
+check [21] 1
+check [22] 1
+check [23] 1
+#ACT
+TAKE <$USEITEMNAME> 1
+TAKE 干瘪的心脏[未激活] 1
+give 跳动的心脏[未激活]
+set [20] 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用了|251:0}{[<$USEITEMNAME>]|254:0}{对|251:0}{[<$BAGITEMNAME>]|70:0}{附魔了最后的|251:0}{[龙神之力]|254:0}{,心脏开始跳动了。|251:0}
+BREAK
+
+#IF
+check [20] 0
+#ACT
+TAKE <$USEITEMNAME> 1
+set [20] 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用了|251:0}{[<$USEITEMNAME>]|254:0}{对|251:0}{[<$BAGITEMNAME>]|70:0}{附魔了|251:0}{[龙神之力]|254:0}{,心脏开始复苏了。|251:0}
+
+
+[@STDMODESHOW5]
+#IF
+NOT EQUAL <$G_BagItemName> 至死不渝的爱
+#ACT
+MESSAGEBOX 当前物品不允许附魔！
+BREAK
+
+#IF
+#ACT
+TAKE <$USEITEMNAME> 1
+LINKBAGITEM <$BAGITEMMAKEINDEX>
+CHANGEITEMNAME -1 {深渊侵蚀的|249}<$BAGITEMNAME>
+SetNewItemValue -1 1 + 15
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用了|251:0}{[<$USEITEMNAME>]|254:0}{对|251:0}{[<$BAGITEMNAME>]|70:0}{附魔了|251:0}{[深渊之力]|254:0}{,攻击伤害增加15%。|251:0}
+UPDATEITEM -1
+CLEARLINKITEM
+
+[@STDMODESHOW4]
+#IF
+NOT EQUAL <$G_BagItemName> 教皇冠冕
+#ACT
+MESSAGEBOX 当前物品不允许附魔！
+BREAK
+
+#IF
+#ACT
+TAKE <$USEITEMNAME> 1
+LINKBAGITEM <$BAGITEMMAKEINDEX>
+CHANGEITEMNAME -1 {深渊侵蚀的|70}<$BAGITEMNAME>
+SetNewItemValue -1 0 + 10
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用了|251:0}{[<$USEITEMNAME>]|254:0}{对|251:0}{[<$BAGITEMNAME>]|70:0}{附魔了|251:0}{[深渊之力]|254:0}{,暴击几率增加10%。|251:0}
+UPDATEITEM -1
+CLEARLINKITEM
+
+[@STDMODESHOW3]
+#IF
+NOT EQUAL <$G_BagItemName> 蛛丝软垫
+#ACT
+MESSAGEBOX 当前物品不允许附魔！
+BREAK
+
+#IF
+#ACT
+TAKE <$USEITEMNAME> 1
+LINKBAGITEM <$BAGITEMMAKEINDEX>
+CHANGEITEMNAME -1 {深渊侵蚀的|249}<$BAGITEMNAME>
+SetNewItemValue -1 2 + 5
+SetNewItemValue -1 3 + 5
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用了|251:0}{[<$USEITEMNAME>]|254:0}{对|251:0}{[<$BAGITEMNAME>]|70:0}{附魔了|251:0}{[深渊之力]|254:0}{,双抗增加5%。|251:0}
+UPDATEITEM -1
+CLEARLINKITEM
+
+[@STDMODESHOW1]
+#IF
+NOT EQUAL <$G_BagItemName> 尸王的意志
+NOT EQUAL <$G_BagItemName> 精灵双镯[左]
+NOT EQUAL <$G_BagItemName> 精灵双镯[右]
+#ACT
+MESSAGEBOX 当前物品不允许附魔！
+BREAK
+
+#IF
+#ACT
+TAKE <$USEITEMNAME> 1
+LINKBAGITEM <$BAGITEMMAKEINDEX>
+MOVR N$尸骨未寒随机获得词缀 0 4
+CHANGEITEMNAME -1 {<$STR(L$尸骨未寒词缀[<$STR(N$尸骨未寒随机获得词缀)>])>之|70}<$BAGITEMNAME>
+SetNewItemValue -1 <$STR(L$尸骨未寒词缀位置[<$STR(N$尸骨未寒随机获得词缀)>])> + <$STR(L$尸骨未寒词缀数值[<$STR(N$尸骨未寒随机获得词缀)>])>
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用了|251:0}{[<$USEITEMNAME>]|254:0}{对|251:0}{[<$BAGITEMNAME>]|70:0}{附魔了|251:0}{[<$STR(L$尸骨未寒词缀[<$STR(N$尸骨未寒随机获得词缀)>])>]|254:0}{词缀|251:0}
+UPDATEITEM -1
+CLEARLINKITEM
+
+[@STDMODESHOW2]
+#IF
+NOT EQUAL <$BAGITEMNAME> 天魔神甲
+NOT EQUAL <$BAGITEMNAME> 圣战宝甲
+NOT EQUAL <$BAGITEMNAME> 天尊道袍
+NOT EQUAL <$BAGITEMNAME> 天师长袍
+NOT EQUAL <$BAGITEMNAME> 法神披风
+NOT EQUAL <$BAGITEMNAME> 霓裳羽衣
+#ACT
+MESSAGEBOX 当前物品不允许附魔！
+BREAK
+
+#IF
+#ACT
+LINKBAGITEM <$BAGITEMMAKEINDEX>
+
+#IF
+CHECKNEWITEMVALUE -1 0 > 14
+#ACT
+MESSAGEBOX 你的【<$BAGITEMNAME>】已经升满属性了！
+UPDATEITEM -1
+CLEARLINKITEM
+BREAK
+
+#IF
+#ACT
+TAKE <$USEITEMNAME> 1
+
+#IF
+RANDOMEX 50 100
+#ACT
+SetNewItemValue -1 0 + 1
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用了|251:0}{[<$USEITEMNAME>]|254:0}{对|251:0}{[<$BAGITEMNAME>]|70:0}{附魔,提升了1%暴击！|251:0}
+#ELSEACT
+MESSAGEBOX 几率未达成，附魔失败！
+
+#IF
+#ACT
+UPDATEITEM -1
+CLEARLINKITEM
+}

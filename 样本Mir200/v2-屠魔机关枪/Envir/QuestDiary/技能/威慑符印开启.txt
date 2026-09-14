@@ -1,0 +1,27 @@
+[@威慑符印开启]
+{
+
+
+
+#if
+EQUAL N$威慑符印开关 1
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+releasemagicEX 1028 0 0 1 1 
+break
+MOV N$威慑符印允许次数 10
+
+GOTO  @允许威慑符印释放
+
+
+
+[@允许威慑符印释放]
+#IF
+LARGE N$威慑符印允许次数 0
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+DEC N$威慑符印允许次数 1
+releasemagicEX 1028 0 0 1 1
+
+DELAYGOTO 100 @允许威慑符印释放
+}

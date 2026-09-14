@@ -1,0 +1,65 @@
+[@main]
+#IF
+#ACT
+OPENMERCHANTBIGDLG 52 256 1 4 0 -80 0
+#say
+
+<&ImgEx:52:196:228:229:134:259/@地图一>
+<&ImgEx:52:197:230:231:292:264/@地图二>
+<&ImgEx:52:198:232:233:470:261/@地图三>
+<&ImgEx:52:199:234:235:648:266/@地图四>
+
+
+<&PlayImg:52:173:15:100:0:11:0>
+<&IMGEX:52:200:201:202:765:125/@关闭对话框>
+
+[@关闭对话框]
+#if
+#ACT
+close
+
+
+[@地图一]
+#if
+CHECKGOLD 800000
+#ACT
+MAPMOVE TQ0041   98  112  2
+mov S$玩家当前大陆 四大陆
+MOV S$玩家当前地图 封魔古刹
+take 金币 800000
+#elseact
+messagebox 你没有80W金币
+[@地图二]
+#if
+CHECKGOLD 800000
+#ACT
+MAPMOVE TQ0042   98  112  2
+mov S$玩家当前大陆 四大陆
+MOV S$玩家当前地图 牛魔寺庙
+take 金币 800000
+#elseact
+messagebox 你没有80W金币
+[@地图三]
+#if
+CHECKGOLD 800000
+#ACT
+MAPMOVE TQ0043   98  112  2
+mov S$玩家当前大陆 四大陆
+MOV S$玩家当前地图 魔毒蚀地
+take 金币 800000
+#elseact
+messagebox 你没有80W金币
+[@地图四]
+#if
+CHECKGOLD 800000
+#ACT
+MAPMOVE TQ0044   98  112  2
+mov S$玩家当前大陆 四大陆
+MOV S$玩家当前地图 封魔宫
+take 金币 800000
+#elseact
+messagebox 你没有80W金币
+
+
+
+

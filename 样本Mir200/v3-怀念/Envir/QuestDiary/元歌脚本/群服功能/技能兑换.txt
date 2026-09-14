@@ -1,0 +1,179 @@
+[@技能兑换啊]
+#IF
+#ACT
+#SAY
+\ \ \ \ \ \
+<><技能兑换说明：/SCOLOR=70><消耗杀怪点兑换专属技能，终身有效，无需重复购买，转职后需重新兑换/SCOLOR=21>\
+<><当前杀怪点：/SCOLOR=58><$str(U<$str(N$元歌杀怪点)>)>   <诛仙剑阵三大神技均为被动概率触发，无需手动释放/SCOLOR=151>\
+<>\                   
+<>  <通用技能兑换：/SCOLOR=253>\
+<>  <诛仙剑阵/SCOLOR=70>：<(三职业任意伤害（含宝宝）几率触发，连续7段高额伤害！)/SCOLOR=146>     <『消耗2520杀怪点兑换』/@兑换诛仙剑阵>\
+<>  <全屏吸怪/SCOLOR=70>：<(吸取自身10X10格内的怪物，群怪如割草，附带2秒无敌！)/SCOLOR=146>     <『消耗520杀怪点兑换』/@兑换元歌全屏吸怪>\
+<>  <心灵召唤/SCOLOR=70>：<(将自身宝宝召唤到身边)/SCOLOR=146>  <『消耗10杀怪点兑换』/@心灵召唤兑换>\
+<>\ 
+<>  <战士神技兑换：/SCOLOR=253><毒雾献祭/SCOLOR=70> <(物理攻击概率触发5×5范围伤害，造成3倍攻击上限的物理伤害！)/SCOLOR=150>   <『消耗1520杀怪点兑换』/@兑换毒雾献祭>\
+<>  <法师神技兑换：/SCOLOR=253><天雷尸爆/SCOLOR=70> <(魔法攻击概率触发5×5范围伤害，造成3倍魔法上限伤害+吸蓝100！)/SCOLOR=150>   <『消耗1520杀怪点兑换』/@兑换天雷尸爆>\
+<>  <道士神技兑换：/SCOLOR=253><亡灵归来/SCOLOR=70> <(魔法攻击概率触发5×5范围伤害，造成3倍道术上限伤害+击杀概率召唤神兽！)/SCOLOR=150> <『消耗1520杀怪点兑换』/@兑换亡灵归来>\
+<>\ 
+<>  <返回主菜单/@元歌群服>\
+
+;============================ 兑换标签 ============================
+[@兑换诛仙剑阵]
+#IF
+CheckVAR HUMAN 元歌诛仙技能点 = 1
+#ACT
+MESSAGEBOX 你已经拥有诛仙剑阵了！
+break
+
+#IF
+LARGE U<$str(N$元歌杀怪点)> 2519
+#ACT
+DEC U<$str(N$元歌杀怪点)> 2520
+CalcVAR HUMAN 元歌诛仙技能点 = 1
+SaveVAR HUMAN 元歌诛仙技能点 ..\QuestDiary\元歌脚本\元歌群服点.txt
+GuildNoticeMsg 241 161 无敌肝帝【<$USERNAME>】踏入诛仙剑阵，七剑碎空，神魔辟易！！
+GOTO @技能兑换啊
+#ELSEACT
+MESSAGEBOX 杀怪点不足2520！
+break
+
+[@兑换元歌全屏吸怪]
+#IF
+CHECKSKILL 元歌全屏吸怪 = 3
+#ACT
+MESSAGEBOX 你已经学会全屏吸怪了！
+break
+
+#IF
+LARGE U<$str(N$元歌杀怪点)> 519
+#ACT
+DEC U<$str(N$元歌杀怪点)> 520
+ADDSKILL 元歌全屏吸怪 3
+MESSAGEBOX 全屏吸怪兑换成功！
+GuildNoticeMsg 241 161 无敌肝帝【<$USERNAME>】习得全屏吸怪，万象天引，群魔俯首！
+GOTO @技能兑换啊
+#ELSEACT
+MESSAGEBOX 杀怪点不足520！
+break
+
+; ★★★ 战士 — 毒雾献祭 ★★★
+[@兑换毒雾献祭]
+#IF
+CHECKJOB Warrior
+#ELSEACT
+MESSAGEBOX 只有战士才能学习毒雾献祭！
+break
+
+#IF
+CheckVAR HUMAN 元歌毒雾点 = 1
+#ACT
+MESSAGEBOX 你已学过本职业专属技能，无法重复学习！
+break
+
+#IF
+CHECKSKILL 毒雾献祭 = 3
+#ACT
+MESSAGEBOX 你已经学会了毒雾献祭！
+break
+
+#IF
+LARGE U<$str(N$元歌杀怪点)> 1519
+#ACT
+DEC U<$str(N$元歌杀怪点)> 1520
+CalcVAR HUMAN 元歌毒雾点 = 1
+SaveVAR HUMAN 元歌毒雾点 ..\QuestDiary\元歌脚本\元歌群服点.txt
+ADDSKILL 毒雾献祭 3
+MESSAGEBOX 毒雾献祭兑换成功！
+GuildNoticeMsg 241 161 无敌肝帝【<$USERNAME>】掌握毒雾献祭，血战八方，毒染千里！
+GOTO @技能兑换啊
+#ELSEACT
+MESSAGEBOX 杀怪点不足1520！
+break
+
+; ★★★ 法师 — 天雷尸爆 ★★★
+[@兑换天雷尸爆]
+#IF
+CHECKJOB Wizard
+#ELSEACT
+MESSAGEBOX 只有法师才能学习天雷尸爆！
+break
+
+#IF
+CheckVAR HUMAN 元歌天雷点 = 1
+#ACT
+MESSAGEBOX 你已学过本职业专属技能，无法重复学习！
+break
+
+#IF
+CHECKSKILL 天雷尸爆 = 3
+#ACT
+MESSAGEBOX 你已经学会了天雷尸爆！
+break
+
+#IF
+LARGE U<$str(N$元歌杀怪点)> 1519
+#ACT
+DEC U<$str(N$元歌杀怪点)> 1520
+CalcVAR HUMAN 元歌天雷点 = 1
+SaveVAR HUMAN 元歌天雷点 ..\QuestDiary\元歌脚本\元歌群服点.txt
+ADDSKILL 天雷尸爆 3
+MESSAGEBOX 天雷尸爆兑换成功！
+GuildNoticeMsg 241 161 无敌肝帝【<$USERNAME>】掌握天雷尸爆，雷落九天，尸横遍野！
+GOTO @技能兑换啊
+#ELSEACT
+MESSAGEBOX 杀怪点不足1520！
+break
+
+; ★★★ 道士 — 亡灵归来 ★★★
+[@兑换亡灵归来]
+#IF
+CHECKJOB Taoist
+#ELSEACT
+MESSAGEBOX 只有道士才能学习亡灵归来！
+break
+
+#IF
+CheckVAR HUMAN 元歌亡灵点 = 1
+#ACT
+MESSAGEBOX 你已学过本职业专属技能，无法重复学习！
+break
+
+#IF
+CHECKSKILL 亡灵归来 = 3
+#ACT
+MESSAGEBOX 你已经学会了亡灵归来！
+break
+
+#IF
+LARGE U<$str(N$元歌杀怪点)> 1519
+#ACT
+DEC U<$str(N$元歌杀怪点)> 1520
+CalcVAR HUMAN 元歌亡灵点 = 1
+SaveVAR HUMAN 元歌亡灵点 ..\QuestDiary\元歌脚本\元歌群服点.txt
+ADDSKILL 亡灵归来 3
+MESSAGEBOX 亡灵归来兑换成功！
+GuildNoticeMsg 241 161 无敌肝帝【<$USERNAME>】掌握亡灵归来，亡魂听令，百鬼夜行！
+GOTO @技能兑换啊
+#ELSEACT
+MESSAGEBOX 杀怪点不足1520！
+break
+
+[@心灵召唤兑换]
+#IF
+CHECKSKILL 心灵召唤 = 3
+#ACT
+MESSAGEBOX 你已经学会心灵召唤了！
+break
+
+#IF
+LARGE U<$str(N$元歌杀怪点)> 9
+#ACT
+DEC U<$str(N$元歌杀怪点)> 10
+ADDSKILL 心灵召唤 3
+MESSAGEBOX 心灵召唤兑换成功！
+GuildNoticeMsg 241 161 无敌肝帝【<$USERNAME>】习得心灵召唤，心念所至，宝宝随行！
+GOTO @技能兑换啊
+#ELSEACT
+MESSAGEBOX 杀怪点不足10！
+break
+}

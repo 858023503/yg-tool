@@ -1,0 +1,441 @@
+[@MAIN]
+#IF
+#ACT 
+
+OPENMERCHANTBIGDLG 5 917 1 4 0 -80  1 755 0 1
+
+#SAY
+<&PlayImg:5:918:9:100:256:70:0>\
+<&PlayImg:5:927:10:100:282:89:0>\
+<Imgex:5:937:938:939:294:323/@提取装备的天道属性>
+<ITEMBOX:6:-1:0:379:158:62:62:*:放入天道装备>\
+<&Text:可以提取已经镶嵌在装备上的天道晶体,每次收费100传仙币:200:430{FCOLOR=70;FSIZE=12;FNAME=黑体}>
+<&Text:提炼后装备会消失:200:450{FCOLOR=70;FSIZE=12;FNAME=黑体}>
+[@ItemIntoBox6]
+#if
+#act
+mov N$左边第一条属性对应编号 0
+mov N$左边第二条属性对应编号 0
+mov N$左边第三条属性对应编号 0
+mov N$左边第四条属性对应编号 0
+mov N$左边第五条属性对应编号 0
+mov N$左边第六条属性对应编号 0
+mov N$左边第七条属性对应编号 0
+mov N$左边第八条属性对应编号 0
+mov N$左边第九条属性对应编号 0
+mov N$左边第十条属性对应编号 0
+mov S$显示第一条编号对应属性 
+mov N$天道装备总属性 
+mov S$显示第一条编号后缀 
+mov N$天道装备属性上限 
+SetUpgradeItem 6
+GetCustomItemValueEx -1 1 <$STR(N$没用)>  <$STR(N$左边第一条属性对应编号)> <$str(N$天道左边属性值一)> <$str(N$左边属性上限一)> <$STR(N$没用)>
+
+
+#if
+EQUAL N$左边第一条属性对应编号 0
+#act
+messagebox 无属性装备
+goto @main
+break
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 1
+#ACT
+MOV S$显示第一条编号对应属性 寂静之雷
+MOV S$显示第一条编号后缀 次
+MOV S$显示第一条技能描述 寂静之雷魔次
+
+#IF
+EQUAL N$左边第一条属性对应编号 2
+#ACT
+MOV S$显示第一条编号对应属性 梵天圣火
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 梵天圣火伤害百分比
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 3
+#ACT
+MOV S$显示第一条编号对应属性 冰咆哮
+MOV S$显示第一条编号后缀 次
+MOV S$显示第一条技能描述 冰咆哮魔次
+
+#IF
+EQUAL N$左边第一条属性对应编号 4
+#ACT
+MOV S$显示第一条编号对应属性 漫天火雨
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 漫天火雨打人百分比
+
+#IF
+EQUAL N$左边第一条属性对应编号 5
+#ACT
+MOV S$显示第一条编号对应属性 刺杀剑术
+MOV S$显示第一条编号后缀 次
+MOV S$显示第一条技能描述 刺杀剑术魔次
+
+
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 6
+#ACT
+MOV S$显示第一条编号对应属性 烈火剑法
+MOV S$显示第一条编号后缀 次
+MOV S$显示第一条技能描述 烈火剑法魔次
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 7
+#ACT
+MOV S$显示第一条编号对应属性 金殇斩
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 金殇斩伤害百分比
+
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 8
+#ACT
+MOV S$显示第一条编号对应属性 野蛮冲撞
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 野蛮冲撞伤害百分比
+
+#IF
+EQUAL N$左边第一条属性对应编号 9
+#ACT
+MOV S$显示第一条编号对应属性 灵葫
+MOV S$显示第一条编号后缀 次
+MOV S$显示第一条技能描述 灵葫魔次
+
+#IF
+EQUAL N$左边第一条属性对应编号 10
+#ACT
+MOV S$显示第一条编号对应属性 蛊毒术
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 蛊毒术伤害百分比
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 11
+#ACT
+MOV S$显示第一条编号对应属性 召唤骷髅
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 骷髅打怪百分比
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 63
+#ACT
+MOV S$显示第一条编号对应属性 魔焰狂澜
+MOV S$显示第一条编号后缀 点
+MOV S$显示第一条技能描述 魔焰狂澜伤害
+
+#IF
+EQUAL N$左边第一条属性对应编号 64
+#ACT
+MOV S$显示第一条编号对应属性 威慑符印
+MOV S$显示第一条编号后缀 点
+MOV S$显示第一条技能描述 威慑符印伤害
+
+
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 65
+#ACT
+MOV S$显示第一条编号对应属性 龙袭风暴
+MOV S$显示第一条编号后缀 点
+MOV S$显示第一条技能描述 龙袭风暴伤害
+
+
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 66
+#ACT
+MOV S$显示第一条编号对应属性 焚土喷焰
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 焚土喷焰百分比
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 67
+#ACT
+MOV S$显示第一条编号对应属性 天灵符爆
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 天灵符爆百分比
+
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 200
+#ACT
+MOV S$显示第一条编号对应属性 修罗血魂阵
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 修罗血魂阵伤害
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 203
+#ACT
+MOV S$显示第一条编号对应属性 炎龙降临
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 炎龙降临伤害
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 206
+#ACT
+MOV S$显示第一条编号对应属性 幽龙镇魂
+MOV S$显示第一条编号后缀 次
+MOV S$显示第一条技能描述 幽龙镇魂魔次
+
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 246
+#ACT
+MOV S$显示第一条编号对应属性 十字破军斩
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 十字破军斩伤害
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 247
+#ACT
+MOV S$显示第一条编号对应属性 浴火鞭策
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 浴火鞭策伤害
+
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 248
+#ACT
+MOV S$显示第一条编号对应属性 召唤火兽
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 召唤火兽伤害
+
+
+#IF
+EQUAL N$左边第一条属性对应编号 251
+#ACT
+MOV S$显示第一条编号对应属性 召唤圣兽
+MOV S$显示第一条编号后缀 %
+MOV S$显示第一条技能描述 召唤圣兽伤害
+
+
+#if
+EQUAL N$左边第一条属性对应编号 5
+NOT EQUAL N$天道左边属性值一 57000
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+
+
+#if
+EQUAL N$左边第一条属性对应编号 7
+NOT EQUAL N$天道左边属性值一 17100
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+
+
+#if
+EQUAL N$左边第一条属性对应编号 8
+NOT EQUAL N$天道左边属性值一 38200
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+
+#if
+EQUAL N$左边第一条属性对应编号 6
+NOT EQUAL N$天道左边属性值一 57000
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+
+#if
+EQUAL N$左边第一条属性对应编号 200
+NOT EQUAL N$天道左边属性值一 29700
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+
+#if
+EQUAL N$左边第一条属性对应编号 246
+NOT EQUAL N$天道左边属性值一 10000
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+
+#if
+EQUAL N$左边第一条属性对应编号 1
+NOT EQUAL N$天道左边属性值一 153000
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+
+#if
+EQUAL N$左边第一条属性对应编号 66
+NOT EQUAL N$天道左边属性值一 24400
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+
+#if
+EQUAL N$左边第一条属性对应编号 2
+NOT EQUAL N$天道左边属性值一 37200
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+
+#if
+EQUAL N$左边第一条属性对应编号 4
+NOT EQUAL N$天道左边属性值一 38400
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+
+#if
+EQUAL N$左边第一条属性对应编号 3
+NOT EQUAL N$天道左边属性值一 153000
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+
+#if
+EQUAL N$左边第一条属性对应编号 203
+NOT EQUAL N$天道左边属性值一 96400
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+
+#if
+EQUAL N$左边第一条属性对应编号 9
+NOT EQUAL N$天道左边属性值一 178200
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+
+#if
+EQUAL N$左边第一条属性对应编号 67
+NOT EQUAL N$天道左边属性值一 28600
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+#if
+EQUAL N$左边第一条属性对应编号 10
+NOT EQUAL N$天道左边属性值一 43200
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+
+
+#if
+EQUAL N$左边第一条属性对应编号 11
+NOT EQUAL N$天道左边属性值一 95200
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+#if
+EQUAL N$左边第一条属性对应编号 206
+NOT EQUAL N$天道左边属性值一 167400
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+
+#if
+EQUAL N$左边第一条属性对应编号 247
+NOT EQUAL N$天道左边属性值一 97500
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+#if
+EQUAL N$左边第一条属性对应编号 248
+NOT EQUAL N$天道左边属性值一 95300
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+
+#if
+EQUAL N$左边第一条属性对应编号 251
+NOT EQUAL N$天道左边属性值一 95200
+#act
+messagebox 天道晶石属性未满
+GOTO @MAIN
+break
+
+#if
+#ACT
+
+#SAY
+<&PlayImg:5:918:9:100:256:70:0>\
+<&PlayImg:5:927:10:100:282:89:0>\
+<Imgex:5:937:938:939:294:323/@提取装备的天道属性>
+<ITEMBOX:6:-1:0:379:158:62:62:*:放入装备>\
+<&Text:可以提取已经镶嵌在装备上的天道晶体,每次收费100传仙币:200:430{FCOLOR=70;FSIZE=12;FNAME=黑体}>
+<&Text:提炼后装备会消失:200:450{FCOLOR=70;FSIZE=12;FNAME=黑体}>
+<&Text:总属性<$STR(S$显示第一条编号对应属性)>+<$STR(N$天道左边属性值一)><$STR(S$显示第一条编号后缀)>(上限<$STR(N$左边属性上限一)>):25:343{FCOLOR=245;FSIZE=12;FNAME=黑体}>
+
+
+
+[@提取装备的天道属性]
+
+#if
+equal <$BOXITEM[6].NAME>
+#act
+messagebox 请放入装备
+goto @main
+break
+
+
+
+
+#if
+checkgamegird < 100
+#act
+messagebox 传仙币不足
+break
+
+#IF
+checkgamegird > 99
+#ACT
+gamegird - 100
+give 天道晶石
+LINKGIVEITEM
+SetCustomItemText -1 <IMG:1091:0>
+;1
+SetCustomItemAbil -1 0 0 245
+SetCustomItemAbil -1 0 1 8
+SetCustomItemAbil -1 0 2 0
+SetCustomItemAbil -1 0 3 0
+SetCustomItemValueEX -1 0 = <$STR(N$左边第一条属性对应编号)> <$STR(N$天道左边属性值一)> <$STR(N$左边属性上限一)>
+updateitem -1
+clearLinkItem
+
+
+
+DelBoxItem 6

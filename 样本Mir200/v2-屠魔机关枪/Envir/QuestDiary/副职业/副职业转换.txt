@@ -1,0 +1,105 @@
+[@副职业转换]
+{
+#if
+#act
+OPENMERCHANTBIGDLG 5 909 1 4 0 0  1 370 15 1
+#SAY
+<looks:2411:25:295>
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>\
+<>            <转成炼丹师/@转成炼丹师>   <转成炼器师/@转成炼器师>   <转成淘金者/@转成淘金者>
+
+;炼丹师U85  158
+;炼器师U86  159
+;淘金者U87  160
+
+[@转成淘金者]
+#if
+EQUAL U158 1
+#ACT
+MOV U87 <$str(u85)>
+mov u85 0
+mov u86 0
+mov U158 0
+mov u159 0
+mov u160 1
+messagebox 你已转职为淘金者
+BREAK
+#if
+EQUAL U159 1
+#ACT
+MOV U87 <$str(u86)>
+mov u85 0
+mov u86 0
+mov U158 0
+mov u159 0
+mov u160 1
+messagebox 你已转职为淘金者
+BREAK
+
+
+
+[@转成炼丹师]
+#if
+EQUAL U159 1
+#ACT
+MOV U85 <$str(u86)>
+mov u86 0
+mov u87 0
+mov U158 1
+mov u159 0
+mov u160 0
+messagebox 你已转职为炼丹师
+BREAK
+#if
+EQUAL U160 1
+#ACT
+MOV U85 <$str(u87)>
+mov u86 0
+mov u87 0
+mov U158 1
+mov u159 0
+mov u160 0
+messagebox 你已转职为炼丹师
+BREAK
+
+
+
+[@转成炼器师]
+#if
+EQUAL U158 1
+#ACT
+MOV U86 <$str(u85)>
+mov u85 0
+mov u87 0
+mov U158 0
+mov u159 1
+mov u160 0
+messagebox 你已转职为炼器师
+BREAK
+#if
+EQUAL U160 1
+#ACT
+MOV U86 <$str(u87)>
+mov u85 0
+mov u87 0
+mov U158 0
+mov u159 1
+mov u160 0
+messagebox 你已转职为炼器师
+BREAK
+
+
+
+
+
+}

@@ -1,0 +1,31 @@
+[@混沌石灵]
+{
+#if
+#ACT
+KILLSLAVE 1 PK巨刃骷髅
+KILLSLAVE 1 异火神兽
+KILLSLAVE 1 异火兽
+KILLSLAVE 1 火兽
+KILLSLAVE 1 战争弓箭手
+KILLSLAVE 1 巨刃骷髅
+KILLSLAVE 1 战争之王
+KILLSLAVE 1 流金圣兽
+#if
+CHECKSLAVECOUNT < N$混沌石灵数量 混沌石灵
+#act
+goto @道士召唤混沌圣兽判断
+
+
+
+[@道士召唤混沌圣兽判断]
+#if
+#act
+RECALLMOB 混沌石灵
+MOV S$当前宝宝 混沌石灵
+MOV S$攻击触发宝宝名字 混沌石灵
+MOV S$当前宝宝PK判断 混沌石灵
+MOV U406 1
+
+Goto @统计属性
+
+}

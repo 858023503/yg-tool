@@ -1,0 +1,110 @@
+[@道士火兽宝宝攻击触发]
+{
+#if
+#act
+BB.HUMANHP + <$STR(N$法宝释道士宝宝吸血)>
+
+
+
+#if
+LARGE N$道士召唤宝宝幸运 0
+#ACT
+;计算人物幸运攻击伤害下限
+FORMULATION <$STR(N$火兽宝宝伤害下限)>+(((<$STR(N$火兽宝宝伤害上限)>-<$STR(N$火兽宝宝伤害下限)>)/10)*<$STR(N$道士召唤宝宝幸运)>) N$火兽宝宝伤害幸运下限
+
+DEC N$火兽宝宝伤害幸运下限 1
+#elseact
+MOV N$火兽宝宝伤害幸运下限 <$STR(N$火兽宝宝伤害下限)>
+#if
+#act
+MOVR  N$火兽宝宝随机伤害 N$火兽宝宝伤害幸运下限 N$火兽宝宝伤害上限 
+CalcPercent N$火兽宝宝随机伤害 N$火兽伤害倍攻 N$火兽宝宝随机伤害
+FORMULATION <$STR(N$火兽宝宝随机伤害)>/<$STR(N$所有技能伤害降低倍数)> N$火兽宝宝随机伤害
+
+
+
+
+#if
+randomex N$人物暴击几率 100
+#act
+FORMULATION <$STR(N$火兽宝宝随机伤害)>*2 N$火兽宝宝随机伤害
+
+CalcPercent N$火兽宝宝随机伤害 N$人物暴击伤害 N$火兽宝宝随机伤害
+
+
+
+#if
+check [656-663] 1
+#act
+FORMULATION <$STR(N$火兽宝宝随机伤害)>+1000000000 N$火兽宝宝随机伤害
+
+#if
+CheckCacheTextList ..\QuestDiary\怪物名称\精英及以下怪物.txt <$ATTACKMONSTER_NAMEEX>
+LARGE N$精英怪增加伤害 100
+#act
+CalcPercent N$火兽宝宝随机伤害 N$精英怪增加伤害 N$火兽宝宝随机伤害
+
+#if
+CheckCacheTextList ..\QuestDiary\怪物名称\统领及以上怪物.txt <$ATTACKMONSTER_NAMEEX>
+LARGE N$对BOSS伤害增加 100
+#act
+CalcPercent N$火兽宝宝随机伤害 N$对BOSS伤害增加 N$火兽宝宝随机伤害
+
+#if
+EQUAL <$CurSlaveName> 火兽
+#ACT
+goto @火兽宝宝致命伤害判断
+BREAK
+
+
+#if
+EQUAL <$CurSlaveName> 异火兽
+#ACT
+goto @异火兽宝宝致命伤害判断
+BREAK
+
+#if
+EQUAL <$CurSlaveName> 异火神兽
+#ACT
+goto @异火神兽宝宝致命伤害判断
+
+
+[@火兽宝宝致命伤害判断]
+
+
+
+
+#if
+RANDOMEX N$法宝宝宝有几率继承致命一击几率 101
+#ACT
+RangeHarm <$SlaveTargetX> <$SlaveTargetY> <$STR(N$火兽攻击范围)> N$火兽宝宝随机伤害 0 0 0 2 1 4803 8 80 1 1
+
+#elseact
+BB.RangeHarm <$SlaveTargetX> <$SlaveTargetY> <$STR(N$火兽攻击范围)> N$火兽宝宝随机伤害 0 0 0 2 1 4803 8 80 1 1
+
+
+
+
+
+[@异火兽宝宝致命伤害判断]
+#if
+RANDOMEX N$法宝宝宝有几率继承致命一击几率 101
+#ACT
+
+RangeHarm <$SlaveTargetX> <$SlaveTargetY> <$STR(N$异火兽攻击范围)> N$火兽宝宝随机伤害 0 0 0 2 0 0 0 0 0 1
+#elseact
+
+BB.RangeHarm <$SlaveTargetX> <$SlaveTargetY> <$STR(N$异火兽攻击范围)> N$火兽宝宝随机伤害 0 0 0 2 0 0 0 0 0 1
+
+
+[@异火神兽宝宝致命伤害判断]
+#if
+RANDOMEX N$法宝宝宝有几率继承致命一击几率 101
+#ACT
+RangeHarm <$SlaveTargetX> <$SlaveTargetY> <$STR(N$异火神兽攻击范围)> N$火兽宝宝随机伤害 0 0 0 2 0 0 0 0 0 1
+
+#elseact
+
+BB.RangeHarm <$SlaveTargetX> <$SlaveTargetY> <$STR(N$异火神兽攻击范围)> N$火兽宝宝随机伤害 0 0 0 2 0 0 0 0 0 1
+
+}

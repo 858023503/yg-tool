@@ -1,0 +1,209 @@
+[@main]
+#if
+CHECKLEVELEX > 0
+#ACT
+OPENMERCHANTBIGDLG 3 1794 1 0 0 0 1 390 5 0
+#SAY
+\ 
+<╔════════════/SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}<═════════════╗/SCOLOR=254>\
+<‖/SCOLOR=254><地图介绍:/SCOLOR=254>击杀任何BOSS<几率/SCOLOR=70>掉落随机神器                        <‖/SCOLOR=254>\
+<‖/SCOLOR=254><怪物等级:/SCOLOR=249>普通═<精英/SCOLOR=254>═<修罗/SCOLOR=251>═<变异/SCOLOR=249>═<BOSS/SCOLOR=93>                        <‖/SCOLOR=254>\
+<‖/SCOLOR=254><进入条件:/SCOLOR=70><80000元宝进入/SCOLOR=251>在无任何隐藏消费                        <‖/SCOLOR=254>\
+<‖/SCOLOR=254><怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟                 <┏━━┓/SCOLOR=22>     <‖/SCOLOR=254>\
+<‖/SCOLOR=254>                                                <┃ 蛮 ┃/SCOLOR=22>     <‖/SCOLOR=254>\
+<‖/SCOLOR=254><冰川纪元/@冰川纪元>      <太古神迹/@太古神迹>      <逆央仙境/@逆央仙境>            <┃    ┃/SCOLOR=22>     <‖/SCOLOR=254>\
+<‖/SCOLOR=254>                                                <┃ 荒 ┃/SCOLOR=22>     <‖/SCOLOR=254>\
+<‖/SCOLOR=254><九龙深渊/@九龙深渊>      <通天秘境/@通天秘境>      <玄天宫殿/@玄天宫殿>            <┃    ┃/SCOLOR=22>     <‖/SCOLOR=254>\
+<‖/SCOLOR=254>                                                <┃ 之 ┃/SCOLOR=22>     <‖/SCOLOR=254>\
+<‖/SCOLOR=254><北寒秘境/@北寒秘境>      <仙域古迹/@仙域古迹>      <冰封王座/@冰封王座>            <┃    ┃/SCOLOR=22>     <‖/SCOLOR=254>\
+<‖/SCOLOR=254>                                                <┃ 地 ┃/SCOLOR=22>     <‖/SCOLOR=254>\
+<‖/SCOLOR=254><真天秘境/@真天秘境>      <昆仑神宫/@昆仑神宫>      <冰封峡谷/@冰封峡谷>            <┗━━┛/SCOLOR=22>     <‖/SCOLOR=254>\
+<‖/SCOLOR=254>                                                             <‖/SCOLOR=254>\
+<╚═════════实力铸就非凡 王者绝非偶然═════════╝/SCOLOR=254>\
+
+
+
+
+[@冰川纪元]
+#if
+CHECKGameGold > 79999
+#ACT
+GameGold - 80000
+MAPMOVE 冰川纪元 60 46 50
+#elseact
+messagebox   元宝不足无法传送！~
+break
+
+[@太古神迹]
+#if
+CHECKGameGold > 79999
+#ACT
+GameGold - 80000
+MAPMOVE 太古神迹 74 72 50
+#elseact
+messagebox   元宝不足无法传送！~
+break
+
+[@逆央仙境]
+#if
+CHECKGameGold > 79999
+#ACT
+GameGold - 80000
+MAPMOVE 逆央仙境 102 75 100
+#elseact
+messagebox   元宝不足无法传送！~
+break
+
+[@昆仑神宫]
+#if
+CHECKGameGold > 79999
+#ACT
+GameGold - 80000
+MAPMOVE 昆仑神宫 66 70 50
+#elseact
+messagebox   元宝不足无法传送！~
+break
+
+[@冰封峡谷]
+#if
+CHECKGameGold > 79999
+#ACT
+GameGold - 80000
+MAPMOVE 冰封峡谷 56 282 3
+#elseact
+messagebox   元宝不足无法传送！~
+break
+
+[@九龙深渊]
+#if
+CHECKGameGold > 79999
+#ACT
+GameGold - 80000
+MAPMOVE 九龙深渊 54 57 50
+#elseact
+messagebox   元宝不足无法传送！~
+break
+
+[@通天秘境]
+#if
+CHECKGameGold > 79999
+#ACT
+GameGold - 80000
+MAPMOVE 通天秘境 64 49 50
+#elseact
+messagebox   元宝不足无法传送！~
+break
+
+[@玄天宫殿]
+#if
+CHECKGameGold > 79999
+#ACT
+GameGold - 80000
+MAPMOVE 玄天宫殿 50 40  50
+#elseact
+messagebox   元宝不足无法传送！~
+break
+
+[@真天秘境]
+#if
+CHECKGameGold > 79999
+#ACT
+GameGold - 80000
+MAPMOVE 真天秘境 170 134 100
+#elseact
+messagebox   元宝不足无法传送！~
+break
+
+[@仙域古迹]
+#if
+CHECKGameGold > 79999
+#ACT
+GameGold - 80000
+MAPMOVE 仙域古迹 50 50 50
+#elseact
+messagebox   元宝不足无法传送！~
+break
+
+[@北寒秘境]
+#if
+CHECKGameGold > 79999
+#ACT
+GameGold - 80000
+MAPMOVE 北寒秘境 118 129 50
+#elseact
+messagebox   元宝不足无法传送！~
+break
+
+[@冰封王座]
+#if
+CHECKGameGold > 79999
+#ACT
+GameGold - 80000
+MAPMOVE 冰封王座 103 93  50
+#elseact
+messagebox   元宝不足无法传送！~
+break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

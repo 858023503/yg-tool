@@ -1,0 +1,26 @@
+[@提示对话框]
+{
+
+[@幽魂宝箱提示]
+
+#IF
+SMALL U135 3
+#ACT
+OPENMERCHANTBIGDLG 5 845 1 4 0 0  0 0 0 1
+INC U135 1
+#SAY
+
+<&ImgEx:5:846:847:848:155:180/@退出对话框>
+
+[@修为不够出图弹框]
+#IF
+#ACT
+OPENMERCHANTBIGDLG 5 851 1 4 0 0  0 0 0 1
+#SAY
+<&ImgEx:5:846:847:848:155:180/@退出对话框>
+
+[@退出对话框]
+#if
+#act
+CLOSE
+}

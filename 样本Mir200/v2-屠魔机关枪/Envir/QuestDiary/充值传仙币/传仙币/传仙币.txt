@@ -1,0 +1,449 @@
+[@领取传仙币广告]
+{
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\01.txt 
+#ACT
+gamegird +  1
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\01.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得1传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\02.txt 
+#ACT
+gamegird +  2
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\02.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得2传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\03.txt 
+#ACT
+gamegird +  3
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\03.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得3传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\04.txt 
+#ACT
+gamegird +  4
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\04.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得4传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\05.txt 
+#ACT
+gamegird +  5
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\05.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得5传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\06.txt 
+#ACT
+gamegird +  6
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\06.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得6传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\07.txt 
+#ACT
+gamegird +  7
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\07.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得7传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\08.txt 
+#ACT
+gamegird +  8
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\08.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得8传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\09.txt 
+#ACT
+gamegird +  9
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\09.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得9传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\1.txt 
+#ACT
+gamegird +  10
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\1.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得10传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\2.txt 
+#ACT
+gamegird +  20
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\2.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得20传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\3.txt 
+#ACT
+gamegird +  30
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\3.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得30传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\4.txt 
+#ACT
+gamegird +  40
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\4.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得40传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\5.txt 
+#ACT
+gamegird +  50
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\5.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得50传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\6.txt 
+#ACT
+gamegird +  60
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\6.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得60传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\7.txt 
+#ACT
+gamegird +  70
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\7.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得70传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\8.txt 
+#ACT
+gamegird +  80
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\8.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得80传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\9.txt 
+#ACT
+gamegird +  90
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\9.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得90传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\10.txt 
+#ACT
+gamegird +  100
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\10.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得100传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\20.txt 
+#ACT
+gamegird +  200
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\20.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得200传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\30.txt 
+#ACT
+gamegird +  300
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\30.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得300传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\40.txt 
+#ACT
+gamegird +  400
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\40.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得400传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\50.txt 
+#ACT
+gamegird +  500
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\50.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得500传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\60.txt 
+#ACT
+gamegird +  600
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\60.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得600传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\70.txt 
+#ACT
+gamegird +  700
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\70.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得700传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\80.txt 
+#ACT
+gamegird +  800
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\80.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得800传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\90.txt 
+#ACT
+gamegird +  900
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\90.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得900传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\100.txt 
+#ACT
+gamegird +  1000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\100.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得1000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\200.txt 
+#ACT
+gamegird +  2000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\200.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得2000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\300.txt 
+#ACT
+gamegird +  3000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\300.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得3000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\400.txt 
+#ACT
+gamegird +  4000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\400.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得4000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\500.txt 
+#ACT
+gamegird +  5000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\500.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得5000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\600.txt 
+#ACT
+gamegird +  6000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\600.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得6000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\700.txt 
+#ACT
+gamegird +  7000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\700.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得7000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\800.txt 
+#ACT
+gamegird +  8000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\800.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得8000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\900.txt 
+#ACT
+gamegird +  9000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\900.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得9000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\1000.txt 
+#ACT
+gamegird +  10000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\1000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得10000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\2000.txt 
+#ACT
+gamegird +  20000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\2000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得20000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\3000.txt 
+#ACT
+gamegird +  30000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\3000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得30000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\4000.txt 
+#ACT
+gamegird +  40000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\4000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得40000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\5000.txt 
+#ACT
+gamegird +  50000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\5000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得50000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\6000.txt 
+#ACT
+gamegird +  60000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\6000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得60000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\7000.txt 
+#ACT
+gamegird +  70000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\7000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得70000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\8000.txt 
+#ACT
+gamegird +  80000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\8000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得80000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\9000.txt 
+#ACT
+gamegird +  90000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\9000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得90000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\10000.txt 
+#ACT
+gamegird +  100000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\10000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得100000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\20000.txt 
+#ACT
+gamegird +  200000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\20000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得200000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\30000.txt 
+#ACT
+gamegird +  300000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\30000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得300000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\40000.txt 
+#ACT
+gamegird +  400000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\40000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得400000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\50000.txt 
+#ACT
+gamegird +  500000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\50000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得500000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\60000.txt 
+#ACT
+gamegird +  600000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\60000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得600000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\70000.txt 
+#ACT
+gamegird +  700000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\70000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得700000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\80000.txt 
+#ACT
+gamegird +  800000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\80000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得800000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\90000.txt 
+#ACT
+gamegird +  900000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\90000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得900000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\100000.txt 
+#ACT
+gamegird +  1000000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\100000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得1000000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\200000.txt 
+#ACT
+gamegird +  2000000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\200000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得2000000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\300000.txt 
+#ACT
+gamegird +  3000000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\300000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得3000000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\400000.txt 
+#ACT
+gamegird +  4000000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\400000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得4000000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\500000.txt 
+#ACT
+gamegird +  5000000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\500000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得5000000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\600000.txt 
+#ACT
+gamegird +  6000000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\600000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得6000000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\700000.txt 
+#ACT
+gamegird +  7000000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\700000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得7000000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\800000.txt 
+#ACT
+gamegird +  8000000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\800000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得8000000传仙币,如果您也想获得,请赶快充值吧!
+
+#IF
+CheckAccountList ..\QuestDiary\充值传仙币\传仙币\900000.txt 
+#ACT
+gamegird +  9000000
+DelAccountList ..\QuestDiary\充值传仙币\传仙币\900000.txt 
+SENDMSG 1 ★[%s]:恭喜玩家<$USERNAME>通过在线充值获得9000000传仙币,如果您也想获得,请赶快充值吧!
+
+#ELSESAY
+请查看自己的传仙币数量!\
+没有充值请按提示进行充值!\
+<退出/@exit>
+}

@@ -1,0 +1,6 @@
+来源: 传奇服务端快捷助手 V2025-10-01（exe 脱壳字符串 + ini 配置）
+
+[ini] 文件排版=@!\Mir200\Envir\MerChant.txt*自定义NPC|@!\Mir200\Envir\Npcs.txt*内置NPC|@!\Mir200\Envir\MonGen.txt*刷怪|@!\Mir200\Envir\StartPoint.txt*安全区|@!\Mir200\Env
+[exe] 快捷助手 @4797: 快捷助手 弦� 4      ��1 � 螗将� H喢輨矡ヤ}镱謲 袲摟="蕫
+[exe] 文件排版 @38353: 文件排版（支持文件拖入）  i ( �(�  � � L  €f    pbgz
+[exe] CaiDan @102763: CaiDan   d      menu  �� #  €膃   CaiDan 

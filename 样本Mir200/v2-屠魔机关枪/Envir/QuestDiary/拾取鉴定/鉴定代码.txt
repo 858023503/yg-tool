@@ -1,0 +1,210 @@
+[@鉴定代码]
+{
+
+
+
+
+#IF
+#ACT
+LINKPICKUPITEM
+; LockUpdateItem -1
+GetUserItemName -1 S99 0
+GetUserItemName -1 S98 1
+MOV N$品阶给条数 0
+MOV N$词条位置 0
+MOV S$圣品附加属性 不允许
+MOV S$仙品附加属性 不允许
+
+MOV S$天道装备 不允许
+MOV N$后续增加其他职业词条
+;如果已经鉴定过就停止代码 (注意此代码位置上方需先LINKPICKUPITEM)
+#IF
+CheckCustomItemValue -1 0 = 1
+#ACT
+break
+
+
+
+#IF
+checkcontainstext <$STR(S99)> 凡品
+#ACT
+;品阶需要MOVR 随机默认是1需要+1 =2
+MOV N$品阶给条数 1
+#IF
+checkcontainstext <$STR(S99)> 精品
+#ACT
+MOV N$品阶给条数 2
+#IF
+checkcontainstext <$STR(S99)> 圣品
+#ACT
+MOV N$品阶给条数 4
+MOV S$圣品附加属性 允许
+#IF
+checkcontainstext <$STR(S99)> 仙品
+#ACT
+MOV N$品阶给条数 7
+MOV S$圣品附加属性 允许
+MOV S$仙品附加属性 允许
+#IF
+checkcontainstext <$STR(S99)> 神品 
+#ACT
+MOV N$品阶给条数 10
+MOV S$圣品附加属性 允许
+MOV S$仙品附加属性 允许
+
+#IF
+checkcontainstext <$STR(S99)> 天道
+#ACT
+MOV S$天道装备 允许
+MOV S$仙品附加属性 允许
+
+
+
+
+
+
+
+
+
+
+
+
+#if
+CheckCacheTextList ..\QuestDiary\法宝鉴定\鉴定法宝名字.txt <$STR(S99)>
+#act
+
+Goto @法宝鉴定
+SetCustomItemValue -1 0 = 1
+BREAK
+
+
+#if
+CheckCacheTextList ..\QuestDiary\时装鉴定\时装鉴定名字.txt <$STR(S99)>
+#act
+
+Goto @时装鉴定
+SetCustomItemValue -1 0 = 1
+BREAK
+
+
+
+
+#OR
+EQUAL N$深渊战场 1
+EQUAL N$幽魂宝箱地图给神品 1
+#act
+
+Goto @一大陆装备鉴定
+
+Goto @二大陆装备鉴定
+
+Goto @三大陆装备鉴定
+
+Goto @四大陆装备鉴定
+
+Goto @五大陆装备鉴定
+SetCustomItemValue -1 0 = 1
+break
+#IF
+EQUAL S$玩家当前大陆 一大陆
+#act
+SetCustomItemValue -1 0 = 1
+
+Goto @一大陆装备鉴定
+; UpdateItem -1
+MOV N$幽魂宝箱地图给神品 0
+BREAK
+
+
+
+
+
+
+#IF
+EQUAL S$玩家当前大陆 二大陆
+#act
+SetCustomItemValue -1 0 = 1
+
+Goto @二大陆装备鉴定
+MOV N$幽魂宝箱地图给神品 0
+BREAK
+
+#IF
+EQUAL S$玩家当前大陆 三大陆
+#act
+SetCustomItemValue -1 0 = 1
+
+Goto @三大陆装备鉴定
+MOV N$幽魂宝箱地图给神品 0
+BREAK
+
+#IF
+EQUAL S$玩家当前大陆 四大陆
+#act
+SetCustomItemValue -1 0 = 1
+
+Goto @四大陆装备鉴定
+MOV N$幽魂宝箱地图给神品 0
+BREAK
+
+#IF
+EQUAL S$玩家当前大陆 五大陆
+#act
+SetCustomItemValue -1 0 = 1
+
+Goto @五大陆装备鉴定
+MOV N$幽魂宝箱地图给神品 0
+BREAK
+
+#if
+EQUAL S$玩家当前大陆 六大陆
+#act
+SetCustomItemValue -1 0 = 1
+
+Goto @六大陆装备鉴定
+BREAK
+
+
+
+#if
+EQUAL S$玩家当前大陆 七大陆
+#act
+SetCustomItemValue -1 0 = 1
+
+Goto @七大陆装备鉴定
+
+BREAK
+
+#if
+EQUAL S$玩家当前大陆 八大陆
+#act
+SetCustomItemValue -1 0 = 1
+
+Goto @八大陆装备鉴定
+
+BREAK
+
+; #if
+; EQUAL S$玩家当前大陆 九大陆
+; #act
+; SetCustomItemValue -1 0 = 1
+; 
+;Goto @九大陆装备鉴定
+; SENDMSG 6 一大陆鉴定进来了
+; BREAK
+
+; #if
+; EQUAL S$玩家当前大陆 十大陆
+; #act
+; SetCustomItemValue -1 0 = 1
+; 
+;Goto @十大陆装备鉴定
+; SENDMSG 6 一大陆鉴定进来了
+; BREAK
+
+
+
+
+  
+
+}

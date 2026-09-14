@@ -1,0 +1,6 @@
+[@main]
+
+#if
+#act 
+
+#CALL [\跨服NPC\沙巴克跨服.TXT] @沙巴克跨服

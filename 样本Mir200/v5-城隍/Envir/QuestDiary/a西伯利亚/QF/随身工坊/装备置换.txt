@@ -1,0 +1,123 @@
+[@Body]
+{
+[@装备置换]
+#IF
+#ACT
+OPENMERCHANTBIGDLG 0 2010 1 4 0 0 0 0 0 1
+GOTO @实际置换界面展示
+
+[@实际置换界面展示]
+#IF
+#ACT
+MOV S$置换条件界面内容 
+
+#IF
+NOT EQUAL <$BOXITEM[1].NAME>
+#ACT
+GOTO @_@生成置换确定界面
+
+#IF
+#ACT
+#SAY
+\ \
+<TEXT:熔炼:16:0{FCOLOR=251}/@随身工坊>
+<TEXT:升级:26:0{FCOLOR=251}/@装备升级>
+<TEXT:淬炼:36:0{FCOLOR=251}/@装备淬炼>
+<TEXT:置换:46:0{FCOLOR=249}>
+<TEXT:开孔:56:0{FCOLOR=251}/@装备开孔>
+<TEXT:强化:66:0{FCOLOR=251}/@装备升级强化>
+<TEXT:投保:76:0{FCOLOR=251}/@装备投保>
+\ \ \
+<  ><置换说明：/SCOLOR=70>\
+<  ><可以使用一些/SCOLOR=251><【熔炼点数】/SCOLOR=250><将装备置换成同级别其他装备/SCOLOR=251>\
+<  ><武器只能置换得到武器,衣服只能置换得到衣服,首饰只能置换得到首饰/SCOLOR=253>\
+<  ><请勿投入已强化过的装备,置换后会获得一件白板物品。/SCOLOR=249>\ \
+<  ><熔炼属性：/SCOLOR=70>\
+<  ><熔炼点数：/SCOLOR=250>< <$STR(U101)>/SCOLOR=249>\ \
+<  ><置换熔炼：/SCOLOR=70>\ 
+<  ><ITEMBOX:1:0:250:35:230:50:50:5,6,10,11,15,19,20,21,22,23,24,26,62,64:254#请投入需要置换的装备>\ \ \ \
+<&IMGEX:0:246:245:247:420:24/@EXIT>
+<$STR(S$置换条件界面内容)>
+
+[@_@生成置换确定界面]
+#IF
+#ACT
+INC S$置换条件界面内容 <&Text:置换需求：:35:280{FCOLOR=253}><&Text:确定置换:35:325{FCOLOR=251}/@确定置换装备>
+GETDBITEMFIELDVALUE <$BOXITEM[1].NAME> ChangeType S$数据库置换参数
+MOV L$数据库置换参数数组 <$STR(S$数据库置换参数)>
+INC S$置换条件界面内容 <&Text:<$STR(L$数据库置换参数数组[0])>熔炼点:35:295{FCOLOR=250}><&Text:可置换物品展示：:35:355{FCOLOR=253}>
+MOV N$生成置换内容循环标识 1
+GetListVarCount L$数据库置换参数数组 N$置换参数数量
+MOV N$置换展示图初始X轴 35
+MOV N$置换展示图初始Y轴 375
+DEC N$置换参数数量 1
+LOOPGOTO @_@循环生成置换界面内容 <$STR(N$置换参数数量)>
+
+[@_@循环生成置换界面内容]
+#IF
+#ACT
+INC S$置换条件界面内容 <&ITEMSHOW:<$STR(L$数据库置换参数数组[<$STR(N$生成置换内容循环标识)>])>:0:<$STR(N$置换展示图初始X轴)>:<$STR(N$置换展示图初始Y轴)>:1:0:0>
+INC N$置换展示图初始X轴 50
+INC N$生成置换内容循环标识 1
+
+#OR
+EQUAL N$生成置换内容循环标识 9
+EQUAL N$生成置换内容循环标识 17
+#ACT
+INC N$置换展示图初始Y轴 45
+MOV N$置换展示图初始X轴 35
+
+[@确定置换装备]
+#IF
+EQUAL <$BOXITEM[1].NAME>
+#ACT
+GOTO @装备置换
+BREAK
+
+#IF
+#ACT
+GETDBITEMFIELDVALUE <$BOXITEM[1].NAME> ChangeType S$数据库置换参数
+MOV L$数据库置换参数数组 <$STR(S$数据库置换参数)>
+
+#IF
+SMALL U101 <$STR(L$数据库置换参数数组[0])>
+#ACT
+MESSAGEBOX 你的熔炼点数不够！
+ReturnBoxItem 1
+GOTO @装备置换
+BREAK
+
+#IF
+#ACT
+DEC U101 <$STR(L$数据库置换参数数组[0])>
+MOV S$置换前装备名 <$BOXITEM[1].NAME>
+GetListVarCount L$数据库置换参数数组 N$可置换装备数量
+MOVR N$随机给予装备编号 1 <$STR(N$可置换装备数量)>
+MOV S$置换后装备IDX <$STR(L$数据库置换参数数组[<$STR(N$随机给予装备编号)>])>
+DelBoxItem 1
+GIVEIDX <$STR(S$置换后装备IDX)> 1
+GetDBIDXItemFieldValue <$STR(S$置换后装备IDX)> NAME S$置换后装备名
+GuildNoticeMsg 244 0 {[公告]|250:0}{『<$USERNAME>』|245:0}{使用|251:0}{[<$STR(L$数据库置换参数数组[0])>熔炼点数]|254:0}{将|251:0}{[<$STR(S$置换前装备名)>]|254:0}{置换成了|251:0}{[<$STR(S$置换后装备名)>]|254:0}
+GOTO @装备置换
+
+[@ITEMINTOBOX1]
+#IF
+#ACT
+GETDBITEMFIELDVALUE <$BOXITEM[1].NAME> ChangeType S$数据库置换参数
+
+#OR
+EQUAL S$数据库置换参数
+EQUAL S$数据库置换参数 0
+#ACT
+ReturnBoxItem 1
+MESSAGEBOX 该物品无法置换！
+BREAK
+
+#IF
+#ACT
+GOTO @实际置换界面展示
+
+[@ItemOutBox1]
+#ACT
+GOTO @装备置换
+}

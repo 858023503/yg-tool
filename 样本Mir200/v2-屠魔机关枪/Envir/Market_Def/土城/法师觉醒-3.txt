@@ -1,0 +1,86 @@
+
+
+[@main]
+#IF
+#ACT
+OPENMERCHANTBIGDLG 5 182 1 4 0 -80  1 755 0 1
+delaygoto 1150 @法师觉醒跳转1
+#SAY
+<PlayImg:14:0:11:100:390:410:0>\
+<Imgex:5:178:179:180:575:420/@学习法师觉醒>
+
+
+
+[@法师觉醒跳转1]
+#if
+#ACT
+delaygoto 1800 @法师觉醒跳转2
+#SAY
+<PlayImg:14:45:21:80:360:400:0>\
+<Imgex:5:178:179:180:575:420/@学习法师觉醒>
+
+
+
+[@法师觉醒跳转2]
+#if
+#ACT
+delaygoto 1500 @法师觉醒跳转3
+#SAY
+<PlayImg:14:83:17:80:360:400:0>\
+<Imgex:5:178:179:180:575:420/@学习法师觉醒>
+[@法师觉醒跳转3]
+#if
+#ACT
+delaygoto 1300 @法师觉醒跳转4
+#SAY
+<PlayImg:14:66:14:80:365:400:0>\
+<Imgex:5:178:179:180:575:420/@学习法师觉醒>
+[@法师觉醒跳转4]
+#if
+#ACT
+delaygoto 1200 @法师觉醒跳转5
+#SAY
+<PlayImg:14:112:14:80:380:400:0>\
+<Imgex:5:178:179:180:575:420/@学习法师觉醒>
+[@法师觉醒跳转5]
+#if
+#ACT
+delaygoto 1100 @法师觉醒跳转6
+#SAY
+<PlayImg:14:100:12:80:356:430:1>\
+<Imgex:5:178:179:180:575:420/@学习法师觉醒>
+
+[@法师觉醒跳转6]
+#if
+#act
+#say
+<PlayImg:17:80:16:80:220:115:0>\
+<Imgex:5:178:179:180:575:420/@学习法师觉醒>
+[@学习法师觉醒]
+#if
+not checkitem 八卦觉醒石
+#act
+messagebox 你没有八卦觉醒石,两个开门阵眼可以合成八卦觉醒石
+break
+#IF
+not checkjob wizard
+#act
+messagebox 你不是法师
+break
+#IF
+checkgamegold  < 10000
+#act
+messagebox 你身上没有10000元宝
+break
+
+#if
+checkitem 八卦觉醒石
+checkgamegold > 9999
+#act
+take 八卦觉醒石
+gamegold - 10000
+addskill 混乱元素 0
+MOV U154 60
+MOV U155 10
+messagebox 觉醒技能学习成功
+setontimer 1 1

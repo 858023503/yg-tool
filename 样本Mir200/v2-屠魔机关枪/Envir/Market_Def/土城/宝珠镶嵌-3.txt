@@ -1,0 +1,67 @@
+[@main]
+#if
+#act
+OPENMERCHANTBIGDLG 5 0 1 4 0 -80  1 610 0 1
+#SAY
+<ITEMBOX:1:5:2:150:223:63:63:*:250#----------^250#请放入装备^250#---------->
+<PlayImg:26:2355:10:100:195:190:0>
+<ITEMBOX:2:5:2:400:223:63:63:*:250#----------^250#请放入宝珠^250#---------->\
+<宝珠镶嵌/@宝珠镶嵌>
+
+
+
+[@宝珠镶嵌]
+#IF
+EQUAL <$BOXITEM[1].NAME>
+#ACT
+messagebox 请在左侧放入装备
+BREAK
+
+
+#IF
+CheckItemStoneCount boxitem1 = 1
+;判断是否已经镶嵌宝珠
+#ACT
+messagebox 你放入的装备已经镶嵌了宝珠
+break
+#IF
+NOT CheckFluteCount boxitem1 = 1
+;判断装备是否带孔
+#ACT
+messagebox 你放入的装备没有宝珠孔可以镶嵌
+break
+
+#IF
+EQUAL <$BOXITEM[2].NAME>
+#ACT
+messagebox 请在右侧放入宝珠
+BREAK
+
+#IF
+NOT checkcontainstext <$BOXITEM[2].NAME> 宝珠
+#ACT
+messagebox 只可以放入宝珠类物品
+break
+
+
+
+#IF
+EQUAL <$BOXITEM[2].NAME> 经验宝珠一级
+#ACT
+MOV S$镶嵌属性 杀怪经验增加5%
+MOV S$收取的材料 经验宝珠一级
+goto @开始镶嵌宝珠
+
+
+
+[@开始镶嵌宝珠]
+#IF
+#ACT
+TAKE S$收取的材料
+SetUpgradeItem 1
+ItemAddStone -1 S$镶嵌属性
+UpdateItem boxitem1
+ReturnBoxItem 1
+messagebox 镶嵌成功
+
+

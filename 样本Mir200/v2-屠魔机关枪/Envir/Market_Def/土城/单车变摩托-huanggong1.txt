@@ -1,0 +1,348 @@
+[@main]
+#if
+#act
+
+
+MOV S$参与人昵称1 等待参与
+MOV S$参与人当前小区1 等待参与
+MOV S$参与者当前战区1 等待参与
+MOV S$参与人元宝1 等待参与
+MOV S$参与中奖几率1 等待参与
+MOV S$单车变摩托剩余人数1 等待参与
+
+
+MOV S$参与人昵称2 等待参与
+MOV S$参与人当前小区2 等待参与
+MOV S$参与者当前战区2 等待参与
+MOV S$参与人元宝2 等待参与
+MOV S$参与中奖几率2 等待参与
+
+MOV S$单车变摩托剩余人数2 等待参与
+
+
+MOV S$参与人昵称3 等待参与
+MOV S$参与人当前小区3 等待参与
+MOV S$参与者当前战区3 等待参与
+MOV S$参与人元宝3 等待参与
+MOV S$参与中奖几率3 等待参与
+
+MOV S$单车变摩托剩余人数3 等待参与
+
+
+MOV S$参与人昵称4 等待参与
+MOV S$参与人当前小区4 等待参与
+MOV S$参与者当前战区4 等待参与
+MOV S$参与人元宝4 等待参与
+MOV S$参与中奖几率4 等待参与
+
+MOV S$单车变摩托剩余人数4 等待参与
+
+
+MOV S$参与人昵称5 等待参与
+MOV S$参与人当前小区5 等待参与
+MOV S$参与者当前战区5 等待参与
+MOV S$参与人元宝5 等待参与
+MOV S$参与中奖几率5 等待参与
+
+MOV S$单车变摩托剩余人数5 等待参与
+
+
+MOV S$参与人昵称6 等待参与
+MOV S$参与人当前小区6 等待参与
+MOV S$参与者当前战区6 等待参与
+MOV S$参与人元宝6 等待参与
+MOV S$参与中奖几率6 等待参与
+
+MOV S$单车变摩托剩余人数6 等待参与
+
+
+MOV S$参与人昵称7 等待参与
+MOV S$参与人当前小区7 等待参与
+MOV S$参与者当前战区7 等待参与
+MOV S$参与人元宝7 等待参与
+MOV S$参与中奖几率7 等待参与
+
+MOV S$单车变摩托剩余人数7 等待参与
+
+
+
+
+MOV S$参与人昵称8 等待参与
+MOV S$参与人当前小区8 等待参与
+MOV S$参与者当前战区8 等待参与
+MOV S$参与人元宝8 等待参与
+MOV S$参与中奖几率8 等待参与
+MOV S$单车变摩托剩余人数8 等待参与
+
+
+MOV S$参与人昵称9 等待参与
+MOV S$参与人当前小区9 等待参与
+MOV S$参与者当前战区9 等待参与
+MOV S$参与人元宝9 等待参与
+MOV S$参与中奖几率9 等待参与
+MOV S$单车变摩托剩余人数9 等待参与
+
+
+MOV S$参与人昵称10 等待参与
+MOV S$参与人当前小区10 等待参与
+MOV S$参与者当前战区10 等待参与
+MOV S$参与人元宝10 等待参与
+MOV S$参与中奖几率10 等待参与
+MOV S$单车变摩托剩余人数10 等待参与
+#IF
+#ACT
+goto @计算单车变摩托
+OPENMERCHANTBIGDLG 5 1316 1 4 0 0  1 709 15 1
+#SAY
+<&Text:参与人昵称|参与玩家的昵称:73:103{FCOLOR=100;FSIZE=12;FNAME=黑体}>
+<&Text:当前战区|玩家当前所在战区:205:103{FCOLOR=100;FSIZE=12;FNAME=黑体}>
+<&Text:当前小区|玩家当前所在小区:314:103{FCOLOR=100;FSIZE=12;FNAME=黑体}>
+<&Text:参数元宝数量|当前参与一次需要的元宝数量:408:103{FCOLOR=100;FSIZE=12;FNAME=黑体}>
+<&Text:中奖几率|每参与一次中奖几率增加10%,可以多次参加:535:103{FCOLOR=100;FSIZE=12;FNAME=黑体}>
+<&Text:参与人数|10人开奖还剩余多少人开奖:640:103{FCOLOR=100;FSIZE=12;FNAME=黑体}>
+<&Text:【玩法说明】:200:390{FCOLOR=100;FSIZE=12;FNAME=黑体}>
+<&Text:参与游戏:500:390{FCOLOR=100;FSIZE=12;FNAME=黑体}/@参与单车变摩托>
+<&Text:每次参与游戏需要100元宝,参与人数达到10人开奖,一人中奖奖励1000元宝:130:420{FCOLOR=100;FSIZE=12;FNAME=黑体}>
+<&Text:可多次参与游戏,每次参与游戏增加10%的中奖几率:200:450{FCOLOR=100;FSIZE=12;FNAME=黑体}>
+;--第一行
+<&Text:<$STR(S$参与人昵称1)>:75:131{FCOLOR=7}>\
+<&Text:<$STR(S$参与者当前战区1)>:210:131{FCOLOR=7}>\
+<&Text:<$STR(S$参与人当前小区1)>:317:131{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率1)>:438:131{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率1)>:545:131{FCOLOR=7}>\
+<&Text:<$STR(S$单车变摩托剩余人数1)>:660:131{FCOLOR=7}>\
+
+
+
+;--第二行
+<&Text:<$STR(S$参与人昵称2)>:75:156{FCOLOR=7}>\
+<&Text:<$STR(S$参与者当前战区2)>:210:156{FCOLOR=7}>\
+<&Text:<$STR(S$参与人当前小区2)>:317:156{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率2)>:438:156{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率2)>:545:156{FCOLOR=7}>\
+<&Text:<$STR(S$单车变摩托剩余人数2)>:660:156{FCOLOR=7}>\
+
+;--第三行
+<&Text:<$STR(S$参与人昵称3)>:75:181{FCOLOR=7}>\
+<&Text:<$STR(S$参与者当前战区3)>:210:181{FCOLOR=7}>\
+<&Text:<$STR(S$参与人当前小区3)>:317:181{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率3)>:438:181{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率3)>:545:181{FCOLOR=7}>\
+<&Text:<$STR(S$单车变摩托剩余人数3)>:660:181{FCOLOR=7}>\
+
+; ;--第四行
+<&Text:<$STR(S$参与人昵称4)>:75:206{FCOLOR=7}>\
+<&Text:<$STR(S$参与者当前战区4)>:210:206{FCOLOR=7}>\
+<&Text:<$STR(S$参与人当前小区4)>:317:206{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率4)>:438:206{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率4)>:545:206{FCOLOR=7}>\
+<&Text:<$STR(S$单车变摩托剩余人数4)>:660:206{FCOLOR=7}>\
+
+;--第五行
+<&Text:<$STR(S$参与人昵称5)>:75:231{FCOLOR=7}>\
+<&Text:<$STR(S$参与者当前战区5)>:210:231{FCOLOR=7}>\
+<&Text:<$STR(S$参与人当前小区5)>:317:231{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率5)>:438:231{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率5)>:545:231{FCOLOR=7}>\
+<&Text:<$STR(S$单车变摩托剩余人数5)>:660:231{FCOLOR=7}>\
+
+
+;--第六行
+<&Text:<$STR(S$参与人昵称6)>:75:256{FCOLOR=7}>\
+<&Text:<$STR(S$参与者当前战区6)>:210:256{FCOLOR=7}>\
+<&Text:<$STR(S$参与人当前小区6)>:317:256{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率6)>:438:256{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率6)>:545:256{FCOLOR=7}>\
+<&Text:<$STR(S$单车变摩托剩余人数6)>:660:256{FCOLOR=7}>\
+
+;--第七行
+<&Text:<$STR(S$参与人昵称7)>:75:281{FCOLOR=7}>\
+<&Text:<$STR(S$参与者当前战区7)>:210:281{FCOLOR=7}>\
+<&Text:<$STR(S$参与人当前小区7)>:317:281{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率7)>:438:281{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率7)>:545:281{FCOLOR=7}>\
+<&Text:<$STR(S$单车变摩托剩余人数7)>:660:281{FCOLOR=7}>\
+
+
+;--第八行
+<&Text:<$STR(S$参与人昵称8)>:75:306{FCOLOR=7}>\
+<&Text:<$STR(S$参与者当前战区8)>:210:306{FCOLOR=7}>\
+<&Text:<$STR(S$参与人当前小区8)>:317:306{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率8)>:438:306{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率8)>:545:306{FCOLOR=7}>\
+<&Text:<$STR(S$单车变摩托剩余人数8)>:660:306{FCOLOR=7}>\
+
+;--第九行
+<&Text:<$STR(S$参与人昵称9)>:75:331{FCOLOR=7}>\
+<&Text:<$STR(S$参与者当前战区9)>:210:331{FCOLOR=7}>\
+<&Text:<$STR(S$参与人当前小区9)>:317:331{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率9)>:438:331{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率9)>:545:331{FCOLOR=7}>\
+<&Text:<$STR(S$单车变摩托剩余人数9)>:660:331{FCOLOR=7}>\
+;--第十行
+<&Text:<$STR(S$参与人昵称10)>:75:356{FCOLOR=7}>\
+<&Text:<$STR(S$参与者当前战区10)>:210:356{FCOLOR=7}>\
+<&Text:<$STR(S$参与人当前小区10)>:317:356{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率10)>:438:356{FCOLOR=7}>\
+<&Text:<$STR(S$参与中奖几率10)>:545:356{FCOLOR=7}>\
+<&Text:<$STR(S$单车变摩托剩余人数10)>:660:356{FCOLOR=7}>\
+
+[@参与单车变摩托]
+#if
+checkgamegold < 99
+#act
+messagebox 元宝不够
+break
+#if
+#act
+GetRandomText ..\..\..\..\通区文件\单车变摩托\参与人数.txt N$单车变摩托参与人数
+
+#if
+SMALL N$单车变摩托参与人数 10
+#act
+gamegold - 100
+INC N$单车变摩托参与人数 1
+CLEARNAMELIST ..\..\..\..\通区文件\单车变摩托\参与人数.txt
+AddTextListEx ..\..\..\..\通区文件\单车变摩托\参与人数.txt <$STR(N$单车变摩托参与人数)>
+AddTextListEx ..\..\..\..\通区文件\单车变摩托\中奖名单.txt <$USERID>~<$USERNAME>~恭喜玩家【<$USERNAME>】参与单车变摩托中奖1000元宝,新一轮活动已开始
+AddTextListEx ..\..\..\..\通区文件\大喇叭\大喇叭.txt 【<$STR(T14)>统战<$STR(U162)>】玩家【<$USERNAME>】消耗100元宝参与了土城单车变摩托活动，当前参与人数<$STR(N$单车变摩托参与人数)>~<$datetime>
+sendmsg 4 【<$STR(T14)>统战<$STR(U162)>】玩家【<$USERNAME>】消耗100元宝参与了土城单车变摩托活动，当前参与人数<$STR(N$单车变摩托参与人数)>
+writeconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt <$USERNAME> 参与昵称 <$STR(N$单车变摩托中奖几率)>
+writeconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt N$单车变摩托参与人数 参与昵称 <$USERNAME>  ;这里先写入 点开NPC按G100变量读取第几行的参与昵称
+writeconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt N$单车变摩托参与人数 当前战区 <$STR(T14)>
+writeconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt N$单车变摩托参与人数 当前小区 <$STR(U162)>小区
+
+#if
+EQUAL N$单车变摩托参与人数 10
+#act
+;随机抽取
+GetRandomText ..\..\..\..\通区文件\单车变摩托\中奖名单.txt S$单车变摩托中奖名字
+EXTRACTSTRING ~ S$单车变摩托中奖名字 S$单车变摩托中奖账号 S$单车变摩托中奖昵称 S$单车变摩托中奖信息
+addtextlist ..\..\..\..\通区文件\大喇叭\公屏.txt <$STR(S$单车变摩托中奖信息)>~<$DATETIME>
+addtextlist ..\..\..\..\通区文件\大喇叭\大喇叭.txt <$STR(S$单车变摩托中奖信息)>~<$DATETIME>
+;给奖励
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托领取奖励.ini <$STR(S$单车变摩托中奖账号)> 中奖金额 N$QQ群中奖金额 
+INC N$QQ群中奖金额  1000
+sendmsg 4 【<$STR(T14)>统战<$STR(U162)>】玩家【<$str($S单车变摩托中奖昵称)>】消耗100元宝参与了土城单车变摩托活动，当前参与人数<$STR(N$单车变摩托参与人数)>
+writeconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托领取奖励.ini <$STR(S$单车变摩托中奖账号)> 中奖金额 N$QQ群中奖金额 
+;清空数据
+MOV N$单车变摩托参与人数 0
+CLEARNAMELIST ..\..\..\..\通区文件\单车变摩托\参与人数.txt
+AddTextListEx ..\..\..\..\通区文件\单车变摩托\参与人数.txt N$单车变摩托参与人数
+CLEARNAMELIST ..\..\..\..\通区文件\单车变摩托\中奖名单.txt
+CLEARNAMELIST ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt
+
+
+#IF
+#ACT
+
+goto @main
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@计算单车变摩托]
+#if
+#act
+GetRandomText ..\..\..\..\通区文件\单车变摩托\参与人数.txt N$单车变摩托参与人数
+#if
+LARGE N$单车变摩托参与人数 0
+#ACT
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 1 参与昵称 S$参与人昵称1
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 1 当前战区 S$参与者当前战区1
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 1 当前小区 S$参与人当前小区1
+MOV S$参与中奖几率1 100元宝
+MOV S$参与中奖几率1 10%几率
+MOV S$单车变摩托剩余人数1 <$STR(N$单车变摩托参与人数)>人
+
+#if
+LARGE N$单车变摩托参与人数 1
+#ACT
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 2 参与昵称 S$参与人昵称2
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 2 当前战区 S$参与者当前战区2
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 2 当前小区 S$参与人当前小区2
+MOV S$参与中奖几率2 100元宝
+MOV S$参与中奖几率2 10%几率
+MOV S$单车变摩托剩余人数2 <$STR(N$单车变摩托参与人数)>人
+
+#if
+LARGE N$单车变摩托参与人数 2
+#ACT
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 3 参与昵称 S$参与人昵称3
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 3 当前战区 S$参与者当前战区3
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 3 当前小区 S$参与人当前小区3
+MOV S$参与中奖几率3 100元宝
+MOV S$参与中奖几率3 10%几率
+MOV S$单车变摩托剩余人数3 <$STR(N$单车变摩托参与人数)>人
+
+#if
+LARGE N$单车变摩托参与人数 3
+#ACT
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 4 参与昵称 S$参与人昵称4
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 4 当前战区 S$参与者当前战区4
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 4 当前小区 S$参与人当前小区4
+MOV S$参与中奖几率4 100元宝
+MOV S$参与中奖几率4 10%几率
+MOV S$单车变摩托剩余人数4 <$STR(N$单车变摩托参与人数)>人
+
+#if
+LARGE N$单车变摩托参与人数 4
+#ACT
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 5 参与昵称 S$参与人昵称5
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 5 当前战区 S$参与者当前战区5
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 5 当前小区 S$参与人当前小区5
+MOV S$参与中奖几率5 100元宝
+MOV S$参与中奖几率5 10%几率
+MOV S$单车变摩托剩余人数5 <$STR(N$单车变摩托参与人数)>人
+
+#if
+LARGE N$单车变摩托参与人数 5
+#ACT
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 6 参与昵称 S$参与人昵称6
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 6 当前战区 S$参与者当前战区6
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 6 当前小区 S$参与人当前小区6
+MOV S$参与中奖几率6 100元宝
+MOV S$参与中奖几率6 10%几率
+MOV S$单车变摩托剩余人数6 <$STR(N$单车变摩托参与人数)>人
+
+#if
+LARGE N$单车变摩托参与人数 6
+#ACT
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 7 参与昵称 S$参与人昵称7
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 7 当前战区 S$参与者当前战区7
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 7 当前小区 S$参与人当前小区7
+MOV S$参与中奖几率7 100元宝
+MOV S$参与中奖几率7 10%几率
+MOV S$单车变摩托剩余人数7 <$STR(N$单车变摩托参与人数)>人
+
+
+#if
+LARGE N$单车变摩托参与人数 7
+#ACT
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 8 参与昵称 S$参与人昵称8
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 8 当前战区 S$参与者当前战区8
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 8 当前小区 S$参与人当前小区8
+MOV S$参与中奖几率8 100元宝
+MOV S$参与中奖几率8 10%几率
+MOV S$单车变摩托剩余人数8 <$STR(N$单车变摩托参与人数)>人
+
+#if
+LARGE N$单车变摩托参与人数 8
+#ACT
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 9 参与昵称 S$参与人昵称9
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 9 当前战区 S$参与者当前战区9
+readconfigfileitem ..\..\..\..\通区文件\单车变摩托\单车变摩托.txt 9 当前小区 S$参与人当前小区9
+MOV S$参与中奖几率9 100元宝
+MOV S$参与中奖几率9 10%几率
+MOV S$单车变摩托剩余人数9 <$STR(N$单车变摩托参与人数)>人

@@ -1,0 +1,37 @@
+[@道士骷髅宝宝PK赋值属性]
+{
+#IF
+#ACT
+CalcPercent <$SC> N$骷髅PK伤害 N$骷髅宝宝伤害下限
+CalcPercent <$MAXSC> N$骷髅PK伤害 N$骷髅宝宝伤害上限
+CalcPercent <$HP> N$骷髅HP N$骷髅宝宝HP
+CalcPercent <$AC> N$骷髅防御 N$骷髅宝宝防御下限
+CalcPercent <$MAXAC> N$骷髅防御 N$骷髅宝宝防御上限
+CalcPercent <$MAC> N$骷髅魔御 N$骷髅宝宝魔御下限
+CalcPercent <$MAXMAC> N$骷髅魔御 N$骷髅宝宝魔御上限
+MOV N$骷髅显示攻击速度 1000
+MOV N$骷髅显示移动速度 1000
+DEC N$骷髅显示攻击速度 <$STR(N$骷髅攻速)>
+DEC N$骷髅显示移动速度 <$STR(N$骷髅移动)>
+;总伤害百分比
+
+
+
+
+
+; CalcPercent N$骷髅宝宝伤害下限 N$骷髅伤害总百分比 N$骷髅宝宝伤害下限
+; CalcPercent N$骷髅宝宝伤害上限 N$骷髅伤害总百分比 N$骷髅宝宝伤害上限
+
+; ChangeSlaveAbility 0 N$骷髅宝宝血量初始化
+ChangeSlaveAbility 1 N$骷髅宝宝HP
+ChangeSlaveAbility 4 N$骷髅宝宝防御下限
+ChangeSlaveAbility 5 N$骷髅宝宝防御上限
+ChangeSlaveAbility 6 N$骷髅宝宝魔御下限
+ChangeSlaveAbility 7 N$骷髅宝宝魔御上限
+ChangeSlaveAbility 8 N$骷髅宝宝伤害下限
+ChangeSlaveAbility 9 N$骷髅宝宝伤害上限
+ChangeSlaveAbility 14 N$骷髅显示攻击速度
+ChangeSlaveAbility 15 N$骷髅显示移动速度
+ChangeSlaveAbility 30
+RecalcSlaveAbility
+}

@@ -1,0 +1,210 @@
+[@main]
+#if
+gender man
+#act
+MOV S199 249
+MOV S$赞助衣服 首充神甲
+#if
+gender woman
+#act
+MOV S199 251
+MOV S$赞助衣服 首充神袍
+
+#if
+#ACT
+OPENMERCHANTBIGDLG 26 26 1 4 0 -60 1 650 45 0
+#SAY
+<&Text:赞:280:20{AUTOCOLOR=251;FSIZE=16;FNAME=楷体}><&Text:助:320:20{AUTOCOLOR=251;FSIZE=16;FNAME=楷体}><&Text:礼:360:20{AUTOCOLOR=251;FSIZE=16;FNAME=楷体}><&Text:包:400:20{AUTOCOLOR=251;FSIZE=16;FNAME=楷体}>\ \ \
+<&Text:二十礼包：:60:85{AUTOCOLOR=251;FSIZE=13;FNAME=楷体}><&Text:六十礼包：:60:135{AUTOCOLOR=251;FSIZE=13;FNAME=楷体}><&Text:一百礼包：:60:185{AUTOCOLOR=251;FSIZE=13;FNAME=楷体}><&Text:二百礼包：:60:235{AUTOCOLOR=251;FSIZE=13;FNAME=楷体}><&Text:三百礼包：:60:285{AUTOCOLOR=251;FSIZE=13;FNAME=楷体}><&Text:一千礼包：:60:335{AUTOCOLOR=251;FSIZE=13;FNAME=楷体}> 
+<&Text:点击领取:550:85{AUTOCOLOR=241,250,251,253,254;FSIZE=13;FNAME=楷体}/@二十礼包><&Text:点击领取:550:135{AUTOCOLOR=241,250,251,253,254;FSIZE=13;FNAME=楷体}/@六十礼包><&Text:点击领取:550:185{AUTOCOLOR=241,250,251,253,254;FSIZE=13;FNAME=楷体}/@一百礼包><&Text:点击领取:550:235{AUTOCOLOR=241,250,251,253,254;FSIZE=13;FNAME=楷体}/@二百礼包><&Text:点击领取:550:285{AUTOCOLOR=241,250,251,253,254;FSIZE=13;FNAME=楷体}/@三百礼包><&Text:点击领取:550:335{AUTOCOLOR=241,250,251,253,254;FSIZE=13;FNAME=楷体}/@一千礼包>\ 
+
+<ItemShow:810:99:150:-20:1:3>  <ItemShow:809:188:150:-20:1:3>  <ItemShow:425:50:150:-20:1:3>  <ItemShow:812:100:150:-20:1:3>  <ItemShow:864:0:150:-20:1:3>  <ItemShow:<$Str(S199)>:0:150:-20:1:3>  <ItemShow:759:0:150:-20:1:3>\
+<ItemShow:810:666:150:15:1:3>  <ItemShow:809:288:150:15:1:3>  <ItemShow:425:50:150:15:1:3>  <ItemShow:812:100:150:15:1:3>  <ItemShow:865:0:150:15:1:3>  <ItemShow:668:0:150:15:1:3>  <ItemShow:623:0:150:15:1:3>\
+<ItemShow:810:999:150:47:1:3>  <ItemShow:809:388:150:47:1:3>  <ItemShow:425:50:150:47:1:3>  <ItemShow:812:100:150:47:1:3>  <ItemShow:866:0:150:47:1:3>  <ItemShow:264:2888:150:47:1:3>  <ItemShow:624:0:150:47:1:3>\
+<ItemShow:810:1111:150:80:1:3>  <ItemShow:809:488:150:80:1:3>  <ItemShow:425:50:150:80:1:3>  <ItemShow:812:100:150:80:1:3>  <ItemShow:867:0:150:80:1:3>  <ItemShow:264:5888:150:80:1:3>  <ItemShow:625:0:150:80:1:3>\
+<ItemShow:810:2222:150:115:1:3>  <ItemShow:809:588:150:115:1:3>  <ItemShow:425:50:150:115:1:3>  <ItemShow:812:200:150:115:1:3>  <ItemShow:868:0:150:115:1:3>  <ItemShow:115:0:150:115:1:3>  <ItemShow:626:0:150:115:1:3>\
+<ItemShow:810:3333:150:150:1:3>  <ItemShow:809:888:150:150:1:3>  <ItemShow:425:100:150:150:1:3>  <ItemShow:812:200:150:150:1:3>  <ItemShow:869:0:150:150:1:3>  <ItemShow:1671:0:150:150:1:3>  <ItemShow:627:0:150:150:1:3>\
+<&Text:注：领取赞助不扣充值点,请优先领取赞助后在消耗充值点:100:370{AUTOCOLOR=249;FSIZE=11;FNAME=黑体}><&Text:充值点：<$GAMEGIRD>:520:370{AUTOCOLOR=250;FSIZE=11;FNAME=黑体}>
+
+
+
+[@一千礼包]
+#if
+check [95] 1
+#ACT
+MESSAGEBOX 已经领取过了。
+break
+
+#if
+NOT CHECKITEM 传送戒指 1
+#ACT
+MESSAGEBOX 请把传送戒指放在背包。
+break
+
+
+
+#if
+check [95] 0
+CHECKFENGHAO 王者赞助
+CHECKGAMEGIRD > 999
+#ACT
+set [95] 1
+RECYCFENGHAO 王者赞助
+GIVEFENGHAO  至尊赞助
+Give 结晶 3333
+Give 天地结晶 888
+Give 装备碎片 100
+Give 时装羽毛 200
+TAKE 传送戒指 1
+GiveStateItem 起源の之心  1 1 0 0 1 1
+GiveStateItem 爆率腰牌(1.6) 1 1 0 0 1 1
+SetIcon 1  -1
+SetIcon 1  26  980  -3  -20  16  0 0 200  0
+MESSAGEBOX  感谢对舟游群服大力赞助.
+goto @main
+#elseact
+MESSAGEBOX  温馨提示：\1：你的充值点不足...\2：未升级上级赞助...\3：请把传送戒指放在背包...
+
+[@三百礼包]
+#if
+check [94] 1
+#ACT
+MESSAGEBOX 已经领取过了。
+BREAK
+
+#if
+check [94] 0
+CHECKFENGHAO 钻石赞助
+CHECKGAMEGIRD > 299
+#ACT
+set [94] 1
+RECYCFENGHAO 钻石赞助
+GIVEFENGHAO  王者赞助
+Give 装备碎片 50
+Give 天地结晶 588
+Give 结晶 2222
+Give 时装羽毛 200
+GiveStateItem 爆率腰牌(1.5) 1 1 0 0 1 1
+GiveStateItem 传送戒指 1 1 0 0 1 1
+SetIcon 1  -1
+SetIcon 1  26  1020  -3  -20  16  0 0 200  0
+MESSAGEBOX  感谢对舟游群服大力赞助.
+goto @main
+#elseact
+MESSAGEBOX  温馨提示：\1：你的充值点不足...\2：未升级上级赞助...
+break
+[@二百礼包]
+#if
+check [93] 1
+#ACT
+MESSAGEBOX 已经领取过了。
+break
+
+#if
+check [93] 0
+CHECKFENGHAO 白金赞助
+CHECKGAMEGIRD > 199
+#ACT
+set [93] 1
+RECYCFENGHAO 白金赞助
+GIVEFENGHAO  钻石赞助
+Give 结晶 1111
+Give 天地结晶 488
+Give 装备碎片 50
+Give 时装羽毛 100
+Give 技能书页 5888
+GiveStateItem 爆率腰牌(1.4) 1 1 0 0 1 1
+SetIcon 1  -1
+SetIcon 1  26  1000  -3  -20  16  0 0 200  0
+MESSAGEBOX  感谢对舟游群服大力赞助.
+goto @main
+#elseact
+MESSAGEBOX  温馨提示：\1：你的充值点不足...\2：未升级上级赞助...
+break
+[@一百礼包]
+#if
+check [92] 1
+#ACT
+MESSAGEBOX 已经领取过了。
+break
+
+#if
+check [92] 0
+CHECKFENGHAO 黄金赞助
+CHECKGAMEGIRD > 99
+#ACT
+set [92] 1
+RECYCFENGHAO 黄金赞助
+GIVEFENGHAO  白金赞助
+Give 结晶 999
+Give 天地结晶 388
+Give 装备碎片 50
+Give 时装羽毛 100
+Give 技能书页 2888
+GiveStateItem 爆率腰牌(1.3) 1 1 0 0 1 1
+SetIcon 1  -1
+SetIcon 1  26  960  -3  -20  16  0 0 200  0
+MESSAGEBOX  感谢对舟游群服大力赞助.
+goto @main
+#elseact
+MESSAGEBOX  温馨提示：\1：你的充值点不足...\2：未升级上级赞助...
+break
+
+[@六十礼包]
+#if
+check [91] 1
+#ACT
+MESSAGEBOX 已经领取过了。
+break
+
+#if
+check [91] 0
+CHECKFENGHAO 赞助大使
+CHECKGAMEGIRD > 59
+#ACT
+set [91] 1
+RECYCFENGHAO 赞助大使
+GIVEFENGHAO  黄金赞助
+Give 结晶 666
+Give 天地结晶 288
+Give 装备碎片 50
+Give 时装羽毛 100
+GiveStateItem 爆率腰牌(1.2) 1 1 0 0 1 1
+Give 首充神剑 1
+SetIcon 1  -1
+SetIcon 1  26  940  -3  -20  16  0 0 200  0
+MESSAGEBOX  感谢对舟游群服大力赞助.
+goto @main
+#elseact
+MESSAGEBOX  温馨提示：\1：你的充值点不足...\2：未升级上级赞助...
+break
+
+
+[@二十礼包]
+#if
+check [90] 1
+#ACT
+MESSAGEBOX 已经领取过了。
+break
+
+#if
+check [90] 0
+CHECKGAMEGIRD > 19
+#ACT
+set [90] 1
+GIVEFENGHAO  赞助大使
+Give 结晶 99
+Give 天地结晶 188
+Give 时装羽毛 100
+Give 装备碎片 50
+GiveStateItem 爆率腰牌(1.1) 1 1 0 0 1 1
+Give <$STR(S$赞助衣服)> 1
+SetIcon 1  26  920  -3  -20  16  0 0 200  0
+MESSAGEBOX  感谢对舟游群服大力赞助.
+goto @main
+#elseact
+MESSAGEBOX  温馨提示：\你的充值点不足...
+break
+
+
+

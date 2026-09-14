@@ -1,0 +1,23 @@
+[@Markets]
+{
+#IF
+#SAY
+MAINMSG\ \
+ <BUYITEMMSG/@buy>\
+ <SELLITEMMSG/@sell>\ \
+<¹Ø±Õ/@exit>
+
+[@buy]
+#IF
+#SAY
+MAINBUYMSG\ \
+<·µ»Ø/@Markets>
+
+[@sell]
+#IF
+#SAY
+MAINSELLMSG\ \
+ <·µ»Ø/@Markets>
+
+
+}

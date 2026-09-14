@@ -1,0 +1,15 @@
+[@跑酷介绍]
+{
+#if
+
+#act
+GetMapHumCount RUN001 1 N$跑酷地图人数
+FORMULATION <$STR(N$跑酷地图人数)>*1000000 N$跑酷活动可领取金币数量
+OPENMERCHANTBIGDLG 5 941 1 4 0 0  0 360 15 1
+#say
+<&Text:当前活动在线<$STR(N$跑酷地图人数)>人,可领取<$STR(N$跑酷活动可领取金币数量)>金币:30:55{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:跑酷活动地图内,每增加1个玩家活动领取金币+50W:30:80{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:活动皮肤正在制作中,可通过皮肤碎片兑换:30:105{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+#ELSEACT
+messagebox 活动未开始
+}

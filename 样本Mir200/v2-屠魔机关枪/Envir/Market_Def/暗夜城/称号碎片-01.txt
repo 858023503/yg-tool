@@ -1,0 +1,13 @@
+[@main]
+#if
+#act
+OPENMERCHANTBIGDLG 5 941 1 4 0 0  0 360 15 1
+#say
+<&Text:每小时刷新一直BOSS必爆称号碎片:35:55{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:也可以去跨服15分钟刷新一只:35:85{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+
+<&IMGEX:5:730:731:732:145:178:1/@进入称号碎片地图>
+[@进入称号碎片地图]
+#if
+#act
+mapmove fumo0

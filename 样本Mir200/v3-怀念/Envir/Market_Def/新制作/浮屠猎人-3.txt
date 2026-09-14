@@ -1,0 +1,53 @@
+[@MAIN]
+#IF
+#ACT
+CloseBigDialogBox
+MOV <$STR(S$BOSS排名1)> <$STR(A21)>
+MOV <$STR(S$BOSS排名2)> <$STR(A22)>
+MOV <$STR(S$BOSS排名3)> <$STR(A23)>
+MOV <$STR(S$BOSS排名4)> <$STR(A24)>
+MOV <$STR(S$BOSS排名5)> <$STR(A25)>
+
+#IF
+EQUAL G21 0
+#ACT
+MOV <$STR(S$BOSS排名1)>
+
+#IF
+EQUAL G22 0
+#ACT
+MOV <$STR(S$BOSS排名2)>
+
+#IF
+EQUAL G23 0
+#ACT
+MOV <$STR(S$BOSS排名3)>
+
+#IF
+EQUAL G24 0
+#ACT
+MOV <$STR(S$BOSS排名4)>
+
+#IF
+EQUAL G25 0
+#ACT
+MOV <$STR(S$BOSS排名5)>
+
+#IF
+#ACT
+SetStringBlank <$STR(S$BOSS排名1)> 14 1
+SetStringBlank <$STR(S$BOSS排名2)> 14 1
+SetStringBlank <$STR(S$BOSS排名3)> 14 1
+SetStringBlank <$STR(S$BOSS排名4)> 14 1
+SetStringBlank <$STR(S$BOSS排名5)> 14 1
+
+#SAY
+<>  {排名  玩家名称           奖励介绍       累计击杀Boss数量/FCOLOR=106}\
+<><-----------------------------------------------------------/FCOLOR=255>\
+<> {第一名/FCOLOR=250} {<$STR(S$BOSS排名1)>/FCOLOR=253} {(赠予/FCOLOR=106}{1.30/FCOLOR=249}{倍爆率)/FCOLOR=106}   {[累计击杀/FCOLOR=108}{[<$STR(G21)>]/FCOLOR=253}{只]/FCOLOR=108}\
+<> {第二名/FCOLOR=250} {<$STR(S$BOSS排名2)>/FCOLOR=253} {(赠予/FCOLOR=106}{1.20/FCOLOR=249}{倍爆率)/FCOLOR=106}   {[累计击杀/FCOLOR=108}{[<$STR(G22)>]/FCOLOR=249}{只]/FCOLOR=108}\
+<> {第三名/FCOLOR=250} {<$STR(S$BOSS排名3)>/FCOLOR=253} {(赠予/FCOLOR=106}{1.15/FCOLOR=249}{倍爆率)/FCOLOR=106}   {[累计击杀/FCOLOR=108}{[<$STR(G23)>]/FCOLOR=69}{只]/FCOLOR=108}\
+<> {第四名/FCOLOR=250} {<$STR(S$BOSS排名4)>/FCOLOR=253} {(赠予/FCOLOR=106}{1.10/FCOLOR=249}{倍爆率)/FCOLOR=106}   {[累计击杀/FCOLOR=108}{[<$STR(G24)>]/FCOLOR=254}{只]/FCOLOR=108}\
+<> {第五名/FCOLOR=250} {<$STR(S$BOSS排名5)>/FCOLOR=253} {(赠予/FCOLOR=106}{1.05/FCOLOR=249}{倍爆率)/FCOLOR=106}   {[累计击杀/FCOLOR=108}{[<$STR(G25)>]/FCOLOR=250}{只]/FCOLOR=108}\
+<><-----------------------------------------------------------/FCOLOR=255>\
+<> {每4小时清除一次榜单                   您目前击杀：/FCOLOR=106}{[<$HUMAN(BOSS数量)>]/FCOLOR=242}{只/FCOLOR=106}\

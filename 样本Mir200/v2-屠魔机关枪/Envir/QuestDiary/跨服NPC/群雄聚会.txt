@@ -1,0 +1,68 @@
+[@群雄聚会]
+{
+#IF
+#ACT
+OPENMERCHANTBIGDLG 5 961 1 4 0 -30  0 884 95 1
+#SAY
+<&Imgex:5:960:960:960:660:215/@进入群雄聚会皇宫>
+<&Imgex:5:962:962:962:655:450/@兑换积分>
+
+[@兑换积分]
+#if
+#act
+messagebox 进入地图系统自动发放元宝，无需兑换
+
+[@进入群雄聚会皇宫]
+#if
+;COMPARETEXT T14 第1统战
+#act
+MAPMOVE huanggong1 255 263 5
+break
+
+#if
+COMPARETEXT T14 第2统战
+#act
+MAPMOVE huanggong2 255 263 5
+break
+#if
+COMPARETEXT T14 第3统战
+#act
+MAPMOVE huanggong3 255 263 5
+break
+#if
+COMPARETEXT T14 第4统战
+#act
+MAPMOVE huanggong4 255 263 5
+break
+#if
+COMPARETEXT T14 第5统战
+#act
+MAPMOVE huanggong5 255 263 5
+break
+#if
+COMPARETEXT T14 第6统战
+#act
+MAPMOVE huanggong6 255 263 5
+break
+#if
+COMPARETEXT T14 第7统战
+#act
+MAPMOVE huanggong7 255 263 5
+break
+#if
+COMPARETEXT T14 第8统战
+#act
+MAPMOVE huanggong8 255 263 5
+break
+#if
+COMPARETEXT T14 第9统战
+#act
+MAPMOVE huanggong9 255 263 5
+break
+#if
+COMPARETEXT T14 第10统战
+#act
+MAPMOVE huanggong10 255 263 5
+break
+
+}

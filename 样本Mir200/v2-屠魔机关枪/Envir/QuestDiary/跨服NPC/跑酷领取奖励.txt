@@ -1,0 +1,491 @@
+[@跑酷领取奖励]
+{
+#if
+NOT EQUAL G15 0
+#act
+GetMapHumCount RUN001 1 N$跑酷地图人数
+FORMULATION <$STR(N$跑酷地图人数)>*1000000 N$跑酷活动可领取金币数量
+OPENMERCHANTBIGDLG 5 941 1 4 0 0  0 360 15 1
+#say
+<&Text:当前活动在线<$STR(N$跑酷地图人数)>人,可领取<$STR(N$跑酷活动可领取金币数量)>金币:30:55{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&Text:或10个跑酷碎片:30:85{FCOLOR=250;FSIZE=12;FNAME=黑体;FBOLD=1}>
+<&IMGEX:5:1009:1009:1009:50:178:1/@跑酷领取金币>
+<&IMGEX:5:1010:1010:1010:200:178:1/@跑酷领取皮肤碎片>
+#elseact
+messagebox 活动未开始
+[@跑酷领取皮肤碎片]
+#if
+COMPARETEXT T14
+#act
+messagebox 你为什么没有统战区记录？
+BREAK
+#if
+#act
+GIVE 跑酷碎片 10
+GiveStateItem 魔法香蕉 1 1 0 1 1 1
+INC U372 2
+
+#OR
+EQUAL <$GamePromotionFlag> 108
+EQUAL <$GamePromotionFlag> 109
+#ACT
+goto @剑心跑酷领取奖励跑酷碎片
+break
+#OR
+NOT EQUAL <$GamePromotionFlag> 108
+NOT EQUAL <$GamePromotionFlag> 109
+#ACT
+goto @老咸鱼跑酷领取奖励跑酷碎片
+break
+
+
+[@剑心跑酷领取奖励跑酷碎片]
+#or
+COMPARETEXT T14 第一统战
+#act
+MAPMOVE kuafu1 255 263 5
+
+break
+#or
+
+COMPARETEXT T14 第二统战
+#act
+MAPMOVE kuafu2 255 263 5
+
+break
+#or
+
+COMPARETEXT T14 第三统战
+#act
+MAPMOVE kuafu3 255 263 5
+
+break
+#or
+COMPARETEXT T14 第四统战
+#act
+MAPMOVE kuafu4 255 263 5
+
+break
+#or
+
+COMPARETEXT T14 第五统战
+#act
+MAPMOVE kuafu5 255 263 5
+
+break
+
+#if
+COMPARETEXT T14 第六统战
+#act
+MAPMOVE kuafu6 255 263 5
+
+break
+#if
+COMPARETEXT T14 第七统战
+#act
+MAPMOVE kuafu7 255 263 5
+
+break
+#if
+COMPARETEXT T14 第八统战
+#act 
+MAPMOVE kuafu8 255 263 5
+
+break
+#if
+COMPARETEXT T14 第九统战
+#act
+MAPMOVE kuafu9 255 263 5
+
+break
+#if
+COMPARETEXT T14 第十统战
+#act
+MAPMOVE kuafu10 255 263 5
+
+break
+#if
+COMPARETEXT T14 第十一统战
+#act
+MAPMOVE kuafu11 255 263 5
+
+break
+#if
+COMPARETEXT T14 第十二统战
+#act
+MAPMOVE kuafu12 255 263 5
+
+break
+#if
+COMPARETEXT T14 第十三统战
+#act
+MAPMOVE kuafu13 255 263 5
+
+break
+#if
+COMPARETEXT T14 第十四统战
+#act
+MAPMOVE kuafu14 255 263 5
+
+break
+#if
+COMPARETEXT T14 第十五统战
+#act
+MAPMOVE kuafu15 255 263 5
+
+break
+#if
+COMPARETEXT T14 第十六统战
+#act
+MAPMOVE kuafu16 255 263 5
+
+break
+#if
+COMPARETEXT T14 第十七统战
+#act
+MAPMOVE kuafu17 255 263 5
+
+break
+#if
+COMPARETEXT T14 第十八统战
+#act
+MAPMOVE kuafu18 255 263 5
+
+break
+#if
+COMPARETEXT T14 第十九统战
+#act
+MAPMOVE kuafu19 255 263 5
+
+break
+#if
+COMPARETEXT T14 第二十统战
+#act
+MAPMOVE kuafu20 255 263 5
+
+break
+[@老咸鱼跑酷领取奖励跑酷碎片]
+
+#or
+COMPARETEXT T14 第一统战
+COMPARETEXT T14 第二统战
+COMPARETEXT T14 第三统战
+COMPARETEXT T14 第四统战
+COMPARETEXT T14 第五统战
+COMPARETEXT T14 第六统战
+COMPARETEXT T14 第七统战
+COMPARETEXT T14 第八统战
+COMPARETEXT T14 第九统战
+COMPARETEXT T14 第十统战
+COMPARETEXT T14 第十一统战
+COMPARETEXT T14 第十二统战
+COMPARETEXT T14 第十三统战
+COMPARETEXT T14 第十四统战
+COMPARETEXT T14 第十五统战
+COMPARETEXT T14 第十六统战
+COMPARETEXT T14 第十七统战
+COMPARETEXT T14 第十八统战
+COMPARETEXT T14 第十九统战
+COMPARETEXT T14 第二十统战
+#act
+MAPMOVE kuafu1 255 263 5
+break
+#or
+
+COMPARETEXT T14 第二十二统战
+#act
+MAPMOVE kuafu2 255 263 5
+
+break
+#or
+
+COMPARETEXT T14 第二十三统战
+#act
+MAPMOVE kuafu3 255 263 5
+
+break
+#if
+COMPARETEXT T14 第二十四统战
+#act
+MAPMOVE kuafu4 255 263 5
+
+break
+
+#if
+COMPARETEXT T14 第二十五统战
+#act
+MAPMOVE kuafu5 255 263 5
+
+break
+#if
+COMPARETEXT T14 第二十六统战
+#act
+MAPMOVE kuafu6 255 263 5
+
+break
+#if
+COMPARETEXT T14 第二十七统战
+#act
+MAPMOVE kuafu7 255 263
+
+break
+#if
+COMPARETEXT T14 第二十八统战
+#act
+MAPMOVE kuafu8 255 263
+
+break
+#if
+COMPARETEXT T14 第二十九统战
+#act
+MAPMOVE kuafu9 255 263
+
+break
+#OR
+COMPARETEXT T14 第三十统战
+#act
+MAPMOVE kuafu10 255 263
+
+break
+#IF
+COMPARETEXT T14 第三十一统战
+#act
+MAPMOVE kuafu11 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十二统战
+#act
+MAPMOVE kuafu12 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十三统战
+#act
+MAPMOVE kuafu13 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十四统战
+#act
+MAPMOVE kuafu14 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十五统战
+#act
+MAPMOVE kuafu15 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十六统战
+#act
+MAPMOVE kuafu16 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十七统战
+#act
+MAPMOVE kuafu17 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十八统战
+#act
+MAPMOVE kuafu18 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十九统战
+#act
+MAPMOVE kuafu19 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第四十统战
+#act
+MAPMOVE kuafu20 255 263 5
+
+break
+[@跑酷领取金币]
+#if
+COMPARETEXT T14
+#act
+messagebox 你为什么没有统战区记录？
+BREAK
+#if
+#act
+GetMapHumCount RUN001 1 N$跑酷地图人数
+FORMULATION <$STR(N$跑酷地图人数)>*1000000 N$跑酷活动可领取金币数量
+GetCacheRandomText ..\QuestDiary\幸运数字\幸运数字.txt S$幸运数字
+MOVR N$给幸运数字数量 1 5
+sendmsg 1 当前地图人数<$STR(N$跑酷地图人数)>,玩家<$USERNAME>领取金币<$STR(N$跑酷活动可领取金币数量)>金币,<$STR(S$幸运数字)><$STR(N$给幸运数字数量)>个和【真冲2元】
+GIVE 金币 N$跑酷活动可领取金币数量
+GIVE S$幸运数字 N$给幸运数字数量
+GiveStateItem 魔法香蕉 1 1 0 1 1 1
+INC U372 2
+
+#or
+COMPARETEXT T14 第一统战
+COMPARETEXT T14 第二统战
+COMPARETEXT T14 第三统战
+COMPARETEXT T14 第四统战
+COMPARETEXT T14 第五统战
+COMPARETEXT T14 第六统战
+COMPARETEXT T14 第七统战
+COMPARETEXT T14 第八统战
+COMPARETEXT T14 第九统战
+COMPARETEXT T14 第十统战
+COMPARETEXT T14 第十一统战
+COMPARETEXT T14 第十二统战
+COMPARETEXT T14 第十三统战
+COMPARETEXT T14 第十四统战
+COMPARETEXT T14 第十五统战
+COMPARETEXT T14 第十六统战
+COMPARETEXT T14 第十七统战
+COMPARETEXT T14 第十八统战
+COMPARETEXT T14 第十九统战
+COMPARETEXT T14 第二十统战
+#act
+MAPMOVE kuafu1 255 263 5
+break
+#or
+
+COMPARETEXT T14 第二十二统战
+#act
+MAPMOVE kuafu2 255 263 5
+
+break
+#or
+
+COMPARETEXT T14 第二十三统战
+#act
+MAPMOVE kuafu3 255 263 5
+
+break
+#if
+COMPARETEXT T14 第二十四统战
+#act
+MAPMOVE kuafu4 255 263 5
+
+break
+
+#if
+COMPARETEXT T14 第二十五统战
+#act
+MAPMOVE kuafu5 255 263 5
+
+break
+#if
+COMPARETEXT T14 第二十六统战
+#act
+MAPMOVE kuafu6 255 263 5
+
+break
+#if
+COMPARETEXT T14 第二十七统战
+#act
+MAPMOVE kuafu7 255 263
+
+break
+#if
+COMPARETEXT T14 第二十八统战
+#act
+MAPMOVE kuafu8 255 263
+
+break
+#if
+COMPARETEXT T14 第二十九统战
+#act
+MAPMOVE kuafu9 255 263
+
+break
+#OR
+COMPARETEXT T14 第三十统战
+#act
+MAPMOVE kuafu10 255 263
+
+break
+#IF
+COMPARETEXT T14 第三十一统战
+#act
+MAPMOVE kuafu11 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十二统战
+#act
+MAPMOVE kuafu12 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十三统战
+#act
+MAPMOVE kuafu13 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十四统战
+#act
+MAPMOVE kuafu14 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十五统战
+#act
+MAPMOVE kuafu15 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十六统战
+#act
+MAPMOVE kuafu16 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十七统战
+#act
+MAPMOVE kuafu17 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十八统战
+#act
+MAPMOVE kuafu18 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第三十九统战
+#act
+MAPMOVE kuafu19 255 263 5
+
+break
+
+#IF
+COMPARETEXT T14 第四十统战
+#act
+MAPMOVE kuafu20 255 263 5
+
+break
+[@进入传仙战场]
+;#if
+;#ACT
+;Gmexecute 跨区 <$username> 180.188.37.254 7200
+}

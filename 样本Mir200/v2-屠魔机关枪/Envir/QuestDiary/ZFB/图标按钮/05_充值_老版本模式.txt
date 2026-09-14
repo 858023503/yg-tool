@@ -1,0 +1,82 @@
+[@充值]
+#INCLUDE JZ常量.ini
+{
+#IF
+equal <$GamePromotionFlag> tq88666
+#ACT
+MOV S$会员站标识 tq88666
+MOV S$充值网站 https://www.tq88666.com
+
+#IF
+equal <$GamePromotionFlag> tq6868
+#ACT
+MOV S$会员站标识 tq6868
+MOV S$充值网站 https://www.tq6868.com
+
+#IF
+equal <$GamePromotionFlag> 9wwa
+#ACT
+MOV S$会员站标识 9wwa
+MOV S$充值网站 https://www.9wwa.com
+
+#IF
+equal <$GamePromotionFlag> 8jwl
+#ACT
+MOV S$会员站标识 8jwl
+MOV S$充值网站 https://www.8jwl.com
+
+
+
+
+
+
+#if
+#act
+;mov T5 oeTNb5iGUL7cTeL_LhsX9ow9TwK8
+;OPID 这里只是模拟微信绑定后获取到的这个ID
+
+AddTextList ..\..\..\..\..\会员站\充值订单.txt <$STR(S$会员站标识)>:<$STR($常量_微信OP)>:$常量_游戏名称:<$SERVERNAME>:<$USERID>:<$USERNAME>
+;把微信ID写到获取数据的txt文件 网关读取到之后 会把数据写到 对应的文件里面
+
+CreateFile ..\..\..\..\..\会员站\充值订单回调\<$STR($常量_微信OP)>.txt
+;创建一个opid对应的文件
+
+SHOWPROGRESSBARDLG 2 @获取信息返回数据 正在更新数据,进度%d%... 0 @获取失败
+
+DELAYGOTO 2000 @获取信息返回数据1
+
+
+[@获取信息返回数据1]
+#act
+MOV S$是否成功
+GetListString ..\..\..\..\..\会员站\充值订单回调\<$STR($常量_微信OP)>.txt 0 S$是否成功
+;判断一下数据是不是获取成功了
+#IF
+NOT EQUAL S$是否成功 成功
+#act
+DELAYGOTO 1000 @获取信息返回数据1
+break
+;数据还没获取到 等待1000ms再次获取
+
+#IF
+#act
+mov S$状态
+GetListString ..\..\..\..\..\会员站\充值订单回调\<$STR($常量_微信OP)>.txt 1 S$状态
+
+#IF
+EQUAL S$状态 获取成功
+#ACT
+GetListString ..\..\..\..\..\会员站\充值订单回调\<$STR($常量_微信OP)>.txt 2 S$Code
+CLEARNAMELIST ..\..\..\..\..\会员站\充值订单回调\<$STR($常量_微信OP)>.txt
+;打开网站
+OpenUrl <$STR(S$充值网站)>/index/user/thirdorder?code=<$STR(S$Code)>
+;OpenUrl http://www.tq6868.com/index/user/thirdorder?code=<$STR(S$Code)>
+;WebBrowser http://ww33.5sy.com/index/Index/gameconversion.html
+;删除文件里面的所有数据
+#ELSEACT
+GetListString ..\..\..\..\..\会员站\充值订单回调\<$STR($常量_微信OP)>.txt 2 S$失败原因
+CLEARNAMELIST ..\..\..\..\..\会员站\充值订单回调\<$STR($常量_微信OP)>.txt
+;删除文件里面的所有数据
+messagebox <$STR(S$失败原因)>
+
+}

@@ -1,0 +1,699 @@
+[@Startup]
+#IF
+EQUAL A11
+#ACT
+MOV A11 <$MONTH>0<$DAY>
+#IF
+#ACT
+MAPEFFECT ZFDM 60 35 43 120 24 -1 200 1 0
+MAPEFFECT ZFDM 60 35 43 150 10 -1 200 0 0
+MAPEFFECT ZFDM 72 47 43 120 24 -1 200 1 0
+MAPEFFECT ZFDM 72 47 43 150 10 -1 200 0 0
+MAPEFFECT SMBC 81 27 43 176 10 -1 200 0 0
+MAPEFFECT DXHL1 51 50 43 176 10 -1 200 0 0
+MAPEFFECT JXSY1 115 172 43 176 10 -1 200 0 0
+MAPEFFECT YMZL1 6 41 43 176 10 -1 200 0 0
+MAPEFFECT LFZD 80 14 43 176 10 -1 200 0 0
+MAPEFFECT MZJT1 9 52 43 176 10 -1 200 0 0
+MAPEFFECT TYJD 53 46 43 176 10 -1 200 0 0
+MAPEFFECT 极度宫殿 79 83 43 176 10 -1 200 0 0
+MAPEFFECT BOSSHG1 16 21 43 176 10 -1 200 0 0
+MAPEFFECT dtmc 56 67 43 176 10 -1 200 0 0
+MAPEFFECT dtmc 460 265 43 176 10 -1 200 0 0
+MAPEFFECT dtmc 39 422 43 176 10 -1 200 0 0
+MAPEFFECT YHSD1 78 45 43 176 10 -1 200 0 0
+MAPEFFECT DWGM1 140 44 43 176 10 -1 200 0 0
+MAPEFFECT hhzbdt 24 26 43 174 2 -1 200 1 0
+MAPEFFECT hhzbdt 13 24 43 172 2 -1 200 1 0
+MAPEFFECT hhzbdt 21 16 43 172 2 -1 200 1 0
+MAPEFFECT hhzbdt 26 37 43 172 2 -1 200 1 0
+MAPEFFECT hhzbdt 34 29 43 172 2 -1 200 1 0
+VAR Integer GLOBAL 开区天数
+LOADVAR GLOBAL 开区天数 ..\QuestDiary\攻城数据.txt
+#CALL [\0启动加载\启动加载.txt] @加载
+break
+
+[@Login]
+;TOOL_INJECTED_START
+;存销写入记录结束,请勿删除,元歌工具箱
+#IF
+NOT ISDUMMY
+#ACT
+ChangeSpeed 2 10
+#CALL [\商店功能\存销变量初始化.txt] @存销变量初始化
+mov S$用户数据存储地址 ..\..\..\..\通区文件\测试1区\<$USERID>_<$USERNAME>.ini
+mov S$物品数据存储地址 ..\..\..\..\通区文件\测试1区\物品数据\
+mov S$地图数据存储地址 ..\..\..\..\通区文件\测试1区\地图数据\
+mov S$本地物品数据存储地址 ..\QuestDiary\咕咕鸡物品分类\
+#CALL [\商店功能\界面配置读取.txt] @界面配置读取
+mov N$虾米资源编号 90
+ADDBUTTON <$STR(N$虾米资源编号)> 200 10 11 12 10 92 1 -1
+
+#IF
+NOT ISDUMMY
+ISNEWHUMAN
+#ACT
+#CALL [\商店功能\创建文件.txt] @创建文件
+;TOOL_INJECTED_END
+
+#if
+#act
+ShowGodBless 1
+OpenGodBless all
+VAR Integer HUMAN 在线时长
+VAR STRING HUMAN 游戏帐号
+VAR STRING HUMAN ip地址
+VAR STRING HUMAN 人物名称
+
+#If
+#act
+ADDBUTTON 89 17 0 1 0 28 83 0 -1
+
+#IF
+CHECK [32] 1
+#ACT
+FILTERGLOBALMSG 1
+
+#IF
+CHECK [120] 1
+#ACT
+OpenAutoPickItem 1 0 5 1 0 0 500
+
+#IF
+ISDUMMY
+#ACT
+AutoUseMagic 31 20
+AutoUseMagic 30 90
+
+#IF
+#ACT
+SET [099] 0
+VAR Integer HUMAN BOSS数量
+LOADVAR HUMAN BOSS数量 ..\QuestDiary\游戏功能\BOSS计算保存.txt
+VAR Integer HUMAN 购买次数
+VAR Integer HUMAN CSQHS-测试区回收记录
+LOADVAR     HUMAN CSQHS-测试区回收记录 ..\QuestDiary\测试区回收记录\测试区回收数据.txt
+LOADVAR HUMAN  购买次数 ..\QuestDiary\QF触发文件\购买次数.txt
+#CALL [\领悟\领悟1\自动吃药设置QM触发.txt] @自动吃药设置QM触发
+#CALL [\登陆\新手登陆.txt] @游戏上线登录
+#CALL [\登陆\新手登陆.txt] @新手登陆
+;#CALL [\战狂密保\密码验证.txt] @密保设置
+#CALL [\登陆\封号脚本.txt] @封号设置
+#CALL [\1游戏登陆\攻击倍数.txt] @攻击倍数
+#CALL [\游戏功能\仙魔称号.txt] @判断称号
+#CALL [\1游戏登陆\属性加成.txt] @属性加成
+#CALL [\1游戏登陆\爆率加成.txt] @爆率加成
+;#CALL [\游戏功能\装备吸血.txt] @吸血设置
+AddHpPer = 100
+AddMpPer = 100
+SetOnTimer 223 5
+SetOnTimer 222 1
+SetOnTimer 127 2
+SetOnTimer 5 1
+break
+
+[@ontimer223]
+#IF
+#ACT
+INC N$名字颜色计时 1
+EXTRACTSTRING : 250:251:252:253:254:242:243 S$名字颜色1 S$名字颜色2 S$名字颜色3 S$名字颜色4 S$名字颜色5 S$名字颜色6 S$名字颜色7
+#IF
+CHECK [4] 1
+#ACT
+CHANGENAMECOLOR <$STR(S$名字颜色<$STR(N$名字颜色计时)>)>
+#IF
+Large N$名字颜色计时 6
+#ACT
+MOV N$名字颜色计时 0
+
+#IF
+ISCASTLEGUILD
+#ACT
+SetIcon 4 77 296 2 -27 1 0
+
+#IF
+ISCASTLEMASTER
+#ACT
+SetIcon 4 77 295 2 -27 1 0
+
+#IF
+NOT ISCASTLEGUILD
+NOT ISCASTLEMASTER
+#ACT
+SetIcon 4 -1
+
+#IF
+CheckMagicName 召唤麒麟
+CheckMagicName 召唤神兽
+#ACT
+DELSKILL 召唤神兽
+[@ontimer222]
+#IF
+CHECK [119] 1
+;NOT CheckBagSize 100
+#ACT
+#CALL [\商人\在线回收.txt] @自动回收
+
+#IF
+CHECK [301] 1
+;NOT CheckBagSize 100
+#ACT
+#CALL [\商人\在线回收.txt] @Kshs01x
+
+#IF
+ISONMAP 0150
+#ACT
+KILLSLAVE
+
+#or
+ISONMAP D2051
+ISONMAP D2052
+ISONMAP D2053
+ISONMAP D2054
+ISONMAP D2055
+ISONMAP D2056
+ISONMAP D2061
+ISONMAP D2062
+ISONMAP D2063
+ISONMAP D2064
+ISONMAP D2065
+ISONMAP D2066
+ISONMAP D2067
+ISONMAP F004
+ISONMAP 水上
+#ACT
+SetHumAttackMode 1 1
+
+#IF
+equal G5 1
+ISONMAP hhzbdt
+#ACT
+CHANGEEXP + 8000
+#IF
+equal G5 1
+CheckHumInRange hhzbdt 24 26 0 
+#ACT
+CHANGEEXP + 30000
+SendCenterMsg 180 251 恭喜<$USERNAME>占领了行会争霸中心位置获得了每秒30000经验. 0 2
+
+#IF
+equal G5 1
+CheckHumInRange hhzbdt 13 24 0 
+#ACT
+ CHANGEEXP + 15000
+SendCenterMsg 180 251 恭喜<$USERNAME>占领了行会争霸经验点获得了每秒15000经验. 0 2
+
+#IF
+equal G5 1
+CheckHumInRange hhzbdt 21 16 0 
+#ACT
+ CHANGEEXP + 15000
+SendCenterMsg 180 251 恭喜<$USERNAME>占领了行会争霸经验点获得了每秒15000经验. 0 2
+
+#IF
+equal G5 1
+CheckHumInRange hhzbdt 26 37 0 
+#ACT
+ CHANGEEXP + 15000
+SendCenterMsg 180 251 恭喜<$USERNAME>占领了行会争霸经验点获得了每秒15000经验. 0 2
+
+#IF
+equal G5 1
+CheckHumInRange hhzbdt 34 29 0 
+#ACT
+ CHANGEEXP + 15000
+SendCenterMsg 180 251 恭喜<$USERNAME>占领了行会争霸经验点获得了每秒15000经验. 0 2
+#IF
+#ACT
+;ADDBUTTON 0 11 1631 1632 1632 212 311 3 转区元宝：<$GAMEGLORY>
+ADDBUTTON 0 12 1631 1632 1632 212 331 3 转区积分：<$CREDITPOINT>
+[@OnTimer15]
+#IF
+large U2 0
+#act
+DEC U2 1
+#ELSEACT
+SetOffTimer 15
+POWERRATE 100 0
+SENDMSG 6 (*)攻击力倍数恢复正常...
+#CALL [\登陆\封号脚本.txt] @封号设置
+BREAK
+;==========================================================================================
+
+[@OnTimer4]
+#IF
+ISONMAP 0150
+CHECKSLAVECOUNT > 1
+#ACT
+KILLCALLMOB 巨型多角虫1 10
+KILLCALLMOB 工蚁 10
+KILLCALLMOB 蚁后 10
+KILLCALLMOB 鹰卫 10
+KILLCALLMOB 虎卫 10
+KILLCALLMOB 神兽 10
+KILLCALLMOB 强化神兽 10
+KILLCALLMOB 白虎 10
+KILLCALLMOB 上古白虎 10
+KILLCALLMOB 月灵 10
+SENDMSG 6 皇宫里不允许带2只或以上宠物。您的宠物已被系统杀死...
+BREAK
+
+[@关闭提示]
+#IF
+CHECKLEVELex > 50
+#ACT
+SetOffTimer 8
+;SENDMSG 6 ぐ:您的等级51级了,无法获得经验...
+break
+
+[@千年树妖服弹窗]
+#IF
+ISONMAP jianyu
+#ACT
+break
+#IF
+ISONMAP 密码验证室
+#ACT
+break
+#IF
+#ACT
+#CALL [\活动\千年树妖活动.txt] @千年树妖活动
+break
+
+[@假人聚宝恶魔]
+#if
+#act
+ChangeAttatckMode 5
+mapmove 3 347 339
+SENDMSG 0 （*）{「<$USERNAME>」|251:0:1}前去抢杀{『聚宝恶魔』|251:0:1}，爆全服所有装备！... 255 241
+BREAK
+
+[@92vk.com开始元宝捐献数据清空]
+#ACT
+CALCVAR HUMAN YBJX-个人捐献 = 0
+SAVEVAR HUMAN YBJX-个人捐献 ..\QuestDiary\个人捐献\个人捐献排行数据.txt
+
+;〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓
+[@擂台流局]
+#IF
+equal <$USERNAME> <$STR(A6)>
+#ACT
+gamegold + <$STR(G6)>
+mapmove 擂台 49 42
+MESSAGEBOX \暂时没有玩家挑战，系统已退还你<$STR(G6)>元宝！
+
+[@擂台平局]
+#IF
+equal <$USERNAME> <$STR(A6)>
+#ACT
+mapmove 擂台 49 42
+MESSAGEBOX \5分钟未分出胜负，双方已自动请出擂台！
+
+#IF
+equal <$USERNAME> <$STR(A7)>
+#ACT
+mapmove 擂台 49 42
+MESSAGEBOX \5分钟未分出胜负，双方已自动请出擂台！
+
+[@OnTimer9]
+#IF
+large <$STR(N$断开秒)> 0
+#ACT
+CloseBigDialogBox
+dEC <$STR(N$断开秒)> 1
+#SAY
+　\
+　　　{你于,<$STR(S$杀时间)>被<$STR(S$人或怪)>「<$STR(S$击杀者)>」杀死！/SCOLOR=249}\
+　\
+　　　              {<$STR(N$断开秒)>秒后断开连接./SCOLOR=250}\
+　\
+　\
+　　　　　　　　     <  回城复活  /@回城复活>\
+
+[@回城复活]
+#IF
+#ACT
+SHOWPROGRESSBARDLG 2 @回城复活QF 正在复活中...%d%... 0
+
+[@更新自身属性]
+#IF
+#ACT
+#CALL [\1游戏登陆\攻击倍数.txt] @攻击倍数
+;#CALL [\游戏功能\装备吸血.txt] @吸血设置
+#CALL [\1游戏登陆\属性加成.txt] @属性加成
+#CALL [\1游戏登陆\攻击倍数.txt] @攻击倍数
+
+[@OnTimer127]
+#IF
+CHECKVAR HUMAN zdcy-HPMP增加值 > 0
+#ACT
+#CALL [\领悟\领悟1\自动吃药设置吃药触发.txt] @自动吃药设置吃药触发
+
+[@材料活动弹窗]
+#IF
+CHECKMAPNAME 0127
+#ACT
+Break
+
+#IF
+#ACT
+CLOSEBigDialogBox
+#SAY
+\ \ \
+【世界BOSS】活动进行中，杀死世界火龙教主必爆各种高级装备！ \
+【世界BOSS】活动进行中，杀死世界火龙教主必爆各种高级装备！ \
+【世界BOSS】活动进行中，杀死世界火龙教主必爆各种高级装备！\ \
+　　　　　　<进入世界BOSS活动/@材料活动56>
+
+[@材料活动56]
+#act
+GuildNoticeMsg 251 0 〖系统〗『<$USERNAME>』进入了世界BOSS地图！
+MAP CLHD
+break
+
+[@夺宝奇兵9]
+#IF
+#ACT
+CLOSEBigDialogBox
+#SAY
+〖夺宝奇兵〗活动已经开始,守护宝箱10分钟不掉落\ 
+ 就能获得夺宝大奖哦！\
+ 你还犹豫什么?\
+『<我要参加/@db99>』\ 
+『<关闭/@exit>』\
+[@db99]
+#IF
+#ACT
+MOV S40 
+MOV M60 0 
+MAPMOVE DBQB1 10 12 
+SetOnTimer 0 1 
+SENDMSG 0 <$USERNAME>进入了夺宝奇兵！
+break
+#ELSEACT
+Messagebox [提示]：在每天的零点每个四个小时开放一次。
+BREAK
+
+[@夺宝奇兵]
+#IF
+ISONMAP DBQB1
+Checkitem 宝箱 1
+#ACT
+SetIcon 0 7
+SetIcon 1 7
+SetIcon 2 7
+SetIcon 3 7
+SENDMSG 0 [夺宝奇兵]：目前宝箱被%S拥有，已成功拥有[<$STR(M60)>]秒。
+SENDMSG 0 [夺宝奇兵]：成功拥有宝箱600秒[10分钟]后他将获得宝箱中的宝物。
+SENDMSG 0 [夺宝奇兵]：%S目前所在位置：%m的(%x：%y)
+BREAK
+
+#IF
+ISONMAP DBQB1
+#ACT
+BREAK
+#ELSEACT
+TAKE 宝箱 1
+BREAK
+
+[@OnTimer0]
+#IF
+ISONMAP DBQB1
+Checkitem 宝箱 1
+EQUAL M60 600
+Check [191] 1
+#ACT
+SetIcon 0 5
+SetIcon 1 5
+SetIcon 2 5
+SetIcon 3 5
+MOV M60 0
+TAKE 宝箱 1
+SET [191] 0
+GetRandomText ..\QuestDiary\1游戏登陆\宝箱物品名单.txt S10
+GIVE <$STR(S10)> 1
+SENDMSG 0 [%S]获得了本届夺宝奇兵的胜利，获得了[<$STR(S10)>]
+MOV A40 <$USERNAME>
+BREAK
+
+#IF
+ISONMAP DBQB1
+Checkitem 宝箱 1
+Check [191] 1
+#ACT
+INC M60 1
+BREAK
+
+#IF
+ISONMAP DBQB1
+Checkitem 宝箱 1
+#ACT
+SET [191] 1
+SENDMSG 0 [%S]拾到了夺宝奇兵的宝箱。成功保护10分钟将可以获得宝箱内的宝物。
+BREAK
+
+#IF
+ISONMAP DBQB1
+#ACT
+BREAK
+
+#IF
+Checkitem 宝箱 1
+#ACT
+TAKE 宝箱 1  
+THROWITEM DBQB1 20 22 6 宝箱 1 
+ChangePKPoint + 2000
+MOV M60 0
+MAPMOVE DBQB1 10 12
+SENDMSG 0 〖夺宝奇兵〗：〖%S〗违反规则，宝箱掉落在夺宝地图.
+SENDMSG 0 〖%S〗违反夺宝奇兵规则，将宝箱乱放，系统将其抓回并处死，增加其2000点PK值。
+Kill 1 
+BREAK
+
+#IF
+#ACT
+SetOffTimer 0
+BREAK
+
+[@ontimer5]
+#or
+CHECKITEMW  复活戒指
+CHECKITEMW  复活戒指
+CHECKITEMW  复活戒指[印+1]
+CHECKITEMW  复活戒指[印+2]
+CHECKITEMW  复活戒指[印+3]
+CHECKITEMW  复活戒指[印+4]
+CHECKITEMW  复活戒指[印+5]
+CHECKITEMW  复活戒指[终极]
+#act
+MOV S$复活BUFF描述 <$RevivalTime>
+ForMulation <$ClientHeight>-190 N$复活分辨率Y 
+ADDBUTTON 0 1 133 133 133 40 450 0 249#<$STR(S$复活BUFF描述)>
+#ELSEACT
+MOV S$复活BUFF描述 <$RevivalTime>
+ForMulation <$ClientHeight>-190 N$复活分辨率Y 
+ADDBUTTON 0 1 133 133 133 40 450 0 -1
+[@必爆技能弹窗]
+#IF
+CHECKMAPNAME 0127
+#ACT
+Break
+
+#IF
+#ACT
+CLOSEBigDialogBox
+#SAY
+\ \ \
+【必爆技能】活动进行中，杀死怪物必爆解毒术！ \
+【必爆技能】活动进行中，杀死怪物必爆解毒术！ \
+【必爆技能】活动进行中，杀死怪物必爆解毒术！ \ \
+
+　　　　　　<进入必爆技能/@必爆技能>
+
+[@必爆技能]
+#IF
+EQUAL G11 1
+#ACT
+MAP BBJN
+break
+#elseact
+messagebox 当前活动还未开启，请留意系统提示
+break
+
+[@BOSS数量重置]
+#IF
+#ACT
+MOV <$HUMAN(BOSS数量)> 0
+SAVEVAR HUMAN BOSS数量 ..\QuestDiary\游戏功能\BOSS计算保存.txt
+MOV A21
+MOV A22
+MOV A23
+MOV A24
+MOV A25
+MOV G21 0
+MOV G22 0
+MOV G23 0
+MOV G24 0
+MOV G25 0
+#CALL [\1游戏登陆\爆率加成.txt] @爆率加成
+BREAK
+
+[@爆率加载]
+#IF
+#ACT
+;#CALL [\1游戏登陆\爆率加成.txt] @爆率加成
+BREAK
+
+[@OnTimer10]
+#IF
+large <$STR(N$断开秒)> 0
+#ACT
+CloseBigDialogBox
+dEC <$STR(N$断开秒)> 1
+#SAY
+　\ \
+　　　{你触发了怀念宝阁！/SCOLOR=249}\ \
+　　　{里面有大量材料终极装备，你敢进入吗？/SCOLOR=249}\ \
+　　　  <确认进入/@确认进入>              {<$STR(N$断开秒)>秒后关闭通道./SCOLOR=250}\
+　\
+　\
+　　　　　　　　   \
+#ELSEACT
+SETOFFTIMER 10
+CLOSE
+[@确认进入]
+#if
+RANDOM 2 
+#act
+AddMirrorMap 新品泡点 <$USERNAME>HNBG1 怀念宝阁① 36000 0159 0 N$Certmap 1 
+mov S$地图号 <$MAP>
+mov N$坐标1 <$X>
+mov N$坐标2 <$Y>
+map <$USERNAME>HNBG1
+SETOFFTIMER 10
+CLEARMAPMON <$USERNAME>HNBG1
+MonGenEx <$USERNAME>HNBG1 30 34 怀念魔神 1 1 249
+BREAK
+
+#if
+RANDOM 2 
+#act
+AddMirrorMap 新品泡点 <$USERNAME>HNBG2 怀念宝阁② 36000 0159 0 N$Certmap 1 
+mov S$地图号 <$MAP>
+mov N$坐标1 <$X>
+mov N$坐标2 <$Y>
+map <$USERNAME>HNBG2
+SETOFFTIMER 10
+CLEARMAPMON <$USERNAME>HNBG2
+MonGenEx <$USERNAME>HNBG2 30 34 沉默罗刹 1 1 249
+BREAK
+
+#if
+RANDOM 2 
+#act
+AddMirrorMap 新品泡点 <$USERNAME>HNBG3 怀念宝阁③ 36000 0159 0 N$Certmap 1 
+mov S$地图号 <$MAP>
+mov N$坐标1 <$X>
+mov N$坐标2 <$Y>
+map <$USERNAME>HNBG3
+SETOFFTIMER 10
+CLEARMAPMON <$USERNAME>HNBG3
+MonGenEx <$USERNAME>HNBG3 30 34 幽冥魔王 1 1 249
+BREAK
+
+#if
+RANDOM 2 
+#act
+AddMirrorMap 新品泡点 <$USERNAME>HNBG4 怀念宝阁④ 36000 0159 0 N$Certmap 1 
+mov S$地图号 <$MAP>
+mov N$坐标1 <$X>
+mov N$坐标2 <$Y>
+map <$USERNAME>HNBG4
+SETOFFTIMER 10
+CLEARMAPMON <$USERNAME>HNBG4
+MonGenEx <$USERNAME>HNBG4 30 34 重装之神  1 1 249
+BREAK
+
+#if
+RANDOM 1 
+#act
+AddMirrorMap 新品泡点 <$USERNAME>HNBG5 怀念宝阁⑤ 36000 0159 0 N$Certmap 1 
+mov S$地图号 <$MAP>
+mov N$坐标1 <$X>
+mov N$坐标2 <$Y>
+map <$USERNAME>HNBG5
+SETOFFTIMER 10
+CLEARMAPMON <$USERNAME>HNBG5
+MonGenEx <$USERNAME>HNBG5 30 34 死亡之眼 1 1 249
+BREAK
+
+[@OnTimer1]
+#IF
+large <$RevivalTime> 0
+#ACT
+MOV S$复活BUFF描述 250/复活CD冷却中.\251/小退登陆无效.
+Mov N$图标复活时间_Y <$ClientHeight>
+Dec N$图标复活时间_Y 186
+SetClientBuff 6 1 34 <$RevivalTime> 32 2 <$STR(S$复活BUFF描述)>
+;SendCenterMsg 251 0 [提示]：复活效果CD中,剩余<$REVIVALTIME>生效！ 0 1
+#ELSEACT
+SETOFFTIMER 1
+;复活关闭
+
+[@行会争霸弹窗]
+天下风云出我辈 一入江湖岁月催！\
+<∞---------------------------------------------------------∞/FCOLOR=7>\
+每天20：00举行玛法大陆行会争霸赛！比赛时间30分钟！\
+<∞---------------------------------------------------------∞/FCOLOR=7>\
+只有拥有行会的玩家才能参赛！最后获胜的行会可以领取奖励！\
+<∞---------------------------------------------------------∞/FCOLOR=7>\
+<><【行会争霸状态:】/FCOLOR=253>【{<$STR(A1)>/FCOLOR=253}】  ！！\
+
+<重要提示：比赛时间20分钟，期间可以重复进入比赛！/FCOLOR=154>\
+<　　　　　进入条件开启狂暴之力！/FCOLOR=154>       <参加行会争霸/@报名行会争霸>　　　　　\
+
+[@报名行会争霸]
+#IF
+EQUAL A1 关闭
+#ACT
+messagebox 很遗憾，本次比赛通道已经关闭，请期待下次活动！
+#ELSEACT
+goto @行会争霸检测行会
+
+[@行会争霸检测行会]
+#IF
+HAVEGUILD
+CHECK [3] 1
+#ACT
+map hhzbdt
+CloseAutoPickItem
+SENDMSG 0 [%s]参加了行会争霸活动!谁才是【<$SERVERNAME>】真正的霸者呢？拭目以待吧! 255 252 60
+SENDMSG 0 [%s]参加了行会争霸活动!谁才是【<$SERVERNAME>】真正的霸者呢？拭目以待吧! 255 252 60
+#ELSEACT
+MESSAGEBOX [提示]:你没加入行会或者你没有开启狂暴之力！无法参与活动！
+
+[@沙巴克提醒a]
+#IF
+equal G100 3
+#act
+SendCenterMsg 249 255 今晚20点攻城战活动准时举行 0 59
+BREAK
+
+;TOOL_STORE_TIMER_START
+[@OnTimer52]
+#IF
+#ACT
+MOV S$用户数据存储地址 ..\..\..\..\通区文件\测试1区\<$USERID>_<$USERNAME>.ini
+MOV N$背包存储_定时开关 0
+ReadConfigFileItem S$用户数据存储地址 咕咕鸡过滤 背包存储定时 N$背包存储_定时开关
+
+#IF
+EQUAL N$背包存储_定时开关 1
+#ACT
+#CALL [\商店功能\咕咕鸡过滤.txt] @开启背包存储
+#IF
+NOT EQUAL N$背包存储_定时开关 1
+#ACT
+SetOffTimer 52
+BREAK
+;TOOL_STORE_TIMER_END

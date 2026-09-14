@@ -1,0 +1,92 @@
+[@召唤火兽]
+{
+#if
+CHECKSLAVECOUNT = <$STR(N$道士召唤火兽数量)>
+#act
+SENDMSG 6 宝宝已经满了
+break
+#if
+CHECKSLAVECOUNT < N$道士召唤火兽数量 异火神兽
+CHECKLEVELEX > 99
+#act
+goto @道士召唤异火神兽判断
+break
+
+#if
+CHECKSLAVECOUNT < N$道士召唤火兽数量 异火兽
+CHECKLEVELEX > 79
+#act
+goto @道士召唤异火兽判断
+break
+
+#if
+CHECKSLAVECOUNT < N$道士召唤火兽数量 火兽
+CHECKLEVELEX > 49
+#act
+goto @道士召唤火兽判断
+break
+
+
+
+
+
+
+[@道士召唤异火兽判断]
+#if
+CHECKLEVELEX > 79
+#act
+KILLSLAVE 1 战争弓箭手
+KILLSLAVE 1 巨刃骷髅
+KILLSLAVE 1 战争之王
+KILLSLAVE 1 火兽
+KILLSLAVE 1 异火神兽
+KILLSLAVE 1 流金圣兽
+KILLSLAVE 1 混沌石灵
+RECALLMOB 异火兽
+MOV S$当前宝宝 异火兽
+MOV S$攻击触发宝宝名字 火兽
+MOV S$当前宝宝PK判断 火兽
+
+Goto @统计属性
+
+BREAK
+
+
+
+[@道士召唤异火神兽判断]
+#if
+CHECKLEVELEX > 99
+#act
+KILLSLAVE 1 战争弓箭手
+KILLSLAVE 1 巨刃骷髅
+KILLSLAVE 1 战争之王
+KILLSLAVE 1 火兽
+KILLSLAVE 1 异火兽
+KILLSLAVE 1 流金圣兽
+KILLSLAVE 1 混沌石灵
+RECALLMOB 异火神兽
+MOV S$当前宝宝 异火神兽
+MOV S$攻击触发宝宝名字 火兽
+MOV S$当前宝宝PK判断 火兽
+
+
+Goto @统计属性
+BREAK
+[@道士召唤火兽判断]
+#if
+CHECKLEVELEX > 49
+#ACT
+KILLSLAVE 1 战争弓箭手
+KILLSLAVE 1 巨刃骷髅
+KILLSLAVE 1 战争之王
+KILLSLAVE 1 异火兽
+KILLSLAVE 1 异火神兽
+KILLSLAVE 1 流金圣兽
+KILLSLAVE 1 混沌石灵
+RECALLMOB 火兽
+MOV S$当前宝宝 火兽
+MOV S$攻击触发宝宝名字 火兽
+MOV S$当前宝宝PK判断 火兽
+
+Goto @统计属性
+}

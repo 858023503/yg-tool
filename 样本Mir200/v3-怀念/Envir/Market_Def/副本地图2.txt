@@ -1,0 +1,42 @@
+[@main]
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+<-------------------------------------------------------------/FCOLOR=35>\
+< 每日副本：每天只能进入一次>\
+<-------------------------------------------------------------/FCOLOR=35>\
+  <副本产出：聚灵珠-书页-珍贵材料-高级装备/SCOLOR=247>\
+  <副本说明：进入副本时间为每层10分钟，到时间自动传回土城/SCOLOR=247>\ \
+  <进入条件：人物等级51级携带副本凭证进入/SCOLOR=249>\
+<-------------------------------------------------------------/FCOLOR=35>\
+<>               【<进入每日副本/@进入每日副本>】
+
+
+[@进入每日副本]
+#IF
+CHECKLEVELEX < 51
+#ACT
+MESSAGEBOX \[提示]等级不足51无法进入！
+break
+#if
+#act
+AddMirrorMap Q004 <$USERNAME>FB3 副本 36000 0159 0 N$Certmap 1 
+Mapmove <$USERNAME>FB3
+DelNpc 副本传送员 <$USERNAME>FB3
+CreateNPC 副本传送员 <$USERNAME>FB3 15 7 15 副本地图3 1
+CLEARMAPMON <$USERNAME>FB3
+MONGENEX <$USERNAME>FB3 15 15 祖玛教主[个副] 10 3 249
+MONGENEX <$USERNAME>FB3 15 15 玛雅教主[个副] 10 3 249
+MONGENEX <$USERNAME>FB3 15 15 火域龙王[个副] 10 3 249
+MONGENEX <$USERNAME>FB3 15 15 双锤猪王[个副] 10 3 249
+MONGENEX <$USERNAME>FB3 15 15 梦魇神牛[个副] 10 3 249
+SENDDELAYMSG 挑战倒计时[%s]后自动回城，传送下层将重新计时(限时10分钟) 600 250 1 @通天塔回城
+BREAK
+
+[@通天塔回城]
+#IF
+#ACT
+MapMove 3 330 330 5
+MESSAGEBOX [系统提示]:\　\　　　　您在同一层挑战超过规定时间，自动传回土城！
+BREAK

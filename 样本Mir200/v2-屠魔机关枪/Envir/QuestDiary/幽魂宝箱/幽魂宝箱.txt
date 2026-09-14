@@ -1,0 +1,607 @@
+[@幽魂宝箱]
+{
+
+
+#if
+EQUAL <$CollectTargetName> 初级幽魂宝箱
+#act
+SHOWPROGRESSBARDLG 1 @幽魂宝箱初级开启 幽魂宝箱开启中%d%... 1 @幽魂宝箱开启中断
+break
+
+#if
+
+EQUAL <$CollectTargetName> 中级幽魂宝箱
+#act
+SHOWPROGRESSBARDLG 1 @幽魂宝箱中级开启 幽魂宝箱开启中%d%... 1 @幽魂宝箱开启中断
+break
+
+#if
+
+EQUAL <$CollectTargetName> 高级幽魂宝箱
+#act
+SHOWPROGRESSBARDLG 1 @幽魂宝箱高级开启 幽魂宝箱开启中%d%... 1 @幽魂宝箱开启中断
+break
+
+
+#if
+
+EQUAL <$CollectTargetName> 超级幽魂宝箱
+#act
+SHOWPROGRESSBARDLG 1 @幽魂宝箱超级开启 幽魂宝箱开启中%d%... 1 @幽魂宝箱开启中断
+break
+
+
+
+
+
+[@幽魂宝箱初级开启]
+
+#if
+EQUAL <$CollectTargetName> 初级幽魂宝箱
+#act
+
+CO.KILL
+GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱初级金币.txt S$幽魂宝箱初级金币
+GIVE <$STR(S$幽魂宝箱初级金币)>
+GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱初级金币.txt S$幽魂宝箱初级金币
+GIVE <$STR(S$幽魂宝箱初级金币)>
+GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱初级金币.txt S$幽魂宝箱初级金币
+GIVE <$STR(S$幽魂宝箱初级金币)>
+; GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱初级金币.txt S$幽魂宝箱初级金币
+; GIVE <$STR(S$幽魂宝箱初级金币)>
+; GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱初级金币.txt S$幽魂宝箱初级金币
+GIVE <$STR(S$幽魂宝箱初级金币)>
+goto @开启初级宝箱VIP判断
+
+
+[@幽魂宝箱中级开启]
+
+#if
+EQUAL <$CollectTargetName> 中级幽魂宝箱
+#act
+CO.KILL
+
+GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱中级金币.txt S$幽魂宝箱中级金币
+GIVE <$STR(S$幽魂宝箱中级金币)>
+GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱中级金币.txt S$幽魂宝箱中级金币
+GIVE <$STR(S$幽魂宝箱中级金币)>
+GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱中级金币.txt S$幽魂宝箱中级金币
+GIVE <$STR(S$幽魂宝箱中级金币)>
+GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱中级金币.txt S$幽魂宝箱中级金币
+GIVE <$STR(S$幽魂宝箱中级金币)>
+GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱中级金币.txt S$幽魂宝箱中级金币
+; GIVE <$STR(S$幽魂宝箱中级金币)>
+; GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱中级金币.txt S$幽魂宝箱中级金币
+; GIVE <$STR(S$幽魂宝箱中级金币)>
+; GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱中级金币.txt S$幽魂宝箱中级金币
+; GIVE <$STR(S$幽魂宝箱中级金币)>
+; GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱中级金币.txt S$幽魂宝箱中级金币
+; GIVE <$STR(S$幽魂宝箱中级金币)>
+; GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱中级金币.txt S$幽魂宝箱中级金币
+; GIVE <$STR(S$幽魂宝箱中级金币)>
+; GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱中级金币.txt S$幽魂宝箱中级金币
+; GIVE <$STR(S$幽魂宝箱中级金币)>
+goto @开启中级宝箱VIP判断
+CO.KILL
+
+
+
+[@幽魂宝箱高级开启]
+
+#if
+
+EQUAL <$CollectTargetName> 高级幽魂宝箱
+#act
+
+CO.KILL
+
+goto @开启高级宝箱VIP判断
+GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱高级金币.txt S$幽魂宝箱高级金币
+GIVE <$STR(S$幽魂宝箱高级金币)>
+GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱高级金币.txt S$幽魂宝箱高级金币
+GIVE <$STR(S$幽魂宝箱高级金币)>
+GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱高级金币.txt S$幽魂宝箱高级金币
+GIVE <$STR(S$幽魂宝箱高级金币)>
+GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱高级金币.txt S$幽魂宝箱高级金币
+GIVE <$STR(S$幽魂宝箱高级金币)>
+; GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱高级金币.txt S$幽魂宝箱高级金币
+; GIVE <$STR(S$幽魂宝箱高级金币)>
+; GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱高级金币.txt S$幽魂宝箱高级金币
+; GIVE <$STR(S$幽魂宝箱高级金币)>
+; GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱高级金币.txt S$幽魂宝箱高级金币
+; GIVE <$STR(S$幽魂宝箱高级金币)>
+; GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱高级金币.txt S$幽魂宝箱高级金币
+; GIVE <$STR(S$幽魂宝箱高级金币)>
+; GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱高级金币.txt S$幽魂宝箱高级金币
+; GIVE <$STR(S$幽魂宝箱高级金币)>
+; GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱高级金币.txt S$幽魂宝箱高级金币
+; GIVE <$STR(S$幽魂宝箱高级金币)>
+; goto @幽魂宝箱地图给神品
+CO.KILL
+
+
+
+
+
+
+
+
+
+[@幽魂宝箱超级开启]
+
+#if
+CHECKITEM 幽魂能量护身符 1
+#act
+goto @幽魂能量护身符开超级宝箱
+break
+#if
+checkgamegold < 125
+#act
+messagebox 开启超级宝箱需要125元宝\或者一个幽魂能量护身符\护身符可以通过二大陆NPC炼制\开启后将获得20传仙币和20个战灵法相进化石
+break
+
+
+#if
+
+#act
+GOTO @元宝开启幽魂超级宝箱
+break
+[@元宝开启幽魂超级宝箱]
+#if
+EQUAL <$CollectTargetName> 超级幽魂宝箱
+#act
+
+CO.KILL
+GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱超级金币.txt S$幽魂宝箱超级金币
+GIVE <$STR(S$幽魂宝箱超级金币)>
+GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱超级金币.txt S$幽魂宝箱超级金币
+GIVE <$STR(S$幽魂宝箱超级金币)>
+
+CO.KILL
+goto @战灵法相掉落
+goto @是否给传仙币判断
+break
+
+
+[@幽魂能量护身符开超级宝箱]
+#if
+CHECKITEM 幽魂能量护身符 1
+EQUAL <$CollectTargetName> 超级幽魂宝箱
+#act
+TAKE 幽魂能量护身符 1
+CO.KILL
+GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱超级金币.txt S$幽魂宝箱超级金币
+GIVE <$STR(S$幽魂宝箱超级金币)>
+GetRandomText ..\QuestDiary\幽魂宝箱\幽魂宝箱超级金币.txt S$幽魂宝箱超级金币
+GIVE <$STR(S$幽魂宝箱超级金币)>
+CO.KILL
+goto @战灵法相掉落
+goto @是否给传仙币判断
+break
+
+
+
+
+[@是否给传仙币判断]
+;充值金额 真冲/50+20等于给币次数+20
+#if
+SMALL J35 10
+#act
+INC J35 1
+
+FORMULATION (<$STR(U95)>+<$STR(U372)>)/100+20 N$幽魂之门获取的传仙币数量
+SENDMSG 5 以从超级宝箱中获取<$STR(N$幽魂之门获取的传仙币数量)>传仙币,充值越多获取传仙币越多
+gamegird + N$幽魂之门获取的传仙币数量
+BREAK
+
+#if
+SMALL J36 10
+#act
+INC J36 1
+SENDMSG 5 以从超级宝箱中获取20传仙币
+gamegird + 20
+BREAK
+
+[@战灵法相掉落]
+; #if
+; EQUAL J22 1
+; #act
+; GIVE  战灵法相进化石 10
+; sendmsg 6 以获取10个战灵法相进化石
+; break
+; #if
+; #act 
+
+; GIVE  战灵法相进化石 5
+; sendmsg 6 以获取5个战灵法相进化石,开通周卡一次获取10个
+; BREAK
+
+
+
+[@幽魂宝箱地图给神品]
+#if
+SMALL <$LEVEL> 20
+RANDOMEX 80 101
+#ACT
+MOV N$幽魂宝箱地图给神品 1
+GetRandomText ..\QuestDiary\拾取鉴定\装备\骷髅矿区装备.txt S$幽魂宝箱地图给神品
+MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+sendmsg 6  <$STR(N$幽魂宝箱地图给神品)>
+BREAK
+#if
+SMALL <$LEVEL> 30
+RANDOMEX 70 101
+#act
+MOV N$幽魂宝箱地图给神品 1
+GetRandomText ..\QuestDiary\拾取鉴定\装备\僵尸矿区装备.txt S$幽魂宝箱地图给神品
+MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+BREAK
+#if
+SMALL <$LEVEL> 40
+RANDOMEX 60 101
+#act
+MOV N$幽魂宝箱地图给神品 1
+GetRandomText ..\QuestDiary\拾取鉴定\装备\蜈蚣洞装备.txt S$幽魂宝箱地图给神品
+MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+BREAK
+#if
+SMALL <$LEVEL> 50
+RANDOMEX 50 101
+#act
+MOV N$幽魂宝箱地图给神品 1
+GetRandomText ..\QuestDiary\拾取鉴定\装备\兽人古墓装备.txt S$幽魂宝箱地图给神品
+MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+BREAK
+#if
+SMALL <$LEVEL> 60
+RANDOMEX 40 101
+#act
+MOV N$幽魂宝箱地图给神品 1
+GetRandomText ..\QuestDiary\拾取鉴定\装备\沃玛寺庙装备.txt S$幽魂宝箱地图给神品
+MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+BREAK
+#if
+SMALL <$LEVEL> 70
+RANDOMEX 30 101
+#act
+MOV N$幽魂宝箱地图给神品 1
+GetRandomText ..\QuestDiary\拾取鉴定\装备\祖玛秘境鉴定装备.txt S$幽魂宝箱地图给神品
+MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+BREAK
+#if
+SMALL <$LEVEL> 80
+RANDOMEX 20 101
+#act
+MOV N$幽魂宝箱地图给神品 1
+GetRandomText ..\QuestDiary\拾取鉴定\装备\骨魔洞装备.txt S$幽魂宝箱地图给神品
+MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+BREAK
+#if
+SMALL <$level> 90
+RANDOMEX 10 101
+#act
+MOV N$幽魂宝箱地图给神品 1
+GetRandomText ..\QuestDiary\拾取鉴定\装备\恶魔营地装备.txt S$幽魂宝箱地图给神品
+MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+BREAK
+#if
+SMALL <$level> 100
+RANDOMEX 9 101
+#act
+MOV N$幽魂宝箱地图给神品 1
+GetRandomText ..\QuestDiary\拾取鉴定\装备\蚂蚁洞装备.txt S$幽魂宝箱地图给神品
+MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+BREAK
+; #if
+; SMALL <$level> 110
+; RANDOMEX 8 101
+; #act
+; MOV N$幽魂宝箱地图给神品 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\精灵谷装备.txt S$幽魂宝箱地图给神品
+; MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+; BREAK
+; #if
+; SMALL <$level> 120
+; RANDOMEX 7 101
+; #act
+; MOV N$幽魂宝箱地图给神品 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\黑暗魔殿装备.txt S$幽魂宝箱地图给神品
+; MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+; BREAK
+; #if
+; SMALL <$level> 130
+; RANDOMEX 6 101
+; #act
+; MOV N$幽魂宝箱地图给神品 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\赤月峡谷装备.txt S$幽魂宝箱地图给神品
+; MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+; BREAK
+; #if
+; SMALL <$level> 140
+; RANDOMEX 5 101
+; #act
+; MOV N$幽魂宝箱地图给神品 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\封魔古刹装备.txt S$幽魂宝箱地图给神品
+; MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+; BREAK
+; #if
+; SMALL <$level> 150
+; RANDOMEX 4 101
+; #act
+; MOV N$幽魂宝箱地图给神品 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\牛魔寺庙装备.txt S$幽魂宝箱地图给神品
+; MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+; BREAK
+; #if
+; SMALL <$level> 160
+; RANDOMEX 3 101
+; #act
+; MOV N$幽魂宝箱地图给神品 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\魔毒蚀地装备.txt S$幽魂宝箱地图给神品
+; MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+; BREAK
+; #if
+; SMALL <$level> 170
+; RANDOMEX 2 101
+; #act
+; MOV N$幽魂宝箱地图给神品 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\封魔宫装备.txt S$幽魂宝箱地图给神品
+; MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+; BREAK
+; #if
+; SMALL <$level> 180
+; RANDOMEX 1 101
+; #act
+; MOV N$幽魂宝箱地图给神品 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\魔龙峡谷装备.txt S$幽魂宝箱地图给神品
+; MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+; BREAK
+; #if
+; SMALL <$level> 190
+; RANDOMEX 1 101
+; #act
+; MOV N$幽魂宝箱地图给神品 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\幽暗地底装备.txt S$幽魂宝箱地图给神品
+; MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+; BREAK
+; #if
+; SMALL <$level> 200
+; RANDOMEX 1 101
+; #act
+; MOV N$幽魂宝箱地图给神品 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\魔化工厂装备.txt S$幽魂宝箱地图给神品
+; MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+; BREAK
+; #if
+; SMALL <$level> 210
+; RANDOMEX 1 101
+; #act
+; MOV N$幽魂宝箱地图给神品 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\火龙地洞装备.txt S$幽魂宝箱地图给神品
+; MonDropItemsEx <$KillMonName> <$STR(S$幽魂宝箱地图给神品)> 1
+; BREAK
+
+
+
+
+[@超级幽魂宝箱给史诗]
+#if
+SMALL <$level> 20
+RANDOMEX 80 101
+#ACT
+MOV N$超级幽魂宝箱给史诗 1
+GetRandomText ..\QuestDiary\拾取鉴定\装备\骷髅矿区装备.txt S$超级幽魂宝箱给史诗
+MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+BREAK
+#if
+SMALL <$level> 30
+RANDOMEX 70 101
+#act
+MOV N$超级幽魂宝箱给史诗 1
+GetRandomText ..\QuestDiary\拾取鉴定\装备\僵尸矿区装备.txt S$超级幽魂宝箱给史诗
+MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+BREAK
+#if
+SMALL <$level> 40
+RANDOMEX 60 101
+#act
+MOV N$超级幽魂宝箱给史诗 1
+GetRandomText ..\QuestDiary\拾取鉴定\装备\蜈蚣洞装备.txt S$超级幽魂宝箱给史诗
+MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+BREAK
+#if
+SMALL <$level> 50
+RANDOMEX 50 101
+#act
+MOV N$超级幽魂宝箱给史诗 1
+GetRandomText ..\QuestDiary\拾取鉴定\装备\兽人古墓装备.txt S$超级幽魂宝箱给史诗
+MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+BREAK
+#if
+SMALL <$level> 60
+RANDOMEX 40 101
+#act
+MOV N$超级幽魂宝箱给史诗 1
+GetRandomText ..\QuestDiary\拾取鉴定\装备\沃玛寺庙装备.txt S$超级幽魂宝箱给史诗
+MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+BREAK
+#if
+SMALL <$level> 70
+RANDOMEX 30 101
+#act
+MOV N$超级幽魂宝箱给史诗 1
+GetRandomText ..\QuestDiary\拾取鉴定\装备\祖玛秘境鉴定装备.txt S$超级幽魂宝箱给史诗
+MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+BREAK
+#if
+SMALL <$level> 80
+RANDOMEX 20 101
+#act
+MOV N$超级幽魂宝箱给史诗 1
+GetRandomText ..\QuestDiary\拾取鉴定\装备\骨魔洞装备.txt S$超级幽魂宝箱给史诗
+MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+BREAK
+#if
+SMALL <$level> 90
+RANDOMEX 10 101
+#act
+MOV N$超级幽魂宝箱给史诗 1
+GetRandomText ..\QuestDiary\拾取鉴定\装备\恶魔营地装备.txt S$超级幽魂宝箱给史诗
+MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+BREAK
+#if
+SMALL <$level> 100
+RANDOMEX 9 101
+#act
+MOV N$超级幽魂宝箱给史诗 1
+GetRandomText ..\QuestDiary\拾取鉴定\装备\蚂蚁洞装备.txt S$超级幽魂宝箱给史诗
+MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+BREAK
+; #if
+; SMALL <$level> 110
+; RANDOMEX 8 101
+; #act
+; MOV N$超级幽魂宝箱给史诗 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\精灵谷装备.txt S$超级幽魂宝箱给史诗
+; MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+; BREAK
+; #if
+; SMALL <$level> 120
+; RANDOMEX 7 101
+; #act
+; MOV N$超级幽魂宝箱给史诗 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\黑暗魔殿装备.txt S$超级幽魂宝箱给史诗
+; MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+; BREAK
+; #if
+; SMALL <$level> 130
+; RANDOMEX 6 101
+; #act
+; MOV N$超级幽魂宝箱给史诗 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\赤月峡谷装备.txt S$超级幽魂宝箱给史诗
+; MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+; BREAK
+; #if
+; SMALL <$level> 140
+; RANDOMEX 5 101
+; #act
+; MOV N$超级幽魂宝箱给史诗 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\封魔古刹装备.txt S$超级幽魂宝箱给史诗
+; MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+; BREAK
+; #if
+; SMALL <$level> 150
+; RANDOMEX 4 101
+; #act
+; MOV N$超级幽魂宝箱给史诗 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\牛魔寺庙装备.txt S$超级幽魂宝箱给史诗
+; MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+; BREAK
+; #if
+; SMALL <$level> 160
+; RANDOMEX 3 101
+; #act
+; MOV N$超级幽魂宝箱给史诗 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\魔毒蚀地装备.txt S$超级幽魂宝箱给史诗
+; MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+; BREAK
+; #if
+; SMALL <$level> 170
+; RANDOMEX 2 101
+; #act
+; MOV N$超级幽魂宝箱给史诗 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\封魔宫装备.txt S$超级幽魂宝箱给史诗
+; MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+; BREAK
+; #if
+; SMALL <$level> 180
+; RANDOMEX 1 101
+; #act
+; MOV N$超级幽魂宝箱给史诗 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\魔龙峡谷装备.txt S$超级幽魂宝箱给史诗
+; MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+; BREAK
+; #if
+; SMALL <$level> 190
+; RANDOMEX 1 101
+; #act
+; MOV N$超级幽魂宝箱给史诗 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\幽暗地底装备.txt S$超级幽魂宝箱给史诗
+; MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+; BREAK
+; #if
+; SMALL <$level> 200
+; RANDOMEX 1 101
+; #act
+; MOV N$超级幽魂宝箱给史诗 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\魔化工厂装备.txt S$超级幽魂宝箱给史诗
+; MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+; BREAK
+; #if
+; SMALL <$level> 210
+; RANDOMEX 80 101
+; #act
+; MOV N$超级幽魂宝箱给史诗 1
+; GetRandomText ..\QuestDiary\拾取鉴定\装备\火龙地洞装备.txt S$超级幽魂宝箱给史诗
+; MonDropItemsEx <$KillMonName> <$STR(S$超级幽魂宝箱给史诗)> 1
+; BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@开启初级宝箱VIP判断]
+#if
+LARGE U138 2
+#act
+gamegold + 50
+sendmsg 6 开启宝箱获得50元宝
+CO.KILL
+#ELSEACT
+gamegold + 25
+sendmsg 6 开启宝箱获得25元宝开通VIP获取元宝可翻倍
+CO.KILL
+
+
+[@开启中级宝箱VIP判断]
+#if
+LARGE U138 2
+#act
+gamegold + 50
+sendmsg 6 开启宝箱获得50元宝
+CO.KILL
+#ELSEACT
+gamegold + 25
+sendmsg 6 开启宝箱获得25元宝开通VIP获取元宝可翻倍
+CO.KILL
+
+[@开启高级宝箱VIP判断]
+#if
+LARGE U138 2
+#act
+gamegold + 50
+sendmsg 6 开启宝箱获得50元宝
+CO.KILL
+#ELSEACT
+gamegold + 25
+sendmsg 6 开启宝箱获得25元宝开通VIP获取元宝可翻倍
+CO.KILL
+
+
+
+
+
+
+
+
+
+}

@@ -1,0 +1,398 @@
+
+[@main]
+#if
+#ACT
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1794 1 4 0 -150 1 390 5 0
+#SAY
+\ 
+
+
+
+<> ======================<群魔营地专属区域>====================== \ \
+<>        <死亡炼狱/@死亡炼狱>             <神氏废墟/@神氏废墟>             <盘龙之地/@盘龙之地>\ \
+<>        <诅咒迷宫/@诅咒迷宫>             <幽灵地堡/@幽灵地堡>             <幽冥涧地/@幽冥涧地>\ \
+<>        <洪荒战场/@洪荒战场>             <燃烧平原/@燃烧平原>             <地底深渊/@地底深渊>\ \
+<>                             <暗黑黎明/@暗黑黎明>             \ \
+<      怪物等级:/SCOLOR=249>普通-<暗之BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+< ------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+[@暗黑黎明]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \ 
+<>     ======================<暗黑黎明>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<精英BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><飞天系列/SCOLOR=254>,<青阳系列/SCOLOR=249>,<森罗系列/SCOLOR=70>,<地图浅层秒减150YB，底层秒减200YB/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴起源之心+3W元宝直接传送/SCOLOR=249>或<消耗8W元宝传送/SCOLOR=249> \
+<>               <否则自己跑或随机到地图/SCOLOR=250> \
+<>                        <ITEMSHOW:1642:0:0:-0:1:9>        \ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                           <进入地图/@暗黑黎明1>                    <返回/@main>  
+
+[@暗黑黎明1]
+#IF
+CHECKITEMW 起源の之心
+CHECKGAMEGOLD ? 30000
+#ACT
+GAMEGOLD - 30000
+MAPMOVE 群魔营地 104 231
+BREAK
+
+#IF
+CHECKGAMEGOLD ? 80000
+#ACT
+GAMEGOLD - 80000
+MAPMOVE 群魔营地 104 231
+BREAK
+
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+
+[@地底深渊]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \ 
+<>     ======================<地底深渊>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<精英BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><飞天系列/SCOLOR=254>,<青阳系列/SCOLOR=249>,<森罗系列/SCOLOR=70>,<地图浅层秒减150YB，底层秒减200YB/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴起源之心+3W元宝直接传送/SCOLOR=249>或<消耗8W元宝传送/SCOLOR=249> \
+<>               <否则自己跑或随机到地图/SCOLOR=250> \
+<>                        <ITEMSHOW:1537:0:0:-0:1:9>    <ITEMSHOW:1538:0:0:-0:1:9>    <ITEMSHOW:1539:0:0:-0:1:9>    \ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                           <进入地图/@地底深渊1>                    <返回/@main>  
+
+[@地底深渊1]
+#IF
+CHECKITEMW 起源の之心
+CHECKGAMEGOLD ? 30000
+#ACT
+GAMEGOLD - 30000
+MAPMOVE 群魔营地 266 288
+BREAK
+
+#IF
+CHECKGAMEGOLD ? 80000
+#ACT
+GAMEGOLD - 80000
+MAPMOVE 群魔营地 266 288
+BREAK
+
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+
+[@燃烧平原]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \ 
+<>     ======================<燃烧平原>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<精英BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><飞天系列/SCOLOR=254>,<青阳系列/SCOLOR=249>,<森罗系列/SCOLOR=70>,<地图浅层秒减150YB，底层秒减200YB/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴起源之心+3W元宝直接传送/SCOLOR=249>或<消耗8W元宝传送/SCOLOR=249> \
+<>               <否则自己跑或随机到地图/SCOLOR=250> \
+<>                        <ITEMSHOW:1644:0:0:-0:1:9>    <ITEMSHOW:1645:0:0:-0:1:9>    <ITEMSHOW:1646:0:0:-0:1:9>    \ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                           <进入地图/@燃烧平原1>                    <返回/@main>  
+
+[@燃烧平原1]
+#IF
+CHECKITEMW 起源の之心
+CHECKGAMEGOLD ? 30000
+#ACT
+GAMEGOLD - 30000
+MAPMOVE 群魔营地 90 159
+BREAK
+
+#IF
+CHECKGAMEGOLD ? 80000
+#ACT
+GAMEGOLD - 80000
+MAPMOVE 群魔营地 90 159
+BREAK
+
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+
+[@洪荒战场]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \ 
+<>     ======================<洪荒战场>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<精英BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><飞天系列/SCOLOR=254>,<青阳系列/SCOLOR=249>,<森罗系列/SCOLOR=70>,<地图浅层秒减150YB，底层秒减200YB/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴起源之心+3W元宝直接传送/SCOLOR=249>或<消耗8W元宝传送/SCOLOR=249> \
+<>               <否则自己跑或随机到地图/SCOLOR=250> \
+<>                        <ITEMSHOW:1636:0:0:-0:1:9>       \ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                           <进入地图/@洪荒战场1>                    <返回/@main>  
+
+[@洪荒战场1]
+#IF
+CHECKITEMW 起源の之心
+CHECKGAMEGOLD ? 30000
+#ACT
+GAMEGOLD - 30000
+MAPMOVE 群魔营地 328 40
+BREAK
+
+#IF
+CHECKGAMEGOLD ? 80000
+#ACT
+GAMEGOLD - 80000
+MAPMOVE 群魔营地 328 40
+BREAK
+
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+
+[@幽冥涧地]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \ 
+<>     ======================<幽冥涧地>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<精英BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><飞天系列/SCOLOR=254>,<青阳系列/SCOLOR=249>,<森罗系列/SCOLOR=70>,<地图浅层秒减150YB，底层秒减200YB/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴起源之心+3W元宝直接传送/SCOLOR=249>或<消耗8W元宝传送/SCOLOR=249> \
+<>               <否则自己跑或随机到地图/SCOLOR=250> \
+<>                        <ITEMSHOW:1647:0:0:-0:1:9>    <ITEMSHOW:1648:0:0:-0:1:9>    \ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                           <进入地图/@幽冥涧地1>                    <返回/@main>  
+
+[@幽冥涧地1]
+#IF
+CHECKITEMW 起源の之心
+CHECKGAMEGOLD ? 30000
+#ACT
+GAMEGOLD - 30000
+MAPMOVE 群魔营地 170 248
+BREAK
+
+#IF
+CHECKGAMEGOLD ? 80000
+#ACT
+GAMEGOLD - 80000
+MAPMOVE 群魔营地 170 248
+BREAK
+
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+
+[@幽灵地堡]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \ 
+<>     ======================<幽灵地堡>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<精英BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><飞天系列/SCOLOR=254>,<青阳系列/SCOLOR=249>,<森罗系列/SCOLOR=70>,<地图浅层秒减150YB，底层秒减200YB/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴起源之心+3W元宝直接传送/SCOLOR=249>或<消耗8W元宝传送/SCOLOR=249> \
+<>               <否则自己跑或随机到地图/SCOLOR=250> \
+<>                        <ITEMSHOW:1639:0:0:-0:1:9>    <ITEMSHOW:1640:0:0:-0:1:9>    <ITEMSHOW:1641:0:0:-0:1:9>\ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                           <进入地图/@幽灵地堡1>                    <返回/@main>  
+
+[@幽灵地堡1]
+#IF
+CHECKITEMW 起源の之心
+CHECKGAMEGOLD ? 30000
+#ACT
+GAMEGOLD - 30000
+MAPMOVE 群魔营地 248 220
+BREAK
+
+#IF
+CHECKGAMEGOLD ? 80000
+#ACT
+GAMEGOLD - 80000
+MAPMOVE 群魔营地 248 220
+BREAK
+
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+
+[@诅咒迷宫]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \ 
+<>     ======================<诅咒迷宫>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<精英BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><飞天系列/SCOLOR=254>,<青阳系列/SCOLOR=249>,<森罗系列/SCOLOR=70>,<地图浅层秒减150YB，底层秒减200YB/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴起源之心+3W元宝直接传送/SCOLOR=249>或<消耗8W元宝传送/SCOLOR=249> \
+<>               <否则自己跑或随机到地图/SCOLOR=250> \
+<>                        <ITEMSHOW:1637:0:0:-0:1:9>    <ITEMSHOW:1638:0:0:-0:1:9>\ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                           <进入地图/@诅咒迷宫1>                    <返回/@main>  
+
+[@诅咒迷宫1]
+#IF
+CHECKITEMW 起源の之心
+CHECKGAMEGOLD ? 30000
+#ACT
+GAMEGOLD - 30000
+MAPMOVE 群魔营地 173 76
+BREAK
+
+#IF
+CHECKGAMEGOLD ? 80000
+#ACT
+GAMEGOLD - 80000
+MAPMOVE 群魔营地 173 76
+BREAK
+
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+
+[@盘龙之地]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \ 
+<>     ======================<盘龙之地>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<精英BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><飞天系列/SCOLOR=254>,<青阳系列/SCOLOR=249>,<森罗系列/SCOLOR=70>,<地图浅层秒减150YB，底层秒减200YB/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴起源之心+3W元宝直接传送/SCOLOR=249>或<消耗8W元宝传送/SCOLOR=249> \
+<>               <否则自己跑或随机到地图/SCOLOR=250> \
+<>                        <ITEMSHOW:1649:0:0:-0:1:9>    <ITEMSHOW:1650:0:0:-0:1:9>\ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                           <进入地图/@盘龙之地1>                    <返回/@main>  
+
+[@盘龙之地1]
+#IF
+CHECKITEMW 起源の之心
+CHECKGAMEGOLD ? 30000
+#ACT
+GAMEGOLD - 30000
+MAPMOVE 群魔营地 32 323
+BREAK
+
+#IF
+CHECKGAMEGOLD ? 80000
+#ACT
+GAMEGOLD - 80000
+MAPMOVE 群魔营地 32 323
+BREAK
+
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+
+[@神氏废墟]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \ 
+<>     ======================<神氏废墟>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<精英BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><飞天系列/SCOLOR=254>,<青阳系列/SCOLOR=249>,<森罗系列/SCOLOR=70>,<地图浅层秒减150YB，底层秒减200YB/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴起源之心+3W元宝直接传送/SCOLOR=249>或<消耗8W元宝传送/SCOLOR=249> \
+<>               <否则自己跑或随机到地图/SCOLOR=250> \
+<>                        <ITEMSHOW:1643:0:0:-0:1:9>  \ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                           <进入地图/@神氏废墟1>                    <返回/@main>  
+
+[@神氏废墟1]
+#IF
+CHECKITEMW 起源の之心
+CHECKGAMEGOLD ? 30000
+#ACT
+GAMEGOLD - 30000
+MAPMOVE 群魔营地 334 330
+BREAK
+
+#IF
+CHECKGAMEGOLD ? 80000
+#ACT
+GAMEGOLD - 80000
+MAPMOVE 群魔营地 334 330
+BREAK
+
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+
+[@死亡炼狱]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \ 
+<>     ======================<死亡炼狱>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<精英BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><飞天系列/SCOLOR=254>,<青阳系列/SCOLOR=249>,<森罗系列/SCOLOR=70>,<地图浅层秒减150YB，底层秒减200YB/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴起源之心+3W元宝直接传送/SCOLOR=249>或<消耗8W元宝传送/SCOLOR=249> \
+<>               <否则自己跑或随机到地图/SCOLOR=250> \
+<>                        <ITEMSHOW:1534:0:0:-0:1:9>   <ITEMSHOW:1535:0:0:-0:1:9>   <ITEMSHOW:1536:0:0:-0:1:9>\ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                           <进入地图/@死亡炼狱1>                    <返回/@main>  
+
+[@死亡炼狱1]
+#IF
+CHECKITEMW 起源の之心
+CHECKGAMEGOLD ? 30000
+#ACT
+GAMEGOLD - 30000
+MAPMOVE 群魔营地 24 29
+BREAK
+
+#IF
+CHECKGAMEGOLD ? 80000
+#ACT
+GAMEGOLD - 80000
+MAPMOVE 群魔营地 24 29
+BREAK
+
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~

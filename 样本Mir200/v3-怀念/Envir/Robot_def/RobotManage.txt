@@ -1,0 +1,399 @@
+[@取服务器运行时间]
+#if
+#act
+INC I666 1
+Break
+[@BOSS数量清理]
+#IF
+#ACT
+CLEARNAMELIST ..\QuestDiary\游戏功能\BOSS计算保存.txt
+CLEARNAMELIST ..\QuestDiary\游戏功能\BOSS计算排名.txt
+GMEXECUTE 开始提问 @BOSS数量重置
+BREAK
+[@假人登录]
+#IF
+equal G198 0
+CHECKDUMMYCOUNT < <$GLOBAL(假人_人数上限)>
+#ACT
+INC I66 1
+#ELSEACT
+BREAK
+
+
+
+#IF
+equal G198 0
+CHECKDUMMYCOUNT < <$GLOBAL(假人_人数上限)>
+LARGE I66 12
+#ACT
+MOVR I66 0 10
+MOVR P7 <$GLOBAL(假人_新手地图X左)> <$GLOBAL(假人_新手地图X右)>
+MOVR P8 <$GLOBAL(假人_新手地图Y左)> <$GLOBAL(假人_新手地图Y右)>
+DUMMYLOGON <$GLOBAL(假人_新手地图)> <$STR(P7)> <$STR(P8)> 1
+BREAK
+;===========================
+[@登陆检测A]
+#IF
+#ACT
+Gmexecute 开始提问 @假人检查A
+BREAK
+
+[@登陆回家A]
+#IF
+#ACT
+INC G198 1
+Gmexecute 开始提问 @假人倒计时A
+
+[@登陆回家]
+#IF
+#ACT
+Gmexecute 开始提问 @全部下线
+;=========================================================
+[@世界BOSS开启]
+#IF
+#ACT
+MOV G271 1
+MonGenEx CLHD 25 18 世界火龙教主 1 1 249
+GMEXECUTE 开始提问 @材料活动弹窗
+BREAK
+
+[@世界BOSS关闭]
+#IF
+#ACT
+CLEARMAPMON  CLHD
+MOV G271 0
+BREAK
+
+
+[@沙巴克提醒]
+#if
+#act
+GMEXECUTE 开始提问 @沙巴克提醒a
+BREAK
+
+
+[@攻沙设置]
+#if
+equal G100 3
+#act
+MOV G497 0
+AddAttackSabukAll 0
+BREAK
+
+
+[@攻沙设置1]
+#if
+LARGE G100 3
+#act
+MOV G497 0
+AddAttackSabukAll 0
+BREAK
+
+
+[@开区天数]
+#act
+MOV G497 0
+MOV G496 0
+INC G100 1
+CLEARNAMELIST ..\QuestDiary\QF触发文件\购买次数.txt
+CLEARNAMELIST ..\QuestDiary\每日副本.txt
+
+[@千年树妖]
+
+
+#if
+CheckMapSameMonCount 3 财神树 < 1
+#ACT
+MonGenEx 3 355 340 财神树 0 1  249
+GMEXECUTE 开始提问 @千年树妖服弹窗
+BREAK
+
+
+
+[@刷诱惑怪]
+#if
+;CheckMapSameMonCount 1002 虎卫 < 1
+#ACT
+CLEARMAPMON 1002
+MonGenEx 1002 13 14 虎卫 10 5  255
+MonGenEx 1002 13 14 鹰卫 10 2  255
+BREAK
+
+;==========================================================================================
+
+
+
+[@排行榜_更新_全服]
+
+#IF
+CheckMonMap BOSSHG1 6
+;地图名称 怪物数量
+#ELSEACT
+;地图 坐标 怪物 范围 数量
+MonGenEx BOSSHG1 20 24 祖玛雕像3 20 2  255
+MonGenEx BOSSHG1 20 24 祖玛弓箭手3 20 2  255
+MonGenEx BOSSHG1 20 24 祖玛卫士3 20 2  255
+MonGenEx BOSSHG1 20 24 虹魔蝎卫 20 2  255
+MonGenEx BOSSHG1 20 24 虹魔鳄鱼 20 2  255
+MonGenEx BOSSHG1 20 24 沃玛卫士 20 2  255
+MonGenEx BOSSHG1 20 24 祖玛将军 20 2  255
+
+#IF
+CheckMonMap SMBC 15
+;地图名称 怪物数量
+#ELSEACT
+;地图 坐标 怪物 范围 数量
+MonGenEx SMBC 54 51 祖玛雕像 20 5 255
+MonGenEx SMBC 54 51 祖玛弓箭手 20 5 255
+MonGenEx SMBC 54 51 祖玛卫士 20 5 255
+MonGenEx SMBC 54 51 祖玛雕像3 20 5 255
+MonGenEx SMBC 54 51 祖玛弓箭手3 20 5 255
+MonGenEx SMBC 54 51 祖玛卫士3 20 5 255
+MonGenEx SMBC 54 51 邪恶钳虫 20 5 255
+MonGenEx SMBC 54 51 白野猪 20 5 255
+MonGenEx SMBC 54 51 沃玛卫士 20 5 255
+MonGenEx SMBC 54 51 虹魔蝎卫 20 5 255
+MonGenEx SMBC 54 51 虹魔鳄鱼 20 5 255
+MonGenEx SMBC 54 51 祖玛将军 20 5 255
+
+#IF
+CheckMonMap HJBC 15
+;地图名称 怪物数量
+#ELSEACT
+;地图 坐标 怪物 范围 数量
+MonGenEx HJBC 44 44 祖玛雕像 20 7 255
+MonGenEx HJBC 44 44 祖玛弓箭手 20 7 255
+MonGenEx HJBC 44 44 祖玛卫士 20 7 255
+MonGenEx HJBC 44 44 祖玛雕像3 20 7 255
+MonGenEx HJBC 44 44 祖玛弓箭手3 20 7 255
+MonGenEx HJBC 44 44 祖玛卫士3 20 7 255
+MonGenEx HJBC 44 44 虹魔蝎卫 20 7 255
+MonGenEx HJBC 44 44 虹魔鳄鱼 20 7 255
+MonGenEx HJBC 44 44 祖玛将军 20 7 255
+
+
+[@擂台计时]
+#IF
+equal A6
+equal G7 0
+#act
+mov A10 [等待开设]\裁判
+BREAK
+
+
+#IF
+equal A10 [正在比赛](<$STR(G7)>)\裁判
+large G7 0
+#act
+dec G7 1
+mov A10 [正在比赛](<$STR(G7)>)\裁判
+BREAK
+
+#IF
+equal A10 [正在比赛](<$STR(G7)>)\裁判
+equal G7 0
+#act
+Gmexecute 开始提问 @擂台平局
+mov G6 0
+mov A6
+mov A7
+mov A8
+mov G7 0
+mov G9 0
+BREAK
+
+
+#IF
+equal A10 [擂台结算](<$STR(G7)>)\裁判
+large G7 0
+#act
+dec G7 1
+mov A10 [擂台结算](<$STR(G7)>)\裁判
+BREAK
+
+#IF
+equal A10 [擂台结算](<$STR(G7)>)\裁判
+equal G7 0
+#act
+mov A10 [等待开设]\裁判
+mov G6 0
+mov A6
+mov A7
+mov A8
+mov G7 0
+BREAK
+
+
+
+
+#IF
+equal A10 等待挑战(限战士,<$STR(G7)>)\裁判
+large G7 0
+#act
+dec G7 1
+mov A10 等待挑战(限战士,<$STR(G7)>)\裁判
+BREAK
+
+#IF
+equal A10 等待挑战(限战士,<$STR(G7)>)\裁判
+equal G7 0
+#act
+mov A10 [等待开设]\裁判
+Gmexecute 开始提问 @擂台流局
+mov G6 0
+mov A6
+mov A7
+mov A8
+mov G7 0
+BREAK
+
+
+#IF
+equal A10 等待挑战(限法师,<$STR(G7)>)\裁判
+large G7 0
+#act
+dec G7 1
+mov A10 等待挑战(限法师,<$STR(G7)>)\裁判
+BREAK
+
+#IF
+equal A10 等待挑战(限法师,<$STR(G7)>)\裁判
+equal G7 0
+#act
+mov A10 [等待开设]\裁判
+Gmexecute 开始提问 @擂台流局
+mov G6 0
+mov A6
+mov A7
+mov A8
+mov G7 0
+BREAK
+
+
+#IF
+equal A10 等待挑战(限道士,<$STR(G7)>)\裁判
+large G7 0
+#act
+dec G7 1
+mov A10 等待挑战(限道士,<$STR(G7)>)\裁判
+BREAK
+
+#IF
+equal A10 等待挑战(限道士,<$STR(G7)>)\裁判
+equal G7 0
+#act
+mov A10 [等待开设]\裁判
+Gmexecute 开始提问 @擂台流局
+mov G6 0
+mov A6
+mov A7
+mov A8
+mov G7 0
+BREAK
+
+
+
+#IF
+equal A10 等待挑战(不限职业,<$STR(G7)>)\裁判
+large G7 0
+#act
+dec G7 1
+mov A10 等待挑战(不限职业,<$STR(G7)>)\裁判
+BREAK
+
+#IF
+equal A10 等待挑战(不限职业,<$STR(G7)>)\裁判
+equal G7 0
+#act
+mov A10 [等待开设]\裁判
+Gmexecute 开始提问 @擂台流局
+mov G6 0
+mov A6
+mov A7
+mov A8
+mov G7 0
+BREAK
+
+
+[@夺宝提示1]
+#IF
+#ACT
+SENDMSG 0 “夺宝奇兵”：夺宝奇兵将在10分钟后开始。
+BREAK
+
+[@开始夺宝]
+#IF
+#ACT
+MOV G13 1
+Gmexecute 开始提问 @夺宝奇兵9
+SENDMSG 0 “夺宝奇兵”：夺宝奇兵已开始，神秘教主出现在夺宝奇兵地图内，杀死神秘教主后宝箱将掉落在地上。在综合服务的【争夺宝箱】可以参加。
+MonGenEx DBQB1 20 22 神秘教主 1 1  249
+BREAK
+
+[@夺宝提示]
+#IF
+#ACT
+GMEXECUTE 开始提问 @夺宝奇兵
+BREAK
+
+[@夺宝关闭]
+#IF
+#ACT
+MOV G13 0
+BREAK
+
+
+
+
+
+
+[@必爆技能开]
+#IF
+#ACT
+MOV G11 1
+MonGenEx BBJN 20 22 必爆技能 1 1  249
+GMEXECUTE 开始提问 @必爆技能弹窗
+BREAK
+
+[@必爆技能关]
+#IF
+#ACT
+MOV G11 0
+CLEARMAPMON  BBJN
+MoveMapPlay BBJN 3 333 333
+SENDMSG 0 必爆技能活动已经结束
+BREAK
+
+
+
+
+
+
+
+
+
+
+[@开启行会争霸]
+#IF
+#ACT
+MOV G5 1
+GMEXECUTE 开始提问 @行会争霸弹窗
+MOV A1 开启√
+SENDMSG 0 行会争霸通道已经开启,大家可以进入开启雄者之路 251 249 60
+SENDMSG 0 行会争霸通道已经开启,大家可以进入开启雄者之路 251 249 60
+
+[@关闭行会大门]
+#IF
+#ACT
+MOV A1 关闭
+SENDMSG 0 行会争霸通道已经关闭 251 249 60
+SENDMSG 0 行会争霸通道已经关闭 251 249 60
+
+[@关闭行会争霸]
+#IF
+#ACT
+MOV G5 0
+SENDMSG 0 今天的行会争霸已经结束 251 249 60
+SENDMSG 0 今天的行会争霸已经结束 251 249 60
+
+

@@ -1,0 +1,389 @@
+[@main]
+<> \ 
+<>[<$USERNAME>]您好！38 号技师为你服务\
+<>特别推出转职变性服务，请选择您需要的服务\ 
+<><转职费用100W元宝/Scolor=249>\
+<><变性费用500万金币/Scolor=70>\ \   
+<><转职/@zz>   <需谨慎考虑/Scolor=254>\  \                   
+<><变性/@bx>   <泰国回流，安全可靠/Scolor=253>\
+[@zz]
+#if
+CheckJob Taoist
+#SAY
+是不是道士职业不好玩呀，换换别的职业试试吧！\ \
+               <转职战士/@zzs> \
+               <转职法师/@zfs>\ \
+               <返回/@main> \
+               <关闭/@EXIT> \
+#ACT
+break
+
+#if
+CheckJob Warrior
+#SAY
+是不是战士职业不好玩呀，换换别的职业试试吧！\ \
+               <转职道士/@zds> \
+               <转职法师/@zfs>\ \
+               <返回/@main> \
+               <关闭/@EXIT> \
+#ACT
+break
+
+#if
+CheckJob Wizard
+#SAY
+是不是法师职业不好玩呀，换换别的职业试试吧！\ \
+               <转职道士/@zds> \
+               <转职战士/@zzs>\ \
+               <返回/@main> \
+               <关闭/@EXIT> \
+#ACT
+break
+
+[@zzs]
+#if
+CheckGAMEGold > 999999
+#ACT
+GAMEGOLD - 1000000
+CLEARSKILL
+CHANGEJOB Warrior
+AddHpPer + 100
+AddMpPer + 100
+ADDSKILL 基本剑术 3
+ADDSKILL 攻杀剑术 3
+ADDSKILL 刺杀剑术 3
+ADDSKILL 半月弯刀 3
+ADDSKILL 狮子吼   3
+ADDSKILL 野蛮冲撞 3
+ADDSKILL 烈火剑法 3
+ADDSKILL 龙影剑法 3
+RECYCFENGHAO [战神]
+RECYCFENGHAO [法神]
+RECYCFENGHAO [天尊]
+RECYCFENGHAO [真·战神]
+RECYCFENGHAO [真·法神]
+RECYCFENGHAO [真·天尊]
+RECYCFENGHAO [神]
+DELSKILL 突刺斩
+DELSKILL 荒古血脉
+DELSKILL 山河壮
+DELSKILL 末日天罚
+DELSKILL 雷霆万钧
+DELSKILL 冰天雪地
+DELSKILL 毒浪滔天
+DELSKILL 召唤骷髅王
+DELSKILL 十方俱灭
+DELSKILL 奥义·九天玄功
+DELSKILL 神技·梵经八杀
+DELSKILL 禁技·破天一击
+DELSKILL 禁技·天火三玄变
+DELSKILL 神技·九天神雷
+DELSKILL 奥义·冰雪精灵
+DELSKILL 神技·奇门遁甲
+DELSKILL 奥义·修罗血煞阵
+DELSKILL 禁技·太阴尸经
+DELSKILL 无极·金钱炸弹
+DELSKILL 无量·瀚海乾坤罩
+DELSKILL 破灭·重瞳之眼
+DELSKILL 重生·补天术
+DELSKILL 禁技·烈焰焚天
+DELSKILL 真武·大霹雳
+HUMANHP + <$MAXHP>
+HUMANMP + <$MAXMP>
+Close
+Messagebox 您已经转职成为一名合格的战士了！
+#ELSEACT
+Close
+Messagebox 缺少转职的费用，不能转职！
+Break
+
+#if
+equal A1 <$USERNAME>
+#act
+MOV A1
+MOV A15
+MOV G31 0
+MOV G32 0
+MOV A25
+RECYCFENGHAO 天下第一战士
+CLEARNAMELIST ..\QuestDiary\数据文件\天下第一\战士.txt
+Break
+
+#if
+equal A2 <$USERNAME>
+#act
+MOV A2
+MOV A14
+MOV G37 0
+MOV G38 0
+MOV A24
+RECYCFENGHAO 天下第一法师
+CLEARNAMELIST ..\QuestDiary\数据文件\天下第一\法师.txt
+Break
+
+#if
+equal A3 <$USERNAME>
+#act
+MOV A3
+MOV A13
+MOV G33 0
+MOV G34 0
+MOV A23
+RECYCFENGHAO 天下第一道士
+CLEARNAMELIST ..\QuestDiary\数据文件\天下第一\道士.txt
+Break
+
+
+
+
+
+[@zfs]
+
+#if
+CheckGAMEGold > 999999
+#ACT
+GAMEGOLD - 1000000
+CLEARSKILL
+CHANGEJOB Wizard
+AddHpPer + 100
+AddMpPer + 100
+ADDSKILL 火球术 3
+ADDSKILL 大火球 3
+ADDSKILL 地狱火 3
+ADDSKILL 雷电术 3
+ADDSKILL 爆裂火焰 3
+ADDSKILL 抗拒火环 3
+ADDSKILL 疾光电影 3
+ADDSKILL 诱惑之光 3
+ADDSKILL 瞬息移动 3
+ADDSKILL 火墙 0
+ADDSKILL 地狱雷光 3
+ADDSKILL 魔法盾 3
+ADDSKILL 圣言术 3
+ADDSKILL 冰咆哮 3
+ADDSKILL 心灵召唤 3
+RECYCFENGHAO [战神]
+RECYCFENGHAO [法神]
+RECYCFENGHAO [天尊]
+RECYCFENGHAO [真·战神]
+RECYCFENGHAO [真·法神]
+RECYCFENGHAO [真·天尊]
+RECYCFENGHAO [神]
+DELSKILL 突刺斩
+DELSKILL 荒古血脉
+DELSKILL 山河壮
+DELSKILL 末日天罚
+DELSKILL 雷霆万钧
+DELSKILL 冰天雪地
+DELSKILL 毒浪滔天
+DELSKILL 召唤骷髅王
+DELSKILL 十方俱灭
+DELSKILL 奥义·九天玄功
+DELSKILL 神技·梵经八杀
+DELSKILL 禁技·破天一击
+DELSKILL 禁技·天火三玄变
+DELSKILL 神技·九天神雷
+DELSKILL 奥义·冰雪精灵
+DELSKILL 神技·奇门遁甲
+DELSKILL 奥义·修罗血煞阵
+DELSKILL 禁技·太阴尸经
+DELSKILL 无极·金钱炸弹
+DELSKILL 无量·瀚海乾坤罩
+DELSKILL 破灭·重瞳之眼
+DELSKILL 重生·补天术
+DELSKILL 禁技·烈焰焚天
+DELSKILL 真武·大霹雳
+HUMANHP + <$MAXHP>
+HUMANMP + <$MAXMP>
+Close
+Messagebox 您已经转职成为一名合格的法师了！
+#ELSEACT
+Close
+Messagebox 缺少转职的费用，不能转职！
+Break
+
+#if
+equal A1 <$USERNAME>
+#act
+MOV A1
+MOV A15
+MOV G31 0
+MOV G32 0
+MOV A25
+RECYCFENGHAO 天下第一战士
+CLEARNAMELIST ..\QuestDiary\数据文件\天下第一\战士.txt
+Break
+
+#if
+equal A2 <$USERNAME>
+#act
+MOV A2
+MOV A14
+MOV G37 0
+MOV G38 0
+MOV A24
+RECYCFENGHAO 天下第一法师
+CLEARNAMELIST ..\QuestDiary\数据文件\天下第一\法师.txt
+Break
+
+#if
+equal A3 <$USERNAME>
+#act
+MOV A3
+MOV A13
+MOV G33 0
+MOV G34 0
+MOV A23
+RECYCFENGHAO 天下第一道士
+CLEARNAMELIST ..\QuestDiary\数据文件\天下第一\道士.txt
+Break
+
+
+
+[@zds]
+#if
+CheckGAMEGold > 999999
+#ACT
+GAMEGOLD - 1000000
+CLEARSKILL
+CHANGEJOB Taoist
+AddHpPer + 100
+AddMpPer + 100
+ADDSKILL 治愈术 3
+ADDSKILL 精神力战法 3
+ADDSKILL 施毒术 3
+ADDSKILL 灵魂火符 3
+ADDSKILL 幽灵盾 3
+ADDSKILL 神圣战甲术 3
+ADDSKILL 困魔咒 3
+ADDSKILL 隐身术 3
+ADDSKILL 集体隐身术 3
+ADDSKILL 心灵启示 3
+ADDSKILL 群体治疗术 3
+ADDSKILL 群体施毒术 3
+ADDSKILL 心灵召唤 3
+ADDSKILL 金甲骷髅 3
+ADDSKILL 神圣麒麟 3
+RECYCFENGHAO [战神]
+RECYCFENGHAO [法神]
+RECYCFENGHAO [天尊]
+RECYCFENGHAO [真·战神]
+RECYCFENGHAO [真·法神]
+RECYCFENGHAO [真·天尊]
+RECYCFENGHAO [神]
+DELSKILL 突刺斩
+DELSKILL 荒古血脉
+DELSKILL 山河壮
+DELSKILL 末日天罚
+DELSKILL 雷霆万钧
+DELSKILL 冰天雪地
+DELSKILL 毒浪滔天
+DELSKILL 召唤骷髅王
+DELSKILL 十方俱灭
+DELSKILL 奥义·九天玄功
+DELSKILL 神技·梵经八杀
+DELSKILL 禁技·破天一击
+DELSKILL 禁技·天火三玄变
+DELSKILL 神技·九天神雷
+DELSKILL 奥义·冰雪精灵
+DELSKILL 神技·奇门遁甲
+DELSKILL 奥义·修罗血煞阵
+DELSKILL 禁技·太阴尸经
+DELSKILL 无极·金钱炸弹
+DELSKILL 无量·瀚海乾坤罩
+DELSKILL 破灭·重瞳之眼
+DELSKILL 重生·补天术
+DELSKILL 禁技·烈焰焚天
+DELSKILL 真武·大霹雳
+HUMANHP + <$MAXHP>
+HUMANMP + <$MAXMP>
+Close
+Messagebox 您已经转职成为一名合格的道士了！
+#ELSEACT
+Close
+Messagebox 缺少转职的费用，不能转职！
+Break
+
+
+#if
+equal A1 <$USERNAME>
+#act
+MOV A1
+MOV A15
+MOV G31 0
+MOV G32 0
+MOV A25
+RECYCFENGHAO 天下第一战士
+CLEARNAMELIST ..\QuestDiary\数据文件\天下第一\战士.txt
+Break
+
+#if
+equal A2 <$USERNAME>
+#act
+MOV A2
+MOV A14
+MOV G37 0
+MOV G38 0
+MOV A24
+RECYCFENGHAO 天下第一法师
+CLEARNAMELIST ..\QuestDiary\数据文件\天下第一\法师.txt
+Break
+
+#if
+equal A3 <$USERNAME>
+#act
+MOV A3
+MOV A13
+MOV G33 0
+MOV G34 0
+MOV A23
+RECYCFENGHAO 天下第一道士
+CLEARNAMELIST ..\QuestDiary\数据文件\天下第一\道士.txt
+Break
+
+[@bx]
+#if
+Gender man
+#SAY
+是不是做猛男没什么意思呀，想不想尝尝做淑女的滋味呀！\ \
+手术费300万金币！
+    <尝尝/@sn> \ \
+    <返回/@main> \
+    <关闭/@EXIT> \
+#ELSESAY
+是不是做淑女没什么意思呀，想不想尝尝做猛男的滋味呀！\ \
+手术费300万金币！
+    <尝尝/@mn> \ \
+    <返回/@main> \
+    <关闭/@EXIT> \
+
+
+[@sn]
+#if
+CheckGold 5000000
+#ACT
+take 金币 5000000
+CHANGEGENDER 1
+close
+MessageBox 您已经成为一名淑女了！
+break
+#ELSEACT
+close
+MessageBox 缺少变性手术的费用，不能变性！
+break
+
+
+[@mn]
+#if
+CheckGold 5000000
+#ACT
+take 金币 5000000
+CHANGEGENDER 0
+close
+MessageBox 您已经成为一名猛男了！
+break
+#ELSEACT
+close
+MessageBox 缺少变性手术的费用，不能变性！
+break
+

@@ -1,0 +1,331 @@
+[@领取充值记录]
+{
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\01.txt 
+#ACT
+INC U95 0
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\01.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\1.txt 
+#ACT
+INC U95 1
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\1.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\02.txt 
+#ACT
+INC U95 0
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\02.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\2.txt 
+#ACT
+INC U95 2
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\2.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\03.txt 
+#ACT
+INC U95 0
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\03.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\3.txt 
+#ACT
+INC U95 3
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\3.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\04.txt 
+#ACT
+INC U95 0
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\04.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\4.txt 
+#ACT
+INC U95 4
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\4.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\05.txt 
+#ACT
+INC U95 0
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\05.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\5.txt 
+#ACT
+INC U95 5
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\5.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\06.txt 
+#ACT
+INC U95 0
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\06.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\6.txt 
+#ACT
+INC U95 6
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\6.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\07.txt 
+#ACT
+INC U95 0
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\07.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\7.txt 
+#ACT
+INC U95 7
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\7.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\08.txt 
+#ACT
+INC U95 0
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\08.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\8.txt 
+#ACT
+INC U95 8
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\8.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\09.txt 
+#ACT
+INC U95 0
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\09.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\9.txt 
+#ACT
+INC U95 9
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\9.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\10.txt 
+#ACT
+INC U95 10
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\10.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\20.txt 
+#ACT
+INC U95 20
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\20.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\30.txt 
+#ACT
+INC U95 30
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\30.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\40.txt 
+#ACT
+INC U95 40
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\40.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\50.txt 
+#ACT
+INC U95 50
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\50.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\60.txt 
+#ACT
+INC U95 60
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\60.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\70.txt 
+#ACT
+INC U95 70
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\70.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\80.txt 
+#ACT
+INC U95 80
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\80.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\90.txt 
+#ACT
+INC U95 90
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\90.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\100.txt 
+#ACT
+INC U95 100
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\100.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\200.txt 
+#ACT
+INC U95 200
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\200.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\300.txt 
+#ACT
+INC U95 300
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\300.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\400.txt 
+#ACT
+INC U95 400
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\400.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\500.txt 
+#ACT
+INC U95 500
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\500.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\600.txt 
+#ACT
+INC U95 600
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\600.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\700.txt 
+#ACT
+INC U95 700
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\700.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\800.txt 
+#ACT
+INC U95 800
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\800.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\900.txt 
+#ACT
+INC U95 900
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\900.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\1000.txt 
+#ACT
+INC U95 1000
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\1000.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\2000.txt 
+#ACT
+INC U95 2000
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\2000.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\3000.txt 
+#ACT
+INC U95 3000
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\3000.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\4000.txt 
+#ACT
+INC U95 4000
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\4000.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\5000.txt 
+#ACT
+INC U95 5000
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\5000.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\6000.txt 
+#ACT
+INC U95 6000
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\6000.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\7000.txt 
+#ACT
+INC U95 7000
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\7000.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\8000.txt 
+#ACT
+INC U95 8000
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\8000.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\9000.txt 
+#ACT
+INC U95 9000
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\9000.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\10000.txt 
+#ACT
+INC U95 10000
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\10000.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\20000.txt 
+#ACT
+INC U95 20000
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\20000.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\30000.txt 
+#ACT
+INC U95 30000
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\30000.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\40000.txt 
+#ACT
+INC U95 40000
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\40000.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\50000.txt 
+#ACT
+INC U95 50000
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\50000.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\60000.txt 
+#ACT
+INC U95 60000
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\60000.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\70000.txt 
+#ACT
+INC U95 70000
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\70000.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\80000.txt 
+#ACT
+INC U95 80000
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\80000.txt 
+
+#IF
+CheckAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\90000.txt 
+#ACT
+INC U95 90000
+DelAccountList ..\QuestDiary\178pay传仙币\附加赠送\充值记录\90000.txt 
+
+#ELSESAY
+请查看自己的充值数量!\
+没有充值请按提示进行充值!\
+<退出/@exit>
+}

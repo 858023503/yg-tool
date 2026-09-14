@@ -1,0 +1,40 @@
+[@月灵道祖]
+{
+#if
+#ACT
+MOV N$道士召唤月灵数量 1
+KILLSLAVE 1 PK巨刃骷髅
+KILLSLAVE 1 异火神兽
+KILLSLAVE 1 异火兽
+KILLSLAVE 1 火兽
+KILLSLAVE 1 战争弓箭手
+KILLSLAVE 1 巨刃骷髅
+KILLSLAVE 1 战争之王
+KILLSLAVE 1 混沌石灵
+KILLSLAVE 1 流金圣兽
+
+#OR
+CHECKITEM 传送戒指.LV40 1 0 1
+EQUAL U415 1
+#act
+MOV N$道士召唤月灵数量 2
+
+
+#if
+CHECKSLAVECOUNT < N$道士召唤月灵数量 月灵道祖
+#act
+goto @道士召唤月灵道祖判断
+
+
+
+[@道士召唤月灵道祖判断]
+#if
+#act
+RECALLMOB 月灵道祖
+MOV S$当前宝宝 月灵道祖
+MOV S$攻击触发宝宝名字 月灵道祖
+MOV S$当前宝宝PK判断 月灵道祖
+
+
+Goto @统计属性
+}

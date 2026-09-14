@@ -1,0 +1,303 @@
+[@加载DNF装备]
+{
+#IF
+#ACT
+GOTO @_@初始化DNF装备界面
+GOTO @_@计算DNF装备加成
+GOTO @_@初始化DNF装备强化界面
+OPENMERCHANTBIGDLG 0 2185 1 4 -200 0 1 325 15
+#SAY
+<&Text:装备:27:50{FCOLOR=249;FSIZE=12;FNAME=楷体}>
+<&Text:时装:80:50{FCOLOR=251;FSIZE=12;FNAME=楷体}/@DNF时装界面>
+<$STR(S$一号DNF装备位文本)><$STR(S$二号DNF装备位文本)><$STR(S$三号DNF装备位文本)><$STR(S$四号DNF装备位文本)><$STR(S$五号DNF装备位文本)><$STR(S$六号DNF装备位文本)><$STR(S$七号DNF装备位文本)><$STR(S$八号DNF装备位文本)><$STR(S$九号DNF装备位文本)><$STR(S$十号DNF装备位文本)><$STR(S$十一号DNF装备位文本)><$STR(S$十二号DNF装备位文本)>
+<$STR(S$武器强化展示片段)><$STR(S$上衣强化展示片段)><$STR(S$下装强化展示片段)><$STR(S$肩膀强化展示片段)><$STR(S$腰部强化展示片段)><$STR(S$靴子强化展示片段)><$STR(S$手镯强化展示片段)><$STR(S$项链强化展示片段)><$STR(S$戒指强化展示片段)><$STR(S$辅助强化展示片段)><$STR(S$魔法石强化展示片段)>
+<&Text:体力：<$STR(N$DNF装备体力元素加成)>%:56:264{FCOLOR=254;FSIZE=9}>
+<&Text:魔力：<$STR(N$DNF装备魔力元素加成)>%:216:264{FCOLOR=254;FSIZE=9}>
+<&Text:攻击：<$STR(N$DNF装备攻击加成)>:56:284{FCOLOR=254;FSIZE=9}>
+<&Text:道术：<$STR(N$DNF装备道术加成)>:216:284{FCOLOR=254;FSIZE=9}>
+<&Text:魔法：<$STR(N$DNF装备魔法加成)>:56:304{FCOLOR=254;FSIZE=9}>
+<&Text:物理防御：<$STR(N$DNF装备防御加成)>:216:304{FCOLOR=254;FSIZE=9}>
+<&Text:攻击速度：<$STR(N$DNF装备攻速加成)>:56:324{FCOLOR=254;FSIZE=9}>
+<&Text:魔法防御：<$STR(N$DNF装备魔御加成)>:216:324{FCOLOR=254;FSIZE=9}>
+<&Text:暴击几率：<$STR(N$DNF装备暴击率加成)>%:56:344{FCOLOR=254;FSIZE=9}>
+<&Text:施法速度：<$STR(N$DNF装备魔速加成)>:216:344{FCOLOR=254;FSIZE=9}>
+<&Text:暴击伤害：<$STR(N$DNF装备暴伤加成)>%:56:364{FCOLOR=254;FSIZE=9}>
+<&Text:伤害加深：<$STR(N$DNF装备加深加成)>%:216:364{FCOLOR=254;FSIZE=9}>
+<&Text:物理抗性：<$STR(N$DNF装备物抗加成)>%:56:384{FCOLOR=254;FSIZE=9}>
+<&Text:魔法抗性：<$STR(N$DNF装备魔抗加成)>%:216:384{FCOLOR=254;FSIZE=9}>
+<&Text:<$USERNAME>:156:80{AUTOCOLOR=254,251,168,191,250,70,245,249,253}>
+
+[@DNF装备界面]
+#ACT
+GOTO @加载DNF装备
+
+[@DNF时装界面]
+#ACT
+GOTO @加载DNF时装界面
+
+[@加载DNF时装界面]
+#IF
+#ACT
+OPENMERCHANTBIGDLG 0 2186 1 4 -200 0 1 325 15
+#SAY
+\ \ \ \
+<&Text:装备:27:50{FCOLOR=251;FSIZE=12;FNAME=楷体}/@加载DNF装备>
+<&Text:时装:80:50{FCOLOR=249;FSIZE=12;FNAME=楷体}>
+}
+
+[@Body]
+{
+[@_@计算DNF装备加成]
+#IF
+#ACT
+MOV N$DNF装备攻击加成 0
+MOV N$DNF装备魔法加成 0
+MOV N$DNF装备道术加成 0
+MOV N$DNF装备防御加成 0
+MOV N$DNF装备魔御加成 0
+MOV N$DNF装备循环变量 0
+MOV N$DNF装备攻速加成 0
+MOV N$DNF装备攻伤元素加成 0
+MOV N$DNF装备物抗元素加成 0
+MOV N$DNF装备魔抗元素加成 0
+MOV N$DNF装备体力元素加成 0
+MOV N$DNF装备魔力元素加成 0
+MOV N$DNF装备怪爆元素加成 0
+MOV N$DNF装备爆裂固伤加成 0
+MOV N$DNF装备火符固伤加成 0
+MOV N$DNF装备烈火固伤加成 0
+MOV L$DNF装备计算加成数组 <$STR(T35)>
+MOV L$DNF装备计算强化加成数组 <$STR(T36)>
+
+#IF
+NOT EQUAL L$DNF装备计算加成数组[0] 0
+#ACT
+FORMULATION <$STR(N$DNF<$STR(L$DNF装备计算加成数组[0])>攻击属性加成)>*(100+<$DNF武器强化加成配置(<$STR(L$DNF装备计算强化加成数组[0])>,0)>)/100 N$DNF当前武器攻击加成
+FORMULATION <$STR(N$DNF<$STR(L$DNF装备计算加成数组[0])>魔法属性加成)>*(100+<$DNF武器强化加成配置(<$STR(L$DNF装备计算强化加成数组[0])>,0)>)/100 N$DNF当前武器魔法加成
+FORMULATION <$STR(N$DNF<$STR(L$DNF装备计算加成数组[0])>道术属性加成)>*(100+<$DNF武器强化加成配置(<$STR(L$DNF装备计算强化加成数组[0])>,0)>)/100 N$DNF当前武器道术加成
+INC N$DNF装备攻击加成 <$STR(N$DNF当前武器攻击加成)>
+INC N$DNF装备魔法加成 <$STR(N$DNF当前武器魔法加成)>
+INC N$DNF装备道术加成 <$STR(N$DNF当前武器道术加成)>
+INC N$DNF装备爆裂固伤加成 <$STR(N$DNF<$STR(L$DNF装备计算加成数组[0])>爆裂固伤加成)>
+INC N$DNF装备火符固伤加成 <$STR(N$DNF<$STR(L$DNF装备计算加成数组[0])>火符固伤加成)>
+INC N$DNF装备烈火固伤加成 <$STR(N$DNF<$STR(L$DNF装备计算加成数组[0])>烈火固伤加成)>
+INC N$DNF装备攻速加成 <$STR(N$DNF<$STR(L$DNF装备计算加成数组[0])>攻速属性加成)>
+
+#IF
+NOT EQUAL L$DNF装备计算加成数组[1] 0
+#ACT
+FORMULATION <$STR(N$DNF<$STR(L$DNF装备计算加成数组[1])>防御属性加成)>*(100+<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[1])>,0)>)/100 N$DNF当前防具防御加成
+INC N$DNF装备防御加成 <$STR(N$DNF当前防具防御加成)>
+INC N$DNF装备物抗元素加成 <$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[1])>,1)>
+INC N$DNF装备体力元素加成 <$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[1])>,2)>
+
+#IF
+NOT EQUAL L$DNF装备计算加成数组[2] 0
+#ACT
+FORMULATION <$STR(N$DNF<$STR(L$DNF装备计算加成数组[2])>防御属性加成)>*(100+<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[2])>,0)>)/100 N$DNF当前防具防御加成
+INC N$DNF装备防御加成 <$STR(N$DNF当前防具防御加成)>
+INC N$DNF装备物抗元素加成 <$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[2])>,1)>
+INC N$DNF装备体力元素加成 <$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[2])>,2)>
+INC N$DNF装备攻击加成 <$STR(N$DNF<$STR(L$DNF装备计算加成数组[2])>攻击属性加成)>
+INC N$DNF装备魔法加成 <$STR(N$DNF<$STR(L$DNF装备计算加成数组[2])>魔法属性加成)>
+INC N$DNF装备道术加成 <$STR(N$DNF<$STR(L$DNF装备计算加成数组[2])>道术属性加成)>
+INC N$DNF装备攻伤元素加成 <$STR(N$DNF<$STR(L$DNF装备计算加成数组[2])>攻击伤害元素加成)>
+
+#IF
+NOT EQUAL L$DNF装备计算加成数组[3] 0
+#ACT
+FORMULATION <$STR(N$DNF<$STR(L$DNF装备计算加成数组[3])>防御属性加成)>*(100+<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[3])>,0)>)/100 N$DNF当前防具防御加成
+INC N$DNF装备防御加成 <$STR(N$DNF当前防具防御加成)>
+INC N$DNF装备物抗元素加成 <$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[3])>,1)>
+INC N$DNF装备体力元素加成 <$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[3])>,2)>
+
+#IF
+NOT EQUAL L$DNF装备计算加成数组[4] 0
+#ACT
+FORMULATION <$STR(N$DNF<$STR(L$DNF装备计算加成数组[4])>防御属性加成)>*(100+<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[4])>,0)>)/100 N$DNF当前防具防御加成
+INC N$DNF装备防御加成 <$STR(N$DNF当前防具防御加成)>
+INC N$DNF装备物抗元素加成 <$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[4])>,1)>
+INC N$DNF装备体力元素加成 <$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[4])>,2)>
+
+#IF
+NOT EQUAL L$DNF装备计算加成数组[5] 0
+#ACT
+FORMULATION <$STR(N$DNF<$STR(L$DNF装备计算加成数组[5])>防御属性加成)>*(100+<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[5])>,0)>)/100 N$DNF当前防具防御加成
+INC N$DNF装备防御加成 <$STR(N$DNF当前防具防御加成)>
+INC N$DNF装备物抗元素加成 <$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[5])>,1)>
+INC N$DNF装备体力元素加成 <$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[5])>,2)>
+
+#IF
+NOT EQUAL L$DNF装备计算加成数组[6] 0
+#ACT
+FORMULATION <$STR(N$DNF<$STR(L$DNF装备计算加成数组[6])>魔御属性加成)>*(100+<$DNF首饰强化加成配置(<$STR(L$DNF装备计算强化加成数组[6])>,0)>)/100 N$DNF当前首饰魔御加成
+INC N$DNF装备魔御加成 <$STR(N$DNF当前首饰魔御加成)>
+INC N$DNF装备魔抗元素加成 <$DNF首饰强化加成配置(<$STR(L$DNF装备计算强化加成数组[6])>,1)>
+INC N$DNF装备魔力元素加成 <$DNF首饰强化加成配置(<$STR(L$DNF装备计算强化加成数组[6])>,2)>
+
+#IF
+NOT EQUAL L$DNF装备计算加成数组[7] 0
+#ACT
+FORMULATION <$STR(N$DNF<$STR(L$DNF装备计算加成数组[7])>魔御属性加成)>*(100+<$DNF首饰强化加成配置(<$STR(L$DNF装备计算强化加成数组[7])>,0)>)/100 N$DNF当前首饰魔御加成
+INC N$DNF装备魔御加成 <$STR(N$DNF当前首饰魔御加成)>
+INC N$DNF装备魔抗元素加成 <$DNF首饰强化加成配置(<$STR(L$DNF装备计算强化加成数组[7])>,1)>
+INC N$DNF装备魔力元素加成 <$DNF首饰强化加成配置(<$STR(L$DNF装备计算强化加成数组[7])>,2)>
+
+#IF
+NOT EQUAL L$DNF装备计算加成数组[8] 0
+#ACT
+FORMULATION <$STR(N$DNF<$STR(L$DNF装备计算加成数组[8])>魔御属性加成)>*(100+<$DNF首饰强化加成配置(<$STR(L$DNF装备计算强化加成数组[8])>,0)>)/100 N$DNF当前首饰魔御加成
+INC N$DNF装备魔御加成 <$STR(N$DNF当前首饰魔御加成)>
+INC N$DNF装备魔抗元素加成 <$DNF首饰强化加成配置(<$STR(L$DNF装备计算强化加成数组[8])>,1)>
+INC N$DNF装备魔力元素加成 <$DNF首饰强化加成配置(<$STR(L$DNF装备计算强化加成数组[8])>,2)>
+
+#IF
+NOT EQUAL L$DNF装备计算加成数组[11] 0
+#ACT
+INC N$DNF装备攻击加成 <$STR(N$DNF<$STR(L$DNF装备计算加成数组[11])>攻击属性加成)>
+INC N$DNF装备魔法加成 <$STR(N$DNF<$STR(L$DNF装备计算加成数组[11])>魔法属性加成)>
+INC N$DNF装备道术加成 <$STR(N$DNF<$STR(L$DNF装备计算加成数组[11])>道术属性加成)>
+INC N$DNF装备怪爆元素加成 <$STR(N$DNF<$STR(L$DNF装备计算加成数组[11])>怪物爆率元素加成)>
+
+[@取下DNF装备]
+#IF
+#ACT
+MOV S$取下DNF装备参数1 <$SCRIPTPARAM1>
+
+#IF
+NOT CheckVarInList L$魔兽神佑位置参数列表 <$STR(S$取下DNF装备参数1)>
+#ACT
+BREAK
+
+#IF
+#ACT
+MOV L$当前装备DNF装备数组 <$STR(T35)>
+
+#IF
+EQUAL L$当前装备DNF装备数组[<$STR(S$取下DNF装备参数1)>] 0
+#ACT
+MESSAGEBOX 当前位置没有DNF装备！
+BREAK
+
+#IF
+#ACT
+GIVEIDX <$STR(L$当前装备DNF装备数组[<$STR(S$取下DNF装备参数1)>])> 1
+MOV L$当前装备DNF装备数组[<$STR(S$取下DNF装备参数1)>] 0
+MOV T35 <$STR(L$当前装备DNF装备数组)>
+GOTO @加载DNF装备
+GOTO @开始计算基础属性
+GOTO @开始计算元素属性
+GOTO @开始计算游戏速度
+GOTO @开始计算生命魔力
+GOTO @开始计算技能伤害
+
+[@_@初始化DNF装备界面]
+#IF
+#ACT
+MOV S$一号DNF装备位文本 
+MOV S$二号DNF装备位文本 
+MOV S$三号DNF装备位文本 
+MOV S$四号DNF装备位文本 
+MOV S$五号DNF装备位文本 
+MOV S$六号DNF装备位文本 
+MOV S$七号DNF装备位文本 
+MOV S$八号DNF装备位文本 
+MOV S$九号DNF装备位文本 
+MOV S$十号DNF装备位文本 
+MOV S$十一号DNF装备位文本 
+MOV S$十二号DNF装备位文本 
+MOV L$已装备DNF装备列表 <$STR(T35)>
+
+#IF
+NOT EQUAL L$已装备DNF装备列表[0] 0
+#ACT
+MOV S$一号DNF装备位文本 <&ITEMSHOW:<$STR(L$已装备DNF装备列表[0])>:0:260:146:0:0/@取下DNF装备(0)>
+
+#IF
+NOT EQUAL L$已装备DNF装备列表[1] 0
+#ACT
+MOV S$二号DNF装备位文本 <&ITEMSHOW:<$STR(L$已装备DNF装备列表[1])>:0:77:146:0:0/@取下DNF装备(1)>
+
+#IF
+NOT EQUAL L$已装备DNF装备列表[2] 0
+#ACT
+MOV S$三号DNF装备位文本 <&ITEMSHOW:<$STR(L$已装备DNF装备列表[2])>:0:42:181:0:0/@取下DNF装备(2)>
+
+#IF
+NOT EQUAL L$已装备DNF装备列表[3] 0
+#ACT
+MOV S$四号DNF装备位文本 <&ITEMSHOW:<$STR(L$已装备DNF装备列表[3])>:0:42:146:0:0/@取下DNF装备(3)>
+
+#IF
+NOT EQUAL L$已装备DNF装备列表[4] 0
+#ACT
+MOV S$五号DNF装备位文本 <&ITEMSHOW:<$STR(L$已装备DNF装备列表[4])>:0:77:181:0:0/@取下DNF装备(4)>
+
+#IF
+NOT EQUAL L$已装备DNF装备列表[5] 0
+#ACT
+MOV S$六号DNF装备位文本 <&ITEMSHOW:<$STR(L$已装备DNF装备列表[5])>:0:42:216:0:0/@取下DNF装备(5)>
+
+#IF
+NOT EQUAL L$已装备DNF装备列表[6] 0
+#ACT
+MOV S$七号DNF装备位文本 <&ITEMSHOW:<$STR(L$已装备DNF装备列表[6])>:0:260:181:0:0/@取下DNF装备(6)>
+
+#IF
+NOT EQUAL L$已装备DNF装备列表[7] 0
+#ACT
+MOV S$八号DNF装备位文本 <&ITEMSHOW:<$STR(L$已装备DNF装备列表[7])>:0:295:181:0:0/@取下DNF装备(7)>
+
+#IF
+NOT EQUAL L$已装备DNF装备列表[8] 0
+#ACT
+MOV S$九号DNF装备位文本 <&ITEMSHOW:<$STR(L$已装备DNF装备列表[8])>:0:295:216:0:0/@取下DNF装备(8)>
+
+#IF
+NOT EQUAL L$已装备DNF装备列表[9] 0
+#ACT
+MOV S$十号DNF装备位文本 <&ITEMSHOW:<$STR(L$已装备DNF装备列表[9])>:0:77:216:0:0/@取下DNF装备(9)>
+
+#IF
+NOT EQUAL L$已装备DNF装备列表[10] 0
+#ACT
+MOV S$十一号DNF装备位文本 <&ITEMSHOW:<$STR(L$已装备DNF装备列表[10])>:0:260:216:0:0/@取下DNF装备(10)>
+
+#IF
+NOT EQUAL L$已装备DNF装备列表[11] 0
+#ACT
+MOV S$十二号DNF装备位文本 <&ITEMSHOW:<$STR(L$已装备DNF装备列表[11])>:0:295:146:0:0/@取下DNF装备(11)>
+
+[@_@初始化DNF装备强化界面]
+#IF
+#ACT
+MOV S$武器强化展示片段 
+MOV S$上衣强化展示片段 
+MOV S$下装强化展示片段 
+MOV S$肩膀强化展示片段 
+MOV S$腰部强化展示片段 
+MOV S$靴子强化展示片段 
+MOV S$手镯强化展示片段 
+MOV S$项链强化展示片段 
+MOV S$戒指强化展示片段 
+MOV S$辅助强化展示片段 
+MOV S$魔法石强化展示片段 
+
+MOV S$武器强化展示片段 <&Text:+<$STR(L$DNF装备计算强化加成数组[0])>|253#攻魔道加成比例：<$DNF武器强化加成配置(<$STR(L$DNF装备计算强化加成数组[0])>,0)>%^-^249#该效果需佩戴DNF系列武器生效:260:146{FCOLOR=254}>
+
+MOV S$上衣强化展示片段 <&Text:+<$STR(L$DNF装备计算强化加成数组[1])>|253#防御加成比例：<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[1])>,0)>%^253#物抗元素加成：<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[1])>,1)>%^253#体力元素加成：<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[1])>,2)>%^-^249#该效果需佩戴DNF系列防具生效:77:146{FCOLOR=254}>
+
+MOV S$下装强化展示片段 <&Text:+<$STR(L$DNF装备计算强化加成数组[2])>|253#防御加成比例：<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[2])>,0)>%^253#物抗元素加成：<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[2])>,1)>%^253#体力元素加成：<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[2])>,2)>%^-^249#该效果需佩戴DNF系列防具生效:42:181{FCOLOR=254}>
+
+MOV S$肩膀强化展示片段 <&Text:+<$STR(L$DNF装备计算强化加成数组[3])>|253#防御加成比例：<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[3])>,0)>%^253#物抗元素加成：<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[3])>,1)>%^253#体力元素加成：<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[3])>,2)>%^-^249#该效果需佩戴DNF系列防具生效:42:146{FCOLOR=254}>
+
+MOV S$腰部强化展示片段 <&Text:+<$STR(L$DNF装备计算强化加成数组[4])>|253#防御加成比例：<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[4])>,0)>%^253#物抗元素加成：<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[4])>,1)>%^253#体力元素加成：<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[4])>,2)>%^-^249#该效果需佩戴DNF系列防具生效:77:181{FCOLOR=254}>
+
+MOV S$靴子强化展示片段 <&Text:+<$STR(L$DNF装备计算强化加成数组[5])>|253#防御加成比例：<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[5])>,0)>%^253#物抗元素加成：<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[5])>,1)>%^253#体力元素加成：<$DNF防具强化加成配置(<$STR(L$DNF装备计算强化加成数组[5])>,2)>%^-^249#该效果需佩戴DNF系列防具生效:42:216{FCOLOR=254}>
+
+MOV S$手镯强化展示片段 <&Text:+<$STR(L$DNF装备计算强化加成数组[6])>|253#魔御加成比例：<$DNF首饰强化加成配置(<$STR(L$DNF装备计算强化加成数组[6])>,0)>%^253#魔抗元素加成：<$DNF首饰强化加成配置(<$STR(L$DNF装备计算强化加成数组[6])>,1)>%^253#魔力元素加成：<$DNF首饰强化加成配置(<$STR(L$DNF装备计算强化加成数组[6])>,2)>%^-^249#该效果需佩戴DNF系列首饰生效:260:181{FCOLOR=254}>
+
+MOV S$项链强化展示片段 <&Text:+<$STR(L$DNF装备计算强化加成数组[7])>|253#魔御加成比例：<$DNF首饰强化加成配置(<$STR(L$DNF装备计算强化加成数组[7])>,0)>%^253#魔抗元素加成：<$DNF首饰强化加成配置(<$STR(L$DNF装备计算强化加成数组[7])>,1)>%^253#魔力元素加成：<$DNF首饰强化加成配置(<$STR(L$DNF装备计算强化加成数组[7])>,2)>%^-^249#该效果需佩戴DNF系列首饰生效:295:181{FCOLOR=254}>
+
+MOV S$戒指强化展示片段 <&Text:+<$STR(L$DNF装备计算强化加成数组[8])>|253#魔御加成比例：<$DNF首饰强化加成配置(<$STR(L$DNF装备计算强化加成数组[8])>,0)>%^253#魔抗元素加成：<$DNF首饰强化加成配置(<$STR(L$DNF装备计算强化加成数组[8])>,1)>%^253#魔力元素加成：<$DNF首饰强化加成配置(<$STR(L$DNF装备计算强化加成数组[8])>,2)>%^-^249#该效果需佩戴DNF系列首饰生效:295:216{FCOLOR=254}>
+}

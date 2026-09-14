@@ -1,0 +1,87 @@
+[@攻击倍数]
+{
+
+#IF
+CheckLevelEx > 0
+#ACT
+Mov N$攻击倍数 100
+MOV N$精炼次数倍攻 0
+
+#IF
+	CheckUseitem 1
+#ACT
+	GetCustomItemValue 1 9 N$精炼次数倍攻 N$无用
+
+#IF
+	Equal N$精炼次数倍攻 1
+#ACT
+	INC N$攻击倍数 2
+#IF
+	Equal N$精炼次数倍攻 2
+#ACT
+	INC N$攻击倍数 5
+#IF
+	Equal N$精炼次数倍攻 3
+#ACT
+	INC N$攻击倍数 8
+#IF
+	Equal N$精炼次数倍攻 4
+#ACT
+	INC N$攻击倍数 13
+#IF
+	Equal N$精炼次数倍攻 5
+#ACT
+	INC N$攻击倍数 16
+#IF
+	Equal N$精炼次数倍攻 6
+#ACT
+	INC N$攻击倍数 20
+#IF
+	Equal N$精炼次数倍攻 7
+#ACT
+	INC N$攻击倍数 30
+	
+
+#IF
+CheckFengHao 皇帝
+#ACT
+INC N$攻击倍数 10
+SENDMSG 6 恭喜你获得[皇帝]封号,获得1.1倍攻加层!
+
+#IF
+CheckFengHao 全身20星
+#ACT
+INC N$攻击倍数 5
+
+#IF
+CheckFengHao 全身40星
+#ACT
+INC N$攻击倍数 10
+
+#IF
+CheckFengHao 全身60星
+#ACT
+INC N$攻击倍数 15
+
+#IF
+CheckFengHao 全身90星
+#ACT
+INC N$攻击倍数 20
+
+
+#IF
+CheckItem 高级货币收割者 1
+#ACT
+INC N$攻击倍数 10
+
+
+;#IF
+;large N$攻击倍数 0
+;#ACT
+;POWERRATE <$STR(N$攻击倍数)> 72000
+;BREAK
+
+
+
+
+}

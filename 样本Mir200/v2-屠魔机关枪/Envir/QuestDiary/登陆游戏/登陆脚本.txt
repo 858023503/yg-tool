@@ -1,0 +1,514 @@
+[@登陆脚本]
+{
+
+;临时用 判断职业清空其他职业书页属性 目前玩家转职后书页属性还在 属性统计里 书页属性是集合计算的
+
+;临时用改变统战
+#if
+COMPARETEXT T14 第一统战
+#act
+MOV T14 第1统战
+;
+#if
+equal u162 9999
+#act
+MAPMOVE CLT 24 20
+
+#IF
+not EQUAL <$GameDirectory> $常量_母端位置
+EQUAL S$玩家当前地图 跨服
+#ACT
+mapmove  3 176 131
+
+
+#if
+#act
+SET [686] 0
+
+#if
+CHECKJOB WARRIOR
+#act
+MOV U12 0
+MOV U13 0
+MOV U14 0
+MOV U15 0
+MOV U16 0
+MOV U17 0
+MOV U18 0
+MOV U19 0
+MOV U20 0
+MOV U21 0
+MOV U22 0
+MOV U23 0
+MOV U24 0
+MOV U25 0
+MOV U26 0
+MOV U27 0
+
+
+#if
+CHECKJOB wizard
+#act
+MOV U3 0
+MOV U4 0
+MOV U5 0
+MOV U6 0
+MOV U7 0
+MOV U8 0
+MOV U9 0
+MOV U10 0
+MOV U11 0
+MOV U20 0
+MOV U21 0
+MOV U22 0
+MOV U23 0
+MOV U24 0
+MOV U25 0
+MOV U26 0
+MOV U27 0
+
+
+#if
+CHECKJOB TAOIST
+#act
+MOV U12 0
+MOV U13 0
+MOV U14 0
+MOV U15 0
+MOV U16 0
+MOV U17 0
+MOV U18 0
+MOV U19 0
+MOV U3 0
+MOV U4 0
+MOV U5 0
+MOV U6 0
+MOV U7 0
+MOV U8 0
+MOV U9 0
+MOV U10 0
+MOV U11 0
+
+
+
+
+
+
+
+
+
+
+#if
+#act
+setontimer 77 10
+ADDSKILL 攻击世界BOSS技能 0
+;游戏功能
+ADDBUTTON 0 2 14 15 14 <$STR(N$游戏功能按钮X)> <$STR(N$游戏功能按钮Y)> 0 -1
+;活动列表
+ADDBUTTON 0 4 246 247 246 <$STR(N$游戏活动按钮X)> <$STR(N$游戏活动按钮Y)> 0 -1
+;VIP会员
+ADDBUTTON 58 7 59 58 59 <$STR(N$VIP会员按钮X)> <$STR(N$VIP会员按钮Y)> 0 -1
+;商城
+ADDBUTTON 58 5 43 44 43 <$STR(N$商城按钮X)> <$STR(N$商城按钮Y)> 0 -1
+;任务
+ADDBUTTON 61 6 1 11 12 <$STR(N$任务按钮X)> <$STR(N$任务按钮Y)> 0 -1
+;更新日志
+ADDBUTTON 0 11 1094 1095 1094 <$STR(N$周卡按钮X)> <$STR(N$周卡按钮Y)> 0 -1
+;更新日志
+;ADDBUTTON 5 9 910 911 910 <$STR(N$更新日志X)> <$STR(N$更新日志Y)> 0 -1
+;恢复HP 任务大退小退后当前血量会少一半给他补回去
+;游戏攻略按钮 
+
+;NPC按钮
+; ADDBUTTON 0 12 1100 1100 1100 120 20 0 -1
+;跨服提示返回本区按钮
+#if
+EQUAL <$GameDirectory> $常量_母端位置
+NOT ISNEWHUMAN
+#act
+ADDBUTTON 5 8 849 850 849 <$STR(N$跨服提示X)> <$STR(N$跨服提示Y)> 0 -1
+SCREENEFFECT 120 215 5 852 10 50 100 0 0 0
+
+; MAPMOVE MAP084 255 261
+
+
+
+#if
+#act
+;取消进去权限
+set [998] 0
+MOV S$挂机状态 没挂机
+;宝藏活动麻痹上限取消
+ChangeState 1 0
+
+;在线计时
+setontimer 18 1
+;仙之灵图保底
+MOV N$灵图爆率时间 60
+setontimer 50
+
+;记录人物账号机器码IP 信息
+
+Goto @进图浮现
+
+
+
+
+
+;每秒自动恢复
+#if
+NOT EQUAL <$GameDirectory> $常量_母端位置
+#act
+setontimer 38
+
+;装逼鼠
+#if
+large U139 0
+#act
+setontimer 32
+#IF
+LARGE U45 22
+#act
+AddDlg 5 0 11 0 <$STR(N$幽魂宝箱进度条X)>:<$STR(N$幽魂宝箱进度条Y)> 0:0 1 <ProgressBar:0:0:57:9999:23:98:100:-15:-7:0:<$STR(N$幽魂宝藏开启数量)>:<$str(U109)>:0:161:0:0:幽魂宝藏进度%r%【%p／%m】:11111>
+
+#if
+EQUAL U331 1
+#act
+setontimer 57 10
+
+#IF
+CHECKSKILL 混乱元素 = 0
+#ACT
+setontimer 1 1
+;行会传送倒计时
+;复活倒计时
+#IF
+NOT EQUAL U37 0
+#ACT
+SETONTIMER 15 1
+#IF
+NOT EQUAL U41 0
+#act
+SETONTIMER 19 1
+#IF
+NOT EQUAL U44 0
+#act
+SETONTIMER 23 1
+
+; ;100%鞭尸
+; #IF
+; LARGE U84 0
+; #ACT
+; setontimer 45
+
+
+;上线自动回收
+#if
+check [500] 1
+#ACT
+SetOnTimer 37 2
+;灵魂板石上线后判断是否勾选回收
+#if
+LARGE N$传送CD 0
+#act
+setontimer 53
+
+;上限魔法盾直接开启
+
+#if
+LARGE N$强化复活次数 0
+#act
+MOV U307 60
+setontimer 54
+
+;穿戴时装自动学习技能
+#if
+checkitems 紫煞天魔甲
+checkitems 紫煞天魔杖
+checkjob warrior
+NOT CHECKSKILL 十步一杀 = ?
+#act
+addskill 十步一杀 0
+DELSKILL 怒龙一击
+#if
+checkitems 紫煞天魔甲
+checkitems 紫煞天魔杖
+checkjob warrior
+CHECKSKILL 怒龙一击 = ?
+#act
+addskill 十步一杀 0
+DELSKILL 怒龙一击
+
+
+
+#if
+EQUAL U137 1
+NOT EQUAL <$GameDirectory> $常量_母端位置
+#act
+
+RecallGamePet 暴躁恶鼠
+
+#if
+EQUAL U137 2
+NOT EQUAL <$GameDirectory> $常量_母端位置
+#act
+
+RecallGamePet 邪恶猫王
+
+#if
+EQUAL U137 3
+NOT EQUAL <$GameDirectory> $常量_母端位置
+#act
+
+RecallGamePet 美国队长
+
+#if
+EQUAL U137 4
+NOT EQUAL <$GameDirectory> $常量_母端位置
+#act
+
+RecallGamePet 闪电魔王
+
+#if
+EQUAL U137 5
+NOT EQUAL <$GameDirectory> $常量_母端位置
+#act
+
+RecallGamePet 金刚老狼
+
+#if
+EQUAL U137 6
+NOT EQUAL <$GameDirectory> $常量_母端位置
+#act
+
+RecallGamePet 绿牛魔王
+
+#if
+EQUAL U137 7
+NOT EQUAL <$GameDirectory> $常量_母端位置
+#act
+
+RecallGamePet 性感美兔
+#if
+EQUAL U137 8
+NOT EQUAL <$GameDirectory> $常量_母端位置
+#act
+
+RecallGamePet 蝙蝠恶猪
+
+#if
+EQUAL U137 9
+NOT EQUAL <$GameDirectory> $常量_母端位置
+#act
+
+RecallGamePet 钢铁恶鸡
+
+
+#if
+EQUAL U137 10
+NOT EQUAL <$GameDirectory> $常量_母端位置
+#act
+
+RecallGamePet 氪金魔王
+
+
+
+#if
+EQUAL U137 11
+#act
+
+RecallGamePet 超级宠物
+ChangeGamePetAbility 14 U386
+sendmsg 6 当前攻速<$STR(U386)>
+RecalcGamePetAbility
+
+#if
+CHECK [672-679] 1
+#act
+setontimer 67 N$传承无敌套CD
+sendmsg 6 无敌套生效
+
+#if
+check [600-607] 1
+#act
+setontimer 58 60
+sendmsg 6 财神套生效
+
+#if
+check [648-655] 1
+#act
+setontimer 59 60
+sendmsg 6 金元套生效
+;幸运数字杀怪经验200
+#if
+LARGE U354 0
+#ACT
+setontimer 60 1
+
+;幸运数字杀怪经验500
+#if
+LARGE U360 0
+#ACT
+setontimer 64 1
+
+;杀怪经验群雄聚会
+#IF
+LARGE U322 0
+#act
+setontimer 62
+
+;如果幸运数字的幸运技能大于2 直接改回去
+#if
+LARGE U355 2
+#act
+MOV U355 2
+
+
+#if
+EQUAL <$MAP> RJD001
+#act
+ChangeState 1 99999
+
+#if
+EQUAL J32 1
+#act
+setontimer 49 60
+
+
+;临时 调整了龙珠属性200改为100
+#if
+LARGE U144 100
+#act
+MOV U144 100
+
+#if
+LARGE U146 100
+#act
+MOV U146 100
+#if
+LARGE U145 100
+#act
+MOV U145 100
+
+#if
+LARGE U147 100
+#act
+MOV U147 100
+
+;临时 调整了龙珠属性200改为100
+
+#if
+LARGE U358 0
+#act
+MOV N$魔法香蕉杀怪经验 100
+setontimer 63 1
+
+Goto @统计属性
+;登录后恢复之前记录的血量
+#if
+LARGE U309 0
+#act
+HUMANHP + U309
+HUMANMP + U309
+
+;临时二战区区号错了
+
+
+
+
+
+;灵魂丹
+#if
+LARGE U376 0
+#act
+
+MOV N$灵魂丹开关 1
+sendmsg 6 灵魂丹剩余时间<$STR(U376)>秒,多次使用可叠加时间
+FORMULATION <$STR(N$杀怪经验)>*1.4-100 N$灵魂丹杀怪经验
+FORMULATION <$STR(N$杀怪经验)>+<$STR(N$灵魂丹杀怪经验)> N$灵魂丹最终杀怪经验
+KILLMONEXPRATE <$STR(N$灵魂丹最终杀怪经验)> 0 0 1
+
+Goto @属性面板
+SETONTIMER 71 1
+;5秒检测一次376没了恢复经验
+
+
+
+;任务提示箭头
+
+;全服公告机器人呢
+; #if
+; EQUAL <$GameDirectory> $常量_母端位置
+; EQUAL <$MAP> 3
+; #act
+; MAPMOVE huanggong1
+
+
+
+#if
+CHECK [686] 1
+EQUAL U404 1
+#act
+setontimer 66 5
+
+#if
+NOT EQUAL <$GameDirectory> $常量_母端位置
+EQUAL U404 1
+#act
+MOV U404 0
+mapmove <$STR(T80)> <$STR(T81)> <$STR(T82)>
+delaygoto 5000 @挂机啦
+MOV N$灵图爆率时间 600
+MOV S$挂机状态 挂机中
+SET [998] 1
+sendmsg 5 请在小地图标记挂机点尽量绕开洞口
+sendmsg 5 请在小地图标记挂机点尽量绕开洞口
+sendmsg 5 请在小地图标记挂机点尽量绕开洞口
+sendmsg 5 请在小地图标记挂机点尽量绕开洞口
+sendmsg 5 请在小地图标记挂机点尽量绕开洞口
+sendmsg 5 请在小地图标记挂机点尽量绕开洞口
+
+
+
+
+
+
+
+#if
+CHECKSKILL 月灵道祖 = 0
+#act
+
+Goto @月灵道祖
+break
+#if
+CHECKSKILL 混沌石灵 = 0
+#act
+
+Goto @混沌石灵
+break
+#if
+CHECKSKILL 召唤圣兽 = 0
+#act
+
+Goto @召唤圣兽
+break
+
+#if
+CHECKSKILL 召唤火兽 = 0
+#act
+
+Goto @召唤火兽
+
+
+
+
+
+
+
+[@挂机啦]
+
+#if
+#act
+StartAutoPlayGame
+
+}

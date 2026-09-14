@@ -1,0 +1,19 @@
+[@加特林触发]
+{
+#IF
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+releasemagicEX 1262 0 0 1 1
+MOV N$加特林连击次数 6
+GOTO @加特林连击
+BREAK
+
+[@加特林连击]
+#IF
+LARGE N$加特林连击次数 0
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+DEC N$加特林连击次数 1
+releasemagicEX 1262 0 0 1 1
+DELAYGOTO 100 @加特林连击
+}

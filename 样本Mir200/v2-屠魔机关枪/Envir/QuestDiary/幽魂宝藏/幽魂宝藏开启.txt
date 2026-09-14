@@ -1,0 +1,171 @@
+[@сд╩Й╠╕╡ь©╙фТ]
+{
+
+#if
+#act
+MOV N$сд╩Й╠╕╡ьX <$X>
+MOV N$сд╩Й╠╕╡ьY <$Y>
+dec N$сд╩Й╠╕╡ьY 1
+#if
+CHECKMAPMOVE <$MAP> <$STR(N$сд╩Й╠╕╡ьX)> <$STR(N$сд╩Й╠╕╡ьY)>
+#act
+GOTO @╢Р©╙сд╩Й╠╕╡ь
+break
+
+
+#if
+#act
+MOV N$сд╩Й╠╕╡ьX <$X>
+MOV N$сд╩Й╠╕╡ьY <$Y>
+DEC N$сд╩Й╠╕╡ьY 1
+INC N$сд╩Й╠╕╡ьX 1
+#if
+CHECKMAPMOVE <$MAP> <$STR(N$сд╩Й╠╕╡ьX)> <$STR(N$сд╩Й╠╕╡ьY)>
+#act
+GOTO @╢Р©╙сд╩Й╠╕╡ь
+break
+
+#if
+#act
+MOV N$сд╩Й╠╕╡ьX <$X>
+MOV N$сд╩Й╠╕╡ьY <$Y>
+INC N$сд╩Й╠╕╡ьX 1
+#if
+CHECKMAPMOVE <$MAP> <$STR(N$сд╩Й╠╕╡ьX)> <$STR(N$сд╩Й╠╕╡ьY)>
+#act
+GOTO @╢Р©╙сд╩Й╠╕╡ь
+break
+
+
+
+#if
+#act
+MOV N$сд╩Й╠╕╡ьX <$X>
+MOV N$сд╩Й╠╕╡ьY <$Y>
+INC N$сд╩Й╠╕╡ьY 1
+INC N$сд╩Й╠╕╡ьX 1
+#if
+CHECKMAPMOVE <$MAP> <$STR(N$сд╩Й╠╕╡ьX)> <$STR(N$сд╩Й╠╕╡ьY)>
+#act
+GOTO @╢Р©╙сд╩Й╠╕╡ь
+break
+
+
+
+
+
+#if
+#act
+MOV N$сд╩Й╠╕╡ьX <$X>
+MOV N$сд╩Й╠╕╡ьY <$Y>
+dec N$сд╩Й╠╕╡ьY 1
+#if
+CHECKMAPMOVE <$MAP> <$STR(N$сд╩Й╠╕╡ьX)> <$STR(N$сд╩Й╠╕╡ьY)>
+#act
+GOTO @╢Р©╙сд╩Й╠╕╡ь
+break
+
+
+
+
+
+#if
+#act
+MOV N$сд╩Й╠╕╡ьX <$X>
+MOV N$сд╩Й╠╕╡ьY <$Y>
+dec N$сд╩Й╠╕╡ьX 1
+INC N$сд╩Й╠╕╡ьY 1
+#if
+CHECKMAPMOVE <$MAP> <$STR(N$сд╩Й╠╕╡ьX)> <$STR(N$сд╩Й╠╕╡ьY)>
+#act
+GOTO @╢Р©╙сд╩Й╠╕╡ь
+break
+
+
+#if
+#act
+MOV N$сд╩Й╠╕╡ьX <$X>
+MOV N$сд╩Й╠╕╡ьY <$Y>
+dec N$сд╩Й╠╕╡ьX 1
+#if
+CHECKMAPMOVE <$MAP> <$STR(N$сд╩Й╠╕╡ьX)> <$STR(N$сд╩Й╠╕╡ьY)>
+#act
+GOTO @╢Р©╙сд╩Й╠╕╡ь
+break
+
+
+#if
+#act
+MOV N$сд╩Й╠╕╡ьX <$X>
+MOV N$сд╩Й╠╕╡ьY <$Y>
+dec N$сд╩Й╠╕╡ьX 1
+DEC N$сд╩Й╠╕╡ьY 1
+#if
+CHECKMAPMOVE <$MAP> <$STR(N$сд╩Й╠╕╡ьX)> <$STR(N$сд╩Й╠╕╡ьY)>
+#act
+GOTO @╢Р©╙сд╩Й╠╕╡ь
+break
+
+
+
+#if
+#act
+MOV N$сд╩Й╠╕╡ьX <$X>
+MOV N$сд╩Й╠╕╡ьY <$Y>
+DEC N$сд╩Й╠╕╡ьX 1
+#if
+CHECKMAPMOVE <$MAP> <$STR(N$сд╩Й╠╕╡ьX)> <$STR(N$сд╩Й╠╕╡ьY)>
+#act
+GOTO @╢Р©╙сд╩Й╠╕╡ь
+break
+
+
+[@╢Р©╙сд╩Й╠╕╡ь]
+
+#if
+#act
+ReadConfigFileItem ..\..\..\..\м╗гЬнд╪Ч\сно╥йЩ╬щмЁ╪ф\сно╥йЩ╬щмЁ╪ф.txt <$USERNAME> сд╩Й╠╕╡ь╣ьм╪©╙фТ╢нйЩ <$Str(N$йЩ╬щмЁ╪ф)>
+INC N$йЩ╬щмЁ╪ф 1
+writeconfigfileitem ..\..\..\..\м╗гЬнд╪Ч\сно╥йЩ╬щмЁ╪ф\сно╥йЩ╬щмЁ╪ф.txt <$USERNAME> сд╩Й╠╕╡ь╣ьм╪©╙фТ╢нйЩ <$Str(N$йЩ╬щмЁ╪ф)>
+MOV N$сд╩Й╠╕╡ь╥╣╩ьт╜╣ьм╪вЬ╠ЙX <$X>
+MOV N$сд╩Й╠╕╡ь╥╣╩ьт╜╣ьм╪вЬ╠ЙY <$Y>
+MOV S$сд╩Й╠╕╡ь╥╣╩ь╣ьм╪ <$MAP>
+SET [997] 1
+AddMirrorMap cangbaoditu <$USERNAME>╣дсд╩Й╠╕╡ь <$USERNAME>╣дсд╩Й╠╕╡ь 120 3 55 N$иНт╗╣ьм╪╢╢╫╗Ёи╧╕ 1
+MAPEFFECT <$MAP> <$STR(N$сд╩Й╠╕╡ьX)> <$STR(N$сд╩Й╠╕╡ьY)>  59 128 23 1 100 0 0 1
+AddMapGate <$USERNAME>╣дсд╩Й╠╕╡ь <$MAP> <$STR(N$сд╩Й╠╕╡ьX)> <$STR(N$сд╩Й╠╕╡ьY)> 2 <$USERNAME>╣дсд╩Й╠╕╡ь 77 85 30
+MOV S$ЁУ╪╤сд╩Й╠╕оД
+MOV S$жп╪╤сд╩Й╠╕оД
+MOV S$╦ъ╪╤сд╩Й╠╕оД
+MOV N$©╙сд╩Й╠╕оДйЩа© 0
+
+
+#if
+#act
+MONGENEX <$USERNAME>╣дсд╩Й╠╕╡ь 73 84  ЁУ╪╤сд╩Й╠╕оД 0 1 245
+
+
+
+#if
+#act
+MONGENEX <$USERNAME>╣дсд╩Й╠╕╡ь 64 75  жп╪╤сд╩Й╠╕оД 0 1 245
+
+
+#if
+#act
+MONGENEX <$USERNAME>╣дсд╩Й╠╕╡ь 54 64  ╦ъ╪╤сд╩Й╠╕оД 0 1 245
+
+
+
+
+
+#if
+#act
+MONGENEX <$USERNAME>╣дсд╩Й╠╕╡ь 45 55  Ё╛╪╤сд╩Й╠╕оД 0 1 245
+setontimer 46 1
+delaycall 2000 @сд╩Йж╝це©╙фТльп╖
+[@сд╩Йж╝це©╙фТльп╖]
+#if
+#act
+MAPEFFECT <$MAP> <$STR(N$сд╩Й╠╕╡ьX)> <$STR(N$сд╩Й╠╕╡ьY)>  59 148 8 30 150 0 0 1
+}

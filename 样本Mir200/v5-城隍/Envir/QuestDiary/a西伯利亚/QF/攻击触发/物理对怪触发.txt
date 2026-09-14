@@ -1,0 +1,97 @@
+[@物理对怪开始]
+{
+#IF
+#ACT
+INC N$攻击时总回血值 <$STR(N$<$WEAPON>平A回血)>
+
+#IF
+EQUAL N$鲜红激活标识 1
+CHECKSTATEVALUE 1
+#ACT
+
+CalcPercent <$PKPOWER> 20 N$攻击时额外切割值
+INC N$攻击时总切割值 <$Str(N$攻击时额外切割值)>
+
+#IF
+LARGE N$专注杀戮吸血数值 0
+#ACT
+M.CHANGESTATE 4 10
+CalcPercent <$PKPOWER> <$STR(N$专注杀戮吸血数值)> N$攻击时额外回血值
+INC N$攻击时总回血值 <$STR(N$攻击时额外回血值)>
+
+#IF
+LARGE N$物理吸血比例 0
+#ACT
+CalcPercent <$PKPOWER> <$STR(N$物理吸血比例)> N$攻击时额外回血值
+INC N$攻击时总回血值 <$STR(N$攻击时额外回血值)>
+
+#IF
+CHECKITEMW 瘟疫麻痹之力
+RANDOMEX 5 100
+#ACT
+MOVR N$瘟疫麻痹时间 1 4
+M.CHANGESTATE 1 <$STR(N$瘟疫麻痹时间)>
+
+#IF
+CHECKITEMW 圣战婚戒
+CHECKMARRY
+RANDOMEX 1 200
+#ACT
+M.CHANGESTATE 1 5
+SendCenterMsg 180 圣战婚戒造成了5秒麻痹！ 0 3 0 1 533
+
+#IF
+LARGE N$焚烧魂环次数 0
+EQUAL N$焚烧激活标识 1
+#ACT
+DEC N$焚烧魂环次数 1
+CalcPercent <$STR(N$记录焚烧烈火伤害)> 20 N$焚烧伤害
+INC N$攻击时总切割值 <$Str(N$焚烧伤害)>
+SendCenterMsg 180 251 焚烧触发，剩余：{<$STR(N$焚烧魂环次数)>次|249} 0 1
+
+#IF
+EQUAL N$灵剑激活标识 1
+#ACT
+MOVR N$灵剑伤害 <$SC> <$MAXSC>
+INC N$攻击时总切割值 <$Str(N$灵剑伤害)>
+M.PLAYEFFECT 71 134 6 1 50
+
+#IF
+EQUAL N$疾风激活标识 1
+RANDOMEX 20 100
+#ACT
+MOV N$疾风后速度 10
+SendCenterMsg 180 251 疾风：增加自身攻击速度10点,持续10秒！ 0 3 0 1 533
+SetArrBuff 1 30 0 2117 10 0 0 0 疾风：增加自身攻击速度10点,持续10秒！
+PLAYEFFECT 35 1630 8 0 100 0 0 40 0
+GOTO @开始计算人物速度
+
+#IF
+EQUAL N$灵巧激活标识 1
+RANDOMEX 1 100
+#ACT
+MOV N$灵巧加成暴伤数值 30
+SendCenterMsg 180 251 灵巧：增加暴伤30%,持续10秒！ 0 3 0 1 533
+SetArrBuff 1 31 0 2095 10 0 0 0 灵巧：增加暴伤30%,持续10秒！
+
+#IF
+EQUAL N$巧手激活标识 1
+SMALL N$巧手标识 5
+#ACT
+INC N$巧手标识 1
+
+#IF
+LARGE N$巧手激活标识 1
+LARGE N$巧手标识 4
+#ACT
+MOV N$巧手标识 0
+SETNEXTDAMAGE 300
+SendCenterMsg 180 251 巧手：下一击造成3倍伤害！ 0 3 0 1 533
+
+#IF
+EQUAL N$怒焰激活标识 1
+RANDOMEX 5 100
+#ACT
+releasemagicex 26 0 0 1
+SendCenterMsg 180 251 额外触发一次烈火攻击！ 0 3 0 1 533
+}

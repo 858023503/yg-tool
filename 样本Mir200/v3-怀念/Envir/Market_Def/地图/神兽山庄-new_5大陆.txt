@@ -1,0 +1,33 @@
+[@main]
+#IF
+#ACT
+CloseBigDialogBox
+BREAK
+#SAY
+\ \
+   <欢迎来到怀念沉默/SCOLOR=249>\
+   <一起折腾一起怀旧/SCOLOR=249>\
+   <2003过的多快很多人已经忘记传奇的样子了/SCOLOR=249>\
+   <除了氪金还是氪金全变了要么就是玩快餐服/SCOLOR=249>\
+   <我做的这个全靠打元宝毕业只为怀念曾经砍传奇的兄弟/SCOLOR=249>\ \
+   <达到6转+勇者无敌进入神兽山庄怪物更凶猛/SCOLOR=249>        <神兽山庄|249#进入需要6转+勇者无敌/@神兽山庄>\
+
+
+[@神兽山庄]
+#if
+CHECKRENEWLEVEL > 5
+CHECKFENGHAO 勇者无敌
+#ACT
+mapmove dtmc 241 203
+SENDMSG 0 [<$USERNAME>]--进入了神兽山庄地图,让我们祝福他吧!!!
+break
+#if
+CHECKRENEWLEVEL > 5
+CHECKFENGHAO 独霸一方
+#ACT
+mapmove dtmc 241 203
+SENDMSG 0 [<$USERNAME>]--进入了神兽山庄地图,让我们祝福他吧!!!
+break
+#ELSEACT
+MESSAGEBOX 条件不足无法进入！
+break

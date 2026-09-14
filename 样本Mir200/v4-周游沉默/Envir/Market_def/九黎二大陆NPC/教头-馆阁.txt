@@ -1,0 +1,125 @@
+[@main]
+#if
+#ACT
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+<><已经很多年没有人来过这里了/SCOLOR=254>\
+<><今天就破例让你见识见识我的手艺吧/SCOLOR=254>\
+<><此剑是我们馆内，镇馆之宝/SCOLOR=254>\ \
+<>合成 <赤血魔剑|254#天外飞石1*10^254#天外飞石2*10^254#武士之星*10^254#道士之星*10^254#法师之星*10^254#死亡纹章*10^254#修炼石*10^254#绿玉裁决*1^254#七星法杖*1^254#金域无极棍*1^254#100W元宝/@1>\ \
+<>合成 <破馆珍剑|254#战魂*20^254#法纹*20^254#道魄*20^254#赤血魔剑*1^254#300W元宝/@2> <100% 随机必出BUFF/SCOLOR=254> <(30%-60%)/SCOLOR=253>\
+
+
+
+
+
+
+[@1]
+#if
+CHECKGAMEGOLD > 999999
+CheckItem  天外飞石1 10
+CheckItem  天外飞石2 10
+CheckItem  武士之星  10
+CheckItem  道士之星  10
+CheckItem  法师之星  10
+CheckItem  死亡纹章  10
+CheckItem  修炼石    10
+CheckItem  绿玉裁决 1
+CheckItem  七星法杖 1
+CheckItem  金域无极棍 1
+#ACT
+TAKE 天外飞石1 10
+TAKE 天外飞石2 10
+TAKE 武士之星  10
+TAKE 道士之星  10
+TAKE 法师之星  10
+TAKE 死亡纹章  10
+TAKE 修炼石    10
+TAKE 绿玉裁决 1
+TAKE 七星法杖 1
+TAKE 金域无极棍 1
+GAMEGOLD - 1000000
+give 赤血魔剑 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+
+[@2]
+#if
+CHECKGAMEGOLD > 2999999
+CheckItem  赤血魔剑 1
+CheckItem  战魂 20
+CheckItem  法纹 20
+CheckItem  道魄 20
+#ACT
+TAKE 赤血魔剑 1
+TAKE 战魂 20
+TAKE 法纹 20
+TAKE 道魄 20
+GAMEGOLD - 2999999
+give 破馆珍剑 1
+LINKGIVEITEM
+
+
+
+
+#if
+#ACT
+SETCUSTOMITEMPROGRESSBAR -1 0 0 1
+MOVR N$取序号 1 6
+GetRandomText ..\QuestDiary\装备BUFF\武器BUFF名字.txt S$武器BUFF名字 N$取序号
+GetRandomText ..\QuestDiary\装备BUFF\武器BUFF图标.txt S$武器BUFF图标 N$取序号
+SETCUSTOMITEMPROGRESSBAR -1 0 3 0
+SETCUSTOMITEMPROGRESSBAR -1 0 4 0
+SETCUSTOMITEMPROGRESSBARVALUE -1 0 0 = 100
+movr N$武器BUFF百分比 30 62
+
+#if
+Large N$武器BUFF百分比 29
+Small N$武器BUFF百分比 61
+#ACT
+SETCUSTOMITEMPROGRESSBAR -1 0 2 253
+
+
+#if
+#ACT
+SetCustomItemProgressbarValue -1 0 1 = <$STR(N$武器BUFF百分比)>
+GetCustomItemProgressbarValue -1 0 2  <$STR(N$武器BUFF百分比)>
+SETCUSTOMITEMPROGRESSBAR -1 0 1 <$Str(S$武器BUFF图标)><$Str(S$武器BUFF名字)>+<$STR(N$武器BUFF百分比)>%
+ChangeItemName -1 <$Str(S$武器BUFF名字)>的破馆珍剑
+;ChangeItemNameColor -1 230
+
+;ChangeItemNameColor -1 253
+;调整武器颜色
+updateitem -1
+;刷新到客户端
+clearLinkItem
+;解除绑定，不然刷新包裹物品不刷新
+
+break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1 @@
+#CALL [\爆率系统\万劫地宫\BOSS怪.txt] @BOSS怪

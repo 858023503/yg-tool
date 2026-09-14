@@ -1,0 +1,397 @@
+[@main]
+使用<2颗创造水晶>+<500元宝>可以为装备附魔\
+每次有<60%>的机会获得随机BUFF，如果对附魔\
+出的Buff不满意，可以重新附魔\ 
+<buff介绍里包含《英雄宝典》介绍，点击查看>
+\ \ 
+<>                                           <Buff介绍/@介绍>\
+<>                                           <开始附魔/@zbfm>\
+<返回/@main>
+<ITEMBOX:2:18:513:340:120:32:32:5,6,10,11,15,19,20,21,22,23,24,26,30,52,54,62,64:251#装备附魔>\
+
+
+[@zbfm]
+#if
+equal <$BOXITEM[2].NAME> 
+#ACT
+messagebox 请先放入装备!
+break
+#elseact
+
+;#if
+;CHECKCUSTOMITEMPROGRESSBAR  boxitem2  0
+;#ACT
+;ReturnBoxItem 2
+;sendmsg 6 该装备已经开启了BUFF!
+;break
+
+
+#if
+CheckItem 创造水晶 2
+CHECKGAMEGOLD > 499
+#ACT
+MOVR N$附魔几率 1 101
+GetUserItemName boxitem2 0
+goto @ksfm
+#ELSEACT
+ReturnBoxItem 2
+messagebox 您缺少附魔的材料\2颗创造水晶,500元宝
+break
+
+
+[@ksfm]
+#if
+LARGE N$附魔几率 40
+#ACT
+take 创造水晶 2
+GAMEGOLD - 500
+goto @附魔首饰
+goto @附魔武器
+goto @附魔衣服
+ReturnBoxItem 2
+messagebox 附魔成功!
+#ELSEACT
+ReturnBoxItem 2
+take 创造水晶 2
+GAMEGOLD - 500
+messagebox 附魔失败!
+break
+
+[@附魔衣服]
+
+#OR
+CHECKITEMTYPE boxitem2 10
+CHECKITEMTYPE boxitem2 11
+#act
+#ELSEACT
+break
+
+#if
+#ACT
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 0 1
+MOVR N$取序号 1 6
+GetRandomText ..\QuestDiary\装备BUFF\衣服BUFF名字.txt S$衣服BUFF名字 N$取序号
+GetRandomText ..\QuestDiary\装备BUFF\衣服BUFF图标.txt S$衣服BUFF图标 N$取序号
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 3 0
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 4 0
+SETCUSTOMITEMPROGRESSBARVALUE boxitem2 0 0 = 100
+movr N$衣服BUFF百分比 10 101
+
+#if
+Large N$衣服BUFF百分比 9
+Small N$衣服BUFF百分比 30
+#ACT
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 2 250
+
+#if
+Large N$衣服BUFF百分比 29
+Small N$衣服BUFF百分比 50
+#ACT
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 2 239
+
+#if
+Large N$衣服BUFF百分比 49
+Small N$衣服BUFF百分比 70
+#ACT
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 2 229
+
+#if
+Large N$衣服BUFF百分比 69
+Small N$衣服BUFF百分比 90
+#ACT
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 2 243
+
+#if
+Large N$衣服BUFF百分比 89
+Small N$衣服BUFF百分比 101
+#ACT
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 2 230
+
+#if
+#ACT
+SetCustomItemProgressbarValue boxitem2 0 1 = <$STR(N$衣服BUFF百分比)>
+GetCustomItemProgressbarValue boxitem2 0 2  <$STR(N$衣服BUFF百分比)>
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 1 <$Str(S$衣服BUFF图标)><$Str(S$衣服BUFF名字)>+<$STR(N$衣服BUFF百分比)>%
+ChangeItemName boxitem2 <$Str(S$衣服BUFF名字)>的<$BOXITEM[2].NAME>
+ChangeItemNameColor boxitem2 239
+SETITEMEFFECT boxitem2 2
+UpdateItem boxitem2
+;sendmsg 0 玩家{[<$USERNAME>]|230:255}附魔成功,获得{[<$STR(N$衣服BUFF百分比)>%]|230:255}的{[<$Str(S$衣服BUFF名字)>的<$BOXITEM[2].NAME>]|230:255}
+
+
+
+[@附魔武器]
+#OR
+CHECKITEMTYPE boxitem2 5
+CHECKITEMTYPE boxitem2 6
+#act
+#ELSEACT
+break
+
+#if
+#ACT
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 0 1
+MOVR N$取序号 1 6
+GetRandomText ..\QuestDiary\装备BUFF\武器BUFF名字.txt S$武器BUFF名字 N$取序号
+GetRandomText ..\QuestDiary\装备BUFF\武器BUFF图标.txt S$武器BUFF图标 N$取序号
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 3 0
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 4 0
+SETCUSTOMITEMPROGRESSBARVALUE boxitem2 0 0 = 100
+movr N$武器BUFF百分比 10 101
+
+#if
+Large N$武器BUFF百分比 9
+Small N$武器BUFF百分比 30
+#ACT
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 2 250
+
+#if
+Large N$武器BUFF百分比 29
+Small N$武器BUFF百分比 50
+#ACT
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 2 239
+
+#if
+Large N$武器BUFF百分比 49
+Small N$武器BUFF百分比 70
+#ACT
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 2 229
+
+#if
+Large N$武器BUFF百分比 69
+Small N$武器BUFF百分比 90
+#ACT
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 2 243
+
+#if
+Large N$武器BUFF百分比 89
+Small N$武器BUFF百分比 101
+#ACT
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 2 230
+
+#if
+#ACT
+SetCustomItemProgressbarValue boxitem2 0 1 = <$STR(N$武器BUFF百分比)>
+GetCustomItemProgressbarValue boxitem2 0 2  <$STR(N$武器BUFF百分比)>
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 1 <$Str(S$武器BUFF图标)><$Str(S$武器BUFF名字)>+<$STR(N$武器BUFF百分比)>%
+ChangeItemName boxitem2 <$Str(S$武器BUFF名字)>的<$BOXITEM[2].NAME>
+ChangeItemNameColor boxitem2 239
+;SETITEMEFFECT boxitem2 2
+UpdateItem boxitem2
+;sendmsg 0 玩家{[<$USERNAME>]|230:255}附魔成功,获得{[<$STR(N$武器BUFF百分比)>%]|230:255}的{[<$Str(S$武器BUFF名字)>的<$BOXITEM[2].NAME>]|230:255}
+
+
+
+
+
+
+[@附魔首饰]
+#OR
+CHECKITEMTYPE boxitem2 15
+CHECKITEMTYPE boxitem2 16
+CHECKITEMTYPE boxitem2 19
+CHECKITEMTYPE boxitem2 20
+CHECKITEMTYPE boxitem2 21
+CHECKITEMTYPE boxitem2 22
+CHECKITEMTYPE boxitem2 23
+CHECKITEMTYPE boxitem2 24
+CHECKITEMTYPE boxitem2 26
+CHECKITEMTYPE boxitem2 30
+CHECKITEMTYPE boxitem2 62
+CHECKITEMTYPE boxitem2 64
+CHECKITEMTYPE boxitem2 52
+CHECKITEMTYPE boxitem2 54
+#ACT
+#elseact
+break
+
+#if
+#ACT
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 0 1
+MOVR N$取序号 1 24
+GetRandomText ..\QuestDiary\装备BUFF\首饰BUFF名字.txt S$首饰BUFF名字 N$取序号
+GetRandomText ..\QuestDiary\装备BUFF\首饰BUFF图标.txt S$首饰BUFF图标 N$取序号
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 3 0
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 4 0
+SETCUSTOMITEMPROGRESSBARVALUE boxitem2 0 0 = 100
+movr N$首饰BUFF百分比 10 101
+
+#if
+Large N$首饰BUFF百分比 9
+Small N$首饰BUFF百分比 30
+#ACT
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 2 250
+
+#if
+Large N$首饰BUFF百分比 29
+Small N$首饰BUFF百分比 50
+#ACT
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 2 239
+
+#if
+Large N$首饰BUFF百分比 49
+Small N$首饰BUFF百分比 70
+#ACT
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 2 229
+
+#if
+Large N$首饰BUFF百分比 69
+Small N$首饰BUFF百分比 90
+#ACT
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 2 243
+
+#if
+Large N$首饰BUFF百分比 89
+Small N$首饰BUFF百分比 101
+#ACT
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 2 230
+
+#if
+#ACT
+SetCustomItemProgressbarValue boxitem2 0 1 = <$STR(N$首饰BUFF百分比)>
+GetCustomItemProgressbarValue boxitem2 0 2  <$STR(N$首饰BUFF百分比)>
+SETCUSTOMITEMPROGRESSBAR boxitem2 0 1 <$Str(S$首饰BUFF图标)><$Str(S$首饰BUFF名字)>+<$STR(N$首饰BUFF百分比)>%
+ChangeItemName boxitem2 <$Str(S$首饰BUFF名字)>的<$BOXITEM[2].NAME>
+ChangeItemNameColor boxitem2 239
+SETITEMEFFECT boxitem2 1
+UpdateItem boxitem2
+;sendmsg 0 玩家{[<$USERNAME>]|230:255}附魔成功,获得{[<$STR(N$首饰BUFF百分比)>%]|230:255}的{[<$Str(S$首饰BUFF名字)>的<$BOXITEM[2].NAME>]|230:255}
+
+
+
+[@介绍]
+
+    <武器BUFF介绍/@wqbf>                  <衣服BUFF介绍/@yfbf>\
+    <进阶职业介绍/@jjzy>                  <异界副本介绍/@yjfb>\
+    <首饰BUFF介绍/@ssbf>                  <技能buff介绍/@jnbf>\
+    <英雄宝典介绍/@yxbd>                  
+
+[@jnbf]
+                  4级技能BUFF如下
+雷电术[闪雷]-有概率额外发射一道闪电\
+火墙[灼烧]-有几率使目标处于灼烧状态，降低移动速度和魔御值持续3s,目标中火毒每秒掉血20点.\
+冰咆哮[急冻]-击中有概率冰冻目标1s\
+魔法盾[分裂]-被击中有概率制造一个分身，持续时间30s\ \ \
+                                         <下一页/@next1>  <主页/@main>
+
+[@next1]
+                  4级技能BUFF如下
+刺杀剑术[割裂]-有几率对目标造成特殊伤口，额外受到主属性上限的伤害\
+攻杀剑术[攻伐]-有几率眩晕目标，只能制动，不能跑位，持续3s\
+烈火剑法[集火]-有几率对目标造成2倍伤害\
+野蛮冲撞[重击]-100%麻痹对方3s\ \ \
+                                         <下一页/@next2>  <主页/@main>
+
+[@next2]
+                  4级技能BUFF如下
+治愈术[圣愈]-治疗效果提升100%，并且可以解毒\
+施毒术[猛毒]-使目标每秒损失10血量，持续10s，技能效果持续刷新\
+魔化骷髅[战火]-召唤魔化骷髅[进化],魔化骷髅[变异],直线攻击\
+上古神兽[化魔]-召唤上古神兽[进化]，上古神兽[变异],单体攻击，伤害高\
+道术越强可以召唤越高级的骷髅80,100为一个阶段\ \ \
+                                                          <主页/@main>
+
+[@wqbf]
+和平禁制-被攻击有几率使目标切换为和平模式3s，几率受百分比影响(对玩家生效)\
+血魔之噬-被攻击时20%几率吸血，吸血受目标该次承受伤害和百分比影响\
+神圣裁决-攻击20%几率对目标造成大量伤害，伤害受该次伤害和百分比影响\
+天雷暴击-攻击20%几率对目标2*2范围造成伤害，受buff百分比和主属性影响\
+致命一击-攻击20%几率使自己下次造成的伤害提高按buff百分比提升\ \ \
+                                                          <主页/@main>
+[@yfbf]
+绝对防御-被攻击时，20%几率提升自己防御值，按百分比加成\
+生命复苏-被攻击时20%几率触发治愈术5s，效果受自身血量和百分比的影响\
+格挡反弹-被攻击时20%几率将自身两格内的所有目标弹开并造成一定伤害\
+冰霜寒令-被攻击时20%几率有几率将母庙冰冻2s，可以远程触发\
+荆棘之力-被攻击有25几率反射伤害，反射伤害受百分比和最大血量影响\ \ \
+                                                          <主页/@main>
+
+[@ssbf]
+<>               概率为1%-20%随机附加\
+疯狂的-攻击有几率使自己提高20%的伤害，被攻击也会额外承受20%的伤害，持续3s\
+绝望的-攻击时有几率使目标每秒损失2%hP，直到死亡或者小退，只对玩家有效\
+恶毒的-攻击时有几率使目标中毒，持续10s\
+力量的-攻击时有几率附加自身hp5%的伤害\
+智慧的-攻击时有几率附加自身mp5%的伤害\
+破甲的-攻击时有几率粉粹目标护甲，使其防御魔防降低50%持续3s(对玩家有效)\
+嗜血的-攻击时有几率汲取目标100点生命冰恢复自身\
+救赎的-血量低于50%时，攻击有几率重生，满血慢蓝\
+
+                                         <下一页/@next3>  <主页/@main>
+
+[@next3]
+<>               概率为1%-20%随机附加\
+吸血的-攻击时几率使自己进入25%最大攻击的吸血状态,持续5秒\
+复仇的-被攻击时有几率召唤出强悍的爆裂蜘蛛,配合宝宝锁定键更好用(锁定键为：Ctrl+R 可自定义修改快捷键)\
+无敌的-被攻击时，有概率触发无敌3s，满血满魔\
+慈航普度的-攻击有几率恢复自身30%的HP或者MP\
+致命的-有几率造成主属性上限*5的伤害\
+分身的-被攻击时,有几率召唤暗影分身协助.持续60秒\
+霸道的-攻击时有几率追加额外的主属性上限的伤害\
+暴击的-攻击时有几率触发，本次攻击造成暴击伤害\
+                                         <下一页/@next4>  <主页/@main>
+[@next4]
+<>               概率为1%-20%随机附加\
+复苏之风的-角色每次攻击便有几率恢复15%生命值\
+百毒不侵的-有几率被攻击时，免疫中毒\
+善恶有报的-攻击时触发,有概率造成两倍伤害.或为目标治疗该次伤害的HP\
+祝福的-攻击时概率提升20%魔攻道,持续7秒\
+防御的-被攻击时概率提升50%双防,持续8秒\
+幸运的-攻击时概率使幸运值增加9点持续10秒\
+神佑的-被攻击时有概率触发神佑,当前血量翻倍，持续8秒\
+                                                          <主页/@main>
+
+[@yxbd]
+英雄宝典介绍：
+英雄宝典捡取时显示未鉴定，需要在NPC处鉴定\
+鉴定费200万金币。\
+鉴定有几率失败，失败宝典不破碎。\
+鉴定后随机出现防御、魔御、攻魔道属性,最高+7点。\
+\
+\ \
+                                         <下一页/@next5>  <主页/@main>
+
+[@next5]
+英雄宝典鉴定成功时会获得特殊技能，技能种类如下：\
+裂神符：道士佩戴后学习裂神符技能（其他职业佩戴无效）\
+噬血术：道士佩戴后学习噬血术技能（其他职业佩戴无效）\
+死亡之眼：道士佩戴后学习死亡之眼技能（其他职业佩戴无效）\
+诅咒术：道士佩戴后可学习，降低目标的攻魔道,效果随道术浮动(其他职业佩戴无效)\
+十步一杀：战士佩戴后学习十步一杀技能（其他职业佩戴无效）\
+开天斩：战士佩戴后学习开天斩技能（其他职业佩戴无效）\
+逐日剑法：战士佩戴后学习逐日剑法技能（其他职业佩戴无效）\
+冰霜群雨：法师佩戴后学习冰霜群雨技能（其他职业佩戴无效）\
+流星火雨：法师佩戴后学习流星火雨技能（其他职业佩戴无效）\
+                                         <下一页/@next6>  <主页/@main>
+[@next6]
+彻地钉：战士佩戴后可学习彻地钉技能\
+倚天辟地：全职业佩戴后可学习倚天辟地技能\
+魔灵之盾：触发几率50%,法师被攻击时消耗50点魔法值恢复30点血\
+道士被攻击时消耗30点魔法值恢复50点血量,战士被攻击时消耗20点魔法值恢复100点的\
+血灵之盾：被攻击时几率将受到的伤害返还给目标,并恢复自身等值的血量(通用)\
+闪现术：全职业佩戴后可学习，使自身可以瞬移到鼠标位\
+护体神盾：全职业佩戴后可学\
+贪婪之心：增加5%打怪爆率(100%物品全爆)\
+灾祸：自身死亡爆率降低30%，目标死亡爆率增加30%（仅对玩家生效)\
+<主页/@main>\
+
+
+[@jjzy]
+战法道三职业在凑集5战魂，5道魄，和5法纹，加上创造宝石1颗\
+花费5000w金币可以升华为战圣、法神、天尊\
+升华成功后获得300点属性点\
+\
+<升华之后不能变更职业>\ \
+                                                          <主页/@main>
+
+[@yjfb]
+杀死任何怪物有1/100几率将会开启前往异界传送门\
+异界怪物掉落创造水晶,创造宝石,幻之羽，永久属性药剂\
+进入异界的时间限制为1分钟，大家抓紧时间进入\
+20颗创造水晶合成一颗创造宝石,创造宝石可以合成 \
+创造宝石可以作为合成英雄之剑,英雄之印，力量勋章\
+的材料,幻之羽可以为衣服附加翅膀,获得额外属性\ \ 
+                                                          <主页/@main>
+
+
+

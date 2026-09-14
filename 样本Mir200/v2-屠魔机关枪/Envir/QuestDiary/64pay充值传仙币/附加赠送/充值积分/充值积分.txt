@@ -1,0 +1,385 @@
+[@领取充值积分]
+{
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\01.txt 
+#ACT
+gamepoint +  0
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\01.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了0充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\1.txt 
+#ACT
+gamepoint +  1
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\1.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了1充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\02.txt 
+#ACT
+gamepoint +  0
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\02.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了0充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\2.txt 
+#ACT
+gamepoint +  2
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\2.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了2充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\03.txt 
+#ACT
+gamepoint +  0
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\03.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了0充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\3.txt 
+#ACT
+gamepoint +  3
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\3.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了3充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\04.txt 
+#ACT
+gamepoint +  0
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\04.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了0充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\4.txt 
+#ACT
+gamepoint +  4
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\4.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了4充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\05.txt 
+#ACT
+gamepoint +  0
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\05.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了0充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\5.txt 
+#ACT
+gamepoint +  5
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\5.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了5充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\06.txt 
+#ACT
+gamepoint +  0
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\06.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了0充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\6.txt 
+#ACT
+gamepoint +  6
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\6.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了6充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\07.txt 
+#ACT
+gamepoint +  0
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\07.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了0充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\7.txt 
+#ACT
+gamepoint +  7
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\7.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了7充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\08.txt 
+#ACT
+gamepoint +  0
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\08.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了0充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\8.txt 
+#ACT
+gamepoint +  8
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\8.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了8充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\09.txt 
+#ACT
+gamepoint +  0
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\09.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了0充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\9.txt 
+#ACT
+gamepoint +  9
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\9.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了9充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\10.txt 
+#ACT
+gamepoint +  10
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\10.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了10充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\20.txt 
+#ACT
+gamepoint +  20
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\20.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了20充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\30.txt 
+#ACT
+gamepoint +  30
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\30.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了30充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\40.txt 
+#ACT
+gamepoint +  40
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\40.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了40充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\50.txt 
+#ACT
+gamepoint +  50
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\50.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了50充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\60.txt 
+#ACT
+gamepoint +  60
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\60.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了60充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\70.txt 
+#ACT
+gamepoint +  70
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\70.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了70充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\80.txt 
+#ACT
+gamepoint +  80
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\80.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了80充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\90.txt 
+#ACT
+gamepoint +  90
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\90.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了90充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\100.txt 
+#ACT
+gamepoint +  100
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\100.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了100充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\200.txt 
+#ACT
+gamepoint +  200
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\200.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了200充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\300.txt 
+#ACT
+gamepoint +  300
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\300.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了300充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\400.txt 
+#ACT
+gamepoint +  400
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\400.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了400充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\500.txt 
+#ACT
+gamepoint +  500
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\500.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了500充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\600.txt 
+#ACT
+gamepoint +  600
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\600.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了600充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\700.txt 
+#ACT
+gamepoint +  700
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\700.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了700充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\800.txt 
+#ACT
+gamepoint +  800
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\800.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了800充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\900.txt 
+#ACT
+gamepoint +  900
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\900.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了900充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\1000.txt 
+#ACT
+gamepoint +  1000
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\1000.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了1000充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\2000.txt 
+#ACT
+gamepoint +  2000
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\2000.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了2000充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\3000.txt 
+#ACT
+gamepoint +  3000
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\3000.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了3000充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\4000.txt 
+#ACT
+gamepoint +  4000
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\4000.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了4000充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\5000.txt 
+#ACT
+gamepoint +  5000
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\5000.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了5000充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\6000.txt 
+#ACT
+gamepoint +  6000
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\6000.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了6000充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\7000.txt 
+#ACT
+gamepoint +  7000
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\7000.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了7000充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\8000.txt 
+#ACT
+gamepoint +  8000
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\8000.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了8000充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\9000.txt 
+#ACT
+gamepoint +  9000
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\9000.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了9000充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\10000.txt 
+#ACT
+gamepoint +  10000
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\10000.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了10000充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\20000.txt 
+#ACT
+gamepoint +  20000
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\20000.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了20000充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\30000.txt 
+#ACT
+gamepoint +  30000
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\30000.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了30000充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\40000.txt 
+#ACT
+gamepoint +  40000
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\40000.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了40000充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\50000.txt 
+#ACT
+gamepoint +  50000
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\50000.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了50000充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\60000.txt 
+#ACT
+gamepoint +  60000
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\60000.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了60000充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\70000.txt 
+#ACT
+gamepoint +  70000
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\70000.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了70000充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\80000.txt 
+#ACT
+gamepoint +  80000
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\80000.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了80000充值积分。
+
+#IF
+CheckAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\90000.txt 
+#ACT
+gamepoint +  90000
+DelAccountList ..\..\..\..\通区充值\Mir200\Envir\QuestDiary\64pay充值传仙币\附加赠送\充值积分\90000.txt 
+SENDMSG 1  ★[%s]:恭喜<$USERNAME>通过在线充值额外获得了90000充值积分。
+
+#ELSESAY
+请查看自己的充值数量!\
+没有充值请按提示进行充值!\
+<退出/@exit>
+}

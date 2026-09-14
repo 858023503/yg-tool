@@ -1,0 +1,318 @@
+[@爆率封顶]
+{
+
+#if
+EQUAL S$玩家当前大陆 丢?大陆
+LARGE N$怪物爆率 700
+#act
+MOV N$怪物爆率 700
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+#if
+EQUAL S$玩家当前大陆 二大附1?7
+LARGE N$怪物爆率 1200
+#act
+MOV N$怪物爆率 1200
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+#if
+EQUAL S$玩家当前大陆 三大附1?7
+LARGE N$怪物爆率 1700
+#act
+MOV N$怪物爆率 1700
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+#if
+EQUAL S$玩家当前大陆 四大附1?7
+LARGE N$怪物爆率 2200
+#act
+MOV N$怪物爆率 2200
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+#if
+EQUAL S$玩家当前大陆 五大附1?7
+LARGE N$怪物爆率 2700
+#act
+MOV N$怪物爆率 2700
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+;每日爆率翻??1?7+城主爆率丄1?7100+50*2=300
+#if
+EQUAL S$玩家当前地图 骷髅矿区
+LARGE N$怪物爆率 300
+#act
+MOV N$怪物爆率 300
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+#if
+EQUAL S$玩家当前地图 僵尸矿洞
+LARGE N$怪物爆率 300
+#act
+MOV N$怪物爆率 300
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+;300+50*2
+#if
+EQUAL S$玩家当前地图 蜈蚣洄1?7
+LARGE N$怪物爆率 300
+#act
+MOV N$怪物爆率 300
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+#if
+EQUAL S$玩家当前地图 兽人古墓
+LARGE N$怪物爆率 700
+#act
+MOV N$怪物爆率 700
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+#if
+EQUAL S$玩家当前地图 沃玛寺庙
+LARGE N$怪物爆率 700
+#act
+MOV N$怪物爆率 700
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+;500+100 *2
+#if
+EQUAL S$玩家当前地图 祖玛秘境
+LARGE N$怪物爆率 1200
+#act
+MOV N$怪物爆率 1200
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+#if
+EQUAL S$玩家当前地图 骨魔洄1?7
+LARGE N$怪物爆率 1200
+#act
+MOV N$怪物爆率 1200
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+#if
+EQUAL S$玩家当前地图 恶魔营地
+LARGE N$怪物爆率 1200
+#act
+MOV N$怪物爆率 1200
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+#if
+EQUAL S$玩家当前地图 蚂蚁洄1?7
+LARGE N$怪物爆率 1200
+#act
+MOV N$怪物爆率 1200
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+;700+150*2
+#if
+EQUAL S$玩家当前地图 精灵谄1?7
+LARGE N$怪物爆率 1700
+#act
+MOV N$怪物爆率 1700
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+#if
+EQUAL S$玩家当前地图 黑暗魔殿
+LARGE N$怪物爆率 1700
+#act
+MOV N$怪物爆率 1700
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+#if
+EQUAL S$玩家当前地图 赤月峡谷
+LARGE N$怪物爆率 1700
+#act
+MOV N$怪物爆率 1700
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+#if
+EQUAL S$玩家当前地图 封魔古刹
+LARGE N$怪物爆率 1700
+#act
+MOV N$怪物爆率 1700
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+;900+200*2
+#if
+EQUAL S$玩家当前地图 牛魔寺庙
+LARGE N$怪物爆率 2200
+#act
+MOV N$怪物爆率 2200
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+#if
+EQUAL S$玩家当前地图 魔毒蚢?圄1?7
+LARGE N$怪物爆率 2200
+#act
+MOV N$怪物爆率 2200
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+#if
+EQUAL S$玩家当前地图 封魔宄1?7
+LARGE N$怪物爆率 2200
+#act
+MOV N$怪物爆率 2200
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+#if
+EQUAL S$玩家当前地图 魔龙峡谷
+LARGE N$怪物爆率 2200
+#act
+MOV N$怪物爆率 2200
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+;1100+250*2 1350*2
+#if
+EQUAL S$玩家当前地图 幽暗地底
+LARGE N$怪物爆率 2700
+#act
+MOV N$怪物爆率 2700
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+#if
+EQUAL S$玩家当前地图 魔化工厂
+LARGE N$怪物爆率 2700
+#act
+MOV N$怪物爆率 2700
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+#if
+EQUAL S$玩家当前地图 火龙地洞
+LARGE N$怪物爆率 2700
+#act
+MOV N$怪物爆率 2700
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+
+
+
+
+
+#if
+
+#act
+
+KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;初始爆率
+; #if
+; EQUAL S$玩家当前地图 骷髅矿区
+; LARGE N$怪物爆率 100
+; #act
+; MOV N$怪物爆率 100
+; KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+; #if
+; EQUAL S$玩家当前地图 僵尸矿洞
+; LARGE N$怪物爆率 100
+; #act
+; MOV N$怪物爆率 100
+; KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+; #if
+; EQUAL S$玩家当前地图 蜈蚣洄1?7
+; LARGE N$怪物爆率 300
+; #act
+; MOV N$怪物爆率 300
+; KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+; #if
+; EQUAL S$玩家当前地图 兽人古墓
+; LARGE N$怪物爆率 300
+; #act
+; MOV N$怪物爆率 300
+; KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+; #if
+; EQUAL S$玩家当前地图 沃玛寺庙
+; LARGE N$怪物爆率 300
+; #act
+; MOV N$怪物爆率 300
+; KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+; #if
+; EQUAL S$玩家当前地图 祖玛秘境
+; LARGE N$怪物爆率 500
+; #act
+; MOV N$怪物爆率 500
+; KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+; #if
+; EQUAL S$玩家当前地图 骨魔洄1?7
+; LARGE N$怪物爆率 500
+; #act
+; MOV N$怪物爆率 500
+;  <$STR(N$怪物爆率)> 0 0 1
+; #if
+; EQUAL S$玩家当前地图 恶魔营地
+; LARGE N$怪物爆率 500
+; #act
+; MOV N$怪物爆率 500
+; KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+; #if
+; EQUAL S$玩家当前地图 蚂蚁洄1?7
+; LARGE N$怪物爆率 500
+; #act
+; MOV N$怪物爆率 500
+; KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+; #if
+; EQUAL S$玩家当前地图 精灵谄1?7
+; LARGE N$怪物爆率 700
+; #act
+; MOV N$怪物爆率 700
+; KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+; #if
+; EQUAL S$玩家当前地图 黑暗魔殿
+; LARGE N$怪物爆率 700
+; #act
+; MOV N$怪物爆率 700
+; KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+; #if
+; EQUAL S$玩家当前地图 赤月峡谷
+; LARGE N$怪物爆率 700
+; #act
+; MOV N$怪物爆率 700
+; KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+; #if
+; EQUAL S$玩家当前地图 封魔古刹
+; LARGE N$怪物爆率 700
+; #act
+; MOV N$怪物爆率 700
+; KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+; #if
+; EQUAL S$玩家当前地图 牛魔寺庙
+; LARGE N$怪物爆率 900
+; #act
+; MOV N$怪物爆率 900
+; KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+; #if
+; EQUAL S$玩家当前地图 魔毒蚢?圄1?7
+; LARGE N$怪物爆率 900
+; #act
+; MOV N$怪物爆率 900
+; KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+; #if
+; EQUAL S$玩家当前地图 封魔宄1?7
+; LARGE N$怪物爆率 900
+; #act
+; MOV N$怪物爆率 900
+; KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+; #if
+; EQUAL S$玩家当前地图 魔龙峡谷
+; LARGE N$怪物爆率 1100
+; #act
+; MOV N$怪物爆率 1100
+; KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+; #if
+; EQUAL S$玩家当前地图 幽暗地底
+; LARGE N$怪物爆率 1100
+; #act
+; MOV N$怪物爆率 1100
+; KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+; #if
+; EQUAL S$玩家当前地图 魔化工厂
+; LARGE N$怪物爆率 1100
+; #act
+; MOV N$怪物爆率 1100
+; KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+; #if
+; EQUAL S$玩家当前地图 火龙地洞
+; LARGE N$怪物爆率 1100
+; #act
+; MOV N$怪物爆率 1100
+; KILLMONBURSTRATE <$STR(N$怪物爆率)> 0 0 1
+}

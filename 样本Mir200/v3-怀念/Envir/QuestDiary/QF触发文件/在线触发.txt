@@ -1,0 +1,54 @@
+[@在线触发]
+{
+
+#IF
+checkjob warrior
+Check [300] 0
+ONLINELONGMIN > 59
+#ACT
+GAMEGIRD + 1000
+CHANGEEXP + 100000000
+GIVE 骑士手镯 2
+GIVE 力量戒指 2
+GIVE 裁决之杖 1
+GIVE 移动仓库卷 1
+GIVE 四倍经验卷轴 1
+Set [300] 1
+SENDMSG 0 ぐ恭喜【<$USERNAME>】开启(60分钟在线大礼包)获得[1000绑金+１亿经验+祖玛套装+移动仓库卷+四倍经验卷轴]. 
+break
+#IF
+checkjob wizard
+Check [300] 0
+ONLINELONGMIN > 59
+#ACT
+GAMEGIRD + 1000
+CHANGEEXP + 100000000
+GIVE 龙之手镯 2
+GIVE 紫碧螺 2
+GIVE 骨玉权杖 1
+GIVE 移动仓库卷 1
+GIVE 四倍经验卷轴 1
+Set [300] 1
+SENDMSG 0 ぐ恭喜【<$USERNAME>】开启(60分钟在线大礼包)获得[1000绑金+１亿经验+祖玛套装+移动仓库卷+四倍经验卷轴]. 
+break
+#IF
+checkjob taoist
+Check [300] 0
+ONLINELONGMIN > 59
+#ACT
+GAMEGIRD + 1000
+CHANGEEXP + 100000000
+GIVE 三眼手镯 2
+GIVE 泰坦戒指 2
+GIVE 龙纹剑 1
+GIVE 移动仓库卷 1
+GIVE 四倍经验卷轴 1
+Set [300] 1
+SENDMSG 0 ぐ恭喜【<$USERNAME>】开启(60分钟在线大礼包)获得[1000绑金+１亿经验+祖玛套装+移动仓库卷+四倍经验卷轴]. 
+break
+#ELSEACT
+GIVE 60分钟大礼包 1
+messagebox  在线60分钟免费获得[1000绑金+１亿经验+祖玛套]\　\你在线不足60分钟，无法打开\　\　　　　　　　　你已在线：<$LOGINLONG>
+break
+
+}

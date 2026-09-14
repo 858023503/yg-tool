@@ -1,0 +1,117 @@
+[@main]
+#if
+#ACT
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{吃/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {狗/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {肉/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {！/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+<><据说上古流传下来的神器，分布在玛法大陆的各各角落！/SCOLOR=70>\
+<><神器犹豫威力强大，想要得到它，不只是人类！/SCOLOR=70>\
+<><被盘踞的首领占为己有，要从它们手中取得神器不是易事！/SCOLOR=70>\
+<><四圣兽材料分解/@分解>\
+<><ITEMSHOW:1544:0:0:0:1/@合成>\ \ 
+
+
+[@合成]
+#ACT
+MessageBox  合成:<[至尊·骨]/FCOLOR=253>\\<需要：真·四圣玉*1+天恒石*100+上古精血*100+1600W元宝/FCOLOR=251>\\<点击确认开始合成/FCOLOR=254> @6 @取消合成
+
+[@6]
+#if
+CheckItem  真·四圣玉 1
+CheckItem  上古精血 100
+CheckItem  天恒石 100
+CheckGameGold > 15999999
+#ACT
+GameGold - 16000000
+Take 真·四圣玉 1
+Take 上古精血 100
+Take 天恒石 100
+Give 至尊·骨 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+[@取消合成]
+#ACT
+Sendmsg 7 取消合成
+Break
+
+
+[@分解]
+#if
+#ACT
+#SAY
+\ 
+<------------------------ /SCOLOR=254>{清/AUTOCOLOR=242,254,253,249,180,243,222,241,255} {风/AUTOCOLOR=255,242,254,253,249,180,243,222,241} {公/AUTOCOLOR=241,255,242,254,253,249,180,243,222} {益/AUTOCOLOR=222,241,255,242,254,253,249,180,243}< ------------------------/SCOLOR=254>\
+<><青龙之力 分解1个上古精血/FCOLOR=254>           <分解|^254#10000元宝/@1>\    
+<><玄武之甲 分解1个上古精血/FCOLOR=254>           <分解|^254#10000元宝/@2>\
+<><白虎之心 分解1个上古精血/FCOLOR=254>           <分解|^254#10000元宝/@3>\
+<><朱雀之魂 分解1个上古精血/FCOLOR=254>           <分解|^254#10000元宝/@4>\
+<><四圣玉   分解5个上古精血/FCOLOR=254>           <分解|^254#10000元宝/@5>\
+<>
+
+
+[@1]
+#if
+CheckItem  青龙之力 1
+CheckGameGold > 9999
+#ACT
+GameGold - 10000
+Take 青龙之力 1
+Give 上古精血 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+[@2]
+#if
+CheckItem  玄武之甲 1
+CheckGameGold > 9999
+#ACT
+GameGold - 10000
+Take 玄武之甲 1
+Give 上古精血 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+[@3]
+#if
+CheckItem  白虎之心 1
+CheckGameGold > 9999
+#ACT
+GameGold - 10000
+Take 白虎之心 1
+Give 上古精血 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+[@4]
+#if
+CheckItem  朱雀之魂 1
+CheckGameGold > 9999
+#ACT
+GameGold - 10000
+Take 朱雀之魂 1
+Give 上古精血 1
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+[@5]
+#if
+CheckItem  四圣玉 1
+CheckGameGold > 9999
+#ACT
+GameGold - 10000
+Take 四圣玉 1
+Give 上古精血 5
+#ELSEACT
+MessageBox 材料不足,无法合成.
+Break
+
+
+
+

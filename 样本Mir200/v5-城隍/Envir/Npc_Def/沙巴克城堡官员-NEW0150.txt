@@ -1,0 +1,87 @@
+(@@SENDMSG)
+[@MAIN]
+这个城堡的现有资金是<$CASTLEGOLD>金币，　\
+今天的收入是<$TODAYINCOME>金币。　\
+<取回资金/@@WITHDRAWAL>                                <城主公告/@@SENDMSG>　\
+<存储资金/@@RECEIPTS>                                <修改城名/@@CASTLENAME>　\
+<城门的规章制度命令/@TREATDOOR>　\
+<简单的维护命令/@REPAIRCASTLE>　\
+<雇用弓箭守卫/@HIREARCHERS>                            　\
+<更改攻击模式/@GUARDCMD>                            <城主战袍/@查看战袍>
+
+
+[@GUARDCMD]
+守卫们正在进行沙巴克的防御工作\
+你需要怎么改变？\ \
+<一般卫士命令/@GUARDRULE_NORMALNOW>\
+<攻击卫士命令/@GUARDRULE_PKATTACK>\
+<返回/@MAIN>\
+
+[@GUARDRULE_NORMALNOW]
+防守方式已经更改，守卫们已经目前处于正常防御状态。\ \
+<返回/@GUARDCMD>\
+
+[@GUARDRULE_PKATTACK]
+防守方式已经更改，守卫们已经目前处于对来犯者进攻状态。\ \
+<返回/@GUARDCMD>\
+
+[@查看战袍]
+城主战袍属性为：防御15-20 魔御15-20 攻魔道10-15\ \
+奖励说明：\
+该物品不分职业，只分性别，不可存，可修理，爆出后不可捡取。\
+沙巴克城主拥有该物品的使用权，一旦沙城失守该物品自动消失。\
+注意：两位城主按性别各一件，称号使者处领取。\ \
+<返回/@MAIN>
+
+[@@SENDMSG]
+#IF
+CHECKCASTLEGOLD > 99999
+#ACT
+TAKECASTLEGOLD 100000
+SETSENDMSGFLAG
+GOTO @MAIN
+#ELSESAY
+城内资金不足，不要乱用钱。\ \
+<返回/@MAIN>
+
+[@TREATDOOR]
+城门当前状态为:<$CASTLEDOORSTATE>\ \
+<关城门/@CLOSEMAINDOOR>\
+<开城门/@OPENMAINDOOR>\ \
+<返回/@MAIN>\
+
+[@OPENMAINDOOR]
+城门已经打开。\ \
+<返回/@TREATDOOR>\
+
+[@CLOSEMAINDOOR]
+城门已经关闭。\ \
+<返回/@TREATDOOR>\
+
+[@REPAIRCASTLE]
+请选择要修理的位置？\ \
+<修理城门/@REPAIRDOOR>\
+<修理城墙/@REPAIRWALLS>\ \
+<返回/@MAIN>\
+
+[@REPAIRDOOR]
+修理城门所需费用为:<$REPAIRDOORGOLD>金币。\ \
+<修理城门/@REPAIRDOORNOW>\
+<返回/@REPAIRCASTLE>\
+
+[@REPAIRWALLS]
+修理城墙所需费用为:<$REPAIRWALLGOLD>金币。\ \
+<修理城墙/@REPAIRWALLNOW1>\
+<修理城墙/@REPAIRWALLNOW2>\
+<修理城墙/@REPAIRWALLNOW3>\ \
+<返回/@REPAIRCASTLE>\
+
+[@HIREARCHERS]
+雇用弓箭手可保护城堡的安全，并维护城堡的治安。　\
+每个弓箭手的雇用费用为<$ARCHERFEE>金币。　\
+请选择要雇用弓箭手放置位置:  　\
+<城墙左弓箭手三/@HIREARCHERNOW1>, <城墙左弓箭手二/@HIREARCHERNOW2>, <城墙左弓箭手一/@HIREARCHERNOW3>　\
+<城墙右弓箭手一/@HIREARCHERNOW4>, <城墙右弓箭手二/@HIREARCHERNOW5>, <城墙右弓箭手三/@HIREARCHERNOW6>　\
+<正门左弓箭手/@HIREARCHERNOW9>, <正门左弓箭手/@HIREARCHERNOW10>, <正门右弓箭手/@HIREARCHERNOW11>, <正门右弓箭手/@HIREARCHERNOW12>　\
+<皇宫左弓箭手/@HIREARCHERNOW7>, <皇宫右弓箭手/@HIREARCHERNOW8>　\
+<返回/@MAIN>

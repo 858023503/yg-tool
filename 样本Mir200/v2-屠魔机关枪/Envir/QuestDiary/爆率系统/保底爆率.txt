@@ -1,0 +1,3717 @@
+[@保底爆率]
+{
+
+#if
+#act
+;杀怪数量
+INC U91 1
+INC U400
+
+#OR
+EQUAL <$KillMonName> 雪原异鼠
+EQUAL <$KillMonName> 雪原异鼠小弟
+#act
+INC U366 1
+CHANGELEVEL + 1
+goto @随机爆复活碎片
+;仙魔战场活动
+#if
+RANDOMEX 1 1000
+small J37 2000
+#act
+give 传仙盲盒
+Inc J37 1
+
+
+;临时
+#or
+EQUAL <$KillMonName> 精绝国王【BOSS】
+EQUAL <$KillMonName> 焚燃战神【BOSS】
+EQUAL <$KillMonName> 岩浆力魔【BOSS】
+EQUAL <$KillMonName> 冥府军主【BOSS】
+EQUAL <$KillMonName> 炼狱之主【BOSS】
+EQUAL <$KillMonName> 瘟疫蛟王【BOSS】
+EQUAL <$KillMonName> 暗黑之主【BOSS】
+EQUAL <$KillMonName> 杀戮人王【BOSS】
+EQUAL <$KillMonName> 暴风之子【BOSS】
+EQUAL <$KillMonName> 地底蛇僧【BOSS】
+EQUAL <$KillMonName> 上古魔神【BOSS】
+EQUAL <$KillMonName> 荒漠石魔【BOSS】
+EQUAL <$KillMonName> 熔岩金纹兽【BOSS】
+EQUAL <$KillMonName> 孤城野主【BOSS】
+EQUAL <$KillMonName> 深渊紫鳞兽【BOSS】
+EQUAL <$KillMonName> 尸王之王【BOSS】
+EQUAL <$KillMonName> 红灵骷髅王【BOSS】
+EQUAL <$KillMonName> 猪皇【BOSS】
+EQUAL <$KillMonName> 触龙神【BOSS】
+EQUAL <$KillMonName> 沃玛教主【BOSS】
+EQUAL <$KillMonName> 祖玛教主【BOSS】
+EQUAL <$KillMonName> 黄泉教主【BOSS】
+EQUAL <$KillMonName> 恶魔之主【BOSS】
+EQUAL <$KillMonName> 铁甲蚁【BOSS】
+EQUAL <$KillMonName> 灵地守护者【BOSS】
+EQUAL <$KillMonName> 血腥魔神【BOSS】
+EQUAL <$KillMonName> 赤月邪魔【BOSS】
+EQUAL <$KillMonName> 嗜血黄泉【BOSS】
+EQUAL <$KillMonName> 巨斧牛魔【BOSS】
+EQUAL <$KillMonName> 金岩魔【BOSS】
+EQUAL <$KillMonName> 嗜血虹魔【BOSS】
+EQUAL <$KillMonName> 魔火龙【BOSS】
+EQUAL <$KillMonName> 地底石魔【BOSS】
+EQUAL <$KillMonName> 魔化血魔【BOSS】
+EQUAL <$KillMonName> 火龙神【BOSS】
+EQUAL <$KillMonName> 雪域魔王【BOSS】
+EQUAL <$KillMonName> 困龙柱【BOSS】
+EQUAL <$KillMonName> 九尾妖狐【BOSS】
+EQUAL <$KillMonName> 地宫金兽神【BOSS】
+EQUAL <$KillMonName> 独目猿【BOSS】
+EQUAL <$KillMonName> 绿灵骷髅王【BOSS】
+EQUAL <$KillMonName> 万年冰妖【BOSS】
+EQUAL <$KillMonName> 炼狱触龙神【BOSS】
+EQUAL <$KillMonName> 雷炎骨王【暗夜城主】
+EQUAL <$KillMonName> 触龙神皇【天威城主】
+EQUAL <$KillMonName> 巨翼魔王【曙光城主】
+EQUAL <$KillMonName> 牛魔天尊【归隐城主】
+EQUAL <$KillMonName> 火麒麟【龙祖城主】
+EQUAL <$KillMonName> 深渊章鱼【冰雪城主】
+EQUAL <$KillMonName> 焚燃之主【兰陵城主】
+EQUAL <$KillMonName> 暗黑魔王【冰火城主】
+EQUAL <$KillMonName> 修罗杀神【暴风城主】
+EQUAL <$KillMonName> 北冥魔王【荒漠城主】
+#act
+goto @爆等级丹啊
+
+
+
+
+
+
+
+
+
+#if
+RANDOMEX 1 50001
+CheckCacheTextList ..\QuestDiary\怪物名称\精英及以下怪物.txt <$KillMonName>
+#act
+GetCacheRandomText ..\QuestDiary\幸运数字\幸运数字.txt S$传承装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$传承装备)> 1
+
+#if
+RANDOMEX 1 5000
+CheckCacheTextList ..\QuestDiary\怪物名称\精英及以下怪物.txt <$KillMonName>
+#act
+GetRandomText ..\QuestDiary\宠物石头\宠物石头.txt S$宠物石头
+M.MonDropItemsEx <$KillMonName> <$STR(S$宠物石头)> 1
+
+#if
+LARGE U400 600000
+#act
+MOV U400 0
+GetCacheRandomText ..\QuestDiary\传承套装\初级套.txt S$传承装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$传承装备)> 1
+addtextlist ..\..\..\..\通区文件\大喇叭\大喇叭.txt <$STR(T14)><$STR(U162)>区【<$USERNAME>】击杀<$KillMonName>掉落了【<$STR(S$传承装备)>】~<$DATETIME>
+
+
+
+#if
+
+; RANDOMEX 1 1000000
+RANDOMEX 1 400000
+;2-7 降低爆率由100000提升到1500000
+;2024-2-3提高传承套爆率由1000000提升到900000
+;2024-1-31已改由2000000改为1000000
+CheckCacheTextList ..\QuestDiary\怪物名称\精英及以下怪物.txt <$KillMonName>
+#act
+GetCacheRandomText ..\QuestDiary\传承套装\初级套.txt S$传承装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$传承装备)> 1
+addtextlist ..\..\..\..\通区文件\大喇叭\公屏.txt <$STR(T14)><$STR(U162)>区【<$USERNAME>】击杀<$KillMonName>掉落了【<$STR(S$传承装备)>】~<$DATETIME>
+addtextlist ..\..\..\..\通区文件\大喇叭\QQ公屏.txt <$STR(T14)><$STR(U162)>区【<$USERNAME>】击杀<$KillMonName>掉落了【<$STR(S$传承装备)>】
+
+#if
+RANDOMEX 1 10000
+CheckCacheTextList ..\QuestDiary\怪物名称\统领及以上怪物.txt <$KillMonName>
+#act
+GetRandomText ..\QuestDiary\传承套装\初级套武器.txt S$传承装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$传承装备)> 1
+addtextlist ..\..\..\..\通区文件\大喇叭\公屏.txt <$STR(T14)><$STR(U162)>区【<$USERNAME>】击杀<$KillMonName>掉落了【<$STR(S$传承装备)>】~<$DATETIME>
+addtextlist ..\..\..\..\通区文件\大喇叭\QQ公屏.txt <$STR(T14)><$STR(U162)>区【<$USERNAME>】击杀<$KillMonName>掉落了【<$STR(S$传承装备)>】
+
+#if
+CheckCacheTextList ..\QuestDiary\怪物名称\统领及以上怪物.txt <$KillMonName>
+#ACT
+goto @BOSS爆元宝
+
+
+
+
+
+
+#if
+EQUAL 聚宝树妖 <$KillMonName>
+#ACT
+goto @聚宝树妖爆物品
+
+
+
+
+#OR
+EQUAL <$KillMonName> 幽灵冲锋兵
+EQUAL <$KillMonName> 幽灵先锋兵
+EQUAL <$KillMonName> 幽灵攻防兵
+EQUAL <$KillMonName> 幽灵骑士兵
+EQUAL <$KillMonName> 幽灵骑士
+#act
+goto @幽灵骑士活动爆出物品
+break
+
+
+#or
+EQUAL <$MAP> <$USERNAME>魔蛛猎魂
+EQUAL <$MAP> <$USERNAME>邪灵猎魂
+EQUAL <$MAP> <$USERNAME>石魔猎魂
+#act
+
+Goto @猎魂
+
+; #if
+; LARGE N$铭文击杀小怪触发刷新BOSS几率增加 0
+; RANDOMEX 1 <$STR(N$BOSS降临打怪数量)>
+; #act
+; ; GOTO @BOSS降临
+; PLAYEFFECT 59 910 20 1 100 0 -150 -280 1
+
+#if
+EQUAL <$GameDirectory> $常量_母端位置
+#act
+GOTO @跨服爆率
+break
+
+
+#IF
+EQUAL S$玩家当前大陆 一大陆
+#ACT
+GOTO @一大陆保底
+break
+
+#IF
+EQUAL S$玩家当前大陆 二大陆
+#ACT
+GOTO @二大陆保底
+break
+
+#IF
+EQUAL S$玩家当前大陆 三大陆
+#ACT
+GOTO @三大陆保底
+break
+
+#IF
+EQUAL S$玩家当前大陆 四大陆
+#ACT
+GOTO @四大陆保底
+break
+#IF
+EQUAL S$玩家当前大陆 五大陆
+#ACT
+GOTO @五大陆保底
+break
+
+
+#IF
+EQUAL S$玩家当前大陆 六大陆
+#ACT
+GOTO @六大陆保底
+break
+
+#IF
+EQUAL S$玩家当前大陆 七大陆
+#ACT
+GOTO @七大陆保底
+break
+
+
+#IF
+EQUAL S$玩家当前大陆 八大陆
+#ACT
+GOTO @八大陆保底
+break
+
+[@仙魔判断阵营喊话]
+#if
+CheckNation 1
+#ACT
+sendmsg 0 修仙者阵营以获取傀儡,请保护队友回到出生点,以免被击杀
+#ELSEACT
+sendmsg 0 屠神阵营以获取傀儡,请保护队友回到出生点,以免被击杀
+
+
+
+[@跨服爆率]
+#if
+EQUAL <$KillMonName> 金蛋
+#act
+M.MonDropItemsEx <$KillMonName> 休门阵眼 1
+addtextlist ..\..\..\..\通区文件\大喇叭\大喇叭.txt <$STR(T14)><$STR(U162)>区【<$USERNAME>】击杀<$KillMonName>掉落了一大堆【休门阵眼】~<$DATETIME>
+
+
+
+[@火龙地洞保底]
+
+#if
+RANDOMEX 1 1000
+#act
+M.MonDropItemsEx <$KillMonName> 光芒石 1
+
+#if
+RANDOMEX 1 2000
+#act
+M.MonDropItemsEx <$KillMonName> 风暴珠 1
+
+#if
+RANDOMEX 1 1500
+#act
+M.MonDropItemsEx <$KillMonName> 荧光石 1
+#IF
+RANDOMEX 1 6000
+#act
+
+M.MonDropItemsEx <$KillMonName> 大地守护碎片【火龙地洞】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 火龙之翼 1
+
+#IF
+RANDOMEX 1 6000
+#ACT
+
+GetCacheRandomText ..\QuestDiary\灵魂板石\火龙地洞板石.txt S$火龙地洞魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$火龙地洞魂板)> 1
+
+
+[@魔化工厂保底]
+
+#if
+RANDOMEX 1 1000
+#act
+M.MonDropItemsEx <$KillMonName> 光芒石 1
+
+#if
+RANDOMEX 1 2000
+#act
+M.MonDropItemsEx <$KillMonName> 风暴珠 1
+
+#if
+RANDOMEX 1 1500
+#act
+M.MonDropItemsEx <$KillMonName> 荧光石 1
+#IF
+RANDOMEX 1 5500
+#act
+
+M.MonDropItemsEx <$KillMonName> 大地守护碎片【魔化工厂】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 锋利断敖 1
+
+#IF
+RANDOMEX 1 5500
+#ACT
+
+GetCacheRandomText ..\QuestDiary\灵魂板石\魔化工厂板石.txt S$魔化工厂魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$魔化工厂魂板)> 1
+
+
+
+[@幽暗地底保底]
+
+#if
+RANDOMEX 1 1000
+#act
+M.MonDropItemsEx <$KillMonName> 光芒石 1
+
+#if
+RANDOMEX 1 2000
+#act
+M.MonDropItemsEx <$KillMonName> 风暴珠 1
+
+#if
+RANDOMEX 1 1500
+#act
+M.MonDropItemsEx <$KillMonName> 荧光石 1
+
+#IF
+RANDOMEX 1 5000
+#act
+
+M.MonDropItemsEx <$KillMonName> 大地守护碎片【幽暗地底】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 毒物残肢 1
+
+#IF
+RANDOMEX 1 5000
+#ACT
+
+GetCacheRandomText ..\QuestDiary\灵魂板石\幽暗地底板石.txt S$幽暗地底魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$幽暗地底魂板)> 1
+
+
+
+
+
+
+
+[@魔龙峡谷保底]
+
+#if
+RANDOMEX 1 1000
+#act
+M.MonDropItemsEx <$KillMonName> 光芒石 1
+
+#if
+RANDOMEX 1 2000
+#act
+M.MonDropItemsEx <$KillMonName> 风暴珠 1
+
+#if
+RANDOMEX 1 1500
+#act
+M.MonDropItemsEx <$KillMonName> 荧光石 1
+
+#IF
+RANDOMEX 1 4000
+#act
+
+M.MonDropItemsEx <$KillMonName> 大地守护碎片【魔龙峡谷】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 魔龙獠牙 1
+
+#IF
+RANDOMEX 1 4000
+#ACT
+
+GetCacheRandomText ..\QuestDiary\灵魂板石\魔龙峡谷板石.txt S$魔龙峡谷魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$魔龙峡谷魂板)> 1
+
+
+[@封魔宫保底]
+
+#IF
+RANDOMEX 1 200
+#ACT
+GetCacheRandomText ..\QuestDiary\灵图\灵图.txt S$灵图
+M.MonDropItemsEx <$KillMonName> <$STR(S$灵图)> 1
+
+#IF
+RANDOMEX 1 3500
+#act
+
+M.MonDropItemsEx <$KillMonName> 阿尔戈斯盾碎片【封魔宫】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 1000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 虹魔之角 1
+
+#IF
+RANDOMEX 1 3500
+#ACT
+
+GetCacheRandomText ..\QuestDiary\灵魂板石\封魔宫板石.txt S$封魔宫魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$封魔宫魂板)> 1
+
+[@魔毒蚀地保底]
+#IF
+RANDOMEX 1 200
+#ACT
+GetCacheRandomText ..\QuestDiary\灵图\灵图.txt S$灵图
+M.MonDropItemsEx <$KillMonName> <$STR(S$灵图)> 1
+
+#IF
+RANDOMEX 1 3000
+#act
+
+M.MonDropItemsEx <$KillMonName> 阿尔戈斯盾碎片【魔毒蚀地】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 1000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 腐毒虫仔 1
+
+#IF
+RANDOMEX 1 3000
+#ACT
+
+GetCacheRandomText ..\QuestDiary\灵魂板石\魔毒蚀地板石.txt S$魔毒蚀地魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$魔毒蚀地魂板)> 1
+
+[@牛魔寺庙保底]
+#IF
+RANDOMEX 1 200
+#ACT
+GetCacheRandomText ..\QuestDiary\灵图\灵图.txt S$灵图
+M.MonDropItemsEx <$KillMonName> <$STR(S$灵图)> 1
+#IF
+RANDOMEX 1 2500
+#act
+
+M.MonDropItemsEx <$KillMonName> 阿尔戈斯盾碎片【牛魔寺庙】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 1000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 牛魔尾巴 1
+
+#IF
+RANDOMEX 1 2500
+#ACT
+
+GetCacheRandomText ..\QuestDiary\灵魂板石\牛魔寺庙板石.txt S$牛魔寺庙魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$牛魔寺庙魂板)> 1
+
+
+[@封魔古刹保底]
+#IF
+RANDOMEX 1 200
+#ACT
+GetCacheRandomText ..\QuestDiary\灵图\灵图.txt S$灵图
+M.MonDropItemsEx <$KillMonName> <$STR(S$灵图)> 1
+
+#IF
+RANDOMEX 1 1800
+#act
+MOV N$封魔古刹盾牌边角料 0
+M.MonDropItemsEx <$KillMonName> 阿尔戈斯盾碎片【封魔古刹】 1
+
+#IF
+RANDOMEX 1 1800
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 1000
+#ACT
+MOV N$女巫经块 0
+M.MonDropItemsEx <$KillMonName> 女巫经块 1
+
+#IF
+RANDOMEX 1 1800
+#ACT
+MOV N$封魔古刹灵魂板石 0
+GetCacheRandomText ..\QuestDiary\灵魂板石\封魔古刹板石.txt S$封魔古刹魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$封魔古刹魂板)> 1
+
+
+
+[@赤月峡谷保底]
+
+#IF
+RANDOMEX 1 1500
+#act
+MOV N$赤月峡谷盾牌边角料 0
+M.MonDropItemsEx <$KillMonName> 青铜战盾碎片【赤月峡谷】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 1500
+#ACT
+MOV N$蜘蛛丝网 0
+M.MonDropItemsEx <$KillMonName> 蜘蛛丝网 1
+
+#IF
+RANDOMEX 1 1500
+#ACT
+MOV N$赤月峡谷灵魂板石 0
+GetCacheRandomText ..\QuestDiary\灵魂板石\赤月峡谷板石.txt S$赤月峡谷魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$赤月峡谷魂板)> 1
+
+
+#IF
+RANDOMEX 1 200
+#ACT
+GetCacheRandomText ..\QuestDiary\灵图\灵图.txt S$灵图
+M.MonDropItemsEx <$KillMonName> <$STR(S$灵图)> 1
+
+
+[@黑暗魔殿保底]
+
+
+#IF
+RANDOMEX 1 1200
+#act
+MOV N$黑暗魔殿盾牌边角料 0
+M.MonDropItemsEx <$KillMonName> 青铜战盾碎片【黑暗魔殿】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 1200
+#ACT
+MOV N$人魔眼球 0
+M.MonDropItemsEx <$KillMonName> 人魔眼球 1
+
+#IF
+RANDOMEX 1 1200
+#ACT
+
+GetCacheRandomText ..\QuestDiary\灵魂板石\黑暗魔殿板石.txt S$黑暗魔殿魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$黑暗魔殿魂板)> 1
+
+
+#IF
+RANDOMEX 1 200
+#ACT
+GetCacheRandomText ..\QuestDiary\灵图\灵图.txt S$灵图
+M.MonDropItemsEx <$KillMonName> <$STR(S$灵图)> 1
+
+
+
+[@精灵谷保底]
+
+#IF
+RANDOMEX 1 1000
+#act
+
+M.MonDropItemsEx <$KillMonName> 青铜战盾碎片【精灵谷】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 1000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 精灵胸毛 1
+
+#IF
+RANDOMEX 1 1000
+#ACT
+
+GetCacheRandomText ..\QuestDiary\灵魂板石\精灵谷板石.txt S$精灵谷魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$精灵谷魂板)> 1
+
+
+#IF
+RANDOMEX 1 200
+#ACT
+GetCacheRandomText ..\QuestDiary\灵图\灵图.txt S$灵图
+M.MonDropItemsEx <$KillMonName> <$STR(S$灵图)> 1
+
+
+[@蚂蚁洞保底]
+
+
+#IF
+RANDOMEX 1 800
+#act
+MOV N$蚂蚁洞盾牌边角料 0
+M.MonDropItemsEx <$KillMonName> 青铜战盾碎片【蚂蚁洞】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 800
+#ACT
+MOV N$蚂蚁幼卵 0
+M.MonDropItemsEx <$KillMonName> 蚂蚁幼卵 1
+
+#IF
+RANDOMEX 1 800
+#ACT
+
+GetCacheRandomText ..\QuestDiary\灵魂板石\蚂蚁洞板石.txt S$蚂蚁洞魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$蚂蚁洞魂板)> 1
+
+
+
+
+
+#IF
+RANDOMEX 1 200
+#ACT
+GetCacheRandomText ..\QuestDiary\灵图\灵图.txt S$灵图
+M.MonDropItemsEx <$KillMonName> <$STR(S$灵图)> 1
+
+
+
+
+
+
+[@恶魔营地保底]
+
+
+
+#IF
+RANDOMEX 1 600
+#act
+
+M.MonDropItemsEx <$KillMonName> 白坚木盾碎片【恶魔营地】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 600
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 恶魔舍利 1
+
+#IF
+RANDOMEX 1 600
+#ACT
+
+GetCacheRandomText ..\QuestDiary\灵魂板石\恶魔营地板石.txt S$恶魔营地魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$恶魔营地魂板)> 1
+
+
+
+
+
+
+[@骨魔洞保底]
+
+#IF
+RANDOMEX 1 500
+#act
+
+M.MonDropItemsEx <$KillMonName> 白坚木盾碎片【骨魔洞】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 500
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 骨魔心口肉 1
+
+#IF
+RANDOMEX 1 500
+#ACT
+
+GetCacheRandomText ..\QuestDiary\灵魂板石\骨魔洞板石.txt S$骨魔洞魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$骨魔洞魂板)> 1
+
+
+[@祖玛秘境保底]
+
+
+
+#IF
+RANDOMEX 1 350
+#act
+M.MonDropItemsEx <$KillMonName> 白坚木盾碎片【祖玛秘境】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 350
+#ACT
+M.MonDropItemsEx <$KillMonName> 祖玛脊椎 1
+
+#IF
+RANDOMEX 1 350
+#ACT
+GetCacheRandomText ..\QuestDiary\灵魂板石\祖玛秘境板石.txt S$祖玛秘境魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$祖玛秘境魂板)> 1
+
+
+
+
+[@沃玛寺庙保底]
+
+
+#IF
+RANDOMEX 1 250
+#act
+
+M.MonDropItemsEx <$KillMonName> 白坚木盾碎片【沃玛寺庙】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 250
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 沃玛睾丸 1
+
+#IF
+RANDOMEX 1 250
+#ACT
+
+GetCacheRandomText ..\QuestDiary\灵魂板石\沃玛寺庙板石.txt S$沃玛寺庙魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$沃玛寺庙魂板)> 1
+
+[@兽人古墓保底]
+
+;修仙经验值
+#IF
+CheckCacheTextList ..\QuestDiary\怪物名称\兽人古墓洞普通怪名字.txt <$KillMonName>
+#act
+INC N$兽人古墓盾牌边角料 1
+INC N$野猪腿肉 1
+INC N$兽人古墓灵魂板石 1
+INC N$淘金者普通怪数量 1
+
+#IF
+RANDOMEX 1 200
+#act
+
+M.MonDropItemsEx <$KillMonName> 木质盾牌碎片【猪洞】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 200
+#ACT
+MOV N$野猪腿肉 0
+M.MonDropItemsEx <$KillMonName> 野猪腿肉 1
+
+#IF
+RANDOMEX 1 200
+#ACT
+
+GetCacheRandomText ..\QuestDiary\灵魂板石\兽人古墓板石.txt S$兽人古墓魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$兽人古墓魂板)> 1
+
+
+
+
+
+[@蜈蚣洞保底]
+
+
+#IF
+RANDOMEX 1 150
+#act
+
+M.MonDropItemsEx <$KillMonName> 木质盾牌碎片【蜈蚣洞】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 150
+#ACT
+MOV N$蜈蚣毒刺 0
+M.MonDropItemsEx <$KillMonName> 蜈蚣毒刺 1
+GetRandomText ..\QuestDiary\法宝爆率\骷髅洞法宝.txt S$随机爆出法宝
+M.MonDropItemsEx <$KillMonName> <$STR(S$随机爆出法宝)> 1
+#IF
+RANDOMEX 1 150
+#ACT
+MOV N$蜈蚣洞灵魂板石 0
+GetCacheRandomText ..\QuestDiary\灵魂板石\蜈蚣洞板石.txt S$蜈蚣洞魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$蜈蚣洞魂板)> 1
+
+
+
+[@僵尸矿洞保底]
+
+#IF
+RANDOMEX 1 100
+#act
+M.MonDropItemsEx <$KillMonName> 木质盾牌碎片【僵尸矿区】 1
+GetRandomText ..\QuestDiary\法宝爆率\骷髅洞法宝.txt S$随机爆出法宝
+M.MonDropItemsEx <$KillMonName> <$STR(S$随机爆出法宝)> 1
+#IF
+RANDOMEX 1 2000
+#ACT
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 100
+#ACT
+M.MonDropItemsEx <$KillMonName> 僵尸心脏 1
+
+#IF
+RANDOMEX 1 100
+#ACT
+GetCacheRandomText ..\QuestDiary\灵魂板石\僵尸洞板石.txt S$僵尸洞魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$僵尸洞魂板)> 1
+;暴24个
+
+
+
+
+
+[@骷髅矿区保底]
+#IF
+EQUAL U45 2
+RANDOM 20
+SMALL U88 20
+#ACT
+INC U88 1
+;绑定物品
+GiveStateItem 书页 1 1 1 1 1 1
+#if
+EQUAL U88 20
+#act
+MOV U88 30
+messagebox 书页以收集完毕,可以去强化技能了
+
+
+#IF
+EQUAL U45 4
+RANDOM 20
+SMALL U336 25
+#ACT
+INC U336 1
+;绑定物品
+GiveStateItem 木质盾牌碎片【骷髅矿区】 1 1 1 1 1 1
+#if
+EQUAL U336 25
+#act
+MOV U336 30
+messagebox 木质盾牌碎片以收集完毕,可以去强化盾牌了
+
+
+
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\怪物名称\骷髅洞普通怪名字.txt <$KillMonName>
+#ACT
+INC N$骷髅头骨 1
+INC N$骷髅洞灵魂板石 1
+INC N$骷髅洞盾牌边角料 1
+INC N$骷髅书页 1
+
+
+
+
+
+
+
+
+
+#IF
+LARGE N$骷髅洞盾牌边角料 50
+#act
+MOV N$骷髅洞盾牌边角料 0
+M.MonDropItemsEx <$KillMonName> 木质盾牌碎片【骷髅矿区】 1
+
+#IF
+LARGE N$骷髅头骨 200
+#ACT
+MOV N$骷髅头骨 0
+M.MonDropItemsEx <$KillMonName> 骷髅手骨 1
+GetRandomText ..\QuestDiary\法宝爆率\骷髅洞法宝.txt S$随机爆出法宝
+M.MonDropItemsEx <$KillMonName> <$STR(S$随机爆出法宝)> 1
+#IF
+LARGE N$骷髅洞灵魂板石 100
+#ACT
+MOV N$骷髅洞灵魂板石 0
+GetCacheRandomText ..\QuestDiary\灵魂板石\骷髅洞板石.txt S$骷髅洞魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$骷髅洞魂板)> 1
+
+#IF
+LARGE N$骷髅书页 5000
+#ACT
+MOV N$骷髅书页 0
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+
+[@一大陆保底]
+#if
+EQUAL <$KillMonName> 雷炎骨王【暗夜城主】
+#act
+goto @一大陆城主爆率
+#or
+EQUAL <$KillMonName> 骷髅战将【统领】
+EQUAL <$KillMonName> 骷髅刀客【领主】
+EQUAL <$KillMonName> 红灵骷髅王【BOSS】
+EQUAL <$KillMonName> 尸王【统领】
+EQUAL <$KillMonName> 僵尸王【领主】
+EQUAL <$KillMonName> 尸王之王【BOSS】
+EQUAL <$KillMonName> 爬行触龙神【领主】
+EQUAL <$KillMonName> 邪恶钳虫【统领】
+EQUAL <$KillMonName> 触龙神【BOSS】
+EQUAL <$KillMonName> 绿野猪【统领】
+EQUAL <$KillMonName> 白野猪【领主】
+EQUAL <$KillMonName> 猪皇【BOSS】
+#act
+
+Goto @一大陆法宝爆率
+
+break
+
+#IF
+EQUAL S$玩家当前地图 骷髅矿区
+#ACT
+GOTO @骷髅矿区保底
+break
+
+
+#IF
+EQUAL S$玩家当前地图 僵尸矿洞
+#ACT
+GOTO @僵尸矿洞保底
+break
+
+#IF
+EQUAL S$玩家当前地图 蜈蚣洞
+#ACT
+GOTO @蜈蚣洞保底
+break
+#IF
+EQUAL S$玩家当前地图 兽人古墓
+#ACT
+GOTO @兽人古墓保底
+
+break
+
+
+
+
+
+[@二大陆保底]
+#if
+EQUAL <$KillMonName> 触龙神皇【天威城主】
+#act
+goto @二大陆城主爆率
+
+#or
+EQUAL <$KillMonName> 沃玛教主【BOSS】
+EQUAL <$KillMonName> 暗之沃玛【领主】
+EQUAL <$KillMonName> 暗之沃玛教主【统领】
+EQUAL <$KillMonName> 祖玛教主【BOSS】
+EQUAL <$KillMonName> 祖玛教主【领主】
+EQUAL <$KillMonName> 祖玛卫士【统领】
+EQUAL <$KillMonName> 黄泉教主【BOSS】
+EQUAL <$KillMonName> 黄泉恶魔【领主】
+EQUAL <$KillMonName> 恶灵教主【统领】
+EQUAL <$KillMonName> 恶魔之主【BOSS】
+EQUAL <$KillMonName> 铁锤【领主】
+EQUAL <$KillMonName> 淫乱女魔头【统领】
+#act
+
+Goto @二大陆法宝爆率
+BREAK
+
+
+#IF
+EQUAL S$玩家当前地图 沃玛寺庙
+#ACT
+GOTO @沃玛寺庙保底
+break
+
+#IF
+EQUAL S$玩家当前地图 祖玛秘境
+#ACT
+GOTO @祖玛秘境保底
+break
+
+
+#IF
+EQUAL S$玩家当前地图 骨魔洞
+#ACT
+GOTO @骨魔洞保底
+break
+
+#IF
+EQUAL S$玩家当前地图 恶魔营地
+#ACT
+GOTO @恶魔营地保底
+break
+[@三大陆保底]
+
+#if
+EQUAL <$KillMonName> 巨翼魔王【曙光城主】
+#act
+goto @三大陆城主爆率
+
+#if
+EQUAL <$KillMonName> 巨章海神
+randomex 50 101
+#act
+M.MonDropItemsEx <$KillMonName> 火珠 1
+#if
+EQUAL <$KillMonName> 禁锢虎王
+randomex 50 101
+#act
+M.MonDropItemsEx <$KillMonName> 土珠 1
+#if
+EQUAL <$KillMonName> 鲲皇
+randomex 50 101
+#act
+M.MonDropItemsEx <$KillMonName> 金珠 1
+#if
+EQUAL <$KillMonName> 妖娆白妖
+randomex 50 101
+#act
+M.MonDropItemsEx <$KillMonName> 水珠 1
+#if
+EQUAL <$KillMonName> 天王道法
+randomex 50 101
+#act
+M.MonDropItemsEx <$KillMonName> 木珠 1
+#if
+EQUAL <$KillMonName> 魔刹道祖
+randomex 50 101
+#act
+M.MonDropItemsEx <$KillMonName> 风珠 1
+#if
+EQUAL <$KillMonName> 金甲弩神
+randomex 50 101
+#act
+M.MonDropItemsEx <$KillMonName> 冰珠 1
+#if
+EQUAL <$KillMonName> 机甲男爵
+randomex 50 101
+#act
+M.MonDropItemsEx <$KillMonName> 雷珠 1
+#if
+EQUAL <$KillMonName> 飞骑魔尊
+randomex 50 101
+#act
+M.MonDropItemsEx <$KillMonName> 暗珠 1
+#if
+EQUAL <$KillMonName> 白毛烈妖
+randomex 50 101
+#act
+M.MonDropItemsEx <$KillMonName> 光珠 1
+#if
+EQUAL <$KillMonName> 红毛烈妖
+randomex 50 101
+#act
+M.MonDropItemsEx <$KillMonName> 时珠 1
+#if
+EQUAL <$KillMonName> 玄天凰鸟
+randomex 50 101
+#act
+M.MonDropItemsEx <$KillMonName> 空珠 1
+
+
+
+#if
+COMPARETEXT T1 普通
+EQUAL <$KillMonName> 深渊之主
+#act
+M.MonDropItemsEx <$KillMonName> 深渊结晶 10
+goto @深渊之主爆装备
+#if
+COMPARETEXT T1 噩梦
+EQUAL <$KillMonName> 深渊之主
+#act
+M.MonDropItemsEx <$KillMonName> 深渊结晶 10
+M.MonDropItemsEx <$KillMonName> 深渊结晶 10
+
+goto @深渊之主爆装备
+#if
+COMPARETEXT T1 炼狱
+EQUAL <$KillMonName> 深渊之主
+#act
+M.MonDropItemsEx <$KillMonName> 深渊结晶 10
+
+goto @深渊之主爆装备
+
+
+
+
+
+
+
+
+#or
+EQUAL <$KillMonName> 铁甲蚁【BOSS】
+EQUAL <$KillMonName> 火蚁【领主】
+EQUAL <$KillMonName> 喷射蚁【统领】
+EQUAL <$KillMonName> 灵地守护者【BOSS】
+EQUAL <$KillMonName> 蜓龙【领主】
+EQUAL <$KillMonName> 熊猫侠【统领】
+EQUAL <$KillMonName> 幽魂女王【领主】
+EQUAL <$KillMonName> 鬼王魔刹【统领】
+EQUAL <$KillMonName> 血腥魔神【BOSS】
+EQUAL <$KillMonName> 赤月邪魔【BOSS】
+EQUAL <$KillMonName> 赤月恶魔【领主】
+EQUAL <$KillMonName> 赤月恶魔【统领】
+#act
+
+Goto @三大陆法宝爆率
+BREAK
+
+
+
+#or
+EQUAL <$KillMonName> 天庭战神
+EQUAL <$KillMonName> 剑仙正宗
+EQUAL <$KillMonName> 半兽战神
+EQUAL <$KillMonName> 斗战圣王
+EQUAL <$KillMonName> 龙族领袖
+EQUAL <$KillMonName> 恶魔之手
+EQUAL <$KillMonName> 巨力吼王
+EQUAL <$KillMonName> 多面蟹魔
+#act
+
+Goto @诛仙剑阵爆出
+BREAK
+
+
+
+
+
+
+
+
+#IF
+EQUAL S$玩家当前地图 蚂蚁洞
+#ACT
+GOTO @蚂蚁洞保底
+break
+
+#IF
+EQUAL S$玩家当前地图 精灵谷
+#ACT
+GOTO @精灵谷保底
+break
+
+#IF
+EQUAL S$玩家当前地图 黑暗魔殿
+#ACT
+GOTO @黑暗魔殿保底
+break
+
+#IF
+EQUAL S$玩家当前地图 赤月峡谷
+#ACT
+GOTO @赤月峡谷保底
+break
+
+
+
+
+
+
+[@四大陆保底]
+#if
+EQUAL <$KillMonName> 牛魔天尊【归隐城主】
+
+#act
+goto @四大陆城主爆率
+#or
+EQUAL <$KillMonName> 嗜血黄泉【BOSS】
+EQUAL <$KillMonName> 古刹翼魔【领主】
+EQUAL <$KillMonName> 古刹悍妖【统领】
+EQUAL <$KillMonName> 巨斧牛魔【BOSS】
+EQUAL <$KillMonName> 牛魔王【领主】
+EQUAL <$KillMonName> 红眼牛魔【统领】
+EQUAL <$KillMonName> 金岩魔【BOSS】
+EQUAL <$KillMonName> 蚀地绿龙【领主】
+EQUAL <$KillMonName> 蚀地岩龙【统领】
+EQUAL <$KillMonName> 嗜血虹魔【BOSS】
+EQUAL <$KillMonName> 白毛虹魔【领主】
+EQUAL <$KillMonName> 白毛虹魔【统领】
+#act
+
+Goto @四大陆法宝爆率
+BREAK
+
+#IF
+EQUAL S$玩家当前地图 封魔古刹
+#ACT
+GOTO @封魔古刹保底
+break
+
+
+#IF
+EQUAL S$玩家当前地图 牛魔寺庙
+#ACT
+GOTO @牛魔寺庙保底
+break
+
+
+#IF
+EQUAL S$玩家当前地图 魔毒蚀地
+#ACT
+GOTO @魔毒蚀地保底
+break
+
+#IF
+EQUAL S$玩家当前地图 封魔宫
+#ACT
+GOTO @封魔宫保底
+break
+[@五大陆保底]
+#if
+EQUAL <$KillMonName> 火麒麟【龙祖城主】
+#act
+goto @五大陆城主爆率
+
+#or
+EQUAL <$KillMonName> 魔火龙【BOSS】
+EQUAL <$KillMonName> 魔火龙教主【领主】
+EQUAL <$KillMonName> 飞天魔龙【统领】
+EQUAL <$KillMonName> 地底石魔【BOSS】
+EQUAL <$KillMonName> 地底树王【领主】
+EQUAL <$KillMonName> 地底树妖【统领】
+EQUAL <$KillMonName> 魔化血魔【BOSS】
+EQUAL <$KillMonName> 生化携带者【领主】
+EQUAL <$KillMonName> 魔化悟空【统领】
+EQUAL <$KillMonName> 火龙神【BOSS】
+EQUAL <$KillMonName> 炼狱火龙【领主】
+EQUAL <$KillMonName> 三头火龙【统领】
+#act
+
+Goto @五大陆法宝爆率
+break
+
+
+
+
+
+
+
+
+#IF
+EQUAL S$玩家当前地图 魔龙峡谷
+#ACT
+GOTO @魔龙峡谷保底
+break
+
+#IF
+EQUAL S$玩家当前地图 幽暗地底
+#ACT
+GOTO @幽暗地底保底
+break
+
+#IF
+EQUAL S$玩家当前地图 魔化工厂
+#ACT
+GOTO @魔化工厂保底
+break
+
+
+#IF
+EQUAL S$玩家当前地图 火龙地洞
+#ACT
+GOTO @火龙地洞保底
+break
+
+
+[@六大陆保底]
+#if
+EQUAL <$KillMonName> 深渊章鱼【冰雪城主】
+#act
+goto @六大陆城主爆率
+
+
+
+
+#or
+EQUAL <$KillMonName> 雪域魔王【BOSS】
+EQUAL <$KillMonName> 雪域魔王【领主】
+EQUAL <$KillMonName> 雪域魔王【统领】
+EQUAL <$KillMonName> 困龙柱【BOSS】
+EQUAL <$KillMonName> 寒冰龙【领主】
+EQUAL <$KillMonName> 冰锤猿魔【统领】
+EQUAL <$KillMonName> 九尾妖狐【BOSS】
+EQUAL <$KillMonName> 法狐【领主】
+EQUAL <$KillMonName> 战狐【统领】
+EQUAL <$KillMonName> 地宫金兽神【BOSS】
+EQUAL <$KillMonName> 地宫金锤【领主】
+EQUAL <$KillMonName> 地宫紫锤【统领】
+#act
+
+Goto @六大陆法宝爆率
+break
+
+
+#IF
+EQUAL S$玩家当前地图 雪城旧址
+#ACT
+GOTO @雪城旧址保底
+break
+#IF
+EQUAL S$玩家当前地图 冰晶宫
+#ACT
+GOTO @冰晶宫保底
+break
+#IF
+EQUAL S$玩家当前地图 沼泽秘境
+#ACT
+GOTO @幽沼泽秘境保底
+break
+
+#IF
+EQUAL S$玩家当前地图 万劫地宫
+#ACT
+GOTO @万劫地宫保底
+break
+
+[@八大陆保底]
+#if
+RANDOMEX 1 50000
+#act
+M.MonDropItemsEx <$KillMonName> 奥术晶核 1
+#if
+RANDOMEX 1 50000 
+#act
+M.MonDropItemsEx <$KillMonName> 嗜血宝石 1
+#if
+RANDOMEX 1 20000 
+#act
+M.MonDropItemsEx <$KillMonName> 青龙血液 1
+#if
+RANDOMEX 1 100000 
+#act
+M.MonDropItemsEx <$KillMonName> 混沌之石 1
+#if
+RANDOMEX 1 500000 
+#act
+M.MonDropItemsEx <$KillMonName> 星辰精华 1
+
+
+#if
+RANDOMEX 1 500000 
+#act
+addskill 极光斩
+messagebox 已帮你学习极光斩
+#or
+EQUAL <$KillMonName> 暗黑之主【BOSS】
+EQUAL <$KillMonName> 暗黑魔王【冰火城主】
+EQUAL <$KillMonName> 暗黑爪魔【统领】
+EQUAL <$KillMonName> 暗黑巫王【领主】
+EQUAL <$KillMonName> 瘟疫蛇后【领主】
+EQUAL <$KillMonName> 瘟疫蛇法【统领】
+EQUAL <$KillMonName> 瘟疫蛟王【BOSS】
+EQUAL <$KillMonName> 冥府军主【BOSS】
+EQUAL <$KillMonName> 修罗鬼王【统领】
+EQUAL <$KillMonName> 幽冥骑士【领主】
+EQUAL <$KillMonName> 炼狱之主【BOSS】
+EQUAL <$KillMonName> 炼狱魔尊【领主】
+EQUAL <$KillMonName> 炼狱狂魔【统领】
+#act
+GOTO @爆号角法宝
+
+
+[@爆号角法宝]
+#if
+RANDOMEX 1 60
+#act
+M.MonDropItemsEx <$KillMonName> 自然之怒号角 1
+[@七大陆保底]
+#if
+RANDOMEX 1 100
+#act
+M.MonDropItemsEx <$KillMonName> 极速宝石 1
+#if
+RANDOMEX 1 2000 
+#act
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+
+
+#if
+EQUAL <$KillMonName> 焚燃之主【兰陵城主】
+#act
+goto @七大陆城主爆率
+break
+
+
+#IF
+EQUAL S$玩家当前地图 精绝古墓
+#ACT
+GOTO @精绝古墓保底
+break
+#IF
+EQUAL S$玩家当前地图 焚燃之地
+#ACT
+GOTO @焚燃之地保底
+break
+#IF
+EQUAL S$玩家当前地图 岩浆地宫
+#ACT
+GOTO @岩浆地宫保底
+break
+
+#IF
+EQUAL S$玩家当前地图 血海魔宫
+#ACT
+GOTO @血海魔宫保底
+break
+
+[@血海魔宫保底]
+#IF
+RANDOMEX 1 4000
+#act
+M.MonDropItemsEx <$KillMonName> 火焱金盾碎片【血海魔宫】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 4000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 血炼獠牙 1
+
+#IF
+RANDOMEX 1 4000
+#ACT
+
+GetRandomText ..\QuestDiary\灵魂板石\血海魔宫板石.txt S$血海魔宫魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$血海魔宫魂板)> 1
+
+[@岩浆地宫保底]
+#IF
+RANDOMEX 1 4000
+#act
+M.MonDropItemsEx <$KillMonName> 火焱金盾碎片【岩浆地宫】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 4000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 岩火浸叶 1
+
+#IF
+RANDOMEX 1 4000
+#ACT
+
+GetRandomText ..\QuestDiary\灵魂板石\岩浆地宫板石.txt S$岩浆地宫魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$岩浆地宫魂板)> 1
+
+[@焚燃之地保底]
+#IF
+RANDOMEX 1 4000
+#act
+M.MonDropItemsEx <$KillMonName> 火焱金盾碎片【焚燃之地】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 4000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 石魔之眼 1
+
+#IF
+RANDOMEX 1 4000
+#ACT
+
+GetRandomText ..\QuestDiary\灵魂板石\焚燃之地板石.txt S$焚燃之地魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$焚燃之地魂板)> 1
+
+
+[@精绝古墓保底]
+
+
+#IF
+RANDOMEX 1 4000
+#act
+
+M.MonDropItemsEx <$KillMonName> 火焱金盾碎片【精绝古墓】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 4000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 古墓残骨 1
+
+#IF
+RANDOMEX 1 4000
+#ACT
+
+GetRandomText ..\QuestDiary\灵魂板石\精绝古墓板石.txt S$精绝古墓魂板
+M.MonDropItemsEx <$KillMonName> <$STR(S$精绝古墓魂板)> 1
+
+[@七大陆城主爆率]
+#if
+RANDOMEX 1 200
+#act
+M.MonDropItemsEx <$KillMonName> 星辰冰晶 1
+#if
+RANDOMEX 5 101
+#act
+M.MonDropItemsEx <$KillMonName> 七大陆转生水晶 1
+
+#if
+RANDOMEX 1 101
+#act
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\时装装备.txt S$给时装装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$给时装装备)> 1
+#if
+RANDOMEX 1 101
+#act
+M.MonDropItemsEx <$KillMonName> 魔力之果 1
+
+#if
+RANDOMEX 1 100
+#act
+M.MonDropItemsEx <$KillMonName> 兰陵城主魂灵 1
+
+#if
+RANDOMEX 1 100
+#act
+M.MonDropItemsEx <$KillMonName> 兰陵城信物 1
+
+
+
+[@六大陆城主爆率]
+#if
+#act
+
+M.MonDropItemsEx <$KillMonName> 战灵法相进化石 10
+#if
+RANDOMEX 10 101
+#act
+M.MonDropItemsEx <$KillMonName> 六大陆转生水晶 1
+
+#if
+RANDOMEX 1 101
+#act
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\时装装备.txt S$给时装装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$给时装装备)> 1
+
+#if
+RANDOMEX 1 101
+#act
+M.MonDropItemsEx <$KillMonName> 信仰之果 1
+#if
+#act
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+#if
+RANDOMEX 1 20
+#act
+
+GetRandomText ..\QuestDiary\法宝爆率\六大陆卡片爆出.txt S$六大陆卡片爆出
+M.MonDropItemsEx <$KillMonName> <$STR(S$六大陆卡片爆出)> 1
+addtextlist ..\..\..\..\通区文件\大喇叭\大喇叭.txt <$STR(T14)><$STR(U162)>区【<$USERNAME>】击杀<$KillMonName>掉落了【<$STR(S$六大陆卡片爆出)>】~<$DATETIME>
+
+#if
+RANDOMEX 1 200
+#act
+GetRandomText ..\QuestDiary\法宝爆率\六大陆法宝爆出.txt S$六大陆法宝爆出
+M.MonDropItemsEx <$KillMonName> <$STR(S$六大陆法宝爆出)> 1
+addtextlist ..\..\..\..\通区文件\大喇叭\大喇叭.txt <$STR(T14)><$STR(U162)>区【<$USERNAME>】击杀<$KillMonName>掉落了【<$STR(S$六大陆法宝爆出)>】~<$DATETIME>
+
+
+#if
+RANDOMEX 1 100
+#act
+M.MonDropItemsEx <$KillMonName> 冰雪城主魂灵 1
+
+#if
+RANDOMEX 1 100
+#act
+M.MonDropItemsEx <$KillMonName> 冰雪城信物 1
+
+
+
+
+[@万劫地宫保底]
+
+#if
+RANDOMEX 1 2000
+#act
+M.MonDropItemsEx <$KillMonName> 光芒石 1
+
+#if
+RANDOMEX 1 2000
+#act
+M.MonDropItemsEx <$KillMonName> 风暴珠 1
+
+#if
+RANDOMEX 1 1500
+#act
+M.MonDropItemsEx <$KillMonName> 荧光石 1
+#IF
+RANDOMEX 1 3000
+#act
+
+M.MonDropItemsEx <$KillMonName> 紫晶神盾碎片【万劫地宫】 1
+
+#IF
+RANDOMEX 1 3000
+#ACT
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 3000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 地宫残魂 1
+
+#IF
+RANDOMEX 1 1400
+#ACT
+GetRandomText ..\QuestDiary\灵魂板石\万劫地宫板石.txt S$万劫地宫板石
+M.MonDropItemsEx <$KillMonName> <$STR(S$万劫地宫板石)> 1
+
+#IF
+RANDOMEX 1 2000
+#act
+
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+
+
+
+
+[@幽沼泽秘境保底]
+
+#if
+RANDOMEX 1 2000
+#act
+M.MonDropItemsEx <$KillMonName> 光芒石 1
+
+#if
+RANDOMEX 1 2000
+#act
+M.MonDropItemsEx <$KillMonName> 风暴珠 1
+
+#if
+RANDOMEX 1 1500
+#act
+M.MonDropItemsEx <$KillMonName> 荧光石 1
+#IF
+RANDOMEX 1 3000
+#act
+
+M.MonDropItemsEx <$KillMonName> 紫晶神盾碎片【沼泽秘境】 1
+
+#IF
+RANDOMEX 1 3000
+#ACT
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 3000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 妖狐颅骨 1
+
+#IF
+RANDOMEX 1 3000
+#ACT
+GetRandomText ..\QuestDiary\灵魂板石\幽沼泽秘板石.txt S$幽沼泽秘板石
+M.MonDropItemsEx <$KillMonName> <$STR(S$幽沼泽秘板石)> 1
+
+#IF
+RANDOMEX 1 2000
+#act
+
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+
+
+
+
+[@冰晶宫保底]
+
+#if
+RANDOMEX 1 2000
+#act
+M.MonDropItemsEx <$KillMonName> 光芒石 1
+
+#if
+RANDOMEX 1 2000
+#act
+M.MonDropItemsEx <$KillMonName> 风暴珠 1
+
+#if
+RANDOMEX 1 1500
+#act
+M.MonDropItemsEx <$KillMonName> 荧光石 1
+#IF
+RANDOMEX 1 3000
+#act
+
+M.MonDropItemsEx <$KillMonName> 紫晶神盾碎片【冰晶宫】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 3000
+#ACT
+
+M.MonDropItemsEx <$KillMonName> 封印海螺 1
+
+#IF
+RANDOMEX 1 3000
+#ACT
+GetRandomText ..\QuestDiary\灵魂板石\冰晶洞板石.txt S$冰晶洞板石
+M.MonDropItemsEx <$KillMonName> <$STR(S$冰晶洞板石)> 1
+
+#IF
+RANDOMEX 1 2000
+#act
+
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+
+[@雪城旧址保底]
+
+#if
+RANDOMEX 1 2000
+#act
+M.MonDropItemsEx <$KillMonName> 光芒石 1
+
+#if
+RANDOMEX 1 2000
+#act
+M.MonDropItemsEx <$KillMonName> 风暴珠 1
+
+#if
+RANDOMEX 1 1500
+#act
+M.MonDropItemsEx <$KillMonName> 荧光石 1
+#IF
+RANDOMEX 1 3000
+#act
+
+M.MonDropItemsEx <$KillMonName> 紫晶神盾碎片【雪城旧址】 1
+
+#IF
+RANDOMEX 1 2000
+#ACT
+M.MonDropItemsEx <$KillMonName> 书页 1
+
+#IF
+RANDOMEX 1 3000
+#ACT
+M.MonDropItemsEx <$KillMonName> 冰龙鳞甲 1
+
+#IF
+RANDOMEX 1 3000
+#ACT
+GetRandomText ..\QuestDiary\灵魂板石\雪城旧址板石.txt S$雪城旧址板石
+M.MonDropItemsEx <$KillMonName> <$STR(S$雪城旧址板石)> 1
+
+#IF
+RANDOMEX 1 700
+#act
+M.MonDropItemsEx <$KillMonName> 冰晶碎片 1
+
+[@判断法宝元宝翻倍]
+#IF
+LARGE N$法宝元宝翻倍 0
+#ACT
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+SENDMSG 5 元宝翻倍啦
+
+[@BOSS爆元宝]
+
+
+
+#if
+EQUAL <$KillMonName> 红灵骷髅王【BOSS】
+#act
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+MOVR N$击杀大型怪给元宝数量 3 11
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+goto @判断法宝元宝翻倍
+break
+
+#if
+
+EQUAL <$KillMonName> 骷髅刀客【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 2 7
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 骷髅战将【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 1 5
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 尸王之王【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 3 11
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 僵尸王【领主】
+#act
+
+MOVR N$击杀大型怪给元宝数量 2 7
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 尸王【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 1 5
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 触龙神【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 3 11
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 邪恶钳虫【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 1 5
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 爬行触龙神【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 2 7
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 猪皇【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 3 11
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 白野猪【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 2 7
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 绿野猪【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 1 5
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+
+
+
+
+
+
+
+#if
+
+EQUAL <$KillMonName> 沃玛教主【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 5 16
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+#if
+
+EQUAL <$KillMonName> 暗之沃玛【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 5 11
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 暗之沃玛教主【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 3 10
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+
+
+
+#if
+
+EQUAL <$KillMonName> 祖玛教主【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 5 16
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 祖玛卫士【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 3 10
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+#if
+
+EQUAL <$KillMonName> 祖玛教主【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 5 11
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+
+
+
+#if
+
+EQUAL <$KillMonName> 黄泉教主【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 5 16
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 恶灵教主【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 3 10
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 黄泉恶魔【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 5 11
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+
+#if
+
+EQUAL <$KillMonName> 恶魔之主【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 5 16
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 铁锤【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 5 11
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 淫乱女魔头【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 3 10
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 铁甲蚁【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 10 21
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 火蚁【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 7 16
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 喷射蚁【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 5 11
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+#if
+
+EQUAL <$KillMonName> 灵地守护者【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 10 21
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 熊猫侠【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 5 11
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 蜓龙【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 7 16
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+#if
+
+EQUAL <$KillMonName> 血腥魔神【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 10 21
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 鬼王魔刹【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 5 11
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 幽魂女王【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 7 16
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+#if
+
+EQUAL <$KillMonName> 赤月邪魔【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 10 21
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 赤月恶魔【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 5 11
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 赤月恶魔【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 7 16
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+
+
+
+
+#if
+
+EQUAL <$KillMonName> 嗜血黄泉【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 15 30
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 古刹悍妖【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 8 15
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 古刹翼魔【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 10 20
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+
+
+
+#if
+
+EQUAL <$KillMonName> 巨斧牛魔【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 15 30
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 红眼牛魔【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 8 15
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 牛魔王【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 10 20
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 金岩魔【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 15 30
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 蚀地绿龙【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 10 20
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 蚀地岩龙【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 8 15
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+#if
+
+EQUAL <$KillMonName> 嗜血虹魔【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 15 30
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 白毛虹魔【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 8 15
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+#if
+
+EQUAL <$KillMonName> 白毛虹魔【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 10 20
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+
+
+
+
+
+#if
+
+EQUAL <$KillMonName> 魔火龙【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 20 40
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 魔火龙教主【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 15 25
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 飞天魔龙【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 10 17
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+#if
+
+EQUAL <$KillMonName> 地底石魔【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 20 40
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 地底树王【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 15 25
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 地底树妖【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 10 17
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+
+
+#if
+
+EQUAL <$KillMonName> 魔化血魔【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 20 40
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 生化携带者【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 15 25
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 魔化悟空【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 10 17
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+
+
+
+
+#if
+
+EQUAL <$KillMonName> 火龙神【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 20 40
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+#if
+
+EQUAL <$KillMonName> 炼狱火龙【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 15 25
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 三头火龙【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 10 17
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC N$数据统计 <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+#if
+
+EQUAL <$KillMonName> 雪域魔王【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 12 20
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC N$数据统计 <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+#if
+
+EQUAL <$KillMonName> 雪域魔王【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 17 27
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC N$数据统计 <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 雪域魔王【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 25 45
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC N$数据统计 <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+
+#if
+
+EQUAL <$KillMonName> 冰锤猿魔【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 12 20
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC N$数据统计 <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+#if
+
+EQUAL <$KillMonName> 寒冰龙【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 17 27
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC N$数据统计 <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 困龙柱【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 25 45
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC N$数据统计 <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+#if
+
+EQUAL <$KillMonName> 战狐【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 12 20
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC N$数据统计 <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+#if
+
+EQUAL <$KillMonName> 法狐【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 17 27
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC N$数据统计 <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 九尾妖狐【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 25 45
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC N$数据统计 <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+#if
+
+EQUAL <$KillMonName> 地宫紫锤【统领】
+#act
+MOVR N$击杀大型怪给元宝数量 12 20
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC N$数据统计 <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+#if
+
+EQUAL <$KillMonName> 地宫金锤【领主】
+#act
+MOVR N$击杀大型怪给元宝数量 17 27
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC N$数据统计 <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+#if
+
+EQUAL <$KillMonName> 地宫金兽神【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 25 45
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC N$数据统计 <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+#or
+EQUAL <$KillMonName> 修罗鬼王【统领】 
+EQUAL <$KillMonName> 炼狱狂魔【统领】 
+EQUAL <$KillMonName> 瘟疫蛇法【统领】 
+EQUAL <$KillMonName> 暗黑爪魔【统领】 
+EQUAL <$KillMonName> 幽冥骑士【领主】 
+EQUAL <$KillMonName> 炼狱魔尊【领主】 
+EQUAL <$KillMonName> 瘟疫蛇后【领主】 
+EQUAL <$KillMonName> 暗黑巫王【领主】 
+EQUAL <$KillMonName> 冥府军主【BOSS】
+EQUAL <$KillMonName> 炼狱之主【BOSS】
+EQUAL <$KillMonName> 瘟疫蛟王【BOSS】
+EQUAL <$KillMonName> 暗黑之主【BOSS】
+#act
+MOVR N$击杀大型怪给元宝数量 25 45
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+gamegold + <$STR(N$击杀大型怪给元宝数量)>
+INC N$数据统计 <$STR(N$击杀大型怪给元宝数量)>
+INC J28 <$STR(N$击杀大型怪给元宝数量)>
+sendmsg 6 击杀BOSS以获取<$STR(N$击杀大型怪给元宝数量)>元宝
+goto @判断法宝元宝翻倍
+SCREENEFFECT 60 400 66 0 83 1 100 0 0 0
+break
+
+
+
+
+
+
+
+
+
+[@深渊之主爆装备]
+#if
+EQUAL U45 22
+#act
+MOV U45 23
+messagebox 任务完成,快去领取奖励吧
+
+#IF
+SMALL <$LEVEL> 20
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骷髅矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骷髅矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骷髅矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骷髅矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骷髅矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骷髅矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骷髅矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骷髅矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骷髅矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骷髅矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+break
+
+#IF
+SMALL <$LEVEL> 30
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\僵尸矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\僵尸矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\僵尸矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\僵尸矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\僵尸矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\僵尸矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\僵尸矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\僵尸矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\僵尸矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\僵尸矿区装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+break
+#IF
+SMALL <$LEVEL> 40
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蜈蚣洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蜈蚣洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蜈蚣洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蜈蚣洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蜈蚣洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蜈蚣洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蜈蚣洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蜈蚣洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蜈蚣洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蜈蚣洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+break
+#IF
+SMALL <$LEVEL> 50
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\兽人古墓装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\兽人古墓装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\兽人古墓装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\兽人古墓装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\兽人古墓装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\兽人古墓装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\兽人古墓装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\兽人古墓装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\兽人古墓装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\兽人古墓装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+break
+#IF
+SMALL <$LEVEL> 60
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\沃玛寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\沃玛寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\沃玛寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\沃玛寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\沃玛寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\沃玛寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\沃玛寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\沃玛寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\沃玛寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\沃玛寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+break
+#IF
+SMALL <$LEVEL> 70
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\祖玛秘境鉴定装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\祖玛秘境鉴定装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\祖玛秘境鉴定装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\祖玛秘境鉴定装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\祖玛秘境鉴定装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\祖玛秘境鉴定装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\祖玛秘境鉴定装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\祖玛秘境鉴定装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\祖玛秘境鉴定装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\祖玛秘境鉴定装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+break
+#IF
+SMALL <$LEVEL> 80
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骨魔洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骨魔洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骨魔洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骨魔洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骨魔洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骨魔洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骨魔洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骨魔洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骨魔洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\骨魔洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+break
+#IF
+SMALL <$LEVEL> 90
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\恶魔营地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\恶魔营地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\恶魔营地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\恶魔营地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\恶魔营地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\恶魔营地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\恶魔营地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\恶魔营地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\恶魔营地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\恶魔营地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+break
+#IF
+SMALL <$LEVEL> 100
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蚂蚁洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蚂蚁洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蚂蚁洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蚂蚁洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蚂蚁洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蚂蚁洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蚂蚁洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蚂蚁洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蚂蚁洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\蚂蚁洞装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+break
+#IF
+SMALL <$LEVEL> 110
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\精灵谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\精灵谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\精灵谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\精灵谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\精灵谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\精灵谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\精灵谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\精灵谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\精灵谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\精灵谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+break
+#IF
+SMALL <$LEVEL> 120
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\黑暗魔殿装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\黑暗魔殿装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\黑暗魔殿装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\黑暗魔殿装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\黑暗魔殿装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\黑暗魔殿装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\黑暗魔殿装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\黑暗魔殿装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\黑暗魔殿装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\黑暗魔殿装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+break
+#IF
+SMALL <$LEVEL> 130
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\赤月峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\赤月峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\赤月峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\赤月峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\赤月峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\赤月峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\赤月峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\赤月峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\赤月峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\赤月峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+break
+#IF
+SMALL <$LEVEL> 140
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔古刹装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔古刹装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔古刹装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔古刹装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔古刹装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔古刹装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔古刹装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔古刹装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔古刹装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔古刹装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+break
+#IF
+SMALL <$LEVEL> 150
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\牛魔寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\牛魔寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\牛魔寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\牛魔寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\牛魔寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\牛魔寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\牛魔寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\牛魔寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\牛魔寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\牛魔寺庙装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+break
+#IF
+SMALL <$LEVEL> 160
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔毒蚀地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔毒蚀地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔毒蚀地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔毒蚀地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔毒蚀地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔毒蚀地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔毒蚀地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔毒蚀地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔毒蚀地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔毒蚀地装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+break
+#IF
+SMALL <$LEVEL> 170
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔宫装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔宫装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔宫装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔宫装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔宫装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔宫装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔宫装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔宫装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔宫装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\封魔宫装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+break
+#IF
+SMALL <$LEVEL> 180
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔龙峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔龙峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔龙峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔龙峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔龙峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔龙峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔龙峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔龙峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔龙峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔龙峡谷装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+break
+#IF
+SMALL <$LEVEL> 190
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\幽暗地底装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\幽暗地底装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\幽暗地底装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\幽暗地底装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\幽暗地底装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\幽暗地底装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\幽暗地底装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\幽暗地底装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\幽暗地底装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\幽暗地底装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+break
+#IF
+SMALL <$LEVEL> 200
+#ACT
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔化工厂装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔化工厂装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔化工厂装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔化工厂装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔化工厂装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔化工厂装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔化工厂装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔化工厂装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔化工厂装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\魔化工厂装备.txt S$深渊给装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$深渊给装备)> 1
+break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@幽灵骑士活动爆出物品]
+#OR
+EQUAL <$KillMonName> 幽灵冲锋兵
+EQUAL <$KillMonName> 幽灵先锋兵
+EQUAL <$KillMonName> 幽灵攻防兵
+EQUAL <$KillMonName> 幽灵骑士兵
+#act
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+M.MonDropItemsEx <$KillMonName> 10元宝 1
+
+M.MonDropItemsEx <$KillMonName> 幽魂能量护身符 1
+M.MonDropItemsEx <$KillMonName> 大量金币袋 1
+M.MonDropItemsEx <$KillMonName> 大量金币袋 1
+M.MonDropItemsEx <$KillMonName> 大量金币袋 1
+M.MonDropItemsEx <$KillMonName> 大量金币袋 1
+M.MonDropItemsEx <$KillMonName> 大量金币袋 1
+M.MonDropItemsEx <$KillMonName> 一大陆时空卷轴 1
+M.MonDropItemsEx <$KillMonName> 一大陆时空卷轴 1
+M.MonDropItemsEx <$KillMonName> 一大陆时空卷轴 1
+
+break
+
+#if
+EQUAL <$KillMonName> 幽灵骑士
+#ACT
+;sendmsg 6 幽灵骑士一杯急啥50元真冲易掉落 2分钟后可拾取
+THROWITEM <$MAP> <$KILLMONX> <$KILLMONY> 4 500传仙币 1|50 0
+THROWITEM <$MAP> <$KILLMONX> <$KILLMONY> 4 一大陆时空卷轴 10|40 0
+
+
+
+
+
+
+
+
+
+
+[@二大陆城主爆率]
+#IF
+RANDOMEX 1 5
+#act
+M.MonDropItemsEx <$KillMonName> 二大陆转生水晶 1
+
+
+#if
+RANDOMEX 1 101
+#act
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\时装装备.txt S$给时装装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$给时装装备)> 1
+
+#if
+RANDOMEX 30 101
+#act
+M.MonDropItemsEx <$KillMonName> 贪婪之果 1
+
+
+#if
+RANDOMEX 1 101
+#act
+M.MonDropItemsEx <$KillMonName> 凤凰琴 1
+
+
+[@一大陆城主爆率]
+
+#if
+#act
+M.MonDropItemsEx <$KillMonName> 一大陆转生水晶 1
+
+#if
+RANDOMEX 1 101
+#act
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\时装装备.txt S$给时装装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$给时装装备)> 1
+
+#if
+RANDOMEX 50 101
+#act
+M.MonDropItemsEx <$KillMonName> 幸运之果 1
+
+#if
+RANDOMEX 1 3
+#act
+M.MonDropItemsEx <$KillMonName> 通天魔坠 1
+
+[@三大陆城主爆率]
+
+#if
+RANDOMEX 1 2000
+#act
+M.MonDropItemsEx <$KillMonName> 召唤圣兽 1
+addtextlist ..\..\..\..\通区文件\大喇叭\公屏.txt <$STR(T14)><$STR(U162)>区【<$USERNAME>】击杀三大陆城主BOSS爆出了【召唤圣兽】~<$DATETIME>
+addtextlist ..\..\..\..\通区文件\大喇叭\QQ公屏.txt <$STR(T14)><$STR(U162)>区【<$USERNAME>】击杀三大陆城主BOSS爆出了【召唤圣兽】
+
+#elseact
+sendmsg 6 圣兽差一点就爆出来了,圣兽全屏攻击是三倍伤害呦,使用周卡鞭尸城主更容易获得
+M.MonDropItemsEx <$KillMonName> 圣兽羽毛 1
+#if
+RANDOMEX 1 101
+#act
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\时装装备.txt S$给时装装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$给时装装备)> 1
+
+#if
+RANDOMEX 1 5
+#act
+M.MonDropItemsEx <$KillMonName> 三大陆转生水晶 1
+
+#if
+RANDOMEX 10 101
+#act
+M.MonDropItemsEx <$KillMonName> 真视之果 1
+#if
+RANDOMEX 10 100
+#act
+M.MonDropItemsEx <$KillMonName> 巨翼魔王精血 1
+
+#if
+RANDOMEX 1 2001
+#act
+M.MonDropItemsEx <$KillMonName> 传送戒指 1
+addtextlist ..\..\..\..\通区文件\大喇叭\公屏.txt <$STR(T14)><$STR(U162)>区【<$USERNAME>】击杀三大陆城主BOSS爆出了【传送戒指】~<$DATETIME>
+addtextlist ..\..\..\..\通区文件\大喇叭\QQ公屏.txt <$STR(T14)><$STR(U162)>区【<$USERNAME>】击杀三大陆城主BOSS爆出了【传送戒指】
+
+
+
+[@四大陆城主爆率]
+#if
+RANDOMEX 1 500
+#act
+M.MonDropItemsEx <$KillMonName> 锁妖碑 1
+#if
+#act
+
+M.MonDropItemsEx <$KillMonName> 战灵法相进化石 10
+#if
+RANDOMEX 1 2001
+#act
+M.MonDropItemsEx <$KillMonName> 彻地钉 1
+addtextlist ..\..\..\..\通区文件\大喇叭\公屏.txt <$STR(T14)><$STR(U162)>区【<$USERNAME>】击杀四大陆城主BOSS爆出了【彻地钉】~<$DATETIME>
+addtextlist ..\..\..\..\通区文件\大喇叭\QQ公屏.txt <$STR(T14)><$STR(U162)>区【<$USERNAME>】击杀四大陆城主BOSS爆出了【彻地钉】
+
+#elseact
+sendmsg 6 彻地钉差一点就爆出来了
+
+#if
+RANDOMEX 1 5
+#act
+M.MonDropItemsEx <$KillMonName> 四大陆转生水晶 1
+
+#if
+RANDOMEX 1 101
+#act
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\时装装备.txt S$给时装装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$给时装装备)> 1
+
+
+#if
+RANDOMEX 10 101
+#act
+M.MonDropItemsEx <$KillMonName> 命运之果 1
+
+#if
+RANDOMEX 5 101
+#act
+M.MonDropItemsEx <$KillMonName> 星锥之轮 1
+
+
+#if
+RANDOMEX 1 101
+#act
+M.MonDropItemsEx <$KillMonName> 凤凰琴 1
+
+
+[@五大陆城主爆率]
+#if
+#act
+
+
+M.MonDropItemsEx <$KillMonName> 战灵法相进化石 10
+#if
+RANDOMEX 10 101
+#act
+M.MonDropItemsEx <$KillMonName> 五大陆转生水晶 1
+
+#if
+RANDOMEX 1 101
+#act
+GetCacheRandomText ..\QuestDiary\拾取鉴定\装备\时装装备.txt S$给时装装备
+M.MonDropItemsEx <$KillMonName> <$STR(S$给时装装备)> 1
+
+#if
+RANDOMEX 1 101
+#act
+M.MonDropItemsEx <$KillMonName> 聚财之果 1
+
+
+
+
+
+
+
+
+[@聚宝树妖爆物品]
+#if
+RANDOMEX 1 100
+#act
+GetRandomText ..\QuestDiary\聚宝树妖\聚宝树妖物品大量爆出.txt S$聚宝树妖物品
+M.MonDropItemsEx <$KillMonName> <$STR(S$聚宝树妖物品)> 50
+break
+
+
+#if
+RANDOMEX 1 100
+#act
+GetRandomText ..\QuestDiary\聚宝树妖\聚宝树妖卡片.txt S$聚宝树妖物品
+M.MonDropItemsEx <$KillMonName> <$STR(S$聚宝树妖物品)> 1
+M.MonDropItemsEx <$KillMonName> <$STR(S$聚宝树妖物品)> 1
+M.MonDropItemsEx <$KillMonName> <$STR(S$聚宝树妖物品)> 1
+M.MonDropItemsEx <$KillMonName> <$STR(S$聚宝树妖物品)> 1
+M.MonDropItemsEx <$KillMonName> <$STR(S$聚宝树妖物品)> 1
+M.MonDropItemsEx <$KillMonName> <$STR(S$聚宝树妖物品)> 1
+M.MonDropItemsEx <$KillMonName> <$STR(S$聚宝树妖物品)> 1
+M.MonDropItemsEx <$KillMonName> <$STR(S$聚宝树妖物品)> 1
+M.MonDropItemsEx <$KillMonName> <$STR(S$聚宝树妖物品)> 1
+M.MonDropItemsEx <$KillMonName> <$STR(S$聚宝树妖物品)> 1
+break
+
+
+#if
+#act
+GetRandomText ..\QuestDiary\聚宝树妖\聚宝树妖物品.txt S$聚宝树妖物品
+M.MonDropItemsEx <$KillMonName> <$STR(S$聚宝树妖物品)> 1
+break
+
+[@爆等级丹啊]
+#if
+RANDOMEX 1 200
+#act
+CHANGELEVEL + 1
+addtextlist ..\..\..\..\通区文件\大喇叭\公屏.txt <$STR(T14)><$STR(U162)>区【<$USERNAME>】击杀BOSS触发等级+1~<$DATETIME>
+
+
+[@随机爆复活碎片]
+#if
+RANDOMEX 1 5
+#act
+M.MonDropItemsEx <$KillMonName> 复活碎片 1
+
+
+#if
+RANDOMEX 1 10
+#act
+M.MonDropItemsEx <$KillMonName> 黑暗遗志 1
+
+
+
+
+
+}

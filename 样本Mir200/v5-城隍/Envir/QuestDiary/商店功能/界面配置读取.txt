@@ -1,0 +1,28 @@
+[@界面配置读取]
+{
+#if
+#act
+GetTextLineCount ..\QuestDiary\武器\宝石分类.txt N$宝石总行数
+GetTextLineCount ..\QuestDiary\武器\斗笠分类.txt N$斗笠总行数
+GetTextLineCount ..\QuestDiary\武器\毒符分类.txt N$毒符总行数
+GetTextLineCount ..\QuestDiary\武器\盾牌分类.txt N$盾牌总行数
+GetTextLineCount ..\QuestDiary\武器\过滤分类.txt N$过滤总行数
+GetTextLineCount ..\QuestDiary\武器\戒指分类.txt N$戒指总行数
+GetTextLineCount ..\QuestDiary\武器\军鼓分类.txt N$军鼓总行数
+GetTextLineCount ..\QuestDiary\武器\灵玉分类.txt N$灵玉总行数
+GetTextLineCount ..\QuestDiary\武器\马牌分类.txt N$马牌总行数
+GetTextLineCount ..\QuestDiary\武器\衣服分类.txt N$衣服总行数
+GetTextLineCount ..\QuestDiary\武器\其它分类.txt N$其它总行数
+GetTextLineCount ..\QuestDiary\武器\生肖分类.txt N$生肖总行数
+GetTextLineCount ..\QuestDiary\武器\时装分类.txt N$时装总行数
+GetTextLineCount ..\QuestDiary\武器\手镯分类.txt N$手镯总行数
+GetTextLineCount ..\QuestDiary\武器\特殊分类.txt N$特殊总行数
+GetTextLineCount ..\QuestDiary\武器\头盔分类.txt N$头盔总行数
+GetTextLineCount ..\QuestDiary\武器\武器分类.txt N$武器总行数
+GetTextLineCount ..\QuestDiary\武器\项链分类.txt N$项链总行数
+GetTextLineCount ..\QuestDiary\武器\面巾分类.txt N$面巾总行数
+GetTextLineCount ..\QuestDiary\武器\勋章分类.txt N$勋章总行数
+GetTextLineCount ..\QuestDiary\武器\腰带分类.txt N$腰带总行数
+GetTextLineCount ..\QuestDiary\武器\所有物品.txt N$所有物品总行数
+
+}

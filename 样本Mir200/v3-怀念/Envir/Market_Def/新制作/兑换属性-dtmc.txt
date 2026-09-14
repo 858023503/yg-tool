@@ -1,0 +1,41 @@
+()
+%100
+[@main]
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+<------------------------------------------------------------/SCOLOR=13>\ \
+<尊敬的玩家您好为您提供兑换属性和属性点重置服务！/SCOLOR=249>\
+<------------------------------------------------------------/SCOLOR=13>\
+<经验升级到66级，使用突破凭证降级65，增加400点属性点/SCOLOR=249>\
+<突破凭证只有海底深渊里面的深海统治者BOSS掉落/SCOLOR=246>\ \
+<------------------------------------------------------------/SCOLOR=13>\
+<>          <点击兑换/@点击兑换>         <属性点重置|250#购买需要88积分/@重置>\ \
+
+[@重置]
+#IF
+CHECKGAMEGIRD > 87
+#ACT
+GAMEGIRD - 88
+GIVE 属性点重置 1
+Messagebox 兑换成功
+#ELSEACT
+
+Messagebox 对不起,你没有88积分
+BREAK
+
+
+[@点击兑换]
+#IF
+CHECKLEVELEX > 65
+CHECKITEM 突破凭证 1
+#ACT
+TAKE 突破凭证 1
+CHANGELEVEL = 65
+BONUSPOINT + 400
+Messagebox 兑换成功
+#ELSEACT
+
+Messagebox 对不起,你没有突破凭证
+BREAK

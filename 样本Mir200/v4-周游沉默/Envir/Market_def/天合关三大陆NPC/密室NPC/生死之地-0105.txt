@@ -1,0 +1,8 @@
+[@Main]
+#IF
+CheckMapMonCount <$MAP> < 1 1
+#ACT
+map 生死之地
+#ELSEACT
+MESSAGEBOX 请清理完地图怪物，方可有资格进入【生死之地】
+break

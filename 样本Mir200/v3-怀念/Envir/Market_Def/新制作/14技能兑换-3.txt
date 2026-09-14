@@ -1,0 +1,846 @@
+[@main]
+#IF
+#ACT
+CloseBigDialogBox
+#SAY
+\ \
+技能兑换：我这里可以兑换新技能，让你变得更强大！\
+　\
+<开 天 斩|250#需要书页*3+2000元宝/@X开天斩>  　 <武兽降临|250#需要召唤神兽/@X武兽降临>  　 <流星火雨|250#需要书页*3+2000元宝/@X流星火雨>  　 <法神之兽|250#需要召唤神兽/@X法神之兽> \  \
+<飓 风 破|250#需要书页*3+2000元宝/@X飓风破>  　 <裂 神 符|250#需要书页*30+道士之星*9+5000元宝/@X裂神符>  　 <召唤麒麟|250#需要召唤神兽/@X召唤麒麟>  　 <护体神盾|250#需要书页*99+5000元宝/@X护体神盾>  \ 　　
+　\
+<转职后需要重新学习技能，护体神盾保留！/SCOLOR=249> <技能修炼/@技能修炼> \ \
+[@X召唤麒麟]
+#IF
+CHECKJOB taoist
+#ACT
+goto @X召唤麒麟A
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:您不是道士..
+
+[@X召唤麒麟A]
+#IF
+checkitem 召唤神兽 1
+#ACT
+take 召唤神兽 1
+ADDSKILL 召唤麒麟 3
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(技能大师处)|254:0:1}修炼了{【召唤麒麟】|252:251:1}..
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(技能大师处)|254:0:1}修炼了{【召唤麒麟】|252:251:1}..
+MESSAGEBOX \　\恭喜你成功修炼了【召唤麒麟】...
+goto @main
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:您的材料不够
+break
+
+[@X法神之兽]
+#IF
+checkjob wizard
+#ACT
+goto @X法神之兽A
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:您不是法师..
+
+[@X法神之兽A]
+#IF
+checkitem 召唤神兽 1
+#ACT
+take 召唤神兽 1
+ADDSKILL 法神之兽 3
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(技能大师处)|254:0:1}修炼了{【法神之兽】|252:251:1}..
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(技能大师处)|254:0:1}修炼了{【法神之兽】|252:251:1}..
+MESSAGEBOX \　\恭喜你成功修炼了【法神之兽】...
+goto @main
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:您的材料不够
+break
+
+[@X武兽降临]
+#IF
+checkjob warrior
+#ACT
+goto @X武兽降临A
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:您不是战士..
+
+[@X武兽降临A]
+#IF
+checkitem 召唤神兽 1
+#ACT
+take 召唤神兽 1
+ADDSKILL 武兽降临 3
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(技能大师处)|254:0:1}修炼了{【武兽降临】|252:251:1}..
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(技能大师处)|254:0:1}修炼了{【武兽降临】|252:251:1}..
+MESSAGEBOX \　\恭喜你成功修炼了【武兽降临】...
+goto @main
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:您的材料不够
+break
+
+
+[@X飓风破]
+#IF
+CHECKJOB taoist
+#ACT
+goto @X飓风破A
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:您不是道士..
+
+[@X飓风破A]
+#IF
+checkitem 书页 3
+CHECKGameGold > 1999
+#ACT
+GameGold - 2000
+take 书页 3
+ADDSKILL 飓风破 3
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(技能大师处)|254:0:1}修炼了{【飓风破】|252:251:1}..
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(技能大师处)|254:0:1}修炼了{【飓风破】|252:251:1}..
+MESSAGEBOX \　\恭喜你成功修炼了【飓风破】...
+goto @main
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:您的材料不够
+break
+
+
+[@X开天斩]
+#IF
+checkjob warrior
+#ACT
+goto @X开天斩A
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:您不是战士..
+
+[@X开天斩A]
+#IF
+CHECKSKILL 开天斩 = 3
+#ACT
+MESSAGEBOX 〖错误〗:你已经修炼了【开天斩】，无法重复修炼..
+break
+#IF
+checkitem 书页 3
+CHECKGameGold > 1999
+#ACT
+GameGold - 2000
+take 书页 3
+ADDSKILL 开天斩
+SKILLLEVEL 开天斩 = 3
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(技能大师处)|254:0:1}修炼了{【开天斩】|252:251:1}..
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(技能大师处)|254:0:1}修炼了{【开天斩】|252:251:1}..
+MESSAGEBOX \　\恭喜你成功修炼了【开天斩】...
+goto @main
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:您的材料不够
+break
+
+[@X流星火雨]
+#IF
+checkjob wizard
+#ACT
+goto @X流星火雨A
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:您不是法师..
+break
+
+[@X流星火雨A]
+#IF
+CHECKSKILL 流星火雨 = 3
+#ACT
+MESSAGEBOX 〖错误〗:你已经修炼了【流星火雨】，无法重复修炼..
+break
+#IF
+checkitem 书页 3
+CHECKGameGold > 1999
+#ACT
+GameGold - 2000
+take 书页 3
+ADDSKILL 流星火雨
+SKILLLEVEL 流星火雨 = 3
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(技能大师处)|254:0:1}修炼了{【流星火雨】|252:251:1}..
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(技能大师处)|254:0:1}修炼了{【流星火雨】|252:251:1}..
+MESSAGEBOX \　\恭喜你成功修炼了【流星火雨】...
+goto @main
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:您的材料不够
+break
+
+
+[@X裂神符]
+#IF
+checkjob taoist
+#ACT
+goto @X裂神符A
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:您不是道士..
+break
+
+[@X裂神符A]
+#IF
+CHECKSKILL 裂神符 = 3
+#ACT
+MESSAGEBOX 〖错误〗:你已经修炼了【裂神符】，无法重复修炼..
+break
+#IF
+checkitem 书页 30
+checkitem 道士之星 9
+CHECKGameGold > 4999
+#ACT
+GameGold - 5000
+take 道士之星 9
+take 书页 30
+ADDSKILL 裂神符 3
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(技能大师处)|254:0:1}修炼了{【裂神符】|252:251:1}..
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(技能大师处)|254:0:1}修炼了{【裂神符】|252:251:1}..
+MESSAGEBOX \　\恭喜你成功修炼了【裂神符】...
+goto @main
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:您的材料不够
+break
+
+[@X护体神盾]
+#IF
+CHECKSKILL 护体神盾 = 3
+#ACT
+MESSAGEBOX 〖错误〗:你已经修炼了【护体神盾】，无法重复修炼..
+break
+#IF
+checkitem 书页 99
+CHECKGameGold > 4999
+#ACT
+GameGold - 5000
+take 书页 99
+ADDSKILL 护体神盾 3
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(技能大师处)|254:0:1}修炼了{【护体神盾】|252:251:1}..
+GuildNoticeMsg 249 251 ぐ恭喜{【<$USERNAME>】|250:0:1}在{(技能大师处)|254:0:1}修炼了{【护体神盾】|252:251:1}..
+MESSAGEBOX \　\恭喜你成功修炼了【护体神盾】...
+goto @main
+break
+#ELSEact
+MESSAGEBOX 〖错误〗:您的材料不够
+break
+
+[@技能修炼]
+
+#IF
+#ACT
+CloseBigDialogBox
+BREAK
+#SAY
+<------------------------------------------------------------/SCOLOR=13>\ \
+修炼技能有<伤害加成>，书页所有怪物都有几率爆出！\
+修炼完成有特效变化，修炼成功率<100%>！\
+前期技能修炼很重要，能大大提升自<身伤害>！\
+<注意：转职不保留修炼技能的等级，需要重新修炼>\
+<------------------------------------------------------------/SCOLOR=13>\ \
+<>                       <点击修炼/@技能强化>
+
+
+
+
+[@技能强化]
+
+#IF
+checkjob warrior
+#act
+goto @战士强化变量
+#SAY
+提示：技能最高可以修炼至<4重>\
+{-------------------------------------------------------------/FCOLOR=35}\
+{烈火剑法/FCOLOR=249}  {[当前]/FCOLOR=255}{<$str(S$强化等级1)>/FCOLOR=249}  {[条件]/FCOLOR=255}<$str(S$强化条件1)>  <点击修炼/@点击修炼1>\
+　\
+{开 天 斩/FCOLOR=249}  {[当前]/FCOLOR=255}{<$str(S$强化等级2)>/FCOLOR=249}  {[条件]/FCOLOR=255}<$str(S$强化条件2)>  <点击修炼/@点击修炼2>\
+　\
+{刺杀剑术/FCOLOR=249}  {[当前]/FCOLOR=255}{<$str(S$强化等级3)>/FCOLOR=249}  {[条件]/FCOLOR=255}<$str(S$强化条件3)>  <点击修炼/@点击修炼7>\
+{-------------------------------------------------------------/FCOLOR=35}\
+
+
+#IF
+checkjob wizard
+#act
+goto @法师强化变量
+#SAY
+提示:技能最高可以修炼至<12重>\
+{-------------------------------------------------------------/FCOLOR=35}\
+{魔 法 盾/FCOLOR=249}  {[当前]/FCOLOR=255}{<$str(S$强化等级1)>/FCOLOR=249}  {[条件]/FCOLOR=255}<$str(S$强化条件1)>  <点击修炼/@点击修炼3>\
+　\
+{流星火雨/FCOLOR=249}  {[当前]/FCOLOR=255}{<$str(S$强化等级2)>/FCOLOR=249}  {[条件]/FCOLOR=255}<$str(S$强化条件2)>  <点击修炼/@点击修炼4>\
+　\
+{火    墙/FCOLOR=249}  {[当前]/FCOLOR=255}{<$str(S$强化等级3)>/FCOLOR=249}  {[条件]/FCOLOR=255}<$str(S$强化条件3)>  <点击修炼/@点击修炼8>\
+{-------------------------------------------------------------/FCOLOR=35}\
+
+
+#IF
+checkjob taoist
+#act
+goto @道士强化变量
+#SAY
+提示:技能最高可以修炼至<12重>\
+{-------------------------------------------------------------/FCOLOR=35}\
+{召唤麒麟/FCOLOR=249}  {[当前]/FCOLOR=255}{<$str(S$强化等级1)>/FCOLOR=249}  {[条件]/FCOLOR=255}<$str(S$强化条件1)>  <点击修炼/@点击修炼5>\
+　\
+{飓 风 破/FCOLOR=249}  {[当前]/FCOLOR=255}{<$str(S$强化等级2)>/FCOLOR=249}  {[条件]/FCOLOR=255}<$str(S$强化条件2)>  <点击修炼/@点击修炼6>\
+　\
+{裂 神 符/FCOLOR=249}  {[当前]/FCOLOR=255}{<$str(S$强化等级3)>/FCOLOR=249}  {[条件]/FCOLOR=255}<$str(S$强化条件3)>  <点击修炼/@点击修炼9>\
+{-------------------------------------------------------------/FCOLOR=35}\
+
+
+;u33 ;u34 ;u35
+
+
+
+
+[@点击修炼1]
+#IF
+CHECKSKILL 烈火剑法 = 4 1
+#act
+MESSAGEBOX \[提示]你的烈火剑法强化到最高级别了！
+break
+
+#IF
+CHECKSKILL 烈火剑法 < 4 1
+checkitem 书页 99
+CheckGAMEGOLD > 59999
+#act
+take 书页 99
+GAMEGOLD - 60000
+SKILLLEVEL 烈火剑法 + 1 1
+goto @技能强化
+MESSAGEBOX \[提示]烈火剑法强化成功，技能强化等级+1！
+SENDMSG 0 恭喜：<$USERNAME>在土城强化技能NPC[强化了烈火剑法]
+break
+#ELSEact
+MESSAGEBOX \[提示]不满足强化条件，请检查！
+break
+
+
+[@点击修炼2]
+#IF
+CHECKSKILL 开天斩 = 4 1
+#act
+MESSAGEBOX \[提示]你的开天斩强化到最高级别了！
+break
+
+#IF
+CHECKSKILL 开天斩 < 4 1
+checkitem 书页 99
+CheckGAMEGOLD > 59999
+#act 
+take 书页 99
+GAMEGOLD - 60000
+SKILLLEVEL 开天斩 + 1 1
+goto @技能强化
+MESSAGEBOX \[提示]开天斩强化成功，技能强化等级+1！
+SENDMSG 0 恭喜：<$USERNAME>在土城强化技能NPC[强化了开天斩]
+break
+#ELSEact
+MESSAGEBOX \[提示]不满足强化条件，请检查！
+break
+
+
+[@点击修炼7]
+#IF
+CHECKSKILL 刺杀剑术 = 4 1
+#act
+MESSAGEBOX \[提示]你的刺杀剑术强化到最高级别了！
+break
+
+#IF
+CHECKSKILL 刺杀剑术 < 4 1
+checkitem 书页 99
+CheckGAMEGOLD > 59999
+#act
+take 书页 99
+GAMEGOLD - 60000
+SKILLLEVEL 刺杀剑术 + 1 1
+goto @技能强化
+MESSAGEBOX \[提示]刺杀剑术强化成功，技能强化等级+1！
+SENDMSG 0 恭喜：<$USERNAME>在土城强化技能NPC[强化了刺杀剑术]
+break
+#ELSEact
+MESSAGEBOX \[提示]不满足强化条件，请检查！
+break
+
+
+[@点击修炼3]
+#IF
+CHECKSKILL 魔法盾 = 4 1
+#act
+MESSAGEBOX \[提示]你的魔法盾强化到最高级别了！
+break
+
+#IF
+CHECKSKILL 魔法盾 < 4 1
+checkitem 书页 99
+CheckGAMEGOLD > 59999
+#act
+take 书页 99
+GAMEGOLD - 60000
+SKILLLEVEL 魔法盾 + 1 1
+goto @技能强化
+MESSAGEBOX \[提示]魔法盾强化成功，技能强化等级+1！
+SENDMSG 0 恭喜：<$USERNAME>在土城强化技能NPC[强化了魔法盾]
+break
+#ELSEact
+MESSAGEBOX \[提示]不满足强化条件，请检查！
+break
+
+
+
+
+[@点击修炼4]
+#IF
+CHECKSKILL 流星火雨 = 4 1
+#act
+MESSAGEBOX \[提示]你的流星火雨强化到最高级别了！
+break
+
+#IF
+CHECKSKILL 流星火雨 < 4 1
+checkitem 书页 99
+CheckGAMEGOLD > 59999
+#act
+take 书页 99
+GAMEGOLD - 60000
+SKILLLEVEL 流星火雨 + 1 1
+goto @技能强化
+MESSAGEBOX \[提示]流星火雨强化成功，技能强化等级+1！
+SENDMSG 0 恭喜：<$USERNAME>在土城强化技能NPC[强化了流星火雨]
+break
+#ELSEact
+MESSAGEBOX \[提示]不满足强化条件，请检查！
+break
+
+
+
+[@点击修炼8]
+#IF
+CHECKSKILL 火墙 = 4 1
+#act
+MESSAGEBOX \[提示]你的火墙强化到最高级别了！
+break
+
+#IF
+CHECKSKILL 火墙 < 4 1
+checkitem 书页 99
+CheckGAMEGOLD > 59999
+#act
+take 书页 99
+GAMEGOLD - 60000
+SKILLLEVEL 火墙 + 1 1
+goto @技能强化
+MESSAGEBOX \[提示]火墙强化成功，技能强化等级+1！
+SENDMSG 0 恭喜：<$USERNAME>在土城强化技能NPC[强化了火墙]
+break
+#ELSEact
+MESSAGEBOX \[提示]不满足强化条件，请检查！
+break
+
+[@点击修炼5]
+#IF
+CHECKSKILL 召唤麒麟 = 4 1
+#act
+MESSAGEBOX \[提示]你的召唤麒麟强化到最高级别了！
+break
+
+#IF
+CHECKSKILL 召唤麒麟 < 4 1
+checkitem 书页 99
+CheckGAMEGOLD > 59999
+#act
+take 书页 99
+GAMEGOLD - 60000
+SKILLLEVEL 召唤麒麟 + 1 1
+goto @技能强化
+MESSAGEBOX \[提示]召唤麒麟强化成功，技能强化等级+1！
+SENDMSG 0 恭喜：<$USERNAME>在土城强化技能NPC[强化了召唤麒麟]
+break
+#ELSEact
+MESSAGEBOX \[提示]不满足强化条件，请检查！
+break
+
+
+
+[@点击修炼6]
+#IF
+CHECKSKILL 飓风破 = 4 1
+#act
+MESSAGEBOX \[提示]你的飓风破强化到最高级别了！
+break
+
+#IF
+CHECKSKILL 飓风破 < 4 1
+checkitem 书页 99
+CheckGAMEGOLD > 59999
+#act
+take 书页 99
+GAMEGOLD - 60000
+SKILLLEVEL 飓风破 + 1 1
+goto @技能强化
+MESSAGEBOX \[提示]飓风破强化成功，技能强化等级+1！
+SENDMSG 0 恭喜：<$USERNAME>在土城强化技能NPC[强化了飓风破]
+break
+#ELSEact
+MESSAGEBOX \[提示]不满足强化条件，请检查！
+break
+
+
+
+
+
+[@点击修炼9]
+#IF
+CHECKSKILL 裂神符 = 4 1
+#act
+MESSAGEBOX \[提示]你的裂神符强化到最高级别了！
+break
+
+#IF
+CHECKSKILL 裂神符 < 4 1
+checkitem 书页 99
+CheckGAMEGOLD > 59999
+#act
+take 书页 99
+GAMEGOLD - 60000
+SKILLLEVEL 裂神符 + 1 1
+goto @技能强化
+MESSAGEBOX \[提示]裂神符强化成功，技能强化等级+1！
+SENDMSG 0 恭喜：<$USERNAME>在土城强化技能NPC[强化了裂神符]
+break
+#ELSEact
+MESSAGEBOX \[提示]不满足强化条件，请检查！
+break
+
+
+
+;--------------------------------------------------------------------------------
+[@战士强化变量]
+#IF
+CHECKSKILL 烈火剑法 = 0 1
+#act
+MOV S$强化等级1 0重
+MOV S$强化条件1 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 烈火剑法 = 1 1
+#act
+MOV S$强化等级1 1重
+MOV S$强化条件1 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 烈火剑法 = 2 1
+#act
+MOV S$强化等级1 2重
+MOV S$强化条件1 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 烈火剑法 = 3 1
+#act
+MOV S$强化等级1 3重
+MOV S$强化条件1 {书页*99个+6万元宝/FCOLOR=255}
+
+
+#IF
+CHECKSKILL 烈火剑法 = 4 1
+#act
+MOV S$强化等级1 4重
+MOV S$强化条件1 {已强化到最高等级/FCOLOR=255}
+
+
+
+
+#IF
+NOT CheckMagicName 开天斩
+#act
+MOV S$强化等级2 ---
+MOV S$强化条件2 {(当前未练习)　　 /FCOLOR=255}
+
+#IF
+CHECKSKILL 开天斩 = 0 1
+#act
+MOV S$强化等级2 0重
+MOV S$强化条件2 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 开天斩 = 1 1
+#act
+MOV S$强化等级2 1重
+MOV S$强化条件2 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 开天斩 = 2 1
+#act
+MOV S$强化等级2 2重
+MOV S$强化条件2 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 开天斩 = 3 1
+#act
+MOV S$强化等级2 3重
+MOV S$强化条件2 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 开天斩 = 4 1
+#act
+MOV S$强化等级2 4重
+MOV S$强化条件2 {已强化到最高等级/FCOLOR=255}
+
+#IF
+CHECKSKILL 刺杀剑术 = 0 1
+#act
+MOV S$强化等级3 0重
+MOV S$强化条件3 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 刺杀剑术 = 1 1
+#act
+MOV S$强化等级3 1重
+MOV S$强化条件3 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 刺杀剑术 = 2 1
+#act
+MOV S$强化等级3 2重
+MOV S$强化条件3 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 刺杀剑术 = 3 1
+#act
+MOV S$强化等级3 3重
+MOV S$强化条件3 {书页*99个+6万元宝/FCOLOR=255}
+
+
+#IF
+CHECKSKILL 刺杀剑术 = 4 1
+#act
+MOV S$强化等级3 4重
+MOV S$强化条件3 {已强化到最高等级/FCOLOR=255}
+
+[@法师强化变量]
+#IF
+CHECKSKILL 魔法盾 = 0 1
+#act
+MOV S$强化等级1 0重
+MOV S$强化条件1 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 魔法盾 = 1 1
+#act
+MOV S$强化等级1 1重
+MOV S$强化条件1 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 魔法盾 = 2 1
+#act
+MOV S$强化等级1 2重
+MOV S$强化条件1 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 魔法盾 = 3 1
+#act
+MOV S$强化等级1 3重
+MOV S$强化条件1 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 魔法盾 = 4 1
+#act
+MOV S$强化等级1 4重
+MOV S$强化条件1 {已强化到最高等级/FCOLOR=255}
+
+
+#IF
+NOT CheckMagicName 流星火雨
+#act
+MOV S$强化等级2 ---
+MOV S$强化条件2 {(当前未练习)　　 /FCOLOR=255}
+
+#IF
+CHECKSKILL 流星火雨 = 0 1
+#act
+MOV S$强化等级2 0重
+MOV S$强化条件2 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 流星火雨 = 1 1
+#act
+MOV S$强化等级2 1重
+MOV S$强化条件2 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 流星火雨 = 2 1
+#act
+MOV S$强化等级2 2重
+MOV S$强化条件2 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 流星火雨 = 3 1
+#act
+MOV S$强化等级2 3重
+MOV S$强化条件2 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 流星火雨 = 4 1
+#act
+MOV S$强化等级2 4重
+MOV S$强化条件2 {已强化到最高等级/FCOLOR=255}
+
+
+
+#IF
+CHECKSKILL 火墙 = 0 1
+#act
+MOV S$强化等级3 0重
+MOV S$强化条件3 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 火墙 = 1 1
+#act
+MOV S$强化等级3 1重
+MOV S$强化条件3 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 火墙 = 2 1
+#act
+MOV S$强化等级3 2重
+MOV S$强化条件3 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 火墙 = 3 1
+#act
+MOV S$强化等级3 3重
+MOV S$强化条件3 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 火墙 = 4 1
+#act
+MOV S$强化等级3 4重
+MOV S$强化条件3 {已强化到最高等级/FCOLOR=255}
+
+
+[@道士强化变量]
+#IF
+NOT CheckMagicName 召唤麒麟
+#act
+MOV S$强化等级1 ---
+MOV S$强化条件1 {(当前未练习)　　 /FCOLOR=255}
+
+
+#IF
+CHECKSKILL 召唤麒麟 = 0 1
+#act
+MOV S$强化等级1 0重
+MOV S$强化条件1 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 召唤麒麟 = 1 1
+#act
+MOV S$强化等级1 1重
+MOV S$强化条件1 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 召唤麒麟 = 2 1
+#act
+MOV S$强化等级1 2重
+MOV S$强化条件1 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 召唤麒麟 = 3 1
+#act
+MOV S$强化等级1 3重
+MOV S$强化条件1 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 召唤麒麟 = 4 1
+#act
+MOV S$强化等级1 4重
+MOV S$强化条件1 {已强化到最高等级/FCOLOR=255}
+
+#IF
+NOT CheckMagicName 飓风破
+#act
+MOV S$强化等级2 ---
+MOV S$强化条件2 {(当前未练习)　　 /FCOLOR=255}
+
+#IF
+CHECKSKILL 飓风破 = 0 1
+#act
+MOV S$强化等级2 0重
+MOV S$强化条件2 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 飓风破 = 1 1
+#act
+MOV S$强化等级2 1重
+MOV S$强化条件2 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 飓风破 = 2 1
+#act
+MOV S$强化等级2 2重
+MOV S$强化条件2 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 飓风破 = 3 1
+#act
+MOV S$强化等级2 3重
+MOV S$强化条件2 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 飓风破 = 4 1
+#act
+MOV S$强化等级2 4重
+MOV S$强化条件2 {已强化到最高等级/FCOLOR=255}
+
+
+#IF
+NOT CheckMagicName 裂神符
+#act
+MOV S$强化等级3 ---
+MOV S$强化条件3 {(当前未练习)　　 /FCOLOR=255}
+
+
+#IF
+CHECKSKILL 裂神符 = 0 1
+#act
+MOV S$强化等级3 0重
+MOV S$强化条件3 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 裂神符 = 1 1
+#act
+MOV S$强化等级3 1重
+MOV S$强化条件3 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 裂神符 = 2 1
+#act
+MOV S$强化等级3 2重
+MOV S$强化条件3 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 裂神符 = 3 1
+#act
+MOV S$强化等级3 3重
+MOV S$强化条件3 {书页*99个+6万元宝/FCOLOR=255}
+
+#IF
+CHECKSKILL 裂神符 = 4 1
+#act
+MOV S$强化等级3 4重
+MOV S$强化条件3 {已强化到最高等级/FCOLOR=255}
+
+
+
+

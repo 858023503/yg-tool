@@ -1,0 +1,45 @@
+[@一大陆装备鉴定]
+ 
+{
+; 凡品 精品 魔次 
+; 圣品 给极品 统领
+; 仙品 万象套 领主
+; 神品 铭文  BOSS
+
+
+
+
+#IF
+CheckCacheTextList ..\QuestDiary\拾取鉴定\装备\骷髅矿区装备.txt <$STR(S98)>
+#ACT
+
+Goto @骷髅矿区鉴定
+BREAK
+
+#IF
+CheckCacheTextList ..\QuestDiary\拾取鉴定\装备\僵尸矿区装备.txt <$STR(S98)>
+#ACT
+
+Goto @僵尸矿区鉴定
+BREAK
+
+#IF
+CheckCacheTextList ..\QuestDiary\拾取鉴定\装备\蜈蚣洞装备.txt <$STR(S98)>
+#ACT
+
+Goto @蜈蚣洞鉴定
+BREAK
+
+#IF
+CheckCacheTextList ..\QuestDiary\拾取鉴定\装备\兽人古墓装备.txt <$STR(S98)>
+#ACT
+
+Goto @兽人古墓鉴定
+BREAK
+
+
+
+
+
+
+}

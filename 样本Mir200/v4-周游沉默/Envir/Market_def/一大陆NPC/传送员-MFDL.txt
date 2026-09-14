@@ -1,0 +1,668 @@
+[@main]
+#if
+#ACT
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1794 1 4 0 -150 1 390 5 0
+#SAY
+\ 
+
+
+<>  ==========================<安全区域>========================== \ 
+<>     <Text:卧 龙 村:0:0{FCOLOR=250}/@wlc>       <Text:白 日 门:0:0{FCOLOR=250}/@brm>       <Text:比 奇 省:0:0{FCOLOR=250}/@bqs>        <Text:毒蛇山谷:0:0{FCOLOR=250}/@xhc>\ 
+<>  ==========================<危险区域>========================== \  \ 
+<>     <骷 髅 洞|^254#免费传送/@kld> <僵尸洞穴|^254#免费传送/@fkq> <死亡山谷|^254#免费传送/@swsg> <沃玛寺庙|^254#免费传送/@wmsm> <野猪古墓|^254#免费传送/@yzgm> <牛 魔 洞|^254#免费传送/@牛魔洞>\ 
+<>     <封 魔 殿|^254#免费传送/@fmd> <骨 魔 洞|^254#免费传送/@gmd> <奴 隶 洞|^254#免费传送/@奴隶洞> <祖玛寺庙|^254#免费传送/@zmsm> <蚂 蚁 洞|^254#免费传送/@蚂蚁洞> <赤月洞穴|^254#免费传送/@赤月>\ \ 
+<>  ========================<BOSS专属区域>======================== \ \
+<>  <Text:古墓遗址:0:0{FCOLOR=70}/@古墓遗址> <Text:恶魔禁地:0:0{FCOLOR=70}/@恶魔禁地> <Text:腐蚀深渊:0:0{FCOLOR=70}/@腐蚀深渊> <Text:恐怖森林:0:0{FCOLOR=70}/@恐怖森林> <Text:恶龙池:0:0{FCOLOR=70}/@恶龙池> <Text:镇魔阁:0:0{FCOLOR=70}/@镇魔阁> <Text:食人谷:0:0{FCOLOR=70}/@食人谷> <Text:兽人谷:0:0{FCOLOR=70}/@兽人谷> \ 
+<>  <Text:钳虫巢穴:0:0{FCOLOR=253}/@钳虫巢穴> <Text:堕落坟场:0:0{FCOLOR=253}/@堕落坟场> <Text:地狱烈焰:0:0{FCOLOR=253}/@地狱烈焰> <Text:困惑殿堂:0:0{FCOLOR=253}/@困惑殿堂> <Text:死亡神殿:0:0{FCOLOR=253}/@死亡神殿> <Text:深渊魔域:0:0{FCOLOR=253}/@深渊魔域> <Text:藏 宝 阁:0:0{FCOLOR=253}/@藏宝阁>\ \ 
+<>  ============================================================ \ 
+
+<      怪物等级:/SCOLOR=249>普通-<暗之BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+[@藏宝阁]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \
+<>     ======================<藏宝阁>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<暗之BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><雷霆系列/SCOLOR=254>,<域类系列/SCOLOR=249>,<地图每秒减少5元宝/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴传送戒指或起源之心免费传送/SCOLOR=254> \
+<>               <否则自己跑或随机或消耗300元宝/SCOLOR=249> \
+
+<> \
+<>                                 <进入地图/@藏宝阁1>          <返回/@main>  
+
+[@藏宝阁1]
+#OR
+CHECKITEMW 传送戒指
+CHECKITEMW 起源の之心
+#ACT
+MAPMOVE MFDL 220 162
+BREAK
+#IF
+CHECKGAMEGOLD ? 300
+#ACT
+GAMEGOLD - 300
+MAPMOVE MFDL 220 162
+BREAK
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+BREAK
+[@深渊魔域]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \
+<>     ======================<深渊魔域>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<暗之BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><雷霆系列/SCOLOR=254>,<域类系列/SCOLOR=249>,<地图每秒减少5元宝/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴传送戒指或起源之心免费传送/SCOLOR=254> \
+<>               <否则自己跑或随机或消耗300元宝/SCOLOR=249> \
+
+<> \
+<>                                 <进入地图/@深渊魔域1>          <返回/@main>  
+
+[@深渊魔域1]
+#OR
+CHECKITEMW 传送戒指
+CHECKITEMW 起源の之心
+#ACT
+MAPMOVE MFDL 345 659
+BREAK
+#IF
+CHECKGAMEGOLD ? 300
+#ACT
+GAMEGOLD - 300
+MAPMOVE MFDL 345 659
+BREAK
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+BREAK
+[@死亡神殿]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \
+<>     ======================<死亡神殿>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<暗之BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><雷霆系列/SCOLOR=254>,<域类系列/SCOLOR=249>,<地图每秒减少5元宝/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴传送戒指或起源之心免费传送/SCOLOR=254> \
+<>               <否则自己跑或随机或消耗300元宝/SCOLOR=249> \
+
+<> \
+<>                                 <进入地图/@死亡神殿1>          <返回/@main>  
+
+[@死亡神殿1]
+#OR
+CHECKITEMW 传送戒指
+CHECKITEMW 起源の之心
+#ACT
+MAPMOVE MFDL 295 279
+BREAK
+#IF
+CHECKGAMEGOLD ? 300
+#ACT
+GAMEGOLD - 300
+MAPMOVE MFDL 295 279
+BREAK
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+BREAK
+[@困惑殿堂]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \
+<>     ======================<困惑殿堂>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<暗之BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><雷霆系列/SCOLOR=254>,<域类系列/SCOLOR=249>,<地图每秒减少5元宝/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴传送戒指或起源之心免费传送/SCOLOR=254> \
+<>               <否则自己跑或随机或消耗300元宝/SCOLOR=249> \
+
+<> \
+<>                                 <进入地图/@困惑殿堂1>          <返回/@main>  
+
+[@困惑殿堂1]
+#OR
+CHECKITEMW 传送戒指
+CHECKITEMW 起源の之心
+#ACT
+MAPMOVE MFDL 646 199
+BREAK
+#IF
+CHECKGAMEGOLD ? 300
+#ACT
+GAMEGOLD - 300
+MAPMOVE MFDL 646 199
+BREAK
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+BREAK
+[@地狱烈焰]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \
+<>     ======================<地狱烈焰>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<暗之BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><雷霆系列/SCOLOR=254>,<域类系列/SCOLOR=249>,<地图每秒减少5元宝/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴传送戒指或起源之心免费传送/SCOLOR=254> \
+<>               <否则自己跑或随机或消耗300元宝/SCOLOR=249> \
+
+<> \
+<>                                 <进入地图/@地狱烈焰1>          <返回/@main>  
+
+[@地狱烈焰1]
+#OR
+CHECKITEMW 传送戒指
+CHECKITEMW 起源の之心
+#ACT
+MAPMOVE MFDL 510 508
+BREAK
+#IF
+CHECKGAMEGOLD ? 300
+#ACT
+GAMEGOLD - 300
+MAPMOVE MFDL 510 508
+BREAK
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+BREAK
+[@堕落坟场]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \
+<>     ======================<堕落坟场>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<暗之BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><雷霆系列/SCOLOR=254>,<域类系列/SCOLOR=249>,<地图每秒减少5元宝/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴传送戒指或起源之心免费传送/SCOLOR=254> \
+<>               <否则自己跑或随机或消耗300元宝/SCOLOR=249> \
+
+<> \
+<>                                 <进入地图/@堕落坟场1>          <返回/@main>  
+
+[@堕落坟场1]
+#OR
+CHECKITEMW 传送戒指
+CHECKITEMW 起源の之心
+#ACT
+MAPMOVE MFDL 640 357
+BREAK
+#IF
+CHECKGAMEGOLD ? 300
+#ACT
+GAMEGOLD - 300
+MAPMOVE MFDL 640 357
+BREAK
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+BREAK
+[@钳虫巢穴]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \
+<>     ======================<钳虫巢穴>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<暗之BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><雷霆系列/SCOLOR=254>,<域类系列/SCOLOR=249>,<地图每秒减少5元宝/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴传送戒指或起源之心免费传送/SCOLOR=254> \
+<>               <否则自己跑或随机或消耗300元宝/SCOLOR=249> \
+
+<> \
+<>                                 <进入地图/@钳虫巢穴1>          <返回/@main>  
+
+[@钳虫巢穴1]
+#OR
+CHECKITEMW 传送戒指
+CHECKITEMW 起源の之心
+#ACT
+MAPMOVE MFDL 660 429
+BREAK
+#IF
+CHECKGAMEGOLD ? 300
+#ACT
+GAMEGOLD - 300
+MAPMOVE MFDL 660 429
+BREAK
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+BREAK
+[@腐蚀深渊]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \
+<>     ======================<腐蚀深渊>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<暗之BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><雷霆系列/SCOLOR=254>,<域类系列/SCOLOR=249>,<地图每秒减少5元宝/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴传送戒指或起源之心免费传送/SCOLOR=254> \
+<>               <否则自己跑或随机或消耗300元宝/SCOLOR=249> \
+<>                        <ITEMSHOW:882:0:0:-0:1:1>\ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                                 <进入地图/@腐蚀深渊1>          <返回/@main>  
+
+[@腐蚀深渊1]
+#OR
+CHECKITEMW 传送戒指
+CHECKITEMW 起源の之心
+#ACT
+MAPMOVE MFDL 153 608
+BREAK
+#IF
+CHECKGAMEGOLD ? 300
+#ACT
+GAMEGOLD - 300
+MAPMOVE MFDL 153 608
+BREAK
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+BREAK
+
+[@食人谷]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \
+<>     ======================<食人谷>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<暗之BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><雷霆系列/SCOLOR=254>,<域类系列/SCOLOR=249>,<地图每秒减少5元宝/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴传送戒指或起源之心免费传送/SCOLOR=254> \
+<>               <否则自己跑或随机或消耗300元宝/SCOLOR=249> \
+<>                        <ITEMSHOW:884:0:0:-0:1:1>\ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                                 <进入地图/@食人谷1>          <返回/@main>  
+
+[@食人谷1]
+#OR
+CHECKITEMW 传送戒指
+CHECKITEMW 起源の之心
+#ACT
+MAPMOVE MFDL 350 640
+BREAK
+#IF
+CHECKGAMEGOLD ? 300
+#ACT
+GAMEGOLD - 300
+MAPMOVE MFDL 350 640
+BREAK
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+BREAK
+
+[@兽人谷]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \
+<>     ======================<食人谷>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<暗之BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><雷霆系列/SCOLOR=254>,<域类系列/SCOLOR=249>,<地图每秒减少5元宝/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴传送戒指或起源之心免费传送/SCOLOR=254> \
+<>               <否则自己跑或随机或消耗300元宝/SCOLOR=249> \
+<>                        <ITEMSHOW:889:0:0:-0:1:1>\ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                                 <进入地图/@兽人谷1>          <返回/@main>  
+
+[@兽人谷1]
+#OR
+CHECKITEMW 传送戒指
+CHECKITEMW 起源の之心
+#ACT
+MAPMOVE MFDL 657 271
+BREAK
+#IF
+CHECKGAMEGOLD ? 300
+#ACT
+GAMEGOLD - 300
+MAPMOVE MFDL 657 271
+BREAK
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+BREAK
+
+[@恐怖森林]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \
+<>     ======================<恐怖森林>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<暗之BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><雷霆系列/SCOLOR=254>,<域类系列/SCOLOR=249>,<地图每秒减少5元宝/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴传送戒指或起源之心免费传送/SCOLOR=254> \
+<>               <否则自己跑或随机或消耗300元宝/SCOLOR=249> \
+<>                        <ITEMSHOW:888:0:0:-0:1:1>\ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                                 <进入地图/@恐怖森林1>          <返回/@main>  
+
+[@恐怖森林1]
+#OR
+CHECKITEMW 传送戒指
+CHECKITEMW 起源の之心
+#ACT
+MAPMOVE MFDL 531 261
+BREAK
+#IF
+CHECKGAMEGOLD ? 300
+#ACT
+GAMEGOLD - 300
+MAPMOVE MFDL 531 261
+BREAK
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+BREAK
+
+
+[@镇魔阁]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \
+<>     ======================<镇魔阁>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<暗之BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><雷霆系列/SCOLOR=254>,<域类系列/SCOLOR=249>,<地图每秒减少5元宝/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴传送戒指或起源之心免费传送/SCOLOR=254> \
+<>               <否则自己跑或随机或消耗300元宝/SCOLOR=249> \
+<>                        <ITEMSHOW:883:0:0:-0:1:1>\ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                                 <进入地图/@镇魔阁1>          <返回/@main>  
+
+[@镇魔阁1]
+#OR
+CHECKITEMW 传送戒指
+CHECKITEMW 起源の之心
+#ACT
+MAPMOVE MFDL 387 504
+BREAK
+#IF
+CHECKGAMEGOLD ? 300
+#ACT
+GAMEGOLD - 300
+MAPMOVE MFDL 387 504
+BREAK
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+BREAK
+
+
+[@恶龙池]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \
+<>     ======================<恶龙池>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<暗之BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><雷霆系列/SCOLOR=254>,<域类系列/SCOLOR=249>,<地图每秒减少5元宝/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴传送戒指或起源之心免费传送/SCOLOR=254> \
+<>               <否则自己跑或随机或消耗300元宝/SCOLOR=249> \
+<>                        <ITEMSHOW:887:0:0:-0:1:1>\ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                                 <进入地图/@恶龙池1>          <返回/@main>  
+
+[@恶龙池1]
+#OR
+CHECKITEMW 传送戒指
+CHECKITEMW 起源の之心
+#ACT
+MAPMOVE MFDL 557 468
+BREAK
+#IF
+CHECKGAMEGOLD ? 300
+#ACT
+GAMEGOLD - 300
+MAPMOVE MFDL 557 468
+BREAK
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+BREAK
+
+
+
+[@恶魔禁地]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \
+<>     ======================<恶魔禁地>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<暗之BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><雷霆系列/SCOLOR=254>,<域类系列/SCOLOR=249>,<地图每秒减少5元宝/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴传送戒指或起源之心免费传送/SCOLOR=254> \
+<>               <否则自己跑或随机或消耗300元宝/SCOLOR=249> \
+<>                        <ITEMSHOW:886:0:0:-0:1:1>\ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                                 <进入地图/@恶魔禁地1>          <返回/@main>  
+
+[@恶魔禁地1]
+#OR
+CHECKITEMW 传送戒指
+CHECKITEMW 起源の之心
+#ACT
+MAPMOVE MFDL 602 50
+BREAK
+#IF
+CHECKGAMEGOLD ? 300
+#ACT
+GAMEGOLD - 300
+MAPMOVE MFDL 602 50
+BREAK
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+BREAK
+
+[@古墓遗址]
+#IF
+#act
+CLOSEMERCHANTBIGDLG
+OPENMERCHANTBIGDLG 3 1780 1 4 0 -150 1 390 15 0
+#SAY
+\ \
+<>     ======================<古墓遗址>====================== \ \
+<      怪物等级:/SCOLOR=249>普通-<暗之BOSS/SCOLOR=254>-<大BOSS/SCOLOR=251>-<福利BOSS/SCOLOR=253>\
+<      怪物刷新:/SCOLOR=251>小怪<20/SCOLOR=254>分钟,Boss-<60/SCOLOR=249>分钟,福利Boss-<120/SCOLOR=250>分钟 \
+<      地图爆率:/SCOLOR=251><雷霆系列/SCOLOR=254>,<域类系列/SCOLOR=249>,<地图每秒减少5元宝/SCOLOR=250> \
+<      进图条件:/SCOLOR=251><佩戴传送戒指或起源之心免费传送/SCOLOR=254> \
+<>               <否则自己跑或随机或消耗300元宝/SCOLOR=249> \
+<>                        <ITEMSHOW:885:0:0:-0:1:1>\ 
+<>      <地图专属物品：/SCOLOR=253>\
+<> \
+<>                                 <进入地图/@古墓遗址1>          <返回/@main>  
+
+[@古墓遗址1]
+#OR
+CHECKITEMW 传送戒指
+CHECKITEMW 起源の之心
+#ACT
+MAPMOVE MFDL 75 311
+BREAK
+#IF
+CHECKGAMEGOLD ? 300
+#ACT
+GAMEGOLD - 300
+MAPMOVE MFDL 75 311
+BREAK
+#IF
+#ACT
+messagebox   未佩戴制定装备或元宝不足，请随机或跑步行进到指定地图！~
+BREAK
+
+
+
+[@xhc]
+#if
+#ACT
+MAPMOVE MFDL 584 321
+SendMsg 0 玩家{[%s]|249:255}前往{[毒蛇山谷]|249:255}寻宝去了!
+break
+
+
+[@bqs]
+#if
+#ACT
+MAPMOVE MFDL 444  403
+SendMsg 0 玩家{[%s]|249:255}前往{[比奇省]|249:255}寻宝去了!
+break
+
+[@brm]
+#if
+#ACT
+MAPMOVE MFDL 580 174
+SendMsg 0 玩家{[%s]|249:255}前往{[白日门]|249:255}寻宝去了!
+break
+
+[@奴隶洞]
+#if
+#ACT
+MAPMOVE  MFDL 258 553
+SendMsg 0 玩家{[%s]|249:255}前往{[奴隶洞]|249:255}寻宝去了!
+break
+
+[@wlc]
+#if
+#ACT
+MAPMOVE MFDL 591 559
+SendMsg 0 玩家{[%s]|249:255}前往{[卧龙小村]|249:255}寻宝去了!
+break
+
+[@fkq]
+#if
+#ACT
+MAPMOVE MFDL 575 404
+SendMsg 0 玩家{[%s]|249:255}前往{[废弃矿区]|249:255}寻宝去了!
+break
+
+
+[@kld]
+#if
+#ACT
+MAPMOVE  MFDL     379  319
+SendMsg 0 玩家{[%s]|249:255}前往{[骷髅洞]|249:255}寻宝去了!
+break
+
+[@swsg]
+#if
+#ACT
+MAPMOVE MFDL 265 577
+SendMsg 0 玩家{[%s]|249:255}前往{[死亡山谷]|249:255}寻宝去了!
+break
+
+[@wmsm]
+#if
+#ACT
+MAPMOVE MFDL 408  233
+SendMsg 0 玩家{[%s]|249:255}前往{[沃玛寺庙]|249:255}寻宝去了!
+break
+
+[@yzgm]
+#if
+#ACT
+MAPMOVE MFDL 193 277
+SendMsg 0 玩家{[%s]|249:255}前往{[野猪古墓]|249:255}寻宝去了!
+break
+
+[@fmd]
+#if
+#ACT
+MAPMOVE MFDL 253 296
+SendMsg 0 玩家{[%s]|249:255}前往{[封魔殿]|249:255}寻宝去了!
+break
+
+[@gmd]
+#if
+#ACT
+MAPMOVE MFDL 167 42
+SendMsg 0 玩家{[%s]|249:255}前往{[骨魔洞]|249:255}寻宝去了!
+break
+[@牛魔洞]
+#if
+#ACT
+MAPMOVE MFDL 196 50
+SendMsg 0 玩家{[%s]|249:255}前往{[牛魔洞]|249:255}寻宝去了!
+break
+
+[@zmsm]
+#if
+#ACT
+MAPMOVE  MFDL  348 92
+SendMsg 0 玩家{[%s]|249:255}前往{[祖玛寺庙]|249:255}寻宝去了!
+break
+
+[@赤月]
+#if
+#ACT
+MAPMOVE  MFDL    550 46
+SendMsg 0 玩家{[%s]|249:255}前往{[赤月峡谷]|249:255}寻宝去了!
+break
+
+
+
+[@蚂蚁洞]
+#if
+#ACT
+MAPMOVE   MFDL  294 611
+SendMsg 0 玩家{[%s]|249:255}前往{[蚂蚁洞]|249:255}寻宝去了!
+break
+

@@ -1,0 +1,62 @@
+[@吸血设置]
+{
+
+#IF
+#ACT
+MOV N$吸血 0
+MOV N$吸蓝 0
+goto @吸血设置1
+
+
+
+[@吸血设置1]
+#IF
+checkitemw 男人的眼泪
+#ACT
+INC N$吸血 10
+
+#IF
+checkitemw 赤血魔剑
+#ACT
+INC N$吸血 5
+#IF
+LARGE U11 0
+#ACT
+INC N$吸血 <$STR(U11)>
+INC N$吸蓝 <$STR(U11)>
+
+#IF
+CHECKFENGHAO 马年月卡
+NOT CHECKFENGHAO 马年年卡
+#ACT
+INC N$吸血 5
+INC N$吸蓝 5
+
+#IF
+NOT CHECKFENGHAO 马年月卡
+CHECKFENGHAO 马年年卡
+#ACT
+INC N$吸血 10
+INC N$吸蓝 10
+
+#IF
+CHECKFENGHAO 马年月卡
+CHECKFENGHAO 马年年卡
+#ACT
+INC N$吸血 10
+INC N$吸蓝 10
+#IF
+large N$吸血 0
+#ACT 
+ChangeState 10 65535 100 <$STR(N$吸血)>
+ChangeState 11 65535 100 <$STR(N$吸蓝)>
+BREAK
+
+
+
+
+
+
+
+}
+

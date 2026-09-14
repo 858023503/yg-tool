@@ -1,0 +1,427 @@
+[@main]
+#IF
+equal A6
+#ACT
+mov S$擂主名称 ---暂无---
+SetStringBlank <$STR(S$擂主名称)> 16 1
+;mov S$打擂玩家 ---暂无---
+mov S$擂台元宝 <$STR(G6)>
+SetStringBlank <$STR(S$擂台元宝)> 16 1
+mov S$擂台状态 ----------
+#ELSEACT
+mov S$擂主名称 <$STR(A6)>
+SetStringBlank <$STR(S$擂主名称)> 16 1
+mov S$擂台元宝 <$STR(G6)>
+SetStringBlank <$STR(S$擂台元宝)> 16 1
+mov S$擂台状态 <$STR(A8)>
+
+#IF
+equal A7
+#ACT
+mov S$打擂玩家 ---暂无---
+#ELSEACT
+mov S$打擂玩家 <$STR(A7)>
+
+
+#IF
+equal A7 <$USERNAME>
+#ACT
+SENDMSG 5 比赛正在进行中！请在<$STR(G7)>秒内分出胜负！
+break
+
+#IF
+equal A6 <$USERNAME>
+NOT equal A7
+#ACT
+SENDMSG 5 比赛正在进行中！请在<$STR(G7)>秒内分出胜负！
+break
+
+
+#IF
+equal A6 <$USERNAME>
+#ACT
+CloseBigDialogBox
+break
+#say
+　<【擂主名称】/SCOLOR=243><$STR(S$擂主名称)> <【打擂玩家】/SCOLOR=243><$STR(S$打擂玩家)>\　\
+
+　<【擂台元宝】/SCOLOR=243><$STR(S$擂台元宝)> <【擂台状态】/SCOLOR=243><$STR(S$擂台状态)>\
+<┄┄┄┄┄┄┄┄┄/SCOLOR=35><[故意霸占擂台者封号处理]/SCOLOR=249><┄┄┄┄┄┄┄┄┄/SCOLOR=35>\
+<1.挑战双方需开启/SCOLOR=31><狂暴/SCOLOR=249><比赛开始后小退、掉线狂暴之力消失！/SCOLOR=31>\
+<2.擂主需要5000-10000元宝摆擂，若无人挑战自助退还！/SCOLOR=31>\
+<3.5分钟未分出胜负，双方自动请出擂台，元宝不退还！/SCOLOR=31>\
+<4.任意一方小退、死亡、掉线另一方获胜！/SCOLOR=31>\
+
+　<【全服叫阵】/@全服叫阵> <花费200元宝约战全服玩家/SCOLOR=250>     <【取消摆擂】/@取消摆擂>\
+
+
+#IF
+NOT equal A6
+#ACT
+CloseBigDialogBox
+break
+#say
+　<【擂主名称】/SCOLOR=243><$STR(S$擂主名称)> <【打擂玩家】/SCOLOR=243><$STR(S$打擂玩家)>\　\
+
+　<【擂台元宝】/SCOLOR=243><$STR(S$擂台元宝)> <【擂台状态】/SCOLOR=243><$STR(S$擂台状态)>\
+<┄┄┄┄┄┄┄┄┄/SCOLOR=35><[故意霸占擂台者封号处理]/SCOLOR=249><┄┄┄┄┄┄┄┄┄/SCOLOR=35>\
+<1.挑战双方需开启/SCOLOR=31><狂暴/SCOLOR=249><比赛开始后小退、掉线狂暴之力消失！/SCOLOR=31>\
+<2.擂主需要5000-10000元宝摆擂，若无人挑战自助退还！/SCOLOR=31>\
+<3.5分钟未分出胜负，双方自动请出擂台，元宝不退还！/SCOLOR=31>\
+<4.任意一方小退、死亡、掉线另一方获胜！/SCOLOR=31>\
+
+　　     　    <【我要挑战】/@我要挑战>           <【返回盟重】/@返回盟重>\
+
+
+#IF
+equal A6
+#ACT
+CloseBigDialogBox
+break
+#say
+　<【擂主名称】/SCOLOR=243><$STR(S$擂主名称)> <【打擂玩家】/SCOLOR=243><$STR(S$打擂玩家)>\　\
+
+　<【擂台元宝】/SCOLOR=243><$STR(S$擂台元宝)> <【擂台状态】/SCOLOR=243><$STR(S$擂台状态)>\
+<┄┄┄┄┄┄┄┄┄/SCOLOR=35><[故意霸占擂台者封号处理]/SCOLOR=249><┄┄┄┄┄┄┄┄┄/SCOLOR=35>\
+<1.挑战双方需开启/SCOLOR=31><狂暴/SCOLOR=249><比赛开始后小退、掉线狂暴之力消失！/SCOLOR=31>\
+<2.擂主需要5000-10000元宝摆擂，若无人挑战自助退还！/SCOLOR=31>\
+<3.5分钟未分出胜负，双方自动请出擂台，元宝不退还！/SCOLOR=31>\
+<4.任意一方小退、死亡、掉线另一方获胜！/SCOLOR=31>\
+
+　　<【我要挑战】/@我要挑战>      <【开设擂台】/@@InPutInteger4(输入要挑战的【元宝】数量：5000-10000元宝)>      <【返回盟重】/@返回盟重>\
+
+
+[@全服叫阵]
+#IF
+NOT equal A7
+#act
+messagebox \比赛已经开始了！
+Close
+break
+
+#IF
+checkgamegold < 200
+#act
+messagebox \200元宝都没有，叫个毛线！
+break
+
+
+#IF
+checkgamegold > 199
+#act
+gamegold - 200
+SendCenterMsg 0 249 【挑战擂台】：玩家『<$USERNAME>』叫嚣道：在座的各位都是垃圾！无敌的我只求一败！ 1 5
+SendCenterMsg 0 249 【挑战擂台】：玩家『<$USERNAME>』叫嚣道：在座的各位都是垃圾！无敌的我只求一败！ 1 5
+SendCenterMsg 0 249 【挑战擂台】：玩家『<$USERNAME>』叫嚣道：在座的各位都是垃圾！无敌的我只求一败！ 1 5
+GuildNoticeMsg 249 51 【挑战擂台】：玩家『<$USERNAME>』叫嚣道：在座的各位都是垃圾！无敌的我只求一败！
+break
+
+
+
+
+[@取消摆擂]
+#IF
+NOT equal A7
+#act
+messagebox \擂台比武进行中！无法取消！
+Close
+break
+
+#if
+equal A6 <$USERNAME>
+equal A7
+#act
+gamegold + <$STR(G6)>
+mov G6 0
+mov A6
+mov A7
+mov A8
+mov G7 0
+mapmove 擂台 49 42
+ChangeModeEx 9 999999
+
+[@返回盟重]
+#if
+#act
+SetHumAttackMode 0 1
+mapmove 3 330 330
+ChangeModeEx 9 1
+
+[@我要挑战]
+
+
+#IF
+equal A6
+#ACT
+messagebox \当前还没有玩家开设擂台！
+break
+
+#if
+CHECK [3] 0
+#act
+MESSAGEBOX \必须开启狂暴之力才可以进入擂台！
+break
+
+
+
+#OR
+equal A8 正在打擂
+equal A8 正在结算
+#act
+messagebox \当前不可以进行挑战！请稍等！
+break
+
+#if
+checkgamegold < <$STR(G6)>
+#act
+messagebox \元宝不足<$STR(G6)>个！
+BREAK
+
+#if
+NOT checkjob warrior
+equal A8 等待挑战(限战士)
+#act
+messagebox \仅限战士职业挑战！
+BREAK
+
+#if
+NOT checkjob wizard
+equal A8 等待挑战(限法师)
+#act
+messagebox \仅限法师职业挑战！
+BREAK
+
+#if
+NOT checkjob taoist
+equal A8 等待挑战(限道士)
+#act
+messagebox \仅限道士职业挑战！
+BREAK
+
+
+#if
+checkjob warrior
+equal A8 等待挑战(限战士)
+#act
+mov A7 <$USERNAME>
+gamegold - <$STR(G6)>
+inc G6 <$STR(G6)>
+mov A8 正在打擂
+mov G7 300
+MOV A10 [正在比赛](<$STR(G7)>)\裁判
+A6.mapmove 擂台 46 47
+A6.ChangeModeEx 9 1
+ChangeModeEx 9 1
+mapmove 擂台 53 47
+SetHumAttackMode 0 300
+A6.humanhp + 5000
+A6.humanmp + 5000
+humanhp + 5000
+humanmp + 5000
+GuildNoticeMsg 251 249 【挑战擂台】：玩家“<$STR(A7)>”接受了“<$STR(A6)>”的挑战...成王败寇，大家都去围观吧...
+BREAK
+
+#if
+checkjob wizard
+equal A8 等待挑战(限法师)
+#act
+mov A7 <$USERNAME>
+gamegold - <$STR(G6)>
+inc G6 <$STR(G6)>
+mov A8 正在打擂
+mov G7 300
+MOV A10 [正在比赛](<$STR(G7)>)\裁判
+A6.mapmove 擂台 46 47
+A6.ChangeModeEx 9 1
+ChangeModeEx 9 1
+mapmove 擂台 53 47
+SetHumAttackMode 0 300
+A6.humanhp + 5000
+A6.humanmp + 5000
+humanhp + 5000
+humanmp + 5000
+GuildNoticeMsg 251 249 【挑战擂台】：玩家“<$STR(A7)>”接受了“<$STR(A6)>”的挑战...成王败寇，大家都去围观吧...
+BREAK
+
+#if
+checkjob taoist
+equal A8 等待挑战(限道士)
+#act
+mov A7 <$USERNAME>
+gamegold - <$STR(G6)>
+inc G6 <$STR(G6)>
+mov A8 正在打擂
+mov G7 300
+MOV A10 [正在比赛](<$STR(G7)>)\裁判
+A6.mapmove 擂台 46 47
+A6.ChangeModeEx 9 1
+ChangeModeEx 9 1
+mapmove 擂台 53 47
+SetHumAttackMode 0 300
+A6.humanhp + 5000
+A6.humanmp + 5000
+humanhp + 5000
+humanmp + 5000
+GuildNoticeMsg 251 249 【挑战擂台】：玩家“<$STR(A7)>”接受了“<$STR(A6)>”的挑战...成王败寇，大家都去围观吧...
+BREAK
+
+#if
+equal A8 等待挑战(不限职业)
+#act
+mov A7 <$USERNAME>
+gamegold - <$STR(G6)>
+inc G6 <$STR(G6)>
+mov A8 正在打擂
+mov G7 300
+MOV A10 [正在比赛](<$STR(G7)>)\裁判
+A6.mapmove 擂台 46 47
+A6.ChangeModeEx 9 1
+ChangeModeEx 9 1
+mapmove 擂台 53 47
+SetHumAttackMode 0 300
+A6.humanhp + 5000
+A6.humanmp + 5000
+humanhp + 5000
+humanmp + 5000
+GuildNoticeMsg 251 249 【挑战擂台】：玩家“<$STR(A7)>”接受了“<$STR(A6)>”的挑战...成王败寇，大家都去围观吧...
+BREAK
+
+
+
+;--------------------------------------------------------------开设擂台
+[@InPutInteger4]
+
+
+
+#if
+CHECK [3] 0
+#act
+MESSAGEBOX \必须开启狂暴之力才可以进入擂台！
+break
+
+
+#IF
+NOT equal A6
+#act
+messagebox \已有玩家开设擂台！请点击挑战！
+break
+
+
+#OR
+small N4 5000
+LARGE N4 10000
+#act
+messagebox \请输入[5000-10000]的数值！
+BREAK
+
+#if
+checkgamegold < <$STR(N4)>
+#act
+messagebox \元宝不足<$STR(N4)>个！
+BREAK
+
+#if
+NOT checkgamegold < <$STR(N4)>
+#ACT
+break
+#SAY
+<Img:48:14:387:0/@exit>\ \
+　<请设定可以参与擂玩家职业！/SCOLOR=253>\
+　\
+　\
+　<仅限本职业/@限本职业> <仅限本职业玩家可以打擂/SCOLOR=250>\
+　\
+　\
+　<不限制职业/@不限职业> <任何职业玩家都可以打擂/SCOLOR=249>\
+
+
+[@限本职业]
+#IF
+NOT equal A6
+#act
+messagebox \已有玩家开设擂台！请点击挑战！
+break
+
+
+#if
+NOT checkgamegold < <$STR(N4)>
+checkjob warrior
+#act
+gamegold - <$STR(N4)>
+mov A6 <$USERNAME>
+mov A8 等待挑战(限战士)
+mov G6 <$STR(N4)>
+mov G7 300
+ChangeModeEx 9 1
+mapmove 擂台 49 48
+SetHumAttackMode 0 300
+mov A10 等待挑战(限战士,<$STR(G7)>)\裁判
+SendCenterMsg 251 0 【挑战擂台】：玩家『<$USERNAME>』使用<$STR(N4)>元宝开设擂台，快来打擂啊！(限战士) 1 5
+GuildNoticeMsg 251 0 【挑战擂台】：玩家『<$USERNAME>』使用<$STR(N4)>元宝开设擂台，快来打擂啊！(限战士) 
+GuildNoticeMsg 251 0 【挑战擂台】：玩家『<$USERNAME>』使用<$STR(N4)>元宝开设擂台，快来打擂啊！(限战士) 
+GuildNoticeMsg 251 0 【挑战擂台】：玩家『<$USERNAME>』使用<$STR(N4)>元宝开设擂台，快来打擂啊！(限战士) 
+BREAK
+
+#if
+NOT checkgamegold < <$STR(N4)>
+checkjob wizard
+#act
+gamegold - <$STR(N4)>
+mov A6 <$USERNAME>
+mov A8 等待挑战(限法师)
+mov G6 <$STR(N4)>
+mov G7 300
+ChangeModeEx 9 1
+mapmove 擂台 49 48
+SetHumAttackMode 0 300
+mov A10 等待挑战(限法师,<$STR(G7)>)\裁判
+SendCenterMsg 251 0 【挑战擂台】：玩家『<$USERNAME>』使用<$STR(N4)>元宝开设擂台，快来打擂啊！(限法师) 1 5
+GuildNoticeMsg 251 0 【挑战擂台】：玩家『<$USERNAME>』使用<$STR(N4)>元宝开设擂台，快来打擂啊！(限法师) 
+GuildNoticeMsg 251 0 【挑战擂台】：玩家『<$USERNAME>』使用<$STR(N4)>元宝开设擂台，快来打擂啊！(限法师) 
+GuildNoticeMsg 251 0 【挑战擂台】：玩家『<$USERNAME>』使用<$STR(N4)>元宝开设擂台，快来打擂啊！(限法师) 
+BREAK
+
+#if
+NOT checkgamegold < <$STR(N4)>
+#act
+gamegold - <$STR(N4)>
+mov A6 <$USERNAME>
+mov A8 等待挑战(限道士)
+mov G6 <$STR(N4)>
+mov G7 300
+ChangeModeEx 9 1
+mapmove 擂台 49 48
+SetHumAttackMode 0 300
+mov A10 等待挑战(限道士,<$STR(G7)>)\裁判
+SendCenterMsg 251 0 【挑战擂台】：玩家『<$USERNAME>』使用<$STR(N4)>元宝开设擂台，快来打擂啊！(限道士) 1 5
+GuildNoticeMsg 251 0 【挑战擂台】：玩家『<$USERNAME>』使用<$STR(N4)>元宝开设擂台，快来打擂啊！(限道士) 
+GuildNoticeMsg 251 0 【挑战擂台】：玩家『<$USERNAME>』使用<$STR(N4)>元宝开设擂台，快来打擂啊！(限道士) 
+GuildNoticeMsg 251 0 【挑战擂台】：玩家『<$USERNAME>』使用<$STR(N4)>元宝开设擂台，快来打擂啊！(限道士) 
+BREAK
+
+
+[@不限职业]
+#IF
+NOT equal A6
+#act
+messagebox \已有玩家开设擂台！请点击挑战！
+break
+
+#if
+NOT checkgamegold < <$STR(N4)>
+#act
+ChangeModeEx 9 1
+gamegold - <$STR(N4)>
+mov A6 <$USERNAME>
+mov A8 等待挑战(不限职业)
+mov G6 <$STR(N4)>
+mov G7 300
+mapmove 擂台 49 48
+SetHumAttackMode 0 300
+mov A10 等待挑战(不限职业,<$STR(G7)>)\裁判
+SendCenterMsg 251 0 【挑战擂台】：玩家『<$USERNAME>』使用<$STR(N4)>元宝开设擂台，快来打擂啊！(不限职业) 1 5
+GuildNoticeMsg 251 0 【挑战擂台】：玩家『<$USERNAME>』使用<$STR(N4)>元宝开设擂台，快来打擂啊！(不限职业) 
+GuildNoticeMsg 251 0 【挑战擂台】：玩家『<$USERNAME>』使用<$STR(N4)>元宝开设擂台，快来打擂啊！(不限职业) 
+GuildNoticeMsg 251 0 【挑战擂台】：玩家『<$USERNAME>』使用<$STR(N4)>元宝开设擂台，快来打擂啊！(不限职业) 
+BREAK
+

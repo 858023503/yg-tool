@@ -1,0 +1,152 @@
+[@Body]
+{
+[@Attack]
+#IF
+LARGE N$套装斩杀标识 0
+M.CHECKHPPER < <$STR(N$套装斩杀标识)>
+#ACT
+M.ADDHPPER - 100
+BREAK
+
+#IF
+CHECKCURRTARGETRACE = 0
+#ACT
+#CALL [a西伯利亚\QF\攻击触发\物理对人触发.txt] @物理对人开始
+#CALL [a西伯利亚\QF\攻击触发\通用对人触发.txt] @通用对人触发开始
+#CALL [a西伯利亚\QF\技能触发\物理技能对人触发.txt] @物理技能对人触发开始
+BREAK
+#ELSEACT
+MOV N$攻击时总切割值 0
+MOV N$攻击时总回血值 <$STR(N$物理吸血固值)>
+MOV N$攻击时总回蓝值 0
+#CALL [a西伯利亚\QF\攻击触发\物理对怪触发.txt] @物理对怪开始
+#CALL [a西伯利亚\QF\攻击触发\通用对怪触发.txt] @通用对怪触发开始
+#CALL [a西伯利亚\QF\技能触发\物理技能对怪触发.txt] @物理技能对怪触发开始
+
+#IF
+LARGE N$攻击时总回血值 0
+NOT EQUAL <$CURRRUSEMAGICID> 22
+#ACT
+HUMANHP + <$STR(N$攻击时总回血值)>
+
+#IF
+LARGE N$攻击时总回蓝值 0
+NOT EQUAL <$CURRRUSEMAGICID> 22
+#ACT
+HUMANMP + <$STR(N$攻击时总回蓝值)>
+
+#IF
+LARGE N$攻击时总切割值 0
+#ACT
+M.HUMANHP - <$STR(N$攻击时总切割值)>
+
+[@MagicAttack]
+#IF
+EQUAL N$式纸激活标识 1
+EQUAL <$CURRRUSEMAGICID> 13
+#ACT
+SendCenterMsg 180 70 式纸使你无法造成任何伤害！ 0 2
+BREAK
+
+#IF
+CHECKCURRTARGETRACE = 0
+#ACT
+#CALL [a西伯利亚\QF\攻击触发\魔法对人触发.txt] @魔法对人开始
+#CALL [a西伯利亚\QF\攻击触发\通用对人触发.txt] @通用对人触发开始
+#CALL [a西伯利亚\QF\技能触发\魔法技能对人触发.txt] @魔法技能对人触发开始
+BREAK
+#ELSEACT
+MOV N$攻击时总切割值 0
+MOV N$攻击时总回血值 <$STR(N$人物攻击回血)>
+MOV N$攻击时总回蓝值 0
+#CALL [a西伯利亚\QF\攻击触发\魔法对怪触发.txt] @魔法对怪开始
+#CALL [a西伯利亚\QF\攻击触发\通用对怪触发.txt] @通用对怪触发开始
+#CALL [a西伯利亚\QF\技能触发\魔法技能对怪触发.txt] @魔法技能对怪触发开始
+
+#IF
+LARGE N$攻击时总回血值 0
+NOT EQUAL <$CURRRUSEMAGICID> 22
+#ACT
+HUMANHP + <$STR(N$攻击时总回血值)>
+
+#IF
+LARGE N$攻击时总回蓝值 0
+NOT EQUAL <$CURRRUSEMAGICID> 22
+#ACT
+HUMANMP + <$STR(N$攻击时总回蓝值)>
+
+#IF
+LARGE N$攻击时总切割值 0
+NOT EQUAL <$CURRRUSEMAGICID> 22
+#ACT
+M.HUMANHP - <$STR(N$攻击时总切割值)>
+
+[@AttackDamage]
+#IF
+NOT EQUAL <$CurTargetMasterName>
+#ACT
+BREAK
+
+#IF
+EQUAL N$式纸激活标识 1
+EQUAL <$CURRRUSEMAGICID> 13
+#ACT
+ChangeDamageValue 1 - 100
+SendCenterMsg 180 70 式纸使你无法造成任何伤害！ 0 2
+BREAK
+
+#IF
+CHECKCURRTARGETRACE = 0
+#ACT
+BREAK
+
+#IF
+SMALL N$防加速允许人物10秒施法次数 1
+NOT EQUAL <$JOB> 0
+#ACT
+SendCenterMsg 180 70 你的攻击次数已耗尽,请等待刷新！ 0 2
+ChangeDamageValue 1 - 100
+BREAK
+
+#IF
+#ACT
+MOV N$运行时伤害固值 0
+MOV N$运行时伤害比例 100
+INC N$运行时伤害比例 <$STR(N$伤害加深比例)>
+
+#IF
+CHECKITEMW 气是雷烟炮
+LARGE N$雷烟炮伤害加深 0
+#ACT
+INC N$运行时伤害比例 <$STR(N$雷烟炮伤害加深)>
+MOV N$雷烟炮伤害加深 0
+
+#IF
+LARGE N$专注杀戮伤害数值 0
+#ACT
+INC N$专注杀戮叠加数值 1
+
+#IF
+#ACT
+INC N$运行时伤害比例 <$STR(N$专注杀戮叠加数值)>
+
+#IF
+LARGE N$专注杀戮伤害数值 0
+NOT SMALL N$专注杀戮叠加数值 <$STR(N$专注杀戮伤害数值)>
+#ACT
+MOV N$专注杀戮叠加数值 0
+SendCenterMsg 180 251 专注杀戮叠刀至<$STR(N$专注杀戮伤害数值)>%,附加伤害比例已清零！ 0 2
+
+#IF
+EQUAL N$波动激活标识 1
+EQUAL <$CURRRUSEMAGICID> 12
+#ACT
+MOVR N$波动加成 85 151
+MOV N$运行时伤害比例 <$STR(N$波动加成)>
+
+#IF
+#ACT
+CalcPercent <$DamageValue> <$STR(N$运行时伤害比例)> N$伤害加深后加成值
+INC N$运行时伤害固值 <$STR(N$伤害加深后加成值)>
+ChangeDamageValue 0 = <$str(N$运行时伤害固值)>
+}

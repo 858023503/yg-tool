@@ -1,0 +1,604 @@
+[@载入武器1级符文之语]
+{
+#IF
+CheckItemHasStone 1 符文Tir(3) 1
+CheckItemHasStone 1 符文Ral(8) 1
+CheckFluteCount 1 = 2
+#ACT
+SetCustomItemText 1 叶子(Tir+Ral)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 4
+MOV L$添加用自定义属性参数数组[7] 10
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[3] 6
+MOV L$添加用自定义属性参数数组[7] 120
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Tir(3) 1
+CheckItemHasStone 1 符文Tal(7) 1
+CheckItemHasStone 1 符文Amn(11) 1
+CheckFluteCount 1 = 3
+#ACT
+SetCustomItemText 1 边缘(Tir+Tal+Amn)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 4
+MOV L$添加用自定义属性参数数组[7] 12
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 120
+MOV L$添加用自定义属性参数数组[9] 33
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数2
+MOV L$添加用自定义属性参数数组[5] 1
+MOV L$添加用自定义属性参数数组[7] 10
+MOV L$添加用自定义属性参数数组[9] 43
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Eth(5) 1
+CheckItemHasStone 1 符文Ral(8) 1
+CheckItemHasStone 1 符文Ort(9) 1
+CheckItemHasStone 1 符文Tal(7) 1
+CheckFluteCount 1 = 4
+#ACT
+SetCustomItemText 1 圣雷(Eth+Ral+Ort+Tal)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 4
+MOV L$添加用自定义属性参数数组[5] 2
+MOV L$添加用自定义属性参数数组[7] 20
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[3] 7
+MOV L$添加用自定义属性参数数组[7] 300
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数2
+MOV L$添加用自定义属性参数数组[5] 1
+MOV L$添加用自定义属性参数数组[7] 120
+MOV L$添加用自定义属性参数数组[9] 31
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数3
+MOV L$添加用自定义属性参数数组[7] 12
+MOV L$添加用自定义属性参数数组[9] 44
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Tir(3) 1
+CheckItemHasStone 1 符文El(1) 1
+CheckFluteCount 1 = 2
+#ACT
+SetCustomItemText 1 钢铁(Tir+El)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 3
+MOV L$添加用自定义属性参数数组[7] 12
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 3
+MOV L$添加用自定义属性参数数组[9] 26
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Ith(6) 1
+CheckItemHasStone 1 符文El(1) 1
+CheckItemHasStone 1 符文Eth(5) 1
+CheckFluteCount 1 = 3
+#ACT
+SetCustomItemText 1 怨恨(Ith+El+Eth)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 3
+MOV L$添加用自定义属性参数数组[7] 10
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 15
+MOV L$添加用自定义属性参数数组[9] 35
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 60
+MOV L$添加用自定义属性参数数组[9] 32
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Ral(8) 1
+CheckItemHasStone 1 符文Eld(2) 1
+CheckItemHasStone 1 符文El(1) 1
+CheckItemHasStone 1 符文Sol(12) 1
+CheckFluteCount 1 = 4
+#ACT
+SetCustomItemText 1 黑色(Ral+Eld+El+Sol)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 3
+MOV L$添加用自定义属性参数数组[5] 2
+MOV L$添加用自定义属性参数数组[7] 25
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 4
+MOV L$添加用自定义属性参数数组[9] 26
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 10
+MOV L$添加用自定义属性参数数组[5] 1
+MOV L$添加用自定义属性参数数组[9] 38
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数3
+MOV L$添加用自定义属性参数数组[7] 10
+MOV L$添加用自定义属性参数数组[9] 44
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Ort(9) 1
+CheckItemHasStone 1 符文Eth(5) 1
+CheckFluteCount 1 = 2
+#ACT
+SetCustomItemText 1 和风(Ort+Eth)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 5
+MOV L$添加用自定义属性参数数组[7] 10
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 60
+MOV L$添加用自定义属性参数数组[9] 40
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Amn(11) 1
+CheckItemHasStone 1 符文Ral(8) 1
+CheckItemHasStone 1 符文Thul(10) 1
+CheckFluteCount 1 = 3
+#ACT
+SetCustomItemText 1 自然恩惠(Amn+Ral+Thul)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 5
+MOV L$添加用自定义属性参数数组[7] 15
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 8
+MOV L$添加用自定义属性参数数组[9] 43
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 10
+MOV L$添加用自定义属性参数数组[9] 44
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Tal(7) 1
+CheckItemHasStone 1 符文Thul(10) 1
+CheckItemHasStone 1 符文Ort(9) 1
+CheckItemHasStone 1 符文Amn(11) 1
+CheckFluteCount 1 = 4
+#ACT
+SetCustomItemText 1 精神(Tal+Thul+Ort+Amn)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 5
+MOV L$添加用自定义属性参数数组[7] 18
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 20
+MOV L$添加用自定义属性参数数组[9] 28
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 30
+MOV L$添加用自定义属性参数数组[9] 29
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数3
+MOV L$添加用自定义属性参数数组[7] 20
+MOV L$添加用自定义属性参数数组[9] 43
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Ral(8) 1
+CheckItemHasStone 1 符文Tir(3) 1
+CheckItemHasStone 1 符文Tal(7) 1
+CheckItemHasStone 1 符文Sol(12) 1
+CheckFluteCount 1 = 4
+#ACT
+SetCustomItemText 1 虹光(Ral+Tir+Tal+Sol)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 4
+MOV L$添加用自定义属性参数数组[7] 12
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 10
+MOV L$添加用自定义属性参数数组[9] 35
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数2
+MOV L$添加用自定义属性参数数组[3] 6
+MOV L$添加用自定义属性参数数组[7] 80
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数3
+MOV L$添加用自定义属性参数数组[3] 7
+MOV L$添加用自定义属性参数数组[7] 240
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Amn(11) 1
+CheckItemHasStone 1 符文El(1) 1
+CheckItemHasStone 1 符文Ith(6) 1
+CheckItemHasStone 1 符文Tir(3) 1
+CheckItemHasStone 1 符文Sol(12) 1
+CheckFluteCount 1 = 5
+#ACT
+SetCustomItemText 1 荣耀(Amn+El+Ith+Tir+Sol)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 3
+MOV L$添加用自定义属性参数数组[7] 15
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 7
+MOV L$添加用自定义属性参数数组[9] 26
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 15
+MOV L$添加用自定义属性参数数组[9] 36
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数3
+MOV L$添加用自定义属性参数数组[7] 15
+MOV L$添加用自定义属性参数数组[9] 37
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数4
+MOV L$添加用自定义属性参数数组[7] 8
+MOV L$添加用自定义属性参数数组[9] 43
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Dol(14) 1
+CheckItemHasStone 1 符文Io(16) 1
+CheckFluteCount 1 = 2
+#ACT
+SetCustomItemText 1 白色(Dol+Io)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 4
+MOV L$添加用自定义属性参数数组[7] 18
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 10
+MOV L$添加用自定义属性参数数组[9] 42
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Lum(17) 1
+CheckItemHasStone 1 符文Io(16) 1
+CheckItemHasStone 1 符文Sol(12) 1
+CheckItemHasStone 1 符文Eth(5) 1
+CheckFluteCount 1 = 4
+#ACT
+SetCustomItemText 1 回忆(Lum+Io+Sol+Eth)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 4
+MOV L$添加用自定义属性参数数组[7] 16
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 14
+MOV L$添加用自定义属性参数数组[9] 37
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 33
+MOV L$添加用自定义属性参数数组[9] 31
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数3
+MOV L$添加用自定义属性参数数组[7] 50
+MOV L$添加用自定义属性参数数组[9] 40
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Dol(14) 1
+CheckItemHasStone 1 符文Ort(9) 1
+CheckItemHasStone 1 符文Eld(2) 1
+CheckItemHasStone 1 符文Lem(20) 1
+CheckFluteCount 1 = 4
+#ACT
+SetCustomItemText 1 热情(Dol+Ort+Eld+Lem)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 4
+MOV L$添加用自定义属性参数数组[5] 2
+MOV L$添加用自定义属性参数数组[7] 22
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 10
+MOV L$添加用自定义属性参数数组[9] 26
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 50
+MOV L$添加用自定义属性参数数组[9] 30
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数3
+MOV L$添加用自定义属性参数数组[7] 10
+MOV L$添加用自定义属性参数数组[9] 35
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Tir(3) 1
+CheckItemHasStone 1 符文Ith(6) 1
+CheckItemHasStone 1 符文Sol(12) 1
+CheckItemHasStone 1 符文Ko(18) 1
+CheckFluteCount 1 = 4
+#ACT
+SetCustomItemText 1 和谐(Tir+Ith+Sol+Ko)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 5
+MOV L$添加用自定义属性参数数组[7] 18
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 13
+MOV L$添加用自定义属性参数数组[9] 42
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 50
+MOV L$添加用自定义属性参数数组[9] 30
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数3
+MOV L$添加用自定义属性参数数组[7] 15
+MOV L$添加用自定义属性参数数组[9] 38
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Amn(11) 1
+CheckItemHasStone 1 符文Lem(20) 1
+CheckItemHasStone 1 符文Ko(18) 1
+CheckFluteCount 1 = 3
+#ACT
+SetCustomItemText 1 法则(Amn+Lem+Ko)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 5
+MOV L$添加用自定义属性参数数组[5] 2
+MOV L$添加用自定义属性参数数组[7] 20
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[3] 5
+MOV L$添加用自定义属性参数数组[7] 15
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 12
+MOV L$添加用自定义属性参数数组[9] 35
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Hel(15) 1
+CheckItemHasStone 1 符文Ko(18) 1
+CheckItemHasStone 1 符文Thul(10) 1
+CheckItemHasStone 1 符文Eth(5) 1
+CheckItemHasStone 1 符文Fal(19) 1
+CheckFluteCount 1 = 5
+#ACT
+SetCustomItemText 1 遵从(Hel+Ko+Thul+Eth+Fal)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 5
+MOV L$添加用自定义属性参数数组[7] 18
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[3] 6
+MOV L$添加用自定义属性参数数组[7] 200
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数2
+MOV L$添加用自定义属性参数数组[5] 1
+MOV L$添加用自定义属性参数数组[7] 10
+MOV L$添加用自定义属性参数数组[9] 32
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数3
+MOV L$添加用自定义属性参数数组[5] 1
+MOV L$添加用自定义属性参数数组[7] 8
+MOV L$添加用自定义属性参数数组[9] 40
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数4
+MOV L$添加用自定义属性参数数组[7] 10
+MOV L$添加用自定义属性参数数组[9] 44
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Lem(20) 1
+CheckItemHasStone 1 符文Ko(18) 1
+CheckItemHasStone 1 符文Fal(19) 1
+CheckItemHasStone 1 符文Lum(17) 1
+CheckFluteCount 1 = 4
+#ACT
+SetCustomItemText 1 狂神(Lem+Ko+Fal+Lum)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 3
+MOV L$添加用自定义属性参数数组[7] 20
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 15
+MOV L$添加用自定义属性参数数组[9] 42
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 6
+MOV L$添加用自定义属性参数数组[9] 26
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数3
+MOV L$添加用自定义属性参数数组[7] 12
+MOV L$添加用自定义属性参数数组[9] 38
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Shael(13) 1
+CheckItemHasStone 1 符文Pul(21) 1
+CheckItemHasStone 1 符文Mal(23) 1
+CheckItemHasStone 1 符文Lum(17) 1
+CheckFluteCount 1 = 4
+#ACT
+SetCustomItemText 1 誓约(Shael+Pul+Mal+Lum)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 3
+MOV L$添加用自定义属性参数数组[5] 2
+MOV L$添加用自定义属性参数数组[7] 20
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 3
+MOV L$添加用自定义属性参数数组[9] 34
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数2
+MOV L$添加用自定义属性参数数组[3] 6
+MOV L$添加用自定义属性参数数组[7] 300
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数3
+MOV L$添加用自定义属性参数数组[7] 50
+MOV L$添加用自定义属性参数数组[9] 30
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Shael(13) 1
+CheckItemHasStone 1 符文Um(22) 1
+CheckItemHasStone 1 符文Tir(3) 1
+CheckFluteCount 1 = 3
+#ACT
+SetCustomItemText 1 新月(Shael+Um+Tir)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 4
+MOV L$添加用自定义属性参数数组[7] 16
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 12
+MOV L$添加用自定义属性参数数组[9] 26
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数2
+MOV L$添加用自定义属性参数数组[5] 1
+MOV L$添加用自定义属性参数数组[7] 50
+MOV L$添加用自定义属性参数数组[9] 26
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Tir(3) 1
+CheckItemHasStone 1 符文Dol(14) 1
+CheckItemHasStone 1 符文Mal(23) 1
+CheckFluteCount 1 = 3
+#ACT
+SetCustomItemText 1 毒液(Tir+Dol+Mal)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 5
+MOV L$添加用自定义属性参数数组[7] 15
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[3] 5
+MOV L$添加用自定义属性参数数组[5] 2
+MOV L$添加用自定义属性参数数组[7] 15
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 20
+MOV L$添加用自定义属性参数数组[9] 37
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Hel(15) 1
+CheckItemHasStone 1 符文Ko(18) 1
+CheckItemHasStone 1 符文Lem(20) 1
+CheckItemHasStone 1 符文Gul(25) 1
+CheckFluteCount 1 = 4
+#ACT
+SetCustomItemText 1 裂缝(Hel+Ko+Lem+Gul)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[7] 20
+MOV L$添加用自定义属性参数数组[9] 35
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[7] 15
+MOV L$添加用自定义属性参数数组[9] 36
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 15
+MOV L$添加用自定义属性参数数组[9] 37
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数3
+MOV L$添加用自定义属性参数数组[7] 12
+MOV L$添加用自定义属性参数数组[9] 44
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语武器用更新属性
+BREAK
+
+#IF
+CheckItemHasStone 1 符文Ral(8) 1
+CheckItemHasStone 1 符文Ber(30) 1
+CheckItemHasStone 1 符文Sur(29) 1
+CheckItemHasStone 1 符文Tir(3) 1
+CheckItemHasStone 1 符文Mal(23) 1
+CheckFluteCount 1 = 5
+#ACT
+SetCustomItemText 1 激流(Ral+Ber+Sur+Tir+Mal)
+SetCustomItemTextColor 1 102
+GOTO @_@初始化符文之语武器默认自定义参数0
+MOV L$添加用自定义属性参数数组[3] 4
+MOV L$添加用自定义属性参数数组[7] 10
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数1
+MOV L$添加用自定义属性参数数组[3] 4
+MOV L$添加用自定义属性参数数组[5] 2
+MOV L$添加用自定义属性参数数组[7] 10
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数2
+MOV L$添加用自定义属性参数数组[7] 15
+MOV L$添加用自定义属性参数数组[9] 35
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数3
+MOV L$添加用自定义属性参数数组[7] 20
+MOV L$添加用自定义属性参数数组[9] 38
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@初始化符文之语武器默认自定义参数4
+MOV L$添加用自定义属性参数数组[7] 10
+MOV L$添加用自定义属性参数数组[9] 44
+GOTO @_@不带参赋予单条自定义属性
+GOTO @_@符文之语用更新属性
+BREAK
+}

@@ -1,0 +1,361 @@
+[@main]
+;戮仙剑、陷仙剑、绝仙剑、影仙剑、越女剑、赤霄剑
+#if
+check [680] 0
+#act
+MOV S$戮仙剑激活状态 <&text:戮仙剑未激活:90:109/FCOLOR=249><&Img:1017:5:85:148>
+#elseact
+MOV S$戮仙剑激活状态 <&text:戮仙剑已激活:90:109/FCOLOR=250><&PlayImg:5:1018:11:100:80:148:0>
+
+
+#if
+check [681] 0
+#act
+MOV S$陷仙剑激活状态 <&text:陷仙剑未激活:228:109/FCOLOR=249><&Img:1017:5:222:148>
+#elseact
+MOV S$陷仙剑激活状态 <&text:陷仙剑已激活:228:109/FCOLOR=250><&PlayImg:5:1029:11:100:210:148:0>
+
+
+#if
+check [682] 0
+#act
+MOV S$绝仙剑激活状态 <&text:绝仙剑未激活:363:109/FCOLOR=249><&Img:1017:5:359:148>
+#elseact
+MOV S$绝仙剑激活状态 <&text:绝仙剑已激活:363:109/FCOLOR=250><&PlayImg:5:1040:11:100:350:148:0>
+
+#if
+check [683] 0
+#act
+MOV S$影仙剑激活状态 <&text:影仙剑未激活:498:109/FCOLOR=249><&Img:1017:5:494:148>
+#elseact
+MOV S$影仙剑激活状态 <&text:影仙剑已激活:498:109/FCOLOR=250><&PlayImg:5:1051:11:100:485:135:0>
+
+#if
+check [684] 0
+#act
+MOV S$越女剑激活状态 <&text:越女剑未激活:631:109/FCOLOR=249><&Img:1017:5:625:148>
+#elseact
+MOV S$越女剑激活状态 <&text:越女剑已激活:631:109/FCOLOR=250><&PlayImg:5:1062:10:100:605:125:0>
+
+#if
+check [685] 0
+#act
+MOV S$赤霄剑激活状态 <&text:赤霄剑未激活:763:109/FCOLOR=249><&Img:1017:5:760:148>
+#elseact
+MOV S$赤霄剑激活状态 <&text:赤霄剑已激活:763:109/FCOLOR=250><&PlayImg:5:1072:10:100:730:115:0>
+
+#if
+#act 
+OPENMERCHANTBIGDLG 5 1012 1 4 0 -80 0 835 0 1
+#say
+<$STR(S$戮仙剑激活状态)>
+<$STR(S$陷仙剑激活状态)>
+<$STR(S$绝仙剑激活状态)>
+<$STR(S$影仙剑激活状态)>
+<$STR(S$越女剑激活状态)>
+<$STR(S$赤霄剑激活状态)>
+<&IMGEX:5:1013:1014:1015:79:406|激活需要^戮仙剑费用500传仙币或10000元宝^先扣元宝没有元宝扣传仙币/@激活戮仙剑>
+<&IMGEX:5:1013:1014:1015:219:406|激活需要^陷仙剑费用500传仙币或10000元宝^先扣元宝没有元宝扣传仙币/@激活陷仙剑>
+<&IMGEX:5:1013:1014:1015:355:406|激活需要^绝仙剑费用500传仙币或10000元宝^先扣元宝没有元宝扣传仙币/@激活绝仙剑>
+<&IMGEX:5:1013:1014:1015:490:406|激活需要^影仙剑费用500传仙币或10000元宝^先扣元宝没有元宝扣传仙币/@激活影仙剑>
+<&IMGEX:5:1013:1014:1015:621:406|激活需要^越女剑费用500传仙币或10000元宝^先扣元宝没有元宝扣传仙币/@激活越女剑>
+<&IMGEX:5:1013:1014:1015:753:406|激活需要^赤霄剑费用500传仙币或10000元宝^先扣元宝没有元宝扣传仙币/@激活赤霄剑>
+[@激活赤霄剑]
+#if
+not checkitem 赤霄剑
+#act
+messagebox 你没有赤霄剑
+break
+
+#if
+check [685] 1 
+#act
+messagebox 你已经激活过赤霄剑了
+break
+
+
+#if
+checkitem 赤霄剑
+checkgamegold > 10000
+#act
+take 赤霄剑
+gamegold - 10000
+set [685] 1
+
+Goto @统计属性
+goto  @main
+break
+
+#if
+checkitem 赤霄剑
+checkgamegird > 500
+#act
+set [685] 1
+
+Goto @统计属性
+gamegird - 500
+take 赤霄剑
+
+goto  @main
+break
+
+#ELSEACT
+messagebox 你没有元宝或者传仙币
+
+
+
+[@激活越女剑]
+#if
+not checkitem 越女剑
+#act
+messagebox 你没有越女剑
+break
+
+#if
+check [684] 1 
+#act
+messagebox 你已经激活过越女剑了
+break
+
+
+#if
+checkitem 越女剑
+checkgamegold > 10000
+#act
+take 越女剑
+gamegold - 10000
+set [684] 1
+
+Goto @统计属性
+goto  @main
+break
+
+#if
+checkitem 越女剑
+checkgamegird > 500
+#act
+set [684] 1
+gamegird - 500
+
+Goto @统计属性
+take 越女剑
+
+goto  @main
+break
+
+#ELSEACT
+messagebox 你没有元宝或者传仙币
+
+
+[@激活影仙剑]
+#if
+not checkitem 影仙剑
+#act
+messagebox 你没有影仙剑
+break
+
+#if
+check [683] 1 
+#act
+messagebox 你已经激活过影仙剑了
+break
+
+
+#if
+checkitem 影仙剑
+checkgamegold > 10000
+#act
+take 影仙剑
+gamegold - 10000
+
+Goto @统计属性
+set [683] 1
+goto  @main
+break
+
+#if
+checkitem 影仙剑
+checkgamegird > 500
+#act
+set [683] 1
+gamegird - 500
+
+Goto @统计属性
+take 影仙剑
+
+goto  @main
+break
+
+#ELSEACT
+messagebox 你没有元宝或者传仙币
+
+
+
+
+
+
+
+
+
+
+
+[@激活绝仙剑]
+#if
+not CHECKITEM 绝仙剑
+#act
+messagebox 你没有绝仙剑
+break
+
+#if
+check [682] 1 
+#act
+messagebox 你已经激活过绝仙剑了
+break
+
+
+#if
+checkitem 绝仙剑
+checkgamegold > 10000
+#act
+take 绝仙剑
+gamegold - 10000
+set [682] 1
+
+Goto @统计属性
+goto  @main
+break
+
+#if
+checkitem 绝仙剑
+checkgamegird > 500
+#act
+set [682] 1
+gamegird - 500
+
+Goto @统计属性
+take 绝仙剑
+
+goto  @main
+break
+
+#ELSEACT
+messagebox 你没有元宝或者传仙币
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@激活陷仙剑]
+#if
+not CHECKITEM 陷仙剑
+#act
+messagebox 你没有陷仙剑
+break
+
+#if
+check [681] 1 
+#act
+messagebox 你已经激活过陷仙剑了
+break
+
+
+#if
+checkitem 陷仙剑
+checkgamegold > 10000
+#act
+take 陷仙剑
+gamegold - 10000
+set [681] 1
+
+Goto @统计属性
+goto  @main
+break
+
+#if
+checkitem 陷仙剑
+checkgamegird > 500
+#act
+set [681] 1
+gamegird - 500
+take 陷仙剑
+
+Goto @统计属性
+goto  @main
+break
+
+#ELSEACT
+messagebox 你没有元宝或者传仙币
+
+
+
+[@激活戮仙剑]
+#if
+not CHECKITEM 戮仙剑
+#act
+messagebox 你没有戮仙剑
+break
+
+#if
+check [680] 1 
+#act
+messagebox 你已经激活过戮仙剑了
+break
+
+
+#if
+checkitem 戮仙剑
+checkgamegold > 10000
+#act
+take 戮仙剑
+gamegold - 10000
+
+Goto @统计属性
+set [680] 1
+goto  @main
+break
+
+#if
+checkitem 戮仙剑
+checkgamegird > 500
+#act
+set [680] 1
+gamegird - 500
+take 戮仙剑
+
+Goto @统计属性
+goto  @main
+break
+
+#ELSEACT
+messagebox 你没有元宝或者传仙币
+
+
+
+
+
+
+
+
+[@全局内存缩小瘦身处理]
+#CALL [\属性统计\统计属性.TXT] @统计属性
+#CALL [\初始化属性\初始化属性.txt] @初始化属性
+#CALL [\强化装备属性统计\强化装备属性统计.txt] @强化装备属性统计
+#CALL [\称号系统\称号系统.txt] @称号系统
+#CALL [\属性统计\溢出判断.txt] @溢出判断
+#CALL [\属性统计\品阶几率.txt] @品阶几率
+#CALL [\道士宝宝\道士宝宝赋值属性.txt] @道士宝宝赋值属性
+#CALL [\技能\魔法盾.txt] @魔法盾
+#CALL [\技能\双防之盾.txt] @双防之盾
+#CALL [\技能\不屈意志.txt] @不屈意志
+#CALL [\属性面板\属性面板.txt] @属性面板
+#CALL [\爆率系统\爆率封顶.txt] @爆率封顶
