@@ -142,7 +142,7 @@ CLI 重打包流程在《项目维护指南.md》里有完整命令。核心顺�
 ```text
 D:\元歌工具箱\源码工作区\snail-reversing\rate-tool\gen-bundle.js
 cd D:\元歌工具箱\源码工作区\snail-reversing\rate-tool
-npm install  # 仅在 rate-tool/node_modules 不存在时；依赖不入库
+# 重新打包不依赖 rate-tool/node_modules；直接运行 CLI 的 FTP 功能时再 npm install
 node --experimental-sea-config sea-config.json
 生成 SEA
 复制到 D:\元歌工具箱\元歌工具箱-CLI.exe

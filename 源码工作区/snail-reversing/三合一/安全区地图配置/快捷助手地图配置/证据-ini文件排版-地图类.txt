@@ -1,6 +1,0 @@
-来源: 传奇服务端快捷助手V2025-10-01.ini
-
-@!\Mir200\Envir\StartPoint.txt*安全区
-@!\Mir200\Envir\MapInfo.txt*地图配置
-@!\Mir200\Envir\MiniMap.txt*小地图配置
-@!\Mir200\Envir\MapEvent.txt*地图事件
