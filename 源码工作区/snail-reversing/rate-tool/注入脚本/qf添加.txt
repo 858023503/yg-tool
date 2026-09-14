@@ -1,0 +1,123 @@
+[@ButtonClick43]
+#ACT
+#CALL [\元歌脚本\元歌群服功能.txt]@元歌群服
+
+[@MagSelfFunc1258]
+#ACT
+#CALL [\元歌脚本\各种触发\元歌全屏吸怪.txt] @元歌全屏吸怪
+
+
+[@MagSelfFunc1261]
+#if
+#act
+#CALL [\元歌脚本\各种触发\元歌天赋伤害触发.txt] @星芒光环
+
+[@MagSelfFunc1262]
+#if
+#act
+#CALL [\元歌脚本\各种触发\加特林开关.txt] @加特林开关
+
+[@UserCmd1]
+#IF
+ISADMIN
+#ACT
+#CALL [\元歌脚本\群服功能\GM管理.txt] @GM管理界面
+#ELSEACT
+MESSAGEBOX 你不是GM，无法使用此命令！
+
+
+; ==================== 物理攻击触发 ====================
+[@Attack]
+#IF
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+#CALL [\元歌脚本\各种触发\元歌天赋伤害触发.txt] @天赋物理攻击执行
+#CALL [\元歌脚本\各种触发\刺杀特效.txt] @刺杀特效触发
+
+#IF
+CheckJob Warrior
+CheckVAR HUMAN 元歌毒雾点 = 1
+#ACT
+#CALL [\元歌脚本\各种触发\元歌天赋伤害触发.txt] @毒雾献祭触发
+
+#IF
+CheckContainsText <$STR(S$元歌挂机)> GJ:
+#ACT
+MOV N$元歌攻击秒 0
+#IF
+CheckContainsText <$STR(S$元歌挂机)> CX:
+#ACT
+DEC S$元歌挂机 CX:
+; ==================== 魔法攻击触发 ====================
+[@MagicAttack]
+#IF
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+#CALL [\元歌脚本\各种触发\元歌天赋伤害触发.txt] @天赋魔法攻击执行
+#CALL [\元歌脚本\各种触发\雷电术特效.txt] @雷电术特效触发
+#CALL [\元歌脚本\各种触发\火符特效.txt] @火符特效触发
+
+#IF
+EQUAL N$加特林开关 1
+#ACT
+#CALL [\元歌脚本\各种触发\加特林开启.txt] @加特林触发
+
+#IF
+CheckJob Wizard
+CheckVAR HUMAN 元歌天雷点 = 1
+#ACT
+#CALL [\元歌脚本\各种触发\元歌天赋伤害触发.txt] @天雷尸爆魔法触发
+
+#IF
+CheckJob Taoist
+CheckVAR HUMAN 元歌亡灵点 = 1
+#ACT
+#CALL [\元歌脚本\各种触发\元歌天赋伤害触发.txt] @亡灵归来魔法触发
+
+#IF
+CheckContainsText <$STR(S$元歌挂机)> GJ:
+#ACT
+MOV N$元歌攻击秒 0
+#IF
+CheckContainsText <$STR(S$元歌挂机)> CX:
+#ACT
+DEC S$元歌挂机 CX:
+; ==================== 宝宝物理攻击触发 ====================
+[@SlaveAttack]
+#IF
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+#CALL [\元歌脚本\各种触发\元歌天赋伤害触发.txt] @天赋宝宝攻击执行
+
+; ==================== 宝宝魔法攻击触发 ====================
+[@SlaveMagicAttack]
+#IF
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+#CALL [\元歌脚本\各种触发\元歌天赋伤害触发.txt] @天赋宝宝攻击执行
+
+; ==================== 击杀怪物触发 ====================
+[@Killmon]
+#IF
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+#CALL [\元歌脚本\各种触发\元歌天赋伤害触发.txt] @天赋击杀触发
+
+; ==================== 被物理攻击触发 ====================
+[@Struck]
+#IF
+#ACT
+#CALL [\元歌脚本\各种触发\元歌天赋伤害触发.txt] @天赋被攻击触发
+
+; ==================== 被魔法攻击触发 ====================
+[@MagicStruck]
+#IF
+#ACT
+#CALL [\元歌脚本\各种触发\元歌天赋伤害触发.txt] @天赋被攻击触发
+
+[@PlayDie]
+#IF
+CheckContainsText <$STR(S$元歌挂机)> GJ:
+#ACT
+#CALL [\元歌脚本\群服功能\智能挂机.txt] @元歌挂机复活
+break

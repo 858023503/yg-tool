@@ -1,0 +1,31 @@
+虾米工具箱 M2 重载 —— 关键字符串证据摘录
+============================================
+
+来源：虾米工具箱.pkg（PyInstaller CArchive）解包 642 个 pyc 后扫描。
+
+[1] GUI 主模块（281497B pyc）中文字符串（UTF-8）：
+    - 全局工具（sidebarGlobalToolsHeader）
+    - 打开旧引擎重载项目菜单
+    - 检查工具箱在线更新
+    - 重载 / 更新 / 快捷1 / 快捷2（按钮，绑定 reloadr）
+    - 这里会接入真实功能页
+    - 该全局工具尚未接入
+    - (尚未接入)
+    - 基础工具：基础设置 / 微端配置 / 免费微端 / 地图设置 / 文本搜索 / 文件对比
+    - 版本数据：数据库管理 / 可视化NPC / 可视化刷怪 / 刷怪设置 / 货币兑换 / 爆率管理 / 存销设置 / 回收生成
+    - 账号登录 / 授权状态已同步 / 剩余 / 未登录 / 已登录
+
+[2] M2Server 相关（M2Server模块.pyc，13153B，实为 NPC 可视化）：
+    - 标识符：NpcVisualV2PageT / NpcToolContext / QuickNpcEntry / _load_map_names / _script_candidates / ThreadPoolExecutor
+    - 路径常量：Mir200\M2Server.exe（用于定位服务端根目录）
+    - 中文：NPC 可视化任务调度器已关闭 / 登录器 / 补丁文件夹 / 选择游戏客户端目录
+
+[3] Win32 重载 API 扫描（642 个 pyc 全量）：
+    GetMenu: 0 命中
+    PostMessage: 0 命中
+    FindWindow: 0 命中
+    WM_COMMAND: 0 命中
+    SendMessage: 0 命中（仅 Python 标准库 imp.reload 的英文注释命中 Reload）
+
+结论：虾米 1.4.x 的"M2 重载"为 UI 占位（"该全局工具尚未接入"），本地包内无真实实现；
+真实功能疑似由账号授权在线下发/解锁。

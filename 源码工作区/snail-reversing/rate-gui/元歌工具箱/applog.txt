@@ -1,0 +1,29 @@
+[6312:0806/213525.897:ERROR:sandbox_policy_base.cc(158)] Failed to add sandbox rule. error = 2, subsystem = 0, semantics = 0, pattern = 'applog.txt'
+[6312:0806/213525.960:ERROR:sandbox_policy_base.cc(158)] Failed to add sandbox rule. error = 2, subsystem = 0, semantics = 0, pattern = 'applog.txt'
+[6312:0806/213525.973:ERROR:gpu_process_host.cc(985)] GPU process launch failed: error_code=2
+[6312:0806/213525.973:WARNING:gpu_process_host.cc(1338)] The GPU process has crashed 1 time(s)
+[6312:0806/213525.974:ERROR:sandbox_policy_base.cc(158)] Failed to add sandbox rule. error = 2, subsystem = 0, semantics = 0, pattern = 'applog.txt'
+[6312:0806/213525.986:ERROR:gpu_process_host.cc(985)] GPU process launch failed: error_code=2
+[6312:0806/213525.986:WARNING:gpu_process_host.cc(1338)] The GPU process has crashed 2 time(s)
+[6312:0806/213525.987:ERROR:sandbox_policy_base.cc(158)] Failed to add sandbox rule. error = 2, subsystem = 0, semantics = 0, pattern = 'applog.txt'
+[6312:0806/213525.993:ERROR:gpu_process_host.cc(985)] GPU process launch failed: error_code=2
+[6312:0806/213525.993:WARNING:gpu_process_host.cc(1338)] The GPU process has crashed 3 time(s)
+[6312:0806/213525.994:ERROR:sandbox_policy_base.cc(158)] Failed to add sandbox rule. error = 2, subsystem = 0, semantics = 0, pattern = 'applog.txt'
+[6312:0806/213525.994:ERROR:gpu_process_host.cc(985)] GPU process launch failed: error_code=2
+[6312:0806/213525.995:WARNING:gpu_process_host.cc(1338)] The GPU process has crashed 4 time(s)
+[6312:0806/213525.995:ERROR:sandbox_policy_base.cc(158)] Failed to add sandbox rule. error = 2, subsystem = 0, semantics = 0, pattern = 'applog.txt'
+[6312:0806/213525.995:ERROR:gpu_process_host.cc(985)] GPU process launch failed: error_code=2
+[6312:0806/213525.995:WARNING:gpu_process_host.cc(1338)] The GPU process has crashed 5 time(s)
+[6312:0806/213525.996:ERROR:sandbox_policy_base.cc(158)] Failed to add sandbox rule. error = 2, subsystem = 0, semantics = 0, pattern = 'applog.txt'
+[6312:0806/213525.996:ERROR:gpu_process_host.cc(985)] GPU process launch failed: error_code=2
+[6312:0806/213525.996:WARNING:gpu_process_host.cc(1338)] The GPU process has crashed 6 time(s)
+[6312:0806/213525.997:ERROR:sandbox_policy_base.cc(158)] Failed to add sandbox rule. error = 2, subsystem = 0, semantics = 0, pattern = 'applog.txt'
+[6312:0806/213525.998:ERROR:gpu_process_host.cc(985)] GPU process launch failed: error_code=2
+[6312:0806/213525.998:WARNING:gpu_process_host.cc(1338)] The GPU process has crashed 7 time(s)
+[6312:0806/213525.998:ERROR:sandbox_policy_base.cc(158)] Failed to add sandbox rule. error = 2, subsystem = 0, semantics = 0, pattern = 'applog.txt'
+[6312:0806/213525.999:ERROR:gpu_process_host.cc(985)] GPU process launch failed: error_code=2
+[6312:0806/213525.999:WARNING:gpu_process_host.cc(1338)] The GPU process has crashed 8 time(s)
+[6312:0806/213526.000:ERROR:sandbox_policy_base.cc(158)] Failed to add sandbox rule. error = 2, subsystem = 0, semantics = 0, pattern = 'applog.txt'
+[6312:0806/213526.000:ERROR:gpu_process_host.cc(985)] GPU process launch failed: error_code=2
+[6312:0806/213526.000:WARNING:gpu_process_host.cc(1338)] The GPU process has crashed 9 time(s)
+[6312:0806/213526.000:FATAL:gpu_data_manager_impl_private.cc(440)] GPU process isn't usable. Goodbye.

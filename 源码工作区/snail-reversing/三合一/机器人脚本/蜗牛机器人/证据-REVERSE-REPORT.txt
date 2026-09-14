@@ -1,0 +1,6 @@
+来源: 蜗牛实用工具 REVERSE-REPORT.md
+
+### 9.12.1 功能还原（index-342fb122）
+- 文案：「如输入60秒，代表机器人脚本每隔60秒执行满足条件的地图刷怪」「每隔60秒执行清怪：无人+有怪的地图」
+- 格式（真实端实测 AutoRunRobot.txt）：`#AutoRun NPC <SEC|MIN|HOUR|RUNONDAY|RUNONWEEK> <值> @<触发段>`
+- 命令（翎风 CHM）：刷怪 `GMEXECUTE @MOB 怪物名 数量`（GM命令刷怪）；清怪 `CLEARMAPMON 地图`（清除指定地图里的怪物，动态刷怪省资源）

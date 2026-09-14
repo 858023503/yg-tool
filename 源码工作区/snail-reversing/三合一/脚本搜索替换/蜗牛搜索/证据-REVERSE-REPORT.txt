@@ -1,0 +1,16 @@
+来源: 蜗牛实用工具 REVERSE-REPORT.md
+
+### 9.7.1 功能还原
+原软件 index-0a99aa24.js（表单结构）：
+- `form = { path, type: ".txt", isCase: true, other: [], isChildren }`（搜索目录/文件类型/区分大小写/包含子目录）
+- `oldContent`（搜索内容）/ `newContent`（替换内容），搜索/替换双模式
+- 替换内容为空时确认「蜗牛检测到要替换的内容为空，确定继续替换？」（等于删除）
+- 结果含文件路径 + 匹配行号（arrays.map(e=>e.row+1)），可「查看脚本」「打开目录」
+
+---
+
+### 5. 脚本工具
+- **脚本搜索/替换**：目录遍历（含子目录、区分大小写、UTF-8）、支持从 Envir 搜索
+- **变量占用替换**：分析脚本中的个人标识/定时器/物品触发/魔法触发/用户命令变量，自动替换为未占用变量（`mov/inc/DEC/MUL/DIV/sum/movr` 等指令库正则）
+- **NPC 脚本编辑器**：Monaco Editor + 引擎指令语法高亮/代码折叠，保存自动重载
+- 内置**完整引擎脚本指令库**正则（GOM/GEE 系）：`ISCASTLEGUILD|CheckBattleStatus|HaveGuild|DeleteGamePet|GetUserItemName|RECALLMOBEX|SetCustomItemValue|LOADVAR|GotoLabel|...`

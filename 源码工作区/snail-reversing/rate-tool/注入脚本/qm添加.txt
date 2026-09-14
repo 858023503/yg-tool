@@ -1,0 +1,30 @@
+[@Login]
+#IF
+#ACT
+#CALL [\元歌脚本\各种触发\登录触发.txt] @元歌登录触发
+#CALL [\元歌脚本\倍率倍数\元歌各种倍率.txt] @元歌爆率倍数
+#CALL [\元歌脚本\倍率倍数\元歌各种倍率.txt] @元歌经验倍数
+#CALL [\元歌脚本\倍率倍数\元歌各种倍率.txt] @元歌倍攻倍数
+#CALL [\元歌脚本\倍率倍数\元歌各种倍率.txt] @元歌速度倍数
+
+[@OnTimer89]
+#IF
+NOT ISDUMMY
+#ACT
+#CALL [\元歌脚本\群服功能\自动吃药.txt] @元歌自动回血QM
+#IF
+CHECK [912] 1
+#ACT
+#CALL [\元歌脚本\各种触发\元歌天赋伤害触发.txt] @星芒光环执行
+
+[@OnTimer90]
+#IF
+NOT CheckOffline
+NOT ISDUMMY
+#ACT
+INC U<$str(N$元歌杀怪点)> 1
+CALCVAR HUMAN 元歌在线分钟 + 1
+CALCVAR HUMAN 元歌在线总点数 + 1
+SaveVAR HUMAN 元歌在线分钟 ..\QuestDiary\元歌脚本\元歌群服点.txt
+SaveVAR HUMAN 元歌在线总点数 ..\QuestDiary\元歌脚本\元歌群服点.txt
+SENDMSG 6 在线奖励：你在线每分钟获得1杀怪点，当前杀怪点：<$str(U<$str(N$元歌杀怪点)>)>

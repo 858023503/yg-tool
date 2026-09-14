@@ -1,0 +1,10 @@
+来源: 蜗牛实用工具 REVERSE-REPORT.md（渲染进程功能清单 §1 数据库/数据管理）
+
+### 1. 数据库/数据管理
+- **物品库**：StdItems 全字段编辑（名称/大类/外观/重量/数量/来源/保留/特殊条件/需要等级/出售价格/库存量/持久/内观/颜色/是否叠加/光效），过滤/搜索/增删改
+- **技能库**（Magic：MagID/MagId/Anicount…）、**怪物库**（Monster）、**NPC 工具**、**地图**（MapInfo.txt）
+- **Access 数据库**：`Provider=Microsoft.ACE.OLEDB.12.0` / `Jet.OLEDB.4.0`（node-adodb），兼容 `DataTable_HeroDB.db`
+- **SQLite**：`libsEGL.db`、`backup.db`；本地查询库 `tb_search`/`tb_search_mongen`/`tb_temp`（字段：c_id/c_type/c_name/c_title/c_class/c_goods/c_material/c_mongen/c_map/c_npc/c_show/c_time/c_note/c_yb/c_image/c_list/c_strategy/c_other/c_order/c_refresh/c_values/c_my_id/c_mongen_id），排序/重排/分页 SQL
+- 批量导入（最大 50 条）、Excel 导入导出（SheetJS，`\Mir200\Envir\Data\cfg_item.xls`）
+
+

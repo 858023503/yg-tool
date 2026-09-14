@@ -1,0 +1,4 @@
+来源: 传奇服务端快捷助手 V2025-10-01（exe 脱壳字符串 + ini 配置）
+
+[ini] 文件排版=@!\Mir200\Envir\MerChant.txt*自定义NPC|@!\Mir200\Envir\Npcs.txt*内置NPC|@!\Mir200\Envir\MonGen.txt*刷怪|@!\Mir200\Envir\StartPoint.txt*安全区|@!\Mir200\Env
+[exe] 刷怪 @17484: 刷怪配置     � � # w         \ M i r 2 0 0 \
