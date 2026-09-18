@@ -1,5 +1,5 @@
-# 本地生成的知识库索引（可由 lf-mir200-knowledge 重新生成）
-.codex-kb/
+# 翎风/Mir200 说明书知识库：外部文档，不属于元歌工具箱，不纳入版本管理
+knowledge_base/
 
 # 已废弃的自动化回归测试数据
 ai-server-data/
