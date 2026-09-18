@@ -1,1 +1,0 @@
-#CALL [\爆率系统\兽人古墓\BOSS怪.txt] @BOSS怪

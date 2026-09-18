@@ -1,1 +1,0 @@
-#CALL [\爆率系统\雪城旧址\BOSS怪.txt] @BOSS怪

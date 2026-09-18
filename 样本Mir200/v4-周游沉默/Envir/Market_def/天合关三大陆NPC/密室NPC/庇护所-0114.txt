@@ -1,8 +1,0 @@
-[@Main]
-#IF
-CheckMapMonCount <$MAP> < 1 1
-#ACT
-map 庇护所
-#ELSEACT
-MESSAGEBOX 请清理完地图怪物，方可有资格进入【庇护所】
-break

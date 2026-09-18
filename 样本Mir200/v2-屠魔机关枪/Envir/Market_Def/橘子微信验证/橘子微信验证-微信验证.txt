@@ -1,4 +1,0 @@
-[@Main]
-#if
-#act
-MAPMOVE Àñ°ü·¿¼ä 23 25

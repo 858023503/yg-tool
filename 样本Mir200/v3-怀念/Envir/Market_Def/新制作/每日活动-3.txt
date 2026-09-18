@@ -1,6 +1,0 @@
-[@main]
-#if
-#ACT
-#CALL [\商人\每日活动.txt] @每日活动
-break
-

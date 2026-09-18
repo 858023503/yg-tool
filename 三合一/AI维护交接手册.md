@@ -1,11 +1,12 @@
 # 元歌工具箱维护交接手册
 
 > 这份文档给接手本项目的 AI 或开发者使用。先读完本文，再读同目录的《项目维护指南.md》和《三合一（最后完整版）.md》。
-> 更新日期：2026-09-15
+> 更新日期：2026-09-18
 
-GitHub 私有仓库：<https://github.com/858023503/yuange-toolbox>
+GitHub 仓库：<https://github.com/858023503/yg-tool>
+（旧仓库 `yuange-toolbox` 已废弃：其历史中含已移除的外部资料，且旧 commit 仍可匿名下载，勿再使用。）
 
-当前远端基线提交：以 `git rev-parse origin/main` 为准（每次推送后更新本行）。仓库包含 D 盘运行/发布目录、维护文档、样本、知识库，以及 `源码工作区/snail-reversing/` 下的真正源码工作区。大文件通过 Git LFS 保存。
+当前远端基线提交：以 `git rev-parse origin/main` 为准（每次推送后更新本行）。仓库包含 D 盘运行/发布目录、维护文档、`GUI\`，以及 `源码工作区/snail-reversing/` 下的真正源码工作区。大文件通过 Git LFS 保存。外部资料（`knowledge_base\`、`样本Mir200\`、`.codex\skills\`）已移出仓库。
 
 ## 1. 项目定位
 
@@ -59,7 +60,6 @@ D:\元歌工具箱\
 GUI\resources\app\          当前用户实际运行的 GUI 资源
 元歌工具箱-CLI.exe            当前发布的 CLI
 三合一\                       维护文档
-样本Mir200\                   测试样本，只读参考；测试要复制到临时目录
 ```
 
 `D:\元歌工具箱\GUI\resources\app\` 是运行副本，不是源码主目录。修改业务逻辑时先改源码，再同步到这里。
@@ -79,6 +79,8 @@ xiami_native_core.exe 或其兼容实现
 `D:\cqzs\元歌脚本` 是元歌群服脚本资源库，不是工具箱源码；工具箱只是提供脚本注入功能。
 
 `knowledge_base\`（翎风/Mir200 官方说明书）和 `.codex\skills\`（外部 AI 技能）同样不属于本工具箱，已从仓库移除并加入 `.gitignore`。需要查说明书时请使用目标端自带文档，不要把外部知识库重新提交进来。
+
+`样本Mir200\` 是外部 AI 技能 `lf-mir200-knowledge` 的样本库，不属于元歌工具箱：工具箱源码与 GUI 代码对它 **0 引用**，删掉不影响工具箱运行。它随该技能一起从仓库移除并加入 `.gitignore`（本地保留）。其中的 `翔天-3.txt`、`EffectList.txt` 等文件是那个技能引用和训练的数据来源，不是本工具箱的测试基准。
 
 ## 3. 修改和同步规则
 
@@ -251,7 +253,7 @@ D:\cqkhd\XinchenmoFg\Data\MapDesc1.dat
 
 ## 6. 安全测试规范
 
-用户原版服务端、`D:\cqzs` 下正在使用的端、`D:\元歌工具箱\样本Mir200` 原始样本都不要直接改。
+用户原版服务端、`D:\cqzs` 下正在使用的端都不要直接改。`样本Mir200\` 若本地存在，属于外部 AI 技能的样本库，同样只读、不要改（它已不在仓库中）。
 
 测试流程：
 
@@ -313,13 +315,15 @@ D:\元歌工具箱\
 
 ## 11. 换电脑后的恢复方法
 
-在新电脑安装 Git 和 Git LFS 后，先登录有权限访问该私有仓库的 GitHub 账号，然后执行：
+在新电脑安装 Git 和 Git LFS 后执行（`git lfs pull` 不能漏，否则大文件只是指针）：
 
 ```text
-git clone https://github.com/858023503/yuange-toolbox.git
-cd yuange-toolbox
+git clone https://github.com/858023503/yg-tool
+cd yg-tool
 git lfs pull
 ```
+
+网络不稳时可先设 `git config --global lfs.concurrenttransfers 1`；`git lfs pull` 中断后重跑即可续传。校验：`git lfs fsck` 应输出 `Git LFS fsck OK`。
 
 真正开发时进入：
 

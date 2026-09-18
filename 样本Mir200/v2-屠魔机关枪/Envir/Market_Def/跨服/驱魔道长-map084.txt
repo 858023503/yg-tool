@@ -1,3 +1,0 @@
-[@main]
-#act
-#CALL [\跨服NPC\驱魔道长.txt] @驱魔道长

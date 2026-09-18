@@ -1,1 +1,0 @@
-#CALL [\爆率系统\魔化工厂\BOSS怪.txt] @BOSS怪

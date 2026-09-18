@@ -1,1 +1,0 @@
-#CALL [\爆率系统\冥府之路\BOSS怪.txt] @BOSS怪

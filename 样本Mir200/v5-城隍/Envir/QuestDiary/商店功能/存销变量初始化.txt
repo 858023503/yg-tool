@@ -1,8 +1,0 @@
-[@存销变量初始化]
-{
-#IF
-#ACT
-; 先建通区目录（ForceDirectories 不递归父级，分两级建）
-ForceDirectories ..\..\..\..\通区文件\
-ForceDirectories ..\..\..\..\通区文件\城隍\
-}

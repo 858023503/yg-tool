@@ -1,4 +1,0 @@
-[@main]
-#IF
-#ACT
-OpenStorageView 1

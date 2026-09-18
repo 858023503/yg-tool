@@ -1,1 +1,0 @@
-#CALL [\爆率系统\幽暗地底\BOSS怪.txt] @BOSS怪

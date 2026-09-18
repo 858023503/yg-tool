@@ -1,3 +1,0 @@
-[@main]
-#act
-#CALL [\跨服NPC\群雄聚会.txt] @群雄聚会

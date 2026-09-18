@@ -1,9 +1,0 @@
-[AddData]
-AddName=°×²Ë
-AddLevel=2
-GrayShow=1
-ScaleShow=1
-EffigyState=72620544127666188
-EffigyState2=4294967295
-EffigyOffset=40
-ValidTime=-1

@@ -1,1 +1,0 @@
-#CALL [\爆率系统\赤月峡谷\BOSS怪.txt] @BOSS怪

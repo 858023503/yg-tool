@@ -1,7 +1,0 @@
-[@魔法技能对怪触发开始]
-{
-#IF
-CheckVarInList L$允许魔法触发技能编号 <$CURRRUSEMAGICID>
-#ACT
-GOTO @_@对怪魔法技能编号<$CURRRUSEMAGICID>触发
-}

@@ -1,5 +1,0 @@
-[@main]
-#IF
-#ACT
-#CALL [\商人\充值礼包.txt] @充值礼包
-break

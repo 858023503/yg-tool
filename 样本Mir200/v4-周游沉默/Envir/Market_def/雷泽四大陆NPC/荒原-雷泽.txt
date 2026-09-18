@@ -1,9 +1,0 @@
-[@main]
-#if
-checkitemw 传送戒指
-#ACT
-MAPMOVE 雷泽 581 683
-#elseact
-MessageBox 请把传送戒指佩戴到身上。
- 
-

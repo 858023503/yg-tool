@@ -1,4 +1,0 @@
-[@main]
-#IF
-#ACT
-MESSAGEBOX  ÔÝÎ´¿ª·Å£¬¾´ÇëÆÚ´ý£¡

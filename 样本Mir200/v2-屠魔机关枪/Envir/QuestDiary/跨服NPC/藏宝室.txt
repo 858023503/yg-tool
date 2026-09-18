@@ -1,8 +1,0 @@
-[@≤ÿ±¶ “]
-{
-#if
-#act
-ChangeState 1 99999
-KILLSLAVE
-mapmove RJD001
-}

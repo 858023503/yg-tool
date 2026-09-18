@@ -1,9 +1,0 @@
-(@storage @getback )
-%100
-
-[@main]
-#IF
-#ACT
-#CALL [\…Ã»À\≤÷ø‚.txt] @≤÷ø‚
-break
-

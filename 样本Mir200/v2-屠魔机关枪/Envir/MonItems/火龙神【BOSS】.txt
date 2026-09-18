@@ -1,1 +1,0 @@
-#CALL [\爆率系统\火龙地洞\BOSS怪.txt] @BOSS怪

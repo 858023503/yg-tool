@@ -1,8 +1,0 @@
-[@Main]
-#IF
-CheckMapMonCount <$MAP> < 1 1
-#ACT
-map 玛雅神殿
-#ELSEACT
-MESSAGEBOX 请清理完地图怪物，方可有资格进入【玛雅神殿】
-break

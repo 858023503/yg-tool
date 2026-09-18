@@ -1,8 +1,0 @@
-[@游戏BUFF]
-{
-#if
-not CheckUseItem 12
-#ACT
-DELSKILL 分身术
-
-}

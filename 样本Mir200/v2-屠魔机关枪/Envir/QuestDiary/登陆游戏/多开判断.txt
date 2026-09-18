@@ -1,8 +1,0 @@
-[@¶à¿ªÅÐ¶Ï]
-{
-#if
-COMPARETEXT T29
-#act
-break
-
-}

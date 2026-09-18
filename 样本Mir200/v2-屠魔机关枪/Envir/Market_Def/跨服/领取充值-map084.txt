@@ -1,3 +1,0 @@
-[@main]
-#act
-#CALL [\跨服NPC\领取充值.txt] @领取充值

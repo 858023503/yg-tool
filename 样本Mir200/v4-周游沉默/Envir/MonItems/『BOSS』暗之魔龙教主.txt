@@ -1,3 +1,0 @@
-#CALL [\\爆率系统\魔龙城.txt] @魔龙城BOSS
-#CALL [\\爆率系统\魔龙城.txt] @魔龙城BOSS
-#CALL [\\爆率系统\魔龙城.txt] @魔龙城BOSS
